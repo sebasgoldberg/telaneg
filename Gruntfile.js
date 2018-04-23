@@ -45,7 +45,7 @@ module.exports = function(grunt) {
 				options: {
 					resources: {
 						cwd: '<%= dir.webapp %>',
-						prefix: 'simplifique.telaneg'
+						prefix: 'simplifique/telaneg'
 					},
 					dest: '<%= dir.dist %>'
 				},
