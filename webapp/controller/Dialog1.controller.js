@@ -5,7 +5,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 ], function(BaseController, MessageBox, Utilities, History) {
 	"use strict";
 
-	return BaseController.extend("com.sap.build.standard.negociacao.controller.Dialog1", {
+	return BaseController.extend("simplifique.telaneg.controller.Dialog1", {
 		setRouter: function(oRouter) {
 			this.oRouter = oRouter;
 

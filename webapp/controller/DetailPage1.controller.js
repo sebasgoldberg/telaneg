@@ -5,7 +5,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 ], function(BaseController, MessageBox, Utilities, History) {
 	"use strict";
 
-	return BaseController.extend("com.sap.build.standard.negociacao.controller.DetailPage1", {
+	return BaseController.extend("simplifique.telaneg.controller.DetailPage1", {
 		handleRouteMatched: function(oEvent) {
 
 			var oParams = {};
@@ -118,7 +118,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 			if (!oDialog) {
 				this.getOwnerComponent().runAsOwner(function() {
 					oView = sap.ui.xmlview({
-						viewName: "com.sap.build.standard.negociacao.view." + sDialogName
+						viewName: "simplifique.telaneg.view." + sDialogName
 					});
 					this.getView().addDependent(oView);
 					oView.getController().setRouter(this.oRouter);

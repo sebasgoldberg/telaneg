@@ -884,7 +884,7 @@ sap.ui.define([
 
 
 	var oMockServer,
-		_sAppModulePath = "com.sap.build.standard.negociacao/";
+		_sAppModulePath = "simplifique.telaneg/";
 	return {
 
 		/**

@@ -18,7 +18,7 @@ sap.ui.define([
 		}
 	};
 
-	return UIComponent.extend("com.sap.build.standard.negociacao.Component", {
+	return UIComponent.extend("simplifique.telaneg.Component", {
 
 		metadata: {
 			manifest: "json"

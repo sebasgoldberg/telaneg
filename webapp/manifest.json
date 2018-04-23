@@ -2,7 +2,7 @@
 	"_version": "1.8.0",
 	"sap.app": {
 		"_version": "1.3.0",
-		"id": "com.sap.build.standard.negociacao",
+		"id": "simplifique.telaneg",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"title": "{{appTitle}}",
@@ -52,7 +52,7 @@
 	"sap.ui5": {
 		"_version": "1.3.0",
 		"rootView": {
-			"viewName": "com.sap.build.standard.negociacao.view.App",
+			"viewName": "simplifique.telaneg.view.App",
 			"type": "XML",
 			"async": false,
 			"id": "app"
@@ -93,7 +93,7 @@
 			"config": {
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
-				"viewPath": "com.sap.build.standard.negociacao.view",
+				"viewPath": "simplifique.telaneg.view",
 				"controlId": "idAppControl",
 				"clearTarget": false,
 				"controlAggregation": "detailPages",

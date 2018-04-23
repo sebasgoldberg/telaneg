@@ -5,7 +5,7 @@ sap.ui.define([
 	], function (BaseController, JSONModel, History) {
 		"use strict";
 
-		return BaseController.extend("com.sap.build.standard.negociacao.controller.App", {
+		return BaseController.extend("simplifique.telaneg.controller.App", {
 
 			onInit : function () {
 				var oViewModel,
