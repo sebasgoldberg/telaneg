@@ -1,0 +1,527 @@
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="f88ee960dec73daa0f88ddfe" xml:lang="en" sap:schema-version="0000" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityContainer Name="f88ee960dec73daa0f88ddfe_Entities" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="NegociacaoSet" EntityType="f88ee960dec73daa0f88ddfe.Negociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <AssociationSet Name="NegociacaofornecedorFornecedorNegociacao" Association="f88ee960dec73daa0f88ddfe.NegociacaofornecedorFornecedorNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="NegociacaoSet" Role="FromRole_NegociacaofornecedorFornecedorNegociacao"/>
+                    <End EntitySet="FornecedorNegociacaoSet" Role="ToRole_NegociacaofornecedorFornecedorNegociacao"/>
+                </AssociationSet>
+                <AssociationSet Name="NegociacaoprodutoProdutoNegociacao" Association="f88ee960dec73daa0f88ddfe.NegociacaoprodutoProdutoNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="NegociacaoSet" Role="FromRole_NegociacaoprodutoProdutoNegociacao"/>
+                    <End EntitySet="ProdutoNegociacaoSet" Role="ToRole_NegociacaoprodutoProdutoNegociacao"/>
+                </AssociationSet>
+                <AssociationSet Name="NegociacaocentroCentroNegociacao" Association="f88ee960dec73daa0f88ddfe.NegociacaocentroCentroNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="NegociacaoSet" Role="FromRole_NegociacaocentroCentroNegociacao"/>
+                    <End EntitySet="CentroNegociacaoSet" Role="ToRole_NegociacaocentroCentroNegociacao"/>
+                </AssociationSet>
+                <AssociationSet Name="NegociacaoitemItemNegociacao" Association="f88ee960dec73daa0f88ddfe.NegociacaoitemItemNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="NegociacaoSet" Role="FromRole_NegociacaoitemItemNegociacao"/>
+                    <End EntitySet="ItemNegociacaoSet" Role="ToRole_NegociacaoitemItemNegociacao"/>
+                </AssociationSet>
+                <EntitySet Name="FornecedorNegociacaoSet" EntityType="f88ee960dec73daa0f88ddfe.FornecedorNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="ProdutoNegociacaoSet" EntityType="f88ee960dec73daa0f88ddfe.ProdutoNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="CentroNegociacaoSet" EntityType="f88ee960dec73daa0f88ddfe.CentroNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="ItemNegociacaoSet" EntityType="f88ee960dec73daa0f88ddfe.ItemNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <AssociationSet Name="ItemNegociacaofornecedorFornecedorNegociacao" Association="f88ee960dec73daa0f88ddfe.ItemNegociacaofornecedorFornecedorNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaofornecedorFornecedorNegociacao"/>
+                    <End EntitySet="FornecedorNegociacaoSet" Role="ToRole_ItemNegociacaofornecedorFornecedorNegociacao"/>
+                </AssociationSet>
+                <AssociationSet Name="ItemNegociacaoprodutoProdutoNegociacao" Association="f88ee960dec73daa0f88ddfe.ItemNegociacaoprodutoProdutoNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaoprodutoProdutoNegociacao"/>
+                    <End EntitySet="ProdutoNegociacaoSet" Role="ToRole_ItemNegociacaoprodutoProdutoNegociacao"/>
+                </AssociationSet>
+                <AssociationSet Name="ItemNegociacaocentroCentroNegociacao" Association="f88ee960dec73daa0f88ddfe.ItemNegociacaocentroCentroNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaocentroCentroNegociacao"/>
+                    <End EntitySet="CentroNegociacaoSet" Role="ToRole_ItemNegociacaocentroCentroNegociacao"/>
+                </AssociationSet>
+                <AssociationSet Name="ItemNegociacaoinformacaoInformacaoItem" Association="f88ee960dec73daa0f88ddfe.ItemNegociacaoinformacaoInformacaoItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaoinformacaoInformacaoItem"/>
+                    <End EntitySet="InformacaoItemSet" Role="ToRole_ItemNegociacaoinformacaoInformacaoItem"/>
+                </AssociationSet>
+                <AssociationSet Name="ItemNegociacaosimulacaoSimulacaoItem" Association="f88ee960dec73daa0f88ddfe.ItemNegociacaosimulacaoSimulacaoItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaosimulacaoSimulacaoItem"/>
+                    <End EntitySet="SimulacaoItemSet" Role="ToRole_ItemNegociacaosimulacaoSimulacaoItem"/>
+                </AssociationSet>
+                <AssociationSet Name="ItemNegociacaoimpostosEntradaImpostosEntradaItem" Association="f88ee960dec73daa0f88ddfe.ItemNegociacaoimpostosEntradaImpostosEntradaItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaoimpostosEntradaImpostosEntradaItem"/>
+                    <End EntitySet="ImpostosEntradaItemSet" Role="ToRole_ItemNegociacaoimpostosEntradaImpostosEntradaItem"/>
+                </AssociationSet>
+                <AssociationSet Name="ItemNegociacaoimpostosSaidaImpostosSaidaItem" Association="f88ee960dec73daa0f88ddfe.ItemNegociacaoimpostosSaidaImpostosSaidaItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaoimpostosSaidaImpostosSaidaItem"/>
+                    <End EntitySet="ImpostosSaidaItemSet" Role="ToRole_ItemNegociacaoimpostosSaidaImpostosSaidaItem"/>
+                </AssociationSet>
+                <AssociationSet Name="ItemNegociacaovendaAnteriorVendaAnteriorItem" Association="f88ee960dec73daa0f88ddfe.ItemNegociacaovendaAnteriorVendaAnteriorItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaovendaAnteriorVendaAnteriorItem"/>
+                    <End EntitySet="VendaAnteriorItemSet" Role="ToRole_ItemNegociacaovendaAnteriorVendaAnteriorItem"/>
+                </AssociationSet>
+                <AssociationSet Name="ItemNegociacaovendaActualVendaActualItem" Association="f88ee960dec73daa0f88ddfe.ItemNegociacaovendaActualVendaActualItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaovendaActualVendaActualItem"/>
+                    <End EntitySet="VendaActualItemSet" Role="ToRole_ItemNegociacaovendaActualVendaActualItem"/>
+                </AssociationSet>
+                <AssociationSet Name="ItemNegociacaostockStockItem" Association="f88ee960dec73daa0f88ddfe.ItemNegociacaostockStockItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaostockStockItem"/>
+                    <End EntitySet="StockItemSet" Role="ToRole_ItemNegociacaostockStockItem"/>
+                </AssociationSet>
+                <AssociationSet Name="ItemNegociacaonossoPricingNossoPricingItem" Association="f88ee960dec73daa0f88ddfe.ItemNegociacaonossoPricingNossoPricingItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaonossoPricingNossoPricingItem"/>
+                    <End EntitySet="NossoPricingItemSet" Role="ToRole_ItemNegociacaonossoPricingNossoPricingItem"/>
+                </AssociationSet>
+                <AssociationSet Name="ItemNegociacaocategoryReviewCategoryReviewItem" Association="f88ee960dec73daa0f88ddfe.ItemNegociacaocategoryReviewCategoryReviewItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaocategoryReviewCategoryReviewItem"/>
+                    <End EntitySet="CategoryReviewItemSet" Role="ToRole_ItemNegociacaocategoryReviewCategoryReviewItem"/>
+                </AssociationSet>
+                <AssociationSet Name="ItemNegociacaocontratoContratoItem" Association="f88ee960dec73daa0f88ddfe.ItemNegociacaocontratoContratoItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
+                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaocontratoContratoItem"/>
+                    <End EntitySet="ContratoItemSet" Role="ToRole_ItemNegociacaocontratoContratoItem"/>
+                </AssociationSet>
+                <EntitySet Name="InformacaoItemSet" EntityType="f88ee960dec73daa0f88ddfe.InformacaoItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="SimulacaoItemSet" EntityType="f88ee960dec73daa0f88ddfe.SimulacaoItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="ImpostosEntradaItemSet" EntityType="f88ee960dec73daa0f88ddfe.ImpostosEntradaItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="ImpostosSaidaItemSet" EntityType="f88ee960dec73daa0f88ddfe.ImpostosSaidaItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="VendaAnteriorItemSet" EntityType="f88ee960dec73daa0f88ddfe.VendaAnteriorItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="VendaActualItemSet" EntityType="f88ee960dec73daa0f88ddfe.VendaActualItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="StockItemSet" EntityType="f88ee960dec73daa0f88ddfe.StockItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="NossoPricingItemSet" EntityType="f88ee960dec73daa0f88ddfe.NossoPricingItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="CategoryReviewItemSet" EntityType="f88ee960dec73daa0f88ddfe.CategoryReviewItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+                <EntitySet Name="ContratoItemSet" EntityType="f88ee960dec73daa0f88ddfe.ContratoItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
+            </EntityContainer>
+            <EntityType Name="Negociacao">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="Descricao" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Descricao"/>
+                <Property Name="Data" Type="Edm.DateTime" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:display-format="Date" sap:label="Data"/>
+                <Property Name="Status" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Status"/>
+                <Property Name="ValorMeta" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ValorMeta"/>
+                <Property Name="NovaMargem2" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="NovaMargem2"/>
+                <Property Name="NovoIC" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="NovoIC"/>
+                <Property Name="Fornecedores" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Fornecedores"/>
+                <Property Name="Produtos" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Produtos"/>
+                <Property Name="UFs" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="UFs"/>
+                <Property Name="StatusValorMeta" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:calculated="{&quot;calculation&quot;:&quot;[{\&quot;label\&quot;:\&quot;IF\&quot;,\&quot;name\&quot;:\&quot;if\&quot;,\&quot;type\&quot;:\&quot;condition\&quot;,\&quot;condition\&quot;:[{\&quot;label\&quot;:\&quot;>=\&quot;,\&quot;name\&quot;:\&quot;gtoe\&quot;,\&quot;type\&quot;:\&quot;operator\&quot;,\&quot;left\&quot;:[{\&quot;label\&quot;:\&quot;PROPERTY\&quot;,\&quot;name\&quot;:\&quot;property\&quot;,\&quot;entityId\&quot;:\&quot;Negociacao\&quot;,\&quot;navPropId\&quot;:\&quot;\&quot;,\&quot;navPropOp\&quot;:null,\&quot;propertyId\&quot;:\&quot;ValorMeta\&quot;,\&quot;type\&quot;:\&quot;property\&quot;,\&quot;propertyType\&quot;:\&quot;Decimal\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:3,\&quot;computedType\&quot;:\&quot;number\&quot;,\&quot;entityName\&quot;:\&quot;Negociacao\&quot;,\&quot;propertyName\&quot;:\&quot;ValorMeta\&quot;}],\&quot;right\&quot;:[{\&quot;label\&quot;:\&quot;VALUE\&quot;,\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;value\&quot;,\&quot;value\&quot;:\&quot;0\&quot;,\&quot;isNewLine\&quot;:true,\&quot;id\&quot;:4,\&quot;computedType\&quot;:\&quot;number\&quot;}],\&quot;displayLabel\&quot;:\&quot;≥\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:2,\&quot;computedType\&quot;:\&quot;boolean\&quot;}],\&quot;then\&quot;:[{\&quot;label\&quot;:\&quot;VALUE\&quot;,\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;value\&quot;,\&quot;value\&quot;:\&quot;Success\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:5,\&quot;computedType\&quot;:\&quot;string\&quot;}],\&quot;else\&quot;:[{\&quot;label\&quot;:\&quot;VALUE\&quot;,\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;value\&quot;,\&quot;value\&quot;:\&quot;Error\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:6,\&quot;computedType\&quot;:\&quot;string\&quot;}],\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:1,\&quot;computedType\&quot;:\&quot;string\&quot;}]&quot;,&quot;inputProperties&quot;:[{&quot;_id&quot;:&quot;5acd0f72b8a2ac0112230270&quot;,&quot;navPropId&quot;:&quot;&quot;,&quot;entityId&quot;:&quot;Negociacao&quot;,&quot;propertyId&quot;:&quot;ValorMeta&quot;}]}" sap:label="StatusValorMeta"/>
+                <Property Name="StatusNovaMargem2" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:calculated="{&quot;calculation&quot;:&quot;[{\&quot;label\&quot;:\&quot;IF\&quot;,\&quot;name\&quot;:\&quot;if\&quot;,\&quot;type\&quot;:\&quot;condition\&quot;,\&quot;condition\&quot;:[{\&quot;label\&quot;:\&quot;>=\&quot;,\&quot;name\&quot;:\&quot;gtoe\&quot;,\&quot;type\&quot;:\&quot;operator\&quot;,\&quot;left\&quot;:[{\&quot;label\&quot;:\&quot;PROPERTY\&quot;,\&quot;name\&quot;:\&quot;property\&quot;,\&quot;entityId\&quot;:\&quot;Negociacao\&quot;,\&quot;navPropId\&quot;:\&quot;\&quot;,\&quot;navPropOp\&quot;:null,\&quot;propertyId\&quot;:\&quot;NovaMargem2\&quot;,\&quot;type\&quot;:\&quot;property\&quot;,\&quot;propertyType\&quot;:\&quot;Decimal\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:3,\&quot;computedType\&quot;:\&quot;number\&quot;,\&quot;entityName\&quot;:\&quot;Negociacao\&quot;,\&quot;propertyName\&quot;:\&quot;NovaMargem2\&quot;}],\&quot;right\&quot;:[{\&quot;label\&quot;:\&quot;PROPERTY\&quot;,\&quot;name\&quot;:\&quot;property\&quot;,\&quot;entityId\&quot;:\&quot;Negociacao\&quot;,\&quot;navPropId\&quot;:\&quot;\&quot;,\&quot;navPropOp\&quot;:null,\&quot;propertyId\&quot;:\&quot;MargemTeorica\&quot;,\&quot;type\&quot;:\&quot;property\&quot;,\&quot;propertyType\&quot;:\&quot;Decimal\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:4,\&quot;computedType\&quot;:\&quot;number\&quot;,\&quot;entityName\&quot;:\&quot;Negociacao\&quot;,\&quot;propertyName\&quot;:\&quot;MargemTeorica\&quot;}],\&quot;displayLabel\&quot;:\&quot;≥\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:2,\&quot;computedType\&quot;:\&quot;boolean\&quot;}],\&quot;then\&quot;:[{\&quot;label\&quot;:\&quot;VALUE\&quot;,\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;value\&quot;,\&quot;value\&quot;:\&quot;Success\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:5,\&quot;computedType\&quot;:\&quot;string\&quot;}],\&quot;else\&quot;:[{\&quot;label\&quot;:\&quot;VALUE\&quot;,\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;value\&quot;,\&quot;value\&quot;:\&quot;Error\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:6,\&quot;computedType\&quot;:\&quot;string\&quot;}],\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:1,\&quot;computedType\&quot;:\&quot;string\&quot;}]&quot;,&quot;inputProperties&quot;:[{&quot;propertyId&quot;:&quot;NovaMargem2&quot;,&quot;entityId&quot;:&quot;Negociacao&quot;,&quot;navPropId&quot;:&quot;&quot;,&quot;_id&quot;:&quot;5acd116f79e89b0118962b50&quot;},{&quot;propertyId&quot;:&quot;MargemTeorica&quot;,&quot;entityId&quot;:&quot;Negociacao&quot;,&quot;navPropId&quot;:&quot;&quot;,&quot;_id&quot;:&quot;5acd116f79e89b0118962b4f&quot;}]}" sap:label="StatusNovaMargem2"/>
+                <Property Name="StatusNovoIC" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:calculated="{&quot;calculation&quot;:&quot;[{\&quot;label\&quot;:\&quot;IF\&quot;,\&quot;name\&quot;:\&quot;if\&quot;,\&quot;type\&quot;:\&quot;condition\&quot;,\&quot;condition\&quot;:[{\&quot;label\&quot;:\&quot;&lt;=\&quot;,\&quot;name\&quot;:\&quot;ltoe\&quot;,\&quot;type\&quot;:\&quot;operator\&quot;,\&quot;left\&quot;:[{\&quot;label\&quot;:\&quot;PROPERTY\&quot;,\&quot;name\&quot;:\&quot;property\&quot;,\&quot;entityId\&quot;:\&quot;Negociacao\&quot;,\&quot;navPropId\&quot;:\&quot;\&quot;,\&quot;navPropOp\&quot;:null,\&quot;propertyId\&quot;:\&quot;NovoIC\&quot;,\&quot;type\&quot;:\&quot;property\&quot;,\&quot;propertyType\&quot;:\&quot;Decimal\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:3,\&quot;computedType\&quot;:\&quot;number\&quot;,\&quot;entityName\&quot;:\&quot;Negociacao\&quot;,\&quot;propertyName\&quot;:\&quot;NovoIC\&quot;}],\&quot;right\&quot;:[{\&quot;label\&quot;:\&quot;VALUE\&quot;,\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;value\&quot;,\&quot;value\&quot;:\&quot;0\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:4,\&quot;computedType\&quot;:\&quot;number\&quot;}],\&quot;displayLabel\&quot;:\&quot;≤\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:2,\&quot;computedType\&quot;:\&quot;boolean\&quot;}],\&quot;then\&quot;:[{\&quot;label\&quot;:\&quot;VALUE\&quot;,\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;value\&quot;,\&quot;value\&quot;:\&quot;Success\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:5,\&quot;computedType\&quot;:\&quot;string\&quot;}],\&quot;else\&quot;:[{\&quot;label\&quot;:\&quot;VALUE\&quot;,\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;value\&quot;,\&quot;value\&quot;:\&quot;Error\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:6,\&quot;computedType\&quot;:\&quot;string\&quot;}],\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:1,\&quot;computedType\&quot;:\&quot;string\&quot;}]&quot;,&quot;inputProperties&quot;:[{&quot;_id&quot;:&quot;5acd11b054122d02a7d1d1e9&quot;,&quot;navPropId&quot;:&quot;&quot;,&quot;entityId&quot;:&quot;Negociacao&quot;,&quot;propertyId&quot;:&quot;NovoIC&quot;}]}" sap:label="StatusNovoIC"/>
+                <Property Name="MargemTeorica" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MargemTeorica"/>
+                <NavigationProperty Name="fornecedor" Relationship="f88ee960dec73daa0f88ddfe.NegociacaofornecedorFornecedorNegociacao" FromRole="FromRole_NegociacaofornecedorFornecedorNegociacao" ToRole="ToRole_NegociacaofornecedorFornecedorNegociacao"/>
+                <NavigationProperty Name="produto" Relationship="f88ee960dec73daa0f88ddfe.NegociacaoprodutoProdutoNegociacao" FromRole="FromRole_NegociacaoprodutoProdutoNegociacao" ToRole="ToRole_NegociacaoprodutoProdutoNegociacao"/>
+                <NavigationProperty Name="centro" Relationship="f88ee960dec73daa0f88ddfe.NegociacaocentroCentroNegociacao" FromRole="FromRole_NegociacaocentroCentroNegociacao" ToRole="ToRole_NegociacaocentroCentroNegociacao"/>
+                <NavigationProperty Name="item" Relationship="f88ee960dec73daa0f88ddfe.NegociacaoitemItemNegociacao" FromRole="FromRole_NegociacaoitemItemNegociacao" ToRole="ToRole_NegociacaoitemItemNegociacao"/>
+            </EntityType>
+            <Association Name="NegociacaofornecedorFornecedorNegociacao">
+                <End Type="f88ee960dec73daa0f88ddfe.Negociacao" Multiplicity="1" Role="FromRole_NegociacaofornecedorFornecedorNegociacao"/>
+                <End Type="f88ee960dec73daa0f88ddfe.FornecedorNegociacao" Multiplicity="*" Role="ToRole_NegociacaofornecedorFornecedorNegociacao"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_NegociacaofornecedorFornecedorNegociacao">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_NegociacaofornecedorFornecedorNegociacao">
+                        <PropertyRef Name="___FK_fec2295f0aaece790f8a51e8_00129"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="NegociacaoprodutoProdutoNegociacao">
+                <End Type="f88ee960dec73daa0f88ddfe.Negociacao" Multiplicity="1" Role="FromRole_NegociacaoprodutoProdutoNegociacao"/>
+                <End Type="f88ee960dec73daa0f88ddfe.ProdutoNegociacao" Multiplicity="*" Role="ToRole_NegociacaoprodutoProdutoNegociacao"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_NegociacaoprodutoProdutoNegociacao">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_NegociacaoprodutoProdutoNegociacao">
+                        <PropertyRef Name="___FK_fec2295f0aaece790f8a51e8_00131"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="NegociacaocentroCentroNegociacao">
+                <End Type="f88ee960dec73daa0f88ddfe.Negociacao" Multiplicity="1" Role="FromRole_NegociacaocentroCentroNegociacao"/>
+                <End Type="f88ee960dec73daa0f88ddfe.CentroNegociacao" Multiplicity="*" Role="ToRole_NegociacaocentroCentroNegociacao"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_NegociacaocentroCentroNegociacao">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_NegociacaocentroCentroNegociacao">
+                        <PropertyRef Name="___FK_fec2295f0aaece790f8a51e8_00133"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="NegociacaoitemItemNegociacao">
+                <End Type="f88ee960dec73daa0f88ddfe.Negociacao" Multiplicity="1" Role="FromRole_NegociacaoitemItemNegociacao"/>
+                <End Type="f88ee960dec73daa0f88ddfe.ItemNegociacao" Multiplicity="*" Role="ToRole_NegociacaoitemItemNegociacao"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_NegociacaoitemItemNegociacao">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_NegociacaoitemItemNegociacao">
+                        <PropertyRef Name="___FK_fec2295f0aaece790f8a51e8_00135"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityType Name="FornecedorNegociacao">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="Codigo" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Codigo"/>
+                <Property Name="Cadastrado" Type="Edm.Boolean" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Cadastrado"/>
+                <Property Name="Nome" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Nome"/>
+                <Property Name="M2" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="M2"/>
+                <Property Name="IC" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="IC"/>
+                <Property Name="ValorMeta" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ValorMeta"/>
+                <Property Name="___FK_fec2295f0aaece790f8a51e8_00129" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_fec2295f0aaece790f8a51e8_00129"/>
+            </EntityType>
+            <EntityType Name="ProdutoNegociacao">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="Codigo" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Codigo"/>
+                <Property Name="Cadastrado" Type="Edm.Boolean" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Cadastrado"/>
+                <Property Name="Nome" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Nome"/>
+                <Property Name="M2" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="M2"/>
+                <Property Name="IC" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="IC"/>
+                <Property Name="ValorMeta" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ValorMeta"/>
+                <Property Name="___FK_fec2295f0aaece790f8a51e8_00131" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_fec2295f0aaece790f8a51e8_00131"/>
+            </EntityType>
+            <EntityType Name="CentroNegociacao">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="Codigo" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Codigo"/>
+                <Property Name="M2" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="M2"/>
+                <Property Name="IC" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="IC"/>
+                <Property Name="ValorMeta" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ValorMeta"/>
+                <Property Name="___FK_fec2295f0aaece790f8a51e8_00133" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_fec2295f0aaece790f8a51e8_00133"/>
+            </EntityType>
+            <EntityType Name="ItemNegociacao">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="Negociar" Type="Edm.Boolean" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Negociar"/>
+                <Property Name="___FK_fec2295f0aaece790f8a51e8_00135" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_fec2295f0aaece790f8a51e8_00135"/>
+                <Property Name="___FK_fec2295f0aaece790f8a51e8_00137" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_fec2295f0aaece790f8a51e8_00137"/>
+                <Property Name="___FK_fec2295f0aaece790f8a51e8_00139" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_fec2295f0aaece790f8a51e8_00139"/>
+                <Property Name="___FK_fec2295f0aaece790f8a51e8_00141" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_fec2295f0aaece790f8a51e8_00141"/>
+                <Property Name="___FK_fec2295f0aaece790f8a51e8_00143" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_fec2295f0aaece790f8a51e8_00143"/>
+                <Property Name="___FK_fec2295f0aaece790f8a51e8_00145" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_fec2295f0aaece790f8a51e8_00145"/>
+                <Property Name="___FK_fec2295f0aaece790f8a51e8_00147" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_fec2295f0aaece790f8a51e8_00147"/>
+                <Property Name="___FK_fec2295f0aaece790f8a51e8_00149" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_fec2295f0aaece790f8a51e8_00149"/>
+                <Property Name="___FK_fec2295f0aaece790f8a51e8_00151" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_fec2295f0aaece790f8a51e8_00151"/>
+                <Property Name="___FK_fec2295f0aaece790f8a51e8_00153" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_fec2295f0aaece790f8a51e8_00153"/>
+                <Property Name="___FK_fec2295f0aaece790f8a51e8_00155" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_fec2295f0aaece790f8a51e8_00155"/>
+                <Property Name="___FK_fec2295f0aaece790f8a51e8_00157" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_fec2295f0aaece790f8a51e8_00157"/>
+                <Property Name="___FK_fec2295f0aaece790f8a51e8_00159" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_fec2295f0aaece790f8a51e8_00159"/>
+                <Property Name="___FK_fec2295f0aaece790f8a51e8_00161" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="___FK_fec2295f0aaece790f8a51e8_00161"/>
+                <NavigationProperty Name="fornecedor" Relationship="f88ee960dec73daa0f88ddfe.ItemNegociacaofornecedorFornecedorNegociacao" FromRole="FromRole_ItemNegociacaofornecedorFornecedorNegociacao" ToRole="ToRole_ItemNegociacaofornecedorFornecedorNegociacao"/>
+                <NavigationProperty Name="produto" Relationship="f88ee960dec73daa0f88ddfe.ItemNegociacaoprodutoProdutoNegociacao" FromRole="FromRole_ItemNegociacaoprodutoProdutoNegociacao" ToRole="ToRole_ItemNegociacaoprodutoProdutoNegociacao"/>
+                <NavigationProperty Name="centro" Relationship="f88ee960dec73daa0f88ddfe.ItemNegociacaocentroCentroNegociacao" FromRole="FromRole_ItemNegociacaocentroCentroNegociacao" ToRole="ToRole_ItemNegociacaocentroCentroNegociacao"/>
+                <NavigationProperty Name="informacao" Relationship="f88ee960dec73daa0f88ddfe.ItemNegociacaoinformacaoInformacaoItem" FromRole="FromRole_ItemNegociacaoinformacaoInformacaoItem" ToRole="ToRole_ItemNegociacaoinformacaoInformacaoItem"/>
+                <NavigationProperty Name="simulacao" Relationship="f88ee960dec73daa0f88ddfe.ItemNegociacaosimulacaoSimulacaoItem" FromRole="FromRole_ItemNegociacaosimulacaoSimulacaoItem" ToRole="ToRole_ItemNegociacaosimulacaoSimulacaoItem"/>
+                <NavigationProperty Name="impostosEntrada" Relationship="f88ee960dec73daa0f88ddfe.ItemNegociacaoimpostosEntradaImpostosEntradaItem" FromRole="FromRole_ItemNegociacaoimpostosEntradaImpostosEntradaItem" ToRole="ToRole_ItemNegociacaoimpostosEntradaImpostosEntradaItem"/>
+                <NavigationProperty Name="impostosSaida" Relationship="f88ee960dec73daa0f88ddfe.ItemNegociacaoimpostosSaidaImpostosSaidaItem" FromRole="FromRole_ItemNegociacaoimpostosSaidaImpostosSaidaItem" ToRole="ToRole_ItemNegociacaoimpostosSaidaImpostosSaidaItem"/>
+                <NavigationProperty Name="vendaAnterior" Relationship="f88ee960dec73daa0f88ddfe.ItemNegociacaovendaAnteriorVendaAnteriorItem" FromRole="FromRole_ItemNegociacaovendaAnteriorVendaAnteriorItem" ToRole="ToRole_ItemNegociacaovendaAnteriorVendaAnteriorItem"/>
+                <NavigationProperty Name="vendaActual" Relationship="f88ee960dec73daa0f88ddfe.ItemNegociacaovendaActualVendaActualItem" FromRole="FromRole_ItemNegociacaovendaActualVendaActualItem" ToRole="ToRole_ItemNegociacaovendaActualVendaActualItem"/>
+                <NavigationProperty Name="stock" Relationship="f88ee960dec73daa0f88ddfe.ItemNegociacaostockStockItem" FromRole="FromRole_ItemNegociacaostockStockItem" ToRole="ToRole_ItemNegociacaostockStockItem"/>
+                <NavigationProperty Name="nossoPricing" Relationship="f88ee960dec73daa0f88ddfe.ItemNegociacaonossoPricingNossoPricingItem" FromRole="FromRole_ItemNegociacaonossoPricingNossoPricingItem" ToRole="ToRole_ItemNegociacaonossoPricingNossoPricingItem"/>
+                <NavigationProperty Name="categoryReview" Relationship="f88ee960dec73daa0f88ddfe.ItemNegociacaocategoryReviewCategoryReviewItem" FromRole="FromRole_ItemNegociacaocategoryReviewCategoryReviewItem" ToRole="ToRole_ItemNegociacaocategoryReviewCategoryReviewItem"/>
+                <NavigationProperty Name="contrato" Relationship="f88ee960dec73daa0f88ddfe.ItemNegociacaocontratoContratoItem" FromRole="FromRole_ItemNegociacaocontratoContratoItem" ToRole="ToRole_ItemNegociacaocontratoContratoItem"/>
+            </EntityType>
+            <Association Name="ItemNegociacaofornecedorFornecedorNegociacao">
+                <End Type="f88ee960dec73daa0f88ddfe.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaofornecedorFornecedorNegociacao"/>
+                <End Type="f88ee960dec73daa0f88ddfe.FornecedorNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaofornecedorFornecedorNegociacao"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ItemNegociacaofornecedorFornecedorNegociacao">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ItemNegociacaofornecedorFornecedorNegociacao">
+                        <PropertyRef Name="___FK_fec2295f0aaece790f8a51e8_00137"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ItemNegociacaoprodutoProdutoNegociacao">
+                <End Type="f88ee960dec73daa0f88ddfe.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaoprodutoProdutoNegociacao"/>
+                <End Type="f88ee960dec73daa0f88ddfe.ProdutoNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaoprodutoProdutoNegociacao"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ItemNegociacaoprodutoProdutoNegociacao">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ItemNegociacaoprodutoProdutoNegociacao">
+                        <PropertyRef Name="___FK_fec2295f0aaece790f8a51e8_00139"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ItemNegociacaocentroCentroNegociacao">
+                <End Type="f88ee960dec73daa0f88ddfe.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaocentroCentroNegociacao"/>
+                <End Type="f88ee960dec73daa0f88ddfe.CentroNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaocentroCentroNegociacao"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ItemNegociacaocentroCentroNegociacao">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ItemNegociacaocentroCentroNegociacao">
+                        <PropertyRef Name="___FK_fec2295f0aaece790f8a51e8_00141"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ItemNegociacaoinformacaoInformacaoItem">
+                <End Type="f88ee960dec73daa0f88ddfe.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaoinformacaoInformacaoItem"/>
+                <End Type="f88ee960dec73daa0f88ddfe.InformacaoItem" Multiplicity="1" Role="ToRole_ItemNegociacaoinformacaoInformacaoItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ItemNegociacaoinformacaoInformacaoItem">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ItemNegociacaoinformacaoInformacaoItem">
+                        <PropertyRef Name="___FK_fec2295f0aaece790f8a51e8_00143"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ItemNegociacaosimulacaoSimulacaoItem">
+                <End Type="f88ee960dec73daa0f88ddfe.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaosimulacaoSimulacaoItem"/>
+                <End Type="f88ee960dec73daa0f88ddfe.SimulacaoItem" Multiplicity="1" Role="ToRole_ItemNegociacaosimulacaoSimulacaoItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ItemNegociacaosimulacaoSimulacaoItem">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ItemNegociacaosimulacaoSimulacaoItem">
+                        <PropertyRef Name="___FK_fec2295f0aaece790f8a51e8_00145"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ItemNegociacaoimpostosEntradaImpostosEntradaItem">
+                <End Type="f88ee960dec73daa0f88ddfe.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaoimpostosEntradaImpostosEntradaItem"/>
+                <End Type="f88ee960dec73daa0f88ddfe.ImpostosEntradaItem" Multiplicity="1" Role="ToRole_ItemNegociacaoimpostosEntradaImpostosEntradaItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ItemNegociacaoimpostosEntradaImpostosEntradaItem">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ItemNegociacaoimpostosEntradaImpostosEntradaItem">
+                        <PropertyRef Name="___FK_fec2295f0aaece790f8a51e8_00147"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ItemNegociacaoimpostosSaidaImpostosSaidaItem">
+                <End Type="f88ee960dec73daa0f88ddfe.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaoimpostosSaidaImpostosSaidaItem"/>
+                <End Type="f88ee960dec73daa0f88ddfe.ImpostosSaidaItem" Multiplicity="1" Role="ToRole_ItemNegociacaoimpostosSaidaImpostosSaidaItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ItemNegociacaoimpostosSaidaImpostosSaidaItem">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ItemNegociacaoimpostosSaidaImpostosSaidaItem">
+                        <PropertyRef Name="___FK_fec2295f0aaece790f8a51e8_00149"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ItemNegociacaovendaAnteriorVendaAnteriorItem">
+                <End Type="f88ee960dec73daa0f88ddfe.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaovendaAnteriorVendaAnteriorItem"/>
+                <End Type="f88ee960dec73daa0f88ddfe.VendaAnteriorItem" Multiplicity="1" Role="ToRole_ItemNegociacaovendaAnteriorVendaAnteriorItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ItemNegociacaovendaAnteriorVendaAnteriorItem">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ItemNegociacaovendaAnteriorVendaAnteriorItem">
+                        <PropertyRef Name="___FK_fec2295f0aaece790f8a51e8_00151"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ItemNegociacaovendaActualVendaActualItem">
+                <End Type="f88ee960dec73daa0f88ddfe.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaovendaActualVendaActualItem"/>
+                <End Type="f88ee960dec73daa0f88ddfe.VendaActualItem" Multiplicity="1" Role="ToRole_ItemNegociacaovendaActualVendaActualItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ItemNegociacaovendaActualVendaActualItem">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ItemNegociacaovendaActualVendaActualItem">
+                        <PropertyRef Name="___FK_fec2295f0aaece790f8a51e8_00153"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ItemNegociacaostockStockItem">
+                <End Type="f88ee960dec73daa0f88ddfe.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaostockStockItem"/>
+                <End Type="f88ee960dec73daa0f88ddfe.StockItem" Multiplicity="1" Role="ToRole_ItemNegociacaostockStockItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ItemNegociacaostockStockItem">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ItemNegociacaostockStockItem">
+                        <PropertyRef Name="___FK_fec2295f0aaece790f8a51e8_00155"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ItemNegociacaonossoPricingNossoPricingItem">
+                <End Type="f88ee960dec73daa0f88ddfe.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaonossoPricingNossoPricingItem"/>
+                <End Type="f88ee960dec73daa0f88ddfe.NossoPricingItem" Multiplicity="1" Role="ToRole_ItemNegociacaonossoPricingNossoPricingItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ItemNegociacaonossoPricingNossoPricingItem">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ItemNegociacaonossoPricingNossoPricingItem">
+                        <PropertyRef Name="___FK_fec2295f0aaece790f8a51e8_00157"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ItemNegociacaocategoryReviewCategoryReviewItem">
+                <End Type="f88ee960dec73daa0f88ddfe.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaocategoryReviewCategoryReviewItem"/>
+                <End Type="f88ee960dec73daa0f88ddfe.CategoryReviewItem" Multiplicity="1" Role="ToRole_ItemNegociacaocategoryReviewCategoryReviewItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ItemNegociacaocategoryReviewCategoryReviewItem">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ItemNegociacaocategoryReviewCategoryReviewItem">
+                        <PropertyRef Name="___FK_fec2295f0aaece790f8a51e8_00159"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ItemNegociacaocontratoContratoItem">
+                <End Type="f88ee960dec73daa0f88ddfe.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaocontratoContratoItem"/>
+                <End Type="f88ee960dec73daa0f88ddfe.ContratoItem" Multiplicity="1" Role="ToRole_ItemNegociacaocontratoContratoItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_ItemNegociacaocontratoContratoItem">
+                        <PropertyRef Name="ID"/>
+                    </Principal>
+                    <Dependent Role="FromRole_ItemNegociacaocontratoContratoItem">
+                        <PropertyRef Name="___FK_fec2295f0aaece790f8a51e8_00161"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityType Name="InformacaoItem">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="PrecoVenda" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PrecoVenda"/>
+                <Property Name="PrecoCompra" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PrecoCompra"/>
+                <Property Name="PMZReposicao" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PMZReposicao"/>
+                <Property Name="PMZLoja" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PMZLoja"/>
+                <Property Name="MargemTeorica" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MargemTeorica"/>
+                <Property Name="Margem1" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem1"/>
+                <Property Name="Margem2" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem2"/>
+            </EntityType>
+            <EntityType Name="SimulacaoItem">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="PrecoVenda" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PrecoVenda"/>
+                <Property Name="PrecoCompra" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PrecoCompra"/>
+                <Property Name="PMZReposicao" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PMZReposicao"/>
+                <Property Name="PMZLoja" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PMZLoja"/>
+                <Property Name="DesenvolvimentoComercial" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="DesenvolvimentoComercial"/>
+                <Property Name="Recomposicao" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Recomposicao"/>
+                <Property Name="Volumem" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Volumem"/>
+                <Property Name="Margem1" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem1"/>
+                <Property Name="Margem2" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem2"/>
+                <Property Name="IC" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="IC"/>
+                <Property Name="ValorMeta" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ValorMeta"/>
+                <Property Name="StateValorMeta" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:calculated="{&quot;calculation&quot;:&quot;[{\&quot;label\&quot;:\&quot;IF\&quot;,\&quot;name\&quot;:\&quot;if\&quot;,\&quot;type\&quot;:\&quot;condition\&quot;,\&quot;condition\&quot;:[{\&quot;label\&quot;:\&quot;>=\&quot;,\&quot;name\&quot;:\&quot;gtoe\&quot;,\&quot;type\&quot;:\&quot;operator\&quot;,\&quot;left\&quot;:[{\&quot;label\&quot;:\&quot;PROPERTY\&quot;,\&quot;name\&quot;:\&quot;property\&quot;,\&quot;entityId\&quot;:\&quot;SimulacaoItem\&quot;,\&quot;navPropId\&quot;:\&quot;\&quot;,\&quot;navPropOp\&quot;:null,\&quot;propertyId\&quot;:\&quot;ValorMeta\&quot;,\&quot;type\&quot;:\&quot;property\&quot;,\&quot;propertyType\&quot;:\&quot;Decimal\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:3,\&quot;computedType\&quot;:\&quot;number\&quot;,\&quot;entityName\&quot;:\&quot;SimulacaoItem\&quot;,\&quot;propertyName\&quot;:\&quot;ValorMeta\&quot;}],\&quot;right\&quot;:[{\&quot;label\&quot;:\&quot;VALUE\&quot;,\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;value\&quot;,\&quot;value\&quot;:\&quot;0\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:4,\&quot;computedType\&quot;:\&quot;number\&quot;}],\&quot;displayLabel\&quot;:\&quot;≥\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:2,\&quot;computedType\&quot;:\&quot;boolean\&quot;}],\&quot;then\&quot;:[{\&quot;label\&quot;:\&quot;VALUE\&quot;,\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;value\&quot;,\&quot;value\&quot;:\&quot;Success\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:5,\&quot;computedType\&quot;:\&quot;string\&quot;}],\&quot;else\&quot;:[{\&quot;label\&quot;:\&quot;VALUE\&quot;,\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;value\&quot;,\&quot;value\&quot;:\&quot;Error\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:6,\&quot;computedType\&quot;:\&quot;string\&quot;}],\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:1,\&quot;computedType\&quot;:\&quot;string\&quot;}]&quot;,&quot;inputProperties&quot;:[{&quot;_id&quot;:&quot;5acdffc0fa0a2c0117779f8b&quot;,&quot;navPropId&quot;:&quot;&quot;,&quot;entityId&quot;:&quot;SimulacaoItem&quot;,&quot;propertyId&quot;:&quot;ValorMeta&quot;}]}" sap:label="StateValorMeta"/>
+                <Property Name="StateMargem2" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:calculated="{&quot;calculation&quot;:&quot;[{\&quot;label\&quot;:\&quot;IF\&quot;,\&quot;name\&quot;:\&quot;if\&quot;,\&quot;type\&quot;:\&quot;condition\&quot;,\&quot;condition\&quot;:[{\&quot;label\&quot;:\&quot;>=\&quot;,\&quot;name\&quot;:\&quot;gtoe\&quot;,\&quot;type\&quot;:\&quot;operator\&quot;,\&quot;left\&quot;:[{\&quot;label\&quot;:\&quot;PROPERTY\&quot;,\&quot;name\&quot;:\&quot;property\&quot;,\&quot;entityId\&quot;:\&quot;SimulacaoItem\&quot;,\&quot;navPropId\&quot;:\&quot;\&quot;,\&quot;navPropOp\&quot;:null,\&quot;propertyId\&quot;:\&quot;Margem2\&quot;,\&quot;type\&quot;:\&quot;property\&quot;,\&quot;propertyType\&quot;:\&quot;Decimal\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:3,\&quot;computedType\&quot;:\&quot;number\&quot;,\&quot;entityName\&quot;:\&quot;SimulacaoItem\&quot;,\&quot;propertyName\&quot;:\&quot;Margem2\&quot;}],\&quot;right\&quot;:[{\&quot;label\&quot;:\&quot;PROPERTY\&quot;,\&quot;name\&quot;:\&quot;property\&quot;,\&quot;entityId\&quot;:\&quot;SimulacaoItem\&quot;,\&quot;navPropId\&quot;:\&quot;\&quot;,\&quot;navPropOp\&quot;:null,\&quot;propertyId\&quot;:\&quot;MargemTeorica\&quot;,\&quot;type\&quot;:\&quot;property\&quot;,\&quot;propertyType\&quot;:\&quot;Decimal\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:4,\&quot;computedType\&quot;:\&quot;number\&quot;,\&quot;entityName\&quot;:\&quot;SimulacaoItem\&quot;,\&quot;propertyName\&quot;:\&quot;MargemTeorica\&quot;}],\&quot;displayLabel\&quot;:\&quot;≥\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:2,\&quot;computedType\&quot;:\&quot;boolean\&quot;}],\&quot;then\&quot;:[{\&quot;label\&quot;:\&quot;VALUE\&quot;,\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;value\&quot;,\&quot;value\&quot;:\&quot;Success\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:5,\&quot;computedType\&quot;:\&quot;string\&quot;}],\&quot;else\&quot;:[{\&quot;label\&quot;:\&quot;VALUE\&quot;,\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;value\&quot;,\&quot;value\&quot;:\&quot;Error\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:6,\&quot;computedType\&quot;:\&quot;string\&quot;}],\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:1,\&quot;computedType\&quot;:\&quot;string\&quot;}]&quot;,&quot;inputProperties&quot;:[{&quot;propertyId&quot;:&quot;Margem2&quot;,&quot;entityId&quot;:&quot;SimulacaoItem&quot;,&quot;navPropId&quot;:&quot;&quot;,&quot;_id&quot;:&quot;5ace008fda090741552256a1&quot;},{&quot;propertyId&quot;:&quot;MargemTeorica&quot;,&quot;entityId&quot;:&quot;SimulacaoItem&quot;,&quot;navPropId&quot;:&quot;&quot;,&quot;_id&quot;:&quot;5ace008fda090741552256a0&quot;}]}" sap:label="StateMargem2"/>
+                <Property Name="StateIC" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:calculated="{&quot;calculation&quot;:&quot;[{\&quot;label\&quot;:\&quot;IF\&quot;,\&quot;name\&quot;:\&quot;if\&quot;,\&quot;type\&quot;:\&quot;condition\&quot;,\&quot;condition\&quot;:[{\&quot;label\&quot;:\&quot;&lt;=\&quot;,\&quot;name\&quot;:\&quot;ltoe\&quot;,\&quot;type\&quot;:\&quot;operator\&quot;,\&quot;left\&quot;:[{\&quot;label\&quot;:\&quot;PROPERTY\&quot;,\&quot;name\&quot;:\&quot;property\&quot;,\&quot;entityId\&quot;:\&quot;SimulacaoItem\&quot;,\&quot;navPropId\&quot;:\&quot;\&quot;,\&quot;navPropOp\&quot;:null,\&quot;propertyId\&quot;:\&quot;IC\&quot;,\&quot;type\&quot;:\&quot;property\&quot;,\&quot;propertyType\&quot;:\&quot;Decimal\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:3,\&quot;computedType\&quot;:\&quot;number\&quot;,\&quot;entityName\&quot;:\&quot;SimulacaoItem\&quot;,\&quot;propertyName\&quot;:\&quot;IC\&quot;}],\&quot;right\&quot;:[{\&quot;label\&quot;:\&quot;VALUE\&quot;,\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;value\&quot;,\&quot;value\&quot;:\&quot;0\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:4,\&quot;computedType\&quot;:\&quot;number\&quot;}],\&quot;displayLabel\&quot;:\&quot;≤\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:2,\&quot;computedType\&quot;:\&quot;boolean\&quot;}],\&quot;then\&quot;:[{\&quot;label\&quot;:\&quot;VALUE\&quot;,\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;value\&quot;,\&quot;value\&quot;:\&quot;Success\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:5,\&quot;computedType\&quot;:\&quot;string\&quot;}],\&quot;else\&quot;:[{\&quot;label\&quot;:\&quot;VALUE\&quot;,\&quot;name\&quot;:\&quot;value\&quot;,\&quot;type\&quot;:\&quot;value\&quot;,\&quot;value\&quot;:\&quot;Error\&quot;,\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:6,\&quot;computedType\&quot;:\&quot;string\&quot;}],\&quot;isNewLine\&quot;:false,\&quot;id\&quot;:1,\&quot;computedType\&quot;:\&quot;string\&quot;}]&quot;,&quot;inputProperties&quot;:[{&quot;_id&quot;:&quot;5ace004fb5021f029c0f85a4&quot;,&quot;navPropId&quot;:&quot;&quot;,&quot;entityId&quot;:&quot;SimulacaoItem&quot;,&quot;propertyId&quot;:&quot;IC&quot;}]}" sap:label="StateIC"/>
+                <Property Name="MargemTeorica" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MargemTeorica"/>
+            </EntityType>
+            <EntityType Name="ImpostosEntradaItem">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="IPI" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="IPI"/>
+                <Property Name="ICMS" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ICMS"/>
+                <Property Name="BaseReduzidaICMS" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="BaseReduzidaICMS"/>
+                <Property Name="PIS" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PIS"/>
+                <Property Name="COFINS" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="COFINS"/>
+                <Property Name="ST" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ST"/>
+                <Property Name="PAUTA" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PAUTA"/>
+                <Property Name="MVA" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MVA"/>
+            </EntityType>
+            <EntityType Name="ImpostosSaidaItem">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="ICMS" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ICMS"/>
+                <Property Name="PIS" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PIS"/>
+                <Property Name="COFINS" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="COFINS"/>
+            </EntityType>
+            <EntityType Name="VendaAnteriorItem">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="Valor" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Valor"/>
+                <Property Name="Quantidade" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Quantidade"/>
+                <Property Name="Margem" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem"/>
+            </EntityType>
+            <EntityType Name="VendaActualItem">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="Valor" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Valor"/>
+                <Property Name="Quantidade" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Quantidade"/>
+                <Property Name="Margem" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem"/>
+            </EntityType>
+            <EntityType Name="StockItem">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="Quantidade" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Quantidade"/>
+                <Property Name="Avaliacao" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Avaliacao"/>
+                <Property Name="DDE" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="DDE"/>
+            </EntityType>
+            <EntityType Name="NossoPricingItem">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="PeriodoAnalises" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PeriodoAnalises"/>
+                <Property Name="PrecoCenco" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PrecoCenco"/>
+                <Property Name="PrecoMercado" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PrecoMercado"/>
+                <Property Name="IC" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="IC"/>
+                <Property Name="MargemPDV" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MargemPDV"/>
+                <Property Name="MargemTeorica" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MargemTeorica"/>
+            </EntityType>
+            <EntityType Name="CategoryReviewItem">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="PeriodoAnalises" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PeriodoAnalises"/>
+                <Property Name="VendaMercado" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="VendaMercado"/>
+                <Property Name="CrecimentoMercado" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="CrecimentoMercado"/>
+                <Property Name="RankingMercado" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="RankingMercado"/>
+                <Property Name="VendaCenco" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="VendaCenco"/>
+                <Property Name="CrecimentoCenco" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="CrecimentoCenco"/>
+                <Property Name="MarketShareAtual" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MarketShareAtual"/>
+                <Property Name="Margem1Atual" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem1Atual"/>
+                <Property Name="Margem2Atual" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem2Atual"/>
+                <Property Name="Margem1Anterior" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem1Anterior"/>
+                <Property Name="Margem2Anterior" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem2Anterior"/>
+            </EntityType>
+            <EntityType Name="ContratoItem">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
+                <Property Name="Prazo" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Prazo"/>
+                <Property Name="DesenvolvimentoComercial" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="DesenvolvimentoComercial"/>
+                <Property Name="LogisticaGBarbosa" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="LogisticaGBarbosa"/>
+                <Property Name="LogisticaBretas" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="LogisticaBretas"/>
+                <Property Name="LogisticaPerini" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="LogisticaPerini"/>
+                <Property Name="LogisticaPrezunik" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="LogisticaPrezunik"/>
+                <Property Name="FillRate" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="FillRate"/>
+                <Property Name="NDevol" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="NDevol"/>
+                <Property Name="TTContratos" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="TTContratos"/>
+                <Property Name="InauguracaoReinaucuracao" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="InauguracaoReinaucuracao"/>
+                <Property Name="Obj1De" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Obj1De"/>
+                <Property Name="Obj1Ate" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Obj1Ate"/>
+                <Property Name="Obj1Bonus" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Obj1Bonus"/>
+                <Property Name="Obj2De" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Obj2De"/>
+                <Property Name="Obj2Ate" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Obj2Ate"/>
+                <Property Name="Obj2Bonus" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Obj2Bonus"/>
+                <Property Name="Obj3De" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Obj3De"/>
+                <Property Name="Obj3Ate" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Obj3Ate"/>
+                <Property Name="Obj3Bonus" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Obj3Bonus"/>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
