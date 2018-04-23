@@ -1,9 +1,9 @@
 sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
-	"com/sap/build/standard/negociacao/model/models",
-	"com/sap/build/standard/negociacao/controller/ListSelector",
-	"com/sap/build/standard/negociacao/controller/ErrorHandler"
+	"simplifique/telaneg/model/models",
+	"simplifique/telaneg/controller/ListSelector",
+	"simplifique/telaneg/controller/ErrorHandler"
 
 ], function(UIComponent, Device, models, ListSelector, ErrorHandler) {
 	"use strict";

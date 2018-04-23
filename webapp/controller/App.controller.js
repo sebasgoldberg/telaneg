@@ -1,5 +1,5 @@
 sap.ui.define([
-		"com/sap/build/standard/negociacao/controller/BaseController",
+		"simplifique/telaneg/controller/BaseController",
 		"sap/ui/model/json/JSONModel",
 		"sap/ui/core/routing/History"
 	], function (BaseController, JSONModel, History) {
