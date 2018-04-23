@@ -1,11 +1,15 @@
 sap.ui.define(["sap/ui/core/mvc/Controller",
 	"sap/m/MessageBox",
 	"./utilities",
+    'simplifique/telaneg/model/formatter',
 	"sap/ui/core/routing/History"
-], function(BaseController, MessageBox, Utilities, History) {
+], function(BaseController, MessageBox, Utilities, formatter, History) {
 	"use strict";
 
 	return BaseController.extend("simplifique.telaneg.controller.DetailPage1", {
+
+        formatter: formatter,
+
 		handleRouteMatched: function(oEvent) {
 
 			var oParams = {};

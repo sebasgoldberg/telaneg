@@ -1,26 +1,31 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="simplifique.telaneg.controller.MasterPage1" xmlns="sap.m">
-    <Page title="Negociações" showHeader="true" showFooter="true" showNavButton="true">
+    <Page title="Negocia&#195;&#167;&#195;&#181;es" showHeader="true" showFooter="true" showNavButton="true">
         <content>
             <List id="sap_List_Page_0-content-sap_m_List-1" mode="SingleSelectMaster" width="100%" headerText="Header" footerText="" backgroundDesign="Solid" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onListItemPress" items="{path:'/NegociacaoSet', templateShareable:true}">
-                <infoToolbar/>
+                <infoToolbar />
                 <headerToolbar>
                     <Toolbar visible="true" enabled="true" width="" design="Solid">
                         <content>
-                            <SearchField value="" placeholder="Buscar" showSearchButton="true" visible="true" width="100%" search="_onSearchFieldSearch"/>
+                            <SearchField value="" placeholder="Buscar" showSearchButton="true" visible="true" width="100%" search="_onSearchFieldSearch" />
                         </content>
                     </Toolbar>
                 </headerToolbar>
                 <items>
-                    <ObjectListItem intro="{ID}" title="{Descricao}" number="{path: 'ValorMeta', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" numberUnit="BRL" numberState="{StatusValorMeta}" type="Active" selected="false" showMarkers="false" press="_onObjectListItemPress">
+                    <ObjectListItem intro="{ID}" title="{Descricao}" number="{path: 'ValorMeta', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" numberUnit="BRL"
+                        numberState="{
+                            path: 'ValorMeta',
+                            formatter: '.formatter.valorMetaStatus'
+                            }"
+                        type="Active" selected="false" showMarkers="false" press="_onObjectListItemPress">
                         <attributes>
-                            <ObjectAttribute title="" text="{Status}" active="false"/>
-                            <ObjectAttribute title="" text="{path: 'Data', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}" active="false"/>
+                            <ObjectAttribute title="" text="{Status}" active="false" />
+                            <ObjectAttribute title="" text="{path: 'Data', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}" active="false" />
                         </attributes>
                         <firstStatus>
-                            <ObjectStatus title="Margem 2 (%)" text="{path: 'NovaMargem2', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" state="{StatusNovaMargem2}"/>
+                            <ObjectStatus title="Margem 2 (%)" text="{path: 'NovaMargem2', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" state="{StatusNovaMargem2}" />
                         </firstStatus>
                         <secondStatus>
-                            <ObjectStatus title="IC (%)" text="{path: 'NovoIC', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" state="{StatusNovoIC}"/>
+                            <ObjectStatus title="IC (%)" text="{path: 'NovoIC', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" state="{StatusNovoIC}" />
                         </secondStatus>
                     </ObjectListItem>
                 </items>
@@ -28,13 +33,13 @@
         </content>
         <footer>
             <Bar design="Auto">
-                <contentLeft/>
-                <contentMiddle/>
+                <contentLeft />
+                <contentMiddle />
                 <contentRight>
-                    <Button text="" type="Emphasized" icon="sap-icon://add" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
+                    <Button text="" type="Emphasized" icon="sap-icon://add" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress" />
                 </contentRight>
             </Bar>
         </footer>
-        <headerContent/>
+        <headerContent />
     </Page>
 </mvc:View>

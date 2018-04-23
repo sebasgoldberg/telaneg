@@ -1,7 +1,12 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="simplifique.telaneg.controller.DetailPage1" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
     <Page title="{Descricao}" showHeader="true" showFooter="true" showNavButton="false">
         <content>
-            <ObjectHeader intro="{ID}" title="{Descricao}" icon="" number="{path: 'ValorMeta', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" numberUnit="BRL" numberState="{StatusValorMeta}" showMarkers="false" markFavorite="false" markFlagged="false" backgroundDesign="Translucent" condensed="false">
+            <ObjectHeader intro="{ID}" title="{Descricao}" icon="" number="{path: 'ValorMeta', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" numberUnit="BRL"
+                numberState="{
+                        path: 'ValorMeta',
+                        formatter: '.formatter.valorMetaStatus'
+                    }"
+                showMarkers="false" markFavorite="false" markFlagged="false" backgroundDesign="Translucent" condensed="false">
                 <attributes>
                     <ObjectAttribute title="" text="{Status}" active="false"/>
                     <ObjectAttribute title="" text="{path: 'Data', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}" active="false"/>
@@ -108,7 +113,11 @@
                             <Text text="{centro/Codigo}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                             <ObjectNumber number="{path: 'simulacao/Margem2', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" unit="%" emphasized="true" state="{simulacao/StateMargem2}"/>
                             <ObjectNumber number="{path: 'simulacao/IC', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" unit="%" emphasized="true" state="{simulacao/StateIC}"/>
-                            <ObjectNumber number="{path: 'simulacao/ValorMeta', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" unit="R$" emphasized="true" state="{simulacao/StateValorMeta}"/>
+                            <ObjectNumber number="{path: 'simulacao/ValorMeta', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" unit="R$" emphasized="true"
+                                state="{
+                                    path: 'simulacao/ValorMeta',
+                                    formatter: '.formatter.valorMetaStatus'
+                                    }"/>
                         </cells>
                     </ColumnListItem>
                 </items>

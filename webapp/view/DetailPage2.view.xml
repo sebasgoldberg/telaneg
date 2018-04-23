@@ -1,4 +1,4 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="simplifique.telaneg.controller.DetailPage2" xmlns:uxap="sap.uxap" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="simplifique.telaneg.controller.DetailPage2" xmlns:uxap="sap.uxap" xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:block="simplifique.telaneg.view.block">
     <uxap:ObjectPageLayout showTitleInHeaderContent="true" showHeaderContent="true" showAnchorBar="true" showFooter="true" subSectionLayout="TitleOnTop">
         <uxap:headerContent/>
         <uxap:headerTitle>
@@ -24,242 +24,13 @@
             <uxap:ObjectPageSection showTitle="true" title="Page Section Title" titleUppercase="true" visible="true">
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Simulação" mode="Expanded">
-                        <uxap:blocks>
-                            <layout:Grid defaultIndent="L0 M0 S0" defaultSpan="L6 M6 S12" position="Left" width="100%" containerQuery="false" hSpacing="1" vSpacing="1" visible="true">
-                                <layout:content>
-                                    <form:Form width="100%" editable="true" visible="true">
-                                        <form:title/>
-                                        <form:formContainers>
-                                            <form:FormContainer visible="true">
-                                                <form:formElements>
-                                                    <form:FormElement visible="true">
-                                                        <form:label>
-                                                            <Label text="Preço Compra" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <Input value="{path: 'simulacao/PrecoCompra', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" type="Number" description="R$" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                </form:formElements>
-                                                <form:title/>
-                                            </form:FormContainer>
-                                        </form:formContainers>
-                                        <form:layout>
-                                            <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
-                                        </form:layout>
-                                    </form:Form>
-                                    <form:Form width="100%" editable="true" visible="true">
-                                        <form:title/>
-                                        <form:formContainers>
-                                            <form:FormContainer visible="true">
-                                                <form:formElements>
-                                                    <form:FormElement visible="true">
-                                                        <form:label>
-                                                            <Label text="Preço Venda" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <Input value="{path: 'simulacao/PrecoVenda', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" type="Text" description="R$" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                </form:formElements>
-                                                <form:title/>
-                                            </form:FormContainer>
-                                        </form:formContainers>
-                                        <form:layout>
-                                            <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
-                                        </form:layout>
-                                    </form:Form>
-                                    <form:Form width="100%" editable="true" visible="true">
-                                        <form:title/>
-                                        <form:formContainers>
-                                            <form:FormContainer visible="true">
-                                                <form:formElements>
-                                                    <form:FormElement visible="true">
-                                                        <form:label>
-                                                            <Label text="PMZ Reposição" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <Input value="{path: 'simulacao/PMZReposicao', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" type="Text" description="R$" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                </form:formElements>
-                                                <form:title/>
-                                            </form:FormContainer>
-                                        </form:formContainers>
-                                        <form:layout>
-                                            <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
-                                        </form:layout>
-                                    </form:Form>
-                                    <form:Form width="100%" editable="true" visible="true">
-                                        <form:title/>
-                                        <form:formContainers>
-                                            <form:FormContainer visible="true">
-                                                <form:formElements>
-                                                    <form:FormElement visible="true">
-                                                        <form:label>
-                                                            <Label text="PMZ Loja" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <Input value="{path: 'simulacao/PMZLoja', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" type="Text" description="R$" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                </form:formElements>
-                                                <form:title/>
-                                            </form:FormContainer>
-                                        </form:formContainers>
-                                        <form:layout>
-                                            <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
-                                        </form:layout>
-                                    </form:Form>
-                                    <form:Form width="100%" editable="true" visible="true">
-                                        <form:title/>
-                                        <form:formContainers>
-                                            <form:FormContainer visible="true">
-                                                <form:formElements>
-                                                    <form:FormElement visible="true">
-                                                        <form:label>
-                                                            <Label text="Desenvolvimento Comercial" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <Input value="{path: 'simulacao/DesenvolvimentoComercial', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" type="Number" description="%" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                </form:formElements>
-                                                <form:title/>
-                                            </form:FormContainer>
-                                        </form:formContainers>
-                                        <form:layout>
-                                            <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
-                                        </form:layout>
-                                    </form:Form>
-                                    <form:Form width="100%" editable="true" visible="true">
-                                        <form:title/>
-                                        <form:formContainers>
-                                            <form:FormContainer visible="true">
-                                                <form:formElements>
-                                                    <form:FormElement visible="true">
-                                                        <form:label>
-                                                            <Label text="Recomposição" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <Input value="{path: 'simulacao/Recomposicao', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" type="Number" description="R$" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                </form:formElements>
-                                                <form:title/>
-                                            </form:FormContainer>
-                                        </form:formContainers>
-                                        <form:layout>
-                                            <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
-                                        </form:layout>
-                                    </form:Form>
-                                    <form:Form width="100%" editable="true" visible="true">
-                                        <form:title/>
-                                        <form:formContainers>
-                                            <form:FormContainer visible="true">
-                                                <form:formElements>
-                                                    <form:FormElement visible="true">
-                                                        <form:label>
-                                                            <Label text="Volumem" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <Input value="{simulacao/Volumem}" type="Number" description="UM Compra" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                </form:formElements>
-                                                <form:title/>
-                                            </form:FormContainer>
-                                        </form:formContainers>
-                                        <form:layout>
-                                            <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
-                                        </form:layout>
-                                    </form:Form>
-                                    <form:Form width="100%" editable="true" visible="true">
-                                        <form:title/>
-                                        <form:formContainers>
-                                            <form:FormContainer visible="true">
-                                                <form:formElements>
-                                                    <form:FormElement visible="true">
-                                                        <form:label>
-                                                            <Label text="Margem 1" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <Input value="{path: 'simulacao/Margem1', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" type="Number" description="%" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                </form:formElements>
-                                                <form:title/>
-                                            </form:FormContainer>
-                                        </form:formContainers>
-                                        <form:layout>
-                                            <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
-                                        </form:layout>
-                                    </form:Form>
-                                    <form:Form width="100%" editable="true" visible="true">
-                                        <form:title/>
-                                        <form:formContainers>
-                                            <form:FormContainer visible="true">
-                                                <form:formElements>
-                                                    <form:FormElement visible="true">
-                                                        <form:label>
-                                                            <Label text="Margem 2" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <Input value="{path: 'simulacao/Margem2', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" type="Number" description="%" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                </form:formElements>
-                                                <form:title/>
-                                            </form:FormContainer>
-                                        </form:formContainers>
-                                        <form:layout>
-                                            <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
-                                        </form:layout>
-                                    </form:Form>
-                                    <form:Form width="100%" editable="true" visible="true">
-                                        <form:title/>
-                                        <form:formContainers>
-                                            <form:FormContainer visible="true">
-                                                <form:formElements>
-                                                    <form:FormElement visible="true">
-                                                        <form:label>
-                                                            <Label text="IC" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <Input value="{path: 'simulacao/IC', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" type="Number" description="%" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                </form:formElements>
-                                                <form:title/>
-                                            </form:FormContainer>
-                                        </form:formContainers>
-                                        <form:layout>
-                                            <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
-                                        </form:layout>
-                                    </form:Form>
-                                    <form:Form width="100%" editable="true" visible="true">
-                                        <form:title/>
-                                        <form:formContainers>
-                                            <form:FormContainer visible="true">
-                                                <form:formElements>
-                                                    <form:FormElement visible="true">
-                                                        <form:label>
-                                                            <Label text="Valor Meta" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <Input value="{path: 'simulacao/ValorMeta', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" type="Number" description="R$" showValueHelp="false" enabled="false" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                </form:formElements>
-                                                <form:title/>
-                                            </form:FormContainer>
-                                        </form:formContainers>
-                                        <form:layout>
-                                            <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
-                                        </form:layout>
-                                    </form:Form>
-                                </layout:content>
-                            </layout:Grid>
+                        <uxap:blocks >
+                                    <!--
+                                    <mvc:XMLView viewName="simplifique.telaneg.view.Simulacao"/>
+
+                                    -->
+                                    
+                            <block:SimulacaoBlock id="personalinfo" columnLayout="4"/>
                         </uxap:blocks>
                         <uxap:moreBlocks/>
                         <uxap:actions/>
@@ -267,7 +38,9 @@
                 </uxap:subSections>
                 <uxap:customAnchorBarButton/>
             </uxap:ObjectPageSection>
-            <uxap:ObjectPageSection showTitle="true" title="Impostos" titleUppercase="true" visible="true">
+
+                <!-- -->
+                <uxap:ObjectPageSection showTitle="true" title="Impostos" titleUppercase="true" visible="true">
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Entrada" mode="Expanded">
                         <uxap:blocks>
@@ -1893,7 +1666,9 @@
                 </uxap:subSections>
                 <uxap:customAnchorBarButton/>
             </uxap:ObjectPageSection>
-        </uxap:sections>
+
+                <!-- -->
+                    </uxap:sections>
         <uxap:footer>
             <Bar design="Auto">
                 <contentLeft>
