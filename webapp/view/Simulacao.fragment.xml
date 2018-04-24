@@ -1,0 +1,126 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+    <l:VerticalLayout id="containerLayout" width="100%">
+        <l:BlockLayout id="BlockLayout" background="{/selectedBackground}">
+            <l:BlockLayoutRow>
+                <l:BlockLayoutCell title="Entrada">
+            
+                    <form:SimpleForm>
+                    <Label text="Preço de Compra" />
+                            <Input value="{
+                                path: 'simulacao/PrecoCompra',
+                                type: 'sap.ui.model.type.Float',
+                                formatOptions: { maxFractionDigits: 2 }
+                                }"
+                                description="BRL"
+                                />
+
+                    <Label text="Volumem"/>
+                            <Input value="{
+                                path: 'simulacao/Volumem',
+                                type: 'sap.ui.model.type.Float',
+                                formatOptions: { maxFractionDigits: 2 }
+                                }"
+                                description="UM Compra"
+                                />
+
+                    <Label text="Recomposição"/>
+                            <Input value="{
+                                path: 'simulacao/Recomposicao',
+                                type: 'sap.ui.model.type.Float',
+                                formatOptions: { maxFractionDigits: 2 }
+                                }"
+                                description="BRL"
+                                />
+
+                    <Label text="Preço de Venda"/>
+                            <Input value="{
+                                path: 'simulacao/PrecoVenda',
+                                type: 'sap.ui.model.type.Float',
+                                formatOptions: { maxFractionDigits: 2 }
+                                }"
+                                description="BRL"
+                                />
+
+                    </form:SimpleForm>
+
+                </l:BlockLayoutCell>
+                
+                <l:BlockLayoutCell title="Simulado">
+
+                    <form:SimpleForm>
+
+                    <Label text="Valor Meta" />
+                        <ObjectStatus
+                            text="{
+                                path: 'simulacao/ValorMeta',
+                                type: 'sap.ui.model.type.Float',
+                                formatOptions: { maxFractionDigits: 2 }
+                                } BRL"
+                            state="{
+                                parts: [ {path: 'simulacao/ValorMeta'} ],
+                                formatter: '.formatter.defaultNumberStatus'
+                                }" />
+
+                    <Label text="Margem 1"/>
+                            <ObjectStatus
+                                text="{
+                                    path: 'simulacao/Margem1',
+                                    type: 'sap.ui.model.type.Float',
+                                    formatOptions: { maxFractionDigits: 2 }
+                                    } %"
+                                state="{
+                                    parts: [ {path: 'simulacao/Margem1'}, {path: 'informacao/MargemTeorica'} ],
+                                    formatter: '.formatter.margemStatus'
+                                    }"
+                                    />
+
+                    <Label text="Margem 2" />
+                        <ObjectStatus
+                            text="{
+                                path: 'simulacao/Margem2',
+                                type: 'sap.ui.model.type.Float',
+                                formatOptions: { maxFractionDigits: 2 }
+                                } %"
+                            state="{
+                                parts: [ {path: 'simulacao/Margem2'}, {path: 'informacao/MargemTeorica'}],
+                                formatter: '.formatter.margemStatus'
+                                }" />
+
+                    <Label text="IC" />
+                        <ObjectStatus
+                            text="{
+                                path: 'simulacao/IC',
+                                type: 'sap.ui.model.type.Float',
+                                formatOptions: { maxFractionDigits: 2 }
+                                } %"
+                            state="{
+                                parts: [ {path: 'simulacao/IC'} ],
+                                formatter: '.formatter.icStatus'
+                                }" />
+
+                    <Label text="PMZ Reposição" />
+                        <ObjectStatus
+                            text="{
+                                path: 'simulacao/PMZReposicao',
+                                type: 'sap.ui.model.type.Float',
+                                formatOptions: { maxFractionDigits: 2 }
+                                } BRL"
+                                />
+
+                    <Label text="PMZ Loja" />
+                        <ObjectStatus
+                            text="{
+                                path: 'simulacao/PMZLoja',
+                                type: 'sap.ui.model.type.Float',
+                                formatOptions: { maxFractionDigits: 2 }
+                                } BRL"
+                                />
+
+                    </form:SimpleForm>
+
+                </l:BlockLayoutCell>
+
+            </l:BlockLayoutRow>
+        </l:BlockLayout>
+    </l:VerticalLayout>
+</core:FragmentDefinition>

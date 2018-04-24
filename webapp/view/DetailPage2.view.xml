@@ -25,12 +25,12 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Simulação" mode="Expanded">
                         <uxap:blocks >
-                                    <!--
-                                    <mvc:XMLView viewName="simplifique.telaneg.view.Simulacao"/>
 
-                                    -->
-                                    
-                            <block:SimulacaoBlock id="personalinfo" columnLayout="4"/>
+                            <!-- <block:SimulacaoBlock id="simuacao" columnLayout="4"/>
+ -->
+                            <core:Fragment fragmentName="simplifique.telaneg.view.Simulacao" type="XML" />
+
+
                         </uxap:blocks>
                         <uxap:moreBlocks/>
                         <uxap:actions/>
