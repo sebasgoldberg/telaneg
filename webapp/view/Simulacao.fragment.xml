@@ -1,16 +1,19 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
-    <l:VerticalLayout id="containerLayout" width="100%">
-        <l:BlockLayout id="BlockLayout" background="{/selectedBackground}">
-            <l:BlockLayoutRow>
-                <l:BlockLayoutCell title="Entrada">
-            
-                    <form:SimpleForm>
+
+
+                    <form:SimpleForm
+                        layout="ResponsiveGridLayout"
+                        columnsL="3" columnsM="4" columnsS="6"
+                        labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12">
+
+                    <core:Title text="Input Compra" />
                     <Label text="Preço de Compra" />
                             <Input value="{
                                 path: 'simulacao/PrecoCompra',
                                 type: 'sap.ui.model.type.Float',
                                 formatOptions: { maxFractionDigits: 2 }
                                 }"
+                                fieldWidth="70%"
                                 description="BRL"
                                 />
 
@@ -20,7 +23,8 @@
                                 type: 'sap.ui.model.type.Float',
                                 formatOptions: { maxFractionDigits: 2 }
                                 }"
-                                description="UM Compra"
+                                fieldWidth="70%"
+                                description="UN"
                                 />
 
                     <Label text="Recomposição"/>
@@ -29,37 +33,86 @@
                                 type: 'sap.ui.model.type.Float',
                                 formatOptions: { maxFractionDigits: 2 }
                                 }"
+                                fieldWidth="70%"
                                 description="BRL"
                                 />
 
+                      <Label text="Desconto" />
+                        <!--
+                        @todo: Adicionar Atributo ao Modelo
+                        -->
+                                <Input value="{
+                                    path: 'simulacao/Desconto',
+                                    type: 'sap.ui.model.type.Float',
+                                    formatOptions: { maxFractionDigits: 2 }
+                                    }"
+                                    fieldWidth="70%"
+                                    description="%"
+                                    />
+
+                      <Label text="Despesas Acessorias" />
+                        <!--
+                        @todo: Adicionar Atributo ao Modelo
+                        -->
+                                <Input value="{
+                                    path: 'simulacao/Desconto',
+                                    type: 'sap.ui.model.type.Float',
+                                    formatOptions: { maxFractionDigits: 2 }
+                                    }"
+                                    fieldWidth="70%"
+                                    description="BRL"
+                                    />
+
+
+                    <core:Title text="Input Venda" />
                     <Label text="Preço de Venda"/>
                             <Input value="{
                                 path: 'simulacao/PrecoVenda',
                                 type: 'sap.ui.model.type.Float',
                                 formatOptions: { maxFractionDigits: 2 }
                                 }"
+                                fieldWidth="70%"
                                 description="BRL"
                                 />
 
-                    </form:SimpleForm>
+                      <Label text="Previsão de Venda" />
+                        <!--
+                        @todo: Adicionar Atributo ao Modelo
+                        -->
+                                <Input value="{
+                                    path: 'simulacao/PrevisaoVenda',
+                                    type: 'sap.ui.model.type.Float',
+                                    formatOptions: { maxFractionDigits: 2 }
+                                    }"
+                                    fieldWidth="70%"
+                                    description="UN"
+                                    />
 
-                </l:BlockLayoutCell>
-                
-                <l:BlockLayoutCell title="Simulado">
 
-                    <form:SimpleForm>
-
-                    <Label text="Valor Meta" />
+                    <core:Title text="Simulado" />
+                    <Label text="PMZ Novo" />
+                        <!--
+                        @todo: Alterar no modelo.
+                        -->
                         <ObjectStatus
                             text="{
-                                path: 'simulacao/ValorMeta',
+                                path: 'simulacao/PMZReposicao',
                                 type: 'sap.ui.model.type.Float',
                                 formatOptions: { maxFractionDigits: 2 }
                                 } BRL"
-                            state="{
-                                parts: [ {path: 'simulacao/ValorMeta'} ],
-                                formatter: '.formatter.defaultNumberStatus'
-                                }" />
+                                />
+
+                    <Label text="PMZ Médio" />
+                        <!--
+                        @todo: Alterar no modelo.
+                        -->
+                        <ObjectStatus
+                            text="{
+                                path: 'simulacao/PMZLoja',
+                                type: 'sap.ui.model.type.Float',
+                                formatOptions: { maxFractionDigits: 2 }
+                                } BRL"
+                                />
 
                     <Label text="Margem 1"/>
                             <ObjectStatus
@@ -86,41 +139,84 @@
                                 formatter: '.formatter.margemStatus'
                                 }" />
 
-                    <Label text="IC" />
-                        <ObjectStatus
-                            text="{
-                                path: 'simulacao/IC',
-                                type: 'sap.ui.model.type.Float',
-                                formatOptions: { maxFractionDigits: 2 }
-                                } %"
-                            state="{
-                                parts: [ {path: 'simulacao/IC'} ],
-                                formatter: '.formatter.icStatus'
-                                }" />
+                         <Label text="Valor Total Pedido" />
+                            <!--
+                            @todo: Calcular (Custos + Impostos) * Preço de Compra
+                            -->
+                            <Text
+                                text="{
+                                    path: 'stock/Avaliacao',
+                                    type: 'sap.ui.model.type.Float',
+                                    formatOptions: { maxFractionDigits: 2 }
+                                    } BRL" />
 
-                    <Label text="PMZ Reposição" />
-                        <ObjectStatus
-                            text="{
-                                path: 'simulacao/PMZReposicao',
-                                type: 'sap.ui.model.type.Float',
-                                formatOptions: { maxFractionDigits: 2 }
-                                } BRL"
-                                />
+                          <Label text="Previsão de Venda" />
+                            <!--
+                            @todo: Calcular previsão de venda [UN] * Preço de Venda
+                            -->
+                            <Text
+                                text="{
+                                    path: 'stock/Avaliacao',
+                                    type: 'sap.ui.model.type.Float',
+                                    formatOptions: { maxFractionDigits: 2 }
+                                    } " />
 
-                    <Label text="PMZ Loja" />
-                        <ObjectStatus
-                            text="{
-                                path: 'simulacao/PMZLoja',
-                                type: 'sap.ui.model.type.Float',
-                                formatOptions: { maxFractionDigits: 2 }
-                                } BRL"
-                                />
+                        <Label text="IC" />
+                            <ObjectStatus
+                                text="{
+                                    path: 'simulacao/IC',
+                                    type: 'sap.ui.model.type.Float',
+                                    formatOptions: { maxFractionDigits: 2 }
+                                    } %"
+                                state="{
+                                    parts: [ {path: 'simulacao/IC'} ],
+                                    formatter: '.formatter.icStatus'
+                                    }" />
 
+
+                        <core:Title text="Info Atual" />
+                        <Label text="Margem Teorica" />
+                            <Text
+                                text="{
+                                    path: 'informacao/MargemTeorica',
+                                    type: 'sap.ui.model.type.Float',
+                                    formatOptions: { maxFractionDigits: 2 }
+                                    } %" />
+
+                        <Label text="Preço Compra" />
+                            <Text
+                                text="{
+                                    path: 'informacao/PrecoCompra',
+                                    type: 'sap.ui.model.type.Float',
+                                    formatOptions: { maxFractionDigits: 2 }
+                                    } BRL" />
+                       <Label text="PMZ Novo" />
+                        <!--
+                        @todo: Alterar no modelo.
+                        -->
+                            <Text
+                                text="{
+                                    path: 'informacao/PMZReposicao',
+                                    type: 'sap.ui.model.type.Float',
+                                    formatOptions: { maxFractionDigits: 2 }
+                                    } BRL" />
+                        <Label text="PMZ Médio" />
+                        <!--
+                        @todo: Alterar no modelo.
+                        -->
+                            <Text
+                                text="{
+                                    path: 'informacao/PMZLoja',
+                                    type: 'sap.ui.model.type.Float',
+                                    formatOptions: { maxFractionDigits: 2 }
+                                    } BRL" />
+                        <Label text="Preço Venda" />
+                            <Text
+                                text="{
+                                    path: 'informacao/PrecoVenda',
+                                    type: 'sap.ui.model.type.Float',
+                                    formatOptions: { maxFractionDigits: 2 }
+                                    } BRL" />
                     </form:SimpleForm>
 
-                </l:BlockLayoutCell>
-
-            </l:BlockLayoutRow>
-        </l:BlockLayout>
-    </l:VerticalLayout>
 </core:FragmentDefinition>
