@@ -8,12 +8,13 @@
                     }"
                 showMarkers="false" markFavorite="false" markFlagged="false" backgroundDesign="Translucent" condensed="false">
                 <attributes>
-                    <ObjectAttribute title="" text="{Status}" active="false"/>
                     <ObjectAttribute title="" text="{path: 'Data', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}" active="false"/>
                 </attributes>
                 <statuses>
-                    <ObjectStatus title="Margem 2 (%)" text="{path: 'NovaMargem2', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" state="{StatusNovaMargem2}"/>
-                    <ObjectStatus title="IC (%)" text="{path: 'NovoIC', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" state="{StatusNovoIC}"/>
+                    <!--
+                    @todo Definir state em função do valor de Status.
+                    -->
+                    <ObjectStatus text="{Status}" state="Success"/>
                 </statuses>
             </ObjectHeader>
             <form:Form width="100%" editable="true" visible="true">
@@ -39,7 +40,7 @@
                     <form:ResponsiveGridLayout adjustLabelSpan="false" columnsL="2" labelSpanL="3" columnsM="1" labelSpanM="2" labelSpanS="12"/>
                 </form:layout>
             </form:Form>
-            <Table width="100%" noDataText="No data" mode="Delete" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onTableItemPress" delete="_onTableDelete" items="{path:'item', templateShareable:true, parameters:{expand:'fornecedor,produto,centro,simulacao'}}">
+            <Table width="100%" noDataText="No data" mode="Delete" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onTableItemPress" delete="_onTableDelete" items="{path:'item', templateShareable:true, parameters:{expand:'fornecedor,produto,centro,simulacao,informacao'}}">
                 <infoToolbar>
                     <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
                         <content>
@@ -75,7 +76,7 @@
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Produto" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
@@ -87,19 +88,19 @@
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Margem 2" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="Custo" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="IC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="PMZ Novo" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Meta" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="PMZ Médio" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
@@ -111,13 +112,30 @@
                             <Text text="{fornecedor/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                             <Text text="{produto/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                             <Text text="{centro/Codigo}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
-                            <ObjectNumber number="{path: 'simulacao/Margem2', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" unit="%" emphasized="true" state="{simulacao/StateMargem2}"/>
-                            <ObjectNumber number="{path: 'simulacao/IC', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" unit="%" emphasized="true" state="{simulacao/StateIC}"/>
-                            <ObjectNumber number="{path: 'simulacao/ValorMeta', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" unit="R$" emphasized="true"
+                            <ObjectNumber
+                                number="{path: 'simulacao/Custo', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                                unit="BRL" emphasized="true"
                                 state="{
-                                    path: 'simulacao/ValorMeta',
-                                    formatter: '.formatter.valorMetaStatus'
-                                    }"/>
+                                    parts: [ {path: 'simulacao/Custo'}, {path: 'informacao/Custo'} ],
+                                    formatter: '.formatter.warningIfSecondLowThanFirst'
+                                    }"
+                                />
+                            <ObjectNumber
+                                number="{path: 'simulacao/PMZNovo', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                                unit="BRL" emphasized="true"
+                                state="{
+                                    parts: [ {path: 'simulacao/PMZNovo'}, {path: 'informacao/PMZNovo'} ],
+                                    formatter: '.formatter.warningIfSecondLowThanFirst'
+                                    }"
+                                />
+                            <ObjectNumber
+                                number="{path: 'simulacao/PMZMedio', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                                unit="BRL" emphasized="true"
+                                state="{
+                                    parts: [ {path: 'simulacao/PMZMedio'}, {path: 'informacao/PMZMedio'} ],
+                                    formatter: '.formatter.warningIfSecondLowThanFirst'
+                                    }"
+                                />
                         </cells>
                     </ColumnListItem>
                 </items>

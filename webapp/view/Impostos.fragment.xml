@@ -1,0 +1,65 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+    <form:SimpleForm
+        layout="ResponsiveGridLayout"
+        columnsXL="4" columnsL="4" columnsM="2" columnsS="1"
+        labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12"
+        breakpointL="500" breakpointM="250"
+        >
+
+        <core:Title text="Entrada" />
+
+            <Label text="IPI"/>
+            <Input
+                value="{path: 'impostosEntrada/IPI', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                description="%"/>
+            <Label text="ICMS"/>
+            <Input
+                value="{path: 'impostosEntrada/ICMS', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                description="%"/>
+            <Label text="Base Reduzida ICMS"/>
+            <Input
+                value="{path: 'impostosEntrada/BaseReduzidaICMS', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                description="%"/>
+            <Label text="PIS"/>
+            <Input
+                value="{path: 'impostosEntrada/PIS', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                description="%"/>
+
+
+        <core:Title text="" />
+
+            <Label text="COFINS"/>
+            <Input
+                value="{path: 'impostosEntrada/COFINS', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                description="%"/>
+            <Label text="ST"/>
+            <Input
+                value="{path: 'impostosEntrada/ST', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                description="%"/>
+            <Label text="PAUTA"/>
+            <Input
+                value="{path: 'impostosEntrada/PAUTA', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                description="%"/>
+            <Label text="MVA"/>
+            <Input
+                value="{path: 'impostosEntrada/MVA', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                description="%"/>
+
+        <core:Title text="Saida" />
+
+            <Label text="ICMS"/>
+            <Input
+                value="{path: 'impostosSaida/ICMS', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                description="%"/>
+            <Label text="PIS"/>
+            <Input
+                value="{path: 'impostosSaida/PIS', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                description="%"/>
+            <Label text="COFINS"/>
+            <Input
+                value="{path: 'impostosSaida/COFINS', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                description="%"/>
+
+    </form:SimpleForm>
+</core:FragmentDefinition>
+

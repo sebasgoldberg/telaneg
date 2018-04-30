@@ -55,6 +55,17 @@ sap.ui.define([
             return defaultNumberStatus(sValue);
         },
 
+        warningIfSecondLowThanFirst: function(firstValue, secondValue) {
+            try {
+                checkNotEmpty(firstValue);
+                checkNotEmpty(secondValue);
+                if ( parseFloat(secondValue) < parseFloat(firstValue) )
+                    return "Warning";
+            } catch (e) {
+            }
+            return "None";
+        },
+
     }
 
 });

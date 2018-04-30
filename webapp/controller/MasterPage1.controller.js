@@ -14,7 +14,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
 
             var oParams = {};
             var oView = this.getView();
-            var bSelectFirstListItem = true;
+            var bSelectFirstListItem = false;
             if (oEvent.mParameters.data.context || oEvent.mParameters.data.masterContext) {
                     this.sContext = oEvent.mParameters.data.context;
                     var oPath;
