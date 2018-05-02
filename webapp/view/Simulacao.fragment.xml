@@ -184,7 +184,7 @@
                     path: 'stock/Avaliacao',
                     type: 'sap.ui.model.type.Float',
                     formatOptions: { maxFractionDigits: 2 }
-                    } " />
+                    } BRL" />
 
         <Label text="IC" />
             <ObjectStatus
@@ -200,22 +200,18 @@
 
 
         <core:Title text="Info Atual" />
-        <Label text="Margem Teorica" />
-            <Text
-                text="{
-                    path: 'informacao/MargemTeorica',
-                    type: 'sap.ui.model.type.Float',
-                    formatOptions: { maxFractionDigits: 2 }
-                    } %" />
 
-        <Label text="Preço Compra" />
+        <Label text="Custo" />
+        <!--
+        @todo: Adicionar ao modelo.
+        -->
             <Text
                 text="{
-                    path: 'informacao/PrecoCompra',
+                    path: 'informacao/Custo',
                     type: 'sap.ui.model.type.Float',
                     formatOptions: { maxFractionDigits: 2 }
                     } BRL" />
-       <Label text="PMZ Novo" />
+         <Label text="PMZ Novo" />
         <!--
         @todo: Alterar no modelo.
         -->
@@ -235,7 +231,21 @@
                     type: 'sap.ui.model.type.Float',
                     formatOptions: { maxFractionDigits: 2 }
                     } BRL" />
-        <Label text="Preço Venda" />
+        <Label text="Margem Teorica" />
+            <Text
+                text="{
+                    path: 'informacao/MargemTeorica',
+                    type: 'sap.ui.model.type.Float',
+                    formatOptions: { maxFractionDigits: 2 }
+                    } %" />
+        <Label text="Preço Compra" />
+            <Text
+                text="{
+                    path: 'informacao/PrecoCompra',
+                    type: 'sap.ui.model.type.Float',
+                    formatOptions: { maxFractionDigits: 2 }
+                    } BRL" />
+         <Label text="Preço Venda" />
             <Text
                 text="{
                     path: 'informacao/PrecoVenda',
