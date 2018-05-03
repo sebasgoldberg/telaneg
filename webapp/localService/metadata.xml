@@ -404,6 +404,8 @@
                 <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
                 <Property Name="PrecoVenda" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PrecoVenda"/>
                 <Property Name="PrecoCompra" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PrecoCompra"/>
+                <Property Name="Desconto" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Desconto"/>
+                <Property Name="Custo" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Custo"/>
                 <Property Name="PMZNovo" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PMZNovo"/>
                 <Property Name="PMZMedio" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PMZMedio"/>
                 <Property Name="DesenvolvimentoComercial" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="DesenvolvimentoComercial"/>

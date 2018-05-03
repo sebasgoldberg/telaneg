@@ -24,6 +24,18 @@ sap.ui.define([
             throw "Empty Value";
     }
 
+    function successIfGteElseError(x1, x2){
+        try {
+            checkNotEmpty(x1);
+            checkNotEmpty(x2);
+            return defaultNumberStatus(
+                parseFloat(x1) - parseFloat(x2)
+            );
+        } catch (e) {
+            return ValueState.None;
+        }
+    }
+
     return {
 
         defaultNumberStatus: function(sValue) {
@@ -40,19 +52,15 @@ sap.ui.define([
         },
 
         margemStatus: function(sMargem, sMargemTeorica) {
-            try {
-                checkNotEmpty(sMargem);
-                checkNotEmpty(sMargemTeorica);
-                return defaultNumberStatus(
-                    parseFloat(sMargem) - parseFloat(sMargemTeorica)
-                );
-            } catch (e) {
-                return ValueState.None;
-            }
+            return successIfGteElseError(sMargem, sMargemTeorica);
         },
 
         valorMetaStatus: function(sValue) {
             return defaultNumberStatus(sValue);
+        },
+
+        successIfGteElseError: function(x1, x2){
+            return successIfGteElseError(x1, x2);
         },
 
         warningIfSecondLowThanFirst: function(firstValue, secondValue) {

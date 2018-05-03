@@ -16,6 +16,7 @@
                 }"
                 fieldWidth="70%"
                 description="BRL"
+                submit="realizarSimulacao"
                 />
 
     <Label text="Volumem"/>
@@ -24,6 +25,7 @@
                 type: 'sap.ui.model.type.Float',
                 formatOptions: { maxFractionDigits: 2 }
                 }"
+                submit="realizarSimulacao"
                 fieldWidth="70%"
                 description="UN"
                 />
@@ -34,6 +36,7 @@
                 type: 'sap.ui.model.type.Float',
                 formatOptions: { maxFractionDigits: 2 }
                 }"
+                submit="realizarSimulacao"
                 fieldWidth="70%"
                 description="BRL"
                 />
@@ -49,6 +52,7 @@
                     }"
                     fieldWidth="70%"
                     description="%"
+                    submit="realizarSimulacao"
                     />
 
       <Label text="Despesas Acessorias" />
@@ -56,10 +60,11 @@
         @todo: Adicionar Atributo ao Modelo
         -->
                 <Input value="{
-                    path: 'simulacao/Desconto',
+                    path: 'simulacao/DespesasAcessorias',
                     type: 'sap.ui.model.type.Float',
                     formatOptions: { maxFractionDigits: 2 }
                     }"
+                    submit="realizarSimulacao"
                     fieldWidth="70%"
                     description="BRL"
                     />
@@ -72,6 +77,7 @@
                 type: 'sap.ui.model.type.Float',
                 formatOptions: { maxFractionDigits: 2 }
                 }"
+                submit="realizarSimulacao"
                 fieldWidth="70%"
                 description="BRL"
                 />
@@ -85,6 +91,7 @@
                     type: 'sap.ui.model.type.Float',
                     formatOptions: { maxFractionDigits: 2 }
                     }"
+                    submit="realizarSimulacao"
                     fieldWidth="70%"
                     description="UN"
                     />
@@ -168,23 +175,32 @@
             <!--
             @todo: Calcular (Custos + Impostos) * Preço de Compra
             -->
-            <Text
+            <ObjectStatus
                 text="{
-                    path: 'stock/Avaliacao',
+                    path: 'simulacao/ValorTotalPedido',
                     type: 'sap.ui.model.type.Float',
                     formatOptions: { maxFractionDigits: 2 }
-                    } BRL" />
+                    } BRL"
+            state="{
+                parts: [ {path: 'simulacao/PrevisaoVendaDinheiro'}, {path: 'simulacao/ValorTotalPedido'}],
+                formatter: '.formatter.margemStatus'
+                }" />
 
           <Label text="Previsão de Venda" />
             <!--
             @todo: Calcular previsão de venda [UN] * Preço de Venda
             -->
-            <Text
+            <ObjectStatus
                 text="{
-                    path: 'stock/Avaliacao',
+                    path: 'simulacao/PrevisaoVendaDinheiro',
                     type: 'sap.ui.model.type.Float',
                     formatOptions: { maxFractionDigits: 2 }
-                    } BRL" />
+                    } BRL"
+            state="{
+                parts: [ {path: 'simulacao/PrevisaoVendaDinheiro'}, {path: 'simulacao/ValorTotalPedido'}],
+                formatter: '.formatter.margemStatus'
+                }" />
+
 
         <Label text="IC" />
             <ObjectStatus
