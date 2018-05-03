@@ -42,9 +42,6 @@
                 />
 
       <Label text="Desconto" />
-        <!--
-        @todo: Adicionar Atributo ao Modelo
-        -->
                 <Input value="{
                     path: 'simulacao/Desconto',
                     type: 'sap.ui.model.type.Float',
@@ -56,9 +53,6 @@
                     />
 
       <Label text="Despesas Acessorias" />
-        <!--
-        @todo: Adicionar Atributo ao Modelo
-        -->
                 <Input value="{
                     path: 'simulacao/DespesasAcessorias',
                     type: 'sap.ui.model.type.Float',
@@ -83,9 +77,6 @@
                 />
 
       <Label text="Previsão de Venda" />
-        <!--
-        @todo: Adicionar Atributo ao Modelo
-        -->
                 <Input value="{
                     path: 'simulacao/PrevisaoVenda',
                     type: 'sap.ui.model.type.Float',
@@ -99,9 +90,6 @@
 
     <core:Title text="Simulado" />
     <Label text="Custo" />
-        <!--
-        @todo: Alterar no modelo.
-        -->
         <ObjectStatus
             text="{
                 path: 'simulacao/Custo',
@@ -115,9 +103,6 @@
                 />
 
     <Label text="PMZ Novo" />
-        <!--
-        @todo: Alterar no modelo.
-        -->
         <ObjectStatus
             text="{
                 path: 'simulacao/PMZNovo',
@@ -131,9 +116,6 @@
                 />
 
     <Label text="PMZ Médio" />
-        <!--
-        @todo: Alterar no modelo.
-        -->
         <ObjectStatus
             text="{
                 path: 'simulacao/PMZMedio',
@@ -172,9 +154,6 @@
                 }" />
 
          <Label text="Valor Total Pedido" />
-            <!--
-            @todo: Calcular (Custos + Impostos) * Preço de Compra
-            -->
             <ObjectStatus
                 text="{
                     path: 'simulacao/ValorTotalPedido',
@@ -187,9 +166,6 @@
                 }" />
 
           <Label text="Previsão de Venda" />
-            <!--
-            @todo: Calcular previsão de venda [UN] * Preço de Venda
-            -->
             <ObjectStatus
                 text="{
                     path: 'simulacao/PrevisaoVendaDinheiro',
@@ -218,9 +194,6 @@
         <core:Title text="Info Atual" />
 
         <Label text="Custo" />
-        <!--
-        @todo: Adicionar ao modelo.
-        -->
             <Text
                 text="{
                     path: 'informacao/Custo',
@@ -228,9 +201,6 @@
                     formatOptions: { maxFractionDigits: 2 }
                     } BRL" />
          <Label text="PMZ Novo" />
-        <!--
-        @todo: Alterar no modelo.
-        -->
             <Text
                 text="{
                     path: 'informacao/PMZNovo',
@@ -238,9 +208,6 @@
                     formatOptions: { maxFractionDigits: 2 }
                     } BRL" />
         <Label text="PMZ Médio" />
-        <!--
-        @todo: Alterar no modelo.
-        -->
             <Text
                 text="{
                     path: 'informacao/PMZMedio',

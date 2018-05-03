@@ -1,1 +1,601 @@
-[{"ID":"II01","PrecoVenda":400,"PrecoCompra":300,"PMZNovo":345,"PMZMedio":333,"MargemTeorica":20,"Margem1":13.750000000000002,"Margem2":16.75},{"ID":"II02","PrecoVenda":400,"PrecoCompra":300,"PMZNovo":345,"PMZMedio":333,"MargemTeorica":20,"Margem1":13.750000000000002,"Margem2":16.75},{"ID":"II03","PrecoVenda":400,"PrecoCompra":300,"PMZNovo":345,"PMZMedio":333,"MargemTeorica":20,"Margem1":13.750000000000002,"Margem2":16.75},{"ID":"II04","PrecoVenda":450,"PrecoCompra":300,"PMZNovo":345,"PMZMedio":330,"MargemTeorica":20,"Margem1":23.333333333333332,"Margem2":26.666666666666668},{"ID":"II05","PrecoVenda":450,"PrecoCompra":300,"PMZNovo":345,"PMZMedio":330,"MargemTeorica":20,"Margem1":23.333333333333332,"Margem2":26.666666666666668},{"ID":"II06","PrecoVenda":450,"PrecoCompra":300,"PMZNovo":345,"PMZMedio":330,"MargemTeorica":20,"Margem1":23.333333333333332,"Margem2":26.666666666666668},{"ID":"II07","PrecoVenda":500,"PrecoCompra":330,"PMZNovo":379.49999999999994,"PMZMedio":369.59999999999997,"MargemTeorica":20,"Margem1":24.10000000000001,"Margem2":26.08000000000001},{"ID":"II08","PrecoVenda":500,"PrecoCompra":330,"PMZNovo":379.49999999999994,"PMZMedio":369.59999999999997,"MargemTeorica":20,"Margem1":24.10000000000001,"Margem2":26.08000000000001},{"ID":"II09","PrecoVenda":500,"PrecoCompra":330,"PMZNovo":379.49999999999994,"PMZMedio":369.59999999999997,"MargemTeorica":20,"Margem1":24.10000000000001,"Margem2":26.08000000000001},{"ID":"II10","PrecoVenda":500,"PrecoCompra":330,"PMZNovo":379.49999999999994,"PMZMedio":366.29999999999995,"MargemTeorica":20,"Margem1":24.10000000000001,"Margem2":26.74000000000001},{"ID":"II11","PrecoVenda":500,"PrecoCompra":330,"PMZNovo":379.49999999999994,"PMZMedio":366.29999999999995,"MargemTeorica":20,"Margem1":24.10000000000001,"Margem2":26.74000000000001},{"ID":"II12","PrecoVenda":500,"PrecoCompra":330,"PMZNovo":379.49999999999994,"PMZMedio":366.29999999999995,"MargemTeorica":20,"Margem1":24.10000000000001,"Margem2":26.74000000000001},{"ID":"II13","PrecoVenda":0,"PrecoCompra":0,"PMZNovo":0,"PMZMedio":0,"MargemTeorica":15,"Margem1":0,"Margem2":0},{"ID":"II14","PrecoVenda":0,"PrecoCompra":0,"PMZNovo":0,"PMZMedio":0,"MargemTeorica":15,"Margem1":0,"Margem2":0},{"ID":"II15","PrecoVenda":0,"PrecoCompra":0,"PMZNovo":0,"PMZMedio":0,"MargemTeorica":15,"Margem1":0,"Margem2":0},{"ID":"II16","PrecoVenda":0,"PrecoCompra":0,"PMZNovo":0,"PMZMedio":0,"MargemTeorica":15,"Margem1":0,"Margem2":0},{"ID":"II17","PrecoVenda":15,"PrecoCompra":11,"PMZNovo":13.64,"PMZMedio":13.200000000000001,"MargemTeorica":15,"Margem1":9.066666666666663,"Margem2":11.999999999999993},{"ID":"II18","PrecoVenda":15,"PrecoCompra":11,"PMZNovo":13.64,"PMZMedio":13.200000000000001,"MargemTeorica":15,"Margem1":9.066666666666663,"Margem2":11.999999999999993},{"ID":"II19","PrecoVenda":14,"PrecoCompra":10,"PMZNovo":12.4,"PMZMedio":12,"MargemTeorica":15,"Margem1":11.428571428571425,"Margem2":14.285714285714285},{"ID":"II20","PrecoVenda":14,"PrecoCompra":10,"PMZNovo":12.4,"PMZMedio":12,"MargemTeorica":15,"Margem1":11.428571428571425,"Margem2":14.285714285714285},{"ID":"II21","PrecoVenda":9,"PrecoCompra":6,"PMZNovo":7.4399999999999995,"PMZMedio":7.14,"MargemTeorica":15,"Margem1":17.33333333333334,"Margem2":20.666666666666668},{"ID":"II22","PrecoVenda":9,"PrecoCompra":6,"PMZNovo":7.4399999999999995,"PMZMedio":7.14,"MargemTeorica":15,"Margem1":17.33333333333334,"Margem2":20.666666666666668},{"ID":"II23","PrecoVenda":12,"PrecoCompra":9,"PMZNovo":11.16,"PMZMedio":10.71,"MargemTeorica":15,"Margem1":6.999999999999999,"Margem2":10.749999999999993},{"ID":"II24","PrecoVenda":12,"PrecoCompra":9,"PMZNovo":11.16,"PMZMedio":10.71,"MargemTeorica":15,"Margem1":6.999999999999999,"Margem2":10.749999999999993},{"ID":"II25","PrecoVenda":4,"PrecoCompra":3,"PMZNovo":3.7199999999999998,"PMZMedio":3.63,"MargemTeorica":15,"Margem1":7.000000000000006,"Margem2":9.250000000000004},{"ID":"II26","PrecoVenda":4,"PrecoCompra":3,"PMZNovo":3.7199999999999998,"PMZMedio":3.63,"MargemTeorica":15,"Margem1":7.000000000000006,"Margem2":9.250000000000004},{"ID":"II27","PrecoVenda":4,"PrecoCompra":2.8,"PMZNovo":3.472,"PMZMedio":3.388,"MargemTeorica":15,"Margem1":13.200000000000001,"Margem2":15.300000000000002},{"ID":"II28","PrecoVenda":4,"PrecoCompra":2.8,"PMZNovo":3.472,"PMZMedio":3.388,"MargemTeorica":15,"Margem1":13.200000000000001,"Margem2":15.300000000000002},{"ID":"II29","PrecoVenda":3.5,"PrecoCompra":2.5,"PMZNovo":3.1,"PMZMedio":2.975,"MargemTeorica":15,"Margem1":11.428571428571425,"Margem2":14.999999999999996},{"ID":"II30","PrecoVenda":3.5,"PrecoCompra":2.5,"PMZNovo":3.1,"PMZMedio":2.975,"MargemTeorica":15,"Margem1":11.428571428571425,"Margem2":14.999999999999996},{"ID":"II31","PrecoVenda":3.5,"PrecoCompra":2.5,"PMZNovo":3.1,"PMZMedio":2.975,"MargemTeorica":15,"Margem1":11.428571428571425,"Margem2":14.999999999999996},{"ID":"II32","PrecoVenda":3.5,"PrecoCompra":2.5,"PMZNovo":3.1,"PMZMedio":2.975,"MargemTeorica":15,"Margem1":11.428571428571425,"Margem2":14.999999999999996},{"ID":"II33","PrecoVenda":3.8,"PrecoCompra":3,"PMZNovo":3.7199999999999998,"PMZMedio":3.63,"MargemTeorica":15,"Margem1":2.105263157894739,"Margem2":4.473684210526314},{"ID":"II34","PrecoVenda":3.8,"PrecoCompra":3,"PMZNovo":3.7199999999999998,"PMZMedio":3.63,"MargemTeorica":15,"Margem1":2.105263157894739,"Margem2":4.473684210526314},{"ID":"II35","PrecoVenda":4.1,"PrecoCompra":3,"PMZNovo":3.7199999999999998,"PMZMedio":3.63,"MargemTeorica":15,"Margem1":9.268292682926829,"Margem2":11.463414634146336},{"ID":"II36","PrecoVenda":4.1,"PrecoCompra":3,"PMZNovo":3.7199999999999998,"PMZMedio":3.63,"MargemTeorica":15,"Margem1":9.268292682926829,"Margem2":11.463414634146336},{"ID":"II37","PrecoVenda":8,"PrecoCompra":6,"PMZNovo":6.6000000000000005,"PMZMedio":6.300000000000001,"MargemTeorica":15,"Margem1":17.499999999999993,"Margem2":21.249999999999993},{"ID":"II38","PrecoVenda":8,"PrecoCompra":6,"PMZNovo":6.6000000000000005,"PMZMedio":6.300000000000001,"MargemTeorica":15,"Margem1":17.499999999999993,"Margem2":21.249999999999993},{"ID":"II39","PrecoVenda":8.3,"PrecoCompra":6,"PMZNovo":6.6000000000000005,"PMZMedio":6.300000000000001,"MargemTeorica":15,"Margem1":20.481927710843372,"Margem2":24.096385542168672},{"ID":"II40","PrecoVenda":8.3,"PrecoCompra":6,"PMZNovo":6.6000000000000005,"PMZMedio":6.300000000000001,"MargemTeorica":15,"Margem1":20.481927710843372,"Margem2":24.096385542168672},{"ID":"II41","PrecoVenda":9.1,"PrecoCompra":7,"PMZNovo":7.700000000000001,"PMZMedio":7.350000000000001,"MargemTeorica":15,"Margem1":15.384615384615369,"Margem2":19.230769230769212},{"ID":"II42","PrecoVenda":9.1,"PrecoCompra":7,"PMZNovo":7.700000000000001,"PMZMedio":7.350000000000001,"MargemTeorica":15,"Margem1":15.384615384615369,"Margem2":19.230769230769212},{"ID":"II43","PrecoVenda":8,"PrecoCompra":6,"PMZNovo":6.6000000000000005,"PMZMedio":6.300000000000001,"MargemTeorica":15,"Margem1":17.499999999999993,"Margem2":21.249999999999993},{"ID":"II44","PrecoVenda":8,"PrecoCompra":6,"PMZNovo":6.6000000000000005,"PMZMedio":6.300000000000001,"MargemTeorica":15,"Margem1":17.499999999999993,"Margem2":21.249999999999993},{"ID":"II45","PrecoVenda":8.3,"PrecoCompra":6,"PMZNovo":6.6000000000000005,"PMZMedio":6.300000000000001,"MargemTeorica":15,"Margem1":20.481927710843372,"Margem2":24.096385542168672},{"ID":"II46","PrecoVenda":8.3,"PrecoCompra":6,"PMZNovo":6.6000000000000005,"PMZMedio":6.300000000000001,"MargemTeorica":15,"Margem1":20.481927710843372,"Margem2":24.096385542168672},{"ID":"II47","PrecoVenda":9.1,"PrecoCompra":7,"PMZNovo":7.700000000000001,"PMZMedio":7.350000000000001,"MargemTeorica":15,"Margem1":15.384615384615369,"Margem2":19.230769230769212},{"ID":"II48","PrecoVenda":9.1,"PrecoCompra":7,"PMZNovo":7.700000000000001,"PMZMedio":7.350000000000001,"MargemTeorica":15,"Margem1":15.384615384615369,"Margem2":19.230769230769212},{"ID":"II49","PrecoVenda":8,"PrecoCompra":6,"PMZNovo":6.6000000000000005,"PMZMedio":6.300000000000001,"MargemTeorica":15,"Margem1":17.499999999999993,"Margem2":21.249999999999993},{"ID":"II50","PrecoVenda":8,"PrecoCompra":6,"PMZNovo":6.6000000000000005,"PMZMedio":6.300000000000001,"MargemTeorica":15,"Margem1":17.499999999999993,"Margem2":21.249999999999993},{"ID":"II51","PrecoVenda":8.3,"PrecoCompra":6,"PMZNovo":6.6000000000000005,"PMZMedio":6.300000000000001,"MargemTeorica":15,"Margem1":20.481927710843372,"Margem2":24.096385542168672},{"ID":"II52","PrecoVenda":8.3,"PrecoCompra":6,"PMZNovo":6.6000000000000005,"PMZMedio":6.300000000000001,"MargemTeorica":15,"Margem1":20.481927710843372,"Margem2":24.096385542168672},{"ID":"II53","PrecoVenda":9.1,"PrecoCompra":7,"PMZNovo":7.700000000000001,"PMZMedio":7.350000000000001,"MargemTeorica":15,"Margem1":15.384615384615369,"Margem2":19.230769230769212},{"ID":"II54","PrecoVenda":9.1,"PrecoCompra":7,"PMZNovo":7.700000000000001,"PMZMedio":7.350000000000001,"MargemTeorica":15,"Margem1":15.384615384615369,"Margem2":19.230769230769212},{"ID":"II55","PrecoVenda":8,"PrecoCompra":6,"PMZNovo":6.6000000000000005,"PMZMedio":6.300000000000001,"MargemTeorica":15,"Margem1":17.499999999999993,"Margem2":21.249999999999993},{"ID":"II56","PrecoVenda":8,"PrecoCompra":6,"PMZNovo":6.6000000000000005,"PMZMedio":6.300000000000001,"MargemTeorica":15,"Margem1":17.499999999999993,"Margem2":21.249999999999993},{"ID":"II57","PrecoVenda":8.3,"PrecoCompra":6,"PMZNovo":6.6000000000000005,"PMZMedio":6.300000000000001,"MargemTeorica":15,"Margem1":20.481927710843372,"Margem2":24.096385542168672},{"ID":"II58","PrecoVenda":8.3,"PrecoCompra":6,"PMZNovo":6.6000000000000005,"PMZMedio":6.300000000000001,"MargemTeorica":15,"Margem1":20.481927710843372,"Margem2":24.096385542168672},{"ID":"II59","PrecoVenda":9.1,"PrecoCompra":7,"PMZNovo":7.700000000000001,"PMZMedio":7.350000000000001,"MargemTeorica":15,"Margem1":15.384615384615369,"Margem2":19.230769230769212},{"ID":"II60","PrecoVenda":9.1,"PrecoCompra":7,"PMZNovo":7.700000000000001,"PMZMedio":7.350000000000001,"MargemTeorica":15,"Margem1":15.384615384615369,"Margem2":19.230769230769212}]
+[{
+    "ID": "II01",
+    "Custo": 340,
+    "PrecoVenda": 400,
+    "PrecoCompra": 300,
+    "PMZNovo": 345,
+    "PMZMedio": 333,
+    "MargemTeorica": 20,
+    "Margem1": 13.750000000000002,
+    "Margem2": 16.75
+}, {
+    "ID": "II02",
+    "Custo": 0,
+    "PrecoVenda": 400,
+    "PrecoCompra": 300,
+    "PMZNovo": 345,
+    "PMZMedio": 333,
+    "MargemTeorica": 20,
+    "Margem1": 13.750000000000002,
+    "Margem2": 16.75
+}, {
+    "ID": "II03",
+    "Custo": 0,
+    "PrecoVenda": 400,
+    "PrecoCompra": 300,
+    "PMZNovo": 345,
+    "PMZMedio": 333,
+    "MargemTeorica": 20,
+    "Margem1": 13.750000000000002,
+    "Margem2": 16.75
+}, {
+    "ID": "II04",
+    "Custo": 0,
+    "PrecoVenda": 450,
+    "PrecoCompra": 300,
+    "PMZNovo": 345,
+    "PMZMedio": 330,
+    "MargemTeorica": 20,
+    "Margem1": 23.333333333333332,
+    "Margem2": 26.666666666666668
+}, {
+    "ID": "II05",
+    "Custo": 0,
+    "PrecoVenda": 450,
+    "PrecoCompra": 300,
+    "PMZNovo": 345,
+    "PMZMedio": 330,
+    "MargemTeorica": 20,
+    "Margem1": 23.333333333333332,
+    "Margem2": 26.666666666666668
+}, {
+    "ID": "II06",
+    "Custo": 0,
+    "PrecoVenda": 450,
+    "PrecoCompra": 300,
+    "PMZNovo": 345,
+    "PMZMedio": 330,
+    "MargemTeorica": 20,
+    "Margem1": 23.333333333333332,
+    "Margem2": 26.666666666666668
+}, {
+    "ID": "II07",
+    "Custo": 0,
+    "PrecoVenda": 500,
+    "PrecoCompra": 330,
+    "PMZNovo": 379.49999999999994,
+    "PMZMedio": 369.59999999999997,
+    "MargemTeorica": 20,
+    "Margem1": 24.10000000000001,
+    "Margem2": 26.08000000000001
+}, {
+    "ID": "II08",
+    "Custo": 0,
+    "PrecoVenda": 500,
+    "PrecoCompra": 330,
+    "PMZNovo": 379.49999999999994,
+    "PMZMedio": 369.59999999999997,
+    "MargemTeorica": 20,
+    "Margem1": 24.10000000000001,
+    "Margem2": 26.08000000000001
+}, {
+    "ID": "II09",
+    "Custo": 0,
+    "PrecoVenda": 500,
+    "PrecoCompra": 330,
+    "PMZNovo": 379.49999999999994,
+    "PMZMedio": 369.59999999999997,
+    "MargemTeorica": 20,
+    "Margem1": 24.10000000000001,
+    "Margem2": 26.08000000000001
+}, {
+    "ID": "II10",
+    "Custo": 0,
+    "PrecoVenda": 500,
+    "PrecoCompra": 330,
+    "PMZNovo": 379.49999999999994,
+    "PMZMedio": 366.29999999999995,
+    "MargemTeorica": 20,
+    "Margem1": 24.10000000000001,
+    "Margem2": 26.74000000000001
+}, {
+    "ID": "II11",
+    "Custo": 0,
+    "PrecoVenda": 500,
+    "PrecoCompra": 330,
+    "PMZNovo": 379.49999999999994,
+    "PMZMedio": 366.29999999999995,
+    "MargemTeorica": 20,
+    "Margem1": 24.10000000000001,
+    "Margem2": 26.74000000000001
+}, {
+    "ID": "II12",
+    "Custo": 0,
+    "PrecoVenda": 500,
+    "PrecoCompra": 330,
+    "PMZNovo": 379.49999999999994,
+    "PMZMedio": 366.29999999999995,
+    "MargemTeorica": 20,
+    "Margem1": 24.10000000000001,
+    "Margem2": 26.74000000000001
+}, {
+    "ID": "II13",
+    "Custo": 0,
+    "PrecoVenda": 0,
+    "PrecoCompra": 0,
+    "PMZNovo": 0,
+    "PMZMedio": 0,
+    "MargemTeorica": 15,
+    "Margem1": 0,
+    "Margem2": 0
+}, {
+    "ID": "II14",
+    "Custo": 0,
+    "PrecoVenda": 0,
+    "PrecoCompra": 0,
+    "PMZNovo": 0,
+    "PMZMedio": 0,
+    "MargemTeorica": 15,
+    "Margem1": 0,
+    "Margem2": 0
+}, {
+    "ID": "II15",
+    "Custo": 0,
+    "PrecoVenda": 0,
+    "PrecoCompra": 0,
+    "PMZNovo": 0,
+    "PMZMedio": 0,
+    "MargemTeorica": 15,
+    "Margem1": 0,
+    "Margem2": 0
+}, {
+    "ID": "II16",
+    "Custo": 0,
+    "PrecoVenda": 0,
+    "PrecoCompra": 0,
+    "PMZNovo": 0,
+    "PMZMedio": 0,
+    "MargemTeorica": 15,
+    "Margem1": 0,
+    "Margem2": 0
+}, {
+    "ID": "II17",
+    "Custo": 0,
+    "PrecoVenda": 15,
+    "PrecoCompra": 11,
+    "PMZNovo": 13.64,
+    "PMZMedio": 13.200000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 9.066666666666663,
+    "Margem2": 11.999999999999993
+}, {
+    "ID": "II18",
+    "Custo": 0,
+    "PrecoVenda": 15,
+    "PrecoCompra": 11,
+    "PMZNovo": 13.64,
+    "PMZMedio": 13.200000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 9.066666666666663,
+    "Margem2": 11.999999999999993
+}, {
+    "ID": "II19",
+    "Custo": 0,
+    "PrecoVenda": 14,
+    "PrecoCompra": 10,
+    "PMZNovo": 12.4,
+    "PMZMedio": 12,
+    "MargemTeorica": 15,
+    "Margem1": 11.428571428571425,
+    "Margem2": 14.285714285714285
+}, {
+    "ID": "II20",
+    "Custo": 0,
+    "PrecoVenda": 14,
+    "PrecoCompra": 10,
+    "PMZNovo": 12.4,
+    "PMZMedio": 12,
+    "MargemTeorica": 15,
+    "Margem1": 11.428571428571425,
+    "Margem2": 14.285714285714285
+}, {
+    "ID": "II21",
+    "Custo": 0,
+    "PrecoVenda": 9,
+    "PrecoCompra": 6,
+    "PMZNovo": 7.4399999999999995,
+    "PMZMedio": 7.14,
+    "MargemTeorica": 15,
+    "Margem1": 17.33333333333334,
+    "Margem2": 20.666666666666668
+}, {
+    "ID": "II22",
+    "Custo": 0,
+    "PrecoVenda": 9,
+    "PrecoCompra": 6,
+    "PMZNovo": 7.4399999999999995,
+    "PMZMedio": 7.14,
+    "MargemTeorica": 15,
+    "Margem1": 17.33333333333334,
+    "Margem2": 20.666666666666668
+}, {
+    "ID": "II23",
+    "Custo": 0,
+    "PrecoVenda": 12,
+    "PrecoCompra": 9,
+    "PMZNovo": 11.16,
+    "PMZMedio": 10.71,
+    "MargemTeorica": 15,
+    "Margem1": 6.999999999999999,
+    "Margem2": 10.749999999999993
+}, {
+    "ID": "II24",
+    "Custo": 0,
+    "PrecoVenda": 12,
+    "PrecoCompra": 9,
+    "PMZNovo": 11.16,
+    "PMZMedio": 10.71,
+    "MargemTeorica": 15,
+    "Margem1": 6.999999999999999,
+    "Margem2": 10.749999999999993
+}, {
+    "ID": "II25",
+    "Custo": 0,
+    "PrecoVenda": 4,
+    "PrecoCompra": 3,
+    "PMZNovo": 3.7199999999999998,
+    "PMZMedio": 3.63,
+    "MargemTeorica": 15,
+    "Margem1": 7.000000000000006,
+    "Margem2": 9.250000000000004
+}, {
+    "ID": "II26",
+    "Custo": 0,
+    "PrecoVenda": 4,
+    "PrecoCompra": 3,
+    "PMZNovo": 3.7199999999999998,
+    "PMZMedio": 3.63,
+    "MargemTeorica": 15,
+    "Margem1": 7.000000000000006,
+    "Margem2": 9.250000000000004
+}, {
+    "ID": "II27",
+    "Custo": 0,
+    "PrecoVenda": 4,
+    "PrecoCompra": 2.8,
+    "PMZNovo": 3.472,
+    "PMZMedio": 3.388,
+    "MargemTeorica": 15,
+    "Margem1": 13.200000000000001,
+    "Margem2": 15.300000000000002
+}, {
+    "ID": "II28",
+    "Custo": 0,
+    "PrecoVenda": 4,
+    "PrecoCompra": 2.8,
+    "PMZNovo": 3.472,
+    "PMZMedio": 3.388,
+    "MargemTeorica": 15,
+    "Margem1": 13.200000000000001,
+    "Margem2": 15.300000000000002
+}, {
+    "ID": "II29",
+    "Custo": 0,
+    "PrecoVenda": 3.5,
+    "PrecoCompra": 2.5,
+    "PMZNovo": 3.1,
+    "PMZMedio": 2.975,
+    "MargemTeorica": 15,
+    "Margem1": 11.428571428571425,
+    "Margem2": 14.999999999999996
+}, {
+    "ID": "II30",
+    "Custo": 0,
+    "PrecoVenda": 3.5,
+    "PrecoCompra": 2.5,
+    "PMZNovo": 3.1,
+    "PMZMedio": 2.975,
+    "MargemTeorica": 15,
+    "Margem1": 11.428571428571425,
+    "Margem2": 14.999999999999996
+}, {
+    "ID": "II31",
+    "Custo": 0,
+    "PrecoVenda": 3.5,
+    "PrecoCompra": 2.5,
+    "PMZNovo": 3.1,
+    "PMZMedio": 2.975,
+    "MargemTeorica": 15,
+    "Margem1": 11.428571428571425,
+    "Margem2": 14.999999999999996
+}, {
+    "ID": "II32",
+    "Custo": 0,
+    "PrecoVenda": 3.5,
+    "PrecoCompra": 2.5,
+    "PMZNovo": 3.1,
+    "PMZMedio": 2.975,
+    "MargemTeorica": 15,
+    "Margem1": 11.428571428571425,
+    "Margem2": 14.999999999999996
+}, {
+    "ID": "II33",
+    "Custo": 0,
+    "PrecoVenda": 3.8,
+    "PrecoCompra": 3,
+    "PMZNovo": 3.7199999999999998,
+    "PMZMedio": 3.63,
+    "MargemTeorica": 15,
+    "Margem1": 2.105263157894739,
+    "Margem2": 4.473684210526314
+}, {
+    "ID": "II34",
+    "Custo": 0,
+    "PrecoVenda": 3.8,
+    "PrecoCompra": 3,
+    "PMZNovo": 3.7199999999999998,
+    "PMZMedio": 3.63,
+    "MargemTeorica": 15,
+    "Margem1": 2.105263157894739,
+    "Margem2": 4.473684210526314
+}, {
+    "ID": "II35",
+    "Custo": 0,
+    "PrecoVenda": 4.1,
+    "PrecoCompra": 3,
+    "PMZNovo": 3.7199999999999998,
+    "PMZMedio": 3.63,
+    "MargemTeorica": 15,
+    "Margem1": 9.268292682926829,
+    "Margem2": 11.463414634146336
+}, {
+    "ID": "II36",
+    "Custo": 0,
+    "PrecoVenda": 4.1,
+    "PrecoCompra": 3,
+    "PMZNovo": 3.7199999999999998,
+    "PMZMedio": 3.63,
+    "MargemTeorica": 15,
+    "Margem1": 9.268292682926829,
+    "Margem2": 11.463414634146336
+}, {
+    "ID": "II37",
+    "Custo": 0,
+    "PrecoVenda": 8,
+    "PrecoCompra": 6,
+    "PMZNovo": 6.6000000000000005,
+    "PMZMedio": 6.300000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 17.499999999999993,
+    "Margem2": 21.249999999999993
+}, {
+    "ID": "II38",
+    "Custo": 0,
+    "PrecoVenda": 8,
+    "PrecoCompra": 6,
+    "PMZNovo": 6.6000000000000005,
+    "PMZMedio": 6.300000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 17.499999999999993,
+    "Margem2": 21.249999999999993
+}, {
+    "ID": "II39",
+    "Custo": 0,
+    "PrecoVenda": 8.3,
+    "PrecoCompra": 6,
+    "PMZNovo": 6.6000000000000005,
+    "PMZMedio": 6.300000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 20.481927710843372,
+    "Margem2": 24.096385542168672
+}, {
+    "ID": "II40",
+    "Custo": 0,
+    "PrecoVenda": 8.3,
+    "PrecoCompra": 6,
+    "PMZNovo": 6.6000000000000005,
+    "PMZMedio": 6.300000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 20.481927710843372,
+    "Margem2": 24.096385542168672
+}, {
+    "ID": "II41",
+    "Custo": 0,
+    "PrecoVenda": 9.1,
+    "PrecoCompra": 7,
+    "PMZNovo": 7.700000000000001,
+    "PMZMedio": 7.350000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 15.384615384615369,
+    "Margem2": 19.230769230769212
+}, {
+    "ID": "II42",
+    "Custo": 0,
+    "PrecoVenda": 9.1,
+    "PrecoCompra": 7,
+    "PMZNovo": 7.700000000000001,
+    "PMZMedio": 7.350000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 15.384615384615369,
+    "Margem2": 19.230769230769212
+}, {
+    "ID": "II43",
+    "Custo": 0,
+    "PrecoVenda": 8,
+    "PrecoCompra": 6,
+    "PMZNovo": 6.6000000000000005,
+    "PMZMedio": 6.300000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 17.499999999999993,
+    "Margem2": 21.249999999999993
+}, {
+    "ID": "II44",
+    "Custo": 0,
+    "PrecoVenda": 8,
+    "PrecoCompra": 6,
+    "PMZNovo": 6.6000000000000005,
+    "PMZMedio": 6.300000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 17.499999999999993,
+    "Margem2": 21.249999999999993
+}, {
+    "ID": "II45",
+    "Custo": 0,
+    "PrecoVenda": 8.3,
+    "PrecoCompra": 6,
+    "PMZNovo": 6.6000000000000005,
+    "PMZMedio": 6.300000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 20.481927710843372,
+    "Margem2": 24.096385542168672
+}, {
+    "ID": "II46",
+    "Custo": 0,
+    "PrecoVenda": 8.3,
+    "PrecoCompra": 6,
+    "PMZNovo": 6.6000000000000005,
+    "PMZMedio": 6.300000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 20.481927710843372,
+    "Margem2": 24.096385542168672
+}, {
+    "ID": "II47",
+    "Custo": 0,
+    "PrecoVenda": 9.1,
+    "PrecoCompra": 7,
+    "PMZNovo": 7.700000000000001,
+    "PMZMedio": 7.350000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 15.384615384615369,
+    "Margem2": 19.230769230769212
+}, {
+    "ID": "II48",
+    "Custo": 0,
+    "PrecoVenda": 9.1,
+    "PrecoCompra": 7,
+    "PMZNovo": 7.700000000000001,
+    "PMZMedio": 7.350000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 15.384615384615369,
+    "Margem2": 19.230769230769212
+}, {
+    "ID": "II49",
+    "Custo": 0,
+    "PrecoVenda": 8,
+    "PrecoCompra": 6,
+    "PMZNovo": 6.6000000000000005,
+    "PMZMedio": 6.300000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 17.499999999999993,
+    "Margem2": 21.249999999999993
+}, {
+    "ID": "II50",
+    "Custo": 0,
+    "PrecoVenda": 8,
+    "PrecoCompra": 6,
+    "PMZNovo": 6.6000000000000005,
+    "PMZMedio": 6.300000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 17.499999999999993,
+    "Margem2": 21.249999999999993
+}, {
+    "ID": "II51",
+    "Custo": 0,
+    "PrecoVenda": 8.3,
+    "PrecoCompra": 6,
+    "PMZNovo": 6.6000000000000005,
+    "PMZMedio": 6.300000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 20.481927710843372,
+    "Margem2": 24.096385542168672
+}, {
+    "ID": "II52",
+    "Custo": 0,
+    "PrecoVenda": 8.3,
+    "PrecoCompra": 6,
+    "PMZNovo": 6.6000000000000005,
+    "PMZMedio": 6.300000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 20.481927710843372,
+    "Margem2": 24.096385542168672
+}, {
+    "ID": "II53",
+    "Custo": 0,
+    "PrecoVenda": 9.1,
+    "PrecoCompra": 7,
+    "PMZNovo": 7.700000000000001,
+    "PMZMedio": 7.350000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 15.384615384615369,
+    "Margem2": 19.230769230769212
+}, {
+    "ID": "II54",
+    "Custo": 0,
+    "PrecoVenda": 9.1,
+    "PrecoCompra": 7,
+    "PMZNovo": 7.700000000000001,
+    "PMZMedio": 7.350000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 15.384615384615369,
+    "Margem2": 19.230769230769212
+}, {
+    "ID": "II55",
+    "Custo": 0,
+    "PrecoVenda": 8,
+    "PrecoCompra": 6,
+    "PMZNovo": 6.6000000000000005,
+    "PMZMedio": 6.300000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 17.499999999999993,
+    "Margem2": 21.249999999999993
+}, {
+    "ID": "II56",
+    "Custo": 0,
+    "PrecoVenda": 8,
+    "PrecoCompra": 6,
+    "PMZNovo": 6.6000000000000005,
+    "PMZMedio": 6.300000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 17.499999999999993,
+    "Margem2": 21.249999999999993
+}, {
+    "ID": "II57",
+    "Custo": 0,
+    "PrecoVenda": 8.3,
+    "PrecoCompra": 6,
+    "PMZNovo": 6.6000000000000005,
+    "PMZMedio": 6.300000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 20.481927710843372,
+    "Margem2": 24.096385542168672
+}, {
+    "ID": "II58",
+    "Custo": 0,
+    "PrecoVenda": 8.3,
+    "PrecoCompra": 6,
+    "PMZNovo": 6.6000000000000005,
+    "PMZMedio": 6.300000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 20.481927710843372,
+    "Margem2": 24.096385542168672
+}, {
+    "ID": "II59",
+    "Custo": 0,
+    "PrecoVenda": 9.1,
+    "PrecoCompra": 7,
+    "PMZNovo": 7.700000000000001,
+    "PMZMedio": 7.350000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 15.384615384615369,
+    "Margem2": 19.230769230769212
+}, {
+    "ID": "II60",
+    "Custo": 0,
+    "PrecoVenda": 9.1,
+    "PrecoCompra": 7,
+    "PMZNovo": 7.700000000000001,
+    "PMZMedio": 7.350000000000001,
+    "MargemTeorica": 15,
+    "Margem1": 15.384615384615369,
+    "Margem2": 19.230769230769212
+}]

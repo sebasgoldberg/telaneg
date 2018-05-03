@@ -1,9 +1,9 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="simplifique.telaneg.controller.DetailPage1" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
     <Page title="{Descricao}" showHeader="true" showFooter="true" showNavButton="false">
         <content>
-            <ObjectHeader intro="{ID}" title="{Descricao}" icon="" number="{path: 'ValorMeta', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" numberUnit="BRL"
+            <ObjectHeader intro="{ID}" title="{Descricao}" icon="" number="{path: 'ValorTotalPedido', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" numberUnit="BRL"
                 numberState="{
-                        path: 'ValorMeta',
+                        path: 'ValorTotalPedido',
                         formatter: '.formatter.valorMetaStatus'
                     }"
                 showMarkers="false" markFavorite="false" markFlagged="false" backgroundDesign="Translucent" condensed="false">

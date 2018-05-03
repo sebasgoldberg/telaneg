@@ -200,7 +200,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
 
                         var iQuery = parseFloat(sQuery);
                         if (!isNaN(iQuery)) {
-                            aFilters.push(new sap.ui.model.Filter('ValorMeta', sap.ui.model.FilterOperator.EQ, sQuery));
+                            aFilters.push(new sap.ui.model.Filter('ValorTotalPedido', sap.ui.model.FilterOperator.EQ, sQuery));
                         }
 
                         var iQuery = parseFloat(sQuery);
@@ -228,7 +228,7 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
                             aFilters.push(new sap.ui.model.Filter('UFs', sap.ui.model.FilterOperator.EQ, sQuery));
                         }
 
-                        aFilters.push(new sap.ui.model.Filter('StatusValorMeta', sap.ui.model.FilterOperator.Contains, sQuery));
+                        aFilters.push(new sap.ui.model.Filter('StatusValorTotalPedido', sap.ui.model.FilterOperator.Contains, sQuery));
 
                         aFilters.push(new sap.ui.model.Filter('StatusNovaMargem2', sap.ui.model.FilterOperator.Contains, sQuery));
 

@@ -1,1 +1,361 @@
-[{"ID":"ST01","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST02","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST03","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST04","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST05","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST06","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST07","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST08","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST09","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST10","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST11","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST12","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST13","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST14","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST15","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST16","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST17","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST18","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST19","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST20","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST21","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST22","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST23","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST24","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST25","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST26","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST27","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST28","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST29","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST30","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST31","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST32","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST33","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST34","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST35","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST36","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST37","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST38","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST39","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST40","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST41","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST42","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST43","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST44","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST45","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST46","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST47","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST48","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST49","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST50","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST51","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST52","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST53","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST54","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST55","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST56","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST57","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST58","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST59","Quantidade":0,"Avaliacao":0,"DDE":0},{"ID":"ST60","Quantidade":0,"Avaliacao":0,"DDE":0}]
+[{
+    "ID": "ST01",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST02",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST03",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST04",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST05",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST06",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST07",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST08",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST09",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST10",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST11",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST12",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST13",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST14",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST15",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST16",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST17",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST18",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST19",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST20",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST21",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST22",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST23",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST24",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST25",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST26",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST27",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST28",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST29",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST30",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST31",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST32",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST33",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST34",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST35",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST36",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST37",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST38",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST39",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST40",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST41",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST42",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST43",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST44",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST45",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST46",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST47",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST48",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST49",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST50",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST51",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST52",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST53",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST54",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST55",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST56",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST57",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST58",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST59",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}, {
+    "ID": "ST60",
+    "QuantidadeLoja": 0,
+    "QuantidadeCD": 0,
+    "Avaliacao": 0,
+    "DDE": 0
+}]
