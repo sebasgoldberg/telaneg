@@ -3,3 +3,4 @@ bower_components
 dist
 *.swp
 package-lock.json
+*.tar.gz

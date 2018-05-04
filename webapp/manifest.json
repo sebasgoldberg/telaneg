@@ -96,32 +96,28 @@
 				"viewPath": "simplifique.telaneg.view",
 				"controlId": "idAppControl",
 				"clearTarget": false,
-				"controlAggregation": "detailPages",
+				"controlAggregation": "pages",
 				"async": false,
 				"bypassed": {
 					"target": [
-						"DetailPage1",
 						"MasterPage1"
 					]
 				}
 			},
 			"targets": {
 				"MasterPage1": {
-					"controlAggregation": "masterPages",
 					"viewName": "MasterPage1",
 					"viewId": "MasterPage1",
 					"viewLevel": 1,
 					"transition": "slide"
 				},
 				"DetailPage1": {
-					"controlAggregation": "detailPages",
 					"viewName": "DetailPage1",
 					"viewId": "DetailPage1",
 					"viewLevel": 2,
 					"transition": "slide"
 				},
 				"DetailPage2": {
-					"controlAggregation": "detailPages",
 					"viewName": "DetailPage2",
 					"viewId": "DetailPage2",
 					"viewLevel": 3,
@@ -133,7 +129,6 @@
 					"pattern": "MasterPage1",
 					"name": "MasterPage1",
 					"target": [
-						"DetailPage1",
 						"MasterPage1"
 					]
 				},
@@ -141,7 +136,6 @@
 					"pattern": "MasterPage1/DetailPage1/:context:",
 					"name": "DetailPage1",
 					"target": [
-						"MasterPage1",
 						"DetailPage1"
 					]
 				},
@@ -149,7 +143,6 @@
 					"pattern": "MasterPage1/DetailPage2/:context:",
 					"name": "DetailPage2",
 					"target": [
-						"MasterPage1",
 						"DetailPage2"
 					]
 				},
@@ -157,7 +150,6 @@
 					"pattern": "",
 					"name": "default",
 					"target": [
-						"DetailPage1",
 						"MasterPage1"
 					]
 				}

@@ -1,12 +1,10 @@
 <mvc:View
-		controllerName="simplifique.telaneg.controller.App"
-		xmlns:mvc="sap.ui.core.mvc"
-		displayBlock="true"
-		busy="{appView>/busy}"
-		busyIndicatorDelay="{appView>/delay}"
-		xmlns="sap.m">
-	<!--
-	<SplitApp id="idAppControl" mode="HideMode"/>
-	-->
-    <SplitApp id="idAppControl"/>
+        id="idAppControl" 
+        controllerName="simplifique.telaneg.controller.App"
+        xmlns:mvc="sap.ui.core.mvc"
+        displayBlock="true"
+        busy="{appView>/busy}"
+        busyIndicatorDelay="{appView>/delay}"
+        xmlns="sap.m">
+    <App id="idAppControl"/>
 </mvc:View>
