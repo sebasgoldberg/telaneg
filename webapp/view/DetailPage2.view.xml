@@ -22,8 +22,8 @@
                 <uxap:customAnchorBarButton/>
             </uxap:ObjectPageSection>
 
-                <!-- -->
-                <uxap:ObjectPageSection showTitle="true" title="Impostos" titleUppercase="true" visible="true">
+            <!--
+            <uxap:ObjectPageSection showTitle="true" title="Impostos" titleUppercase="true" visible="true">
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Impostos" mode="Expanded">
                         <uxap:blocks>
@@ -36,6 +36,8 @@
                 </uxap:subSections>
                 <uxap:customAnchorBarButton/>
             </uxap:ObjectPageSection>
+            -->
+
             <uxap:ObjectPageSection showTitle="true" title="Stock" titleUppercase="true" visible="true">
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Stock" mode="Expanded">
