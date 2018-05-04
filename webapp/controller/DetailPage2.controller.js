@@ -249,5 +249,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
         realizarSimulacao: function(oEvent) {
             this._realizarSimulacao();
         },
+        _onAccept: function(attribute) {
+            sap.m.MessageToast.show("Aprovação realizada.");
+        },
+        _onReject: function(attribute) {
+            sap.m.MessageToast.show("Rejeição realizada.");
+        },
     });
 }, /* bExport= */ true);

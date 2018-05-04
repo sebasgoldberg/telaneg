@@ -96,6 +96,8 @@
                 <Property Name="Status" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Status"/>
                 <Property Name="ValorTotalPedido" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ValorTotalPedido"/>
                 <Property Name="NovaMargem2" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="NovaMargem2"/>
+                <Property Name="NovaMargem1" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="NovaMargem1"/>
+                <Property Name="MargemTeorica" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MargemTeorica"/>
                 <Property Name="NovoIC" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="NovoIC"/>
                 <Property Name="Fornecedores" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Fornecedores"/>
                 <Property Name="Produtos" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Produtos"/>

@@ -11,18 +11,48 @@
                     </Toolbar>
                 </headerToolbar>
                 <items>
-                    <ObjectListItem intro="{ID}" title="{Descricao}" number="{path: 'ValorTotalPedido', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}" numberUnit="BRL"
+                    <ObjectListItem intro="{ID}" title="{Descricao}"
+                        number="{
+                            path: 'NovaMargem2',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: { maxFractionDigits: 2 }
+                            }"
+                        numberUnit="%"
                         numberState="{
-                            path: 'ValorTotalPedido',
-                            formatter: '.formatter.valorMetaStatus'
+                            parts: [ {path: 'NovaMargem2'}, {path: 'MargemTeorica'}],
+                            formatter: '.formatter.margemStatus'
                             }"
                         type="Active" selected="false" showMarkers="false" press="_onObjectListItemPress">
                         <attributes>
                             <ObjectAttribute title="" text="{path: 'Data', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}" active="false" />
+                            <ObjectAttribute title="" text="{Status}" active="false" />
                         </attributes>
                         <firstStatus>
-                            <ObjectStatus text="{Status}" state="Success"/>
-                        </firstStatus>
+                            <ObjectStatus
+                                text="M1: {
+                                    path: 'NovaMargem1',
+                                    type: 'sap.ui.model.type.Float',
+                                    formatOptions: { maxFractionDigits: 2 }
+                                    } %"
+                                state="{
+                                    parts: [ {path: 'NovaMargem1'}, {path: 'MargemTeorica'} ],
+                                    formatter: '.formatter.margemStatus'
+                                    }"
+                                    />
+                       </firstStatus>
+                       <secondStatus>
+                            <ObjectStatus
+                                text="IC: {
+                                    path: 'NovoIC',
+                                    type: 'sap.ui.model.type.Float',
+                                    formatOptions: { maxFractionDigits: 2 }
+                                    } %"
+                                state="{
+                                    parts: [ {path: 'NovoIC'} ],
+                                    formatter: '.formatter.icStatus'
+                                    }" />
+ 
+                       </secondStatus>
                     </ObjectListItem>
                 </items>
             </List>

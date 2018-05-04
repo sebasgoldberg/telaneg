@@ -214,7 +214,14 @@
                     type: 'sap.ui.model.type.Float',
                     formatOptions: { maxFractionDigits: 2 }
                     } BRL" />
-        <Label text="Margem Teorica" />
+        <Label text="Margem 1" />
+            <Text
+                text="{
+                    path: 'informacao/Margem1',
+                    type: 'sap.ui.model.type.Float',
+                    formatOptions: { maxFractionDigits: 2 }
+                    } %" />
+         <Label text="Margem Teorica" />
             <Text
                 text="{
                     path: 'informacao/MargemTeorica',
@@ -235,6 +242,14 @@
                     type: 'sap.ui.model.type.Float',
                     formatOptions: { maxFractionDigits: 2 }
                     } BRL" />
+        <Label text="IC" />
+            <Text
+                text="{
+                    path: 'informacao/IC',
+                    type: 'sap.ui.model.type.Float',
+                    formatOptions: { maxFractionDigits: 2 }
+                    } %" />
+
     </form:SimpleForm>
 
 </core:FragmentDefinition>
