@@ -111,6 +111,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
         },
         _onButtonPress: function(oEvent) {
+            sap.m.MessageToast.show("Serão adicionados itens na negociação.");
+            return;
 
             var sDialogName = "Dialog1";
             this.mDialogs = this.mDialogs || {};
