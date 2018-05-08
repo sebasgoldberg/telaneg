@@ -59,11 +59,11 @@
                 <Input value="{Descricao}" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
 
                 <Label text="Tipo de Negociação" />
-                <ComboBox selectedKey="tabela">
+                <ComboBox selectedKey="{TipoNegociacao}">
                     <items>
-                        <core:Item text="Tabela de Preços" enabled="true" key="tabela"/>
-                        <core:Item text="Commodities" enabled="true" key="commodities"/>
-                        <core:Item text="Negociação Spot" enabled="true" key="spot"/>
+                        <core:Item text="Tabela de Preços" enabled="true" key="A"/>
+                        <core:Item text="Commodities" enabled="true" key="B"/>
+                        <core:Item text="Negociação Spot" enabled="true" key="C"/>
                     </items>
                 </ComboBox>
 
