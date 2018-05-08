@@ -2,10 +2,9 @@ sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
 	"simplifique/telaneg/model/models",
-	"simplifique/telaneg/controller/ListSelector",
 	"simplifique/telaneg/controller/ErrorHandler"
 
-], function(UIComponent, Device, models, ListSelector, ErrorHandler) {
+], function(UIComponent, Device, models, ErrorHandler) {
 	"use strict";
 
 	var navigationWithContext = {
@@ -31,7 +30,6 @@ sap.ui.define([
 		 * @override
 		 */
 		init: function() {
-			this.oListSelector = new ListSelector();
 			this._oErrorHandler = new ErrorHandler(this);
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
@@ -61,7 +59,6 @@ sap.ui.define([
 		 * @override
 		 */
 		destroy: function() {
-			this.oListSelector.destroy();
 			this._oErrorHandler.destroy();
 			// call the base component's destroy function
 			UIComponent.prototype.destroy.apply(this, arguments);
