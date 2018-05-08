@@ -186,6 +186,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
         },
         _onButtonPress2: function() {
+            let m = this.getView().getModel();
+            m.submitChanges();
             return new Promise(function(fnResolve) {
                 var sTargetPos = "";
                 sTargetPos = (sTargetPos === "default") ? undefined : sTargetPos;
@@ -221,6 +223,23 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
         onInit: function() {
             this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             this.oRouter.getTarget("DetailPage1").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
+            this.oRouter.getTarget("NovaNegociacao").attachDisplay( oEvent => {
+                let m = this.getView().getModel();
+                let oContext = m.createEntry("/NegociacaoSet", {
+                    properties: {
+                        Data: new Date(),
+                        Status: "Inicial",
+                        NovaMargem2: 0,
+                        MargemTeorica: 0,
+                        NovaMargem1: 0,
+                        NovoIC: 0,
+                        }});
+                this.sContext = oContext.getPath();
+                let oPath = {
+                    path: this.sContext,
+                };
+                this.getView().bindObject(oPath);
+                });
             var oView = this.getView();
             oView.addEventDelegate({
                 onBeforeShow: function() {

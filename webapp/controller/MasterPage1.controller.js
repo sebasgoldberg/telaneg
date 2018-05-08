@@ -317,6 +317,9 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
 
         },
         _onButtonPress: function() {
+            this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            this.oRouter.navTo('NovaNegociacao');
+            return;
             return new Promise(function(fnResolve) {
                     var sTargetPos = '';
                     sTargetPos = (sTargetPos === 'default') ? undefined : sTargetPos;
