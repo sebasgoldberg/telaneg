@@ -177,6 +177,10 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
                     fnPromiseResolve();
                 }
         },
+        _getList: function() {
+            var sControlId = 'sap_List_Page_0-content-sap_m_List-1';
+            return this.getView().byId(sControlId);
+        },
         _onSearchFieldSearch: function(oEvent) {
             var sControlId = 'sap_List_Page_0-content-sap_m_List-1';
             var oControl = this.getView().byId(sControlId);
@@ -339,7 +343,14 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
         onInit: function() {
             this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             this.oRouter.getTarget('MasterPage1').attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
-
-        }
+        },
+        onAfterRendering: function() {
+            let oControl = this._getList();
+            let oItemsBinding = oControl.getBinding('items');
+            oItemsBinding.sort([
+                new sap.ui.model.Sorter("Data", true),
+                new sap.ui.model.Sorter("ID", true),
+            ]);
+        },
     });
 }, /* bExport= */ true);

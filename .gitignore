@@ -2,5 +2,6 @@ node_modules
 bower_components
 dist
 *.swp
+*.un~
 package-lock.json
 *.tar.gz

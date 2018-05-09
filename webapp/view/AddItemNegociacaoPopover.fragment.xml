@@ -1,0 +1,101 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <ResponsivePopover
+        title="Adicionar Itens: {Descricao}"
+        class="sapUiPopupWithPadding"
+        contentWidth="320px"
+        contentHeight="400px"
+        placement="Left" >
+
+        <beginButton>
+            <Button text="Adicionar" type="Emphasized" press="onAddGruposListas" />
+        </beginButton>
+
+        <endButton>
+            <Button text="Cancelar" press="onCancelAddGruposListas" />
+        </endButton>
+
+        <content>
+            <NavContainer
+                initialPage='fornecedores'
+                id="navCon">
+
+                <Page
+                    id="fornecedores"
+                    title="Fornecedores">
+                    <subHeader>
+                        <Toolbar>
+                            <SearchField
+                                width="100%" />
+                        </Toolbar>
+                    </subHeader>
+                    <List
+                        id="listFornecedores"
+                        items="{listas>/Fornecedor}" >
+                        <StandardListItem
+                            title="{listas>ID}"
+                            description="{listas>Nome}"
+                            type="Active"
+                            press="onFornecedorSelected"
+                            />
+                    </List>
+                </Page>
+
+                <Page
+                    id="gruposListasFornecedor"
+                    showNavButton="true"
+                    navButtonPress="onNavBack"
+                    title="Listas {listas>Nome}">
+                    <subHeader>
+                        <Toolbar>
+                            <SearchField
+                                width="100%" />
+                        </Toolbar>
+                    </subHeader>
+                    <List
+                        id="listGruposListasFornecedor"
+                        mode="MultiSelect"
+                        items="{listas>gruposListas}" >
+                        <StandardListItem
+                            title="{listas>Centro}, {listas>GrupoCompra}"
+                            description="{
+                                path: 'listas>DataDe',
+                                type: 'sap.ui.model.type.Date',
+                                formatOptions: { UTC: true, style: 'short' }
+                                } - {
+                                    path: 'listas>DataAte',
+                                    type: 'sap.ui.model.type.Date',
+                                    formatOptions: { UTC: true, style: 'short' }}"
+                            type="Active"
+                            press="onGrupoListaSelected"
+                            />
+                    </List>
+                </Page>
+
+                <Page
+                    id="produtos"
+                    showNavButton="true"
+                    navButtonPress="onNavBack"
+                    title="{listas>Centro}, {listas>GrupoCompra}">
+                    <subHeader>
+                        <Toolbar>
+                            <SearchField
+                                width="100%" />
+                        </Toolbar>
+                    </subHeader>
+                    <List
+                        id="listProdutos"
+                        items="{listas>produtos}" >
+                        <StandardListItem
+                            title="{listas>ID}"
+                            description="{listas>Nome}"
+                            />
+                    </List>
+                </Page>
+
+
+            </NavContainer>
+        </content>
+    </ResponsivePopover>
+</core:FragmentDefinition>

@@ -110,8 +110,75 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             });
 
         },
+        displayAddItemPopover: function(oEvent) {
+            if (!oEvent)
+                return;
+            if (!this.popover) {
+                this.popover = sap.ui.xmlfragment(
+                    "addItemPopover",
+                    "simplifique.telaneg.view.AddItemNegociacaoPopover",
+                    this);
+            }
+            this.getView().addDependent(this.popover);
+            this.popover.openBy(oEvent.getSource());
+        },
+        onFornecedorSearch:function(){
+        },
+        onFornecedorSelected: function(oEvent) {
+            let oCtx = oEvent.getSource().getBindingContext('listas');
+            let oNavCon = sap.ui.core.Fragment.byId("addItemPopover", "navCon");
+            let oDetailPage = sap.ui.core.Fragment.byId("addItemPopover", "gruposListasFornecedor");
+            oDetailPage.bindElement({ path: oCtx.getPath(), model: 'listas'});
+            oNavCon.to(oDetailPage);
+        },
+        onGrupoListaSelected: function(oEvent) {
+            let oCtx = oEvent.getSource().getBindingContext('listas');
+            let oNavCon = sap.ui.core.Fragment.byId("addItemPopover", "navCon");
+            let oDetailPage = sap.ui.core.Fragment.byId("addItemPopover", "produtos");
+            oDetailPage.bindElement({ path: oCtx.getPath(), model: 'listas'});
+            oNavCon.to(oDetailPage);
+        },
+
+        onAddGruposListas: function(oEvent) {
+            let v = this.getView();
+            let sNegociacaoPath = v.getBindingContext().getPath();
+            let oNegociacao = v.getBindingContext().getObject();
+
+            let m = v.getModel();
+
+            let oPageGruposListasFornecedor = sap.ui.core.Fragment.byId("addItemPopover", "gruposListasFornecedor");
+            let oContextFornecedor = oPageGruposListasFornecedor.getBindingContext('listas')
+            let oFornecedor = oContextFornecedor.getObject();
+
+            let oListGruposListas = sap.ui.core.Fragment.byId("addItemPopover", "listGruposListasFornecedor");
+
+            // @todo Codigo sync, deveria ser adaptado para ser async.
+            oListGruposListas.getSelectedContexts().forEach( oContextGrupoLista => {
+
+                let oGrupoLista = oContextGrupoLista.getObject();
+                oGrupoLista.produtos.forEach( produto => {
+
+                    let oContextItem = m.createEntry(
+                        //sNegociacaoPath+"/ItemNegociacaoSet", { });
+                        "/ItemNegociacaoSet", { properties: {
+                            "___FK_fec2295f0aaece790f8a51e8_00135": oNegociacao.ID,
+                            } });
+                    });
+                });
+            m.submitChanges();
+            v.byId('itemsTable').getBinding('items').refresh();
+            this.popover.close();
+        },
+        onCancelAddGruposListas: function(oEvent) {
+            this.popover.close();
+        },
+        onNavBack: function() {
+            let oNavCon = sap.ui.core.Fragment.byId("addItemPopover", "navCon");
+            oNavCon.back();
+        },
         _onButtonPress: function(oEvent) {
-            sap.m.MessageToast.show("Serão adicionados itens na negociação.");
+            this.displayAddItemPopover(oEvent);
+            //sap.m.MessageToast.show("Serão adicionados itens na negociação.");
             return;
 
             var sDialogName = "Dialog1";
@@ -221,6 +288,32 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
         },
         onInit: function() {
+            //@todo Mudar para serviço OData
+            let de = new Date();
+            de.setDate((new Date()).getDate()-5);
+            let ate = new Date();
+            ate.setDate((new Date()).getDate()+25);
+            let listasFornecedores = new sap.ui.model.json.JSONModel({
+                Fornecedor: [
+                    {
+                        Nome: 'CARLA BEATRIZ ALMEIDA SANTOS',
+                        ID: 'F01',
+                        gruposListas:[
+                            {
+                                Centro: 'BVBA',
+                                GrupoCompra: '14',
+                                DataDe: de,
+                                DataAte: ate,
+                                produtos: [
+                                    {ID: 'P1', Nome: 'Produto 1'},
+                                    {ID: 'P1', Nome: 'Produto 1'},
+                                    {ID: 'P1', Nome: 'Produto 1'},
+                                ]
+                                }
+                        ]},
+                ]
+                });
+            this.getView().setModel(listasFornecedores, 'listas');
             this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             this.oRouter.getTarget("DetailPage1").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
             this.oRouter.getTarget("NovaNegociacao").attachDisplay( oEvent => {
@@ -234,6 +327,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                         NovaMargem1: 0,
                         NovoIC: 0,
                         }});
+                m.submitChanges();
                 this.sContext = oContext.getPath();
                 let oPath = {
                     path: this.sContext,

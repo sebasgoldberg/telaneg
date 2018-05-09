@@ -1,7 +1,11 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="simplifique.telaneg.controller.MasterPage1" xmlns="sap.m">
     <Page title="Negociações" showHeader="true" showFooter="true" showNavButton="true">
         <content>
-            <List id="sap_List_Page_0-content-sap_m_List-1" mode="SingleSelectMaster" width="100%" headerText="Header" footerText="" backgroundDesign="Solid" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onListItemPress" items="{path:'/NegociacaoSet', templateShareable:true}">
+            <List id="sap_List_Page_0-content-sap_m_List-1" mode="SingleSelectMaster" width="100%" headerText="Header" footerText="" backgroundDesign="Solid" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onListItemPress"
+                items="{
+                    path:'/NegociacaoSet',
+                    templateShareable:true
+                    }">
                 <infoToolbar />
                 <headerToolbar>
                     <Toolbar visible="true" enabled="true" width="" design="Solid">
