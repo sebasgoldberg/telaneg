@@ -1,1 +1,601 @@
-[{"ID":"IE01","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE02","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE03","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE04","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE05","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE06","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE07","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE08","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE09","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE10","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE11","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE12","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE13","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE14","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE15","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE16","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE17","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE18","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE19","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE20","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE21","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE22","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE23","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE24","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE25","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE26","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE27","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE28","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE29","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE30","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE31","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE32","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE33","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE34","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE35","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE36","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE37","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE38","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE39","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE40","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE41","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE42","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE43","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE44","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE45","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE46","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE47","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE48","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE49","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE50","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE51","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE52","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE53","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE54","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE55","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE56","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE57","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE58","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE59","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0},{"ID":"IE60","IPI":0,"ICMS":0,"BaseReduzidaICMS":0,"PIS":0,"COFINS":0,"ST":0,"PAUTA":0,"MVA":0}]
+[{
+    "ID": "I01",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I02",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I03",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I04",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I05",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I06",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I07",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I08",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I09",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I10",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I11",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I12",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I13",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I14",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I15",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I16",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I17",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I18",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I19",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I20",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I21",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I22",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I23",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I24",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I25",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I26",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I27",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I28",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I29",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I30",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I31",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I32",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I33",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I34",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I35",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I36",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I37",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I38",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I39",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I40",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I41",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I42",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I43",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I44",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I45",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I46",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I47",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I48",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I49",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I50",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I51",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I52",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I53",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I54",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I55",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I56",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I57",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I58",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I59",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}, {
+    "ID": "I60",
+    "IPI": 0,
+    "ICMS": 0,
+    "BaseReduzidaICMS": 0,
+    "PIS": 0,
+    "COFINS": 0,
+    "ST": 0,
+    "PAUTA": 0,
+    "MVA": 0
+}]

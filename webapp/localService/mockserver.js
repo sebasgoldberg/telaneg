@@ -22,6 +22,10 @@ sap.ui.define([
                 bGenerateMissingMockData: true
             });
 
+            oMockServer.attachAfter("GET", oEvent => {
+                console.log(oEvent);
+                });
+
             // start
             oMockServer.start();
 

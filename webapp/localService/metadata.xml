@@ -1,530 +1,533 @@
+<?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
-    <edmx:DataServices m:DataServiceVersion="2.0">
-        <Schema Namespace="simplifique" xml:lang="en" sap:schema-version="0000" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-            <EntityContainer Name="simplifique_Entities" m:IsDefaultEntityContainer="true">
-                <EntitySet Name="NegociacaoSet" EntityType="simplifique.Negociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
-                <AssociationSet Name="NegociacaofornecedorFornecedorNegociacao" Association="simplifique.NegociacaofornecedorFornecedorNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true">
-                    <End EntitySet="NegociacaoSet" Role="FromRole_NegociacaofornecedorFornecedorNegociacao"/>
-                    <End EntitySet="FornecedorNegociacaoSet" Role="ToRole_NegociacaofornecedorFornecedorNegociacao"/>
-                </AssociationSet>
-                <AssociationSet Name="NegociacaoprodutoProdutoNegociacao" Association="simplifique.NegociacaoprodutoProdutoNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true">
-                    <End EntitySet="NegociacaoSet" Role="FromRole_NegociacaoprodutoProdutoNegociacao"/>
-                    <End EntitySet="ProdutoNegociacaoSet" Role="ToRole_NegociacaoprodutoProdutoNegociacao"/>
-                </AssociationSet>
-                <AssociationSet Name="NegociacaocentroCentroNegociacao" Association="simplifique.NegociacaocentroCentroNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true">
-                    <End EntitySet="NegociacaoSet" Role="FromRole_NegociacaocentroCentroNegociacao"/>
-                    <End EntitySet="CentroNegociacaoSet" Role="ToRole_NegociacaocentroCentroNegociacao"/>
-                </AssociationSet>
-                <AssociationSet Name="NegociacaoitemItemNegociacao" Association="simplifique.NegociacaoitemItemNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true">
-                    <End EntitySet="NegociacaoSet" Role="FromRole_NegociacaoitemItemNegociacao"/>
-                    <End EntitySet="ItemNegociacaoSet" Role="ToRole_NegociacaoitemItemNegociacao"/>
-                </AssociationSet>
-                <EntitySet Name="FornecedorNegociacaoSet" EntityType="simplifique.FornecedorNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
-                <EntitySet Name="ProdutoNegociacaoSet" EntityType="simplifique.ProdutoNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
-                <EntitySet Name="CentroNegociacaoSet" EntityType="simplifique.CentroNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
-                <EntitySet Name="ItemNegociacaoSet" EntityType="simplifique.ItemNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
-                <AssociationSet Name="ItemNegociacaofornecedorFornecedorNegociacao" Association="simplifique.ItemNegociacaofornecedorFornecedorNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true">
-                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaofornecedorFornecedorNegociacao"/>
-                    <End EntitySet="FornecedorNegociacaoSet" Role="ToRole_ItemNegociacaofornecedorFornecedorNegociacao"/>
-                </AssociationSet>
-                <AssociationSet Name="ItemNegociacaoprodutoProdutoNegociacao" Association="simplifique.ItemNegociacaoprodutoProdutoNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true">
-                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaoprodutoProdutoNegociacao"/>
-                    <End EntitySet="ProdutoNegociacaoSet" Role="ToRole_ItemNegociacaoprodutoProdutoNegociacao"/>
-                </AssociationSet>
-                <AssociationSet Name="ItemNegociacaocentroCentroNegociacao" Association="simplifique.ItemNegociacaocentroCentroNegociacao" sap:creatable="true" sap:updatable="true" sap:deletable="true">
-                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaocentroCentroNegociacao"/>
-                    <End EntitySet="CentroNegociacaoSet" Role="ToRole_ItemNegociacaocentroCentroNegociacao"/>
-                </AssociationSet>
-                <AssociationSet Name="ItemNegociacaoinformacaoInformacaoItem" Association="simplifique.ItemNegociacaoinformacaoInformacaoItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
-                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaoinformacaoInformacaoItem"/>
-                    <End EntitySet="InformacaoItemSet" Role="ToRole_ItemNegociacaoinformacaoInformacaoItem"/>
-                </AssociationSet>
-                <AssociationSet Name="ItemNegociacaosimulacaoSimulacaoItem" Association="simplifique.ItemNegociacaosimulacaoSimulacaoItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
-                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaosimulacaoSimulacaoItem"/>
-                    <End EntitySet="SimulacaoItemSet" Role="ToRole_ItemNegociacaosimulacaoSimulacaoItem"/>
-                </AssociationSet>
-                <AssociationSet Name="ItemNegociacaoimpostosEntradaImpostosEntradaItem" Association="simplifique.ItemNegociacaoimpostosEntradaImpostosEntradaItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
-                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaoimpostosEntradaImpostosEntradaItem"/>
-                    <End EntitySet="ImpostosEntradaItemSet" Role="ToRole_ItemNegociacaoimpostosEntradaImpostosEntradaItem"/>
-                </AssociationSet>
-                <AssociationSet Name="ItemNegociacaoimpostosSaidaImpostosSaidaItem" Association="simplifique.ItemNegociacaoimpostosSaidaImpostosSaidaItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
-                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaoimpostosSaidaImpostosSaidaItem"/>
-                    <End EntitySet="ImpostosSaidaItemSet" Role="ToRole_ItemNegociacaoimpostosSaidaImpostosSaidaItem"/>
-                </AssociationSet>
-                <AssociationSet Name="ItemNegociacaovendaAnteriorVendaAnteriorItem" Association="simplifique.ItemNegociacaovendaAnteriorVendaAnteriorItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
-                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaovendaAnteriorVendaAnteriorItem"/>
-                    <End EntitySet="VendaAnteriorItemSet" Role="ToRole_ItemNegociacaovendaAnteriorVendaAnteriorItem"/>
-                </AssociationSet>
-                <AssociationSet Name="ItemNegociacaovendaActualVendaActualItem" Association="simplifique.ItemNegociacaovendaActualVendaActualItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
-                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaovendaActualVendaActualItem"/>
-                    <End EntitySet="VendaActualItemSet" Role="ToRole_ItemNegociacaovendaActualVendaActualItem"/>
-                </AssociationSet>
-                <AssociationSet Name="ItemNegociacaostockStockItem" Association="simplifique.ItemNegociacaostockStockItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
-                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaostockStockItem"/>
-                    <End EntitySet="StockItemSet" Role="ToRole_ItemNegociacaostockStockItem"/>
-                </AssociationSet>
-                <AssociationSet Name="ItemNegociacaonossoPricingNossoPricingItem" Association="simplifique.ItemNegociacaonossoPricingNossoPricingItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
-                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaonossoPricingNossoPricingItem"/>
-                    <End EntitySet="NossoPricingItemSet" Role="ToRole_ItemNegociacaonossoPricingNossoPricingItem"/>
-                </AssociationSet>
-                <AssociationSet Name="ItemNegociacaocategoryReviewCategoryReviewItem" Association="simplifique.ItemNegociacaocategoryReviewCategoryReviewItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
-                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaocategoryReviewCategoryReviewItem"/>
-                    <End EntitySet="CategoryReviewItemSet" Role="ToRole_ItemNegociacaocategoryReviewCategoryReviewItem"/>
-                </AssociationSet>
-                <AssociationSet Name="ItemNegociacaocontratoContratoItem" Association="simplifique.ItemNegociacaocontratoContratoItem" sap:creatable="true" sap:updatable="true" sap:deletable="true">
-                    <End EntitySet="ItemNegociacaoSet" Role="FromRole_ItemNegociacaocontratoContratoItem"/>
-                    <End EntitySet="ContratoItemSet" Role="ToRole_ItemNegociacaocontratoContratoItem"/>
-                </AssociationSet>
-                <EntitySet Name="InformacaoItemSet" EntityType="simplifique.InformacaoItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
-                <EntitySet Name="SimulacaoItemSet" EntityType="simplifique.SimulacaoItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
-                <EntitySet Name="ImpostosEntradaItemSet" EntityType="simplifique.ImpostosEntradaItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
-                <EntitySet Name="ImpostosSaidaItemSet" EntityType="simplifique.ImpostosSaidaItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
-                <EntitySet Name="VendaAnteriorItemSet" EntityType="simplifique.VendaAnteriorItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
-                <EntitySet Name="VendaActualItemSet" EntityType="simplifique.VendaActualItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
-                <EntitySet Name="StockItemSet" EntityType="simplifique.StockItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
-                <EntitySet Name="NossoPricingItemSet" EntityType="simplifique.NossoPricingItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
-                <EntitySet Name="CategoryReviewItemSet" EntityType="simplifique.CategoryReviewItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
-                <EntitySet Name="ContratoItemSet" EntityType="simplifique.ContratoItem" sap:creatable="true" sap:updatable="true" sap:deletable="true"/>
-            </EntityContainer>
-            <EntityType Name="Negociacao">
-                <Key>
-                    <PropertyRef Name="ID"/>
-                </Key>
-                <Property Name="ID" Type="Edm.String" sap:nullable="false" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
-                <Property Name="Descricao" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Descricao"/>
-                <Property Name="TipoNegociacao" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="TipoNegociacao"/>
-                <Property Name="Data" Type="Edm.DateTime" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:display-format="Date" sap:label="Data"/>
-                <Property Name="Status" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Status"/>
-                <Property Name="ValorTotalPedido" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ValorTotalPedido"/>
-                <Property Name="NovaMargem2" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="NovaMargem2"/>
-                <Property Name="NovaMargem1" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="NovaMargem1"/>
-                <Property Name="MargemTeorica" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MargemTeorica"/>
-                <Property Name="NovoIC" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="NovoIC"/>
-                <Property Name="Fornecedores" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Fornecedores"/>
-                <Property Name="Produtos" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Produtos"/>
-                <Property Name="UFs" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="UFs"/>
-                <NavigationProperty Name="fornecedor" Relationship="simplifique.NegociacaofornecedorFornecedorNegociacao" FromRole="FromRole_NegociacaofornecedorFornecedorNegociacao" ToRole="ToRole_NegociacaofornecedorFornecedorNegociacao"/>
-                <NavigationProperty Name="produto" Relationship="simplifique.NegociacaoprodutoProdutoNegociacao" FromRole="FromRole_NegociacaoprodutoProdutoNegociacao" ToRole="ToRole_NegociacaoprodutoProdutoNegociacao"/>
-                <NavigationProperty Name="centro" Relationship="simplifique.NegociacaocentroCentroNegociacao" FromRole="FromRole_NegociacaocentroCentroNegociacao" ToRole="ToRole_NegociacaocentroCentroNegociacao"/>
-                <NavigationProperty Name="item" Relationship="simplifique.NegociacaoitemItemNegociacao" FromRole="FromRole_NegociacaoitemItemNegociacao" ToRole="ToRole_NegociacaoitemItemNegociacao"/>
-            </EntityType>
-            <Association Name="NegociacaofornecedorFornecedorNegociacao">
-                <End Type="simplifique.Negociacao" Multiplicity="1" Role="FromRole_NegociacaofornecedorFornecedorNegociacao"/>
-                <End Type="simplifique.FornecedorNegociacao" Multiplicity="*" Role="ToRole_NegociacaofornecedorFornecedorNegociacao"/>
-                <ReferentialConstraint>
-                    <Principal Role="FromRole_NegociacaofornecedorFornecedorNegociacao">
-                        <PropertyRef Name="ID"/>
-                    </Principal>
-                    <Dependent Role="ToRole_NegociacaofornecedorFornecedorNegociacao">
-                        <PropertyRef Name="NegociacaoID"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
-            <Association Name="NegociacaoprodutoProdutoNegociacao">
-                <End Type="simplifique.Negociacao" Multiplicity="1" Role="FromRole_NegociacaoprodutoProdutoNegociacao"/>
-                <End Type="simplifique.ProdutoNegociacao" Multiplicity="*" Role="ToRole_NegociacaoprodutoProdutoNegociacao"/>
-                <ReferentialConstraint>
-                    <Principal Role="FromRole_NegociacaoprodutoProdutoNegociacao">
-                        <PropertyRef Name="ID"/>
-                    </Principal>
-                    <Dependent Role="ToRole_NegociacaoprodutoProdutoNegociacao">
-                        <PropertyRef Name="NegociacaoID"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
-            <Association Name="NegociacaocentroCentroNegociacao">
-                <End Type="simplifique.Negociacao" Multiplicity="1" Role="FromRole_NegociacaocentroCentroNegociacao"/>
-                <End Type="simplifique.CentroNegociacao" Multiplicity="*" Role="ToRole_NegociacaocentroCentroNegociacao"/>
-                <ReferentialConstraint>
-                    <Principal Role="FromRole_NegociacaocentroCentroNegociacao">
-                        <PropertyRef Name="ID"/>
-                    </Principal>
-                    <Dependent Role="ToRole_NegociacaocentroCentroNegociacao">
-                        <PropertyRef Name="NegociacaoID"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
-            <Association Name="NegociacaoitemItemNegociacao">
-                <End Type="simplifique.Negociacao" Multiplicity="1" Role="FromRole_NegociacaoitemItemNegociacao"/>
-                <End Type="simplifique.ItemNegociacao" Multiplicity="*" Role="ToRole_NegociacaoitemItemNegociacao"/>
-                <ReferentialConstraint>
-                    <Principal Role="FromRole_NegociacaoitemItemNegociacao">
-                        <PropertyRef Name="ID"/>
-                    </Principal>
-                    <Dependent Role="ToRole_NegociacaoitemItemNegociacao">
-                        <PropertyRef Name="NegociacaoID"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
-            <EntityType Name="FornecedorNegociacao">
-                <Key>
-                    <PropertyRef Name="ID"/>
-                </Key>
-                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
-                <Property Name="Codigo" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Codigo"/>
-                <Property Name="Cadastrado" Type="Edm.Boolean" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Cadastrado"/>
-                <Property Name="Nome" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Nome"/>
-                <Property Name="M2" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="M2"/>
-                <Property Name="IC" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="IC"/>
-                <Property Name="ValorTotalPedido" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ValorTotalPedido"/>
-                <Property Name="NegociacaoID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="NegociacaoID"/>
-            </EntityType>
-            <EntityType Name="ProdutoNegociacao">
-                <Key>
-                    <PropertyRef Name="ID"/>
-                </Key>
-                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
-                <Property Name="Codigo" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Codigo"/>
-                <Property Name="Cadastrado" Type="Edm.Boolean" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Cadastrado"/>
-                <Property Name="Nome" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Nome"/>
-                <Property Name="M2" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="M2"/>
-                <Property Name="IC" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="IC"/>
-                <Property Name="ValorTotalPedido" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ValorTotalPedido"/>
-                <Property Name="NegociacaoID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="NegociacaoID"/>
-            </EntityType>
-            <EntityType Name="CentroNegociacao">
-                <Key>
-                    <PropertyRef Name="ID"/>
-                </Key>
-                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
-                <Property Name="Codigo" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Codigo"/>
-                <Property Name="M2" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="M2"/>
-                <Property Name="IC" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="IC"/>
-                <Property Name="ValorTotalPedido" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ValorTotalPedido"/>
-                <Property Name="NegociacaoID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="NegociacaoID"/>
-            </EntityType>
-            <EntityType Name="ItemNegociacao">
-                <Key>
-                    <PropertyRef Name="ID"/>
-                </Key>
-                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
-                <Property Name="Negociar" Type="Edm.Boolean" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Negociar"/>
-                <Property Name="NegociacaoID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="NegociacaoID"/>
-                <Property Name="FornecedorID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="FornecedorID"/>
-                <Property Name="ProdutoID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ProdutoID"/>
-                <Property Name="CentroID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="CentroID"/>
-                <Property Name="InformacaoID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="InformacaoID"/>
-                <Property Name="SimulacaoID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="SimulacaoID"/>
-                <Property Name="ImpostosEntradaID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ImpostosEntradaID"/>
-                <Property Name="ImpostosSaidaID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ImpostosSaidaID"/>
-                <Property Name="VendaAnteriorID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="VendaAnteriorID"/>
-                <Property Name="VendaAtualID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="VendaAtualID"/>
-                <Property Name="StockID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="StockID"/>
-                <Property Name="NossoPricingID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="NossoPricingID"/>
-                <Property Name="CategoryReviewID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="CategoryReviewID"/>
-                <Property Name="ContratoID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ContratoID"/>
-                <NavigationProperty Name="fornecedor" Relationship="simplifique.ItemNegociacaofornecedorFornecedorNegociacao" FromRole="FromRole_ItemNegociacaofornecedorFornecedorNegociacao" ToRole="ToRole_ItemNegociacaofornecedorFornecedorNegociacao"/>
-                <NavigationProperty Name="produto" Relationship="simplifique.ItemNegociacaoprodutoProdutoNegociacao" FromRole="FromRole_ItemNegociacaoprodutoProdutoNegociacao" ToRole="ToRole_ItemNegociacaoprodutoProdutoNegociacao"/>
-                <NavigationProperty Name="centro" Relationship="simplifique.ItemNegociacaocentroCentroNegociacao" FromRole="FromRole_ItemNegociacaocentroCentroNegociacao" ToRole="ToRole_ItemNegociacaocentroCentroNegociacao"/>
-                <NavigationProperty Name="informacao" Relationship="simplifique.ItemNegociacaoinformacaoInformacaoItem" FromRole="FromRole_ItemNegociacaoinformacaoInformacaoItem" ToRole="ToRole_ItemNegociacaoinformacaoInformacaoItem"/>
-                <NavigationProperty Name="simulacao" Relationship="simplifique.ItemNegociacaosimulacaoSimulacaoItem" FromRole="FromRole_ItemNegociacaosimulacaoSimulacaoItem" ToRole="ToRole_ItemNegociacaosimulacaoSimulacaoItem"/>
-                <NavigationProperty Name="impostosEntrada" Relationship="simplifique.ItemNegociacaoimpostosEntradaImpostosEntradaItem" FromRole="FromRole_ItemNegociacaoimpostosEntradaImpostosEntradaItem" ToRole="ToRole_ItemNegociacaoimpostosEntradaImpostosEntradaItem"/>
-                <NavigationProperty Name="impostosSaida" Relationship="simplifique.ItemNegociacaoimpostosSaidaImpostosSaidaItem" FromRole="FromRole_ItemNegociacaoimpostosSaidaImpostosSaidaItem" ToRole="ToRole_ItemNegociacaoimpostosSaidaImpostosSaidaItem"/>
-                <NavigationProperty Name="vendaAnterior" Relationship="simplifique.ItemNegociacaovendaAnteriorVendaAnteriorItem" FromRole="FromRole_ItemNegociacaovendaAnteriorVendaAnteriorItem" ToRole="ToRole_ItemNegociacaovendaAnteriorVendaAnteriorItem"/>
-                <NavigationProperty Name="vendaActual" Relationship="simplifique.ItemNegociacaovendaActualVendaActualItem" FromRole="FromRole_ItemNegociacaovendaActualVendaActualItem" ToRole="ToRole_ItemNegociacaovendaActualVendaActualItem"/>
-                <NavigationProperty Name="stock" Relationship="simplifique.ItemNegociacaostockStockItem" FromRole="FromRole_ItemNegociacaostockStockItem" ToRole="ToRole_ItemNegociacaostockStockItem"/>
-                <NavigationProperty Name="nossoPricing" Relationship="simplifique.ItemNegociacaonossoPricingNossoPricingItem" FromRole="FromRole_ItemNegociacaonossoPricingNossoPricingItem" ToRole="ToRole_ItemNegociacaonossoPricingNossoPricingItem"/>
-                <NavigationProperty Name="categoryReview" Relationship="simplifique.ItemNegociacaocategoryReviewCategoryReviewItem" FromRole="FromRole_ItemNegociacaocategoryReviewCategoryReviewItem" ToRole="ToRole_ItemNegociacaocategoryReviewCategoryReviewItem"/>
-                <NavigationProperty Name="contrato" Relationship="simplifique.ItemNegociacaocontratoContratoItem" FromRole="FromRole_ItemNegociacaocontratoContratoItem" ToRole="ToRole_ItemNegociacaocontratoContratoItem"/>
-            </EntityType>
-            <Association Name="ItemNegociacaofornecedorFornecedorNegociacao">
-                <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaofornecedorFornecedorNegociacao"/>
-                <End Type="simplifique.FornecedorNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaofornecedorFornecedorNegociacao"/>
-                <ReferentialConstraint>
-                    <Principal Role="ToRole_ItemNegociacaofornecedorFornecedorNegociacao">
-                        <PropertyRef Name="ID"/>
-                    </Principal>
-                    <Dependent Role="FromRole_ItemNegociacaofornecedorFornecedorNegociacao">
-                        <PropertyRef Name="FornecedorID"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
-            <Association Name="ItemNegociacaoprodutoProdutoNegociacao">
-                <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaoprodutoProdutoNegociacao"/>
-                <End Type="simplifique.ProdutoNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaoprodutoProdutoNegociacao"/>
-                <ReferentialConstraint>
-                    <Principal Role="ToRole_ItemNegociacaoprodutoProdutoNegociacao">
-                        <PropertyRef Name="ID"/>
-                    </Principal>
-                    <Dependent Role="FromRole_ItemNegociacaoprodutoProdutoNegociacao">
-                        <PropertyRef Name="ProdutoID"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
-            <Association Name="ItemNegociacaocentroCentroNegociacao">
-                <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaocentroCentroNegociacao"/>
-                <End Type="simplifique.CentroNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaocentroCentroNegociacao"/>
-                <ReferentialConstraint>
-                    <Principal Role="ToRole_ItemNegociacaocentroCentroNegociacao">
-                        <PropertyRef Name="ID"/>
-                    </Principal>
-                    <Dependent Role="FromRole_ItemNegociacaocentroCentroNegociacao">
-                        <PropertyRef Name="CentroID"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
-            <Association Name="ItemNegociacaoinformacaoInformacaoItem">
-                <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaoinformacaoInformacaoItem"/>
-                <End Type="simplifique.InformacaoItem" Multiplicity="1" Role="ToRole_ItemNegociacaoinformacaoInformacaoItem"/>
-                <ReferentialConstraint>
-                    <Principal Role="ToRole_ItemNegociacaoinformacaoInformacaoItem">
-                        <PropertyRef Name="ID"/>
-                    </Principal>
-                    <Dependent Role="FromRole_ItemNegociacaoinformacaoInformacaoItem">
-                        <PropertyRef Name="InformacaoID"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
-            <Association Name="ItemNegociacaosimulacaoSimulacaoItem">
-                <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaosimulacaoSimulacaoItem"/>
-                <End Type="simplifique.SimulacaoItem" Multiplicity="1" Role="ToRole_ItemNegociacaosimulacaoSimulacaoItem"/>
-                <ReferentialConstraint>
-                    <Principal Role="ToRole_ItemNegociacaosimulacaoSimulacaoItem">
-                        <PropertyRef Name="ID"/>
-                    </Principal>
-                    <Dependent Role="FromRole_ItemNegociacaosimulacaoSimulacaoItem">
-                        <PropertyRef Name="SimulacaoID"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
-            <Association Name="ItemNegociacaoimpostosEntradaImpostosEntradaItem">
-                <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaoimpostosEntradaImpostosEntradaItem"/>
-                <End Type="simplifique.ImpostosEntradaItem" Multiplicity="1" Role="ToRole_ItemNegociacaoimpostosEntradaImpostosEntradaItem"/>
-                <ReferentialConstraint>
-                    <Principal Role="ToRole_ItemNegociacaoimpostosEntradaImpostosEntradaItem">
-                        <PropertyRef Name="ID"/>
-                    </Principal>
-                    <Dependent Role="FromRole_ItemNegociacaoimpostosEntradaImpostosEntradaItem">
-                        <PropertyRef Name="ImpostosEntradaID"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
-            <Association Name="ItemNegociacaoimpostosSaidaImpostosSaidaItem">
-                <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaoimpostosSaidaImpostosSaidaItem"/>
-                <End Type="simplifique.ImpostosSaidaItem" Multiplicity="1" Role="ToRole_ItemNegociacaoimpostosSaidaImpostosSaidaItem"/>
-                <ReferentialConstraint>
-                    <Principal Role="ToRole_ItemNegociacaoimpostosSaidaImpostosSaidaItem">
-                        <PropertyRef Name="ID"/>
-                    </Principal>
-                    <Dependent Role="FromRole_ItemNegociacaoimpostosSaidaImpostosSaidaItem">
-                        <PropertyRef Name="ImpostosSaidaID"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
-            <Association Name="ItemNegociacaovendaAnteriorVendaAnteriorItem">
-                <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaovendaAnteriorVendaAnteriorItem"/>
-                <End Type="simplifique.VendaAnteriorItem" Multiplicity="1" Role="ToRole_ItemNegociacaovendaAnteriorVendaAnteriorItem"/>
-                <ReferentialConstraint>
-                    <Principal Role="ToRole_ItemNegociacaovendaAnteriorVendaAnteriorItem">
-                        <PropertyRef Name="ID"/>
-                    </Principal>
-                    <Dependent Role="FromRole_ItemNegociacaovendaAnteriorVendaAnteriorItem">
-                        <PropertyRef Name="VendaAnteriorID"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
-            <Association Name="ItemNegociacaovendaActualVendaActualItem">
-                <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaovendaActualVendaActualItem"/>
-                <End Type="simplifique.VendaActualItem" Multiplicity="1" Role="ToRole_ItemNegociacaovendaActualVendaActualItem"/>
-                <ReferentialConstraint>
-                    <Principal Role="ToRole_ItemNegociacaovendaActualVendaActualItem">
-                        <PropertyRef Name="ID"/>
-                    </Principal>
-                    <Dependent Role="FromRole_ItemNegociacaovendaActualVendaActualItem">
-                        <PropertyRef Name="VendaAtualID"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
-            <Association Name="ItemNegociacaostockStockItem">
-                <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaostockStockItem"/>
-                <End Type="simplifique.StockItem" Multiplicity="1" Role="ToRole_ItemNegociacaostockStockItem"/>
-                <ReferentialConstraint>
-                    <Principal Role="ToRole_ItemNegociacaostockStockItem">
-                        <PropertyRef Name="ID"/>
-                    </Principal>
-                    <Dependent Role="FromRole_ItemNegociacaostockStockItem">
-                        <PropertyRef Name="StockID"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
-            <Association Name="ItemNegociacaonossoPricingNossoPricingItem">
-                <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaonossoPricingNossoPricingItem"/>
-                <End Type="simplifique.NossoPricingItem" Multiplicity="1" Role="ToRole_ItemNegociacaonossoPricingNossoPricingItem"/>
-                <ReferentialConstraint>
-                    <Principal Role="ToRole_ItemNegociacaonossoPricingNossoPricingItem">
-                        <PropertyRef Name="ID"/>
-                    </Principal>
-                    <Dependent Role="FromRole_ItemNegociacaonossoPricingNossoPricingItem">
-                        <PropertyRef Name="NossoPricingID"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
-            <Association Name="ItemNegociacaocategoryReviewCategoryReviewItem">
-                <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaocategoryReviewCategoryReviewItem"/>
-                <End Type="simplifique.CategoryReviewItem" Multiplicity="1" Role="ToRole_ItemNegociacaocategoryReviewCategoryReviewItem"/>
-                <ReferentialConstraint>
-                    <Principal Role="ToRole_ItemNegociacaocategoryReviewCategoryReviewItem">
-                        <PropertyRef Name="ID"/>
-                    </Principal>
-                    <Dependent Role="FromRole_ItemNegociacaocategoryReviewCategoryReviewItem">
-                        <PropertyRef Name="CategoryReviewID"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
-            <Association Name="ItemNegociacaocontratoContratoItem">
-                <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaocontratoContratoItem"/>
-                <End Type="simplifique.ContratoItem" Multiplicity="1" Role="ToRole_ItemNegociacaocontratoContratoItem"/>
-                <ReferentialConstraint>
-                    <Principal Role="ToRole_ItemNegociacaocontratoContratoItem">
-                        <PropertyRef Name="ID"/>
-                    </Principal>
-                    <Dependent Role="FromRole_ItemNegociacaocontratoContratoItem">
-                        <PropertyRef Name="ContratoID"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
-            <EntityType Name="InformacaoItem">
-                <Key>
-                    <PropertyRef Name="ID"/>
-                </Key>
-                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
-                <Property Name="PrecoVenda" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PrecoVenda"/>
-                <Property Name="PrecoCompra" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PrecoCompra"/>
-                <Property Name="PMZNovo" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PMZNovo"/>
-                <Property Name="PMZMedio" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PMZMedio"/>
-                <Property Name="MargemTeorica" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MargemTeorica"/>
-                <Property Name="Margem1" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem1"/>
-                <Property Name="Margem2" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem2"/>
-                <Property Name="Custo" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Custo"/>
-            </EntityType>
-            <EntityType Name="SimulacaoItem">
-                <Key>
-                    <PropertyRef Name="ID"/>
-                </Key>
-                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
-                <Property Name="PrecoVenda" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PrecoVenda"/>
-                <Property Name="PrecoCompra" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PrecoCompra"/>
-                <Property Name="Desconto" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Desconto"/>
-                <Property Name="DespesasAcessorias" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="DespesasAcessorias"/>
-                <Property Name="PrevisaoVenda" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PrevisaoVenda"/>
-                <Property Name="PrevisaoVendaDinheiro" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PrevisaoVendaDinheiro"/>
-                <Property Name="Custo" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Custo"/>
-                <Property Name="PMZNovo" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PMZNovo"/>
-                <Property Name="PMZMedio" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PMZMedio"/>
-                <Property Name="DesenvolvimentoComercial" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="DesenvolvimentoComercial"/>
-                <Property Name="Recomposicao" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Recomposicao"/>
-                <Property Name="Volumem" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Volumem"/>
-                <Property Name="Margem1" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem1"/>
-                <Property Name="Margem2" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem2"/>
-                <Property Name="IC" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="IC"/>
-                <Property Name="ValorTotalPedido" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ValorTotalPedido"/>
-                <Property Name="MargemTeorica" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MargemTeorica"/>
-            </EntityType>
-            <EntityType Name="ImpostosEntradaItem">
-                <Key>
-                    <PropertyRef Name="ID"/>
-                </Key>
-                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
-                <Property Name="IPI" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="IPI"/>
-                <Property Name="ICMS" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ICMS"/>
-                <Property Name="BaseReduzidaICMS" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="BaseReduzidaICMS"/>
-                <Property Name="PIS" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PIS"/>
-                <Property Name="COFINS" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="COFINS"/>
-                <Property Name="ST" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ST"/>
-                <Property Name="PAUTA" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PAUTA"/>
-                <Property Name="MVA" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MVA"/>
-            </EntityType>
-            <EntityType Name="ImpostosSaidaItem">
-                <Key>
-                    <PropertyRef Name="ID"/>
-                </Key>
-                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
-                <Property Name="ICMS" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ICMS"/>
-                <Property Name="PIS" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PIS"/>
-                <Property Name="COFINS" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="COFINS"/>
-            </EntityType>
-            <EntityType Name="VendaAnteriorItem">
-                <Key>
-                    <PropertyRef Name="ID"/>
-                </Key>
-                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
-                <Property Name="Valor" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Valor"/>
-                <Property Name="Quantidade" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Quantidade"/>
-                <Property Name="Margem" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem"/>
-            </EntityType>
-            <EntityType Name="VendaActualItem">
-                <Key>
-                    <PropertyRef Name="ID"/>
-                </Key>
-                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
-                <Property Name="Valor" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Valor"/>
-                <Property Name="Quantidade" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Quantidade"/>
-                <Property Name="Margem" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem"/>
-            </EntityType>
-            <EntityType Name="StockItem">
-                <Key>
-                    <PropertyRef Name="ID"/>
-                </Key>
-                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
-                <Property Name="QuantidadeLoja" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="QuantidadeLoja"/>
-                <Property Name="QuantidadeCD" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="QuantidadeCD"/>
-                <Property Name="Avaliacao" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Avaliacao"/>
-                <Property Name="DDE" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="DDE"/>
-            </EntityType>
-            <EntityType Name="NossoPricingItem">
-                <Key>
-                    <PropertyRef Name="ID"/>
-                </Key>
-                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
-                <Property Name="PeriodoAnalises" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PeriodoAnalises"/>
-                <Property Name="PrecoCenco" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PrecoCenco"/>
-                <Property Name="PrecoMercado" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PrecoMercado"/>
-                <Property Name="IC" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="IC"/>
-                <Property Name="MargemPDV" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MargemPDV"/>
-                <Property Name="MargemTeorica" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MargemTeorica"/>
-            </EntityType>
-            <EntityType Name="CategoryReviewItem">
-                <Key>
-                    <PropertyRef Name="ID"/>
-                </Key>
-                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
-                <Property Name="PeriodoAnalises" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="PeriodoAnalises"/>
-                <Property Name="VendaMercado" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="VendaMercado"/>
-                <Property Name="CrecimentoMercado" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="CrecimentoMercado"/>
-                <Property Name="RankingMercado" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="RankingMercado"/>
-                <Property Name="VendaCenco" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="VendaCenco"/>
-                <Property Name="CrecimentoCenco" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="CrecimentoCenco"/>
-                <Property Name="MarketShareAtual" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="MarketShareAtual"/>
-                <Property Name="Margem1Atual" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem1Atual"/>
-                <Property Name="Margem2Atual" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem2Atual"/>
-                <Property Name="Margem1Anterior" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem1Anterior"/>
-                <Property Name="Margem2Anterior" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Margem2Anterior"/>
-            </EntityType>
-            <EntityType Name="ContratoItem">
-                <Key>
-                    <PropertyRef Name="ID"/>
-                </Key>
-                <Property Name="ID" Type="Edm.String" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="ID"/>
-                <Property Name="Prazo" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Prazo"/>
-                <Property Name="DesenvolvimentoComercial" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="DesenvolvimentoComercial"/>
-                <Property Name="LogisticaGBarbosa" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="LogisticaGBarbosa"/>
-                <Property Name="LogisticaBretas" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="LogisticaBretas"/>
-                <Property Name="LogisticaPerini" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="LogisticaPerini"/>
-                <Property Name="LogisticaPrezunik" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="LogisticaPrezunik"/>
-                <Property Name="FillRate" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="FillRate"/>
-                <Property Name="NDevol" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="NDevol"/>
-                <Property Name="TTContratos" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="TTContratos"/>
-                <Property Name="InauguracaoReinaucuracao" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="InauguracaoReinaucuracao"/>
-                <Property Name="Obj1De" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Obj1De"/>
-                <Property Name="Obj1Ate" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Obj1Ate"/>
-                <Property Name="Obj1Bonus" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Obj1Bonus"/>
-                <Property Name="Obj2De" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Obj2De"/>
-                <Property Name="Obj2Ate" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Obj2Ate"/>
-                <Property Name="Obj2Bonus" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Obj2Bonus"/>
-                <Property Name="Obj3De" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Obj3De"/>
-                <Property Name="Obj3Ate" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Obj3Ate"/>
-                <Property Name="Obj3Bonus" Type="Edm.Decimal" sap:creatable="true" sap:updatable="true" sap:deletable="true" sap:label="Obj3Bonus"/>
-            </EntityType>
-        </Schema>
-    </edmx:DataServices>
+ <edmx:DataServices m:DataServiceVersion="2.0">
+  <Schema Namespace="simplifique" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+   <EntityType Name="Negociacao" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="ID"/>
+    </Key>
+    <Property Name="ID" Type="Edm.String" Nullable="false" sap:label="ID"/>
+    <Property Name="Descricao" Type="Edm.String" sap:label="Descricao"/>
+    <Property Name="TipoNegociacao" Type="Edm.String" sap:label="TipoNegociacao"/>
+    <Property Name="Data" Type="Edm.DateTime" Precision="0" sap:label="Data"/>
+    <Property Name="Status" Type="Edm.String" sap:label="Status"/>
+    <Property Name="ValorTotalPedido" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="ValorTotalPedido"/>
+    <Property Name="NovaMargem2" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="NovaMargem2"/>
+    <Property Name="NovaMargem1" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="NovaMargem1"/>
+    <Property Name="MargemTeorica" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="MargemTeorica"/>
+    <Property Name="NovoIC" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="NovoIC"/>
+    <Property Name="Fornecedores" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Fornecedores"/>
+    <Property Name="Produtos" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Produtos"/>
+    <Property Name="UFs" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="UFs"/>
+    <NavigationProperty Name="fornecedor" Relationship="simplifique.NegociacaofornecedorFornecedorNegociacao" FromRole="FromRole_NegociacaofornecedorFornecedorNegociacao" ToRole="ToRole_NegociacaofornecedorFornecedorNegociacao"/>
+    <NavigationProperty Name="produto" Relationship="simplifique.NegociacaoprodutoProdutoNegociacao" FromRole="FromRole_NegociacaoprodutoProdutoNegociacao" ToRole="ToRole_NegociacaoprodutoProdutoNegociacao"/>
+    <NavigationProperty Name="centro" Relationship="simplifique.NegociacaocentroCentroNegociacao" FromRole="FromRole_NegociacaocentroCentroNegociacao" ToRole="ToRole_NegociacaocentroCentroNegociacao"/>
+    <NavigationProperty Name="item" Relationship="simplifique.NegociacaoitemItemNegociacao" FromRole="FromRole_NegociacaoitemItemNegociacao" ToRole="ToRole_NegociacaoitemItemNegociacao"/>
+   </EntityType>
+   <EntityType Name="FornecedorNegociacao" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="ID"/>
+    </Key>
+    <Property Name="ID" Type="Edm.String" Nullable="false" sap:label="ID"/>
+    <Property Name="Codigo" Type="Edm.String" sap:label="Codigo"/>
+    <Property Name="Cadastrado" Type="Edm.Boolean" sap:label="Cadastrado"/>
+    <Property Name="Nome" Type="Edm.String" sap:label="Nome"/>
+    <Property Name="M2" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="M2"/>
+    <Property Name="IC" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="IC"/>
+    <Property Name="ValorTotalPedido" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="ValorTotalPedido"/>
+    <Property Name="NegociacaoID" Type="Edm.String" sap:label="NegociacaoID"/>
+   </EntityType>
+   <EntityType Name="ProdutoNegociacao" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="ID"/>
+    </Key>
+    <Property Name="ID" Type="Edm.String" Nullable="false" sap:label="ID"/>
+    <Property Name="Codigo" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Codigo"/>
+    <Property Name="Cadastrado" Type="Edm.Boolean" sap:label="Cadastrado"/>
+    <Property Name="Nome" Type="Edm.String" sap:label="Nome"/>
+    <Property Name="M2" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="M2"/>
+    <Property Name="IC" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="IC"/>
+    <Property Name="ValorTotalPedido" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="ValorTotalPedido"/>
+    <Property Name="NegociacaoID" Type="Edm.String" sap:label="NegociacaoID"/>
+   </EntityType>
+   <EntityType Name="CentroNegociacao" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="ID"/>
+    </Key>
+    <Property Name="ID" Type="Edm.String" Nullable="false" sap:label="ID"/>
+    <Property Name="Codigo" Type="Edm.String" sap:label="Codigo"/>
+    <Property Name="M2" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="M2"/>
+    <Property Name="IC" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="IC"/>
+    <Property Name="ValorTotalPedido" Type="Edm.String" sap:label="ValorTotalPedido"/>
+    <Property Name="NegociacaoID" Type="Edm.String" sap:label="NegociacaoID"/>
+   </EntityType>
+   <EntityType Name="ItemNegociacao" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="ID"/>
+    </Key>
+    <Property Name="ID" Type="Edm.String" Nullable="false" sap:label="ID"/>
+    <Property Name="Negociar" Type="Edm.Boolean" sap:label="Negociar"/>
+    <Property Name="NegociacaoID" Type="Edm.String" sap:label="NegociacaoID"/>
+    <Property Name="FornecedorID" Type="Edm.String" sap:label="FornecedorID"/>
+    <Property Name="ProdutoID" Type="Edm.String" sap:label="ProdutoID"/>
+    <Property Name="CentroID" Type="Edm.String" sap:label="CentroID"/>
+    <Property Name="InformacaoID" Type="Edm.String" sap:label="InformacaoID"/>
+    <Property Name="SimulacaoID" Type="Edm.String" sap:label="SimulacaoID"/>
+    <Property Name="ImpostosEntradaID" Type="Edm.String" sap:label="ImpostosEntradaID"/>
+    <Property Name="ImpostosSaidaID" Type="Edm.String" sap:label="ImpostosSaidaID"/>
+    <Property Name="VendaAnteriorID" Type="Edm.String" sap:label="VendaAnteriorID"/>
+    <Property Name="VendaAtualID" Type="Edm.String" sap:label="VendaAtualID"/>
+    <Property Name="StockID" Type="Edm.String" sap:label="StockID"/>
+    <Property Name="NossoPricingID" Type="Edm.String" sap:label="NossoPricingID"/>
+    <Property Name="CategoryReviewID" Type="Edm.String" sap:label="CategoryReviewID"/>
+    <Property Name="ContratoID" Type="Edm.String" sap:label="ContratoID"/>
+    <NavigationProperty Name="fornecedor" Relationship="simplifique.ItemNegociacaofornecedorFornecedorNegoci" FromRole="ToRole_ItemNegociacaofornecedorFornecedorNegoci" ToRole="FromRole_ItemNegociacaofornecedorFornecedorNegoci"/>
+    <NavigationProperty Name="produto" Relationship="simplifique.ItemNegociacaoprodutoProdutoNegociacao" FromRole="ToRole_ItemNegociacaoprodutoProdutoNegociacao" ToRole="FromRole_ItemNegociacaoprodutoProdutoNegociacao"/>
+    <NavigationProperty Name="centro" Relationship="simplifique.ItemNegociacaocentroCentroNegociacao" FromRole="ToRole_ItemNegociacaocentroCentroNegociacao" ToRole="FromRole_ItemNegociacaocentroCentroNegociacao"/>
+    <NavigationProperty Name="informacao" Relationship="simplifique.ItemNegociacaoinformacaoInformacaoItem" FromRole="ToRole_ItemNegociacaoinformacaoInformacaoItem" ToRole="FromRole_ItemNegociacaoinformacaoInformacaoItem"/>
+    <NavigationProperty Name="simulacao" Relationship="simplifique.ItemNegociacaosimulacaoSimulacaoItem" FromRole="ToRole_ItemNegociacaosimulacaoSimulacaoItem" ToRole="FromRole_ItemNegociacaosimulacaoSimulacaoItem"/>
+    <NavigationProperty Name="impostosEntrada" Relationship="simplifique.ItemNegociacaoimpostosEntradaImpostosEnt" FromRole="ToRole_ItemNegociacaoimpostosEntradaImpostosEnt" ToRole="FromRole_ItemNegociacaoimpostosEntradaImpostosEnt"/>
+    <NavigationProperty Name="impostosSaida" Relationship="simplifique.ItemNegociacaoimpostosSaidaImpostosSaida" FromRole="ToRole_ItemNegociacaoimpostosSaidaImpostosSaida" ToRole="FromRole_ItemNegociacaoimpostosSaidaImpostosSaida"/>
+    <NavigationProperty Name="vendaAnterior" Relationship="simplifique.ItemNegociacaovendaAnteriorVendaAnterior" FromRole="ToRole_ItemNegociacaovendaAnteriorVendaAnterior" ToRole="FromRole_ItemNegociacaovendaAnteriorVendaAnterior"/>
+    <NavigationProperty Name="vendaActual" Relationship="simplifique.ItemNegociacaovendaActualVendaActualItem" FromRole="ToRole_ItemNegociacaovendaActualVendaActualItem" ToRole="FromRole_ItemNegociacaovendaActualVendaActualItem"/>
+    <NavigationProperty Name="stock" Relationship="simplifique.ItemNegociacaostockStockItem" FromRole="ToRole_ItemNegociacaostockStockItem" ToRole="FromRole_ItemNegociacaostockStockItem"/>
+    <NavigationProperty Name="nossoPricing" Relationship="simplifique.ItemNegociacaonossoPricingNossoPricingIt" FromRole="ToRole_ItemNegociacaonossoPricingNossoPricingIt" ToRole="FromRole_ItemNegociacaonossoPricingNossoPricingIt"/>
+    <NavigationProperty Name="categoryReview" Relationship="simplifique.ItemNegociacaocategoryReviewCategoryRevi" FromRole="ToRole_ItemNegociacaocategoryReviewCategoryRevi" ToRole="FromRole_ItemNegociacaocategoryReviewCategoryRevi"/>
+    <NavigationProperty Name="contrato" Relationship="simplifique.ItemNegociacaocontratoContratoItem" FromRole="ToRole_ItemNegociacaocontratoContratoItem" ToRole="FromRole_ItemNegociacaocontratoContratoItem"/>
+   </EntityType>
+   <EntityType Name="InformacaoItem" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="ID"/>
+    </Key>
+    <Property Name="ID" Type="Edm.String" Nullable="false" sap:label="ID"/>
+    <Property Name="PrecoVenda" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="PrecoVenda"/>
+    <Property Name="PrecoCompra" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="PrecoCompra"/>
+    <Property Name="PMZNovo" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="PMZNovo"/>
+    <Property Name="PMZMedio" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="PMZMedio"/>
+    <Property Name="MargemTeorica" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="MargemTeorica"/>
+    <Property Name="Margem1" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Margem1"/>
+    <Property Name="Margem2" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Margem2"/>
+    <Property Name="Custo" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Custo"/>
+   </EntityType>
+   <EntityType Name="SimulacaoItem" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="ID"/>
+    </Key>
+    <Property Name="ID" Type="Edm.String" Nullable="false" sap:label="ID"/>
+    <Property Name="PrecoVenda" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="PrecoVenda"/>
+    <Property Name="PrecoCompra" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="PrecoCompra"/>
+    <Property Name="Desconto" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Desconto"/>
+    <Property Name="DespesasAcessorias" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="DespesasAcessorias"/>
+    <Property Name="PrevisaoVenda" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="PrevisaoVenda"/>
+    <Property Name="PrevisaoVendaDinheiro" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="PrevisaoVendaDinheiro"/>
+    <Property Name="Custo" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Custo"/>
+    <Property Name="PMZNovo" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="PMZNovo"/>
+    <Property Name="PMZMedio" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="PMZMedio"/>
+    <Property Name="DesenvolvimentoComercial" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="DesenvolvimentoComercial"/>
+    <Property Name="Recomposicao" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Recomposicao"/>
+    <Property Name="Volumem" Type="Edm.String" sap:label="Volumem"/>
+    <Property Name="Margem1" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Margem1"/>
+    <Property Name="Margem2" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Margem2"/>
+    <Property Name="IC" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="IC"/>
+    <Property Name="ValorTotalPedido" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="ValorTotalPedido"/>
+    <Property Name="MargemTeorica" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="MargemTeorica"/>
+   </EntityType>
+   <EntityType Name="ImpostosEntradaItem" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="ID"/>
+    </Key>
+    <Property Name="ID" Type="Edm.String" Nullable="false" sap:label="ID"/>
+    <Property Name="IPI" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="IPI"/>
+    <Property Name="ICMS" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="ICMS"/>
+    <Property Name="BaseReduzidaICMS" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="BaseReduzidaICMS"/>
+    <Property Name="PIS" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="PIS"/>
+    <Property Name="COFINS" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="COFINS"/>
+    <Property Name="ST" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="ST"/>
+    <Property Name="PAUTA" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="PAUTA"/>
+    <Property Name="MVA" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="MVA"/>
+   </EntityType>
+   <EntityType Name="ImpostosSaidaItem" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="ID"/>
+    </Key>
+    <Property Name="ID" Type="Edm.String" Nullable="false" sap:label="ID"/>
+    <Property Name="ICMS" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="ICMS"/>
+    <Property Name="PIS" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="PIS"/>
+    <Property Name="COFINS" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="COFINS"/>
+   </EntityType>
+   <EntityType Name="VendaAnteriorItem" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="ID"/>
+    </Key>
+    <Property Name="ID" Type="Edm.String" Nullable="false" sap:label="ID"/>
+    <Property Name="Valor" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Valor"/>
+    <Property Name="Quantidade" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Quantidade"/>
+    <Property Name="Margem" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Margem"/>
+   </EntityType>
+   <EntityType Name="VendaActualItem" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="ID"/>
+    </Key>
+    <Property Name="ID" Type="Edm.String" Nullable="false" sap:label="ID"/>
+    <Property Name="Valor" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Valor"/>
+    <Property Name="Quantidade" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Quantidade"/>
+    <Property Name="Margem" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Margem"/>
+   </EntityType>
+   <EntityType Name="StockItem" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="ID"/>
+    </Key>
+    <Property Name="ID" Type="Edm.String" Nullable="false" sap:label="ID"/>
+    <Property Name="QuantidadeLoja" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="QuantidadeLoja"/>
+    <Property Name="QuantidadeCD" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="QuantidadeCD"/>
+    <Property Name="Avaliacao" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Avaliacao"/>
+    <Property Name="DDE" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="DDE"/>
+   </EntityType>
+   <EntityType Name="NossoPricingItem" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="ID"/>
+    </Key>
+    <Property Name="ID" Type="Edm.String" Nullable="false" sap:label="ID"/>
+    <Property Name="PeriodoAnalises" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="PeriodoAnalises"/>
+    <Property Name="PrecoCenco" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="PrecoCenco"/>
+    <Property Name="PrecoMercado" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="PrecoMercado"/>
+    <Property Name="IC" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="IC"/>
+    <Property Name="MargemPDV" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="MargemPDV"/>
+    <Property Name="MargemTeorica" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="MargemTeorica"/>
+   </EntityType>
+   <EntityType Name="CategoryReviewItem" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="ID"/>
+    </Key>
+    <Property Name="ID" Type="Edm.String" Nullable="false" sap:label="ID"/>
+    <Property Name="PeriodoAnalises" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="PeriodoAnalises"/>
+    <Property Name="VendaMercado" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="VendaMercado"/>
+    <Property Name="CrecimentoMercado" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="CrecimentoMercado"/>
+    <Property Name="RankingMercado" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="RankingMercado"/>
+    <Property Name="VendaCenco" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="VendaCenco"/>
+    <Property Name="CrecimentoCenco" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="CrecimentoCenco"/>
+    <Property Name="MarketShareAtual" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="MarketShareAtual"/>
+    <Property Name="Margem1Atual" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Margem1Atual"/>
+    <Property Name="Margem2Atual" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Margem2Atual"/>
+    <Property Name="Margem1Anterior" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Margem1Anterior"/>
+    <Property Name="Margem2Anterior" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Margem2Anterior"/>
+   </EntityType>
+   <EntityType Name="ContratoItem" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="ID"/>
+    </Key>
+    <Property Name="ID" Type="Edm.String" Nullable="false" sap:label="ID"/>
+    <Property Name="Prazo" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Prazo"/>
+    <Property Name="DesenvolvimentoComercial" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="DesenvolvimentoComercial"/>
+    <Property Name="LogisticaGBarbosa" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="LogisticaGBarbosa"/>
+    <Property Name="LogisticaBretas" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="LogisticaBretas"/>
+    <Property Name="LogisticaPerini" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="LogisticaPerini"/>
+    <Property Name="LogisticaPrezunik" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="LogisticaPrezunik"/>
+    <Property Name="FillRate" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="FillRate"/>
+    <Property Name="NDevol" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="NDevol"/>
+    <Property Name="TTContratos" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="TTContratos"/>
+    <Property Name="InauguracaoReinaucuracao" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="InauguracaoReinaucuracao"/>
+    <Property Name="Obj1De" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Obj1De"/>
+    <Property Name="Obj1Ate" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Obj1Ate"/>
+    <Property Name="Obj1Bonus" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Obj1Bonus"/>
+    <Property Name="Obj2De" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Obj2De"/>
+    <Property Name="Obj2Ate" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Obj2Ate"/>
+    <Property Name="Obj2Bonus" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Obj2Bonus"/>
+    <Property Name="Obj3De" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Obj3De"/>
+    <Property Name="Obj3Ate" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Obj3Ate"/>
+    <Property Name="Obj3Bonus" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Obj3Bonus"/>
+   </EntityType>
+   <Association Name="ItemNegociacaosimulacaoSimulacaoItem" sap:content-version="1">
+    <End Type="simplifique.SimulacaoItem" Multiplicity="1" Role="FromRole_ItemNegociacaosimulacaoSimulacaoItem"/>
+    <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaosimulacaoSimulacaoItem"/>
+    <ReferentialConstraint>
+     <Principal Role="FromRole_ItemNegociacaosimulacaoSimulacaoItem">
+      <PropertyRef Name="ID"/>
+     </Principal>
+     <Dependent Role="ToRole_ItemNegociacaosimulacaoSimulacaoItem">
+      <PropertyRef Name="ID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <Association Name="ItemNegociacaovendaAnteriorVendaAnterior" sap:content-version="1">
+    <End Type="simplifique.VendaAnteriorItem" Multiplicity="1" Role="FromRole_ItemNegociacaovendaAnteriorVendaAnterior"/>
+    <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaovendaAnteriorVendaAnterior"/>
+    <ReferentialConstraint>
+     <Principal Role="FromRole_ItemNegociacaovendaAnteriorVendaAnterior">
+      <PropertyRef Name="ID"/>
+     </Principal>
+     <Dependent Role="ToRole_ItemNegociacaovendaAnteriorVendaAnterior">
+      <PropertyRef Name="ID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <Association Name="ItemNegociacaoprodutoProdutoNegociacao" sap:content-version="1">
+    <End Type="simplifique.ProdutoNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaoprodutoProdutoNegociacao"/>
+    <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaoprodutoProdutoNegociacao"/>
+    <ReferentialConstraint>
+     <Principal Role="FromRole_ItemNegociacaoprodutoProdutoNegociacao">
+      <PropertyRef Name="ID"/>
+     </Principal>
+     <Dependent Role="ToRole_ItemNegociacaoprodutoProdutoNegociacao">
+      <PropertyRef Name="ProdutoID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <Association Name="ItemNegociacaovendaActualVendaActualItem" sap:content-version="1">
+    <End Type="simplifique.VendaActualItem" Multiplicity="1" Role="FromRole_ItemNegociacaovendaActualVendaActualItem"/>
+    <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaovendaActualVendaActualItem"/>
+    <ReferentialConstraint>
+     <Principal Role="FromRole_ItemNegociacaovendaActualVendaActualItem">
+      <PropertyRef Name="ID"/>
+     </Principal>
+     <Dependent Role="ToRole_ItemNegociacaovendaActualVendaActualItem">
+      <PropertyRef Name="ID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <Association Name="NegociacaofornecedorFornecedorNegociacao" sap:content-version="1">
+    <End Type="simplifique.Negociacao" Multiplicity="1" Role="FromRole_NegociacaofornecedorFornecedorNegociacao"/>
+    <End Type="simplifique.FornecedorNegociacao" Multiplicity="*" Role="ToRole_NegociacaofornecedorFornecedorNegociacao"/>
+    <ReferentialConstraint>
+     <Principal Role="FromRole_NegociacaofornecedorFornecedorNegociacao">
+      <PropertyRef Name="ID"/>
+     </Principal>
+     <Dependent Role="ToRole_NegociacaofornecedorFornecedorNegociacao">
+      <PropertyRef Name="NegociacaoID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <Association Name="NegociacaoprodutoProdutoNegociacao" sap:content-version="1">
+    <End Type="simplifique.Negociacao" Multiplicity="1" Role="FromRole_NegociacaoprodutoProdutoNegociacao"/>
+    <End Type="simplifique.ProdutoNegociacao" Multiplicity="*" Role="ToRole_NegociacaoprodutoProdutoNegociacao"/>
+    <ReferentialConstraint>
+     <Principal Role="FromRole_NegociacaoprodutoProdutoNegociacao">
+      <PropertyRef Name="ID"/>
+     </Principal>
+     <Dependent Role="ToRole_NegociacaoprodutoProdutoNegociacao">
+      <PropertyRef Name="NegociacaoID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <Association Name="NegociacaocentroCentroNegociacao" sap:content-version="1">
+    <End Type="simplifique.Negociacao" Multiplicity="1" Role="FromRole_NegociacaocentroCentroNegociacao"/>
+    <End Type="simplifique.CentroNegociacao" Multiplicity="*" Role="ToRole_NegociacaocentroCentroNegociacao"/>
+    <ReferentialConstraint>
+     <Principal Role="FromRole_NegociacaocentroCentroNegociacao">
+      <PropertyRef Name="ID"/>
+     </Principal>
+     <Dependent Role="ToRole_NegociacaocentroCentroNegociacao">
+      <PropertyRef Name="NegociacaoID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <Association Name="NegociacaoitemItemNegociacao" sap:content-version="1">
+    <End Type="simplifique.Negociacao" Multiplicity="1" Role="FromRole_NegociacaoitemItemNegociacao"/>
+    <End Type="simplifique.ItemNegociacao" Multiplicity="*" Role="ToRole_NegociacaoitemItemNegociacao"/>
+    <ReferentialConstraint>
+     <Principal Role="FromRole_NegociacaoitemItemNegociacao">
+      <PropertyRef Name="ID"/>
+     </Principal>
+     <Dependent Role="ToRole_NegociacaoitemItemNegociacao">
+      <PropertyRef Name="NegociacaoID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <Association Name="ItemNegociacaostockStockItem" sap:content-version="1">
+    <End Type="simplifique.StockItem" Multiplicity="1" Role="FromRole_ItemNegociacaostockStockItem"/>
+    <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaostockStockItem"/>
+    <ReferentialConstraint>
+     <Principal Role="FromRole_ItemNegociacaostockStockItem">
+      <PropertyRef Name="ID"/>
+     </Principal>
+     <Dependent Role="ToRole_ItemNegociacaostockStockItem">
+      <PropertyRef Name="ID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <Association Name="ItemNegociacaoimpostosEntradaImpostosEnt" sap:content-version="1">
+    <End Type="simplifique.ImpostosEntradaItem" Multiplicity="1" Role="FromRole_ItemNegociacaoimpostosEntradaImpostosEnt"/>
+    <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaoimpostosEntradaImpostosEnt"/>
+    <ReferentialConstraint>
+     <Principal Role="FromRole_ItemNegociacaoimpostosEntradaImpostosEnt">
+      <PropertyRef Name="ID"/>
+     </Principal>
+     <Dependent Role="ToRole_ItemNegociacaoimpostosEntradaImpostosEnt">
+      <PropertyRef Name="ID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <Association Name="ItemNegociacaoinformacaoInformacaoItem" sap:content-version="1">
+    <End Type="simplifique.InformacaoItem" Multiplicity="1" Role="FromRole_ItemNegociacaoinformacaoInformacaoItem"/>
+    <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaoinformacaoInformacaoItem"/>
+    <ReferentialConstraint>
+     <Principal Role="FromRole_ItemNegociacaoinformacaoInformacaoItem">
+      <PropertyRef Name="ID"/>
+     </Principal>
+     <Dependent Role="ToRole_ItemNegociacaoinformacaoInformacaoItem">
+      <PropertyRef Name="ID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <Association Name="ItemNegociacaonossoPricingNossoPricingIt" sap:content-version="1">
+    <End Type="simplifique.NossoPricingItem" Multiplicity="1" Role="FromRole_ItemNegociacaonossoPricingNossoPricingIt"/>
+    <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaonossoPricingNossoPricingIt"/>
+    <ReferentialConstraint>
+     <Principal Role="FromRole_ItemNegociacaonossoPricingNossoPricingIt">
+      <PropertyRef Name="ID"/>
+     </Principal>
+     <Dependent Role="ToRole_ItemNegociacaonossoPricingNossoPricingIt">
+      <PropertyRef Name="ID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <Association Name="ItemNegociacaocentroCentroNegociacao" sap:content-version="1">
+    <End Type="simplifique.CentroNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaocentroCentroNegociacao"/>
+    <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaocentroCentroNegociacao"/>
+    <ReferentialConstraint>
+     <Principal Role="FromRole_ItemNegociacaocentroCentroNegociacao">
+      <PropertyRef Name="ID"/>
+     </Principal>
+     <Dependent Role="ToRole_ItemNegociacaocentroCentroNegociacao">
+      <PropertyRef Name="CentroID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <Association Name="ItemNegociacaocontratoContratoItem" sap:content-version="1">
+    <End Type="simplifique.ContratoItem" Multiplicity="1" Role="FromRole_ItemNegociacaocontratoContratoItem"/>
+    <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaocontratoContratoItem"/>
+    <ReferentialConstraint>
+     <Principal Role="FromRole_ItemNegociacaocontratoContratoItem">
+      <PropertyRef Name="ID"/>
+     </Principal>
+     <Dependent Role="ToRole_ItemNegociacaocontratoContratoItem">
+      <PropertyRef Name="ID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <Association Name="ItemNegociacaocategoryReviewCategoryRevi" sap:content-version="1">
+    <End Type="simplifique.CategoryReviewItem" Multiplicity="1" Role="FromRole_ItemNegociacaocategoryReviewCategoryRevi"/>
+    <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaocategoryReviewCategoryRevi"/>
+    <ReferentialConstraint>
+     <Principal Role="FromRole_ItemNegociacaocategoryReviewCategoryRevi">
+      <PropertyRef Name="ID"/>
+     </Principal>
+     <Dependent Role="ToRole_ItemNegociacaocategoryReviewCategoryRevi">
+      <PropertyRef Name="ID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <Association Name="ItemNegociacaofornecedorFornecedorNegoci" sap:content-version="1">
+    <End Type="simplifique.FornecedorNegociacao" Multiplicity="1" Role="FromRole_ItemNegociacaofornecedorFornecedorNegoci"/>
+    <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaofornecedorFornecedorNegoci"/>
+    <ReferentialConstraint>
+     <Principal Role="FromRole_ItemNegociacaofornecedorFornecedorNegoci">
+      <PropertyRef Name="ID"/>
+     </Principal>
+     <Dependent Role="ToRole_ItemNegociacaofornecedorFornecedorNegoci">
+      <PropertyRef Name="FornecedorID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <Association Name="ItemNegociacaoimpostosSaidaImpostosSaida" sap:content-version="1">
+    <End Type="simplifique.ImpostosSaidaItem" Multiplicity="1" Role="FromRole_ItemNegociacaoimpostosSaidaImpostosSaida"/>
+    <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaoimpostosSaidaImpostosSaida"/>
+    <ReferentialConstraint>
+     <Principal Role="FromRole_ItemNegociacaoimpostosSaidaImpostosSaida">
+      <PropertyRef Name="ID"/>
+     </Principal>
+     <Dependent Role="ToRole_ItemNegociacaoimpostosSaidaImpostosSaida">
+      <PropertyRef Name="ID"/>
+     </Dependent>
+    </ReferentialConstraint>
+   </Association>
+   <EntityContainer Name="simplifique_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+    <EntitySet Name="NegociacaoSet" EntityType="simplifique.Negociacao" sap:content-version="1"/>
+    <EntitySet Name="FornecedorNegociacaoSet" EntityType="simplifique.FornecedorNegociacao" sap:content-version="1"/>
+    <EntitySet Name="ProdutoNegociacaoSet" EntityType="simplifique.ProdutoNegociacao" sap:content-version="1"/>
+    <EntitySet Name="CentroNegociacaoSet" EntityType="simplifique.CentroNegociacao" sap:content-version="1"/>
+    <EntitySet Name="ItemNegociacaoSet" EntityType="simplifique.ItemNegociacao" sap:content-version="1"/>
+    <EntitySet Name="InformacaoItemSet" EntityType="simplifique.InformacaoItem" sap:content-version="1"/>
+    <EntitySet Name="SimulacaoItemSet" EntityType="simplifique.SimulacaoItem" sap:content-version="1"/>
+    <EntitySet Name="ImpostosEntradaItemSet" EntityType="simplifique.ImpostosEntradaItem" sap:content-version="1"/>
+    <EntitySet Name="ImpostosSaidaItemSet" EntityType="simplifique.ImpostosSaidaItem" sap:content-version="1"/>
+    <EntitySet Name="VendaAnteriorItemSet" EntityType="simplifique.VendaAnteriorItem" sap:content-version="1"/>
+    <EntitySet Name="VendaActualItemSet" EntityType="simplifique.VendaActualItem" sap:content-version="1"/>
+    <EntitySet Name="StockItemSet" EntityType="simplifique.StockItem" sap:content-version="1"/>
+    <EntitySet Name="NossoPricingItemSet" EntityType="simplifique.NossoPricingItem" sap:content-version="1"/>
+    <EntitySet Name="CategoryReviewItemSet" EntityType="simplifique.CategoryReviewItem" sap:content-version="1"/>
+    <EntitySet Name="ContratoItemSet" EntityType="simplifique.ContratoItem" sap:content-version="1"/>
+    <AssociationSet Name="NegociacaoitemItemNegociacao" Association="simplifique.NegociacaoitemItemNegociacao" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+     <End EntitySet="NegociacaoSet" Role="FromRole_NegociacaoitemItemNegociacao"/>
+     <End EntitySet="ItemNegociacaoSet" Role="ToRole_NegociacaoitemItemNegociacao"/>
+    </AssociationSet>
+    <AssociationSet Name="ItemNegociacaocentroCentroNegociacao_Ass" Association="simplifique.ItemNegociacaocentroCentroNegociacao" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+     <End EntitySet="CentroNegociacaoSet" Role="FromRole_ItemNegociacaocentroCentroNegociacao"/>
+     <End EntitySet="ItemNegociacaoSet" Role="ToRole_ItemNegociacaocentroCentroNegociacao"/>
+    </AssociationSet>
+    <AssociationSet Name="ItemNegociacaovendaAnteriorVendaAnterior" Association="simplifique.ItemNegociacaovendaAnteriorVendaAnterior" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+     <End EntitySet="VendaAnteriorItemSet" Role="FromRole_ItemNegociacaovendaAnteriorVendaAnterior"/>
+     <End EntitySet="ItemNegociacaoSet" Role="ToRole_ItemNegociacaovendaAnteriorVendaAnterior"/>
+    </AssociationSet>
+    <AssociationSet Name="NegociacaocentroCentroNegociacao" Association="simplifique.NegociacaocentroCentroNegociacao" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+     <End EntitySet="NegociacaoSet" Role="FromRole_NegociacaocentroCentroNegociacao"/>
+     <End EntitySet="CentroNegociacaoSet" Role="ToRole_NegociacaocentroCentroNegociacao"/>
+    </AssociationSet>
+    <AssociationSet Name="ItemNegociacaocategoryReviewCategoryRevi" Association="simplifique.ItemNegociacaocategoryReviewCategoryRevi" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+     <End EntitySet="CategoryReviewItemSet" Role="FromRole_ItemNegociacaocategoryReviewCategoryRevi"/>
+     <End EntitySet="ItemNegociacaoSet" Role="ToRole_ItemNegociacaocategoryReviewCategoryRevi"/>
+    </AssociationSet>
+    <AssociationSet Name="ItemNegociacaoinformacaoInformacaoItem_A" Association="simplifique.ItemNegociacaoinformacaoInformacaoItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+     <End EntitySet="InformacaoItemSet" Role="FromRole_ItemNegociacaoinformacaoInformacaoItem"/>
+     <End EntitySet="ItemNegociacaoSet" Role="ToRole_ItemNegociacaoinformacaoInformacaoItem"/>
+    </AssociationSet>
+    <AssociationSet Name="ItemNegociacaocontratoContratoItem_Assoc" Association="simplifique.ItemNegociacaocontratoContratoItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+     <End EntitySet="ContratoItemSet" Role="FromRole_ItemNegociacaocontratoContratoItem"/>
+     <End EntitySet="ItemNegociacaoSet" Role="ToRole_ItemNegociacaocontratoContratoItem"/>
+    </AssociationSet>
+    <AssociationSet Name="ItemNegociacaoimpostosEntradaImpostosEnt" Association="simplifique.ItemNegociacaoimpostosEntradaImpostosEnt" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+     <End EntitySet="ImpostosEntradaItemSet" Role="FromRole_ItemNegociacaoimpostosEntradaImpostosEnt"/>
+     <End EntitySet="ItemNegociacaoSet" Role="ToRole_ItemNegociacaoimpostosEntradaImpostosEnt"/>
+    </AssociationSet>
+    <AssociationSet Name="NegociacaoprodutoProdutoNegociacao" Association="simplifique.NegociacaoprodutoProdutoNegociacao" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+     <End EntitySet="NegociacaoSet" Role="FromRole_NegociacaoprodutoProdutoNegociacao"/>
+     <End EntitySet="ProdutoNegociacaoSet" Role="ToRole_NegociacaoprodutoProdutoNegociacao"/>
+    </AssociationSet>
+    <AssociationSet Name="ItemNegociacaonossoPricingNossoPricingIt" Association="simplifique.ItemNegociacaonossoPricingNossoPricingIt" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+     <End EntitySet="NossoPricingItemSet" Role="FromRole_ItemNegociacaonossoPricingNossoPricingIt"/>
+     <End EntitySet="ItemNegociacaoSet" Role="ToRole_ItemNegociacaonossoPricingNossoPricingIt"/>
+    </AssociationSet>
+    <AssociationSet Name="ItemNegociacaosimulacaoSimulacaoItem_Ass" Association="simplifique.ItemNegociacaosimulacaoSimulacaoItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+     <End EntitySet="SimulacaoItemSet" Role="FromRole_ItemNegociacaosimulacaoSimulacaoItem"/>
+     <End EntitySet="ItemNegociacaoSet" Role="ToRole_ItemNegociacaosimulacaoSimulacaoItem"/>
+    </AssociationSet>
+    <AssociationSet Name="ItemNegociacaovendaActualVendaActualItem" Association="simplifique.ItemNegociacaovendaActualVendaActualItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+     <End EntitySet="VendaActualItemSet" Role="FromRole_ItemNegociacaovendaActualVendaActualItem"/>
+     <End EntitySet="ItemNegociacaoSet" Role="ToRole_ItemNegociacaovendaActualVendaActualItem"/>
+    </AssociationSet>
+    <AssociationSet Name="ItemNegociacaostockStockItem_AssocSet" Association="simplifique.ItemNegociacaostockStockItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+     <End EntitySet="StockItemSet" Role="FromRole_ItemNegociacaostockStockItem"/>
+     <End EntitySet="ItemNegociacaoSet" Role="ToRole_ItemNegociacaostockStockItem"/>
+    </AssociationSet>
+    <AssociationSet Name="NegociacaofornecedorFornecedorNegociacao" Association="simplifique.NegociacaofornecedorFornecedorNegociacao" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+     <End EntitySet="NegociacaoSet" Role="FromRole_NegociacaofornecedorFornecedorNegociacao"/>
+     <End EntitySet="FornecedorNegociacaoSet" Role="ToRole_NegociacaofornecedorFornecedorNegociacao"/>
+    </AssociationSet>
+    <AssociationSet Name="ItemNegociacaoimpostosSaidaImpostosSaida" Association="simplifique.ItemNegociacaoimpostosSaidaImpostosSaida" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+     <End EntitySet="ImpostosSaidaItemSet" Role="FromRole_ItemNegociacaoimpostosSaidaImpostosSaida"/>
+     <End EntitySet="ItemNegociacaoSet" Role="ToRole_ItemNegociacaoimpostosSaidaImpostosSaida"/>
+    </AssociationSet>
+    <AssociationSet Name="ItemNegociacaofornecedorFornecedorNegoci" Association="simplifique.ItemNegociacaofornecedorFornecedorNegoci" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+     <End EntitySet="FornecedorNegociacaoSet" Role="FromRole_ItemNegociacaofornecedorFornecedorNegoci"/>
+     <End EntitySet="ItemNegociacaoSet" Role="ToRole_ItemNegociacaofornecedorFornecedorNegoci"/>
+    </AssociationSet>
+    <AssociationSet Name="ItemNegociacaoprodutoProdutoNegociacao_A" Association="simplifique.ItemNegociacaoprodutoProdutoNegociacao" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+     <End EntitySet="ProdutoNegociacaoSet" Role="FromRole_ItemNegociacaoprodutoProdutoNegociacao"/>
+     <End EntitySet="ItemNegociacaoSet" Role="ToRole_ItemNegociacaoprodutoProdutoNegociacao"/>
+    </AssociationSet>
+   </EntityContainer>
+   <atom:link rel="self" href="http://dw3-ci.cencosud.corp:8000/sap/opu/odata/sap/ZNEGOCIACAO_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+   <atom:link rel="latest-version" href="http://dw3-ci.cencosud.corp:8000/sap/opu/odata/sap/ZNEGOCIACAO_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+  </Schema>
+ </edmx:DataServices>
 </edmx:Edmx>
