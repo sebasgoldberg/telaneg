@@ -161,7 +161,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                     let oContextItem = m.createEntry(
                         //sNegociacaoPath+"/ItemNegociacaoSet", { });
                         "/ItemNegociacaoSet", { properties: {
-                            "___FK_fec2295f0aaece790f8a51e8_00135": oNegociacao.ID,
+                            "NegociacaoID": oNegociacao.ID,
                             } });
                     });
                 });
