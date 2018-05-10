@@ -333,9 +333,12 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
                     "addNegociacaoPopover",
                     "simplifique.telaneg.view.AddNegociacaoPopover",
                     this);
+                this.getView().addDependent(this.popover);
             }
-            this.getView().addDependent(this.popover);
-            this.popover.openBy(oEvent.getSource());
+            if (this.popover.isOpen())
+                this.popover.close()
+            else
+                this.popover.openBy(oEvent.getSource());
         },
 
         onCancelCriarNegociacao: function(attribute) {

@@ -2,8 +2,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
     "sap/m/MessageBox",
     "./utilities",
     'simplifique/telaneg/model/formatter',
-    "sap/ui/core/routing/History"
-], function(BaseController, MessageBox, Utilities, formatter, History) {
+    "sap/ui/core/routing/History",
+    'simplifique/telaneg/controller/AddItemManager',
+], function(BaseController, MessageBox, Utilities, formatter, History, AddItemManager) {
     "use strict";
 
     return BaseController.extend("simplifique.telaneg.controller.DetailPage1", {
@@ -11,6 +12,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
         formatter: formatter,
 
         handleRouteMatched: function(oEvent) {
+
 
             var oParams = {};
 
@@ -110,125 +112,28 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             });
 
         },
-        displayAddItemPopover: function(oEvent) {
-            if (!oEvent)
-                return;
-            if (!this.popover) {
-                this.popover = sap.ui.xmlfragment(
-                    "addItemPopover",
-                    "simplifique.telaneg.view.AddItemNegociacaoPopover",
-                    this);
-            }
-            this.getView().addDependent(this.popover);
-            this.popover.openBy(oEvent.getSource());
-        },
-        onFornecedorSearch:function(){
-        },
-        onFornecedorSelected: function(oEvent) {
-            let oCtx = oEvent.getSource().getBindingContext('listas');
-            let oNavCon = sap.ui.core.Fragment.byId("addItemPopover", "navCon");
-            let oDetailPage = sap.ui.core.Fragment.byId("addItemPopover", "gruposListasFornecedor");
-            oDetailPage.bindElement({ path: oCtx.getPath(), model: 'listas'});
-            oNavCon.to(oDetailPage);
-        },
-        onGrupoListaSelected: function(oEvent) {
-            let oCtx = oEvent.getSource().getBindingContext('listas');
-            let oNavCon = sap.ui.core.Fragment.byId("addItemPopover", "navCon");
-            let oDetailPage = sap.ui.core.Fragment.byId("addItemPopover", "produtos");
-            oDetailPage.bindElement({ path: oCtx.getPath(), model: 'listas'});
-            oNavCon.to(oDetailPage);
+
+        createAddItemManager: function() {
+            this.addItemManager = new simplifique.telaneg.controller.AddItemManager(this);
         },
 
-        onAddGruposListas: function(oEvent) {
-            let v = this.getView();
-            let sNegociacaoPath = v.getBindingContext().getPath();
-            let oNegociacao = v.getBindingContext().getObject();
-
-            let m = v.getModel();
-
-            let oPageGruposListasFornecedor = sap.ui.core.Fragment.byId("addItemPopover", "gruposListasFornecedor");
-            let oContextFornecedor = oPageGruposListasFornecedor.getBindingContext('listas')
-            let oFornecedor = oContextFornecedor.getObject();
-
-            let oListGruposListas = sap.ui.core.Fragment.byId("addItemPopover", "listGruposListasFornecedor");
-
-            // @todo Codigo sync, deveria ser adaptado para ser async.
-            oListGruposListas.getSelectedContexts().forEach( oContextGrupoLista => {
-
-                let oGrupoLista = oContextGrupoLista.getObject();
-                oGrupoLista.produtos.forEach( produto => {
-
-                    let oContextItem = m.createEntry(
-                        //sNegociacaoPath+"/ItemNegociacaoSet", { });
-                        "/ItemNegociacaoSet", { properties: {
-                            "NegociacaoID": oNegociacao.ID,
-                            } });
-                    });
-                });
-            m.submitChanges();
-            v.byId('itemsTable').getBinding('items').refresh();
-            this.popover.close();
+        selectAddItemProcess: function() {
+            let oNegociacao = this.getView().getBindingContext().getObject();
+            this.addItemProcess = this.addItemManager.selectAddItemProcess(oNegociacao.TipoNegociacao);
         },
-        onCancelAddGruposListas: function(oEvent) {
-            this.popover.close();
+
+        toogleAddItemPopover: function(oEvent) {
+            // @todo Deveria ser chamado quando acontece a navegação.
+            this.selectAddItemProcess();
+            this.addItemProcess.toogleAddItemPopover(oEvent);
         },
-        onNavBack: function() {
-            let oNavCon = sap.ui.core.Fragment.byId("addItemPopover", "navCon");
-            oNavCon.back();
-        },
+
         _onButtonPress: function(oEvent) {
-            this.displayAddItemPopover(oEvent);
+            this.toogleAddItemPopover(oEvent);
             //sap.m.MessageToast.show("Serão adicionados itens na negociação.");
             return;
-
-            var sDialogName = "Dialog1";
-            this.mDialogs = this.mDialogs || {};
-            var oDialog = this.mDialogs[sDialogName];
-            var oSource = oEvent.getSource();
-            var oBindingContext = oSource.getBindingContext();
-            var sPath = (oBindingContext) ? oBindingContext.getPath() : null;
-            var oView;
-            if (!oDialog) {
-                this.getOwnerComponent().runAsOwner(function() {
-                    oView = sap.ui.xmlview({
-                        viewName: "simplifique.telaneg.view." + sDialogName
-                    });
-                    this.getView().addDependent(oView);
-                    oView.getController().setRouter(this.oRouter);
-                    oDialog = oView.getContent()[0];
-                    this.mDialogs[sDialogName] = oDialog;
-                }.bind(this));
-            }
-
-            return new Promise(function(fnResolve) {
-                oDialog.attachEventOnce("afterOpen", null, fnResolve);
-                oDialog.open();
-                if (oView) {
-                    oDialog.attachAfterOpen(function() {
-                        oDialog.rerender();
-                    });
-                } else {
-                    oView = oDialog.getParent();
-                }
-
-                var oModel = this.getView().getModel();
-                if (oModel) {
-                    oView.setModel(oModel);
-                }
-                if (sPath) {
-                    var oParams = oView.getController().getBindingParameters();
-                    oView.bindObject({
-                        path: sPath,
-                        parameters: oParams
-                    });
-                }
-            }.bind(this)).catch(function(err) {
-                if (err !== undefined) {
-                    MessageBox.error(err.message);
-                }
-            });
-
         },
+
         _onAccept: function(attribute) {
             sap.m.MessageToast.show("Os itens selecionados foram aprovados.");
         },
@@ -288,6 +193,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
         },
         onInit: function() {
+            this.createAddItemManager();
             //@todo Mudar para serviço OData
             let de = new Date();
             de.setDate((new Date()).getDate()-5);
