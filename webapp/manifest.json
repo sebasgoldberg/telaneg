@@ -111,13 +111,7 @@
                     "viewLevel": 1,
                     "transition": "slide"
                 },
-                "NovaNegociacao": {
-                    "viewName": "DetailPage1",
-                    "viewId": "DetailPage1",
-                    "viewLevel": 2,
-                    "transition": "flip"
-                },
-                 "DetailPage1": {
+                "DetailPage1": {
                     "viewName": "DetailPage1",
                     "viewId": "DetailPage1",
                     "viewLevel": 2,
@@ -136,13 +130,6 @@
                     "name": "MasterPage1",
                     "target": [
                         "MasterPage1"
-                    ]
-                },
-                {
-                    "pattern": "NovaNegociacao",
-                    "name": "NovaNegociacao",
-                    "target": [
-                        "NovaNegociacao"
                     ]
                 },
                 {

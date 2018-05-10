@@ -256,7 +256,11 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
                         parameters: oBindingInfo.parameters,
                         template: oBindingInfo.template,
                         templateShareable: true,
-                        sorter: oBindingOptions.sorters,
+                        //sorter: oBindingOptions.sorters,
+                        sorter: [
+                            new sap.ui.model.Sorter("Data", true),
+                            new sap.ui.model.Sorter("ID", true),
+                            ],
                         filters: oBindingOptions.filters
                     });
                 }.bind(this)).catch(function(err) {
@@ -321,6 +325,25 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
 
         },
         _onButtonPress: function() {
+
+            let m = this.getView().getModel();
+            let oContext = m.createEntry("/NegociacaoSet", {
+                properties: {
+                    Data: new Date(),
+                    Status: "Inicial",
+                    NovaMargem2: 0,
+                    MargemTeorica: 0,
+                    NovaMargem1: 0,
+                    NovoIC: 0,
+                    }});
+            m.submitChanges();
+            this.getView().byId('sap_List_Page_0-content-sap_m_List-1')
+                .getBinding('items').refresh();
+            this.doNavigate('DetailPage1', oContext);
+            return;
+
+
+
             this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             this.oRouter.navTo('NovaNegociacao');
             return;
