@@ -324,7 +324,29 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
                 });
 
         },
-        _onButtonPress: function() {
+
+        _onButtonPress: function(oEvent) {
+            if (!oEvent)
+                return;
+            if (!this.popover) {
+                this.popover = sap.ui.xmlfragment(
+                    "addNegociacaoPopover",
+                    "simplifique.telaneg.view.AddNegociacaoPopover",
+                    this);
+            }
+            this.getView().addDependent(this.popover);
+            this.popover.openBy(oEvent.getSource());
+        },
+
+        onCancelCriarNegociacao: function(attribute) {
+            this.popover.close();
+        },
+
+        onTipoNegociacaoPressed: function(oEvent) {
+
+            let oSourceControl = oEvent.getSource();
+            let oBC = oSourceControl.getBindingContext();
+            let oTipoNegociacao = oBC.getObject();
 
             let m = this.getView().getModel();
             let oContext = m.createEntry("/NegociacaoSet", {
@@ -335,10 +357,12 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
                     MargemTeorica: 0,
                     NovaMargem1: 0,
                     NovoIC: 0,
+                    TipoNegociacao: oTipoNegociacao.ID,
                     }});
             m.submitChanges();
             this.getView().byId('sap_List_Page_0-content-sap_m_List-1')
                 .getBinding('items').refresh();
+            this.popover.close();
             this.doNavigate('DetailPage1', oContext);
             return;
 

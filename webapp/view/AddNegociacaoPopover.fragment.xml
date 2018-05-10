@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <ResponsivePopover
+        title="Criar Negociação"
+        class="sapUiPopupWithPadding"
+        contentWidth="320px"
+        contentHeight="400px"
+        placement="Top" >
+
+        <endButton>
+            <Button text="Cancelar" press="onCancelCriarNegociacao" />
+        </endButton>
+
+        <content>
+
+           <List
+                id="tiposList"
+                items="{/TipoNegociacaoSet}" >
+                <StandardListItem
+                    title="{ID}"
+                    description="{Descricao}"
+                    type="Active"
+                    press="onTipoNegociacaoPressed"
+                    />
+            </List>
+
+        </content>
+    </ResponsivePopover>
+</core:FragmentDefinition>
+

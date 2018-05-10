@@ -237,6 +237,13 @@
     <Property Name="Obj3Ate" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Obj3Ate"/>
     <Property Name="Obj3Bonus" Type="Edm.Decimal" Precision="31" Scale="0" sap:label="Obj3Bonus"/>
    </EntityType>
+   <EntityType Name="TipoNegociacao" sap:content-version="1">
+    <Key>
+     <PropertyRef Name="ID"/>
+    </Key>
+    <Property Name="ID" Type="Edm.String" Nullable="false" sap:label="ID"/>
+    <Property Name="Descricao" Type="Edm.String" sap:label="Descricao"/>
+   </EntityType>
    <Association Name="ItemNegociacaosimulacaoSimulacaoItem" sap:content-version="1">
     <End Type="simplifique.SimulacaoItem" Multiplicity="1" Role="FromRole_ItemNegociacaosimulacaoSimulacaoItem"/>
     <End Type="simplifique.ItemNegociacao" Multiplicity="1" Role="ToRole_ItemNegociacaosimulacaoSimulacaoItem"/>
@@ -457,6 +464,7 @@
     <EntitySet Name="NossoPricingItemSet" EntityType="simplifique.NossoPricingItem" sap:content-version="1"/>
     <EntitySet Name="CategoryReviewItemSet" EntityType="simplifique.CategoryReviewItem" sap:content-version="1"/>
     <EntitySet Name="ContratoItemSet" EntityType="simplifique.ContratoItem" sap:content-version="1"/>
+    <EntitySet Name="TipoNegociacaoSet" EntityType="simplifique.TipoNegociacao" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
     <AssociationSet Name="NegociacaoitemItemNegociacao" Association="simplifique.NegociacaoitemItemNegociacao" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
      <End EntitySet="NegociacaoSet" Role="FromRole_NegociacaoitemItemNegociacao"/>
      <End EntitySet="ItemNegociacaoSet" Role="ToRole_NegociacaoitemItemNegociacao"/>
