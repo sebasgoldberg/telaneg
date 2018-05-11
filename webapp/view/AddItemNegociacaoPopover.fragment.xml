@@ -4,80 +4,96 @@
     <ResponsivePopover
         title="Adicionar Itens: {Descricao}"
         class="sapUiPopupWithPadding"
-        contentWidth="320px"
-        contentHeight="400px"
+        contentWidth="480px"
+        contentHeight="480px"
         placement="Left" >
 
         <beginButton>
-            <Button text="Adicionar" type="Emphasized" press="onAddGruposListas" />
+            <Button text="Adicionar" type="Emphasized" press="onAdd" />
         </beginButton>
 
         <endButton>
-            <Button text="Cancelar" press="onCancelAddGruposListas" />
+            <Button text="Cancelar" press="onCancel" />
         </endButton>
 
         <content>
             <NavContainer
-                initialPage='fornecedores'
+                initialPage='gruposListas'
                 id="navCon">
 
                 <Page
-                    id="fornecedores"
-                    title="Fornecedores">
-                    <subHeader>
-                        <Toolbar>
-                            <SearchField
-                                width="100%" />
-                        </Toolbar>
-                    </subHeader>
-                    <List
-                        id="listFornecedores"
-                        items="{listas>/Fornecedor}" >
-                        <StandardListItem
-                            title="{listas>ID}"
-                            description="{listas>Nome}"
-                            type="Active"
-                            press="onFornecedorSelected"
-                            />
-                    </List>
-                </Page>
-
-                <Page
-                    id="gruposListasFornecedor"
-                    showNavButton="true"
+                    id="gruposListas"
                     navButtonPress="onNavBack"
-                    title="Listas {listas>Nome}">
+                    title="Listas Disponiveis">
                     <subHeader>
                         <Toolbar>
                             <SearchField
                                 width="100%" />
                         </Toolbar>
                     </subHeader>
-                    <List
-                        id="listGruposListasFornecedor"
-                        mode="MultiSelect"
-                        items="{listas>gruposListas}" >
-                        <StandardListItem
-                            title="{listas>Centro}, {listas>GrupoCompra}"
-                            description="{
-                                path: 'listas>DataDe',
-                                type: 'sap.ui.model.type.Date',
-                                formatOptions: { UTC: true, style: 'short' }
-                                } - {
-                                    path: 'listas>DataAte',
-                                    type: 'sap.ui.model.type.Date',
-                                    formatOptions: { UTC: true, style: 'short' }}"
-                            type="Active"
-                            press="onGrupoListaSelected"
-                            />
-                    </List>
+
+                    <Table alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="onGrupoListaSelected" items="{listas>/GrupoListaSet}" id='listGruposListas'>
+
+                        <columns>
+
+                            <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                <header>
+                                    <Text text="Fornecedor" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                </header>
+                                <footer/>
+                            </Column>
+
+                            <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                <header>
+                                    <Text text="UF" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                </header>
+                                <footer/>
+                            </Column>
+
+                            <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                <header>
+                                    <Text text="G. Compra" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                </header>
+                                <footer/>
+                            </Column>
+
+                            <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                <header>
+                                    <Text text="Vigencia" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                </header>
+                                <footer/>
+                            </Column>
+
+                        </columns>
+
+                        <items>
+
+                            <ColumnListItem type="Navigation">
+
+                                <cells>
+
+                                    <Text text="{listas>Fornecedor}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    <Text text="{listas>Centro}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    <Text text="{listas>GrupoCompra}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    <Text text="{
+                                        path: 'listas>DataAte',
+                                        type: 'sap.ui.model.type.Date',
+                                        formatOptions: { UTC: true, style: 'short' }}"
+                                         width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+
+                                </cells>
+                            </ColumnListItem>
+
+                        </items>
+                    </Table>
+
                 </Page>
 
                 <Page
                     id="produtos"
                     showNavButton="true"
                     navButtonPress="onNavBack"
-                    title="{listas>Centro}, {listas>GrupoCompra}">
+                    title="Produtos da Lista">
                     <subHeader>
                         <Toolbar>
                             <SearchField

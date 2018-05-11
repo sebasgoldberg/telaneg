@@ -1,14 +1,17 @@
-function AddItemProcessTabelaPrecos(oController){
+function AddItemProcessBase(oController, fragmentId, fragmentPath, listWithSelectionsId){
 
     this.oController = oController;
+    this.fragmentId = fragmentId;
+    this.fragmentPath = fragmentPath;
+    this.listWithSelectionsId = listWithSelectionsId;
 
     this.toogleAddItemPopover = oEvent => {
         if (!oEvent)
             return;
         if (!this.popover) {
             this.popover = sap.ui.xmlfragment(
-                "addItemPopover",
-                "simplifique.telaneg.view.AddItemNegociacaoPopover",
+                this.fragmentId,
+                this.fragmentPath,
                 this);
             this.oController.getView().addDependent(this.popover);
         }
@@ -18,66 +21,77 @@ function AddItemProcessTabelaPrecos(oController){
             this.popover.openBy(oEvent.getSource());
         };
 
-    this.onFornecedorSearch = () => {
-        };
+    this.addItems = (oSelectedContexts) => {
 
-    onFornecedorSelected = (oEvent) => {
-        let oCtx = oEvent.getSource().getBindingContext('listas');
-        let oNavCon = sap.ui.core.Fragment.byId("addItemPopover", "navCon");
-        let oDetailPage = sap.ui.core.Fragment.byId("addItemPopover", "gruposListasFornecedor");
-        oDetailPage.bindElement({ path: oCtx.getPath(), model: 'listas'});
-        oNavCon.to(oDetailPage);
-        };
-
-    onGrupoListaSelected = (oEvent) => {
-        let oCtx = oEvent.getSource().getBindingContext('listas');
-        let oNavCon = sap.ui.core.Fragment.byId("addItemPopover", "navCon");
-        let oDetailPage = sap.ui.core.Fragment.byId("addItemPopover", "produtos");
-        oDetailPage.bindElement({ path: oCtx.getPath(), model: 'listas'});
-        oNavCon.to(oDetailPage);
-        };
-
-    onAddGruposListas = (oEvent) => {
         let v = this.oController.getView();
-        let sNegociacaoPath = v.getBindingContext().getPath();
-        let oNegociacao = v.getBindingContext().getObject();
-
         let m = v.getModel();
 
-        let oPageGruposListasFornecedor = sap.ui.core.Fragment.byId("addItemPopover", "gruposListasFornecedor");
-        let oContextFornecedor = oPageGruposListasFornecedor.getBindingContext('listas')
-        let oFornecedor = oContextFornecedor.getObject();
-
-        let oListGruposListas = sap.ui.core.Fragment.byId("addItemPopover", "listGruposListasFornecedor");
-
         // @todo Codigo sync, deveria ser adaptado para ser async.
-        oListGruposListas.getSelectedContexts().forEach( oContextGrupoLista => {
+        oSelectedContexts.forEach( oContextGrupoLista => {
 
-            let oGrupoLista = oContextGrupoLista.getObject();
-            oGrupoLista.produtos.forEach( produto => {
+            this.addItemsForContext(oContextGrupoLista);
 
-                let oContextItem = m.createEntry(
-                    //sNegociacaoPath+"/ItemNegociacaoSet", { });
-                    "/ItemNegociacaoSet", { properties: {
-                        "NegociacaoID": oNegociacao.ID,
-                        } });
-                });
             });
+
         m.submitChanges();
         v.byId('itemsTable').getBinding('items').refresh();
         this.popover.close();
-    };
+        };
 
-    onCancelAddGruposListas = (oEvent) => {
+    this.onCancel = (oEvent) => {
         this.popover.close();
         };
 
-    onNavBack = () => {
-        let oNavCon = sap.ui.core.Fragment.byId("addItemPopover", "navCon");
+    this.onNavBack = () => {
+        let oNavCon = sap.ui.core.Fragment.byId(this.fragmentId, "navCon");
         oNavCon.back();
         };
 
+    this.onAdd = (oEvent) => {
+        let oListGruposListas = sap.ui.core.Fragment.byId(this.fragmentId, this.listWithSelectionsId);
+        oSelectedContexts = oListGruposListas.getSelectedContexts();
+        this.addItems(oSelectedContexts);
+        };
+
 }
+
+
+function AddItemProcessTabelaPrecos(oController){
+
+    AddItemProcessBase.call(this, oController,
+        "addItemPopover",
+        "simplifique.telaneg.view.AddItemNegociacaoPopover",
+        "listGruposListas");
+}
+
+AddItemProcessTabelaPrecos.prototype = Object.create(AddItemProcessBase.prototype);
+AddItemProcessTabelaPrecos.prototype.constructor = AddItemProcessTabelaPrecos;
+
+AddItemProcessTabelaPrecos.prototype.onGrupoListaSelected = function(oEvent){
+    let oCtx = oEvent.getParameter("listItem").getBindingContext('listas');
+    let oNavCon = sap.ui.core.Fragment.byId(this.fragmentId, "navCon");
+    let oDetailPage = sap.ui.core.Fragment.byId(this.fragmentId, "produtos");
+    oDetailPage.bindElement({ path: oCtx.getPath(), model: 'listas'});
+    oNavCon.to(oDetailPage);
+}
+
+AddItemProcessTabelaPrecos.prototype.addItemsForContext = function(oContext){
+
+    let v = this.oController.getView();
+    let oNegociacao = v.getBindingContext().getObject();
+    let m = v.getModel();
+
+    let oGrupoLista = oContext.getObject();
+    oGrupoLista.produtos.forEach( produto => {
+
+        let oContextItem = m.createEntry(
+            "/ItemNegociacaoSet", { properties: {
+                "NegociacaoID": oNegociacao.ID,
+                } });
+        });
+
+};
+
 
 sap.ui.define([
         "sap/ui/base/Object",

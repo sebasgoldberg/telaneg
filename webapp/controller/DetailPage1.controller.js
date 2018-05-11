@@ -200,23 +200,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             let ate = new Date();
             ate.setDate((new Date()).getDate()+25);
             let listasFornecedores = new sap.ui.model.json.JSONModel({
-                Fornecedor: [
+                GrupoListaSet: [
                     {
-                        Nome: 'CARLA BEATRIZ ALMEIDA SANTOS',
-                        ID: 'F01',
-                        gruposListas:[
-                            {
-                                Centro: 'BVBA',
-                                GrupoCompra: '14',
-                                DataDe: de,
-                                DataAte: ate,
-                                produtos: [
-                                    {ID: 'P1', Nome: 'Produto 1'},
-                                    {ID: 'P1', Nome: 'Produto 1'},
-                                    {ID: 'P1', Nome: 'Produto 1'},
-                                ]
-                                }
-                        ]},
+                        ID: 'L01',
+                        Fornecedor: 'CARLA BEATRIZ ALMEIDA SANTOS',
+                        Centro: 'BVBA',
+                        GrupoCompra: 'Limpeza',
+                        DataDe: de,
+                        DataAte: ate,
+                        produtos: [
+                            {ID: 'P1', Nome: 'Produto 1'},
+                            {ID: 'P1', Nome: 'Produto 1'},
+                            {ID: 'P1', Nome: 'Produto 1'},
+                        ]
+                    },
                 ]
                 });
             this.getView().setModel(listasFornecedores, 'listas');

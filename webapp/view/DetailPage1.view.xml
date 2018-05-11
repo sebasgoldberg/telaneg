@@ -146,7 +146,7 @@
                     </Column>
                 </columns>
                 <items>
-                    <ColumnListItem type="Active">
+                    <ColumnListItem type="Navigation">
                         <cells>
                             <ObjectIdentifier title="{fornecedor/ID}" text="" titleActive="false" visible="true"/>
                             <Text text="{fornecedor/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
