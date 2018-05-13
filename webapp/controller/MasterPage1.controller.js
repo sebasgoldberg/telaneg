@@ -1,16 +1,15 @@
-sap.ui.define(['sap/ui/core/mvc/Controller',
-    'sap/m/MessageBox',
-    './utilities',
-    'simplifique/telaneg/model/formatter',
-    'sap/ui/core/routing/History'
-], function(BaseController, MessageBox, Utilities, formatter, History) {
-    'use strict';
+import BaseController from 'sap/ui/core/mvc/Controller';
+import MessageBox from 'sap/m/MessageBox';
+import formatter from 'simplifique/telaneg/model/formatter';
 
-    return BaseController.extend('simplifique.telaneg.controller.MasterPage1', {
+export default class MasterPage1 extends BaseController{
 
-        formatter: formatter,
+        constructor(sName){
+            super(sName);
+            this.formatter = formatter;
+            }
 
-        handleRouteMatched: function(oEvent) {
+        handleRouteMatched(oEvent) {
 
             var oParams = {};
             var oView = this.getView();
@@ -59,8 +58,9 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
                     });
                 }
 
-        },
-        _attachSelectListItemWithContextPath: function(sContextPath) {
+        }
+
+        _attachSelectListItemWithContextPath(sContextPath) {
             var oView = this.getView();
             var oContent = this.getView().getContent();
             if (oContent) {
@@ -109,8 +109,9 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
                     }
                 }
 
-        },
-        _onListItemPress: function(oEvent) {
+        }
+
+        _onListItemPress(oEvent) {
 
             var oBindingContext = oEvent.getParameter('listItem').getBindingContext();
 
@@ -122,8 +123,9 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
                     }
                 });
 
-        },
-        doNavigate: function(sRouteName, oBindingContext, fnPromiseResolve, sViaRelation) {
+        }
+
+        doNavigate(sRouteName, oBindingContext, fnPromiseResolve, sViaRelation) {
 
             var sPath = (oBindingContext) ? oBindingContext.getPath() : null;
             var oModel = (oBindingContext) ? oBindingContext.getModel() : null;
@@ -176,12 +178,14 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
             if (typeof fnPromiseResolve === 'function') {
                     fnPromiseResolve();
                 }
-        },
-        _getList: function() {
+        }
+
+        _getList() {
             var sControlId = 'sap_List_Page_0-content-sap_m_List-1';
             return this.getView().byId(sControlId);
-        },
-        _onSearchFieldSearch: function(oEvent) {
+        }
+
+        _onSearchFieldSearch(oEvent) {
             var sControlId = 'sap_List_Page_0-content-sap_m_List-1';
             var oControl = this.getView().byId(sControlId);
 
@@ -269,8 +273,9 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
                     }
                 });
 
-        },
-        updateBindingOptions: function(sCollectionId, oBindingData, sSourceId) {
+        }
+
+        updateBindingOptions(sCollectionId, oBindingData, sSourceId) {
             this.mBindingOptions = this.mBindingOptions || {};
             this.mBindingOptions[sCollectionId] = this.mBindingOptions[sCollectionId] || {};
 
@@ -309,8 +314,9 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
                     sorters: aSorters
                 };
 
-        },
-        _onObjectListItemPress: function(oEvent) {
+        }
+
+        _onObjectListItemPress(oEvent) {
 
             var oBindingContext = oEvent.getSource().getBindingContext();
 
@@ -323,9 +329,9 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
                     }
                 });
 
-        },
+        }
 
-        _onButtonPress: function(oEvent) {
+        _onButtonPress(oEvent) {
             if (!oEvent)
                 return;
             if (!this.popover) {
@@ -339,13 +345,13 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
                 this.popover.close()
             else
                 this.popover.openBy(oEvent.getSource());
-        },
+        }
 
-        onCancelCriarNegociacao: function(attribute) {
+        onCancelCriarNegociacao(attribute) {
             this.popover.close();
-        },
+        }
 
-        onTipoNegociacaoPressed: function(oEvent) {
+        onTipoNegociacaoPressed(oEvent) {
 
             let oSourceControl = oEvent.getSource();
             let oBC = oSourceControl.getBindingContext();
@@ -389,18 +395,22 @@ sap.ui.define(['sap/ui/core/mvc/Controller',
                     }
                 });
 
-        },
-        onInit: function() {
+        }
+
+        onInit() {
             this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             this.oRouter.getTarget('MasterPage1').attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
-        },
-        onAfterRendering: function() {
+        }
+
+        onAfterRendering() {
             let oControl = this._getList();
             let oItemsBinding = oControl.getBinding('items');
             oItemsBinding.sort([
                 new sap.ui.model.Sorter("Data", true),
                 new sap.ui.model.Sorter("ID", true),
             ]);
-        },
-    });
-}, /* bExport= */ true);
+        }
+}
+
+// for ui5 compatibility which relies on globals
+// jQuery.sap.setObject('simplifique.telaneg.controller.MasterPage1', MasterPage1);

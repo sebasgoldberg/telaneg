@@ -49,7 +49,7 @@ function AddItemProcessBase(oController, fragmentId, fragmentPath, listWithSelec
 
     this.onAdd = (oEvent) => {
         let oListGruposListas = sap.ui.core.Fragment.byId(this.fragmentId, this.listWithSelectionsId);
-        oSelectedContexts = oListGruposListas.getSelectedContexts();
+        let oSelectedContexts = oListGruposListas.getSelectedContexts();
         this.addItems(oSelectedContexts);
         };
 
