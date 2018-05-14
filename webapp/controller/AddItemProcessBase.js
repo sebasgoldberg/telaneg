@@ -8,6 +8,14 @@ export default class AddItemProcessBase{
         this.navContainerId = navContainerId;
     }
 
+    getView(){
+        return this.oController.getView();
+        }
+
+    getModel(sModel=''){
+        return this.getView().getModel(sModel)
+        }
+
     toogleAddItemPopover(oEvent){
         if (!oEvent)
             return;

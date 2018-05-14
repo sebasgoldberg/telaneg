@@ -18,8 +18,8 @@
 
         <content>
             <NavContainer
-                initialPage='selecaoItens'
-                id="navCon">
+                initialPage='selecaoFornecedores'
+                id="navCon2">
 
                 <Page
                     id="selecaoItens"
@@ -32,7 +32,7 @@
                         </Toolbar>
                     </subHeader>
 
-                    <Table alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="onGrupoListaSelected" items="{itens>/Itens}" id='listSelecaoItens'>
+                    <Table alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="onGrupoListaSelected" items="{view>/items}" id='listSelecaoItens'>
 
                         <columns>
 
@@ -65,9 +65,9 @@
 
                                 <cells>
 
-                                    <Text text="{itens>Fornecedor}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                                    <Text text="{itens>Centro}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                                    <Text text="{itens>Produto}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    <Text text="{view>Fornecedor}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    <Text text="{view>Centro}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    <Text text="{view>Produto}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
 
                                 </cells>
                             </ColumnListItem>
@@ -89,14 +89,14 @@
                     </subHeader>
                     <List
                         mode="SingleSelectMaster"
-                        itemPress="onItemPressed"
+                        selectionChange="onItemPressed"
                         id="listFornecedores"
-                        items="{itens>fornecedores}" >
+                        items="{itens>/FornecedorSet}" >
 
                         <infoToolbar>
                             <Toolbar
                                 >
-                                <Link text="{view>/sFornecedoresSelecionados}" />
+                                <Link text="{view>/fornecedoresSelecionados}" />
                             </Toolbar>
                         </infoToolbar>
 
