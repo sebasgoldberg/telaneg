@@ -2,103 +2,142 @@
 
 module.exports = function(grunt) {
 
-	grunt.initConfig({
+    grunt.initConfig({
 
-		dir: {
-			webapp: 'webapp',
-			dist: 'dist',
-			bower_components: 'bower_components'
-		},
+        dir: {
+            webapp: 'webapp',
+            dist: 'dist',
+            transp: 'transp',
+            bower_components: 'bower_components'
+        },
 
-		connect: {
-			options: {
-				port: 8080,
-				hostname: 'localhost'
-			},
-			src: {},
-			dist: {}
-		},
+        connect: {
+            options: {
+                port: 8080,
+                hostname: 'localhost'
+            },
+            src: {},
+            dist: {},
+            transp: {},
+        },
 
-		openui5_connect: {
-			options: {
-				resources: [
-					'<%= dir.bower_components %>/openui5-sap.ui.core/resources',
-					'<%= dir.bower_components %>/openui5-sap.m/resources',
-					'<%= dir.bower_components %>/openui5-sap.ui.layout/resources',
-					'<%= dir.bower_components %>/openui5-themelib_sap_belize/resources'
-				]
-			},
-			src: {
-				options: {
-					appresources: '<%= dir.webapp %>'
-				}
-			},
-			dist: {
-				options: {
-					appresources: '<%= dir.dist %>'
-				}
-			}
-		},
+        copy:{
+            transp: {
+              files:[ {
+                  expand: true,
+                  cwd: '<%= dir.webapp %>',
+                  src: ['**/*', '!**/*.js', ],
+                  dest: 'transp/',
+              }]
 
-		openui5_preload: {
-			component: {
-				options: {
-					resources: {
-						cwd: '<%= dir.webapp %>',
-						prefix: 'simplifique/telaneg'
-					},
-					dest: '<%= dir.dist %>'
-				},
-				components: true
-			}
-		},
+            },
+            dist: {
+              files:[ {
+                  expand: true,
+                  cwd: '<%= dir.transp %>',
+                  src: ['manifest.json', 'test/**/*', '!**/*.js', 'localService/**/*', ],
+                  dest: 'dist/',
+              }]
 
-		clean: {
-			dist: '<%= dir.dist %>/'
-		},
+            },
+        },
 
-		copy: {
-			dist: {
-				files: [ {
-					expand: true,
-					cwd: '<%= dir.webapp %>',
-					src: [
-						'**'
-					],
-					dest: '<%= dir.dist %>'
-				} ]
-			}
-		},
+        babel: {
+            options: {
+                sourceMap: true
+            },
+            src: {
+                files:[ {
+                    expand: true,
+                    cwd:  'webapp/',
+                    src: ['**/*.js'],
+                    dest: 'transp/',
+                }]
+            }
+        },
 
-		eslint: {
-			webapp: ['<%= dir.webapp %>']
-		}
+        watch: {
+            all:{
+              files: ['webapp/**/*'],
+              tasks: ['clean:transp', 'babel', 'copy:transp']
+                }
+        },
 
-	});
+        openui5_connect: {
+            options: {
+                resources: [
+                ]
+            },
+            transp: {
+                options: {
+                    appresources: 'transp'
+                }
+            },
+            src: {
+                options: {
+                    appresources: 'webapp'
+                }
+            },
+            dist: {
+                options: {
+                    appresources: '<%= dir.dist %>'
+                }
+            }
+        },
 
-	// These plugins provide necessary tasks.
-	grunt.loadNpmTasks('grunt-contrib-connect');
-	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-openui5');
-	grunt.loadNpmTasks('grunt-eslint');
+        openui5_preload: {
+            component: {
+                options: {
+                    resources: {
+                        cwd: 'transp',
+                        prefix: 'simplifique/telaneg'
+                    },
+                    dest: '<%= dir.dist %>'
+                },
+                components: true
+            }
+        },
 
-	// Server task
-	grunt.registerTask('serve', function(target) {
-		grunt.task.run('openui5_connect:' + (target || 'src') + ':keepalive');
-	});
+        clean: {
+            // @todo Verificar se funciona.
+            dist: '<%= dir.dist %>/',
+            transp: 'transp/'
+        },
 
-	// Linting task
-	grunt.registerTask('lint', ['eslint']);
+        eslint: {
+            webapp: ['<%= dir.webapp %>']
+        }
 
-	// Build task
-	grunt.registerTask('build', ['openui5_preload', 'copy']);
+    });
 
-	// Default task
-	grunt.registerTask('default', [
-		'lint',
-		'clean',
-		'build',
-		'serve:dist'
-	]);
+    // These plugins provide necessary tasks.
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-openui5');
+    grunt.loadNpmTasks('grunt-eslint');
+    grunt.loadNpmTasks('grunt-babel');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+
+    // Server task
+    grunt.registerTask('serve', function(target) {
+        grunt.task.run('openui5_connect:' + (target || 'src') + ':keepalive');
+    });
+
+    // Linting task
+    grunt.registerTask('lint', ['eslint']);
+
+    //grunt.registerTask('mybabel', ['babel']);
+
+    // Build task
+    grunt.registerTask('build', ['transp', 'clean:dist', 'openui5_preload', 'copy:dist']);
+
+    grunt.registerTask('transp', ['clean:transp', 'babel', 'copy:transp']);
+
+    // Default task
+    grunt.registerTask('default', [
+        'lint',
+        'build',
+        'serve:dist'
+    ]);
 };

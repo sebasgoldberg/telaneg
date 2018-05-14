@@ -7,15 +7,22 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-es2015-modules-ui5": "^6.0.0-alpha.2",
+    "babel-preset-env": "^1.7.0",
     "eslint-plugin-openui5": "0.1.0",
     "grunt": "^0.4.5",
+    "grunt-babel": "^7.0.0",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-connect": "^0.9.0",
     "grunt-contrib-copy": "^0.7.0",
     "grunt-contrib-qunit": "^0.5.2",
+    "grunt-contrib-watch": "^1.0.1",
     "grunt-eslint": "^17.3.1",
     "grunt-openui5": "^0.5.0",
     "grunt-shell": "^1.1.2",
-    "grunt-zip": "^0.16.2"
-  }
+    "grunt-zip": "^0.16.2",
+    "load-grunt-tasks": "^4.0.0"
+  },
+  "dependencies": {}
 }
