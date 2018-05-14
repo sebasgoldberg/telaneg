@@ -114,7 +114,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
         },
 
         createAddItemManager: function() {
-            this.addItemManager = new simplifique.telaneg.controller.AddItemManager(this);
+            this.addItemManager = new AddItemManager(this);
         },
 
         selectAddItemProcess: function() {
