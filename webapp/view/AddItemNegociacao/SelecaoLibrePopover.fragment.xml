@@ -1,0 +1,114 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <ResponsivePopover
+        title="Adicionar Itens: {Descricao}"
+        class="sapUiPopupWithPadding"
+        contentWidth="480px"
+        contentHeight="480px"
+        placement="Left" >
+
+        <beginButton>
+            <Button text="Adicionar" type="Emphasized" press="onAdd" />
+        </beginButton>
+
+        <endButton>
+            <Button text="Cancelar" press="onCancel" />
+        </endButton>
+
+        <content>
+            <NavContainer
+                initialPage='selecaoItens'
+                id="navCon">
+
+                <Page
+                    id="selecaoItens"
+                    navButtonPress="onNavBack"
+                    title="Itens Possiveis">
+                    <subHeader>
+                        <Toolbar>
+                            <SearchField
+                                width="100%" />
+                        </Toolbar>
+                    </subHeader>
+
+                    <Table alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="onGrupoListaSelected" items="{itens>/Itens}" id='listSelecaoItens'>
+
+                        <columns>
+
+                            <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                <header>
+                                    <Text text="Fornecedor" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                </header>
+                                <footer/>
+                            </Column>
+
+                            <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                <header>
+                                    <Text text="UF" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                </header>
+                                <footer/>
+                            </Column>
+
+                            <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                <header>
+                                    <Text text="Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                </header>
+                                <footer/>
+                            </Column>
+
+                        </columns>
+
+                        <items>
+
+                            <ColumnListItem type="Inactive">
+
+                                <cells>
+
+                                    <Text text="{itens>Fornecedor}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    <Text text="{itens>Centro}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    <Text text="{itens>Produto}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+
+                                </cells>
+                            </ColumnListItem>
+
+                        </items>
+                    </Table>
+
+                </Page>
+
+                <Page
+                    id="selecaoFornecedores"
+                    showNavButton="false"
+                    title="Selecione Fornecedores">
+                    <subHeader>
+                        <Toolbar>
+                            <SearchField
+                                width="100%" />
+                        </Toolbar>
+                    </subHeader>
+                    <List
+                        mode="SingleSelectMaster"
+                        itemPress="onItemPressed"
+                        id="listFornecedores"
+                        items="{itens>fornecedores}" >
+
+                        <infoToolbar>
+                            <Toolbar
+                                >
+                                <Link text="{view>/sFornecedoresSelecionados}" />
+                            </Toolbar>
+                        </infoToolbar>
+
+                        <StandardListItem
+                            title="{itens>ID}"
+                            description="{itens>Nome}"
+                            />
+                    </List>
+                </Page>
+
+
+            </NavContainer>
+        </content>
+    </ResponsivePopover>
+</core:FragmentDefinition>
