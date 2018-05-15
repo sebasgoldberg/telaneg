@@ -16,6 +16,10 @@ export default class AddItemProcessBase{
         return this.getView().getModel(sModel)
         }
 
+    getNavCon(){
+        return sap.ui.core.Fragment.byId(this.fragmentId, this.navContainerId);
+        }
+
     toogleAddItemPopover(oEvent){
         if (!oEvent)
             return;

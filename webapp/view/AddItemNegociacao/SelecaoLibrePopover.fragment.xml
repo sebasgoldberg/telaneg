@@ -9,7 +9,7 @@
         placement="Left" >
 
         <beginButton>
-            <Button text="Adicionar" type="Emphasized" press="onAdd" />
+            <Button text="{view>/sTextoBotaoSeguinte}" type="Emphasized" press="onSeguinte" />
         </beginButton>
 
         <endButton>
@@ -24,15 +24,17 @@
                 <Page
                     id="selecaoItens"
                     navButtonPress="onNavBack"
+                    showNavButton="true"
                     title="Itens Possiveis">
                     <subHeader>
                         <Toolbar>
                             <SearchField
+                                search="onSearch"
                                 width="100%" />
                         </Toolbar>
                     </subHeader>
 
-                    <Table alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="onGrupoListaSelected" items="{view>/items}" id='listSelecaoItens'>
+                    <Table alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="onGrupoListaSelected" items="{/ItemNegociacaoSet}" id='listItens'>
 
                         <columns>
 
@@ -65,9 +67,9 @@
 
                                 <cells>
 
-                                    <Text text="{view>Fornecedor}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                                    <Text text="{view>Centro}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                                    <Text text="{view>Produto}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    <Text text="{FornecedorID}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    <Text text="{CentroID}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    <Text text="{ProdutoID}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
 
                                 </cells>
                             </ColumnListItem>
@@ -105,11 +107,83 @@
                         </infoToolbar>
 
                         <StandardListItem
-                            title="{ID}"
+                            title="Fornecedor {ID}"
                             description="{FornecedorID}, {ProdutoID}, {CentroID}"
                             />
                     </List>
                 </Page>
+
+                <Page
+                    id="selecaoMateriais"
+                    showNavButton="true"
+                    navButtonPress="onNavBack"
+                    title="Selecione Materiais">
+                    <subHeader>
+                        <Toolbar>
+                            <SearchField
+                                search="onSearch"
+                                width="100%" />
+                        </Toolbar>
+                    </subHeader>
+                    <List
+                        mode="MultiSelect"
+                        selectionChange="onSelectionChange"
+                        id="listMateriais"
+                        growing="true"
+                        growingThreshold="6"
+                        growingScrollToLoad="true"
+                        items="{/ItemNegociacaoSet}" >
+
+                        <infoToolbar>
+                            <Toolbar
+                                >
+                                <Label text="Materiais selecionados: {view>/materiaisSelecionados}" wrapping="true"/>
+                            </Toolbar>
+                        </infoToolbar>
+
+                        <StandardListItem
+                            title="Material {ID}"
+                            description="{FornecedorID}, {ProdutoID}, {CentroID}"
+                            />
+                    </List>
+                </Page>
+
+                <Page
+                    id="selecaoCentros"
+                    showNavButton="true"
+                    navButtonPress="onNavBack"
+                    title="Selecione Centros">
+                    <subHeader>
+                        <Toolbar>
+                            <SearchField
+                                search="onSearch"
+                                width="100%" />
+                        </Toolbar>
+                    </subHeader>
+                    <List
+                        mode="MultiSelect"
+                        selectionChange="onSelectionChange"
+                        id="listCentros"
+                        growing="true"
+                        growingThreshold="6"
+                        growingScrollToLoad="true"
+                        items="{/ItemNegociacaoSet}" >
+
+                        <infoToolbar>
+                            <Toolbar
+                                >
+                                <Label text="Centros selecionados: {view>/centrosSelecionados}" wrapping="true"/>
+                            </Toolbar>
+                        </infoToolbar>
+
+                        <StandardListItem
+                            title="Centro {ID}"
+                            description="{FornecedorID}, {ProdutoID}, {CentroID}"
+                            />
+                    </List>
+                </Page>
+
+
 
 
             </NavContainer>
