@@ -2,8 +2,12 @@
     <uxap:ObjectPageLayout showTitleInHeaderContent="true" showHeaderContent="true" showAnchorBar="true" showFooter="true" subSectionLayout="TitleOnTop">
         <uxap:headerContent/>
         <uxap:headerTitle>
-            <uxap:ObjectPageHeader objectImageURI="" objectTitle="{produto/Nome}" objectSubtitle="{fornecedor/Nome}, {centro/Codigo}" headerDesign="Light" objectImageShape="Circle" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="false" isObjectSubtitleAlwaysVisible="false" isActionAreaAlwaysVisible="false">
-                <uxap:actions/>
+            <uxap:ObjectPageHeader id="pageHeader" objectImageURI="" objectTitle="{produto/Nome}" objectSubtitle="{fornecedor/Nome} --> {centro/Codigo}" headerDesign="Light" objectImageShape="Circle" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="false" isObjectSubtitleAlwaysVisible="false" isActionAreaAlwaysVisible="true">
+				<uxap:actions>
+					<Button text="BVSE" press="onCentroVendaModificado"/>
+					<Button text="BVBA" press="onCentroVendaModificado"/>
+					<Button text="BVMG" press="onCentroVendaModificado"/>
+				</uxap:actions>
                 <uxap:breadCrumbsLinks/>
                 <uxap:navigationBar/>
            </uxap:ObjectPageHeader>

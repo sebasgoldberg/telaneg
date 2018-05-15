@@ -255,5 +255,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
         _onReject: function(attribute) {
             sap.m.MessageToast.show("Rejeição realizada.");
         },
+
+        onCentroVendaModificado: function(oEvent) {
+            let sCentroVenda = oEvent.getSource().getText();
+            let oPageHeader = this.getView().byId('pageHeader');
+            let sSubtitle = oPageHeader.getObjectSubtitle();
+            let sFornecedor, sCentro;
+            [sFornecedor, sCentro] = sSubtitle
+                .split('-->')
+                .filter( (e, i) => i<2 )
+                .map(e=>e.trim());
+            if (sCentroVenda == sCentro)
+                oPageHeader.setObjectSubtitle(`${sFornecedor} --> ${sCentro}`);
+            else
+                oPageHeader.setObjectSubtitle(`${sFornecedor} --> ${sCentro} --> ${sCentroVenda}`);
+        },
     });
 }, /* bExport= */ true);
