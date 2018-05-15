@@ -1,4 +1,5 @@
-import JSONModel from "sap/ui/model/json/JSONModel"
+import JSONModel from "sap/ui/model/json/JSONModel";
+import Filter from "sap/ui/model/Filter";
 import AddItemProcessBase from "simplifique/telaneg/controller/AddItemProcessBase";
 
 export default class AddItemProcessSelecaoLivre extends AddItemProcessBase{
@@ -11,25 +12,11 @@ export default class AddItemProcessSelecaoLivre extends AddItemProcessBase{
             "navCon2");
 
         this.itens = {
-            FornecedorSet:[
-               {
-                   ID: 'ID 01',
-                   Nome: 'Nome 01',
-                   },
-               {
-                   ID: 'ID 02',
-                   Nome: 'Nome 02',
-                   },
-               {
-                   ID: 'ID 03',
-                   Nome: 'Nome 03',
-                   },
-            ]
+            itens: []
             };
 
         this.view = {
-            fornecedoresSelecionados:'', 
-            items:[],
+            fornecedoresSelecionados: 0,
             };
 
         let oModel = new JSONModel(this.itens);
@@ -40,22 +27,36 @@ export default class AddItemProcessSelecaoLivre extends AddItemProcessBase{
         this.getView().setModel(oModel,'view');
         oModel.refresh();
 
-
-
-        this.fornecedoresSelecionados = [];
     }
 
-    onItemPressed(oEvent){
-        let oCtx = oEvent.getParameter("listItem").getBindingContext('itens'); // @todo Criar modelo itens
-        let viewModel = this.oController.getView().getModel('view'); // @todo Criar modelo view
-        //let viewData = viewModel.getData();
-        let oFornecedor = oCtx.getObject();
-        this.fornecedoresSelecionados.push(oFornecedor);
-        this.view.fornecedoresSelecionados = this.fornecedoresSelecionados.map(f=>f.Nome).join(', ');
-        //viewData.sFornecedoresSelecionados = this.fornecedoresSelecionados.length ; // @todo smartlink?
+	onSelectionChange(oEvt) {
+		var oList = oEvt.getSource();
+		var aContexts = oList.getSelectedContexts(true);
+        let viewModel = this.oController.getView().getModel('view');
+		this.view.fornecedoresSelecionados = aContexts.length;
         viewModel.setData(this.view);
         viewModel.refresh();
+	}
+
+    onSearch(oEvt) {
+
+        // add filter for search
+        var aFilters = [];
+        var sQuery = oEvt.getSource().getValue();
+        if (sQuery && sQuery.length > 0) {
+            var filter = new Filter("ID", sap.ui.model.FilterOperator.Contains, sQuery);
+            aFilters.push(filter);
+        }
+
+        // update list binding
+        var list = sap.ui.core.Fragment.byId(this.fragmentId, "listFornecedores");
+        var binding = list.getBinding("items");
+        binding.filter(aFilters, sap.ui.model.FilterType.Application);
     }
+
+    atualizarFornecedoresSelecionados(oEvent){
+        
+        }
 
     addItemsForContext(oContext){
 

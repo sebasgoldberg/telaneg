@@ -84,25 +84,29 @@
                     <subHeader>
                         <Toolbar>
                             <SearchField
+                                search="onSearch"
                                 width="100%" />
                         </Toolbar>
                     </subHeader>
                     <List
-                        mode="SingleSelectMaster"
-                        selectionChange="onItemPressed"
+                        mode="MultiSelect"
+                        selectionChange="onSelectionChange"
                         id="listFornecedores"
-                        items="{itens>/FornecedorSet}" >
+                        growing="true"
+                        growingThreshold="6"
+                        growingScrollToLoad="true"
+                        items="{/ItemNegociacaoSet}" >
 
                         <infoToolbar>
                             <Toolbar
                                 >
-                                <Link text="{view>/fornecedoresSelecionados}" />
+                                <Label text="Fornecedores selecionados: {view>/fornecedoresSelecionados}" wrapping="true"/>
                             </Toolbar>
                         </infoToolbar>
 
                         <StandardListItem
-                            title="{itens>ID}"
-                            description="{itens>Nome}"
+                            title="{ID}"
+                            description="{FornecedorID}, {ProdutoID}, {CentroID}"
                             />
                     </List>
                 </Page>
