@@ -38,8 +38,15 @@ export default Control.extend("simplifique.telaneg.control.SearchAndSelect", {
             },
     },
 
+    setQuanSelText: function(sValue){
+        this.setProperty("quanSelText", sValue, true);
+        this.updateSelectedQuantity();
+        },
+
     getSelectedContexts: function(){
-        return this.list.getSelectedContexts(true);
+        if (this.list)
+            return this.list.getSelectedContexts(true);
+        return [];
     },
 
     _getList: function() {
@@ -62,12 +69,12 @@ export default Control.extend("simplifique.telaneg.control.SearchAndSelect", {
         return this.toolbarLabel;
     },
 
-    getSelectedQuantityText:function(iQuantity=0){
-        return `${this.getQuanSelText()}: ${iQuantity}`
+    getSelectedQuantityText:function(){
+        return `${this.getQuanSelText()}: ${this.getSelectedContexts().length}`
         },
 
-    updateSelectedQuantity: function(iQuantity) {
-        this.getToolbarLabel().setText(this.getSelectedQuantityText(iQuantity));
+    updateSelectedQuantity: function() {
+        this.getToolbarLabel().setText(this.getSelectedQuantityText());
     },
 
     init : function () {
@@ -93,9 +100,7 @@ export default Control.extend("simplifique.telaneg.control.SearchAndSelect", {
                 }),
             mode: ListMode.MultiSelect,
             selectionChange: function(oEvt){
-                let oList = oEvt.getSource();
-                let aContexts = oList.getSelectedContexts(true);
-                this.updateSelectedQuantity(aContexts.length);
+                this.updateSelectedQuantity();
                 }.bind(this),
             growing: true,
             growingThreshold: 15,
