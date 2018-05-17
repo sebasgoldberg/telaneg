@@ -1,0 +1,19 @@
+<mvc:View xmlns:sim="simplifique.telaneg.control" xmlns:mvc="sap.ui.core.mvc" controllerName="simplifique.telaneg.controller.TestPage" xmlns="sap.m">
+    <Page>
+
+        <sim:SearchAndSelect
+            items="{/ItemNegociacaoSet}"
+            filterFields="ID, FornecedorID"
+            quanSelText="Fornecedores selecionados"
+            >
+
+            <StandardListItem
+                title="Centro {ID}"
+                description="{FornecedorID}, {ProdutoID}, {CentroID}"
+                />
+
+        </sim:SearchAndSelect>
+
+    </Page>
+
+</mvc:View>

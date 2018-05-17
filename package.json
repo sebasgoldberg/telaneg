@@ -8,6 +8,9 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-plugin-transform-decorators": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-es2015-modules-ui5": "^6.0.0-alpha.2",
     "babel-preset-env": "^1.7.0",
     "eslint-plugin-openui5": "0.1.0",

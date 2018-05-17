@@ -122,9 +122,22 @@
                     "viewId": "DetailPage2",
                     "viewLevel": 3,
                     "transition": "slide"
+                },
+                "TestPage": {
+                    "viewName": "TestPage",
+                    "viewId": "TestPage",
+                    "viewLevel": 1,
+                    "transition": "slide"
                 }
             },
             "routes": [
+                {
+                    "pattern": "TestPage",
+                    "name": "TestPage",
+                    "target": [
+                        "TestPage"
+                    ]
+                },
                 {
                     "pattern": "MasterPage1",
                     "name": "MasterPage1",

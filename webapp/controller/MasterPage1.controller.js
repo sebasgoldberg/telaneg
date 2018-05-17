@@ -4,8 +4,8 @@ import formatter from 'simplifique/telaneg/model/formatter';
 
 export default class MasterPage1 extends BaseController{
 
-        constructor(sName){
-            super(sName);
+        constructor(...args){
+            super(...args);
             this.formatter = formatter;
             }
 
