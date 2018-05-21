@@ -77,7 +77,8 @@ export default Control.extend("simplifique.telaneg.control.SearchAndSelect", {
         this.getToolbarLabel().setText(this.getSelectedQuantityText());
     },
 
-    init : function () {
+    init : function (...args) {
+        Control.prototype.init.apply(this, ...args)
         let oSearchField = new SearchField({
             search: function(oEvt){
                 let sQuery = oEvt.getSource().getValue();

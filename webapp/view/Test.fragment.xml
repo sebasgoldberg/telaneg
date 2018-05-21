@@ -1,0 +1,77 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:sim="simplifique.telaneg.control" 
+    xmlns:core="sap.ui.core">
+
+        <sim:PopoverSteps
+            finish="onFinish"
+            title="Adicionar Itens"
+            class="sapUiPopupWithPadding"
+            nextText="Seguinte"
+            finishText="Adicionar"
+            cancelText="Cancelar"
+            contentWidth="480px"
+            contentHeight="480px"
+            placement='Left'>
+
+            <Page
+                title="Titulo 1"
+                >
+
+                <sim:SearchAndSelect
+                    items="{/ItemNegociacaoSet}"
+                    filterFields="ID, FornecedorID"
+                    quanSelText="Fornecedores selecionados"
+                    >
+
+                    <StandardListItem
+                        title="Centro {ID}"
+                        description="{FornecedorID}, {ProdutoID}, {CentroID}"
+                        />
+
+                </sim:SearchAndSelect>
+
+            </Page>
+
+            <Page
+                title="Titulo 2"
+                >
+
+                <sim:SearchAndSelect
+                    items="{/ItemNegociacaoSet}"
+                    filterFields="ID, FornecedorID"
+                    quanSelText="Produtos selecionados"
+                    >
+
+                    <StandardListItem
+                        title="Centro {ID}"
+                        description="{FornecedorID}, {ProdutoID}, {CentroID}"
+                        />
+
+                </sim:SearchAndSelect>
+
+            </Page>
+
+
+            <Page
+                title="Titulo 3"
+                >
+
+                <sim:SearchAndSelect
+                    items="{/ItemNegociacaoSet}"
+                    filterFields="ID, FornecedorID"
+                    quanSelText="UFs selecionadas"
+                    >
+
+                    <StandardListItem
+                        title="Centro {ID}"
+                        description="{FornecedorID}, {ProdutoID}, {CentroID}"
+                        />
+
+                </sim:SearchAndSelect>
+
+            </Page>
+
+        </sim:PopoverSteps>
+
+</core:FragmentDefinition>

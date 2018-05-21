@@ -1,62 +1,7 @@
-<mvc:View xmlns:sim="simplifique.telaneg.control" xmlns:mvc="sap.ui.core.mvc" controllerName="simplifique.telaneg.controller.TestPage" xmlns="sap.m">
+<mvc:View xmlns:core="sap.ui.core" xmlns:sim="simplifique.telaneg.control" xmlns:mvc="sap.ui.core.mvc" controllerName="simplifique.telaneg.controller.TestPage" xmlns="sap.m">
 
-    <Button text="Previous" press="onPrevious"/>
-    <Button text="Next" press="onNext"/>
-
-    <sim:NavSteps id="navSteps" enteringLastStep="onEnteringLastStep" leavingLastStep="onLeavingLastStep">
-
-        <Page>
-
-            <sim:SearchAndSelect
-                items="{/ItemNegociacaoSet}"
-                filterFields="ID, FornecedorID"
-                quanSelText="Fornecedores selecionados"
-                >
-
-                <StandardListItem
-                    title="Centro {ID}"
-                    description="{FornecedorID}, {ProdutoID}, {CentroID}"
-                    />
-
-            </sim:SearchAndSelect>
-
-        </Page>
-
-        <Page>
-
-            <sim:SearchAndSelect
-                items="{/ItemNegociacaoSet}"
-                filterFields="ID, FornecedorID"
-                quanSelText="Produtos selecionados"
-                >
-
-                <StandardListItem
-                    title="Centro {ID}"
-                    description="{FornecedorID}, {ProdutoID}, {CentroID}"
-                    />
-
-            </sim:SearchAndSelect>
-
-        </Page>
-
-
-        <Page>
-
-            <sim:SearchAndSelect
-                items="{/ItemNegociacaoSet}"
-                filterFields="ID, FornecedorID"
-                quanSelText="UFs selecionadas"
-                >
-
-                <StandardListItem
-                    title="Centro {ID}"
-                    description="{FornecedorID}, {ProdutoID}, {CentroID}"
-                    />
-
-            </sim:SearchAndSelect>
-
-        </Page>
-
-    </sim:NavSteps>
+    <sim:ButtonPopover text="Um teste" placement="Right">
+        <core:Fragment fragmentName="simplifique.telaneg.view.Test" type="XML" />
+    </sim:ButtonPopover>
 
 </mvc:View>
