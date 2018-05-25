@@ -1,6 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
 
     <form:SimpleForm
+        visible="false"
         layout="ResponsiveGridLayout"
         columnsXL="4" columnsL="4" columnsM="2" columnsS="1"
         labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12"
@@ -47,6 +48,141 @@
 
 
     </form:SimpleForm>
+
+    <l:VerticalLayout class="sapUiContentPadding">
+
+    <form:SimpleForm
+        layout="ResponsiveGridLayout"
+        columnsXL="4" columnsL="4" columnsM="2" columnsS="1"
+        labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12"
+        breakpointL="500" breakpointM="250"
+        >
+
+
+        <core:Title text="Periodo 1" />
+            <Label text="De" />
+            <DatePicker />
+
+        <core:Title text="" />
+            <Label text="Até" />
+            <DatePicker />
+
+        <core:Title text="Periodo 2" />
+            <Label text="De" />
+            <DatePicker />
+
+        <core:Title text="" />
+            <Label text="Até" />
+            <DatePicker />
+
+    </form:SimpleForm>
+
+
+
+
+       <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'subitems', templateShareable:true, parameters:{expand:'vendaActual,vendaAnterior' } }" >
+            <columns>
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="UF Venda" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Cod. Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Valor P1" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Valor P2" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Quantidade P1" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Quantidade P2" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Margem P1" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Margem P2" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <ObjectIdentifier title="{centro/Codigo}" text="" titleActive="false" visible="true"/>
+                        <ObjectIdentifier title="{produto/ID}" text="" titleActive="false" visible="true"/>
+                        <Text text="{produto/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+
+                        <ObjectNumber
+                            number="{path: 'vendaAnterior/Valor', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                            unit="BRL" emphasized="true"
+                            />
+                        <ObjectNumber
+                            number="{path: 'vendaActual/Valor', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                            unit="BRL" emphasized="true"
+                            />
+
+                        <ObjectNumber
+                            number="{path: 'vendaAnterior/Quantidade', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                            unit="UN" emphasized="true"
+                            />
+                        <ObjectNumber
+                            number="{path: 'vendaActual/Quantidade', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                            unit="UN" emphasized="true"
+                            />
+
+                        <ObjectNumber
+                            number="{path: 'vendaAnterior/Margem', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                            unit="%" emphasized="true"
+                            />
+                        <ObjectNumber
+                            number="{path: 'vendaActual/Margem', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                            unit="%" emphasized="true"
+                            />
+
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+    </l:VerticalLayout>
+
+
 </core:FragmentDefinition>
 
 

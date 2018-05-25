@@ -1,0 +1,127 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+
+
+           <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'subitems', templateShareable:true }" >
+                <columns>
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="UF Venda" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Cod. Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Custo" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="PMZ Novo" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Preço de venda" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+
+
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Margem 2" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="IC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <ObjectIdentifier title="{centro/Codigo}" text="" titleActive="false" visible="true"/>
+                            <ObjectIdentifier title="{produto/ID}" text="" titleActive="false" visible="true"/>
+                            <Text text="{produto/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+
+                            <ObjectNumber
+                                number="{path: 'simulacao/Custo', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                                unit="BRL" emphasized="true"
+                                state="{
+                                    parts: [ {path: 'simulacao/Custo'}, {path: 'informacao/Custo'} ],
+                                    formatter: '.formatter.warningIfSecondLowThanFirst'
+                                    }"
+                                />
+                            <ObjectNumber
+                                number="{path: 'simulacao/PMZNovo', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                                unit="BRL" emphasized="true"
+                                state="{
+                                    parts: [ {path: 'simulacao/PMZNovo'}, {path: 'informacao/PMZNovo'} ],
+                                    formatter: '.formatter.warningIfSecondLowThanFirst'
+                                    }"
+                                />
+
+                            <Input value="{
+                                path: 'simulacao/PrecoVenda',
+                                type: 'sap.ui.model.type.Float',
+                                formatOptions: { maxFractionDigits: 2 }
+                                }"
+                                submit="realizarSimulacaoSubitem"
+                                fieldWidth="70%"
+                                description="BRL"
+                                />
+
+                            <ObjectNumber
+                                number="{
+                                    path: 'simulacao/Margem2',
+                                    type: 'sap.ui.model.type.Float',
+                                    formatOptions: { maxFractionDigits: 2 }
+                                    }"
+                                unit="%"
+                                state="{
+                                    parts: [ {path: 'simulacao/Margem2'}, {path: 'informacao/MargemTeorica'}],
+                                    formatter: '.formatter.margemStatus'
+                                    }"
+                                />
+                            <ObjectNumber
+                                number="{
+                                    path: 'simulacao/IC',
+                                    type: 'sap.ui.model.type.Float',
+                                    formatOptions: { maxFractionDigits: 2 }
+                                    }"
+                                unit="%"
+                                state="{
+                                    parts: [ {path: 'simulacao/IC'} ],
+                                    formatter: '.formatter.icStatus'
+                                    }" />
+
+
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+
+</core:FragmentDefinition>
+
+

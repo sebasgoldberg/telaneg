@@ -13,6 +13,7 @@
            </uxap:ObjectPageHeader>
         </uxap:headerTitle>
         <uxap:sections>
+
             <uxap:ObjectPageSection showTitle="true" title="Page Section Title" titleUppercase="true" visible="true">
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Simulação" mode="Expanded">
@@ -26,21 +27,19 @@
                 <uxap:customAnchorBarButton/>
             </uxap:ObjectPageSection>
 
-            <!--
-            <uxap:ObjectPageSection showTitle="true" title="Impostos" titleUppercase="true" visible="true">
+            <uxap:ObjectPageSection showTitle="true" title="Subitens" titleUppercase="true" visible="true">
                 <uxap:subSections>
-                    <uxap:ObjectPageSubSection title="Impostos" mode="Expanded">
+                    <uxap:ObjectPageSubSection title="Subitens" mode="Expanded">
                         <uxap:blocks>
-                            <core:Fragment fragmentName="simplifique.telaneg.view.Impostos" type="XML" />
+                            <core:Fragment fragmentName="simplifique.telaneg.view.Subitems" type="XML" />
                         </uxap:blocks>
                         <uxap:moreBlocks/>
                         <uxap:actions/>
                     </uxap:ObjectPageSubSection>
-
                 </uxap:subSections>
                 <uxap:customAnchorBarButton/>
             </uxap:ObjectPageSection>
-            -->
+
 
             <uxap:ObjectPageSection showTitle="true" title="Stock" titleUppercase="true" visible="true">
                 <uxap:subSections>
@@ -54,6 +53,7 @@
                 </uxap:subSections>
                 <uxap:customAnchorBarButton/>
             </uxap:ObjectPageSection>
+
             <uxap:ObjectPageSection showTitle="true" title="Vendas" titleUppercase="true" visible="true">
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Vendas" mode="Expanded">
@@ -66,6 +66,7 @@
                 </uxap:subSections>
                 <uxap:customAnchorBarButton/>
             </uxap:ObjectPageSection>
+
             <uxap:ObjectPageSection showTitle="true" title="Mercado" titleUppercase="true" visible="true">
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Mercado" mode="Expanded">
@@ -78,6 +79,7 @@
                 </uxap:subSections>
                 <uxap:customAnchorBarButton/>
             </uxap:ObjectPageSection>
+
             <uxap:ObjectPageSection showTitle="true" title="Contrato" titleUppercase="true" visible="true">
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Contrato" mode="Expanded">

@@ -14,7 +14,7 @@
         "resources": "resources.json",
         "dataSources": {
             "local": {
-                "uri": "/here/goes/your/serviceUrl/local/",
+                "uri": "/sap/ZNEGOCIACAO_SRV/",
                 "type": "OData",
                 "settings": {
                     "odataVersion": "2.0",
