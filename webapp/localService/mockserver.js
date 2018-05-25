@@ -13,7 +13,7 @@ sap.ui.define([
         init: function() {
             // create
             var oMockServer = new MockServer({
-                rootUri: "/here/goes/your/serviceUrl/local/"
+                rootUri: "/sap/ZNEGOCIACAO_SRV/"
             });
 
             // simulate against the metadata and mock data
