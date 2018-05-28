@@ -200,52 +200,10 @@ export default class MasterPage1 extends BaseController{
                 // 1) Search filters (with OR)
                     if (sQuery && sQuery.length > 0) {
 
-                        aFilters.push(new sap.ui.model.Filter('ID', sap.ui.model.FilterOperator.Contains, sQuery));
-
-                        aFilters.push(new sap.ui.model.Filter('Descricao', sap.ui.model.FilterOperator.Contains, sQuery));
-
-                        aFilters.push(new sap.ui.model.Filter('Status', sap.ui.model.FilterOperator.Contains, sQuery));
-
-                        var iQuery = parseFloat(sQuery);
-                        if (!isNaN(iQuery)) {
-                            aFilters.push(new sap.ui.model.Filter('ValorTotalPedido', sap.ui.model.FilterOperator.EQ, sQuery));
-                        }
-
-                        var iQuery = parseFloat(sQuery);
-                        if (!isNaN(iQuery)) {
-                            aFilters.push(new sap.ui.model.Filter('NovaMargem2', sap.ui.model.FilterOperator.EQ, sQuery));
-                        }
-
-                        var iQuery = parseFloat(sQuery);
-                        if (!isNaN(iQuery)) {
-                            aFilters.push(new sap.ui.model.Filter('NovoIC', sap.ui.model.FilterOperator.EQ, sQuery));
-                        }
-
-                        var iQuery = parseFloat(sQuery);
-                        if (!isNaN(iQuery)) {
-                            aFilters.push(new sap.ui.model.Filter('Fornecedores', sap.ui.model.FilterOperator.EQ, sQuery));
-                        }
-
-                        var iQuery = parseFloat(sQuery);
-                        if (!isNaN(iQuery)) {
-                            aFilters.push(new sap.ui.model.Filter('Produtos', sap.ui.model.FilterOperator.EQ, sQuery));
-                        }
-
-                        var iQuery = parseFloat(sQuery);
-                        if (!isNaN(iQuery)) {
-                            aFilters.push(new sap.ui.model.Filter('UFs', sap.ui.model.FilterOperator.EQ, sQuery));
-                        }
-
-                        aFilters.push(new sap.ui.model.Filter('StatusValorTotalPedido', sap.ui.model.FilterOperator.Contains, sQuery));
-
-                        aFilters.push(new sap.ui.model.Filter('StatusNovaMargem2', sap.ui.model.FilterOperator.Contains, sQuery));
-
-                        aFilters.push(new sap.ui.model.Filter('StatusNovoIC', sap.ui.model.FilterOperator.Contains, sQuery));
-
-                        var iQuery = parseFloat(sQuery);
-                        if (!isNaN(iQuery)) {
-                            aFilters.push(new sap.ui.model.Filter('MargemTeorica', sap.ui.model.FilterOperator.EQ, sQuery));
-                        }
+                        if (parseInt(sQuery))
+                            aFilters.push(new sap.ui.model.Filter('ID', sap.ui.model.FilterOperator.EQ, sQuery))
+                        else
+                            aFilters.push(new sap.ui.model.Filter('Descricao', sap.ui.model.FilterOperator.Contains, sQuery));
 
                     }
 
@@ -360,12 +318,12 @@ export default class MasterPage1 extends BaseController{
             let m = this.getView().getModel();
             let oContext = m.createEntry("/NegociacaoSet", {
                 properties: {
-                    Data: new Date(),
-                    Status: "Inicial",
-                    NovaMargem2: 0,
-                    MargemTeorica: 0,
-                    NovaMargem1: 0,
-                    NovoIC: 0,
+                    //Data: new Date(),
+                    //Status: "Inicial",
+                    //NovaMargem2: 0,
+                    //MargemTeorica: 0,
+                    //NovaMargem1: 0,
+                    //NovoIC: 0,
                     TipoNegociacao: oTipoNegociacao.ID,
                     }});
             m.submitChanges();

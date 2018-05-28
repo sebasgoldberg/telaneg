@@ -157,8 +157,15 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             });
 
         },
-        _onButtonPress2: function() {
-            let m = this.getView().getModel();
+        onGravar: function() {
+            let v = this.getView();
+            let m = v.getModel();
+            /*
+            let bc = v.getBindingContext();
+            let p = bc.getPath();
+            let o = bc.getObject();
+            m.update(p,{Descricao: o.Descricao})
+            */
             m.submitChanges();
             return new Promise(function(fnResolve) {
                 var sTargetPos = "";

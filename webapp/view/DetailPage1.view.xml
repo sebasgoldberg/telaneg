@@ -3,13 +3,13 @@
         <content>
             <ObjectHeader intro="{ID}" title="{Descricao}" icon=""
                 number="{
-                    path: 'NovaMargem2',
+                    path: 'Indicadores/Margem2',
                     type: 'sap.ui.model.type.Float',
                     formatOptions: { maxFractionDigits: 2 }
                     }"
                 numberUnit="%"
                 numberState="{
-                    parts: [ {path: 'NovaMargem2'}, {path: 'MargemTeorica'}],
+                    parts: [ {path: 'Indicadores/Margem2'}, {path: 'Indicadores/MargemTeorica'}],
                     formatter: '.formatter.margemStatus'
                     }"
                 showMarkers="false" markFavorite="false" markFlagged="false" backgroundDesign="Translucent" condensed="false">
@@ -21,12 +21,12 @@
 
                     <ObjectStatus
                         text="M1: {
-                            path: 'NovaMargem1',
+                            path: 'Indicadores/Margem1',
                             type: 'sap.ui.model.type.Float',
                             formatOptions: { maxFractionDigits: 2 }
                             } %"
                         state="{
-                            parts: [ {path: 'NovaMargem1'}, {path: 'MargemTeorica'} ],
+                            parts: [ {path: 'Indicadores/Margem1'}, {path: 'Indicadores/MargemTeorica'} ],
                             formatter: '.formatter.margemStatus'
                             }"
                             />
@@ -56,7 +56,8 @@
                 <core:Title text="Informação Basica" />
 
                 <Label text="Descrição" />
-                <Input value="{Descricao}" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
+                <Input value="{Descricao}" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"
+                    submit="onGravar"/>
 
                 <Label text="Tipo de Negociação" />
                 <ComboBox selectedKey="{TipoNegociacao}" items="{/TipoNegociacaoSet}" enabled="false">
@@ -65,7 +66,7 @@
 
            </form:SimpleForm>
 
-           <Table alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onTableItemPress" delete="_onTableDelete" items="{path:'item', templateShareable:true, parameters:{expand:'fornecedor,produto,centro,simulacao,informacao'}}" id='itemsTable'>
+           <Table alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onTableItemPress" delete="_onTableDelete" items="{path:'items', templateShareable:true, parameters:{expand:'fornecedor,produto,centro,simulacao,informacao'}}" id='itemsTable'>
                 <infoToolbar>
                     <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
                         <content>
@@ -210,7 +211,7 @@
                 </contentLeft>
                 <contentMiddle/>
                 <contentRight>
-                    <Button text="Gravar" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress2"/>
+                    <Button text="Gravar" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onGravar"/>
                     <Button text="Eliminar" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress3"/>
                 </contentRight>
             </Bar>

@@ -15,18 +15,18 @@
             placement='Left'>
 
             <Page
-                title="Titulo 1"
+                title="Seleção de Fornecedores"
                 >
 
                 <sim:SearchAndSelect
-                    items="{/ItemNegociacaoSet}"
-                    filterFields="ID, FornecedorID"
+                    items="{/FornecedorSet}"
+                    filterFields="ID, Nome"
                     quanSelText="Fornecedores selecionados"
                     >
 
                     <StandardListItem
-                        title="Centro {ID}"
-                        description="{FornecedorID}, {ProdutoID}, {CentroID}"
+                        title="{ID}"
+                        description="{Nome}"
                         />
 
                 </sim:SearchAndSelect>
