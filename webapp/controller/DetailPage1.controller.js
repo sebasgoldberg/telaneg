@@ -4,7 +4,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
     'simplifique/telaneg/model/formatter',
     "sap/ui/core/routing/History",
     'simplifique/telaneg/controller/AddItemManager',
-], function(BaseController, MessageBox, Utilities, formatter, History, AddItemManager) {
+    'sap/ui/model/json/JSONModel',
+], function(BaseController, MessageBox, Utilities, formatter, History, AddItemManager, JSONModel) {
     "use strict";
 
     return BaseController.extend("simplifique.telaneg.controller.DetailPage1", {
@@ -199,8 +200,14 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             });
 
         },
+
         onInit: function() {
-            this.createAddItemManager();
+            this.getView().setModel(new JSONModel({
+                SelecaoLivre: {
+                    itens: [],
+                    },
+                }), 'view');
+            //this.createAddItemManager();
             //@todo Mudar para serviço OData
             let de = new Date();
             de.setDate((new Date()).getDate()-5);
@@ -242,6 +249,46 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                 }.bind(this)
             });
 
-        }
+        },
+
+        /**
+         * Gera a combinacao dos fornecedores, materiais e UFs selecionadas
+         * e gera um array que servira como modelo para a lista de itens a
+         * serem incluido no documento de negociacao.
+         */
+        onEnteringLastStep: function() {
+            // Por cada um dos IDs das listas dentro do popover.
+            let items = ['fornecedoresSearchAndSelect',
+            'materiaisSearchAndSelect',
+            'UFsSearchAndSelect',
+            // Por cada id retornamos um array com os objetos selecionados.
+            ].map( id => {
+                    let list = this.getView().byId(id)
+                    return list.getSelectedContexts()
+                        .map( c => c.getObject() );
+                    })
+                // Com cada lista de objetos de cada lista a combinamos gerando
+                // a lista de itens com os fornecedores, materiais e UFs
+                // selecionadas.
+                .reduce( (items, objects, index) => {
+                   // o [].concat(...x) Ã© equivalente a x.flat(), sÃ³que ainda
+                    // a funcao flat nao foi incorporada no Babel.
+                    return [].concat(...items.map( i => objects.map( o => {
+                        switch(index){
+                            case 0:
+                                return Object.assign({Fornecedor: o}, i);
+                            case 1: 
+                                return Object.assign({Material: o}, i);
+                            case 2:
+                                return Object.assign({UF: o}, i);
+                            }
+                        })));
+                    //Importante: o reduce comeca com um array com um objeto vazio. 
+                   }, [{}]);
+            let m = this.getView().getModel('view');
+            if (!m)
+                return;
+            m.setProperty('/SelecaoLivre/itens',items);
+        },
     });
 }, /* bExport= */ true);

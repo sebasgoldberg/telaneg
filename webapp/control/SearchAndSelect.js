@@ -53,15 +53,29 @@ export default Control.extend("simplifique.telaneg.control.SearchAndSelect", {
         return this.list;
     },
 
-    getFilters: function(sQuery) {
+    getFilterFieldsAndOperators: function(){
         return this.getFilterFields().split(',')
-            .map( sField => new Filter(sField.trim(), sap.ui.model.FilterOperator.Contains, sQuery) );
+            .map( sField => {
+                let [ operator, field ] = sField.split('::');
+                if (operator.trim() == 'eq')
+                    operator = sap.ui.model.FilterOperator.EQ
+                else
+                    operator = sap.ui.model.FilterOperator.Contains;
+                return [operator, field.trim()];
+            });
+        },
+
+    getFilters: function(sQuery) {
+        return this.getFilterFieldsAndOperators()
+            .map( ([ operator, field ]) =>
+                new Filter(field, operator, sQuery.trim())
+                );
     },
 
-    getOrFilter: function(sQuery){
+    getAndFilter: function(sQuery){
         return new Filter({
             filters: this.getFilters(sQuery),
-            and: false,
+            and: true,
             });
     },
 
@@ -82,7 +96,7 @@ export default Control.extend("simplifique.telaneg.control.SearchAndSelect", {
         let oSearchField = new SearchField({
             search: function(oEvt){
                 let sQuery = oEvt.getSource().getValue();
-                let aFilters = [ this.getOrFilter(sQuery) ];
+                let aFilters = [ this.getAndFilter(sQuery) ];
                 let binding = this.getBinding("items");
                 binding.filter(aFilters, sap.ui.model.FilterType.Application);
 

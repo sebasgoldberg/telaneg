@@ -18,6 +18,7 @@ export default ResponsivePopover.extend("simplifique.telaneg.control.PopoverStep
             },
         events:{
             finish: {},
+            enteringLastStep: {},
             },
         defaultAggregation : "pages",
         aggregations: {
@@ -75,6 +76,7 @@ export default ResponsivePopover.extend("simplifique.telaneg.control.PopoverStep
 
     setLastStepContext: function(){
         this.nextButton.setText(this.getFinishText());
+        this.fireEnteringLastStep();
         },
 
     setPreviousStepContext: function() {

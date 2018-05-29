@@ -84,11 +84,10 @@
                             <Button text="" type="Transparent" icon="sap-icon://group-2" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                             <Button text="" type="Accept" icon="sap-icon://accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onAccept"/>
                             <Button text="" type="Reject" icon="sap-icon://decline" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onReject"/>
-                            <Button text="" type="Emphasized" icon="sap-icon://add" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
-                            <Button text="" type="" icon="sap-icon://delete" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onTableDelete"/>
-                            <sim:ButtonPopover text="Um teste" placement="Left">
+                            <sim:ButtonPopover type="Emphasized" icon="sap-icon://add" placement="Left">
                                 <core:Fragment fragmentName="simplifique.telaneg.view.Test" type="XML" />
                             </sim:ButtonPopover>
+                            <Button text="" type="" icon="sap-icon://delete" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onTableDelete"/>
 
                         </content>
                         <tooltip/>
