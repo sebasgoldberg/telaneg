@@ -289,6 +289,53 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             if (!m)
                 return;
             m.setProperty('/SelecaoLivre/itens',items);
+            this.getView().byId('SelecaoLivreItensTable').selectAll();
+        },
+
+        /**
+         * Pega os itens que foram selecionados e tenta adicionar os mesmos
+         * no documento de negociacao.
+         */
+        onFinish: function() {
+            let v = this.getView();
+            let m = v.getModel();
+            let oNegociacao = v.getBindingContext().getObject();
+            v.byId('SelecaoLivreItensTable')
+                .getSelectedContexts()
+                .map( c => c.getObject() )
+                .map( item => { return {
+                    NegociacaoID: oNegociacao.ID,
+                    FornecedorID: item.Fornecedor.ID,
+                    // @todo Tirar hardcode de tipo cadastrado.
+                    //FornecedorType: item.Fornecedor.ID,
+                    FornecedorType: 'C',
+                    MaterialID: item.Material.ID,
+                    // @todo Tirar hardcode de tipo cadastrado.
+                    //MaterialType: item.Material.Type,
+                    MaterialType: 'C',
+                    CentroID: item.UF.Centro,
+                    }})
+                .forEach( item =>
+                    m.createEntry(
+                        `/ItemNegociacaoSet`, 
+                        {
+                            properties: item,
+                            success: (...args) => console.log(args),
+                            error: (...args) => console.error(args),
+                        })
+                    );
+            m.submitChanges({
+                success:  (...args) => {
+                    console.log(args);
+                    m.resetChanges();
+                    v.byId('itemsTable').getBinding('items').refresh();
+                    v.byId('popoverAddItem').close();
+                    },
+                error: (...args) => {
+                    console.error(args);
+                    m.resetChanges();
+                    },
+                });
         },
     });
 }, /* bExport= */ true);

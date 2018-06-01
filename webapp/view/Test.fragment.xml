@@ -4,6 +4,7 @@
     xmlns:core="sap.ui.core">
 
         <sim:PopoverSteps
+            id="popoverAddItem"
             finish="onFinish"
             enteringLastStep="onEnteringLastStep"
             title="Adicionar Itens"
