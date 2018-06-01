@@ -316,6 +316,7 @@ export default class MasterPage1 extends BaseController{
             let oTipoNegociacao = oBC.getObject();
 
             let m = this.getView().getModel();
+            let that = this;
             let oContext = m.createEntry("/NegociacaoSet", {
                 properties: {
                     //Data: new Date(),
@@ -325,12 +326,16 @@ export default class MasterPage1 extends BaseController{
                     //NovaMargem1: 0,
                     //NovoIC: 0,
                     TipoNegociacao: oTipoNegociacao.ID,
-                    }});
+                    },
+                success: (...args) => {
+                    console.log(args);
+                    that.getView().byId('sap_List_Page_0-content-sap_m_List-1')
+                        .getBinding('items').refresh();
+                    that.popover.close();
+                    that.doNavigate('DetailPage1', oContext);
+                    },
+                });
             m.submitChanges();
-            this.getView().byId('sap_List_Page_0-content-sap_m_List-1')
-                .getBinding('items').refresh();
-            this.popover.close();
-            this.doNavigate('DetailPage1', oContext);
             return;
 
 
