@@ -66,7 +66,7 @@
 
            </form:SimpleForm>
 
-           <Table alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onTableItemPress" delete="_onTableDelete" items="{path:'items', templateShareable:true}" id='itemsTable'> <!--
+           <Table alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onTableItemPress" delete="_onTableDelete" items="{path:'items', templateShareable:true, parameters:{expand:'fornecedor,material'}}" id='itemsTable'> <!--
            , parameters:{expand:'fornecedor,produto,centro,simulacao,informacao'}
            -->
                 <infoToolbar>
@@ -154,9 +154,17 @@
                 <items>
                     <ColumnListItem type="Navigation">
                         <cells>
-                            <ObjectIdentifier title="{FornecedorID}" text="" titleActive="false" visible="true"/>
+                            <ObjectIdentifier title="{fornecedor/ID}" text="" titleActive="false" visible="true"/>
                             <Text text="{fornecedor/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                            <ObjectIdentifier title="{MaterialID}" text="" titleActive="false" visible="true"/>
+                            <ObjectIdentifier title="{
+                                path: 'material/ID',
+                                type: 'sap.ui.model.odata.type.String',
+                                constraints: {
+                                    isDigitSequence : true,
+                                    maxLength : 18
+                                    }
+                                }"
+                                text="" titleActive="false" visible="true"/>
                             <Text text="{material/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                             <ObjectIdentifier title="{CentroID}" text="" titleActive="false" visible="true"/>
                             <ObjectNumber
