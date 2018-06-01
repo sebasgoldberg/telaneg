@@ -97,7 +97,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                 fnPromiseResolve();
             }
         },
-        _onTableDelete: function() {
+
+        temCertezaDeEliminar: function(attribute) {
             return new Promise(function(fnResolve) {
                 sap.m.MessageBox.confirm("Tem certeza que deseja eliminar os itens selecionados?", {
                     title: "Eliminar Item de Negociação",
@@ -106,12 +107,51 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                         fnResolve(sActionClicked === "Tenho Sim");
                     }
                 });
-            }).catch(function(err) {
-                if (err !== undefined) {
-                    MessageBox.error(err);
-                }
             });
+        },
 
+        eliminarItem: function(i){
+            let m = this.getView().getModel();
+            return new Promise( (resolve, reject) => {
+                m.remove(
+                    `/ItemNegociacaoSet(NegociacaoID='${i.NegociacaoID}',Item=${i.Item})`,
+                    {
+                        success: (...args) => { resolve(...args) },
+                        error: (...args) => { reject(...args) },
+                    }
+                );
+            });
+        },
+
+        submitChanges: function() {
+            let m = this.getView().getModel();
+            return new Promise( (resolve, reject) => 
+                m.submitChanges({
+                    success: (...args) => { resolve(...args) },
+                    error: (...args) => { reject(...args) },
+                })
+            );
+        },
+
+        eliminarItensSelecionados: function() {
+            let v = this.getView();
+            return v.byId('itemsTable').getSelectedContexts()
+                .map( c => c.getObject() )
+                .map( i => this.eliminarItem(i) );
+        },
+
+        _onTableDelete: function() {
+            let v = this.getView();
+            let m = v.getModel();
+
+            this.temCertezaDeEliminar()
+                .then( eliminar => {
+                    if (!eliminar)
+                        return false;
+                    return Promise.all(this.eliminarItensSelecionados());
+                    })
+                .then( (result) => { if (result) v.byId('itemsTable').getBinding('items').refresh(); } )
+                .catch( (...args) => console.error(args) )
         },
 
         createAddItemManager: function() {
