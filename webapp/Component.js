@@ -2,9 +2,9 @@ sap.ui.define([
 	"sap/ui/core/UIComponent",
 	"sap/ui/Device",
 	"simplifique/telaneg/model/models",
-	"simplifique/telaneg/controller/ErrorHandler"
-
-], function(UIComponent, Device, models, ErrorHandler) {
+	"simplifique/telaneg/controller/ErrorHandler",
+    "simplifique/telaneg/lib/polyfill",
+], function(UIComponent, Device, models, ErrorHandler, babelPolyfill) {
 	"use strict";
 
 	var navigationWithContext = {

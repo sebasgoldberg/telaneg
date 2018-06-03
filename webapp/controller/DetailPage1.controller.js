@@ -127,8 +127,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             let m = this.getView().getModel();
             return new Promise( (resolve, reject) => 
                 m.submitChanges({
-                    success: (...args) => { resolve(...args) },
-                    error: (...args) => { reject(...args) },
+                    success: (...args) => { resolve(args) },
+                    error: (...args) => { reject(args) },
                 })
             );
         },
@@ -198,7 +198,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             });
 
         },
-        onGravar: function() {
+        
+        onGravar: async function() {
             let v = this.getView();
             let m = v.getModel();
             /*
@@ -207,7 +208,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             let o = bc.getObject();
             m.update(p,{Descricao: o.Descricao})
             */
-            m.submitChanges();
+            let result = await this.submitChanges();
+            console.log(result);
             return new Promise(function(fnResolve) {
                 var sTargetPos = "";
                 sTargetPos = (sTargetPos === "default") ? undefined : sTargetPos;

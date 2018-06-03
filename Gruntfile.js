@@ -28,6 +28,12 @@ module.exports = function(grunt) {
                   cwd: '<%= dir.webapp %>',
                   src: ['**/*', '!**/*.js', ],
                   dest: 'transp/',
+              },
+              {
+                  expand: true,
+                  cwd: 'node_modules/babel-polyfill/dist',
+                  src: ['polyfill.js', ],
+                  dest: 'transp/lib/',
               }]
 
             },
