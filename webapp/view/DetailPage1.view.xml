@@ -66,8 +66,8 @@
 
            </form:SimpleForm>
 
-           <Table alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onTableItemPress" items="{path:'items', templateShareable:true, parameters:{expand:'fornecedor,material'}}" id='itemsTable'> <!--
-           , parameters:{expand:'fornecedor,produto,centro,simulacao,informacao'}
+           <Table alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onTableItemPress" items="{path:'items', templateShareable:true, parameters:{expand:'fornecedor,material,simulacao,informacao'}}" id='itemsTable'> <!--
+           , parameters:{expand:'fornecedor,produto,centro'}
            -->
                 <infoToolbar>
                     <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
