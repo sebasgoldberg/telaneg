@@ -145,8 +145,8 @@
                 <ColumnListItem>
                     <cells>
                         <ObjectIdentifier title="{centro/Codigo}" text="" titleActive="false" visible="true"/>
-                        <ObjectIdentifier title="{produto/ID}" text="" titleActive="false" visible="true"/>
-                        <Text text="{produto/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                        <ObjectIdentifier title="{material/ID}" text="" titleActive="false" visible="true"/>
+                        <Text text="{material/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
 
                         <ObjectNumber
                             number="{path: 'vendaAnterior/Valor', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"

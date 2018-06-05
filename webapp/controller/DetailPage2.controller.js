@@ -13,7 +13,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
         handleRouteMatched: function(oEvent) {
 
             var oParams = {
-                "expand": "produto,fornecedor,centro,simulacao,impostosEntrada,impostosSaida,informacao,contrato,stock,nossoPricing,vendaActual,vendaAnterior,categoryReview"
+                //"expand": "material,fornecedor,centro,simulacao,impostosEntrada,impostosSaida,informacao,contrato,stock,nossoPricing,vendaActual,vendaAnterior,categoryReview"
+                "expand": "material,fornecedor,simulacao,impostosEntrada,impostosSaida,informacao"
             };
 
             if (oEvent.mParameters.data.context) {
@@ -180,12 +181,14 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             let impostosSaida = model.getData(bc.getPath()+'/impostosSaida');
             let nossoPricing = model.getData(bc.getPath()+'/nossoPricing');
 
+            let f = parseFloat;
+            
             // Custo = Preço de Compra * (1 - PIS - COFINS - ICMS + IPI + ST - Desconto) 
             try {
-                simulacao.Custo = simulacao.PrecoCompra * ( 100 -
-                impostosEntrada.PIS - impostosEntrada.COFINS -
-                impostosEntrada.ICMS + impostosEntrada.IPI +
-                impostosEntrada.ST - simulacao.Desconto ) / 100;
+                simulacao.Custo = f(simulacao.PrecoCompra) * ( 100 -
+                f(impostosEntrada.PIS) - f(impostosEntrada.COFINS) -
+                f(impostosEntrada.ICMS) + f(impostosEntrada.IPI) +
+                f(impostosEntrada.ST) - f(simulacao.Desconto) ) / 100;
 
             } catch (e) {
                 simulacao.Custo = 0;
@@ -194,9 +197,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
             // PMZ Novo = Custo * ( 1 + impostos saida)
             try {
-                simulacao.PMZNovo = simulacao.Custo * (100 +
-                    impostosSaida.ICMS + impostosSaida.PIS +
-                    impostosSaida.COFINS ) / 100;
+                simulacao.PMZNovo = f(simulacao.Custo) * (100 +
+                    f(impostosSaida.ICMS) + f(impostosSaida.PIS) +
+                    f(impostosSaida.COFINS) ) / 100;
             } catch (e) {
                 simulacao.PMZNovo = 0;
             }
@@ -208,8 +211,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
             // Margem 1 = ( Preço de Venda - PMZ Novo ) / Preço de Venda
             try {
-                simulacao.Margem1 = ( simulacao.PrecoVenda - simulacao.PMZNovo
-                    ) * 100 / simulacao.PrecoVenda;
+                simulacao.Margem1 = ( f(simulacao.PrecoVenda) - f(simulacao.PMZNovo)
+                    ) * 100 / f(simulacao.PrecoVenda);
             } catch (e) {
                 simulacao.Margem1 = 0;
             }
@@ -217,28 +220,28 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
             // Margem 2 = Margem 1 + (Recomposição / Volumem)
             try {
-                simulacao.Margem2 = simulacao.Margem1 + (
-                    100 * ( simulacao.Recomposicao - simulacao.DespesasAcessorias ) /
-                    simulacao.Volumem / simulacao.PrecoVenda );
+                simulacao.Margem2 = f(simulacao.Margem1) + (
+                    100 * ( f(simulacao.Recomposicao) - f(simulacao.DespesasAcessorias) ) /
+                    f(simulacao.Volumem) / f(simulacao.PrecoVenda) );
             } catch (e) {
                 simulacao.Margem2 = 0;
             }
             model.setProperty(bc.getPath()+'/simulacao/Margem2',simulacao.Margem2);
 
             // Valor Total Pedido = Preço de Compra * (1 + IPI + ST - Desconto) * Volumem
-            simulacao.ValorTotalPedido = simulacao.PrecoCompra * (
-                100 + impostosEntrada.IPI + impostosEntrada.ST -
-                simulacao.Desconto ) * simulacao.Volumem / 100;
+            simulacao.ValorTotalPedido = f(simulacao.PrecoCompra) * (
+                100 + f(impostosEntrada.IPI) + f(impostosEntrada.ST) -
+                f(simulacao.Desconto) ) * f(simulacao.Volumem) / 100;
             model.setProperty(bc.getPath()+'/simulacao/ValorTotalPedido',simulacao.ValorTotalPedido);
 
             // Previsão de Venda = Preço de Venda * Previsão de Venda[UN]
-            simulacao.PrevisaoVendaDinheiro = simulacao.PrecoVenda * simulacao.PrevisaoVenda;
+            simulacao.PrevisaoVendaDinheiro = f(simulacao.PrecoVenda) * f(simulacao.PrevisaoVenda);
             model.setProperty(bc.getPath()+'/simulacao/PrevisaoVendaDinheiro',simulacao.PrevisaoVendaDinheiro);
 
             // IC = (Preço de Venda - Preço Mercado) / Preço Mercado
             try {
-                simulacao.IC = ( simulacao.PrecoVenda - nossoPricing.PrecoMercado ) *
-                100 / nossoPricing.PrecoMercado;
+                simulacao.IC = ( f(simulacao.PrecoVenda) - f(nossoPricing.PrecoMercado) ) *
+                100 / f(nossoPricing.PrecoMercado);
             } catch (e) {
                 simulacao.IC = 0;
             }
