@@ -15,7 +15,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
         handleRouteMatched: function(oEvent) {
 
 
-            var oParams = {};
+            var oParams = {
+                "expand": "tipoNegociacao"
+                };
 
             if (oEvent.mParameters.data.context) {
                 this.sContext = oEvent.mParameters.data.context;

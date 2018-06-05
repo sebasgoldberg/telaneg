@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
 
 
-           <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'subitems', templateShareable:true }" >
+           <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'subitems', templateShareable:true, parameters:{expand:'material'} }" >
                 <columns>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
@@ -60,29 +60,37 @@
                 <items>
                     <ColumnListItem>
                         <cells>
-                            <ObjectIdentifier title="{centro/Codigo}" text="" titleActive="false" visible="true"/>
-                            <ObjectIdentifier title="{material/ID}" text="" titleActive="false" visible="true"/>
+                            <ObjectIdentifier title="{CentroID}" text="" titleActive="false" visible="true"/>
+                            <ObjectIdentifier title="{
+                                path: 'material/ID',
+                                type: 'sap.ui.model.odata.type.String',
+                                constraints: {
+                                    isDigitSequence : true,
+                                    maxLength : 18
+                                    }
+                                }"
+                                text="" titleActive="false" visible="true"/>
                             <Text text="{material/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
 
                             <ObjectNumber
-                                number="{path: 'simulacao/Custo', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                                number="{path: 'Custo', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                                 unit="BRL" emphasized="true"
                                 state="{
-                                    parts: [ {path: 'simulacao/Custo'}, {path: 'informacao/Custo'} ],
+                                    parts: [ {path: 'Custo'}, {path: 'informacao/Custo'} ],
                                     formatter: '.formatter.warningIfSecondLowThanFirst'
                                     }"
                                 />
                             <ObjectNumber
-                                number="{path: 'simulacao/PMZNovo', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                                number="{path: 'PMZNovo', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                                 unit="BRL" emphasized="true"
                                 state="{
-                                    parts: [ {path: 'simulacao/PMZNovo'}, {path: 'informacao/PMZNovo'} ],
+                                    parts: [ {path: 'PMZNovo'}, {path: 'informacao/PMZNovo'} ],
                                     formatter: '.formatter.warningIfSecondLowThanFirst'
                                     }"
                                 />
 
                             <Input value="{
-                                path: 'simulacao/PrecoVenda',
+                                path: 'PrecoVenda',
                                 type: 'sap.ui.model.type.Float',
                                 formatOptions: { maxFractionDigits: 2 }
                                 }"
@@ -93,25 +101,25 @@
 
                             <ObjectNumber
                                 number="{
-                                    path: 'simulacao/Margem2',
+                                    path: 'Margem2',
                                     type: 'sap.ui.model.type.Float',
                                     formatOptions: { maxFractionDigits: 2 }
                                     }"
                                 unit="%"
                                 state="{
-                                    parts: [ {path: 'simulacao/Margem2'}, {path: 'informacao/MargemTeorica'}],
+                                    parts: [ {path: 'Margem2'}, {path: 'informacao/MargemTeorica'}],
                                     formatter: '.formatter.margemStatus'
                                     }"
                                 />
                             <ObjectNumber
                                 number="{
-                                    path: 'simulacao/IC',
+                                    path: 'IC',
                                     type: 'sap.ui.model.type.Float',
                                     formatOptions: { maxFractionDigits: 2 }
                                     }"
                                 unit="%"
                                 state="{
-                                    parts: [ {path: 'simulacao/IC'} ],
+                                    parts: [ {path: 'IC'} ],
                                     formatter: '.formatter.icStatus'
                                     }" />
 

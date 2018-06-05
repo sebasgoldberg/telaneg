@@ -11,11 +11,12 @@
             <List id="sap_List_Page_0-content-sap_m_List-1" mode="SingleSelectMaster" width="100%" footerText="" backgroundDesign="Solid" showSeparators="All" growing="true" growingThreshold="5" growingScrollToLoad="true" itemPress="_onListItemPress"
                 items="{
                     path:'/NegociacaoSet',
-                    templateShareable:true
+                    templateShareable:true,
+                     parameters:{expand:'tipoNegociacao'}
                     }">
                 <infoToolbar />
                 <items>
-                    <ObjectListItem intro="{ID}" title="{Descricao}"
+                    <ObjectListItem intro="{ID} ({tipoNegociacao/Descricao})" title="{Descricao}"
                         number="{
                             path: 'Indicadores/Margem2',
                             type: 'sap.ui.model.type.Float',

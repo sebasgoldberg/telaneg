@@ -3,11 +3,7 @@
         <uxap:headerContent/>
         <uxap:headerTitle>
             <uxap:ObjectPageHeader id="pageHeader" objectImageURI="" objectTitle="{material/Nome}" objectSubtitle="{fornecedor/Nome} --> {CentroID}" headerDesign="Light" objectImageShape="Circle" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="false" isObjectSubtitleAlwaysVisible="false" isActionAreaAlwaysVisible="true">
-				<uxap:actions>
-					<Button text="BVSE" press="onCentroVendaModificado"/>
-					<Button text="BVBA" press="onCentroVendaModificado"/>
-					<Button text="BVMG" press="onCentroVendaModificado"/>
-				</uxap:actions>
+				<uxap:actions />
                 <uxap:breadCrumbsLinks/>
                 <uxap:navigationBar/>
            </uxap:ObjectPageHeader>
