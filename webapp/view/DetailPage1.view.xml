@@ -221,7 +221,7 @@
                 <contentMiddle/>
                 <contentRight>
                     <Button text="Gravar" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onGravar"/>
-                    <Button text="Eliminar" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress3"/>
+                    <Button text="Eliminar" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onEliminarNegociacao"/>
                 </contentRight>
             </Bar>
         </footer>

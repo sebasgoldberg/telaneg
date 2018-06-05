@@ -112,11 +112,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             });
         },
 
-        eliminarItem: function(i){
+        eliminarItem: function(c){
             let m = this.getView().getModel();
             return new Promise( (resolve, reject) => {
                 m.remove(
-                    `/ItemNegociacaoSet(NegociacaoID='${i.NegociacaoID}',Item=${i.Item})`,
+                    c.getPath(),
                     {
                         success: (...args) => { resolve(...args) },
                         error: (...args) => { reject(...args) },
@@ -138,8 +138,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
         eliminarItensSelecionados: function() {
             let v = this.getView();
             return v.byId('itemsTable').getSelectedContexts()
-                .map( c => c.getObject() )
-                .map( i => this.eliminarItem(i) );
+                .map( c => this.eliminarItem(c) );
         },
 
         _onTableDelete: function() {
@@ -228,7 +227,22 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             });
 
         },
-        _onButtonPress3: function() {
+
+        eliminarNegociacao: function() {
+            let v = this.getView();
+            let m = v.getModel();
+            return new Promise( 
+                (resolve, reject) => {
+                    m.remove(v.getBindingContext().getPath(),{
+                        success: (...args) => resolve(args),
+                        error: (...args) => reject(args),
+                        })
+                }
+            );
+            
+        },
+        
+        temCertezaDeEliminarNegociacao: function() {
             return new Promise(function(fnResolve) {
                 sap.m.MessageBox.confirm("Tem certeza que deseja eliminar a negociação?", {
                     title: "Eliminar Negociação",
@@ -237,12 +251,17 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                         fnResolve(sActionClicked === "Tenho Sim");
                     }
                 });
-            }).catch(function(err) {
-                if (err !== undefined) {
-                    MessageBox.error(err);
-                }
-            });
+            })
+        },
 
+        onEliminarNegociacao: async function() {
+            await this.temCertezaDeEliminarNegociacao();
+            try {
+                await this.eliminarNegociacao();
+                this.oRouter.navTo('/MasterPage1');
+            } catch (e) {
+                console.error(e);
+            }
         },
 
         onInit: function() {

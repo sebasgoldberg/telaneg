@@ -57,6 +57,7 @@ export default class MasterPage1 extends BaseController{
                         }.bind(this)
                     });
                 }
+           this.getView().byId("sap_List_Page_0-content-sap_m_List-1").getBinding('items').refresh();
 
         }
 
