@@ -2,8 +2,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
     "sap/m/MessageBox",
     "./utilities",
     'simplifique/telaneg/model/formatter',
-    "sap/ui/core/routing/History"
-], function(BaseController, MessageBox, Utilities, formatter, History) {
+    "sap/ui/core/routing/History",
+    "sap/ui/model/json/JSONModel",
+], function(BaseController, MessageBox, Utilities, formatter, History, JSONModel) {
     "use strict";
 
     return BaseController.extend("simplifique.telaneg.controller.DetailPage2", {
@@ -149,7 +150,19 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             });
 
         },
+
         onInit: function() {
+            this.getView().setModel(new JSONModel({
+                venda: {
+                    selecao:{
+                        de: new Date(),
+                        ate: new Date(),
+                        },
+                    resultado:{
+                        items: [],
+                        },
+                    },
+                }),'view');
             this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             this.oRouter.getTarget("DetailPage2").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
             var oView = this.getView();
@@ -257,6 +270,48 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
         },
         _onReject: function(attribute) {
             sap.m.MessageToast.show("Rejeição realizada.");
+        },
+
+        getFiltersVenda: function() {
+            let oViewData = this.getView().getModel('view').getData();
+            let aFilters = [];
+            aFilters.push(new sap.ui.model.Filter('De',
+                sap.ui.model.FilterOperator.EQ, oViewData.venda.selecao.de))
+            aFilters.push(new sap.ui.model.Filter('Ate',
+                sap.ui.model.FilterOperator.EQ, oViewData.venda.selecao.ate))
+            return aFilters;
+        },
+
+        getVenda: function(){
+            let v = this.getView();
+            let m = v.getModel();
+            let sPathItem = v.getBindingContext().getPath();
+            return new Promise( (resolve, reject) => {
+                m.read(`${sPathItem}/venda`,{
+                    urlParameters:{
+                        '$expand': 'material',
+                        },
+                    filters: this.getFiltersVenda(),
+                    success: (...args) => resolve(args[0].results),
+                    error: (...args) => reject(args),
+                    });
+            });
+        },
+
+        addVendaToView: function(venda) {
+            let v = this.getView();
+            let oViewData = v.getModel('view').getData();
+            oViewData.venda.resultado.items.push(...venda);
+            v.byId('vendaTable').getBinding('items').refresh();
+        },
+
+        onObterVenda: async function() {
+            try {
+                let venda = await this.getVenda();
+                this.addVendaToView(venda);
+            } catch (e) {
+                console.error(e);
+            }
         },
 
     });

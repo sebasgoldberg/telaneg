@@ -38,13 +38,13 @@
  
             <Label text="Valor"/>
             <Text
-                text="{path: 'vendaAnterior/Valor', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} BRL"/>
+                text="{path: '', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} BRL"/>
             <Label text="Quantidade"/>
             <Text
-                text="{path: 'vendaAnterior/Quantidade', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} UN"/>
+                text="{path: '', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} UN"/>
             <Label text="Margem"/>
             <Text
-                text="{path: 'vendaAnterior/Margem', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} %"/>
+                text="{path: '', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} %"/>
 
 
     </form:SimpleForm>
@@ -54,33 +54,27 @@
     <form:SimpleForm
         layout="ResponsiveGridLayout"
         columnsXL="4" columnsL="4" columnsM="2" columnsS="1"
-        labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12"
+        labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
         breakpointL="500" breakpointM="250"
         >
 
 
         <core:Title text="Periodo 1" />
             <Label text="De" />
-            <DatePicker />
+            <DatePicker dateValue='{view>/venda/selecao/de}'/>
 
         <core:Title text="" />
             <Label text="Até" />
-            <DatePicker />
-
-        <core:Title text="Periodo 2" />
-            <Label text="De" />
-            <DatePicker />
+            <DatePicker dateValue='{view>/venda/selecao/ate}'/>
 
         <core:Title text="" />
-            <Label text="Até" />
-            <DatePicker />
+            <Button text="Obter Vendas" press="onObterVenda" />
 
     </form:SimpleForm>
 
 
-
-
-       <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'subitems', templateShareable:true, parameters:{expand:'vendaActual,vendaAnterior' } }" >
+       <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{view>/venda/resultado/items}"
+            id="vendaTable">
             <columns>
                 <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
                     <header>
@@ -103,39 +97,35 @@
 
                 <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                     <header>
-                        <Text text="Valor P1" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
-                    </header>
-                    <footer/>
-                </Column>
-                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-                    <header>
-                        <Text text="Valor P2" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        <Text text="De" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                     </header>
                     <footer/>
                 </Column>
 
                 <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                     <header>
-                        <Text text="Quantidade P1" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
-                    </header>
-                    <footer/>
-                </Column>
-                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-                    <header>
-                        <Text text="Quantidade P2" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        <Text text="Ate" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                     </header>
                     <footer/>
                 </Column>
 
                 <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                     <header>
-                        <Text text="Margem P1" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        <Text text="Valor" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                     </header>
                     <footer/>
                 </Column>
+
                 <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                     <header>
-                        <Text text="Margem P2" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        <Text text="Quantidade" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Margem" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                     </header>
                     <footer/>
                 </Column>
@@ -144,34 +134,34 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <ObjectIdentifier title="{centro/Codigo}" text="" titleActive="false" visible="true"/>
-                        <ObjectIdentifier title="{material/ID}" text="" titleActive="false" visible="true"/>
-                        <Text text="{material/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                        <ObjectIdentifier title="{view>CentroID}" text="" titleActive="false" visible="true"/>
+                        <ObjectIdentifier title="{
+                            path: 'material/ID',
+                            type: 'sap.ui.model.odata.type.String',
+                            constraints: {
+                                isDigitSequence : true,
+                                maxLength : 18
+                                }
+                            }"
+                            text="" titleActive="false" visible="true"/>
+
+                        <Text text="{view>material/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+
+                        <ObjectIdentifier title="{path: 'view>De', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}" />
+                        <ObjectIdentifier title="{path: 'view>Ate', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}" />
 
                         <ObjectNumber
-                            number="{path: 'vendaAnterior/Valor', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                            number="{path: 'view>Valor', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                             unit="BRL" emphasized="true"
                             />
-                        <ObjectNumber
-                            number="{path: 'vendaActual/Valor', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
-                            unit="BRL" emphasized="true"
-                            />
 
                         <ObjectNumber
-                            number="{path: 'vendaAnterior/Quantidade', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
-                            unit="UN" emphasized="true"
-                            />
-                        <ObjectNumber
-                            number="{path: 'vendaActual/Quantidade', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                            number="{path: 'view>Quantidade', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                             unit="UN" emphasized="true"
                             />
 
                         <ObjectNumber
-                            number="{path: 'vendaAnterior/Margem', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
-                            unit="%" emphasized="true"
-                            />
-                        <ObjectNumber
-                            number="{path: 'vendaActual/Margem', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                            number="{path: 'view>Margem', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                             unit="%" emphasized="true"
                             />
 
