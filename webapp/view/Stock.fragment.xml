@@ -33,7 +33,7 @@
 
     </form:SimpleForm>
 
-       <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'subitems', templateShareable:true, parameters:{expand:'stock' } }" >
+       <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'stock', templateShareable:true, parameters:{expand:'material' } }" >
             <columns>
                 <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
                     <header>
@@ -83,24 +83,32 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <ObjectIdentifier title="{centro/Codigo}" text="" titleActive="false" visible="true"/>
-                        <ObjectIdentifier title="{material/ID}" text="" titleActive="false" visible="true"/>
+                        <ObjectIdentifier title="{CentroID}" text="" titleActive="false" visible="true"/>
+                        <ObjectIdentifier title="{
+                            path: 'material/ID',
+                            type: 'sap.ui.model.odata.type.String',
+                            constraints: {
+                                isDigitSequence : true,
+                                maxLength : 18
+                                }
+                            }"
+                            text="" titleActive="false" visible="true"/>
                         <Text text="{material/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
 
                         <ObjectNumber
-                            number="{path: 'stock/Avaliacao', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                            number="{path: 'Avaliacao', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                             unit="BRL" emphasized="true"
                             />
                         <ObjectNumber
-                            number="{path: 'stock/DDE', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                            number="{path: 'DDE', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                             unit="dias" emphasized="true"
                             />
                         <ObjectNumber
-                            number="{path: 'stock/QuantidadeLoja', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                            number="{path: 'QuantidadeLoja', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                             unit="UN" emphasized="true"
                             />
                         <ObjectNumber
-                            number="{path: 'stock/QuantidadeCD', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                            number="{path: 'QuantidadeCD', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                             unit="UN" emphasized="true"
                             />
                     </cells>

@@ -363,6 +363,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             let v = this.getView();
             let m = v.getModel();
             let oNegociacao = v.getBindingContext().getObject();
+            let sPathNegociacao = v.getBindingContext().getPath();
             v.byId('SelecaoLivreItensTable')
                 .getSelectedContexts()
                 .map( c => c.getObject() )
@@ -380,7 +381,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                     }})
                 .forEach( item =>
                     m.createEntry(
-                        `/ItemNegociacaoSet`, 
+                        `${sPathNegociacao}/items/`, 
                         {
                             properties: item,
                             success: (...args) => console.log(args),
