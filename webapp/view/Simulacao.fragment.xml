@@ -20,15 +20,12 @@
                 />
 
     <Label text="Volumem"/>
-            <Input value="{
-                path: 'simulacao/Volumem',
-                type: 'sap.ui.model.type.Float',
-                formatOptions: { maxFractionDigits: 2 }
-                }"
-                submit="realizarSimulacao"
-                fieldWidth="70%"
-                description="UN"
-                />
+            <Text
+                text="{
+                    path: 'simulacao/Volumem',
+                    type: 'sap.ui.model.type.Float',
+                    formatOptions: { maxFractionDigits: 2 }
+                    } UN" />
 
     <Label text="Recomposição"/>
             <Input value="{
@@ -65,7 +62,7 @@
 
 
     <core:Title text="Input Venda" />
-    <Label text="Preço de Venda"/>
+    <Label text="Preço de Venda" />
             <Input value="{
                 path: 'simulacao/PrecoVenda',
                 type: 'sap.ui.model.type.Float',
@@ -76,7 +73,7 @@
                 description="BRL"
                 />
 
-      <Label text="Previsão de Venda" />
+      <Label text="Previsão de Venda"  />
                 <Input value="{
                     path: 'simulacao/PrevisaoVenda',
                     type: 'sap.ui.model.type.Float',

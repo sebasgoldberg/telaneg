@@ -24,6 +24,13 @@
 
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
+                            <Text text="Volumem" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
                             <Text text="Custo" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
@@ -37,7 +44,13 @@
 
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Preço de venda" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="Preço de venda" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Previsão de venda" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
@@ -72,6 +85,16 @@
                                 text="" titleActive="false" visible="true"/>
                             <Text text="{material/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
 
+                            <Input value="{
+                                path: 'Volumem',
+                                type: 'sap.ui.model.type.Float',
+                                formatOptions: { maxFractionDigits: 2 }
+                                }"
+                                submit="realizarSimulacaoSubitem"
+                                fieldWidth="70%"
+                                description="UN"
+                                />
+
                             <ObjectNumber
                                 number="{path: 'Custo', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                                 unit="BRL" emphasized="true"
@@ -95,8 +118,18 @@
                                 formatOptions: { maxFractionDigits: 2 }
                                 }"
                                 submit="realizarSimulacaoSubitem"
-                                fieldWidth="70%"
+                                fieldWidth="65%"
                                 description="BRL"
+                                />
+
+                            <Input value="{
+                                path: 'PrevisaoVenda',
+                                type: 'sap.ui.model.type.Float',
+                                formatOptions: { maxFractionDigits: 2 }
+                                }"
+                                submit="realizarSimulacaoSubitem"
+                                fieldWidth="70%"
+                                description="UN"
                                 />
 
                             <ObjectNumber
