@@ -254,21 +254,25 @@
 
             <Label text="IPI"/>
             <Input
+                enabled="{view>/impostos/enabled}" 
                 submit="realizarSimulacao"
                 value="{path: 'impostosEntrada/IPI', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                 description="%"/>
             <Label text="ICMS"/>
             <Input
+                enabled="{view>/impostos/enabled}" 
                 submit="realizarSimulacao"
                 value="{path: 'impostosEntrada/ICMS', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                 description="%"/>
             <Label text="Base Reduzida ICMS"/>
             <Input
+                enabled="{view>/impostos/enabled}" 
                 submit="realizarSimulacao"
                 value="{path: 'impostosEntrada/BaseReduzidaICMS', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                 description="%"/>
             <Label text="PIS"/>
             <Input
+                enabled="{view>/impostos/enabled}" 
                 submit="realizarSimulacao"
                 value="{path: 'impostosEntrada/PIS', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                 description="%"/>
@@ -277,21 +281,25 @@
 
             <Label text="COFINS"/>
             <Input
+                enabled="{view>/impostos/enabled}" 
                 submit="realizarSimulacao"
                 value="{path: 'impostosEntrada/COFINS', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                 description="%"/>
             <Label text="ST"/>
             <Input
+                enabled="{view>/impostos/enabled}" 
                 submit="realizarSimulacao"
                 value="{path: 'impostosEntrada/ST', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                 description="%"/>
             <Label text="PAUTA"/>
             <Input
+                enabled="{view>/impostos/enabled}" 
                 submit="realizarSimulacao"
                 value="{path: 'impostosEntrada/PAUTA', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                 description="%"/>
             <Label text="MVA"/>
             <Input
+                enabled="{view>/impostos/enabled}" 
                 submit="realizarSimulacao"
                 value="{path: 'impostosEntrada/MVA', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                 description="%"/>
@@ -300,16 +308,19 @@
 
             <Label text="ICMS"/>
             <Input
+                enabled="{view>/impostos/enabled}" 
                 submit="realizarSimulacao"
                 value="{path: 'impostosSaida/ICMS', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                 description="%"/>
             <Label text="PIS"/>
             <Input
+                enabled="{view>/impostos/enabled}" 
                 submit="realizarSimulacao"
                 value="{path: 'impostosSaida/PIS', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                 description="%"/>
             <Label text="COFINS"/>
             <Input
+                enabled="{view>/impostos/enabled}" 
                 submit="realizarSimulacao"
                 value="{path: 'impostosSaida/COFINS', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
                 description="%"/>

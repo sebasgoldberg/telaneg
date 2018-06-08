@@ -24,7 +24,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                 if (this.sContext) {
                     oPath = {
                         path: "/" + this.sContext,
-                        parameters: oParams
+                        parameters: oParams,
+                        events: {
+                            dataReceived: () => this.setStatusInputImpostos(),
+                            },
                     };
                     this.getView().bindObject(oPath);
                     this._realizarSimulacao();
@@ -153,13 +156,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
         onInit: function() {
             this.getView().setModel(new JSONModel({
+                impostos: {
+                    enabled: true,
+                    },
                 venda: {
                     selecao:{
                         de: new Date(),
                         ate: new Date(),
-                        },
-                    resultado:{
-                        items: [],
                         },
                     },
                 }),'view');
@@ -374,6 +377,19 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             }
         },
 
+        setStatusInputImpostos: function() {
+            let bc = this.getView().getBindingContext();
+            if (!bc)
+                return;
+            let oItem = bc.getObject();
+            let oViewModel = this.getView().getModel('view');
+            let oViewData = oViewModel.getData();
+
+            // O input de impostos sera habilitado em casso que o material
+            // do item não esteja cadastrado.
+            oViewData.impostos.enabled = (oItem.material.Type == 'N');
+            oViewModel.refresh();
+        },
 
     });
 }, /* bExport= */ true);
