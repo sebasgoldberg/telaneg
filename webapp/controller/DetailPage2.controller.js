@@ -272,43 +272,33 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             sap.m.MessageToast.show("Rejeição realizada.");
         },
 
-        getFiltersVenda: function() {
-            let oViewData = this.getView().getModel('view').getData();
-            let aFilters = [];
-            aFilters.push(new sap.ui.model.Filter('De',
-                sap.ui.model.FilterOperator.EQ, oViewData.venda.selecao.de))
-            aFilters.push(new sap.ui.model.Filter('Ate',
-                sap.ui.model.FilterOperator.EQ, oViewData.venda.selecao.ate))
-            return aFilters;
-        },
-
-        getVenda: function(){
+        selectAndAddVenda: function(){
             let v = this.getView();
             let m = v.getModel();
             let sPathItem = v.getBindingContext().getPath();
+            let oViewData = this.getView().getModel('view').getData();
             return new Promise( (resolve, reject) => {
-                m.read(`${sPathItem}/venda`,{
-                    urlParameters:{
-                        '$expand': 'material',
-                        },
-                    filters: this.getFiltersVenda(),
-                    success: (...args) => resolve(args[0].results),
-                    error: (...args) => reject(args),
-                    });
-            });
+                m.create(`${sPathItem}/venda`,{
+                    De: oViewData.venda.selecao.de,
+                    Ate: oViewData.venda.selecao.ate,
+                    },
+                    {
+                        success: (...args) => resolve(args),
+                        error: (...args) => reject(args),
+                        });
+                }
+            );
         },
 
-        addVendaToView: function(venda) {
+        refreshVenda: function() {
             let v = this.getView();
-            let oViewData = v.getModel('view').getData();
-            oViewData.venda.resultado.items.push(...venda);
             v.byId('vendaTable').getBinding('items').refresh();
         },
 
         onObterVenda: async function() {
             try {
-                let venda = await this.getVenda();
-                this.addVendaToView(venda);
+                await this.selectAndAddVenda();
+                this.refreshVenda();
             } catch (e) {
                 console.error(e);
             }
