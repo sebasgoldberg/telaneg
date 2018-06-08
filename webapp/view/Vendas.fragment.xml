@@ -1,4 +1,6 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form"
+    xmlns:sim="simplifique.telaneg.control"
+    >
 
     <form:SimpleForm
         visible="false"
@@ -51,30 +53,57 @@
 
     <l:VerticalLayout class="sapUiContentPadding">
 
-    <form:SimpleForm
-        layout="ResponsiveGridLayout"
-        columnsXL="4" columnsL="4" columnsM="2" columnsS="1"
-        labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
-        breakpointL="500" breakpointM="250"
-        >
-
-
-        <core:Title text="Periodo 1" />
-            <Label text="De" />
-            <DatePicker dateValue='{view>/venda/selecao/de}'/>
-
-        <core:Title text="" />
-            <Label text="Até" />
-            <DatePicker dateValue='{view>/venda/selecao/ate}'/>
-
-        <core:Title text="" />
-            <Button text="Obter Vendas" press="onObterVenda" />
-
-    </form:SimpleForm>
-
-
        <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'venda', parameters:{ expand: 'material' }}"
-            id="vendaTable">
+            id="vendaTable" mode="MultiSelect" >
+
+                <headerToolbar>
+                    <Toolbar width="auto" height="46px" design="Transparent" visible="true" enabled="true">
+                        <content>
+                            <ToolbarSpacer width=""/>
+                            <sim:ButtonPopover type="Emphasized" icon="sap-icon://add" placement="Left">
+
+                                <ResponsivePopover
+                                    id="popoverObterVenda"
+                                    title="Obter Vendas"
+                                    class="sapUiPopupWithPadding"
+                                    >
+                                    <beginButton>
+                                        <Button text="Obter" press="onObterVenda" type="Emphasized" />
+                                    </beginButton>
+                                    <endButton>
+                                        <Button text="Fechar" press="onFecharObterVenda" />
+                                    </endButton>
+                                    <content>
+
+
+                                        <form:SimpleForm
+                                            >
+
+
+                                                <Label text="De" />
+                                                <DatePicker dateValue='{view>/venda/selecao/de}'/>
+
+                                                <Label text="Até" />
+                                                <DatePicker dateValue='{view>/venda/selecao/ate}'/>
+
+
+                                        </form:SimpleForm>
+
+
+                                        
+                                    </content>
+                                </ResponsivePopover>
+
+                            </sim:ButtonPopover>
+                            <Button text="" type="" icon="sap-icon://delete" press="onDeleteVenda"/>
+
+                        </content>
+                        <tooltip/>
+                    </Toolbar>
+                </headerToolbar>
+ 
+
+
             <columns>
                 <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
                     <header>

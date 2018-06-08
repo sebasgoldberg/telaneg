@@ -290,19 +290,90 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             );
         },
 
-        refreshVenda: function() {
+        getVendaTable: function() {
             let v = this.getView();
-            v.byId('vendaTable').getBinding('items').refresh();
+            return v.byId('vendaTable');
+            
+        },
+
+        refreshVenda: function() {
+            this.getVendaTable().getBinding('items').refresh();
+        },
+
+        setBusy: function() {
+            sap.ui.core.BusyIndicator.show(0);
+        },
+
+        setFree: function() {
+            sap.ui.core.BusyIndicator.hide();
         },
 
         onObterVenda: async function() {
             try {
+                this.getPopoverObterVenda().close();
+                this.setBusy();
                 await this.selectAndAddVenda();
                 this.refreshVenda();
             } catch (e) {
                 console.error(e);
+            } finally {
+                this.setFree();
             }
         },
+
+        getPopoverObterVenda: function() {
+            return this.getView().byId('popoverObterVenda');
+        },
+
+        onFecharObterVenda: function() {
+            this.getPopoverObterVenda().close();
+        },
+
+        eliminarVenda: function(c){
+            let m = this.getView().getModel();
+            return new Promise( (resolve, reject) => {
+                m.remove(
+                    c.getPath(),
+                    {
+                        success: (...args) => { resolve(...args) },
+                        error: (...args) => { reject(...args) },
+                    }
+                );
+            });
+        },
+
+        eliminarVendasSelecionadas: function() {
+            return Promise.all(this.getVendaTable().getSelectedContexts()
+                .map( c => this.eliminarVenda(c) ));
+        },
+
+        temCertezaDeEliminar: function(attribute) {
+            return new Promise(function(fnResolve) {
+                sap.m.MessageBox.confirm("Tem certeza que deseja eliminar as vendas selecionados?", {
+                    title: "Eliminar Vendas",
+                    actions: ["Tenho Sim", "Melhor Não"],
+                    onClose: function(sActionClicked) {
+                        fnResolve(sActionClicked === "Tenho Sim");
+                    }
+                });
+            });
+        },
+
+        onDeleteVenda: async function() {
+            try {
+                let eliminar = await this.temCertezaDeEliminar();
+                if (!eliminar)
+                    return;
+                this.setBusy()
+                await this.eliminarVendasSelecionadas();
+                this.refreshVenda();
+            } catch (e) {
+                console.error(e);
+            } finally {
+                this.setFree();
+            }
+        },
+
 
     });
 }, /* bExport= */ true);
