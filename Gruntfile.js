@@ -17,7 +17,11 @@ module.exports = function(grunt) {
                 hostname: 'localhost'
             },
             src: {},
-            dist: {},
+            dist: {
+                options: {
+                    port: 8081,
+                    },
+                },
             transp: {},
         },
 
@@ -86,7 +90,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 options: {
-                    appresources: '<%= dir.dist %>'
+                    appresources: '<%= dir.dist %>',
                 }
             }
         },
