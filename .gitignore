@@ -6,3 +6,4 @@ dist
 *.un~
 package-lock.json
 *.tar.gz
+*.swo

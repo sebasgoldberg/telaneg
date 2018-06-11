@@ -255,7 +255,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
         },
 
         onEliminarNegociacao: async function() {
-            await this.temCertezaDeEliminarNegociacao();
+            let eliminar = await this.temCertezaDeEliminarNegociacao();
+            if (!eliminar)
+                return;
             try {
                 await this.eliminarNegociacao();
                 this.oRouter.navTo('/MasterPage1');
