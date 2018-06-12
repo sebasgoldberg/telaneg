@@ -1,0 +1,89 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+
+    <ResponsivePopover
+        title="Informações Atuais"
+        class="sapUiPopupWithPadding"
+        contentWidth="300px"
+        contentHeight="250px"
+        placement="Bottom" >
+
+		<beginButton>
+		</beginButton>
+		<endButton>
+			<Button text="Fechar" press="onFecharPopoverInfoAtualSubitem" />
+		</endButton>
+
+        <content>
+
+            <form:SimpleForm
+                layout="ResponsiveGridLayout"
+                columnsXL="1" columnsL="1" columnsM="1" columnsS="1"
+                labelSpanXL="6" labelSpanL="6" labelSpanM="6" labelSpanS="12"
+                breakpointXL="920" breakpointL="570" breakpointM="250"
+                >
+
+                <Label text="Preço Compra" />
+                    <Text
+                        text="{
+                            path: 'informacao/PrecoCompra',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: { maxFractionDigits: 2 }
+                            } BRL" />
+                <Label text="Custo" />
+                    <Text
+                        text="{
+                            path: 'informacao/Custo',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: { maxFractionDigits: 2 }
+                            } BRL" />
+                 <Label text="PMZ Novo" />
+                    <Text
+                        text="{
+                            path: 'informacao/PMZNovo',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: { maxFractionDigits: 2 }
+                            } BRL" />
+                <Label text="PMZ Médio" />
+                    <Text
+                        text="{
+                            path: 'informacao/PMZMedio',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: { maxFractionDigits: 2 }
+                            } BRL" />
+
+                <Label text="Margem 1" />
+                    <Text
+                        text="{
+                            path: 'informacao/Margem1',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: { maxFractionDigits: 2 }
+                            } %" />
+                 <Label text="Margem Teorica" />
+                    <Text
+                        text="{
+                            path: 'informacao/MargemTeorica',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: { maxFractionDigits: 2 }
+                            } %" />
+                 <Label text="Preço Venda" />
+                    <Text
+                        text="{
+                            path: 'informacao/PrecoVenda',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: { maxFractionDigits: 2 }
+                            } BRL" />
+                <Label text="IC" />
+                    <Text
+                        text="{
+                            path: 'informacao/IC',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: { maxFractionDigits: 2 }
+                            } %" />
+
+            </form:SimpleForm>
+
+        </content>
+    </ResponsivePopover>
+
+</core:FragmentDefinition>
+

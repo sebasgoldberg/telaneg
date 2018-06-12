@@ -391,5 +391,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             oViewModel.refresh();
         },
 
+        onSubitemPress: function(oEvent) {
+            if (!this.popoverInfoAtual){
+                this.popoverInfoAtual = sap.ui.xmlfragment("simplifique.telaneg.view.InfoAtualSubItem", this);
+                this.getView().addDependent(this.popoverInfoAtual);
+            }
+            let oRow = oEvent.getParameters().listItem;
+            let sPathSubitem = oRow.getBindingContext().getPath();
+            this.popoverInfoAtual.bindElement(sPathSubitem);
+            this.popoverInfoAtual.openBy(oRow);
+        },
+
+        onFecharPopoverInfoAtualSubitem: function() {
+            this.popoverInfoAtual.close();
+        },
+
     });
 }, /* bExport= */ true);
