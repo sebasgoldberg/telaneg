@@ -1,7 +1,6 @@
 import BaseController from 'sap/ui/core/mvc/Controller';
 import MessageBox from 'sap/m/MessageBox';
 import formatter from 'simplifique/telaneg/model/formatter';
-
 export default class MasterPage1 extends BaseController{
 
         constructor(...args){

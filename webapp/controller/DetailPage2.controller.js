@@ -397,14 +397,36 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                 this.getView().addDependent(this.popoverInfoAtual);
             }
             let oRow = oEvent.getParameters().listItem;
-            let sPathSubitem = oRow.getBindingContext().getPath();
+            let bc = oRow.getBindingContext();
+            let sPathSubitem = bc.getPath();
             this.popoverInfoAtual.bindElement(sPathSubitem);
-            this.popoverInfoAtual.openBy(oRow);
+            // Abrimos o popover no final da fila.
+            let aCells = oRow.getCells();
+            let subitemPopoverSrc = aCells[aCells.length - 1];
+            this.popoverInfoAtual.openBy(subitemPopoverSrc);
         },
 
         onFecharPopoverInfoAtualSubitem: function() {
             this.popoverInfoAtual.close();
         },
+
+        onPressImpostos: function(oEvent) {
+            if (!this.popoverImpostos){
+                this.popoverImpostos = sap.ui.xmlfragment("simplifique.telaneg.view.Impostos", this);
+                this.getView().addDependent(this.popoverImpostos);
+            }
+            if (this.popoverImpostos.isOpen())
+                this.popoverImpostos.close()
+            else{
+                let oButton = oEvent.getSource();
+                this.popoverImpostos.openBy(oButton);
+            }
+        },
+
+        onFecharPopoverImpostos: function() {
+            this.popoverImpostos.close();
+        },
+
 
     });
 }, /* bExport= */ true);

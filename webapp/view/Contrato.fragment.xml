@@ -15,18 +15,6 @@
             <Label text="Desenvolvimento Comercial"/>
             <Text
                 text="{path: 'contrato/DesenvolvimentoComercial', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} %"/>
-            <Label text="Fill Rate"/>
-            <Text
-                text="{path: 'contrato/FillRate', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} %"/>
-
-        <core:Title text="" />
-
-            <Label text="N-Devol"/>
-            <Text
-                text="{path: 'contrato/NDevol', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} %"/>
-            <Label text="Inauguração/Reinaucuração"/>
-            <Text
-                text="{path: 'contrato/InauguracaoReinaucuracao', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} R$"/>
 
         <core:Title text="Logistica" />
 
@@ -45,43 +33,6 @@
             <Label text="Prezunik"/>
             <Text
                 text="{path: 'contrato/LogisticaPrezunik', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} %"/>
-
-        <core:Title text="Objetivo 1" />
-
-            <Label text="De"/>
-            <Text
-                text="{path: 'contrato/Obj1De', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} %"/>
-            <Label text="Até"/>
-            <Text
-                text="{path: 'contrato/Obj1Ate', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} %"/>
-            <Label text="Bônus"/>
-            <Text
-                text="{path: 'contrato/Obj1Bonus', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} %"/>
-
-        <core:Title text="Objetivo 2" />
-
-            <Label text="De"/>
-            <Text
-                text="{path: 'contrato/Obj2De', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} %"/>
-            <Label text="Até"/>
-            <Text
-                text="{path: 'contrato/Obj2Ate', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} %"/>
-            <Label text="Bônus"/>
-            <Text
-                text="{path: 'contrato/Obj2Bonus', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} %"/>
-
-        <core:Title text="Objetivo 3" />
-
-            <Label text="De"/>
-            <Text
-                text="{path: 'contrato/Obj3De', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} %"/>
-            <Label text="Até"/>
-            <Text
-                text="{path: 'contrato/Obj3Ate', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} %"/>
-            <Label text="Bônus"/>
-            <Text
-                text="{path: 'contrato/Obj3Bonus', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} %"/>
-
     </form:SimpleForm>
 
 </core:FragmentDefinition>

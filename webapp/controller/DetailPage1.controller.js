@@ -8,6 +8,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 ], function(BaseController, MessageBox, Utilities, formatter, History, AddItemManager, JSONModel) {
     "use strict";
 
+
     return BaseController.extend("simplifique.telaneg.controller.DetailPage1", {
 
         formatter: formatter,

@@ -1,0 +1,138 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form"
+    xmlns:layout="sap.ui.layout" 
+    >
+
+    <layout:HorizontalLayout
+            class="sapUiContentPadding"
+            allowWrapping="true">
+
+        <layout:VerticalLayout
+                class="sapUiMediumMarginEnd">
+            <Label text="Custo" />
+                <ObjectStatus
+                    text="{
+                        path: 'simulacao/Custo',
+                        type: 'sap.ui.model.type.Float',
+                        formatOptions: { maxFractionDigits: 2 }
+                        } BRL"
+                    state="{
+                        parts: [ {path: 'simulacao/Custo'}, {path: 'informacao/Custo'} ],
+                        formatter: '.formatter.warningIfSecondLowThanFirst'
+                        }"
+                        />
+        </layout:VerticalLayout>
+
+        <layout:VerticalLayout
+                class="sapUiMediumMarginEnd">
+            <Label text="PMZ Novo" />
+                <ObjectStatus
+                    text="{
+                        path: 'simulacao/PMZNovo',
+                        type: 'sap.ui.model.type.Float',
+                        formatOptions: { maxFractionDigits: 2 }
+                        } BRL"
+                    state="{
+                        parts: [ {path: 'simulacao/PMZNovo'}, {path: 'informacao/PMZNovo'} ],
+                        formatter: '.formatter.warningIfSecondLowThanFirst'
+                        }"
+                        />
+        </layout:VerticalLayout>
+
+        <layout:VerticalLayout
+                class="sapUiMediumMarginEnd">
+            <Label text="PMZ Médio" />
+                <ObjectStatus
+                    text="{
+                        path: 'simulacao/PMZMedio',
+                        type: 'sap.ui.model.type.Float',
+                        formatOptions: { maxFractionDigits: 2 }
+                        } BRL"
+                    state="{
+                        parts: [ {path: 'simulacao/PMZMedio'}, {path: 'informacao/PMZMedio'} ],
+                        formatter: '.formatter.warningIfSecondLowThanFirst'
+                        }"
+                        />
+        </layout:VerticalLayout>
+
+        <layout:VerticalLayout
+                class="sapUiMediumMarginEnd">
+            <Label text="Margem 1"/>
+                    <ObjectStatus
+                        text="{
+                            path: 'simulacao/Margem1',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: { maxFractionDigits: 2 }
+                            } %"
+                        state="{
+                            parts: [ {path: 'simulacao/Margem1'}, {path: 'informacao/MargemTeorica'} ],
+                            formatter: '.formatter.margemStatus'
+                            }"
+                            />
+        </layout:VerticalLayout>
+
+        <layout:VerticalLayout
+                class="sapUiMediumMarginEnd">
+            <Label text="Margem 2" />
+                <ObjectStatus
+                    text="{
+                        path: 'simulacao/Margem2',
+                        type: 'sap.ui.model.type.Float',
+                        formatOptions: { maxFractionDigits: 2 }
+                        } %"
+                    state="{
+                        parts: [ {path: 'simulacao/Margem2'}, {path: 'informacao/MargemTeorica'}],
+                        formatter: '.formatter.margemStatus'
+                        }" />
+        </layout:VerticalLayout>
+
+        <layout:VerticalLayout
+                class="sapUiMediumMarginEnd">
+                 <Label text="Valor Total Pedido" />
+                    <ObjectStatus
+                        text="{
+                            path: 'simulacao/ValorTotalPedido',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: { maxFractionDigits: 2 }
+                            } BRL"
+                    state="{
+                        parts: [ {path: 'simulacao/PrevisaoVendaDinheiro'}, {path: 'simulacao/ValorTotalPedido'}],
+                        formatter: '.formatter.margemStatus'
+                        }" />
+        </layout:VerticalLayout>
+
+        <layout:VerticalLayout
+                class="sapUiMediumMarginEnd">
+                  <Label text="Previsão de Venda" />
+                    <ObjectStatus
+                        text="{
+                            path: 'simulacao/PrevisaoVendaDinheiro',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: { maxFractionDigits: 2 }
+                            } BRL"
+                    state="{
+                        parts: [ {path: 'simulacao/PrevisaoVendaDinheiro'}, {path: 'simulacao/ValorTotalPedido'}],
+                        formatter: '.formatter.margemStatus'
+                        }" />
+        </layout:VerticalLayout>
+
+
+        <layout:VerticalLayout
+                class="sapUiMediumMarginEnd">
+                <Label text="IC" />
+                    <ObjectStatus
+                        text="{
+                            path: 'simulacao/IC',
+                            type: 'sap.ui.model.type.Float',
+                            formatOptions: { maxFractionDigits: 2 }
+                            } %"
+                        state="{
+                            parts: [ {path: 'simulacao/IC'} ],
+                            formatter: '.formatter.icStatus'
+                            }" />
+        </layout:VerticalLayout>
+
+    </layout:HorizontalLayout>
+
+</core:FragmentDefinition>
+
+

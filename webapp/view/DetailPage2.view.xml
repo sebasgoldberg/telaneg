@@ -1,13 +1,52 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="simplifique.telaneg.controller.DetailPage2" xmlns:uxap="sap.uxap" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:block="simplifique.telaneg.view.block">
-    <uxap:ObjectPageLayout showTitleInHeaderContent="true" showHeaderContent="true" showAnchorBar="true" showFooter="true" subSectionLayout="TitleOnTop">
-        <uxap:headerContent/>
+    <uxap:ObjectPageLayout
+        showTitleInHeaderContent="true" showHeaderContent="true" showAnchorBar="true" showFooter="true" subSectionLayout="TitleOnTop"
+        headerContentPinnable="true"
+        >
         <uxap:headerTitle>
-            <uxap:ObjectPageHeader id="pageHeader" objectImageURI="" objectTitle="{material/Nome}" objectSubtitle="{fornecedor/Nome} --> {CentroID}" headerDesign="Light" objectImageShape="Circle" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="false" isObjectSubtitleAlwaysVisible="false" isActionAreaAlwaysVisible="true">
-				<uxap:actions />
-                <uxap:breadCrumbsLinks/>
-                <uxap:navigationBar/>
-           </uxap:ObjectPageHeader>
+
+            <uxap:ObjectPageDynamicHeaderTitle primaryArea="Left">
+                <!--
+                <uxap:breadcrumbs>
+                    <Breadcrumbs>
+                        <Link text='{NegociacaoID}'/>
+                        <Link text='{Item}'/>
+                    </Breadcrumbs>
+                </uxap:breadcrumbs>
+                
+                -->
+                <uxap:breadcrumbs />
+
+                <uxap:expandedHeading>
+                    <Title text="{material/Nome}" wrapping="true" class="sapUiTinyMarginTop"/>
+                </uxap:expandedHeading>
+
+                <uxap:snappedHeading>
+                    <Title text="{material/Nome}" wrapping="true" class="sapUiTinyMarginTop"/>
+                </uxap:snappedHeading>
+
+                <uxap:expandedContent>
+                    <Text text="{fornecedor/Nome} --> {CentroID}"/>
+                </uxap:expandedContent>
+
+                <uxap:snappedContent>
+                    <Text text="{fornecedor/Nome} --> {CentroID}"/>
+                </uxap:snappedContent>
+
+                <uxap:actions>
+                    <uxap:ObjectPageHeaderActionButton text="Impostos" type="Emphasized" hideText="false"
+                        press="onPressImpostos"/>
+                </uxap:actions>
+
+            </uxap:ObjectPageDynamicHeaderTitle>
+
         </uxap:headerTitle>
+        <uxap:headerContent>
+            <layout:VerticalLayout
+                    class="sapUiMediumMarginEnd">
+                <core:Fragment fragmentName="simplifique.telaneg.view.IndicadoresItem" type="XML" />
+            </layout:VerticalLayout>
+        </uxap:headerContent>
         <uxap:sections>
 
             <uxap:ObjectPageSection showTitle="true" title="Page Section Title" titleUppercase="true" visible="true">
