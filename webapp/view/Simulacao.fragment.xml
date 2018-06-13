@@ -19,7 +19,7 @@
                 submit="realizarSimulacao"
                 />
 
-    <Label text="Volumem"/>
+    <Label text="Volume"/>
             <Text
                 text="{
                     path: 'simulacao/Volumem',

@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
 
 
-           <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'subitems', templateShareable:true, parameters:{expand:'material'} }"
+           <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'subitems', templateShareable:true, parameters:{expand:'material,informacao'} }"
            itemPress="onSubitemPress" >
                 <columns>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
@@ -25,7 +25,7 @@
 
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Volumem" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="Volume" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
