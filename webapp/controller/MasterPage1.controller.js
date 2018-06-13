@@ -1,6 +1,8 @@
 import BaseController from 'sap/ui/core/mvc/Controller';
 import MessageBox from 'sap/m/MessageBox';
 import formatter from 'simplifique/telaneg/model/formatter';
+import Fragment from 'sap/ui/core/Fragment';
+
 export default class MasterPage1 extends BaseController{
 
         constructor(...args){
@@ -289,7 +291,7 @@ export default class MasterPage1 extends BaseController{
 
         }
 
-        _onButtonPress(oEvent) {
+        onCreateNegociacao(oEvent) {
             if (!oEvent)
                 return;
             if (!this.popover) {
@@ -301,8 +303,14 @@ export default class MasterPage1 extends BaseController{
             }
             if (this.popover.isOpen())
                 this.popover.close()
-            else
+            else{
+                this.getNavContainerCriarNegociacao().backToTop();
                 this.popover.openBy(oEvent.getSource());
+            }
+        }
+
+        getNavContainerCriarNegociacao(){
+            return Fragment.byId('addNegociacaoPopover','navContainerCriarNegociacao');
         }
 
         onCancelCriarNegociacao(attribute) {
@@ -310,22 +318,25 @@ export default class MasterPage1 extends BaseController{
         }
 
         onTipoNegociacaoPressed(oEvent) {
+            let oSourceControl = oEvent.getSource();
+            let oBC = oSourceControl.getBindingContext();
+            this.oTipoNegociacao = oBC.getObject();
+            this.getNavContainerCriarNegociacao().to(
+                Fragment.byId('addNegociacaoPopover','bandeirasPage'));
+        }
+
+        onBandeiraPressed(oEvent) {
 
             let oSourceControl = oEvent.getSource();
             let oBC = oSourceControl.getBindingContext();
-            let oTipoNegociacao = oBC.getObject();
+            let oBandeira = oBC.getObject();
 
             let m = this.getView().getModel();
             let that = this;
             let oContext = m.createEntry("/NegociacaoSet", {
                 properties: {
-                    //Data: new Date(),
-                    //Status: "Inicial",
-                    //NovaMargem2: 0,
-                    //MargemTeorica: 0,
-                    //NovaMargem1: 0,
-                    //NovoIC: 0,
-                    TipoNegociacao: oTipoNegociacao.ID,
+                    TipoNegociacao: this.oTipoNegociacao.ID,
+                    Bandeira: oBandeira.ID,
                     },
                 success: (...args) => {
                     console.log(args);

@@ -1,7 +1,7 @@
 <mvc:View xmlns:sim="simplifique.telaneg.control" xmlns:mvc="sap.ui.core.mvc" controllerName="simplifique.telaneg.controller.DetailPage1" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
     <Page title="{Descricao}" showHeader="true" showFooter="true" showNavButton="false">
         <content>
-            <ObjectHeader intro="{ID} ({tipoNegociacao/Descricao})" title="{Descricao}" icon=""
+           <ObjectHeader intro="{ID} [{tipoNegociacao/Descricao}] [{bandeira/Nome}]" title="{Descricao}" icon=""
                 number="{
                     path: 'Indicadores/Margem2',
                     type: 'sap.ui.model.type.Float',
@@ -62,6 +62,11 @@
                 <Label text="Tipo de Negociação" />
                 <ComboBox selectedKey="{TipoNegociacao}" items="{/TipoNegociacaoSet}" enabled="false">
                     <core:Item text="{Descricao}" enabled="true" key="{ID}"/>
+                </ComboBox>
+
+                <Label text="Bandeira" />
+                <ComboBox selectedKey="{Bandeira}" items="{/BandeiraSet}" enabled="false">
+                    <core:Item text="{Nome}" enabled="true" key="{ID}"/>
                 </ComboBox>
 
            </form:SimpleForm>

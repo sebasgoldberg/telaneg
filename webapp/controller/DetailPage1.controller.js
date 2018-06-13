@@ -17,7 +17,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
 
             var oParams = {
-                "expand": "tipoNegociacao"
+                "expand": "tipoNegociacao,bandeira"
                 };
 
             if (oEvent.mParameters.data.context) {

@@ -12,11 +12,11 @@
                 items="{
                     path:'/NegociacaoSet',
                     templateShareable:true,
-                     parameters:{expand:'tipoNegociacao'}
+                     parameters:{expand:'tipoNegociacao,bandeira'}
                     }">
                 <infoToolbar />
                 <items>
-                    <ObjectListItem intro="{ID} ({tipoNegociacao/Descricao})" title="{Descricao}"
+                    <ObjectListItem intro="{ID} [{tipoNegociacao/Descricao}] [{bandeira/Nome}]" title="{Descricao}"
                         number="{
                             path: 'Indicadores/Margem2',
                             type: 'sap.ui.model.type.Float',
@@ -67,7 +67,7 @@
                 <contentLeft />
                 <contentMiddle />
                 <contentRight>
-                    <Button text="Nova Negociação" type="Emphasized" icon="sap-icon://add" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress" />
+                    <Button text="Nova Negociação" type="Emphasized" icon="sap-icon://add" iconFirst="true" press="onCreateNegociacao" />
                 </contentRight>
             </Bar>
         </footer>

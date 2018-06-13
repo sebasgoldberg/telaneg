@@ -13,19 +13,53 @@
         </endButton>
 
         <content>
+            <NavContainer
+                initialPage='tiposNegociacaoPage'
+                id="navContainerCriarNegociacao">
 
-           <List
-                id="tiposList"
-                items="{/TipoNegociacaoSet}" >
-                <StandardListItem
-                    title="{ID}"
-                    description="{Descricao}"
-                    type="Active"
-                    press="onTipoNegociacaoPressed"
-                    />
-            </List>
+                <Page
+                    id="tiposNegociacaoPage"
+                    title="Selecionar Tipo de Negociação">
 
+                   <List
+                        id="tiposList"
+                        items="{/TipoNegociacaoSet}" >
+                        <StandardListItem
+                            title="{ID}"
+                            description="{Descricao}"
+                            type="Active"
+                            press="onTipoNegociacaoPressed"
+                            />
+                    </List>
+
+                </Page>
+
+                <Page
+                    id="bandeirasPage"
+                    showNavButton="true"
+                    navButtonPress="onNavBackToTiposNegociacao"
+                    title="Selecionar Bandeira">
+
+                   <List
+                        id="bandeirasList"
+                        items="{/BandeiraSet}" >
+                        <StandardListItem
+                            title="{ID}"
+                            description="{Nome}"
+                            type="Active"
+                            press="onBandeiraPressed"
+                            />
+                    </List>
+
+               </Page>
+
+
+            </NavContainer>
         </content>
+
+
+
+
     </ResponsivePopover>
 </core:FragmentDefinition>
 
