@@ -79,6 +79,9 @@
                 "type": "sap.ui.model.odata.v2.ODataModel",
                 "preload": true,
                 "settings": {
+                    "serviceUrlParams": {
+                        "sap-language": "PT"
+                        },
                     "loadMetadataAsync": false,
                     "json": true,
                     "bJSON": true,
