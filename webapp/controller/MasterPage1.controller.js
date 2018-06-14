@@ -2,6 +2,7 @@ import BaseController from 'sap/ui/core/mvc/Controller';
 import MessageBox from 'sap/m/MessageBox';
 import formatter from 'simplifique/telaneg/model/formatter';
 import Fragment from 'sap/ui/core/Fragment';
+import JSONModel from 'sap/ui/model/json/JSONModel';
 
 export default class MasterPage1 extends BaseController{
 
@@ -291,6 +292,10 @@ export default class MasterPage1 extends BaseController{
 
         }
 
+        getListCanais(){
+            return Fragment.byId('addNegociacaoPopover','canaisList');
+        }
+
         onCreateNegociacao(oEvent) {
             if (!oEvent)
                 return;
@@ -305,6 +310,8 @@ export default class MasterPage1 extends BaseController{
                 this.popover.close()
             else{
                 this.getNavContainerCriarNegociacao().backToTop();
+                this.getListCanais().removeSelections(true);
+                this.getListCanais().fireSelectionChange();
                 this.popover.openBy(oEvent.getSource());
             }
         }
@@ -326,7 +333,52 @@ export default class MasterPage1 extends BaseController{
         }
 
         onBandeiraPressed(oEvent) {
+            let oSourceControl = oEvent.getSource();
+            let oBC = oSourceControl.getBindingContext();
+            this.oBandeira = oBC.getObject();
+            this.getNavContainerCriarNegociacao().to(
+                Fragment.byId('addNegociacaoPopover','canaisPage'));
+        }
 
+        onSelectionChangeCanais(oEvent){
+            let v = this.getView();
+            let oViewModel = v.getModel('view');
+            let oDataViewModel = oViewModel.getData();
+            let oList = oEvent.getSource();
+            oDataViewModel.criacao.isCriacaoPossivel = (oList.getSelectedContexts().length > 0);
+            oViewModel.refresh();
+        }
+
+        createNegociacao(){
+            return new Promise( (resolve, reject) => {
+                let m = this.getView().getModel();
+                let canais = this.getListCanais().getSelectedContexts()
+                    .map( c => c.getObject() );
+                m.create('/NegociacaoSet',
+                    {
+                        TipoNegociacao: this.oTipoNegociacao.ID,
+                        Bandeira: this.oBandeira.ID,
+                        canais: canais,
+                        },
+                    {
+                        success: (...args) => resolve(args),
+                        error: (...args) => reject(args),
+                        }
+                    );
+            });
+        }
+
+        setBusy() {
+            sap.ui.core.BusyIndicator.show(0);
+        }
+
+        setFree() {
+            sap.ui.core.BusyIndicator.hide();
+        }
+
+        async onCriarDocumentoNegociacao(oEvent) {
+
+            /*
             let oSourceControl = oEvent.getSource();
             let oBC = oSourceControl.getBindingContext();
             let oBandeira = oBC.getObject();
@@ -340,40 +392,36 @@ export default class MasterPage1 extends BaseController{
                     },
                 success: (...args) => {
                     console.log(args);
-                    that.getView().byId('sap_List_Page_0-content-sap_m_List-1')
-                        .getBinding('items').refresh();
-                    that.popover.close();
-                    that.doNavigate('DetailPage1', oContext);
                     },
                 });
-            m.submitChanges();
-            return;
+            */
 
+            try {
+                this.setBusy();
+                let result = await this.createNegociacao();
+                this.getView().byId('sap_List_Page_0-content-sap_m_List-1')
+                    .getBinding('items').refresh();
+                this.popover.close();
+                //this.doNavigate('DetailPage1', oContext);
+                this.oRouter.navTo('DetailPage1', {
+                    context: `NegociacaoSet('${result[0].ID}')`,
+                }, false);
 
-
-            this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-            this.oRouter.navTo('NovaNegociacao');
-            return;
-            return new Promise(function(fnResolve) {
-                    var sTargetPos = '';
-                    sTargetPos = (sTargetPos === 'default') ? undefined : sTargetPos;
-                    sap.m.MessageToast.show('Será criada uma nova negociação.', {
-                        onClose: fnResolve,
-                        duration: 2000 || 3000,
-                        at: sTargetPos,
-                        my: sTargetPos
-                    });
-                }).catch(function(err) {
-                    if (err !== undefined) {
-                        MessageBox.error(err.message);
-                    }
-                });
-
+            } catch (e) {
+                console.error(e);
+            } finally{
+                this.setFree();
+            }
         }
 
         onInit() {
             this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             this.oRouter.getTarget('MasterPage1').attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
+            this.getView().setModel(new JSONModel({
+                criacao: {
+                    isCriacaoPossivel: false,
+                },
+            }), 'view');
         }
 
         onAfterRendering() {

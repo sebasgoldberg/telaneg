@@ -8,6 +8,10 @@
         contentHeight="400px"
         placement="Top" >
 
+        <beginButton>
+            <Button text="Criar" type="Emphasized" enabled="{view>/criacao/isCriacaoPossivel}" press="onCriarDocumentoNegociacao" />
+        </beginButton>
+
         <endButton>
             <Button text="Cancelar" press="onCancelCriarNegociacao" />
         </endButton>
@@ -52,6 +56,27 @@
                     </List>
 
                </Page>
+
+
+               <Page
+                    id="canaisPage"
+                    showNavButton="true"
+                    navButtonPress="onNavBackToBandeiras"
+                    title="Selecionar Canais">
+
+                   <List
+                        mode="MultiSelect"
+                        selectionChange="onSelectionChangeCanais"
+                        id="canaisList"
+                        items="{/CanalSet}" >
+                        <StandardListItem
+                            title="{ID}"
+                            description="{Nome}"
+                            type="Active"
+                            />
+                    </List>
+
+                </Page>
 
 
             </NavContainer>

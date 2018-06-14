@@ -69,6 +69,13 @@
                     <core:Item text="{Nome}" enabled="true" key="{ID}"/>
                 </ComboBox>
 
+                <Label text="Canais" />
+                <MultiInput tokens="{canais}" enabled="false">
+                    <tokens>
+                        <Token key="{ID}" text="{Nome}" />
+                    </tokens>
+                </MultiInput>
+
            </form:SimpleForm>
 
            <Table alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onTableItemPress" items="{path:'items', templateShareable:true, parameters:{expand:'fornecedor,material,simulacao,informacao'}}" id='itemsTable'> <!--

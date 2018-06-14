@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
 
 
-           <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'subitems', templateShareable:true, parameters:{expand:'material,informacao'} }"
+           <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'subitems', templateShareable:true, parameters:{expand:'material,informacao,canal'} }"
            itemPress="onSubitemPress" >
                 <columns>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
@@ -12,7 +12,13 @@
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Cod. Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="Canal" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Cod. Material" width="auto" maxLines="1" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
@@ -75,6 +81,7 @@
                     <ColumnListItem type='Active'>
                         <cells>
                             <ObjectIdentifier title="{CentroID}" text="" titleActive="false" visible="true"/>
+                            <ObjectIdentifier title="{canal/Nome}" text="" titleActive="false" visible="true"/>
                             <ObjectIdentifier title="{
                                 path: 'material/ID',
                                 type: 'sap.ui.model.odata.type.String',
@@ -92,7 +99,7 @@
                                 formatOptions: { maxFractionDigits: 2 }
                                 }"
                                 submit="realizarSimulacaoSubitem"
-                                fieldWidth="70%"
+                                fieldWidth="60%"
                                 description="UN"
                                 />
 
@@ -119,7 +126,7 @@
                                 formatOptions: { maxFractionDigits: 2 }
                                 }"
                                 submit="realizarSimulacaoSubitem"
-                                fieldWidth="65%"
+                                fieldWidth="60%"
                                 description="BRL"
                                 />
 
@@ -129,7 +136,7 @@
                                 formatOptions: { maxFractionDigits: 2 }
                                 }"
                                 submit="realizarSimulacaoSubitem"
-                                fieldWidth="70%"
+                                fieldWidth="60%"
                                 description="UN"
                                 />
 
