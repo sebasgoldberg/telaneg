@@ -87,7 +87,7 @@
                     "bJSON": true,
                     "defaultBindingMode": "TwoWay",
                     "useBatch": true,
-                    "refreshAfterChange": false,
+                    "refreshAfterChange": true,
                     "disableHeadRequestForToken": true
                 }
             }

@@ -11,27 +11,33 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
         formatter: formatter,
 
-        handleRouteMatched: function(oEvent) {
+        bindObject: function(sPath){
 
             var oParams = {
                 //"expand": "material,fornecedor,centro,simulacao,impostosEntrada,impostosSaida,informacao,contrato,stock,nossoPricing,vendaActual,vendaAnterior,categoryReview"
                 "expand": "material,fornecedor,simulacao,impostosEntrada,impostosSaida,informacao"
             };
 
+            this.sContext = sPath;
+            var oPath;
+            if (this.sContext) {
+                oPath = {
+                    path: this.sContext,
+                    parameters: oParams,
+                    events: {
+                        dataReceived: () => this.setStatusInputImpostos(),
+                        },
+                };
+                this.getView().bindObject(oPath);
+                this._realizarSimulacao();
+            }
+
+        },
+
+        handleRouteMatched: function(oEvent) {
+
             if (oEvent.mParameters.data.context) {
-                this.sContext = oEvent.mParameters.data.context;
-                var oPath;
-                if (this.sContext) {
-                    oPath = {
-                        path: "/" + this.sContext,
-                        parameters: oParams,
-                        events: {
-                            dataReceived: () => this.setStatusInputImpostos(),
-                            },
-                    };
-                    this.getView().bindObject(oPath);
-                    this._realizarSimulacao();
-                }
+                this.bindObject("/" + oEvent.mParameters.data.context);
             }
         },
 
@@ -120,23 +126,77 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             });
 
         },
-        _onButtonPress2: function() {
-            return new Promise(function(fnResolve) {
-                var sTargetPos = "";
-                sTargetPos = (sTargetPos === "default") ? undefined : sTargetPos;
-                sap.m.MessageToast.show("São gravadas as informações de simulação do item.", {
-                    onClose: fnResolve,
-                    duration: 2000 || 3000,
-                    at: sTargetPos,
-                    my: sTargetPos
+
+        getListSubitems: function() {
+            return this.getView().byId('subitemsList');
+        },
+
+        gravarItem: function() {
+            return new Promise( (resolve, reject) => {
+                let v = this.getView();
+                let m = v.getModel();
+                let bc = v.getBindingContext();
+                let sItemPath = bc.getPath();
+
+                let oItem = bc.getObject();
+
+                let subitems = this.getListSubitems().getItems()
+                    .map( listItem => listItem.getBindingContext() )
+                    .map( c => c.getObject() )
+                    .map( si => {
+                        return {
+                            Volumem: String(si.Volumem),
+                            PrecoVenda: String(si.PrecoVenda),
+                            PrevisaoVenda: String(si.PrevisaoVenda),
+                            };
+                        } );
+
+                let simulacao = ( s => ({
+                    PrecoCompra: String(s.PrecoCompra),
+                    }))(m.getObject(`${sItemPath}/simulacao`));
+
+                let impostosEntrada = ({
+                    IPI, ICMS, BaseReduzidaICMS, PIS,
+                    COFINS, ST, PAUTA, MVA,
+                    }) => ({
+                    IPI, ICMS, BaseReduzidaICMS, PIS,
+                    COFINS, ST, PAUTA, MVA,
+                    })(m.getObject(`${sItemPath}/impostosEntrada`));
+
+                m.create('/ItemNegociacaoSet',
+                    {
+                        NegociacaoID: oItem.NegociacaoID,
+                        Item: oItem.Item,
+                        simulacao: simulacao,
+                        //subitems: subitems,
+                        //impostosEntrada: impostosEntrada,
+                    },
+                    {
+                        success: (...args) => resolve(args),
+                        error: (...args) => reject(args),
+                        }
+                    );
                 });
-            }).catch(function(err) {
-                if (err !== undefined) {
-                    MessageBox.error(err.message);
-                }
-            });
+        },
+
+        onGravar: async function() {
+
+            try {
+                this.setBusy();
+                let result = await this.gravarItem();
+                let v = this.getView()
+                let bc = v.getBindingContext();
+                let m = v.getModel();
+                m.resetChanges();
+                m.refresh(true);
+            } catch (e) {
+                console.error(e);
+            } finally{
+                this.setFree();
+            }
 
         },
+
         _onButtonPress3: function() {
             return new Promise(function(fnResolve) {
                 sap.m.MessageBox.confirm("Tem certeza que deseja eliminar o item da negociação?", {

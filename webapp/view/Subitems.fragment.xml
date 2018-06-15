@@ -2,7 +2,8 @@
 
 
            <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'subitems', templateShareable:true, parameters:{expand:'material,informacao,canal'} }"
-           itemPress="onSubitemPress" >
+           itemPress="onSubitemPress"
+           id="subitemsList">
                 <columns>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
                         <header>

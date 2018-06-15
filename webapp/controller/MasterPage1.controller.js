@@ -381,25 +381,6 @@ export default class MasterPage1 extends BaseController{
         }
 
         async onCriarDocumentoNegociacao(oEvent) {
-
-            /*
-            let oSourceControl = oEvent.getSource();
-            let oBC = oSourceControl.getBindingContext();
-            let oBandeira = oBC.getObject();
-
-            let m = this.getView().getModel();
-            let that = this;
-            let oContext = m.createEntry("/NegociacaoSet", {
-                properties: {
-                    TipoNegociacao: this.oTipoNegociacao.ID,
-                    Bandeira: oBandeira.ID,
-                    },
-                success: (...args) => {
-                    console.log(args);
-                    },
-                });
-            */
-
             try {
                 this.setBusy();
                 let result = await this.createNegociacao();
