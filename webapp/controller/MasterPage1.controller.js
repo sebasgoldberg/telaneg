@@ -320,6 +320,10 @@ export default class MasterPage1 extends BaseController{
             return Fragment.byId('addNegociacaoPopover','navContainerCriarNegociacao');
         }
 
+        onNavBackCriacaoNegociacao(){
+            this.getNavContainerCriarNegociacao().back();
+        }
+
         onCancelCriarNegociacao(attribute) {
             this.popover.close();
         }

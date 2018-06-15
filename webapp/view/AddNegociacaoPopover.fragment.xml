@@ -41,7 +41,7 @@
                 <Page
                     id="bandeirasPage"
                     showNavButton="true"
-                    navButtonPress="onNavBackToTiposNegociacao"
+                    navButtonPress="onNavBackCriacaoNegociacao"
                     title="Selecionar Bandeira">
 
                    <List
@@ -61,7 +61,7 @@
                <Page
                     id="canaisPage"
                     showNavButton="true"
-                    navButtonPress="onNavBackToBandeiras"
+                    navButtonPress="onNavBackCriacaoNegociacao"
                     title="Selecionar Canais">
 
                    <List
