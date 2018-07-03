@@ -3,13 +3,13 @@
         <content>
            <ObjectHeader intro="{ID} [{tipoNegociacao/Descricao}] [{bandeira/Nome}]" title="{Descricao}" icon=""
                 number="{
-                    path: 'Indicadores/Margem2',
-                    type: 'sap.ui.model.type.Float',
-                    formatOptions: { maxFractionDigits: 2 }
+                    path: 'Margem2',
+                    type: 'sap.ui.model.odata.type.Decimal',
+                    constraints: { scale: 2 }
                     }"
                 numberUnit="%"
                 numberState="{
-                    parts: [ {path: 'Indicadores/Margem2'}, {path: 'Indicadores/MargemTeorica'}],
+                    parts: [ {path: 'Margem2'}, {path: 'MargemTeorica'}],
                     formatter: '.formatter.margemStatus'
                     }"
                 showMarkers="false" markFavorite="false" markFlagged="false" backgroundDesign="Translucent" condensed="false">
@@ -21,24 +21,24 @@
 
                     <ObjectStatus
                         text="M1: {
-                            path: 'Indicadores/Margem1',
-                            type: 'sap.ui.model.type.Float',
-                            formatOptions: { maxFractionDigits: 2 }
+                            path: 'Margem1',
+                            type: 'sap.ui.model.odata.type.Decimal',
+                            constraints: { scale: 2 }
                             } %"
                         state="{
-                            parts: [ {path: 'Indicadores/Margem1'}, {path: 'Indicadores/MargemTeorica'} ],
+                            parts: [ {path: 'Margem1'}, {path: 'MargemTeorica'} ],
                             formatter: '.formatter.margemStatus'
                             }"
                             />
 
                     <ObjectStatus
                         text="IC: {
-                            path: 'NovoIC',
-                            type: 'sap.ui.model.type.Float',
-                            formatOptions: { maxFractionDigits: 2 }
+                            path: 'IC',
+                            type: 'sap.ui.model.odata.type.Decimal',
+                            constraints: { scale: 2 }
                             } %"
                         state="{
-                            parts: [ {path: 'NovoIC'} ],
+                            parts: [ {path: 'IC'} ],
                             formatter: '.formatter.icStatus'
                             }" />
 
@@ -180,7 +180,11 @@
                             <Text text="{material/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                             <ObjectIdentifier title="{CentroID}" text="" titleActive="false" visible="true"/>
                             <ObjectNumber
-                                number="{path: 'simulacao/Custo', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                                number="{
+                                    path: 'simulacao/Custo',
+                                    type: 'sap.ui.model.odata.type.Decimal',
+                                    constraints: { scale: 2 }
+                                    }"
                                 unit="BRL" emphasized="true"
                                 state="{
                                     parts: [ {path: 'simulacao/Custo'}, {path: 'informacao/Custo'} ],
@@ -188,7 +192,11 @@
                                     }"
                                 />
                             <ObjectNumber
-                                number="{path: 'simulacao/PMZNovo', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                                number="{
+                                    path: 'simulacao/PMZNovo',
+                                    type: 'sap.ui.model.odata.type.Decimal',
+                                    constraints: { scale: 2 }
+                                    }"
                                 unit="BRL" emphasized="true"
                                 state="{
                                     parts: [ {path: 'simulacao/PMZNovo'}, {path: 'informacao/PMZNovo'} ],
@@ -198,8 +206,8 @@
                             <ObjectNumber
                                 number="{
                                     path: 'simulacao/Margem2',
-                                    type: 'sap.ui.model.type.Float',
-                                    formatOptions: { maxFractionDigits: 2 }
+                                    type: 'sap.ui.model.odata.type.Decimal',
+                                    constraints: { scale: 2 }
                                     }"
                                 unit="%"
                                 state="{
@@ -210,8 +218,8 @@
                             <ObjectNumber
                                 number="{
                                     path: 'simulacao/IC',
-                                    type: 'sap.ui.model.type.Float',
-                                    formatOptions: { maxFractionDigits: 2 }
+                                    type: 'sap.ui.model.odata.type.Decimal',
+                                    constraints: { scale: 2 }
                                     }"
                                 unit="%"
                                 state="{

@@ -18,13 +18,13 @@
                 <items>
                     <ObjectListItem intro="{ID} [{tipoNegociacao/Descricao}] [{bandeira/Nome}]" title="{Descricao}"
                         number="{
-                            path: 'Indicadores/Margem2',
-                            type: 'sap.ui.model.type.Float',
-                            formatOptions: { maxFractionDigits: 2 }
+                            path: 'Margem2',
+                            type: 'sap.ui.model.odata.type.Decimal',
+                            constraints: { scale: 2 }
                             }"
                         numberUnit="%"
                         numberState="{
-                            parts: [ {path: 'Indicadores/Margem2'}, {path: 'Indicadores/MargemTeorica'}],
+                            parts: [ {path: 'Margem2'}, {path: 'MargemTeorica'}],
                             formatter: '.formatter.margemStatus'
                             }"
                         type="Active" selected="false" showMarkers="false" press="_onObjectListItemPress">
@@ -35,12 +35,12 @@
                         <firstStatus>
                             <ObjectStatus
                                 text="M1: {
-                                    path: 'Indicadores/Margem1',
-                                    type: 'sap.ui.model.type.Float',
-                                    formatOptions: { maxFractionDigits: 2 }
+                                    path: 'Margem1',
+                                    type: 'sap.ui.model.odata.type.Decimal',
+                                    constraints: { scale: 2 }
                                     } %"
                                 state="{
-                                    parts: [ {path: 'Indicadores/Margem1'}, {path: 'Indicadores/MargemTeorica'} ],
+                                    parts: [ {path: 'Margem1'}, {path: 'MargemTeorica'} ],
                                     formatter: '.formatter.margemStatus'
                                     }"
                                     />
@@ -48,12 +48,12 @@
                        <secondStatus>
                             <ObjectStatus
                                 text="IC: {
-                                    path: 'NovoIC',
-                                    type: 'sap.ui.model.type.Float',
-                                    formatOptions: { maxFractionDigits: 2 }
+                                    path: 'IC',
+                                    type: 'sap.ui.model.odata.type.Decimal',
+                                    constraints: { scale: 2 }
                                     } %"
                                 state="{
-                                    parts: [ {path: 'NovoIC'} ],
+                                    parts: [ {path: 'IC'} ],
                                     formatter: '.formatter.icStatus'
                                     }" />
  
