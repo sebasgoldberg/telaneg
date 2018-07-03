@@ -88,7 +88,8 @@
                     "defaultBindingMode": "TwoWay",
                     "useBatch": true,
                     "refreshAfterChange": true,
-                    "disableHeadRequestForToken": true
+                    "disableHeadRequestForToken": true,
+                    "defaultUpdateMethod": "Put"
                 }
             }
         },

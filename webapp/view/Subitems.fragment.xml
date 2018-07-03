@@ -32,7 +32,7 @@
 
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Volume" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="Volume [UN]" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
@@ -52,13 +52,13 @@
 
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Preço de venda" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="Preço de venda [BRL]" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Previsão de venda" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="Previsão de venda [UN]" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
@@ -96,16 +96,14 @@
 
                             <Input value="{
                                 path: 'Volumem',
-                                type: 'sap.ui.model.type.Float',
-                                formatOptions: { maxFractionDigits: 2 }
+                                type: 'sap.ui.model.odata.type.Decimal',
+                                constraints: { scale: 2 }
                                 }"
                                 submit="realizarSimulacaoSubitem"
-                                fieldWidth="60%"
-                                description="UN"
                                 />
 
                             <ObjectNumber
-                                number="{path: 'Custo', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                                number="{path: 'Custo', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
                                 unit="BRL" emphasized="true"
                                 state="{
                                     parts: [ {path: 'Custo'}, {path: 'informacao/Custo'} ],
@@ -113,7 +111,7 @@
                                     }"
                                 />
                             <ObjectNumber
-                                number="{path: 'PMZNovo', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                                number="{path: 'PMZNovo', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
                                 unit="BRL" emphasized="true"
                                 state="{
                                     parts: [ {path: 'PMZNovo'}, {path: 'informacao/PMZNovo'} ],
@@ -123,29 +121,25 @@
 
                             <Input value="{
                                 path: 'PrecoVenda',
-                                type: 'sap.ui.model.type.Float',
-                                formatOptions: { maxFractionDigits: 2 }
+                                type: 'sap.ui.model.odata.type.Decimal',
+                                constraints: { scale: 2 }
                                 }"
                                 submit="realizarSimulacaoSubitem"
-                                fieldWidth="60%"
-                                description="BRL"
                                 />
 
                             <Input value="{
                                 path: 'PrevisaoVenda',
-                                type: 'sap.ui.model.type.Float',
-                                formatOptions: { maxFractionDigits: 2 }
+                                type: 'sap.ui.model.odata.type.Decimal',
+                                constraints: { scale: 2 }
                                 }"
                                 submit="realizarSimulacaoSubitem"
-                                fieldWidth="60%"
-                                description="UN"
                                 />
 
                             <ObjectNumber
                                 number="{
                                     path: 'Margem2',
-                                    type: 'sap.ui.model.type.Float',
-                                    formatOptions: { maxFractionDigits: 2 }
+                                    type: 'sap.ui.model.odata.type.Decimal',
+                                    constraints: { scale: 2 }
                                     }"
                                 unit="%"
                                 state="{
@@ -156,8 +150,8 @@
                             <ObjectNumber
                                 number="{
                                     path: 'IC',
-                                    type: 'sap.ui.model.type.Float',
-                                    formatOptions: { maxFractionDigits: 2 }
+                                    type: 'sap.ui.model.odata.type.Decimal',
+                                    constraints: { scale: 2 }
                                     }"
                                 unit="%"
                                 state="{
