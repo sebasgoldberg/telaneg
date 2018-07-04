@@ -1,7 +1,9 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
 
 
-           <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'subitems', templateShareable:true, parameters:{expand:'material,informacao,canal'} }"
+           <Table 
+            keyboardMode="Edit"
+            alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'subitems', templateShareable:true, parameters:{expand:'material,informacao,canal'} }"
            itemPress="onSubitemPress"
            id="subitemsList">
                 <columns>

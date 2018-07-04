@@ -35,7 +35,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
         },
         _onTableItemPress: function(oEvent) {
 
-            var oBindingContext = oEvent.getParameter("listItem").getBindingContext();
+            let source = oEvent.getParameter("listItem") || oEvent.getSource();
+            var oBindingContext = source.getBindingContext();
 
             return new Promise(function(fnResolve) {
                 this.doNavigate("DetailPage2", oBindingContext, fnResolve, "");
@@ -200,33 +201,41 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             });
 
         },
-        
+
+        setBusy: function() {
+            sap.ui.core.BusyIndicator.show(0);
+        },
+
+        setFree: function() {
+            sap.ui.core.BusyIndicator.hide();
+        },
+
+        gravarNegociacao: function() {
+            return new Promise( (resolve, reject) => {
+                this.getView().getModel().submitChanges({
+                        success: (...args) => resolve(args),
+                        error: (...args) => reject(args),
+                    });
+                });
+        },
+
         onGravar: async function() {
             let v = this.getView();
             let m = v.getModel();
-            /*
-            let bc = v.getBindingContext();
-            let p = bc.getPath();
-            let o = bc.getObject();
-            m.update(p,{Descricao: o.Descricao})
-            */
-            let result = await this.submitChanges();
-            console.log(result);
-            return new Promise(function(fnResolve) {
-                var sTargetPos = "";
-                sTargetPos = (sTargetPos === "default") ? undefined : sTargetPos;
-                sap.m.MessageToast.show("São gravadas as informações de cabeçalho da negociação", {
-                    onClose: fnResolve,
-                    duration: 2000 || 3000,
-                    at: sTargetPos,
-                    my: sTargetPos
-                });
-            }).catch(function(err) {
-                if (err !== undefined) {
-                    MessageBox.error(err.message);
-                }
-            });
 
+            if (!m.hasPendingChanges())
+                return;
+
+            try {
+                this.setBusy();
+                let result = await this.gravarNegociacao();
+                //m.resetChanges();
+                m.refresh(true);
+            } catch (e) {
+                console.error(e);
+            } finally{
+                this.setFree();
+            }
         },
 
         eliminarNegociacao: function() {

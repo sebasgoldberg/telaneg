@@ -57,7 +57,7 @@
 
                 <Label text="Descrição" />
                 <Input value="{Descricao}" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"
-                    submit="onGravar"/>
+                    />
 
                 <Label text="Tipo de Negociação" />
                 <ComboBox selectedKey="{TipoNegociacao}" items="{/TipoNegociacaoSet}" enabled="false">
@@ -78,7 +78,9 @@
 
            </form:SimpleForm>
 
-           <Table alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onTableItemPress" items="{path:'items', templateShareable:true, parameters:{expand:'fornecedor,material,simulacao,informacao'}}" id='itemsTable'> <!--
+           <Table 
+            keyboardMode="Edit"
+           alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onTableItemPress" items="{path:'items', templateShareable:true, parameters:{expand:'fornecedor,material,simulacao,informacao,subitem'}}" id='itemsTable'> <!--
            , parameters:{expand:'fornecedor,produto,centro'}
            -->
                 <infoToolbar>
@@ -108,25 +110,29 @@
                     </Toolbar>
                 </headerToolbar>
                 <columns>
+<!--
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
                             <Text text="Cod. Fornecedor" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
+-->
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
                             <Text text="Fornecedor" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
+<!--
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
                             <Text text="Cod. Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
-                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+-->
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
                             <Text text="Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                         </header>
@@ -135,6 +141,12 @@
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
                             <Text text="UF" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Preço Compra [BRL]" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
@@ -150,6 +162,16 @@
                         </header>
                         <footer/>
                     </Column>
+
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Preço de venda [BRL]" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit"
+                            visible='{UnicoSubitem}'
+                            />
+                        </header>
+                        <footer/>
+                    </Column>
+
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
                             <Text text="Margem 2" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
@@ -166,8 +188,10 @@
                 <items>
                     <ColumnListItem type="Navigation">
                         <cells>
-                            <ObjectIdentifier title="{fornecedor/ID}" text="" titleActive="false" visible="true"/>
+                            <ObjectIdentifier title="{fornecedor/ID} [{fornecedor/UF}]" text="{fornecedor/Nome}" titleActive="false" visible="true"/>
+                            <!--
                             <Text text="{fornecedor/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                            -->
                             <ObjectIdentifier title="{
                                 path: 'material/ID',
                                 type: 'sap.ui.model.odata.type.String',
@@ -176,9 +200,19 @@
                                     maxLength : 18
                                     }
                                 }"
-                                text="" titleActive="false" visible="true"/>
+                                text="{material/Nome}" titleActive="false" visible="true"/>
+                            <!--
                             <Text text="{material/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                            -->
                             <ObjectIdentifier title="{CentroID}" text="" titleActive="false" visible="true"/>
+
+                            <Input value="{
+                                path: 'simulacao/PrecoCompra',
+                                type: 'sap.ui.model.odata.type.Decimal',
+                                constraints: { scale: 2 }
+                                }"
+                                />
+
                             <ObjectNumber
                                 number="{
                                     path: 'simulacao/Custo',
@@ -203,6 +237,20 @@
                                     formatter: '.formatter.warningIfSecondLowThanFirst'
                                     }"
                                 />
+
+                            <HBox>
+                                <Input value="{
+                                    path: 'subitem/PrecoVenda',
+                                    type: 'sap.ui.model.odata.type.Decimal',
+                                    constraints: { scale: 2 }
+                                    }"
+                                    visible='{UnicoSubitem}'
+                                    />
+                                <Button icon="sap-icon://edit" visible='{=!${UnicoSubitem}}'
+                                    press="_onTableItemPress"
+                                    />
+                            </HBox>
+
                             <ObjectNumber
                                 number="{
                                     path: 'simulacao/Margem2',
@@ -240,7 +288,7 @@
                 </contentLeft>
                 <contentMiddle/>
                 <contentRight>
-                    <Button text="Gravar" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onGravar"/>
+                    <Button text="Gravar" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="false" iconDensityAware="false" press="onGravar"/>
                     <Button text="Eliminar" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onEliminarNegociacao"/>
                 </contentRight>
             </Bar>
