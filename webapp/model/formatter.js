@@ -36,19 +36,27 @@ sap.ui.define([
         }
     }
 
+    function invertDefaultNumberStatus(sValue) {
+        try {
+            checkNotEmpty(sValue);
+            return defaultNumberStatus(-parseFloat(sValue));
+        } catch (e) {
+            return ValueState.None;
+        }
+    }
+
     return {
 
         defaultNumberStatus: function(sValue) {
             return defaultNumberStatus(sValue);
         },
 
+        invertDefaultNumberStatus: function(sValue) {
+            return invertDefaultNumberStatus(sValue);
+        },
+
         icStatus: function(sValue) {
-            try {
-                checkNotEmpty(sValue);
-                return defaultNumberStatus(-parseFloat(sValue));
-            } catch (e) {
-                return ValueState.None;
-            }
+            return invertDefaultNumberStatus(sValue);
         },
 
         margemStatus: function(sMargem, sMargemTeorica) {

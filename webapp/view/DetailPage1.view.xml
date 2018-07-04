@@ -80,7 +80,7 @@
 
            <Table 
             keyboardMode="Edit"
-           alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onTableItemPress" items="{path:'items', templateShareable:true, parameters:{expand:'fornecedor,material,simulacao,informacao,subitem'}}" id='itemsTable'> <!--
+           alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onTableItemPress" items="{path:'items', templateShareable:true, parameters:{expand:'fornecedor,material,simulacao,informacao,subitem,subitem/informacao'}}" id='itemsTable'> <!--
            , parameters:{expand:'fornecedor,produto,centro'}
            -->
                 <infoToolbar>
@@ -144,12 +144,21 @@
                         </header>
                         <footer/>
                     </Column>
+
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
                             <Text text="Preço Compra [BRL]" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
+
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Variação" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
                             <Text text="Custo" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
@@ -178,6 +187,14 @@
                         </header>
                         <footer/>
                     </Column>
+
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Margem Teórica" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+
                      <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
                             <Text text="IC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
@@ -206,39 +223,95 @@
                             -->
                             <ObjectIdentifier title="{CentroID}" text="" titleActive="false" visible="true"/>
 
-                            <Input value="{
-                                path: 'simulacao/PrecoCompra',
-                                type: 'sap.ui.model.odata.type.Decimal',
-                                constraints: { scale: 2 }
-                                }"
-                                />
-
-                            <ObjectNumber
-                                number="{
-                                    path: 'simulacao/Custo',
+                            <VBox alignItems="End">
+                                <Input value="{
+                                    path: 'simulacao/PrecoCompra',
                                     type: 'sap.ui.model.odata.type.Decimal',
                                     constraints: { scale: 2 }
                                     }"
-                                unit="BRL" emphasized="true"
-                                state="{
-                                    parts: [ {path: 'simulacao/Custo'}, {path: 'informacao/Custo'} ],
-                                    formatter: '.formatter.warningIfSecondLowThanFirst'
-                                    }"
-                                />
-                            <ObjectNumber
-                                number="{
-                                    path: 'simulacao/PMZNovo',
-                                    type: 'sap.ui.model.odata.type.Decimal',
-                                    constraints: { scale: 2 }
-                                    }"
-                                unit="BRL" emphasized="true"
-                                state="{
-                                    parts: [ {path: 'simulacao/PMZNovo'}, {path: 'informacao/PMZNovo'} ],
-                                    formatter: '.formatter.warningIfSecondLowThanFirst'
-                                    }"
-                                />
+                                    />
 
-                            <HBox>
+                                <ObjectNumber
+                                    number="{
+                                        path: 'informacao/PrecoCompra',
+                                        type: 'sap.ui.model.odata.type.Decimal',
+                                        constraints: { scale: 2 }
+                                        }"
+                                    unit="BRL" emphasized="true"
+                                    />
+
+                            </VBox>
+
+                            <VBox alignItems="End">
+
+                                <ObjectNumber
+                                    number="{
+                                        path: 'simulacao/VariacaoPrecoCompra',
+                                        type: 'sap.ui.model.odata.type.Decimal',
+                                        constraints: { scale: 2 }
+                                        }"
+                                    unit="%" emphasized="true"
+                                    state="{
+                                        parts: [ {path: 'simulacao/VariacaoPrecoCompra'} ],
+                                        formatter: '.formatter.invertDefaultNumberStatus'
+                                        }" />
+
+                            </VBox>
+
+                            <VBox alignItems="End">
+
+                                <ObjectNumber
+                                    number="{
+                                        path: 'simulacao/Custo',
+                                        type: 'sap.ui.model.odata.type.Decimal',
+                                        constraints: { scale: 2 }
+                                        }"
+                                    unit="BRL" emphasized="true"
+                                    state="{
+                                        parts: [ {path: 'simulacao/Custo'}, {path: 'informacao/Custo'} ],
+                                        formatter: '.formatter.warningIfSecondLowThanFirst'
+                                        }"
+                                    />
+
+                                <ObjectNumber
+                                    number="{
+                                        path: 'informacao/Custo',
+                                        type: 'sap.ui.model.odata.type.Decimal',
+                                        constraints: { scale: 2 }
+                                        }"
+                                    unit="BRL" emphasized="true"
+                                    />
+
+                            </VBox>
+
+                            <VBox alignItems="End">
+
+                                <ObjectNumber
+                                    number="{
+                                        path: 'simulacao/PMZNovo',
+                                        type: 'sap.ui.model.odata.type.Decimal',
+                                        constraints: { scale: 2 }
+                                        }"
+                                    unit="BRL" emphasized="true"
+                                    state="{
+                                        parts: [ {path: 'simulacao/PMZNovo'}, {path: 'informacao/PMZNovo'} ],
+                                        formatter: '.formatter.warningIfSecondLowThanFirst'
+                                        }"
+                                    />
+
+                                <ObjectNumber
+                                    number="{
+                                        path: 'informacao/PMZNovo',
+                                        type: 'sap.ui.model.odata.type.Decimal',
+                                        constraints: { scale: 2 }
+                                        }"
+                                    unit="BRL" emphasized="true"
+                                    />
+
+                            </VBox>
+
+                            <VBox alignItems="End">
+
                                 <Input value="{
                                     path: 'subitem/PrecoVenda',
                                     type: 'sap.ui.model.odata.type.Decimal',
@@ -246,35 +319,84 @@
                                     }"
                                     visible='{UnicoSubitem}'
                                     />
+
+                                <ObjectNumber
+                                    number="{
+                                        path: 'subitem/informacao/PrecoVenda',
+                                        type: 'sap.ui.model.odata.type.Decimal',
+                                        constraints: { scale: 2 }
+                                        }"
+                                    unit="BRL" emphasized="true"
+                                    visible='{UnicoSubitem}'
+                                    />
+
                                 <Button icon="sap-icon://edit" visible='{=!${UnicoSubitem}}'
                                     press="_onTableItemPress"
                                     />
-                            </HBox>
 
-                            <ObjectNumber
-                                number="{
-                                    path: 'simulacao/Margem2',
-                                    type: 'sap.ui.model.odata.type.Decimal',
-                                    constraints: { scale: 2 }
-                                    }"
-                                unit="%"
-                                state="{
-                                    parts: [ {path: 'simulacao/Margem2'}, {path: 'informacao/MargemTeorica'}],
-                                    formatter: '.formatter.margemStatus'
-                                    }"
-                                />
-                            <ObjectNumber
-                                number="{
-                                    path: 'simulacao/IC',
-                                    type: 'sap.ui.model.odata.type.Decimal',
-                                    constraints: { scale: 2 }
-                                    }"
-                                unit="%"
-                                state="{
-                                    parts: [ {path: 'simulacao/IC'} ],
-                                    formatter: '.formatter.icStatus'
-                                    }" />
+                            </VBox>
 
+                            <VBox alignItems="End">
+
+                                <ObjectNumber
+                                    number="{
+                                        path: 'simulacao/Margem2',
+                                        type: 'sap.ui.model.odata.type.Decimal',
+                                        constraints: { scale: 2 }
+                                        }"
+                                    unit="%"
+                                    state="{
+                                        parts: [ {path: 'simulacao/Margem2'}, {path: 'informacao/MargemTeorica'}],
+                                        formatter: '.formatter.margemStatus'
+                                        }"
+                                    />
+
+                                <ObjectNumber
+                                    number="{
+                                        path: 'informacao/Margem2',
+                                        type: 'sap.ui.model.odata.type.Decimal',
+                                        constraints: { scale: 2 }
+                                        }"
+                                    unit="%" emphasized="true"
+                                    />
+
+                            </VBox>
+
+                            <VBox alignItems="End">
+                                <ObjectNumber
+                                    number="{
+                                        path: 'informacao/MargemTeorica',
+                                        type: 'sap.ui.model.odata.type.Decimal',
+                                        constraints: { scale: 2 }
+                                        }"
+                                    unit="%" emphasized="true"
+                                    />
+                            </VBox>
+
+                            <VBox alignItems="End">
+
+                                <ObjectNumber
+                                    number="{
+                                        path: 'simulacao/IC',
+                                        type: 'sap.ui.model.odata.type.Decimal',
+                                        constraints: { scale: 2 }
+                                        }"
+                                    unit="%"
+                                    state="{
+                                        parts: [ {path: 'simulacao/IC'} ],
+                                        formatter: '.formatter.icStatus'
+                                        }" />
+
+                                <ObjectNumber
+                                    number="{
+                                        path: 'informacao/IC',
+                                        type: 'sap.ui.model.odata.type.Decimal',
+                                        constraints: { scale: 2 }
+                                        }"
+                                    unit="%" emphasized="true"
+                                    />
+
+                            </VBox>
 
                         </cells>
                     </ColumnListItem>
