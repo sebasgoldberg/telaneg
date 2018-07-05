@@ -52,6 +52,7 @@ sap.ui.define([
                 m.refresh(true);
             } catch (e) {
                 console.error(e);
+                m.resetChanges();
             } finally{
                 this.setFree();
             }

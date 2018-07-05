@@ -45,391 +45,414 @@
                 </statuses>
             </ObjectHeader>
 
-            <form:SimpleForm
-                layout="ResponsiveGridLayout"
-                columnsXL="1" columnsL="1" columnsM="1" columnsS="1"
-                labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
-                emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
-                breakpointL="500" breakpointM="250"
-                >
-
-                <core:Title text="Informação Basica" />
-
-                <Label text="Descrição" />
-                <Input value="{Descricao}" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"
-                    />
-
-                <Label text="Tipo de Negociação" />
-                <ComboBox selectedKey="{TipoNegociacao}" items="{/TipoNegociacaoSet}" enabled="false">
-                    <core:Item text="{Descricao}" enabled="true" key="{ID}"/>
-                </ComboBox>
-
-                <Label text="Bandeira" />
-                <ComboBox selectedKey="{Bandeira}" items="{/BandeiraSet}" enabled="false">
-                    <core:Item text="{Nome}" enabled="true" key="{ID}"/>
-                </ComboBox>
-
-                <Label text="Canais" />
-                <MultiInput tokens="{canais}" enabled="false">
-                    <tokens>
-                        <Token key="{ID}" text="{Nome}" />
-                    </tokens>
-                </MultiInput>
-
-           </form:SimpleForm>
-
-           <Table 
-            keyboardMode="Edit"
-           alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onTableItemPress" items="{path:'items', templateShareable:true, parameters:{expand:'fornecedor,material,simulacao,informacao,subitem,subitem/informacao'}}" id='itemsTable'> <!--
-           , parameters:{expand:'fornecedor,produto,centro'}
-           -->
-                <infoToolbar>
-                    <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
-                        <content>
-                            <Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
-                        </content>
-                    </Toolbar>
-                </infoToolbar>
-                <headerToolbar>
-                    <Toolbar width="auto" height="46px" design="Transparent" visible="true" enabled="true">
-                        <content>
-                            <Title text="Itens Negociados" titleStyle="Auto" width="auto" textAlign="Begin" visible="true"/>
-                            <ToolbarSpacer width=""/>
-                            <Button text="" type="Transparent" icon="sap-icon://sort" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
-                            <Button text="" type="Transparent" icon="sap-icon://filter" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
-                            <Button text="" type="Transparent" icon="sap-icon://group-2" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
-                            <!--
-                            <Button text="" type="Accept" icon="sap-icon://accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onAccept"/>
-                            <Button text="" type="Reject" icon="sap-icon://decline" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onReject"/>
-                            -->
-                            <ToggleButton tooltip="Ocultar informações atuais" type="Transparent" icon="sap-icon://hide" pressed="{view>/ocultarInformacoesAtuais}"/>
-                            <sim:ButtonPopover type="Emphasized" icon="sap-icon://add" placement="Left">
-                                <core:Fragment fragmentName="simplifique.telaneg.view.Test" type="XML" />
-                            </sim:ButtonPopover>
-                            <Button text="" type="" icon="sap-icon://delete" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onTableDelete"/>
-
-                        </content>
-                        <tooltip/>
-                    </Toolbar>
-                </headerToolbar>
-                <columns>
-<!--
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
-                        <header>
-                            <Text text="Cod. Fornecedor" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
-                        </header>
-                        <footer/>
-                    </Column>
--->
-                    <Column width="15%" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-                        <header>
-                            <Text text="Fornecedor" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                        </header>
-                        <footer/>
-                    </Column>
-<!--
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
-                        <header>
-                            <Text text="Cod. Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
-                        </header>
-                        <footer/>
-                    </Column>
--->
-                    <Column width="15%" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-                        <header>
-                            <Text text="Material" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                        </header>
-                        <footer/>
-                    </Column>
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-                        <header>
-                            <Text text="UF" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                        </header>
-                        <footer/>
-                    </Column>
-
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-                        <header>
-                            <Text text="Preço Compra" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                        </header>
-                        <footer/>
-                    </Column>
-
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-                        <header>
-                            <Text text="Variação" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                        </header>
-                        <footer/>
-                    </Column>
-
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-                        <header>
-                            <Text text="Custo" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                        </header>
-                        <footer/>
-                    </Column>
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-                        <header>
-                            <Text text="PMZ Novo" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                        </header>
-                        <footer/>
-                    </Column>
-
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-                        <header>
-                            <Text text="Preço de venda" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"
-                            visible='{UnicoSubitem}'
-                            />
-                        </header>
-                        <footer/>
-                    </Column>
-
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-                        <header>
-                            <Text text="Margem 2" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                        </header>
-                        <footer/>
-                    </Column>
-
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-                        <header>
-                            <Text text="Margem Teórica" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                        </header>
-                        <footer/>
-                    </Column>
-
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-                        <header>
-                            <Text text="IC" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                        </header>
-                        <footer/>
-                    </Column>
-
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-                        <header>
-                            <Text text="Estado" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                        </header>
-                        <footer/>
-                    </Column>
-
-                </columns>
+            <IconTabBar
+                selectedKey='itemsTab'
+                expandable="false"
+                class="sapUiResponsiveContentPadding">
                 <items>
-                    <ColumnListItem type="Navigation">
-                        <cells>
-                            <ObjectIdentifier title="{fornecedor/ID} [{fornecedor/UF}]" text="{fornecedor/Nome}" titleActive="false" visible="true"/>
-                            <!--
-                            <Text text="{fornecedor/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                            -->
-                            <ObjectIdentifier title="{
-                                path: 'material/ID',
-                                type: 'sap.ui.model.odata.type.String',
-                                constraints: {
-                                    isDigitSequence : true,
-                                    maxLength : 18
-                                    }
-                                }"
-                                text="{material/Nome}" titleActive="false" visible="true"/>
-                            <!--
-                            <Text text="{material/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                            -->
-                            <ObjectIdentifier title="{CentroID}" text="" titleActive="false" visible="true"/>
+                    <IconTabFilter
+                        key="configTab"
+                        icon="sap-icon://action-settings"
+                        >
 
-                            <VBox alignItems="End">
-                                <Input value="{
-                                    path: 'simulacao/PrecoCompra',
-                                    type: 'sap.ui.model.odata.type.Decimal',
-                                    constraints: { scale: 2 }
-                                    }"
-                                    />
+                        <form:SimpleForm
+                            layout="ResponsiveGridLayout"
+                            columnsXL="1" columnsL="1" columnsM="1" columnsS="1"
+                            labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12"
+                            emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
+                            breakpointL="500" breakpointM="250"
+                            >
 
-                                <ObjectNumber
-                                    number="{
-                                        path: 'informacao/PrecoCompra',
-                                        type: 'sap.ui.model.odata.type.Decimal',
-                                        constraints: { scale: 2 }
-                                        }"
-                                    unit="BRL" emphasized="true"
-                                    visible="{=!${view>/ocultarInformacoesAtuais}}"
-                                    tooltip="Informação Atual"
-                                    />
+                            <core:Title text="Informação Basica" />
 
-                            </VBox>
+                            <Label text="Descrição" />
+                            <Input value="{Descricao}" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"
+                                />
 
-                            <VBox alignItems="End">
+                            <Label text="Tipo de Negociação" />
+                            <ComboBox selectedKey="{TipoNegociacao}" items="{/TipoNegociacaoSet}" enabled="false">
+                                <core:Item text="{Descricao}" enabled="true" key="{ID}"/>
+                            </ComboBox>
 
-                                <ObjectNumber
-                                    number="{
-                                        path: 'simulacao/VariacaoPrecoCompra',
-                                        type: 'sap.ui.model.odata.type.Decimal',
-                                        constraints: { scale: 2 }
-                                        }"
-                                    unit="%" emphasized="true"
-                                    state="{
-                                        parts: [ {path: 'simulacao/VariacaoPrecoCompra'} ],
-                                        formatter: '.formatter.invertDefaultNumberStatus'
-                                        }" />
+                            <Label text="Bandeira" />
+                            <ComboBox selectedKey="{Bandeira}" items="{/BandeiraSet}" enabled="false">
+                                <core:Item text="{Nome}" enabled="true" key="{ID}"/>
+                            </ComboBox>
 
-                            </VBox>
+                            <Label text="Canais" />
+                            <MultiInput tokens="{canais}" enabled="false">
+                                <tokens>
+                                    <Token key="{ID}" text="{Nome}" />
+                                </tokens>
+                            </MultiInput>
 
-                            <VBox alignItems="End">
+                       </form:SimpleForm>
+                    </IconTabFilter>
 
-                                <ObjectNumber
-                                    number="{
-                                        path: 'simulacao/Custo',
-                                        type: 'sap.ui.model.odata.type.Decimal',
-                                        constraints: { scale: 2 }
-                                        }"
-                                    unit="BRL" emphasized="true"
-                                    state="{
-                                        parts: [ {path: 'simulacao/Custo'}, {path: 'informacao/Custo'} ],
-                                        formatter: '.formatter.warningIfSecondLowThanFirst'
-                                        }"
-                                    tooltip="Informação Simulada"
-                                    />
 
-                                <ObjectNumber
-                                    number="{
-                                        path: 'informacao/Custo',
-                                        type: 'sap.ui.model.odata.type.Decimal',
-                                        constraints: { scale: 2 }
-                                        }"
-                                    unit="BRL" emphasized="true"
-                                    visible="{=!${view>/ocultarInformacoesAtuais}}"
-                                    tooltip="Informação Atual"
-                                    />
 
-                            </VBox>
+                    <IconTabFilter
+                        key="itemsTab"
+                        icon="sap-icon://activities"
+                        >
 
-                            <VBox alignItems="End">
+                       <Table 
+                        keyboardMode="Edit"
+                       alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onTableItemPress" items="{path:'items', templateShareable:true, parameters:{expand:'fornecedor,material,simulacao,informacao,subitem,subitem/informacao'}}" id='itemsTable'> <!--
+                       , parameters:{expand:'fornecedor,produto,centro'}
+                       -->
+                            <infoToolbar>
+                                <Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+                                    <content>
+                                        <Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit"/>
+                                    </content>
+                                </Toolbar>
+                            </infoToolbar>
+                            <headerToolbar>
+                                <Toolbar width="auto" height="46px" design="Transparent" visible="true" enabled="true">
+                                    <content>
+                                        <Title text="Itens Negociados" titleStyle="Auto" width="auto" textAlign="Begin" visible="true"/>
+                                        <ToolbarSpacer width=""/>
+                                        <Button text="" type="Transparent" icon="sap-icon://sort" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                                        <Button text="" type="Transparent" icon="sap-icon://filter" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                                        <Button text="" type="Transparent" icon="sap-icon://group-2" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                                        <!--
+                                        <Button text="" type="Accept" icon="sap-icon://accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onAccept"/>
+                                        <Button text="" type="Reject" icon="sap-icon://decline" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onReject"/>
+                                        -->
+                                        <ToggleButton tooltip="Ocultar informações atuais" type="Transparent" icon="sap-icon://hide" pressed="{view>/ocultarInformacoesAtuais}"/>
+                                        <sim:ButtonPopover type="Emphasized" icon="sap-icon://add" placement="Left">
+                                            <core:Fragment fragmentName="simplifique.telaneg.view.Test" type="XML" />
+                                        </sim:ButtonPopover>
+                                        <Button text="" type="" icon="sap-icon://delete" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onTableDelete"/>
 
-                                <ObjectNumber
-                                    number="{
-                                        path: 'simulacao/PMZNovo',
-                                        type: 'sap.ui.model.odata.type.Decimal',
-                                        constraints: { scale: 2 }
-                                        }"
-                                    unit="BRL" emphasized="true"
-                                    state="{
-                                        parts: [ {path: 'simulacao/PMZNovo'}, {path: 'informacao/PMZNovo'} ],
-                                        formatter: '.formatter.warningIfSecondLowThanFirst'
-                                        }"
-                                    tooltip="Informação Simulada"
-                                    />
+                                    </content>
+                                    <tooltip/>
+                                </Toolbar>
+                            </headerToolbar>
+                            <columns>
+            <!--
+                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+                                    <header>
+                                        <Text text="Cod. Fornecedor" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                    </header>
+                                    <footer/>
+                                </Column>
+            -->
+                                <Column width="15%" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                    <header>
+                                        <Text text="Fornecedor" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    </header>
+                                    <footer/>
+                                </Column>
+            <!--
+                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+                                    <header>
+                                        <Text text="Cod. Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                    </header>
+                                    <footer/>
+                                </Column>
+            -->
+                                <Column width="15%" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                    <header>
+                                        <Text text="Material" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    </header>
+                                    <footer/>
+                                </Column>
+                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                    <header>
+                                        <Text text="UF" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    </header>
+                                    <footer/>
+                                </Column>
 
-                                <ObjectNumber
-                                    number="{
-                                        path: 'informacao/PMZNovo',
-                                        type: 'sap.ui.model.odata.type.Decimal',
-                                        constraints: { scale: 2 }
-                                        }"
-                                    unit="BRL" emphasized="true"
-                                    visible="{=!${view>/ocultarInformacoesAtuais}}"
-                                    tooltip="Informação Atual"
-                                    />
+                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                    <header>
+                                        <Text text="Preço Compra" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    </header>
+                                    <footer/>
+                                </Column>
 
-                            </VBox>
+                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                    <header>
+                                        <Text text="Variação" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    </header>
+                                    <footer/>
+                                </Column>
 
-                            <VBox alignItems="End">
+                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                    <header>
+                                        <Text text="Custo" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    </header>
+                                    <footer/>
+                                </Column>
+                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                    <header>
+                                        <Text text="PMZ Novo" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    </header>
+                                    <footer/>
+                                </Column>
 
-                                <Input value="{
-                                    path: 'subitem/PrecoVenda',
-                                    type: 'sap.ui.model.odata.type.Decimal',
-                                    constraints: { scale: 2 }
-                                    }"
-                                    visible='{UnicoSubitem}'
-                                    />
+                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                    <header>
+                                        <Text text="Preço de venda" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"
+                                        visible='{UnicoSubitem}'
+                                        />
+                                    </header>
+                                    <footer/>
+                                </Column>
 
-                                <ObjectNumber
-                                    number="{
-                                        path: 'subitem/informacao/PrecoVenda',
-                                        type: 'sap.ui.model.odata.type.Decimal',
-                                        constraints: { scale: 2 }
-                                        }"
-                                    unit="BRL" emphasized="true"
-                                    visible="{=!${view>/ocultarInformacoesAtuais} &amp;&amp; ${UnicoSubitem}}"
-                                    tooltip="Informação Atual"
-                                    />
+                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                    <header>
+                                        <Text text="Margem 2" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    </header>
+                                    <footer/>
+                                </Column>
 
-                                <Button text="Modif." icon="sap-icon://edit" visible='{=!${UnicoSubitem}}'
-                                    press="onEditSubitems"
-                                    />
+                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                    <header>
+                                        <Text text="Margem Teórica" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    </header>
+                                    <footer/>
+                                </Column>
 
-                            </VBox>
+                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                    <header>
+                                        <Text text="IC" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    </header>
+                                    <footer/>
+                                </Column>
 
-                            <VBox alignItems="End">
+                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                    <header>
+                                        <Text text="Estado" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    </header>
+                                    <footer/>
+                                </Column>
 
-                                <ObjectNumber
-                                    number="{
-                                        path: 'simulacao/Margem2',
-                                        type: 'sap.ui.model.odata.type.Decimal',
-                                        constraints: { scale: 2 }
-                                        }"
-                                    unit="%"
-                                    tooltip="Informação Simulada"
-                                    state="{
-                                        parts: [ {path: 'simulacao/Margem2'}, {path: 'informacao/MargemTeorica'}],
-                                        formatter: '.formatter.margemStatus'
-                                        }"
-                                    />
+                            </columns>
+                            <items>
+                                <ColumnListItem type="Navigation">
+                                    <cells>
+                                        <ObjectIdentifier title="{fornecedor/ID} [{fornecedor/UF}]" text="{fornecedor/Nome}" titleActive="false" visible="true"/>
+                                        <!--
+                                        <Text text="{fornecedor/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                        -->
+                                        <ObjectIdentifier title="{
+                                            path: 'material/ID',
+                                            type: 'sap.ui.model.odata.type.String',
+                                            constraints: {
+                                                isDigitSequence : true,
+                                                maxLength : 18
+                                                }
+                                            }"
+                                            text="{material/Nome}" titleActive="false" visible="true"/>
+                                        <!--
+                                        <Text text="{material/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                        -->
+                                        <ObjectIdentifier title="{CentroID}" text="" titleActive="false" visible="true"/>
 
-                                <ObjectNumber
-                                    number="{
-                                        path: 'informacao/Margem2',
-                                        type: 'sap.ui.model.odata.type.Decimal',
-                                        constraints: { scale: 2 }
-                                        }"
-                                    unit="%" emphasized="true"
-                                    visible="{=!${view>/ocultarInformacoesAtuais}}"
-                                    tooltip="Informação Atual"
-                                    />
+                                        <VBox alignItems="End">
+                                            <Input value="{
+                                                path: 'simulacao/PrecoCompra',
+                                                type: 'sap.ui.model.odata.type.Decimal',
+                                                constraints: { scale: 2 }
+                                                }"
+                                                />
 
-                            </VBox>
+                                            <ObjectNumber
+                                                number="{
+                                                    path: 'informacao/PrecoCompra',
+                                                    type: 'sap.ui.model.odata.type.Decimal',
+                                                    constraints: { scale: 2 }
+                                                    }"
+                                                unit="BRL" emphasized="true"
+                                                visible="{=!${view>/ocultarInformacoesAtuais}}"
+                                                tooltip="Informação Atual"
+                                                />
 
-                            <VBox alignItems="End">
-                                <ObjectNumber
-                                    number="{
-                                        path: 'informacao/MargemTeorica',
-                                        type: 'sap.ui.model.odata.type.Decimal',
-                                        constraints: { scale: 2 }
-                                        }"
-                                    unit="%" emphasized="true"
-                                    />
-                            </VBox>
+                                        </VBox>
 
-                            <VBox alignItems="End">
+                                        <VBox alignItems="End">
 
-                                <ObjectNumber
-                                    number="{
-                                        path: 'simulacao/IC',
-                                        type: 'sap.ui.model.odata.type.Decimal',
-                                        constraints: { scale: 2 }
-                                        }"
-                                    unit="%"
-                                    tooltip="Informação Simulada"
-                                    state="{
-                                        parts: [ {path: 'simulacao/IC'} ],
-                                        formatter: '.formatter.icStatus'
-                                        }" />
+                                            <ObjectNumber
+                                                number="{
+                                                    path: 'simulacao/VariacaoPrecoCompra',
+                                                    type: 'sap.ui.model.odata.type.Decimal',
+                                                    constraints: { scale: 2 }
+                                                    }"
+                                                unit="%" emphasized="true"
+                                                state="{
+                                                    parts: [ {path: 'simulacao/VariacaoPrecoCompra'} ],
+                                                    formatter: '.formatter.invertDefaultNumberStatus'
+                                                    }" />
 
-                                <ObjectNumber
-                                    number="{
-                                        path: 'informacao/IC',
-                                        type: 'sap.ui.model.odata.type.Decimal',
-                                        constraints: { scale: 2 }
-                                        }"
-                                    unit="%" emphasized="true"
-                                    visible="{=!${view>/ocultarInformacoesAtuais}}"
-                                    tooltip="Informação Atual"
-                                    />
+                                        </VBox>
 
-                            </VBox>
+                                        <VBox alignItems="End">
 
-                            <Switch type="AcceptReject" state="{Aprovado}" />
+                                            <ObjectNumber
+                                                number="{
+                                                    path: 'simulacao/Custo',
+                                                    type: 'sap.ui.model.odata.type.Decimal',
+                                                    constraints: { scale: 2 }
+                                                    }"
+                                                unit="BRL" emphasized="true"
+                                                state="{
+                                                    parts: [ {path: 'simulacao/Custo'}, {path: 'informacao/Custo'} ],
+                                                    formatter: '.formatter.warningIfSecondLowThanFirst'
+                                                    }"
+                                                tooltip="Informação Simulada"
+                                                />
 
-                        </cells>
-                    </ColumnListItem>
+                                            <ObjectNumber
+                                                number="{
+                                                    path: 'informacao/Custo',
+                                                    type: 'sap.ui.model.odata.type.Decimal',
+                                                    constraints: { scale: 2 }
+                                                    }"
+                                                unit="BRL" emphasized="true"
+                                                visible="{=!${view>/ocultarInformacoesAtuais}}"
+                                                tooltip="Informação Atual"
+                                                />
+
+                                        </VBox>
+
+                                        <VBox alignItems="End">
+
+                                            <ObjectNumber
+                                                number="{
+                                                    path: 'simulacao/PMZNovo',
+                                                    type: 'sap.ui.model.odata.type.Decimal',
+                                                    constraints: { scale: 2 }
+                                                    }"
+                                                unit="BRL" emphasized="true"
+                                                state="{
+                                                    parts: [ {path: 'simulacao/PMZNovo'}, {path: 'informacao/PMZNovo'} ],
+                                                    formatter: '.formatter.warningIfSecondLowThanFirst'
+                                                    }"
+                                                tooltip="Informação Simulada"
+                                                />
+
+                                            <ObjectNumber
+                                                number="{
+                                                    path: 'informacao/PMZNovo',
+                                                    type: 'sap.ui.model.odata.type.Decimal',
+                                                    constraints: { scale: 2 }
+                                                    }"
+                                                unit="BRL" emphasized="true"
+                                                visible="{=!${view>/ocultarInformacoesAtuais}}"
+                                                tooltip="Informação Atual"
+                                                />
+
+                                        </VBox>
+
+                                        <VBox alignItems="End">
+
+                                            <Input value="{
+                                                path: 'subitem/PrecoVenda',
+                                                type: 'sap.ui.model.odata.type.Decimal',
+                                                constraints: { scale: 2 }
+                                                }"
+                                                visible='{UnicoSubitem}'
+                                                />
+
+                                            <ObjectNumber
+                                                number="{
+                                                    path: 'subitem/informacao/PrecoVenda',
+                                                    type: 'sap.ui.model.odata.type.Decimal',
+                                                    constraints: { scale: 2 }
+                                                    }"
+                                                unit="BRL" emphasized="true"
+                                                visible="{=!${view>/ocultarInformacoesAtuais} &amp;&amp; ${UnicoSubitem}}"
+                                                tooltip="Informação Atual"
+                                                />
+
+                                            <Button text="Modif." icon="sap-icon://edit" visible='{=!${UnicoSubitem}}'
+                                                press="onEditSubitems"
+                                                />
+
+                                        </VBox>
+
+                                        <VBox alignItems="End">
+
+                                            <ObjectNumber
+                                                number="{
+                                                    path: 'simulacao/Margem2',
+                                                    type: 'sap.ui.model.odata.type.Decimal',
+                                                    constraints: { scale: 2 }
+                                                    }"
+                                                unit="%"
+                                                tooltip="Informação Simulada"
+                                                state="{
+                                                    parts: [ {path: 'simulacao/Margem2'}, {path: 'informacao/MargemTeorica'}],
+                                                    formatter: '.formatter.margemStatus'
+                                                    }"
+                                                />
+
+                                            <ObjectNumber
+                                                number="{
+                                                    path: 'informacao/Margem2',
+                                                    type: 'sap.ui.model.odata.type.Decimal',
+                                                    constraints: { scale: 2 }
+                                                    }"
+                                                unit="%" emphasized="true"
+                                                visible="{=!${view>/ocultarInformacoesAtuais}}"
+                                                tooltip="Informação Atual"
+                                                />
+
+                                        </VBox>
+
+                                        <VBox alignItems="End">
+                                            <ObjectNumber
+                                                number="{
+                                                    path: 'informacao/MargemTeorica',
+                                                    type: 'sap.ui.model.odata.type.Decimal',
+                                                    constraints: { scale: 2 }
+                                                    }"
+                                                unit="%" emphasized="true"
+                                                />
+                                        </VBox>
+
+                                        <VBox alignItems="End">
+
+                                            <ObjectNumber
+                                                number="{
+                                                    path: 'simulacao/IC',
+                                                    type: 'sap.ui.model.odata.type.Decimal',
+                                                    constraints: { scale: 2 }
+                                                    }"
+                                                unit="%"
+                                                tooltip="Informação Simulada"
+                                                state="{
+                                                    parts: [ {path: 'simulacao/IC'} ],
+                                                    formatter: '.formatter.icStatus'
+                                                    }" />
+
+                                            <ObjectNumber
+                                                number="{
+                                                    path: 'informacao/IC',
+                                                    type: 'sap.ui.model.odata.type.Decimal',
+                                                    constraints: { scale: 2 }
+                                                    }"
+                                                unit="%" emphasized="true"
+                                                visible="{=!${view>/ocultarInformacoesAtuais}}"
+                                                tooltip="Informação Atual"
+                                                />
+
+                                        </VBox>
+
+                                        <Switch type="AcceptReject" state="{Aprovado}" />
+
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </IconTabFilter>
+
                 </items>
-            </Table>
+            </IconTabBar>
+
         </content>
         <footer>
             <Bar design="Auto">

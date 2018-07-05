@@ -153,7 +153,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                         return false;
                     return Promise.all(this.eliminarItensSelecionados());
                     })
-                .then( (result) => { if (result) v.byId('itemsTable').getBinding('items').refresh(); } )
+                .then( (result) => { if (result) m.refresh(); } )
                 .catch( (...args) => console.error(args) )
         },
 
@@ -404,8 +404,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             m.submitChanges({
                 success:  (...args) => {
                     console.log(args);
-                    m.resetChanges();
-                    v.byId('itemsTable').getBinding('items').refresh();
+                    //m.resetChanges();
+                    //v.byId('itemsTable').getBinding('items').refresh();
+                    m.refresh();
                     v.byId('popoverAddItem').close();
                     },
                 error: (...args) => {
