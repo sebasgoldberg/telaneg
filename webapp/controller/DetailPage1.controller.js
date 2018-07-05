@@ -281,6 +281,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                 SelecaoLivre: {
                     itens: [],
                     },
+                ocultarInformacoesAtuais: false,
                 }), 'view');
             //this.createAddItemManager();
             //@todo Mudar para serviço OData

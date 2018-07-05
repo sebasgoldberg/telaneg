@@ -100,6 +100,7 @@
                             <Button text="" type="Transparent" icon="sap-icon://group-2" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                             <Button text="" type="Accept" icon="sap-icon://accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onAccept"/>
                             <Button text="" type="Reject" icon="sap-icon://decline" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onReject"/>
+                            <ToggleButton tooltip="Ocultar informações atuais" type="Transparent" icon="sap-icon://hide" pressed="{view>/ocultarInformacoesAtuais}"/>
                             <sim:ButtonPopover type="Emphasized" icon="sap-icon://add" placement="Left">
                                 <core:Fragment fragmentName="simplifique.telaneg.view.Test" type="XML" />
                             </sim:ButtonPopover>
@@ -147,7 +148,7 @@
 
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Preço Compra [BRL]" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="Preço Compra" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
@@ -174,7 +175,7 @@
 
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Preço de venda [BRL]" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit"
+                            <Text text="Preço de venda" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit"
                             visible='{UnicoSubitem}'
                             />
                         </header>
@@ -238,6 +239,7 @@
                                         constraints: { scale: 2 }
                                         }"
                                     unit="BRL" emphasized="true"
+                                    visible="{=!${view>/ocultarInformacoesAtuais}}"
                                     />
 
                             </VBox>
@@ -280,6 +282,7 @@
                                         constraints: { scale: 2 }
                                         }"
                                     unit="BRL" emphasized="true"
+                                    visible="{=!${view>/ocultarInformacoesAtuais}}"
                                     />
 
                             </VBox>
@@ -306,6 +309,7 @@
                                         constraints: { scale: 2 }
                                         }"
                                     unit="BRL" emphasized="true"
+                                    visible="{=!${view>/ocultarInformacoesAtuais}}"
                                     />
 
                             </VBox>
@@ -327,7 +331,7 @@
                                         constraints: { scale: 2 }
                                         }"
                                     unit="BRL" emphasized="true"
-                                    visible='{UnicoSubitem}'
+                                    visible="{=!${view>/ocultarInformacoesAtuais} &amp;&amp; ${UnicoSubitem}}"
                                     />
 
                                 <Button icon="sap-icon://edit" visible='{=!${UnicoSubitem}}'
@@ -358,6 +362,7 @@
                                         constraints: { scale: 2 }
                                         }"
                                     unit="%" emphasized="true"
+                                    visible="{=!${view>/ocultarInformacoesAtuais}}"
                                     />
 
                             </VBox>
@@ -394,6 +399,7 @@
                                         constraints: { scale: 2 }
                                         }"
                                     unit="%" emphasized="true"
+                                    visible="{=!${view>/ocultarInformacoesAtuais}}"
                                     />
 
                             </VBox>
