@@ -24,11 +24,11 @@ sap.ui.define([
 		},
 
         setBusy: function() {
-            sap.ui.core.BusyIndicator.show(0);
+            //sap.ui.core.BusyIndicator.show(0);
         },
 
         setFree: function() {
-            sap.ui.core.BusyIndicator.hide();
+            //sap.ui.core.BusyIndicator.hide();
         },
 
         submitChanges: function() {

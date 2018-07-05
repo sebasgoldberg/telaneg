@@ -178,6 +178,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
         onInit: function() {
             this.getView().setModel(new JSONModel({
+                ocultarInformacoesAtuais: false,
                 impostos: {
                     enabled: true,
                     },

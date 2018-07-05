@@ -414,5 +414,22 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                     },
                 });
         },
+
+        onEditSubitems: function(oEvent) {
+            if (!this.popoverSubitems){
+                this.popoverSubitems = sap.ui.xmlfragment("simplifique.telaneg.view.PopoverSubitems", this);
+                this.getView().addDependent(this.popoverSubitems);
+            }
+            let oSource = oEvent.getSource();
+            let bc = oSource.getBindingContext();
+            let sPathItem = bc.getPath();
+            this.popoverSubitems.bindElement(sPathItem);
+            this.popoverSubitems.openBy(oSource);
+        },
+
+        onFecharPopoverSubitems: function() {
+            this.popoverSubitems.close();
+        },
+
     });
 }, /* bExport= */ true);

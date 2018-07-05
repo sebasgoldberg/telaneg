@@ -85,6 +85,7 @@
                         }" />
         </layout:VerticalLayout>
 
+        <!--
         <layout:VerticalLayout
                 class="sapUiMediumMarginEnd">
                  <Label text="Valor Total Pedido" />
@@ -114,7 +115,7 @@
                         formatter: '.formatter.margemStatus'
                         }" />
         </layout:VerticalLayout>
-
+        -->
 
         <layout:VerticalLayout
                 class="sapUiMediumMarginEnd">

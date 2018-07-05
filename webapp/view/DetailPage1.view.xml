@@ -98,8 +98,10 @@
                             <Button text="" type="Transparent" icon="sap-icon://sort" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                             <Button text="" type="Transparent" icon="sap-icon://filter" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                             <Button text="" type="Transparent" icon="sap-icon://group-2" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                            <!--
                             <Button text="" type="Accept" icon="sap-icon://accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onAccept"/>
                             <Button text="" type="Reject" icon="sap-icon://decline" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onReject"/>
+                            -->
                             <ToggleButton tooltip="Ocultar informações atuais" type="Transparent" icon="sap-icon://hide" pressed="{view>/ocultarInformacoesAtuais}"/>
                             <sim:ButtonPopover type="Emphasized" icon="sap-icon://add" placement="Left">
                                 <core:Fragment fragmentName="simplifique.telaneg.view.Test" type="XML" />
@@ -119,9 +121,9 @@
                         <footer/>
                     </Column>
 -->
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <Column width="15%" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Fornecedor" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="Fornecedor" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
@@ -133,15 +135,15 @@
                         <footer/>
                     </Column>
 -->
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <Column width="15%" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="Material" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="UF" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="UF" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
@@ -162,20 +164,20 @@
 
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Custo" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="Custo" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="PMZ Novo" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="PMZ Novo" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
 
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Preço de venda" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit"
+                            <Text text="Preço de venda" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"
                             visible='{UnicoSubitem}'
                             />
                         </header>
@@ -184,24 +186,32 @@
 
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Margem 2" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="Margem 2" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
 
                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="Margem Teórica" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="Margem Teórica" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
 
-                     <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                         <header>
-                            <Text text="IC" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                            <Text text="IC" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                         </header>
                         <footer/>
                     </Column>
+
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Estado" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+
                 </columns>
                 <items>
                     <ColumnListItem type="Navigation">
@@ -240,6 +250,7 @@
                                         }"
                                     unit="BRL" emphasized="true"
                                     visible="{=!${view>/ocultarInformacoesAtuais}}"
+                                    tooltip="Informação Atual"
                                     />
 
                             </VBox>
@@ -273,6 +284,7 @@
                                         parts: [ {path: 'simulacao/Custo'}, {path: 'informacao/Custo'} ],
                                         formatter: '.formatter.warningIfSecondLowThanFirst'
                                         }"
+                                    tooltip="Informação Simulada"
                                     />
 
                                 <ObjectNumber
@@ -283,6 +295,7 @@
                                         }"
                                     unit="BRL" emphasized="true"
                                     visible="{=!${view>/ocultarInformacoesAtuais}}"
+                                    tooltip="Informação Atual"
                                     />
 
                             </VBox>
@@ -300,6 +313,7 @@
                                         parts: [ {path: 'simulacao/PMZNovo'}, {path: 'informacao/PMZNovo'} ],
                                         formatter: '.formatter.warningIfSecondLowThanFirst'
                                         }"
+                                    tooltip="Informação Simulada"
                                     />
 
                                 <ObjectNumber
@@ -310,6 +324,7 @@
                                         }"
                                     unit="BRL" emphasized="true"
                                     visible="{=!${view>/ocultarInformacoesAtuais}}"
+                                    tooltip="Informação Atual"
                                     />
 
                             </VBox>
@@ -332,10 +347,11 @@
                                         }"
                                     unit="BRL" emphasized="true"
                                     visible="{=!${view>/ocultarInformacoesAtuais} &amp;&amp; ${UnicoSubitem}}"
+                                    tooltip="Informação Atual"
                                     />
 
-                                <Button icon="sap-icon://edit" visible='{=!${UnicoSubitem}}'
-                                    press="_onTableItemPress"
+                                <Button text="Modif." icon="sap-icon://edit" visible='{=!${UnicoSubitem}}'
+                                    press="onEditSubitems"
                                     />
 
                             </VBox>
@@ -349,6 +365,7 @@
                                         constraints: { scale: 2 }
                                         }"
                                     unit="%"
+                                    tooltip="Informação Simulada"
                                     state="{
                                         parts: [ {path: 'simulacao/Margem2'}, {path: 'informacao/MargemTeorica'}],
                                         formatter: '.formatter.margemStatus'
@@ -363,6 +380,7 @@
                                         }"
                                     unit="%" emphasized="true"
                                     visible="{=!${view>/ocultarInformacoesAtuais}}"
+                                    tooltip="Informação Atual"
                                     />
 
                             </VBox>
@@ -387,6 +405,7 @@
                                         constraints: { scale: 2 }
                                         }"
                                     unit="%"
+                                    tooltip="Informação Simulada"
                                     state="{
                                         parts: [ {path: 'simulacao/IC'} ],
                                         formatter: '.formatter.icStatus'
@@ -400,9 +419,12 @@
                                         }"
                                     unit="%" emphasized="true"
                                     visible="{=!${view>/ocultarInformacoesAtuais}}"
+                                    tooltip="Informação Atual"
                                     />
 
                             </VBox>
+
+                            <Switch type="AcceptReject" state="{Aprovado}" />
 
                         </cells>
                     </ColumnListItem>
@@ -412,12 +434,14 @@
         <footer>
             <Bar design="Auto">
                 <contentLeft>
-                    <Button text="Finalizar" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress1"/>
+                    <Button text="Eliminar" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onEliminarNegociacao"/>
                 </contentLeft>
                 <contentMiddle/>
                 <contentRight>
+                    <!--
                     <Button text="Gravar" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="false" iconDensityAware="false" press="onGravar"/>
-                    <Button text="Eliminar" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="onEliminarNegociacao"/>
+                    -->
+                    <Button text="Finalizar" type="Accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress1"/>
                 </contentRight>
             </Bar>
         </footer>

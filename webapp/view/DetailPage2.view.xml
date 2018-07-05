@@ -133,13 +133,18 @@
         <uxap:footer>
             <Bar design="Auto">
                 <contentLeft>
+                    <!--
                     <Button text="Aprovar" type="Accept" icon="sap-icon://accept" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onAccept"/>
                     <Button text="Rejeitar" type="Reject" icon="sap-icon://decline" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onReject"/>
+                    -->
+                    <Button text="Eliminar" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress3"/>
                 </contentLeft>
                 <contentMiddle/>
                 <contentRight>
+                    <Switch type="AcceptReject" state="{Aprovado}" />
+                    <!--
                     <Button text="Gravar" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="false" iconDensityAware="false" press="onGravar"/>
-                    <Button text="Eliminar" type="Reject" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress3"/>
+                    -->
                 </contentRight>
             </Bar>
         </uxap:footer>
