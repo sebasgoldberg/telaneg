@@ -165,6 +165,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             this.eliminarItemsTabela('materiaisNegociacaoTable');
         },
 
+        onDeleteFornecedor: function() {
+            this.eliminarItemsTabela('fornecedoresNegociacaoTable');
+        },
+
         createAddItemManager: function() {
             this.addItemManager = new AddItemManager(this);
         },
@@ -376,14 +380,14 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             this.getView().byId('SelecaoLivreItensTable').selectAll();
         },
 
-        createMaterialNaoCadastrado: function() {
+        createEntryPromise: function(entitySetPath) {
             return new Promise((resolve, reject) => {
                 let v = this.getView();
                 let m = v.getModel();
                 let oNegociacao = v.getBindingContext().getObject();
                 let sPathNegociacao = v.getBindingContext().getPath();
                 m.createEntry(
-                    `${sPathNegociacao}/materiaisNaoCadastrados/`, 
+                    entitySetPath, 
                     {
                         properties: {
                             },
@@ -396,18 +400,30 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             });
         },
 
-        onAddMaterial: async function(oEvent) {
+        createEntry: async function(entitySetPath) {
             let v = this.getView();
             let m = v.getModel();
-            let oNegociacao = v.getBindingContext().getObject();
-            let sPathNegociacao = v.getBindingContext().getPath();
             try {
-                await this.createMaterialNaoCadastrado();
+                await this.createEntryPromise(entitySetPath);
                 m.refresh()
             } catch (e) {
                 console.error(e);
                 m.resetChanges();
             }
+        },
+
+        onAddMaterial: function(oEvent) {
+            let v = this.getView();
+            let oNegociacao = v.getBindingContext().getObject();
+            let sPathNegociacao = v.getBindingContext().getPath();
+            this.createEntry(`${sPathNegociacao}/materiaisNaoCadastrados/`)
+        },
+
+        onAddFornecedor: function(oEvent) {
+            let v = this.getView();
+            let oNegociacao = v.getBindingContext().getObject();
+            let sPathNegociacao = v.getBindingContext().getPath();
+            this.createEntry(`${sPathNegociacao}/fornecedoresNaoCadastrados/`)
         },
 
         /**

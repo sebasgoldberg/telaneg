@@ -21,7 +21,7 @@
                 >
 
                 <sim:SearchAndSelect
-                    items="{/FornecedorSet}"
+                    items="{fornecedoresPossiveis}"
                     filterFields="eq::ID, cp::Nome"
                     quanSelText="Fornecedores selecionados"
                     id='fornecedoresSearchAndSelect'
