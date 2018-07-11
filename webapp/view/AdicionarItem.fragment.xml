@@ -41,7 +41,7 @@
                 >
 
                 <sim:SearchAndSelect
-                    items="{/MaterialSet}"
+                    items="{materiaisPossiveis}"
                     filterFields="eq::ID, cp::Nome"
                     quanSelText="Materiais selecionados"
                     id='materiaisSearchAndSelect'

@@ -87,6 +87,11 @@
                             </MultiInput>
 
                        </form:SimpleForm>
+
+                        
+                        <core:Fragment fragmentName="simplifique.telaneg.view.MateriaisNegociacao" type="XML" />
+                        <core:Fragment fragmentName="simplifique.telaneg.view.FornecedoresNegociacao" type="XML" />
+
                     </IconTabFilter>
 
 
@@ -122,7 +127,7 @@
                                         -->
                                         <ToggleButton tooltip="Ocultar informações atuais" type="Transparent" icon="sap-icon://hide" pressed="{view>/ocultarInformacoesAtuais}"/>
                                         <sim:ButtonPopover type="Emphasized" icon="sap-icon://add" placement="Left">
-                                            <core:Fragment fragmentName="simplifique.telaneg.view.Test" type="XML" />
+                                            <core:Fragment fragmentName="simplifique.telaneg.view.AdicionarItem" type="XML" />
                                         </sim:ButtonPopover>
                                         <Button text="" type="" icon="sap-icon://delete" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onTableDelete"/>
 
@@ -368,7 +373,7 @@
                                                 tooltip="Informação Atual"
                                                 />
 
-                                            <Button text="Modif." icon="sap-icon://edit" visible='{=!${UnicoSubitem}}'
+                                            <Button tooltip="Modificar Preço Venda" icon="sap-icon://edit" visible='{=!${UnicoSubitem}}'
                                                 press="onEditSubitems"
                                                 />
 

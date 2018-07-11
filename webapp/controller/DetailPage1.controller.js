@@ -105,7 +105,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
         temCertezaDeEliminar: function(attribute) {
             return new Promise(function(fnResolve) {
                 sap.m.MessageBox.confirm("Tem certeza que deseja eliminar os itens selecionados?", {
-                    title: "Eliminar Item de Negociação",
+                    title: "Eliminar Items Selecionados",
                     actions: ["Tenho Sim", "Melhor Não"],
                     onClose: function(sActionClicked) {
                         fnResolve(sActionClicked === "Tenho Sim");
@@ -137,13 +137,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             );
         },
 
-        eliminarItensSelecionados: function() {
+        eliminarItensSelecionados: function(tableId) {
             let v = this.getView();
-            return v.byId('itemsTable').getSelectedContexts()
+            return v.byId(tableId).getSelectedContexts()
                 .map( c => this.eliminarItem(c) );
         },
 
-        _onTableDelete: function() {
+        eliminarItemsTabela: function(tableId) {
             let v = this.getView();
             let m = v.getModel();
 
@@ -151,10 +151,18 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                 .then( eliminar => {
                     if (!eliminar)
                         return false;
-                    return Promise.all(this.eliminarItensSelecionados());
+                    return Promise.all(this.eliminarItensSelecionados(tableId));
                     })
                 .then( (result) => { if (result) m.refresh(); } )
-                .catch( (...args) => console.error(args) )
+                .catch( (...args) => console.error(args) )            
+        },
+
+        _onTableDelete: function() {
+            this.eliminarItemsTabela('itemsTable');
+        },
+
+        onDeleteMaterial: function() {
+            this.eliminarItemsTabela('materiaisNegociacaoTable');
         },
 
         createAddItemManager: function() {
@@ -368,6 +376,40 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             this.getView().byId('SelecaoLivreItensTable').selectAll();
         },
 
+        createMaterialNaoCadastrado: function() {
+            return new Promise((resolve, reject) => {
+                let v = this.getView();
+                let m = v.getModel();
+                let oNegociacao = v.getBindingContext().getObject();
+                let sPathNegociacao = v.getBindingContext().getPath();
+                m.createEntry(
+                    `${sPathNegociacao}/materiaisNaoCadastrados/`, 
+                    {
+                        properties: {
+                            },
+                        success: (...args) => resolve(args),
+                        error: (...args) => reject(args),
+                    });
+                m.submitChanges({
+                    error: (...args) => reject(args),
+                    });
+            });
+        },
+
+        onAddMaterial: async function(oEvent) {
+            let v = this.getView();
+            let m = v.getModel();
+            let oNegociacao = v.getBindingContext().getObject();
+            let sPathNegociacao = v.getBindingContext().getPath();
+            try {
+                await this.createMaterialNaoCadastrado();
+                m.refresh()
+            } catch (e) {
+                console.error(e);
+                m.resetChanges();
+            }
+        },
+
         /**
          * Pega os itens que foram selecionados e tenta adicionar os mesmos
          * no documento de negociacao.
@@ -383,13 +425,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                 .map( item => { return {
                     NegociacaoID: oNegociacao.ID,
                     FornecedorID: item.Fornecedor.ID,
-                    // @todo Tirar hardcode de tipo cadastrado.
-                    //FornecedorType: item.Fornecedor.ID,
-                    FornecedorType: 'C',
+                    FornecedorType: item.Fornecedor.Type,
                     MaterialID: item.Material.ID,
-                    // @todo Tirar hardcode de tipo cadastrado.
-                    //MaterialType: item.Material.Type,
-                    MaterialType: 'C',
+                    MaterialType: item.Material.Type,
                     CentroID: item.UF.Centro,
                     }})
                 .forEach( item =>
