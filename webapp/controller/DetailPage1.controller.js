@@ -442,6 +442,36 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                 });
         },
 
+        onUploadItemsTabela: function(oEvent) {
+            let oFile = oEvent.getParameters().files[0];
+
+            if (!oFile)
+                return;
+
+            const reader = new FileReader();
+
+            reader.onload = (event) => {
+                const file = event.target.result;
+                const allLines = file.split(/\r\n|\n/);
+                // Reading line by line
+                allLines.forEach((line) => {
+                    console.log(line);
+                });
+            };
+
+            reader.onerror = (event) => {
+                alert(event.target.error.name);
+            };
+
+            reader.readAsText(oFile);
+
+            this.getView().byId('popoverUploadTabela').close();
+        },
+
+        onFecharPopoverUploadTabela: function() {
+            this.getView().byId('popoverUploadTabela').close();
+        },
+
         onEditSubitems: function(oEvent) {
             if (!this.popoverSubitems){
                 this.popoverSubitems = sap.ui.xmlfragment("simplifique.telaneg.view.PopoverSubitems", this);

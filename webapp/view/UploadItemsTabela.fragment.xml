@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:u="sap.ui.unified">
+
+    <ResponsivePopover
+        id="popoverUploadTabela"
+        title="Upload Items Tabela"
+        class="sapUiPopupWithPadding"
+        contentWidth="300px"
+        contentHeight="100px"
+        placement="Top" >
+
+        <beginButton>
+            <Button type="Emphasized" text="Upload" press="onUploadItemsTabela" />
+        </beginButton>
+        <endButton>
+            <Button text="Fechar" press="onFecharPopoverUploadTabela" />
+        </endButton>
+
+        <content>
+            <u:FileUploader
+                id="fileUploaderTabela"
+                name="myFileUpload"
+                tooltip="Upload Items Tabela"
+                change="onUploadItemsTabela"
+                />
+        </content>
+    </ResponsivePopover>
+
+</core:FragmentDefinition>
+
+

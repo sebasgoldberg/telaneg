@@ -122,8 +122,11 @@
                                         <Button text="" type="Transparent" icon="sap-icon://filter" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                                         <Button text="" type="Transparent" icon="sap-icon://group-2" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                                         <ToggleButton tooltip="Ocultar informações atuais" type="Transparent" icon="sap-icon://hide" pressed="{view>/ocultarInformacoesAtuais}"/>
-                                        <sim:ButtonPopover type="Emphasized" icon="sap-icon://add" placement="Left">
+                                        <sim:ButtonPopover type="Emphasized" icon="sap-icon://add" placement="Left" visible="{= ${tipoNegociacao/ID} !== 'A' }">
                                             <core:Fragment fragmentName="simplifique.telaneg.view.AdicionarItem" type="XML" />
+                                        </sim:ButtonPopover>
+                                        <sim:ButtonPopover type="Emphasized" icon="sap-icon://add" placement="Left" visible="{= ${tipoNegociacao/ID} === 'A' }">
+                                            <core:Fragment fragmentName="simplifique.telaneg.view.UploadItemsTabela" type="XML" />
                                         </sim:ButtonPopover>
                                         <Button text="" type="" icon="sap-icon://delete" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onTableDelete"/>
 
