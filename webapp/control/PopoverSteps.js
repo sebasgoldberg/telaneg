@@ -16,23 +16,11 @@ export default ResponsivePopover.extend("simplifique.telaneg.control.PopoverStep
             cancelText: { type: 'string', defaultValue: 'Cancel' },
             finishText: { type: 'string', defaultValue: 'Finish' },
             },
+        defaultAggregation : "content",
         events:{
             finish: {},
             enteringLastStep: {},
             },
-        defaultAggregation : "pages",
-        aggregations: {
-            pages: {
-                type: "sap.m.Page",
-                multiple: true,
-                forwarding: {
-                    getter: 'getNavSteps',
-                    aggregation: 'pages',
-                    forwardBinding: true,
-                    },
-                },
-            },
-
     },
 
     getNavSteps: function(){
@@ -56,7 +44,10 @@ export default ResponsivePopover.extend("simplifique.telaneg.control.PopoverStep
     },
 
     initPages: function(){
-        this.getAggregation('pages').forEach( 
+        let aPages = this.navSteps.getAggregation('pages');
+        if (!aPages)
+            return;
+        aPages.forEach( 
             (page, index) => {
                 if (index == 0)
                     page.setShowNavButton(false);
@@ -68,8 +59,13 @@ export default ResponsivePopover.extend("simplifique.telaneg.control.PopoverStep
                 });
         },
 
-    addPage: function(oPage){
-        this.addAggregation('pages', oPage);
+    addContent: function(oNavContainer){
+        if (this.navSteps)
+            throw "PopoverSteps should have only one control in content aggregation a its type should be NavSteps."
+        this.addAggregation('content', oNavContainer);
+        this.navSteps = oNavContainer;
+        this.navSteps.attachEnteringLastStep( () => this.setLastStepContext() );
+        this.navSteps.attachLeavingLastStep( () => this.setPreviousStepContext() );
         this.initPages();
         this.updateStepButtonText();
         },
@@ -103,16 +99,9 @@ export default ResponsivePopover.extend("simplifique.telaneg.control.PopoverStep
             press: () => this.close(),
             });
 
-        this.navSteps = new NavSteps({
-            enteringLastStep: () => this.setLastStepContext(),
-            leavingLastStep: () => this.setPreviousStepContext(),
-            })
 
         this.setBeginButton(this.nextButton);
         this.setEndButton(this.cancelButton);
-        this.addContent(this.navSteps);
-
-        this.initPages();
 
     },
 

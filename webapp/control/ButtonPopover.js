@@ -37,7 +37,8 @@ export default Button.extend("simplifique.telaneg.control.ButtonPopover",{
     
     init: function(...args){
 
-        Button.prototype.init.apply(this, ...args)
+        if(Button.prototype.init)
+            Button.prototype.init.apply(this, ...args);
 
         this.attachPress( () => {
             let popover = this.getPopover();

@@ -16,122 +16,126 @@
             contentHeight="480px"
             placement='Left'>
 
-            <Page
-                title="Seleção de Fornecedores"
-                >
+            <sim:NavSteps>
 
-                <sim:SearchAndSelect
-                    items="{fornecedoresPossiveis}"
-                    filterFields="eq::ID, cp::Nome"
-                    quanSelText="Fornecedores selecionados"
-                    id='fornecedoresSearchAndSelect'
+                <Page
+                    title="Seleção de Fornecedores"
                     >
 
-                    <StandardListItem
-                        title="{ID}"
-                        description="{Nome}"
-                        />
+                    <sim:SearchAndSelect
+                        items="{fornecedoresPossiveis}"
+                        filterFields="eq::ID, cp::Nome"
+                        quanSelText="Fornecedores selecionados"
+                        id='fornecedoresSearchAndSelect'
+                        >
 
-                </sim:SearchAndSelect>
+                        <StandardListItem
+                            title="{ID}"
+                            description="{Nome}"
+                            />
 
-            </Page>
+                    </sim:SearchAndSelect>
 
-            <Page
-                title="Selecao de Materiais"
-                >
+                </Page>
 
-                <sim:SearchAndSelect
-                    items="{materiaisPossiveis}"
-                    filterFields="eq::ID, cp::Nome"
-                    quanSelText="Materiais selecionados"
-                    id='materiaisSearchAndSelect'
+                <Page
+                    title="Selecao de Materiais"
                     >
 
-                    <StandardListItem
-                        title="{ID}"
-                        description="{Nome}"
-                        />
+                    <sim:SearchAndSelect
+                        items="{materiaisPossiveis}"
+                        filterFields="eq::ID, cp::Nome"
+                        quanSelText="Materiais selecionados"
+                        id='materiaisSearchAndSelect'
+                        >
 
-                </sim:SearchAndSelect>
+                        <StandardListItem
+                            title="{ID}"
+                            description="{Nome}"
+                            />
 
-            </Page>
+                    </sim:SearchAndSelect>
+
+                </Page>
 
 
-            <Page
-                title="Selecao de UFs"
-                >
-
-                <sim:SearchAndSelect
-                    items="{/UFSet}"
-                    filterFields="eq::Centro, cp::Nome, eq::ID"
-                    quanSelText="UFs selecionadas"
-                    id='UFsSearchAndSelect'
+                <Page
+                    title="Selecao de UFs"
                     >
 
-                    <StandardListItem
-                        title="{Centro}"
-                        description="[{ID}] {Nome}"
-                        />
+                    <sim:SearchAndSelect
+                        items="{/UFSet}"
+                        filterFields="eq::Centro, cp::Nome, eq::ID"
+                        quanSelText="UFs selecionadas"
+                        id='UFsSearchAndSelect'
+                        >
 
-                </sim:SearchAndSelect>
+                        <StandardListItem
+                            title="{Centro}"
+                            description="[{ID}] {Nome}"
+                            />
 
-            </Page>
+                    </sim:SearchAndSelect>
 
-            <Page
-                title="Selecao de Itens a Adicionar."
-                >
-                    <subHeader>
-                        <Toolbar>
-                            <SearchField
-                                width="100%" />
-                        </Toolbar>
-                    </subHeader>
+                </Page>
 
-                    <Table alternateRowColors="true" mode="MultiSelect" showSeparators="All" growing="false" items="{view>/SelecaoLivre/itens}" id='SelecaoLivreItensTable'>
+                <Page
+                    title="Selecao de Itens a Adicionar."
+                    >
+                        <subHeader>
+                            <Toolbar>
+                                <SearchField
+                                    width="100%" />
+                            </Toolbar>
+                        </subHeader>
 
-                        <columns>
+                        <Table alternateRowColors="true" mode="MultiSelect" showSeparators="All" growing="false" items="{view>/SelecaoLivre/itens}" id='SelecaoLivreItensTable'>
 
-                            <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-                                <header>
-                                    <Text text="Fornecedor" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
-                                </header>
-                                <footer/>
-                            </Column>
+                            <columns>
 
-                            <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-                                <header>
-                                    <Text text="Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
-                                </header>
-                                <footer/>
-                            </Column>
+                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                    <header>
+                                        <Text text="Fornecedor" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                    </header>
+                                    <footer/>
+                                </Column>
 
-                            <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
-                                <header>
-                                    <Text text="UF" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
-                                </header>
-                                <footer/>
-                            </Column>
+                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                    <header>
+                                        <Text text="Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                    </header>
+                                    <footer/>
+                                </Column>
 
-                        </columns>
+                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                    <header>
+                                        <Text text="UF" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                    </header>
+                                    <footer/>
+                                </Column>
 
-                        <items>
+                            </columns>
 
-                            <ColumnListItem >
+                            <items>
 
-                                <cells>
+                                <ColumnListItem >
 
-                                    <Text text="{view>Fornecedor/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                                    <Text text="{view>Material/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
-                                    <Text text="{view>UF/Centro}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                    <cells>
 
-                                </cells>
-                            </ColumnListItem>
+                                        <Text text="{view>Fornecedor/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                        <Text text="{view>Material/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                                        <Text text="{view>UF/Centro}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
 
-                        </items>
-                    </Table>
+                                    </cells>
+                                </ColumnListItem>
+
+                            </items>
+                        </Table>
 
 
-            </Page>
+                </Page>
+
+            </sim:NavSteps>
 
         </sim:PopoverSteps>
 

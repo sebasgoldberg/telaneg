@@ -6,34 +6,20 @@ import Page from "sap/m/Page";
 import Filter from "sap/ui/model/Filter";
 import Label from "sap/m/Label";
 import ListMode from "sap/m/ListMode";
+import ListRenderer from "sap/m/ListRenderer";
 
-export default Control.extend("simplifique.telaneg.control.SearchAndSelect", {
+export default List.extend("simplifique.telaneg.control.SearchAndSelect", {
 
     metadata : {
         properties: {
             filterFields: 'string',
             quanSelText: 'string',
             },
-        defaultAggregation : "items",
         aggregations: {
-            items: {
-                type: "sap.m.ListItemBase",
-                multiple: true,
-                forwarding: {
-                    getter: '_getList',
-                    aggregation: 'items',
-                    forwardBinding: true,
-                    },
-                },
             _toolbar: {
                 type: "sap.m.Toolbar",
                 multiple: false,
                 visibility: 'hidden',
-                },
-            _list: {
-                type: 'sap.m.List',
-                multiple: false,
-                visibility: 'hidden'
                 },
             },
     },
@@ -42,16 +28,6 @@ export default Control.extend("simplifique.telaneg.control.SearchAndSelect", {
         this.setProperty("quanSelText", sValue, true);
         this.updateSelectedQuantity();
         },
-
-    getSelectedContexts: function(){
-        if (this.list)
-            return this.list.getSelectedContexts(true);
-        return [];
-    },
-
-    _getList: function() {
-        return this.list;
-    },
 
     getFilterFieldsAndOperators: function(){
         return this.getFilterFields().split(',')
@@ -91,8 +67,16 @@ export default Control.extend("simplifique.telaneg.control.SearchAndSelect", {
         this.getToolbarLabel().setText(this.getSelectedQuantityText());
     },
 
+    getSelectedContexts: function() {
+        try {
+            return List.prototype.getSelectedContexts.apply(this);
+        } catch (e) {
+            return [];
+        }
+    },
+
     init : function (...args) {
-        Control.prototype.init.apply(this, ...args)
+        List.prototype.init.apply(this, ...args)
         let oSearchField = new SearchField({
             search: function(oEvt){
                 let sQuery = oEvt.getSource().getValue();
@@ -109,19 +93,16 @@ export default Control.extend("simplifique.telaneg.control.SearchAndSelect", {
             text: this.getSelectedQuantityText(),
             });
 
-        this.list = new List({
-            infoToolbar: new Toolbar({
-                content: this.toolbarLabel,
-                }),
-            mode: ListMode.MultiSelect,
-            selectionChange: function(oEvt){
-                this.updateSelectedQuantity();
-                }.bind(this),
-            growing: true,
-            growingThreshold: 15,
-            growingScrollToLoad: true,
-            });
-        this.setAggregation('_list', this.list)
+        this.setInfoToolbar( new Toolbar({
+            content: this.toolbarLabel,
+            }));
+        this.setMode( ListMode.MultiSelect);
+        this.attachSelectionChange(function(oEvt){
+            this.updateSelectedQuantity();
+            }.bind(this)),
+        this.setGrowing(true);
+        this.setGrowingThreshold(15);
+        this.setGrowingScrollToLoad(true);
     },
 
     renderer : function (oRenderManager, oControl){
@@ -130,7 +111,7 @@ export default Control.extend("simplifique.telaneg.control.SearchAndSelect", {
         oRenderManager.writeClasses();
         oRenderManager.write(">");
         oRenderManager.renderControl(oControl.getAggregation("_toolbar"));
-        oRenderManager.renderControl(oControl.getAggregation("_list"));
+        ListRenderer.render.call(this, oRenderManager, oControl);
         oRenderManager.write("</div>");
     }
 

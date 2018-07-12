@@ -420,4 +420,4 @@ export default class MasterPage1 extends BaseController{
 }
 
 // for ui5 compatibility which relies on globals
-// jQuery.sap.setObject('simplifique.telaneg.controller.MasterPage1', MasterPage1);
+jQuery.sap.setObject('simplifique.telaneg.controller.MasterPage1', MasterPage1);
