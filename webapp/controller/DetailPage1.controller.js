@@ -3,9 +3,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
     "./utilities",
     'simplifique/telaneg/model/formatter',
     "sap/ui/core/routing/History",
-    'simplifique/telaneg/controller/AddItemManager',
     'sap/ui/model/json/JSONModel',
-], function(BaseController, MessageBox, Utilities, formatter, History, AddItemManager, JSONModel) {
+], function(BaseController, MessageBox, Utilities, formatter, History, JSONModel) {
     "use strict";
 
 
@@ -169,33 +168,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             this.eliminarItemsTabela('fornecedoresNegociacaoTable');
         },
 
-        createAddItemManager: function() {
-            this.addItemManager = new AddItemManager(this);
-        },
-
-        selectAddItemProcess: function() {
-            let oNegociacao = this.getView().getBindingContext().getObject();
-            this.addItemProcess = this.addItemManager.selectAddItemProcess(oNegociacao.TipoNegociacao);
-        },
-
-        toogleAddItemPopover: function(oEvent) {
-            // @todo Deveria ser chamado quando acontece a navegação.
-            this.selectAddItemProcess();
-            this.addItemProcess.toogleAddItemPopover(oEvent);
-        },
-
-        _onButtonPress: function(oEvent) {
-            this.toogleAddItemPopover(oEvent);
-            //sap.m.MessageToast.show("Serão adicionados itens na negociação.");
-            return;
-        },
-
-        _onAccept: function(attribute) {
-            sap.m.MessageToast.show("Os itens selecionados foram aprovados.");
-        },
-        _onReject: function(attribute) {
-            sap.m.MessageToast.show("Os itens selecionados foram rejeitados.");
-        },
         _onButtonPress1: function() {
             return new Promise(function(fnResolve) {
                 var sTargetPos = "";
