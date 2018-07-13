@@ -103,7 +103,7 @@
 
                        <Table 
                         keyboardMode="Edit"
-                       alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onTableItemPress" items="{path:'items', templateShareable:true, parameters:{expand:'fornecedor,material,simulacao,informacao,subitem,subitem/informacao'}}" id='itemsTable'> <!--
+                       alternateRowColors="true" width="100%" noDataText="No data" mode="MultiSelect" showSeparators="All" growing="true" growingThreshold="20" growingScrollToLoad="true" itemPress="_onTableItemPress" items="{path:'items', templateShareable:true, parameters:{expand:'fornecedor,material,simulacao,informacao,subitem,subitem/informacao,negociacao,negociacao/tipoNegociacao'}}" id='itemsTable'> <!--
                        , parameters:{expand:'fornecedor,produto,centro'}
                        -->
                             <infoToolbar>
@@ -122,10 +122,10 @@
                                         <Button text="" type="Transparent" icon="sap-icon://filter" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                                         <Button text="" type="Transparent" icon="sap-icon://group-2" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                                         <ToggleButton tooltip="Ocultar informações atuais" type="Transparent" icon="sap-icon://hide" pressed="{view>/ocultarInformacoesAtuais}"/>
-                                        <sim:ButtonPopover type="Emphasized" icon="sap-icon://add" placement="Left" visible="{= ${tipoNegociacao/ID} !== 'A' }">
+                                        <sim:ButtonPopover type="Emphasized" icon="sap-icon://add" placement="Left" visible="{tipoNegociacao/TemCombinacaoItems}">
                                             <core:Fragment fragmentName="simplifique.telaneg.view.AdicionarItem" type="XML" />
                                         </sim:ButtonPopover>
-                                        <sim:ButtonPopover type="Emphasized" icon="sap-icon://add" placement="Left" visible="{= ${tipoNegociacao/ID} === 'A' }">
+                                        <sim:ButtonPopover type="Emphasized" icon="sap-icon://add" placement="Left" visible="{tipoNegociacao/TemUploadItems}">
                                             <core:Fragment fragmentName="simplifique.telaneg.view.UploadItemsTabela" type="XML" />
                                         </sim:ButtonPopover>
                                         <Button text="" type="" icon="sap-icon://delete" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onTableDelete"/>
@@ -177,7 +177,7 @@
                                     <footer/>
                                 </Column>
 
-                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false" visible="{tipoNegociacao/ExibirVariacao}">
                                     <header>
                                         <Text text="Variação" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                                     </header>
@@ -227,7 +227,7 @@
                                     <footer/>
                                 </Column>
 
-                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false" visible="{tipoNegociacao/TemAprovacaoItems}">
                                     <header>
                                         <Text text="Estado" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                                     </header>
@@ -277,7 +277,7 @@
 
                                         </VBox>
 
-                                        <VBox alignItems="End">
+                                        <VBox alignItems="End" visible="{negociacao/tipoNegociacao/ExibirVariacao}">
 
                                             <ObjectNumber
                                                 number="{
@@ -446,7 +446,7 @@
 
                                         </VBox>
 
-                                        <Switch type="AcceptReject" state="{Aprovado}" />
+                                        <Switch type="AcceptReject" state="{Aprovado}" visible="{tipoNegociacao/TemAprovacaoItems}"/>
 
                                     </cells>
                                 </ColumnListItem>

@@ -4,6 +4,7 @@
     keyboardMode="Edit"
     alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'materiaisNaoCadastrados', templateShareable:true}"
     id="materiaisNegociacaoTable" mode="MultiSelect" 
+    visible="{tipoNegociacao/TemCriacaoNaoCadastrados}"
     >
         <headerToolbar>
             <Toolbar width="auto" height="46px" design="Transparent" visible="true" enabled="true">

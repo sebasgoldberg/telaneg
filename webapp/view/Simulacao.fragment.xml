@@ -20,7 +20,7 @@
 
         <layout:VerticalLayout
                 class="sapUiMediumMarginEnd">
-    <Label text="Volume"/>
+    <Label text="Volume" visible="{negociacao/tipoNegociacao/ExibirVolume}"/>
             <Input value="{
                 path: 'simulacao/Volumem',
                 type: 'sap.ui.model.odata.type.Decimal',

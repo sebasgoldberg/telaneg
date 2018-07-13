@@ -9,7 +9,6 @@
         placement="Top" >
 
         <beginButton>
-            <Button type="Emphasized" text="Upload" press="onUploadItemsTabela" />
         </beginButton>
         <endButton>
             <Button text="Fechar" press="onFecharPopoverUploadTabela" />

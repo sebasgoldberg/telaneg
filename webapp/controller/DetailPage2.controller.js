@@ -15,7 +15,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
             var oParams = {
                 //"expand": "material,fornecedor,centro,simulacao,impostosEntrada,impostosSaida,informacao,contrato,stock,nossoPricing,vendaActual,vendaAnterior,categoryReview"
-                "expand": "material,fornecedor,simulacao,impostosEntrada,impostosSaida,informacao"
+                "expand": "material,fornecedor,simulacao,impostosEntrada,impostosSaida,informacao,negociacao,negociacao/tipoNegociacao"
             };
 
             this.sContext = sPath;

@@ -40,7 +40,7 @@
                         <footer/>
                     </Column>
 
-                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false" visible="{negociacao/tipoNegociacao/ExibirVolume}">
                         <header>
                             <Text text="Volume [UN]" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
                         </header>
@@ -119,6 +119,7 @@
                                 constraints: { scale: 2 }
                                 }"
                                 submit="realizarSimulacaoSubitem"
+                                visible="{negociacao/tipoNegociacao/ExibirVolume}"
                                 />
 
 
