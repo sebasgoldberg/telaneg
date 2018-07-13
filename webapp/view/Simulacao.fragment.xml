@@ -36,7 +36,9 @@
         </layout:VerticalLayout>
 
         <layout:VerticalLayout
-                class="sapUiMediumMarginEnd">
+                class="sapUiMediumMarginEnd"
+                visible="{negociacao/tipoNegociacao/ExibirVolume}"
+                >
     <Label text="Recomposição"/>
             <Input value="{
                 path: 'simulacao/Recomposicao',
@@ -50,7 +52,9 @@
         </layout:VerticalLayout>
 
         <layout:VerticalLayout
-                class="sapUiMediumMarginEnd">
+                class="sapUiMediumMarginEnd"
+                visible="{negociacao/tipoNegociacao/ExibirVolume}"
+                >
       <Label text="Desconto" />
                 <Input value="{
                     path: 'simulacao/Desconto',
@@ -64,7 +68,9 @@
         </layout:VerticalLayout>
 
         <layout:VerticalLayout
-                class="sapUiMediumMarginEnd">
+                class="sapUiMediumMarginEnd"
+                visible="{negociacao/tipoNegociacao/ExibirVolume}"
+                >
       <Label text="Despesas Acessorias" />
                 <Input value="{
                     path: 'simulacao/DespesasAcessorias',
