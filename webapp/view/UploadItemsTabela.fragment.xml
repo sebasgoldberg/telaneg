@@ -5,7 +5,7 @@
         title="Upload Items Tabela"
         class="sapUiPopupWithPadding"
         contentWidth="300px"
-        contentHeight="100px"
+        contentHeight="200px"
         placement="Top" >
 
         <beginButton>
@@ -21,6 +21,7 @@
                 tooltip="Upload Items Tabela"
                 change="onUploadItemsTabela"
                 />
+            <Text text='O arquivo deve ser de texto separado por tabuladores, e não deve conter cabeçalho. As colunas devem ser as seguintes: 1) Codigo de Fornecedor, 2) Codigo de Material, 3) Centro de Referencia, 4) Preço de Compra.'/>
         </content>
     </ResponsivePopover>
 

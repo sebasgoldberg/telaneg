@@ -25,7 +25,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                 if (this.sContext) {
                     oPath = {
                         path: "/" + this.sContext,
-                        parameters: oParams
+                        parameters: oParams,
                     };
                     this.getView().bindObject(oPath);
                 }
@@ -264,33 +264,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             this.getView().setModel(new JSONModel({
                 SelecaoLivre: {
                     itens: [],
-                    },
+                },
                 ocultarInformacoesAtuais: false,
                 }), 'view');
-            //this.createAddItemManager();
-            //@todo Mudar para serviço OData
-            let de = new Date();
-            de.setDate((new Date()).getDate()-5);
-            let ate = new Date();
-            ate.setDate((new Date()).getDate()+25);
-            let listasFornecedores = new sap.ui.model.json.JSONModel({
-                GrupoListaSet: [
-                    {
-                        ID: 'L01',
-                        Fornecedor: 'CARLA BEATRIZ ALMEIDA SANTOS',
-                        Centro: 'BVBA',
-                        GrupoCompra: 'Limpeza',
-                        DataDe: de,
-                        DataAte: ate,
-                        produtos: [
-                            {ID: 'P1', Nome: 'Produto 1'},
-                            {ID: 'P1', Nome: 'Produto 1'},
-                            {ID: 'P1', Nome: 'Produto 1'},
-                        ]
-                    },
-                ]
-                });
-            this.getView().setModel(listasFornecedores, 'listas');
             this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
             this.oRouter.getTarget("DetailPage1").attachDisplay(jQuery.proxy(this.handleRouteMatched, this));
 
@@ -442,30 +418,69 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
                 });
         },
 
-        onUploadItemsTabela: function(oEvent) {
+        uploadItensTabela: function(oFile) {
+            return new Promise( (resolve, reject) => {
+                let v = this.getView();
+                let m = v.getModel();
+
+                const reader = new FileReader();
+
+                reader.onload = (event) => {
+                    const file = event.target.result;
+                    const allLines = file.split(/\r\n|\n/);
+
+                    let oNegociacao = v.getBindingContext().getObject();
+                    let sPathNegociacao = v.getBindingContext().getPath();
+
+                    allLines.forEach((line, index) => {
+                        m.createEntry(
+                            `${sPathNegociacao}/fileLineItems/`, 
+                            {
+                                properties: {
+                                    LineNumber: index,
+                                    Content: line
+                                    },
+                                error: (...args) => reject(args),
+                            });
+                    });
+
+                    m.submitChanges({
+                        success:  (...args) => resolve(args),
+                        error: (...args) => reject(args),
+                        });
+
+                };
+
+                reader.onerror = (...args) => {
+                    reject(args);
+                };
+
+                reader.readAsText(oFile);
+
+                });
+        },
+
+        onUploadItemsTabela: async function(oEvent) {
             let oFile = oEvent.getParameters().files[0];
 
             if (!oFile)
                 return;
 
-            const reader = new FileReader();
+            let v = this.getView();
+            let m = v.getModel();
 
-            reader.onload = (event) => {
-                const file = event.target.result;
-                const allLines = file.split(/\r\n|\n/);
-                // Reading line by line
-                allLines.forEach((line) => {
-                    console.log(line);
-                });
-            };
-
-            reader.onerror = (event) => {
-                alert(event.target.error.name);
-            };
-
-            reader.readAsText(oFile);
-
-            this.getView().byId('popoverUploadTabela').close();
+            try {
+                this.setBusy();
+                await this.uploadItensTabela(oFile);
+                m.refresh();
+            } catch (e) {
+                console.error(e);
+                m.resetChanges();
+            } finally {
+                this.setFree();
+                this.getView().byId('popoverUploadTabela').close();
+                v.byId('fileUploaderTabela').setValue('');
+            }
         },
 
         onFecharPopoverUploadTabela: function() {

@@ -15,12 +15,15 @@
                 fieldWidth="70%"
                 description="BRL"
                 submit="realizarSimulacao"
+                enabled="{negociacao/tipoNegociacao/PrecoCompraEditavel}"
                 />
         </layout:VerticalLayout>
 
         <layout:VerticalLayout
-                class="sapUiMediumMarginEnd">
-    <Label text="Volume" visible="{negociacao/tipoNegociacao/ExibirVolume}"/>
+                class="sapUiMediumMarginEnd"
+                visible="{negociacao/tipoNegociacao/ExibirVolume}"
+                >
+    <Label text="Volume"/>
             <Input value="{
                 path: 'simulacao/Volumem',
                 type: 'sap.ui.model.odata.type.Decimal',

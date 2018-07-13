@@ -262,6 +262,7 @@
                                                 type: 'sap.ui.model.odata.type.Decimal',
                                                 constraints: { scale: 2 }
                                                 }"
+                                                enabled="{negociacao/tipoNegociacao/PrecoCompraEditavel}"
                                                 />
 
                                             <ObjectNumber
