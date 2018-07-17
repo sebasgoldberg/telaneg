@@ -32,7 +32,7 @@
                 class="sapUiMediumMarginEnd">
             <Label text="IPI"/>
             <Input
-                enabled="{= ${material/Type} === 'N'}" 
+                enabled="{=!${ImpostosCadastrados}}" 
                 value="{path: 'impostosEntrada/IPI', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
                 description="%"/>
         </l:VerticalLayout>
@@ -41,7 +41,7 @@
                 class="sapUiMediumMarginEnd">
             <Label text="ICMS"/>
             <Input
-                enabled="{= ${material/Type} === 'N'}" 
+                enabled="{=!${ImpostosCadastrados}}" 
                 value="{path: 'impostosEntrada/ICMS', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
                 description="%"/>
         </l:VerticalLayout>
@@ -50,7 +50,7 @@
                 class="sapUiMediumMarginEnd">
             <Label text="Base Rzd. ICMS"/>
             <Input
-                enabled="{= ${material/Type} === 'N'}" 
+                enabled="{=!${ImpostosCadastrados}}" 
                 value="{path: 'impostosEntrada/BaseReduzidaICMS', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
                 description="%"/>
         </l:VerticalLayout>
@@ -59,7 +59,7 @@
                 class="sapUiMediumMarginEnd">
             <Label text="PIS"/>
             <Input
-                enabled="{= ${material/Type} === 'N'}" 
+                enabled="{=!${ImpostosCadastrados}}" 
                 value="{path: 'impostosEntrada/PIS', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
                 description="%"/>
         </l:VerticalLayout>
@@ -68,7 +68,7 @@
                 class="sapUiMediumMarginEnd">
             <Label text="COFINS"/>
             <Input
-                enabled="{= ${material/Type} === 'N'}" 
+                enabled="{=!${ImpostosCadastrados}}" 
                 value="{path: 'impostosEntrada/COFINS', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
                 description="%"/>
         </l:VerticalLayout>
@@ -77,7 +77,7 @@
                 class="sapUiMediumMarginEnd">
             <Label text="ST"/>
             <Input
-                enabled="{= ${material/Type} === 'N'}" 
+                enabled="{=!${ImpostosCadastrados}}" 
                 value="{path: 'impostosEntrada/ST', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
                 description="%"/>
         </l:VerticalLayout>
@@ -86,7 +86,7 @@
                 class="sapUiMediumMarginEnd">
             <Label text="PAUTA"/>
             <Input
-                enabled="{= ${material/Type} === 'N'}" 
+                enabled="{=!${ImpostosCadastrados}}" 
                 value="{path: 'impostosEntrada/PAUTA', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
                 description="%"/>
         </l:VerticalLayout>
@@ -95,7 +95,7 @@
                 class="sapUiMediumMarginEnd">
             <Label text="MVA"/>
             <Input
-                enabled="{= ${material/Type} === 'N'}" 
+                enabled="{=!${ImpostosCadastrados}}" 
                 value="{path: 'impostosEntrada/MVA', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
                 description="%"/>
         </l:VerticalLayout>
@@ -118,7 +118,7 @@
                 class="sapUiMediumMarginEnd">
             <Label text="ICMS"/>
             <Input
-                enabled="{= ${material/Type} === 'N'}" 
+                enabled="{=!${ImpostosCadastrados}}" 
                 value="{path: 'impostosSaida/ICMS', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
                 description="%"/>
         </l:VerticalLayout>
@@ -127,7 +127,7 @@
                 class="sapUiMediumMarginEnd">
             <Label text="PIS"/>
             <Input
-                enabled="{= ${material/Type} === 'N'}" 
+                enabled="{=!${ImpostosCadastrados}}" 
                 value="{path: 'impostosSaida/PIS', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
                 description="%"/>
         </l:VerticalLayout>
@@ -136,7 +136,7 @@
                 class="sapUiMediumMarginEnd">
             <Label text="COFINS"/>
             <Input
-                enabled="{= ${material/Type} === 'N'}" 
+                enabled="{=!${ImpostosCadastrados}}" 
                 value="{path: 'impostosSaida/COFINS', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
                 description="%"/>
         </l:VerticalLayout>
