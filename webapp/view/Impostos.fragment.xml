@@ -5,7 +5,7 @@
         class="sapUiPopupWithPadding"
         contentWidth="360px"
         contentHeight="420px"
-        placement="Bottom" >
+        placement="Left" >
 
 		<beginButton>
 		</beginButton>

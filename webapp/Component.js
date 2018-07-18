@@ -3,8 +3,9 @@ sap.ui.define([
 	"sap/ui/Device",
 	"simplifique/telaneg/model/models",
 	"simplifique/telaneg/controller/ErrorHandler",
+	"simplifique/telaneg/controller/ImpostosPopover",
     "simplifique/telaneg/lib/polyfill",
-], function(UIComponent, Device, models, ErrorHandler, babelPolyfill) {
+], function(UIComponent, Device, models, ErrorHandler, ImpostosPopover, babelPolyfill) {
 	"use strict";
 
 	var navigationWithContext = {
@@ -89,7 +90,13 @@ sap.ui.define([
 			this.getRouter().initialize();
 
             this.getModel().attachPropertyChange(oEvent => this.save());
+
+            this._impostosPopover = new ImpostosPopover(this.getRootControl());
 		},
+
+        getImpostosPopover: function() {
+            return this._impostosPopover;
+        },
 
 		/**
 		 * The component is destroyed by UI5 automatically.

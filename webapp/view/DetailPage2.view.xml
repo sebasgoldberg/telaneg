@@ -34,8 +34,10 @@
                 </uxap:snappedContent>
 
                 <uxap:actions>
+                <!--
                     <uxap:ObjectPageHeaderActionButton text="Impostos" type="Emphasized" hideText="false"
                         press="onPressImpostos"/>
+                -->
                 </uxap:actions>
 
             </uxap:ObjectPageDynamicHeaderTitle>

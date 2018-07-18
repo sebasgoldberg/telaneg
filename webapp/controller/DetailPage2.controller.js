@@ -15,7 +15,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
 
             var oParams = {
                 //"expand": "material,fornecedor,centro,simulacao,impostosEntrada,impostosSaida,informacao,contrato,stock,nossoPricing,vendaActual,vendaAnterior,categoryReview"
-                "expand": "material,fornecedor,simulacao,impostosEntrada,impostosSaida,informacao,negociacao,negociacao/tipoNegociacao"
+                "expand": "material,fornecedor,simulacao,informacao,negociacao,negociacao/tipoNegociacao"
             };
 
             this.sContext = sPath;
@@ -351,20 +351,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
         },
 
         onPressImpostos: function(oEvent) {
-            if (!this.popoverImpostos){
-                this.popoverImpostos = sap.ui.xmlfragment("simplifique.telaneg.view.Impostos", this);
-                this.getView().addDependent(this.popoverImpostos);
-            }
-            if (this.popoverImpostos.isOpen())
-                this.popoverImpostos.close()
-            else{
-                let oButton = oEvent.getSource();
-                this.popoverImpostos.openBy(oButton);
-            }
-        },
-
-        onFecharPopoverImpostos: function() {
-            this.popoverImpostos.close();
+            let bc = oEvent.getSource().getBindingContext();
+            this.getOwnerComponent().getImpostosPopover()
+                .open(bc.getPath(), oEvent.getSource());
         },
 
 

@@ -2,7 +2,7 @@
 
            <Table 
             keyboardMode="Edit"
-            alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'subitems', templateShareable:true, parameters:{expand:'material,informacao,canal'} }"
+            alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'subitems', templateShareable:true, parameters:{expand:'material,informacao,canal,impostosEntrada,impostosSaida'} }"
            id="subitemsList"
            >
            <!--
@@ -97,9 +97,16 @@
                         <footer/>
                     </Column>
 
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Impostos" width="auto" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+
                 </columns>
                 <items>
-                    <ColumnListItem type='Active'>
+                    <ColumnListItem >
                         <cells>
                             <ObjectIdentifier title="{CentroID}" text="" titleActive="false" visible="true"/>
                             <ObjectIdentifier title="{canal/Nome}" text="" titleActive="false" visible="true"/>
@@ -273,6 +280,10 @@
                                     />
 
                             </VBox>
+
+                            <Button tooltip="Modificar Impostos" icon="sap-icon://edit"
+                                type="Emphasized"
+                                press="onPressImpostos"/>
 
                         </cells>
                     </ColumnListItem>

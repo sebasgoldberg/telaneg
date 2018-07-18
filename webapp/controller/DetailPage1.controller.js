@@ -503,5 +503,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller",
             this.popoverSubitems.close();
         },
 
+        onPressImpostos: function(oEvent) {
+            let bc = oEvent.getSource().getBindingContext();
+            this.getOwnerComponent().getImpostosPopover()
+                .open(bc.getPath(), oEvent.getSource());
+        },
+
     });
 }, /* bExport= */ true);
