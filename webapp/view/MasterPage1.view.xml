@@ -29,7 +29,7 @@
                             }"
                         type="Active" selected="false" showMarkers="false" press="_onObjectListItemPress">
                         <attributes>
-                            <ObjectAttribute title="" text="{path: 'Data', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}" active="false" />
+                            <ObjectAttribute title="{Usuario}" text="{path: 'Data', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}" active="false" />
                             <ObjectAttribute title="" text="{Status}" active="false" />
                         </attributes>
                         <firstStatus>
