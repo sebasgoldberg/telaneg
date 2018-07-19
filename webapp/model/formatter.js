@@ -80,7 +80,7 @@ sap.ui.define([
                     return 'sap-icon://citizen-connect';
 
                 case 'C':
-                    return 'sap-icon://energy-saving-lightbulb';
+                    return 'sap-icon://waiver'
 
                 default:
                     return '';                    
