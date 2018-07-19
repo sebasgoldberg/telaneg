@@ -1,7 +1,11 @@
 <mvc:View xmlns:sim="simplifique.telaneg.control" xmlns:mvc="sap.ui.core.mvc" controllerName="simplifique.telaneg.controller.DetailPage1" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core">
     <Page title="{Descricao}" showHeader="true" showFooter="true" showNavButton="false">
         <content>
-           <ObjectHeader intro="{ID} [{tipoNegociacao/Descricao}] [{bandeira/Nome}]" title="{Descricao}" icon=""
+           <ObjectHeader intro="{ID} [{bandeira/Nome}]" title="{Descricao}"
+                icon="{
+                    path: 'tipoNegociacao/ID',
+                    formatter: '.formatter.tipoNegociacaoIcon'
+                    }"
                 number="{
                     path: 'Margem2',
                     type: 'sap.ui.model.odata.type.Decimal',

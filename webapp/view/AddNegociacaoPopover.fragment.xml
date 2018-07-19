@@ -29,6 +29,10 @@
                         id="tiposList"
                         items="{/TipoNegociacaoSet}" >
                         <StandardListItem
+                            icon="{
+                                path: 'ID',
+                                formatter: '.formatter.tipoNegociacaoIcon'
+                                }"
                             title="{ID}"
                             description="{Descricao}"
                             type="Active"

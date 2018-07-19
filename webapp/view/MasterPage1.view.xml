@@ -16,7 +16,11 @@
                     }">
                 <infoToolbar />
                 <items>
-                    <ObjectListItem intro="{ID} [{tipoNegociacao/Descricao}] [{bandeira/Nome}]" title="{Descricao}"
+                    <ObjectListItem intro="{ID} [{bandeira/Nome}]" title="{Descricao}"
+                        icon="{
+                            path: 'tipoNegociacao/ID',
+                            formatter: '.formatter.tipoNegociacaoIcon'
+                            }"
                         number="{
                             path: 'Margem2',
                             type: 'sap.ui.model.odata.type.Decimal',

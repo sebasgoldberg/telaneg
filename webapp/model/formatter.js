@@ -71,6 +71,22 @@ sap.ui.define([
             return successIfGteElseError(x1, x2);
         },
 
+        tipoNegociacaoIcon: function(tipoNegociacaoID){
+            switch (tipoNegociacaoID) {
+                case 'A':
+                    return 'sap-icon://table-view';
+
+                case 'B':
+                    return 'sap-icon://citizen-connect';
+
+                case 'C':
+                    return 'sap-icon://energy-saving-lightbulb';
+
+                default:
+                    return '';                    
+            }
+        },
+
         warningIfSecondLowThanFirst: function(firstValue, secondValue) {
             try {
                 checkNotEmpty(firstValue);
