@@ -2,6 +2,7 @@
     <Page title="{Descricao}" showHeader="true" showFooter="true" showNavButton="false">
         <content>
            <ObjectHeader intro="{ID} [{bandeira/Nome}]" title="{Descricao}"
+                responsive="true"
                 icon="{
                     path: 'tipoNegociacao/ID',
                     formatter: '.formatter.tipoNegociacaoIcon'
