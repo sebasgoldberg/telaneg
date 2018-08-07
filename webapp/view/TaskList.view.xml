@@ -6,8 +6,12 @@
                     <Title text="{Descricao}"/>
                 </f:heading>
                 <f:actions>
-                    <ToolbarSpacer/>
+
+                    <Button text="Copiar" icon="sap-icon://add-coursebook" press=""/>
+                    <Button text="Novo Acordo" icon="sap-icon://add" press=""/>
+
                     <!--
+                    <ToolbarSpacer/>
                     <Button icon="sap-icon://action" type="Transparent"/>
                     -->
                 </f:actions>
@@ -17,11 +21,11 @@
             <f:DynamicPageHeader pinnable="true">
                 <f:content>
                     
-                    <fb:FilterBar id="ListReportFilterBar" useToolbar="false" showGoOnFB="true" searchEnabled="true" showFilterConfiguration="false">
+                    <fb:FilterBar id="ListReportFilterBar" useToolbar="true" showGoOnFB="true" searchEnabled="true" showFilterConfiguration="true">
                         <fb:filterItems>
                             <fb:FilterItem label="Descrição" name="descricaoFilter">
                                 <fb:control>
-                                    <SearchField value="{view>/filter/descricao}"/>
+                                    <Input text="{view>/filter/descricao}"/>
                                 </fb:control>
                             </fb:FilterItem>
                             <fb:FilterItem label="Status" name="statusFilter">
@@ -44,8 +48,9 @@
                                         enableMultiLineMode="true"
                                         suggest="suggestFornecedores"
                                         suggestionItems="{/FornecedorSet}"
+                                        maxSuggestionWidth="500px"
                                         showValueHelp="false">
-                                        <core:Item key="{ID}" text="(ID) {Nome} [{UF}]" />
+                                        <core:ListItem key="{ID}" text="{Nome}" additionalText="{ID}" />
                                     </MultiInput>
 
                                 </fb:control>
@@ -112,28 +117,12 @@
         <f:content>
             <VBox fitContainer="true">
                 <items>
-                    <Table width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" mode="SingleSelectLeft" updateFinished="_onFioriListReportTableUpdateFinished" items="{path:'/NegociacaoSellinSet', templateShareable:true}">
+                    <Table width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" mode="SingleSelectLeft" updateFinished="_onFioriListReportTableUpdateFinished" items="{path:'/NegociacaoSet', templateShareable:true}">
                         <headerToolbar>
                             <OverflowToolbar design="Transparent">
                                 <content>
-                                    <Title textAlign="Begin" text="Negociações Sell-out"/>
-                                    <Title text="(1)"/>
+                                    <Title textAlign="Begin" text="Documentos de {Descricao}"/>
                                     <ToolbarSpacer/>
-                                    <Button text="Copiar" icon="sap-icon://add-coursebook" iconFirst="true" type="Transparent" enabled="true" press="_onFioriListReportActionButtonPress">
-                                        <layoutData>
-                                            <OverflowToolbarLayoutData moveToOverflow="true"/>
-                                        </layoutData>
-                                    </Button>
-                                    <Button text="Novo Acordo" icon="sap-icon://add" iconFirst="true" type="Transparent" enabled="true" press="_onFioriListReportActionButtonPress1">
-                                        <layoutData>
-                                            <OverflowToolbarLayoutData moveToOverflow="true"/>
-                                        </layoutData>
-                                    </Button>
-                                    <Button icon="sap-icon://action-settings" type="Transparent">
-                                        <layoutData>
-                                            <OverflowToolbarLayoutData moveToOverflow="true"/>
-                                        </layoutData>
-                                    </Button>
                                 </content>
                             </OverflowToolbar>
                         </headerToolbar>
