@@ -1,0 +1,214 @@
+<mvc:View controllerName="simplifique.telaneg.controller.TaskList" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns:variants="sap.ui.comp.variants" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core">
+    <f:DynamicPage headerExpanded="true" showFooter="false" class="sapUiSizeCompact">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="{Descricao}"/>
+                </f:heading>
+                <f:actions>
+                    <ToolbarSpacer/>
+                    <!--
+                    <Button icon="sap-icon://action" type="Transparent"/>
+                    -->
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <f:content>
+                    
+                    <fb:FilterBar id="ListReportFilterBar" useToolbar="false" showGoOnFB="true" searchEnabled="true" showFilterConfiguration="false">
+                        <fb:filterItems>
+                            <fb:FilterItem label="Descrição" name="descricaoFilter">
+                                <fb:control>
+                                    <SearchField value="{view>/filter/descricao}"/>
+                                </fb:control>
+                            </fb:FilterItem>
+                            <fb:FilterItem label="Status" name="statusFilter">
+                                <fb:control>
+
+                                    <MultiComboBox
+                                        width="1000px"
+                                        enableMultiLineMode="true"
+                                        items="{/StatusSet}">
+                                        <core:Item key="{ID}" text="{Descricao}" />
+                                    </MultiComboBox>
+
+                                </fb:control>
+                            </fb:FilterItem>
+                            <fb:FilterItem label="Fornecedor" name="fornecedorFilter">
+                                <fb:control>
+
+                                    <MultiInput 
+                                        id="multiInput"
+                                        enableMultiLineMode="true"
+                                        suggest="suggestFornecedores"
+                                        suggestionItems="{/FornecedorSet}"
+                                        showValueHelp="false">
+                                        <core:Item key="{ID}" text="(ID) {Nome} [{UF}]" />
+                                    </MultiInput>
+
+                                </fb:control>
+                            </fb:FilterItem>
+                            <fb:FilterItem label="Vencimento" name="vencimentoFilter">
+                                <fb:control>
+                                    <DateRangeSelection
+                                        id="DRS2"
+                                        dateValue="{view>/filter/dataDe}"
+                                        secondDateValue="{view>/filter/dataAte}"
+                                        change="handleChange"
+                                    />
+                                </fb:control>
+                            </fb:FilterItem>
+                        </fb:filterItems>
+                    </fb:FilterBar>
+
+                    <!--
+                    <FacetFilter
+                        id="idFacetFilter"
+                        type="Simple"
+                        showPersonalization="true"
+                        showReset="true"
+                        reset="handleFacetFilterReset"
+                        confirm="handleConfirm"
+                        lists="">
+                        <lists>
+                            <FacetFilterList
+                                title="Status"
+                                key="status"
+                                mode="MultiSelect"
+                                items="{path:'/StatusSet/', templateShareable: 'true'}"
+                                >
+                                <items>
+                                    <FacetFilterItem
+                                        text="{Descricao}"
+                                        key="{ID}"
+                                        />
+                                </items>
+                            </FacetFilterList>
+                            <FacetFilterList
+                                title="Fornecedor"
+                                key="fornecedor"
+                                mode="MultiSelect"
+                                items="{path:'/FornecedorSet', templateShareable: 'true'}"
+                                growing='true'
+                                growingThreshold='15'
+                                growingScrollToLoad='true'
+                                >
+                                <items>
+                                    <FacetFilterItem
+                                        text="{Nome} [{UF}]"
+                                        key="{ID}"
+                                        />
+                                </items>
+                            </FacetFilterList>
+                        </lists>
+                    </FacetFilter>
+                    -->
+
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <VBox fitContainer="true">
+                <items>
+                    <Table width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" mode="SingleSelectLeft" updateFinished="_onFioriListReportTableUpdateFinished" items="{path:'/NegociacaoSellinSet', templateShareable:true}">
+                        <headerToolbar>
+                            <OverflowToolbar design="Transparent">
+                                <content>
+                                    <Title textAlign="Begin" text="Negociações Sell-out"/>
+                                    <Title text="(1)"/>
+                                    <ToolbarSpacer/>
+                                    <Button text="Copiar" icon="sap-icon://add-coursebook" iconFirst="true" type="Transparent" enabled="true" press="_onFioriListReportActionButtonPress">
+                                        <layoutData>
+                                            <OverflowToolbarLayoutData moveToOverflow="true"/>
+                                        </layoutData>
+                                    </Button>
+                                    <Button text="Novo Acordo" icon="sap-icon://add" iconFirst="true" type="Transparent" enabled="true" press="_onFioriListReportActionButtonPress1">
+                                        <layoutData>
+                                            <OverflowToolbarLayoutData moveToOverflow="true"/>
+                                        </layoutData>
+                                    </Button>
+                                    <Button icon="sap-icon://action-settings" type="Transparent">
+                                        <layoutData>
+                                            <OverflowToolbarLayoutData moveToOverflow="true"/>
+                                        </layoutData>
+                                    </Button>
+                                </content>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column width="auto" minScreenWidth="Phone">
+                                <header>
+                                    <Text text="Número" width="auto"/>
+                                </header>
+                            </Column>
+                            <Column width="auto" minScreenWidth="Desktop" demandPopin="true">
+                                <header>
+                                    <Text text="Fornecedor" width="auto"/>
+                                </header>
+                            </Column>
+                            <Column width="auto" minScreenWidth="Phone">
+                                <header>
+                                    <Text text="Nome" width="auto"/>
+                                </header>
+                            </Column>
+                            <Column width="200px" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                <header>
+                                    <Text text="Descrição"/>
+                                </header>
+                            </Column>
+                            <Column width="auto" minScreenWidth="Phone">
+                                <header>
+                                    <Text text="Vencimento" width="auto"/>
+                                </header>
+                            </Column>
+                            <Column width="auto" minScreenWidth="Desktop" demandPopin="true">
+                                <header>
+                                    <Text text="Status" width="auto"/>
+                                </header>
+                            </Column>
+                            <Column width="auto" hAlign="Right" minScreenWidth="Desktop" demandPopin="true">
+                                <header>
+                                    <Text text="Bonificação" width="auto"/>
+                                </header>
+                            </Column>
+                            <Column width="auto" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                <header>
+                                    <Text text="St. Fin."/>
+                                </header>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem type="Active">
+                                <cells>
+                                    <Link text="{Numero}" press="_onFioriListReportUrlColumnPress"/>
+                                    <ObjectStatus text="{Fornecedor}" width="auto"/>
+                                    <ObjectStatus text="{Comprador}" width="auto"/>
+                                    <Text text="{Descricao}" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                    <ObjectStatus text="{DataCriacao}" width="auto"/>
+                                    <ObjectStatus text="{Status}" width="auto"/>
+                                    <HBox alignItems="Stretch" justifyContent="End" alignContent="Stretch">
+                                        <items>
+                                            <ObjectNumber number="{path:'Bonificacao', formatter:'.formatFractionDigitFromValue'}" unit="BRL" emphasized="false"/>
+                                        </items>
+                                    </HBox>
+                                    <Text text="{StFinanceiro}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </items>
+            </VBox>
+        </f:content>
+        <f:footer>
+            <OverflowToolbar design="auto">
+                <content>
+                    <ToolbarSpacer/>
+                    <Button text="Save" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                    <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
+                </content>
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

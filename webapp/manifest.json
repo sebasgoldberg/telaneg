@@ -127,21 +127,20 @@
                     "viewLevel": 3,
                     "transition": "slide"
                 },
-                "TestPage": {
-                    "viewName": "TestPage",
-                    "viewId": "TestPage",
+                "TaskList":{
+                    "viewName": "TaskList",
+                    "viewId": "TaskList",
                     "viewLevel": 1,
+                    "transition": "slide"
+                },
+                "TaskDetail":{
+                    "viewName": "TaskDetail",
+                    "viewId": "TaskDetail",
+                    "viewLevel": 2,
                     "transition": "slide"
                 }
             },
             "routes": [
-                {
-                    "pattern": "TestPage",
-                    "name": "TestPage",
-                    "target": [
-                        "TestPage"
-                    ]
-                },
                 {
                     "pattern": "MasterPage1",
                     "name": "MasterPage1",
@@ -161,6 +160,20 @@
                     "name": "DetailPage2",
                     "target": [
                         "DetailPage2"
+                    ]
+                },
+                {
+                    "pattern": "TaskList/{tipoNegociacaoID}",
+                    "name": "TaskList",
+                    "target": [
+                        "TaskList"
+                    ]
+                },
+                {
+                    "pattern": "TaskDetail/{negociacaoID}",
+                    "name": "DetailPage2",
+                    "target": [
+                        "TaskDetail"
                     ]
                 },
                 {
