@@ -1,4 +1,4 @@
-import Controller from "sap/ui/core/mvc/Controller";
+import Controller from 'simplifique/telaneg/controller/BaseController';
 import formatter from 'simplifique/telaneg/model/formatter';
 import Filter from 'sap/ui/model/Filter';
 import FilterOperator from 'sap/ui/model/FilterOperator';
@@ -10,14 +10,22 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
     onInit: function(){
 
+        Controller.prototype.onInit.call(this);
+
         let v = this.getView();
         v.setModel(new JSONModel({
             filter: {
-                descricao: '',
+                descricao: null,
                 status: [],
                 dataDe: null,
                 dataAte: null,
-            }
+            },
+            novoAcordo: {
+                isCriacaoPossivel: false,
+                fornecedor: null,
+                bandeira: null,
+                tipoAbrangencia: null,
+            },
         }), 'view');
 
         this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
@@ -57,16 +65,12 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         if (filter.descricao)
             aFilters.push(new Filter('Descricao', FilterOperator.Contains, filter.descricao));
 
-        let aFiltersStatus = filter.status.map( statusID => 
-            new Filter('Status', FilterOperator.EQ, statusID));
-        if (aFiltersStatus.length > 0) 
-            aFilters.push(new Filter({filters: aFiltersStatus, and: false}));
+        filter.status.forEach( statusID => 
+            aFilters.push(new Filter('Status', FilterOperator.EQ, statusID)));
 
         let oMultiInputFornecedor = v.byId('multiInputFornecedor');
-        let aFiltersFornecedor = oMultiInputFornecedor.getTokens().map( oToken => oToken.getBindingContext().getObject() )
-        .map( oFornecedor => new Filter('FornecedorID', FilterOperator.EQ, FornecedorID) )
-        if (aFiltersFornecedor.length > 0)
-            aFilters.push(new Filter({filters: aFiltersStatus, and: false}));
+        oMultiInputFornecedor.getTokens().map( oToken =>
+            aFilters.push(new Filter('FornecedorID', FilterOperator.EQ, oToken.getKey() )));
 
         if (filter.dataDe)
             aFilters.push(new Filter('Data', FilterOperator.BT, filter.dataDe, filter.dataAte));
@@ -107,6 +111,54 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
     },
 
+    _closeNovoAcordoPopOver: function() {
+        this.getView().byId('novoAcordoPopover').close()
+    },
+
+    onCancelCriarAcordo: function() {
+        this._closeNovoAcordoPopOver();
+    },
+
+    createAcordo: function(attribute) {
+        let novoAcordo = this.getModel('view').getData().novoAcordo;
+        return this.createEntry('/NegociacaoSet',{
+            TipoNegociacao: this.sTipoNegociacaoID,
+            FornecedorID: novoAcordo.fornecedor,
+            FornecedorType: 'C', // Cadastrado
+            Bandeira: novoAcordo.bandeira,
+            Abrangencia: ''
+        });
+    },
+
+
+    onCriarAcordo: async function(oEvent) {
+        try {
+            this.setBusy();
+            let result = await this.createAcordo();
+            this._closeNovoAcordoPopOver();
+            this.getModel().refresh();
+            this.getRouter().navTo('DetailPage1', {
+                context: `NegociacaoSet('${result[0].ID}')`,
+            }, false);
+            //@todo Navigate.
+        } catch (e) {
+            this.getModel().resetChanges();
+            console.error(e);
+        } finally{
+            this.setFree();
+        }
+
+
+
+        try {
+            //this.doNavigate('DetailPage1', oContext);
+
+        } catch (e) {
+            console.error(e);
+        } finally{
+            this.setFree();
+        }
+    }
 
 
 });

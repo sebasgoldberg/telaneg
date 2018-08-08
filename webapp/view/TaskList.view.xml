@@ -1,4 +1,13 @@
-<mvc:View controllerName="simplifique.telaneg.controller.TaskList" xmlns:mvc="sap.ui.core.mvc" xmlns:f="sap.f" xmlns:variants="sap.ui.comp.variants" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core">
+<mvc:View
+    xmlns:sim="simplifique.telaneg.control" 
+    controllerName="simplifique.telaneg.controller.TaskList"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:variants="sap.ui.comp.variants"
+    xmlns="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:core="sap.ui.core">
+
     <f:DynamicPage headerExpanded="true" showFooter="false" class="sapUiSizeCompact">
         <f:title>
             <f:DynamicPageTitle>
@@ -8,7 +17,9 @@
                 <f:actions>
 
                     <Button text="Copiar" icon="sap-icon://add-coursebook" press=""/>
-                    <Button text="Novo Acordo" icon="sap-icon://add" press=""/>
+                    <sim:ButtonPopover text="Novo Acordo" icon="sap-icon://add" type="Emphasized" placement="Bottom" >
+                        <core:Fragment fragmentName="simplifique.telaneg.view.NovoAcordoPopover" type="XML" />
+                    </sim:ButtonPopover>
 
                     <!--
                     <ToolbarSpacer/>
