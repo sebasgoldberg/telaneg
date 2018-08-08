@@ -21,17 +21,19 @@
             <f:DynamicPageHeader pinnable="true">
                 <f:content>
                     
-                    <fb:FilterBar id="ListReportFilterBar" useToolbar="true" showGoOnFB="true" searchEnabled="true" showFilterConfiguration="true">
+                    <fb:FilterBar id="ListReportFilterBar" useToolbar="true" showGoOnFB="true" searchEnabled="true" showFilterConfiguration="true"
+                        search="onSearch">
                         <fb:filterItems>
                             <fb:FilterItem label="Descrição" name="descricaoFilter">
                                 <fb:control>
-                                    <Input text="{view>/filter/descricao}"/>
+                                    <Input value="{view>/filter/descricao}"/>
                                 </fb:control>
                             </fb:FilterItem>
                             <fb:FilterItem label="Status" name="statusFilter">
                                 <fb:control>
 
                                     <MultiComboBox
+                                        selectedKeys="{view>/filter/status}"
                                         width="1000px"
                                         enableMultiLineMode="true"
                                         items="{/StatusSet}">
@@ -44,7 +46,7 @@
                                 <fb:control>
 
                                     <MultiInput 
-                                        id="multiInput"
+                                        id="multiInputFornecedor"
                                         enableMultiLineMode="true"
                                         suggest="suggestFornecedores"
                                         suggestionItems="{/FornecedorSet}"
@@ -117,7 +119,9 @@
         <f:content>
             <VBox fitContainer="true">
                 <items>
-                    <Table width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" mode="SingleSelectLeft" updateFinished="_onFioriListReportTableUpdateFinished" items="{path:'/NegociacaoSet', templateShareable:true}">
+                    <Table
+                        id="negociacoesTable"
+                        growing="true" growingScrollToLoad="true" growingThreshold="25" mode="SingleSelectMaster" items="{path:'/NegociacaoSet', templateShareable:true, parameters:{expand:'fornecedor,status'}}">
                         <headerToolbar>
                             <OverflowToolbar design="Transparent">
                                 <content>
@@ -127,42 +131,42 @@
                             </OverflowToolbar>
                         </headerToolbar>
                         <columns>
-                            <Column width="auto" minScreenWidth="Phone">
+                            <Column minScreenWidth="Phone">
                                 <header>
-                                    <Text text="Número" width="auto"/>
+                                    <Text text="Número"/>
                                 </header>
                             </Column>
-                            <Column width="auto" minScreenWidth="Desktop" demandPopin="true">
+                            <Column minScreenWidth="Desktop" demandPopin="true">
                                 <header>
-                                    <Text text="Fornecedor" width="auto"/>
+                                    <Text text="Fornecedor"/>
                                 </header>
                             </Column>
-                            <Column width="auto" minScreenWidth="Phone">
+                            <Column width="20%" minScreenWidth="Phone">
                                 <header>
-                                    <Text text="Nome" width="auto"/>
+                                    <Text text="Nome"/>
                                 </header>
                             </Column>
-                            <Column width="200px" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                            <Column width="20%" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                 <header>
                                     <Text text="Descrição"/>
                                 </header>
                             </Column>
-                            <Column width="auto" minScreenWidth="Phone">
+                            <Column minScreenWidth="Phone">
                                 <header>
-                                    <Text text="Vencimento" width="auto"/>
+                                    <Text text="Data Criação" />
                                 </header>
                             </Column>
-                            <Column width="auto" minScreenWidth="Desktop" demandPopin="true">
+                            <Column minScreenWidth="Desktop" demandPopin="true">
                                 <header>
-                                    <Text text="Status" width="auto"/>
+                                    <Text text="Status" />
                                 </header>
                             </Column>
-                            <Column width="auto" hAlign="Right" minScreenWidth="Desktop" demandPopin="true">
+                            <Column hAlign="Right" minScreenWidth="Desktop" demandPopin="true">
                                 <header>
-                                    <Text text="Bonificação" width="auto"/>
+                                    <Text text="Bonificação" />
                                 </header>
                             </Column>
-                            <Column width="auto" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                            <Column popinDisplay="Inline" demandPopin="true" >
                                 <header>
                                     <Text text="St. Fin."/>
                                 </header>
@@ -171,18 +175,25 @@
                         <items>
                             <ColumnListItem type="Active">
                                 <cells>
-                                    <Link text="{Numero}" press="_onFioriListReportUrlColumnPress"/>
-                                    <ObjectStatus text="{Fornecedor}" width="auto"/>
-                                    <ObjectStatus text="{Comprador}" width="auto"/>
-                                    <Text text="{Descricao}" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                    <ObjectStatus text="{DataCriacao}" width="auto"/>
-                                    <ObjectStatus text="{Status}" width="auto"/>
-                                    <HBox alignItems="Stretch" justifyContent="End" alignContent="Stretch">
-                                        <items>
-                                            <ObjectNumber number="{path:'Bonificacao', formatter:'.formatFractionDigitFromValue'}" unit="BRL" emphasized="false"/>
-                                        </items>
-                                    </HBox>
-                                    <Text text="{StFinanceiro}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                    <Link text="{ID}" press="_onFioriListReportUrlColumnPress"/>
+                                    <ObjectStatus text="{fornecedor/ID}" />
+                                    <ObjectStatus text="{fornecedor/Nome}" wrapping="true" />
+                                    <Text text="{Descricao}"  wrapping="true" />
+                                    <ObjectStatus text="{
+                                        path: 'Data',
+                                        type: 'sap.ui.model.type.Date',
+                                        formatOptions: { UTC: true, style: 'short' }
+                                        }" />
+                                    <ObjectStatus text="{status/Descricao}" />
+                                    <ObjectNumber number="{
+                                        path: 'Bonificacao',
+                                        type: 'sap.ui.model.odata.type.Decimal',
+                                        constraints: { scale: 2 }
+                                        }" unit="BRL" emphasized="false"/>
+                                    <Text text="{
+                                        parts: [ {path: 'status/ID'} ],
+                                        formatter: '.formatter.formatStatusFinancieiro'
+                                        }"  />
                                 </cells>
                             </ColumnListItem>
                         </items>
@@ -191,6 +202,8 @@
             </VBox>
         </f:content>
         <f:footer>
+        </f:footer>
+    </f:DynamicPage>
             <OverflowToolbar design="auto">
                 <content>
                     <ToolbarSpacer/>
@@ -198,6 +211,5 @@
                     <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                 </content>
             </OverflowToolbar>
-        </f:footer>
-    </f:DynamicPage>
+
 </mvc:View>

@@ -98,6 +98,12 @@ sap.ui.define([
             return "None";
         },
 
+        formatStatusFinancieiro: function(sStatusID) {
+            if (sStatusID == 'C')
+                return 'Conciliado';
+            return 'Não Conciliado';
+        },
+
     }
 
 });
