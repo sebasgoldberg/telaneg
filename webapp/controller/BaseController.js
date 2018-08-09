@@ -91,5 +91,8 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         sap.ui.core.BusyIndicator.hide();
     },
 
+    navTo: function(routeName, ...args) {
+        this.getRouter().navTo(routeName, ...args, false);
+    },
 
 });

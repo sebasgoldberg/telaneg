@@ -1,6 +1,6 @@
 <mvc:View
-    xmlns:sim="simplifique.telaneg.control" 
     controllerName="simplifique.telaneg.controller.TaskList"
+    xmlns:sim="simplifique.telaneg.control" 
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:f="sap.f"
     xmlns:variants="sap.ui.comp.variants"
@@ -189,7 +189,7 @@
                         <items>
                             <ColumnListItem type="Active">
                                 <cells>
-                                    <Link text="{ID}" press="_onFioriListReportUrlColumnPress"/>
+                                    <Link text="{ID}" press="onShowDetail"/>
                                     <ObjectStatus text="{fornecedor/ID}" />
                                     <ObjectStatus text="{fornecedor/Nome}" wrapping="true" />
                                     <Text text="{Descricao}"  wrapping="true" />

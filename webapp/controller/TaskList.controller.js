@@ -158,7 +158,12 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         } finally{
             this.setFree();
         }
-    }
+    },
+
+    onShowDetail: function(oEvent) {
+        let sNegociacaoID = oEvent.getSource().getBindingContext().getObject().ID;
+        this.navTo('TaskDetail', {negociacaoID: sNegociacaoID});
+    },
 
 
 });
