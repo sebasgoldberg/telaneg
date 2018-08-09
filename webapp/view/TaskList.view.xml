@@ -32,18 +32,20 @@
             <f:DynamicPageHeader pinnable="true">
                 <f:content>
                     
-                    <fb:FilterBar id="ListReportFilterBar" useToolbar="true" showGoOnFB="true" searchEnabled="true" showFilterConfiguration="true"
-                        search="onSearch">
+                    <fb:FilterBar id="ListReportFilterBar" useToolbar="false" showGoOnFB="true" searchEnabled="true" showFilterConfiguration="false"
+                        search="onSearch"
+                        >
                         <fb:filterItems>
                             <fb:FilterItem label="Descrição" name="descricaoFilter">
                                 <fb:control>
-                                    <Input value="{view>/filter/descricao}"/>
+                                    <SearchField value="{view>/filter/descricao}" search="onSearch"/>
                                 </fb:control>
                             </fb:FilterItem>
                             <fb:FilterItem label="Status" name="statusFilter">
                                 <fb:control>
 
                                     <MultiComboBox
+                                        selectionFinish="onSearch"
                                         selectedKeys="{view>/filter/status}"
                                         width="1000px"
                                         enableMultiLineMode="true"
@@ -57,6 +59,7 @@
                                 <fb:control>
 
                                     <MultiInput 
+                                        submit="onSearch"
                                         id="multiInputFornecedor"
                                         enableMultiLineMode="true"
                                         suggest="suggestFornecedores"
@@ -74,7 +77,7 @@
                                         id="DRS2"
                                         dateValue="{view>/filter/dataDe}"
                                         secondDateValue="{view>/filter/dataAte}"
-                                        change="handleChange"
+                                        change="onSearch"
                                     />
                                 </fb:control>
                             </fb:FilterItem>
