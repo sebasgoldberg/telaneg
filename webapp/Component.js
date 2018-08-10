@@ -33,6 +33,7 @@ sap.ui.define([
         },
 
         submitChanges: function() {
+
             return new Promise( (resolve, reject) => {
                 this.getModel().submitChanges({
                         success: (...args) => resolve(args),

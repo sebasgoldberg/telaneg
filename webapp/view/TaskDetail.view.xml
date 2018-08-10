@@ -127,13 +127,19 @@
                                                         </form:label>
                                                         <form:fields>
                                                             <Input
+                                                                id="clausulaInput"
                                                                 value="{ClausulaID}"
                                                                 showSuggestion="true"
                                                                 suggest="suggestClausula"
                                                                 suggestionItems="{/ClausulaSet}"
+                                                                maxSuggestionWidth="300px"
                                                                 showValueHelp="false">
                                                                 <core:ListItem text="{ID}" additionalText="{Descricao}" />
+                                                                <layoutData>
+                                                                    <layout:GridData span="XL2 L3 M3 S4" />
+                                                                </layoutData>
                                                             </Input>
+                                                            <Input value="{clausula/Descricao}" enabled="false" required="true"/>
                                                         </form:fields>
                                                     </form:FormElement>
                                                 </form:formElements>
@@ -561,6 +567,7 @@
         <uxap:footer>
             <OverflowToolbar design="auto">
                 <content>
+                    <Button icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
                     <ToolbarSpacer/>
                     <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
                     <Button text="Salvar" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress1"/>
