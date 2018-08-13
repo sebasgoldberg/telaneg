@@ -21,22 +21,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
             }
         });
 
-        this.oMP.setModel (sap.ui.getCore().getMessageManager().getMessageModel(),"message");
-
-        let oMessageProcessor = new sap.ui.core.message.ControlMessageProcessor();
-        let oMessageManager  = sap.ui.getCore().getMessageManager();
-
-        oMessageManager.registerMessageProcessor(oMessageProcessor);
-
-        oMessageManager.addMessages(
-            new sap.ui.core.message.Message({
-                message: "ZIP codes must have at least 23 digits",
-                type: sap.ui.core.MessageType.Error,
-                target: "/clausulaInput/value",
-                processor: oMessageProcessor
-             })
-        );
-
+        this.getView().setModel(sap.ui.getCore().getMessageManager().getMessageModel(),"message");
 
         let v = this.getView();
         v.setModel(new JSONModel({ }), 'view');
@@ -68,9 +53,11 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
                 aFilters.push(new Filter("ID", FilterOperator.EQ, sTerm));
         }
         oEvent.getSource().getBinding("suggestionItems").filter(aFilters);
+
     },
 
     handleMessagePopoverPress: function (oEvent) {
+
         this.oMP.toggle(oEvent.getSource());
     }
 

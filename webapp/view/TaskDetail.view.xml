@@ -567,7 +567,12 @@
         <uxap:footer>
             <OverflowToolbar design="auto">
                 <content>
-                    <Button icon="sap-icon://message-popup" type="Emphasized" press="handleMessagePopoverPress"/>
+                    <Button
+                        icon="sap-icon://message-popup"
+                        text="{= ${message>/}.length }"
+                        visible="{= ${message>/}.length > 0 }"
+                        type="Emphasized"
+                        press="handleMessagePopoverPress"/>
                     <ToolbarSpacer/>
                     <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
                     <Button text="Salvar" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress1"/>

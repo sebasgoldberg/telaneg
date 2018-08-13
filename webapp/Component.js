@@ -60,8 +60,6 @@ sap.ui.define([
             }
         },
 
-
-
 		/**
 		 * The component is initialized by UI5 automatically during the startup of the app and calls the init method once.
 		 * In this method, the FLP and device models are set and the router is initialized.
@@ -91,6 +89,11 @@ sap.ui.define([
 			this.getRouter().initialize();
 
             this.getModel().attachPropertyChange(oEvent => this.save());
+
+            let oMessageProcessor = new sap.ui.core.message.ControlMessageProcessor();
+            let oMessageManager  = sap.ui.getCore().getMessageManager();
+
+            oMessageManager.registerMessageProcessor(oMessageProcessor);
 
             this._impostosPopover = new ImpostosPopover(this.getRootControl());
 		},
