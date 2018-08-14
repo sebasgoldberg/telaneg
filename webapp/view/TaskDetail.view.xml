@@ -9,7 +9,7 @@
 
     <uxap:ObjectPageLayout showTitleInHeaderContent="false" showHeaderContent="true" showEditHeaderButton="false" showFooter="true" class="sapUiSizeCompact">
         <uxap:headerTitle>
-            <uxap:ObjectPageHeader objectTitle="{Descricao}" objectSubtitle="{ID}, Estipulação {Estipulacao}" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="true" isObjectSubtitleAlwaysVisible="true" showPlaceholder="false">
+            <uxap:ObjectPageHeader objectTitle="{Descricao}" objectSubtitle="{ID}{=${Estipulacao}?', Estipulação '+${Estipulacao}:''}" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="true" isObjectSubtitleAlwaysVisible="true" showPlaceholder="false">
                 <uxap:navigationBar>
                     <Bar>
                         <!--
@@ -68,86 +68,7 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Informações Gerais">
                         <uxap:blocks>
-                            <layout:Grid defaultSpan="XL12 L12 M12 S12">
-                                <layout:content>
-                                    <form:Form>
-                                        <form:layout>
-                                            <form:ResponsiveGridLayout labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="4" columnsL="3" columnsM="2" singleContainerFullSize="false"/>
-                                        </form:layout>
-                                        <form:formContainers>
-                                            <form:FormContainer title="">
-                                                <form:formElements>
-                                                    <form:FormElement>
-                                                        <form:label>
-                                                            <Label text="Descrição" required="false"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <Input value="{Descricao}" placeholder="Indique aqui alguma descrição" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                    <form:FormElement>
-                                                        <form:label>
-                                                            <Label text="Período de Apuração" required="false"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <DateRangeSelection
-                                                                dateValue="{ApuracaoDe}"
-                                                                secondDateValue="{ApuracaoAte}"
-                                                                displayFormat="medium"
-                                                            />
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                </form:formElements>
-                                            </form:FormContainer>
-                                            <form:FormContainer title="">
-                                                <form:formElements>
-                                                    <form:FormElement>
-                                                        <form:label>
-                                                            <Label text="Fornecedor"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <Input value="{fornecedor/Nome}" enabled="false"/>
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                    <form:FormElement>
-                                                        <form:label>
-                                                            <Label text="Negociador"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <Input value="{Negociador}"/>
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                </form:formElements>
-                                            </form:FormContainer>
-                                            <form:FormContainer title="">
-                                                <form:formElements>
-                                                    <form:FormElement>
-                                                        <form:label>
-                                                            <Label text="Cláusula" required="false"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <Input
-                                                                id="clausulaInput"
-                                                                value="{ClausulaID}"
-                                                                showSuggestion="true"
-                                                                suggest="suggestClausula"
-                                                                suggestionItems="{/ClausulaSet}"
-                                                                maxSuggestionWidth="300px"
-                                                                showValueHelp="false">
-                                                                <core:ListItem text="{ID}" additionalText="{Descricao}" />
-                                                                <layoutData>
-                                                                    <layout:GridData span="XL2 L3 M3 S4" />
-                                                                </layoutData>
-                                                            </Input>
-                                                            <Input value="{clausula/Descricao}" enabled="false" required="true"/>
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                </form:formElements>
-                                            </form:FormContainer>
-                                        </form:formContainers>
-                                    </form:Form>
-                                </layout:content>
-                            </layout:Grid>
+                            <core:Fragment fragmentName="simplifique.telaneg.view.task.InformacaoGeral" type="XML" />
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>
