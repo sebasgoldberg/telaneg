@@ -99,7 +99,7 @@
                                                             <Label text="Abrangência" required="false"/>
                                                         </form:label>
                                                         <form:fields>
-                                                            <Input text="{abrangencia/Descricao}" enabled="false"/>
+                                                            <Input value="{abrangencia/Descricao}" enabled="false"/>
                                                         </form:fields>
                                                     </form:FormElement>
                                                 </form:formElements>

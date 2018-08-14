@@ -12,7 +12,7 @@
 
         <beginButton>
             <Button text="Criar" type="Emphasized"
-            enabled="{= ${view>/novoAcordo/fornecedor} &amp;&amp; ${view>/novoAcordo/bandeira} ? true : false }"
+            enabled="{= ${view>/novoAcordo/fornecedor} &amp;&amp; ${view>/novoAcordo/bandeira} &amp;&amp; ${view>/novoAcordo/tipoAbrangencia} ? true : false }"
             press="onCriarAcordo" />
         </beginButton>
 
@@ -51,7 +51,6 @@
                     <core:Item key="{ID}" text="{Nome}" />
                 </ComboBox>
 
-                <!--
                 <Label text="Tipo de Abrangência" />
                 <ComboBox
                     selectedKey="{view>/novoAcordo/tipoAbrangencia}"
@@ -59,7 +58,6 @@
                     >
                     <core:Item key="{ID}" text="{Descricao}" />
                 </ComboBox>
-                -->
 
             </form:SimpleForm>
 

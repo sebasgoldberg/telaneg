@@ -50,8 +50,18 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         var aFilters = [];
         if (sTerm) {
             aFilters.push(new Filter("Nome", FilterOperator.Contains, sTerm));
+            if (sTerm.length == 10)
+                aFilters.push(new Filter("ID", FilterOperator.EQ, sTerm))
+            else if (sTerm.length == 9){
+                aFilters.push(new Filter("ID", FilterOperator.StartsWith, sTerm))
+                aFilters.push(new Filter("ID", FilterOperator.EndsWith, sTerm))
+                }
+            else
+                aFilters.push(new Filter("ID", FilterOperator.Contains, sTerm));
         }
-        oEvent.getSource().getBinding("suggestionItems").filter(aFilters);
+        let oSource = oEvent.getSource();
+        let oBinding = oSource.getBinding("suggestionItems")
+        oBinding.filter(aFilters);
     },
 
 
@@ -126,7 +136,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
             FornecedorID: novoAcordo.fornecedor,
             FornecedorType: 'C', // Cadastrado
             Bandeira: novoAcordo.bandeira,
-            Abrangencia: ''
+            TipoAbrangencia: novoAcordo.tipoAbrangencia,
         });
     },
 
@@ -137,10 +147,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
             let result = await this.createAcordo();
             this._closeNovoAcordoPopOver();
             this.getModel().refresh();
-            this.getRouter().navTo('DetailPage1', {
-                context: `NegociacaoSet('${result[0].ID}')`,
-            }, false);
-            //@todo Navigate.
+            this.navTo('TaskDetail', {negociacaoID: result[0].ID});
         } catch (e) {
             this.getModel().resetChanges();
             console.error(e);
