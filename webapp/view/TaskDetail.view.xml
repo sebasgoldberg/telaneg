@@ -1,5 +1,6 @@
 <mvc:View
     controllerName="simplifique.telaneg.controller.TaskDetail"
+    xmlns:sim="simplifique.telaneg.control" 
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:uxap="sap.uxap"
     xmlns="sap.m"
@@ -77,104 +78,7 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Abrangência">
                         <uxap:blocks>
-                            <layout:Grid defaultSpan="XL12 L12 M12 S12">
-                                <layout:content>
-                                    <form:Form>
-                                        <form:layout>
-                                            <form:ResponsiveGridLayout labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="4" columnsL="3" columnsM="2" singleContainerFullSize="false"/>
-                                        </form:layout>
-                                        <form:formContainers>
-                                            <form:FormContainer title="">
-                                                <form:formElements>
-                                                    <form:FormElement>
-                                                        <form:label>
-                                                            <Label text="Bandeira" required="false"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <Input value="{bandeira/Nome}" enabled="false"/>
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                    <form:FormElement>
-                                                        <form:label>
-                                                            <Label text="Abrangência" required="false"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <Input value="{abrangencia/Descricao}" enabled="false"/>
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                </form:formElements>
-                                            </form:FormContainer>
-                                        </form:formContainers>
-                                    </form:Form>
-                                </layout:content>
-                            </layout:Grid>
-                            <Table width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" mode="MultiSelect">
-                                <headerToolbar>
-                                    <OverflowToolbar design="Transparent">
-                                        <content>
-                                            <ToolbarSpacer/>
-                                            <Button text="Adicionar" icon="sap-icon://add" iconFirst="true" type="Transparent" press="_onFioriObjectPageTableActionPress">
-                                                <layoutData>
-                                                    <OverflowToolbarLayoutData moveToOverflow="true"/>
-                                                </layoutData>
-                                            </Button>
-                                            <Button text="" icon="sap-icon://delete" iconFirst="false" type="Transparent" press="_onFioriObjectPageTableActionPress1">
-                                                <layoutData>
-                                                    <OverflowToolbarLayoutData moveToOverflow="true"/>
-                                                </layoutData>
-                                            </Button>
-                                            <Button icon="sap-icon://action-settings" type="Transparent">
-                                                <layoutData>
-                                                    <OverflowToolbarLayoutData moveToOverflow="true"/>
-                                                </layoutData>
-                                            </Button>
-                                        </content>
-                                    </OverflowToolbar>
-                                </headerToolbar>
-                                <columns>
-                                    <Column width="auto" minScreenWidth="Phone">
-                                        <header>
-                                            <Text text="Centro/UF" width="auto"/>
-                                        </header>
-                                    </Column>
-                                    <Column width="auto" minScreenWidth="Tablet" demandPopin="true">
-                                        <header>
-                                            <Text text="Descrição" width="auto"/>
-                                        </header>
-                                    </Column>
-                                </columns>
-                                <items>
-                                    <ColumnListItem type="Active">
-                                        <cells>
-                                            <ObjectIdentifier title="BVRJ" text=""/>
-                                            <ObjectStatus text="REFERENCIA RJ"/>
-                                        </cells>
-                                    </ColumnListItem>
-                                </items>
-                            </Table>
-                            <layout:Grid defaultSpan="XL12 L12 M12 S12">
-                                <layout:content>
-                                    <form:Form>
-                                        <form:layout>
-                                            <form:ResponsiveGridLayout labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="4" columnsL="3" columnsM="2" singleContainerFullSize="false"/>
-                                        </form:layout>
-                                        <form:formContainers>
-                                            <form:FormContainer title="">
-                                                <form:formElements>
-                                                    <form:FormElement>
-                                                        <form:label>
-                                                            <Label text="" required="false"/>
-                                                        </form:label>
-                                                        <form:fields>
-                                                            <Text/>
-                                                        </form:fields>
-                                                    </form:FormElement>
-                                                </form:formElements>
-                                            </form:FormContainer>
-                                        </form:formContainers>
-                                    </form:Form>
-                                </layout:content>
-                            </layout:Grid>
+                            <core:Fragment fragmentName="simplifique.telaneg.view.task.Abrangencia" type="XML" />
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>

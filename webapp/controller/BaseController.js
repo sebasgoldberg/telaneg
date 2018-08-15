@@ -64,7 +64,26 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         }
     },
 
-    createEntry: function(entitySetPath, properties={}) {
+    all: function(aPromises) {
+        return new Promise((resolve, reject) => {
+            Promise.all(aPromises)
+                .then( (...args) => resolve(args) )
+                .catch( (...args) => reject(args) );
+        });
+    },
+
+    submitChanges: function() {
+        let m = this.getModel();
+        return new Promise((resolve, reject) => {
+            m.submitChanges({
+                success: (...args) => resolve(args),
+                error: (...args) => reject(args),
+                });
+        });
+        
+    },
+
+    createEntry: function(entitySetPath, properties={}, submit=true) {
         return new Promise((resolve, reject) => {
             let v = this.getView();
             let m = v.getModel();
@@ -77,9 +96,10 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
                     success: (...args) => resolve(args),
                     error: (...args) => reject(args),
                 });
-            m.submitChanges({
-                error: (...args) => reject(args),
-                });
+            if (submit)
+                m.submitChanges({
+                    error: (...args) => reject(args),
+                    });
         });
     },
 

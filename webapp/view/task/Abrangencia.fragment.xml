@@ -1,0 +1,63 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+
+    <form:Form>
+        <form:layout>
+            <form:ResponsiveGridLayout labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="4" columnsL="3" columnsM="2" singleContainerFullSize="false"/>
+        </form:layout>
+        <form:formContainers>
+
+            <form:FormContainer title="">
+                <form:formElements>
+                    <form:FormElement>
+                        <form:label>
+                            <Label text="Bandeira" required="false"/>
+                        </form:label>
+                        <form:fields>
+                            <Input value="{bandeira/Nome}" enabled="false"/>
+                        </form:fields>
+                    </form:FormElement>
+                </form:formElements>
+            </form:FormContainer>
+
+            <form:FormContainer title="">
+                <form:formElements>
+                    <form:FormElement>
+                        <form:label>
+                            <Label text="Tipo de Abrangência" required="false"/>
+                        </form:label>
+                        <form:fields>
+                            <Input value="{abrangencia/Descricao}" enabled="false"/>
+                        </form:fields>
+                    </form:FormElement>
+                </form:formElements>
+            </form:FormContainer>
+
+            <form:FormContainer title="">
+                <form:formElements>
+                    <form:FormElement>
+                        <form:label>
+                            <Label text="{abrangencia/Descricao}" required="false"/>
+                        </form:label>
+                        <form:fields>
+                            <MultiInput 
+                                id="multiInputLojas"
+                                enableMultiLineMode="false"
+                                showValueHelp="true"
+                                valueHelpRequest="onValueHelpLojas"
+                                tokens="{lojas}"
+                                >
+                                <tokens>
+                                    <Token key="{ID}" text="{ID}" />
+                                </tokens>
+                            </MultiInput>
+                        </form:fields>
+                    </form:FormElement>
+                </form:formElements>
+            </form:FormContainer>
+
+
+        </form:formContainers>
+    </form:Form>
+
+</core:FragmentDefinition>
+

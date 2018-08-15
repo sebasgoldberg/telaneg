@@ -1,6 +1,6 @@
 import ManagedObject from "sap/ui/base/ManagedObject";
 
-export default ManagedObject.extend("sap.ui.demo.walkthrough.controller.HelloDialog",{
+export default ManagedObject.extend("simplifique.telaneg.controller.ImpostosPopover",{
 
 
     constructor : function (oView) {

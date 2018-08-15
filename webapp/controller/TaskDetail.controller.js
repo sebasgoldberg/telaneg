@@ -56,10 +56,39 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
 
     },
 
+    onValueHelpLojas: async function(oEvent) {
+        let selecaoLojaDialog = await this.getOwnerComponent().getSelecaoLojaDialog();
+        try {
+            let v = this.getView();
+            let oListLoja = await selecaoLojaDialog.open(v.getBindingContext().getPath());
+            let sPath = `${v.getBindingContext().getPath()}/lojas`;
+            let m = this.getView().getModel();
+            let oPromisesEntries = oListLoja.getSelectedItems().map( oItem => oItem.getBindingContext().getObject() )
+                .map( oLoja => 
+                    this.createEntry(sPath,{
+                        ID: oLoja.ID,
+                        }, false)
+                );
+            if (oPromisesEntries.length > 0){
+                oPromisesEntries.push(this.submitChanges())
+                try {
+                    let results = await this.all(oPromisesEntries);
+                    m.refresh();
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+        } catch (e) {
+        }
+    },
+
     handleMessagePopoverPress: function (oEvent) {
 
         this.oMP.toggle(oEvent.getSource());
-    }
+    },
+
+    onAdicionarItemsAbrangencia: function(oEvent) {
+    },
 
 });
 
