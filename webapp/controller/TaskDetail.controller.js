@@ -57,7 +57,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
     },
 
     onValueHelpLojas: async function(oEvent) {
-        let selecaoLojaDialog = await this.getOwnerComponent().getSelecaoLojaDialog();
+        let selecaoLojaDialog = this.getOwnerComponent().getSelecaoLojaDialog();
         try {
             let v = this.getView();
             let oListLoja = await selecaoLojaDialog.open(v.getBindingContext().getPath());
@@ -82,12 +82,53 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         }
     },
 
-    handleMessagePopoverPress: function (oEvent) {
+    onUpdateLojas: async function(oEvent) {
+        let oParams = oEvent.getParameters();
+        let oSource = oEvent.getSource();
+        let oContext = oEvent.getSource().getBindingContext();
+        let oTokensBinding = oEvent.getSource().getBinding('tokens');
+        let aRemovePromises = oParams.removedTokens.map( oToken => oToken.getBindingContext().getPath() )
+            //.map( bc => bc.getObject() )
+            //.map( oObject => `${oContext.getPath()}/${oTokensBinding.getPath()}` )
+            .map( sPath => this.remove(sPath, { NegociacaoID: oContext.getObject().ID }) );
+        try {
+            let result = await this.all(aRemovePromises);
+        } catch (e) {
+            this.error(e);
+        }
+    },
 
+    handleMessagePopoverPress: function (oEvent) {
         this.oMP.toggle(oEvent.getSource());
     },
 
-    onAdicionarItemsAbrangencia: function(oEvent) {
+    onAdicionarMercadoria: async function(oEvent) {
+        let selecaoMercadoriaFornecedor = this.getOwnerComponent().getSelecaoMercadoriaFornecedorDialog();
+        try {
+            let v = this.getView();
+            let selectedContexts = await selecaoMercadoriaFornecedor.open(v.getBindingContext().getPath());
+            let NegociacaoID = v.getBindingContext().getObject().ID;
+            let sPath = `${v.getBindingContext().getPath()}/items`;
+            let m = v.getModel();
+            let oPromisesEntries = selectedContexts.map( oContext => oContext.getObject() )
+                .map( oMaterial => 
+                    this.createEntry(sPath,{
+                        NegociacaoID: oNegociacao.ID,
+                        MaterialID: oMaterial.ID,
+                        MaterialType: oMaterial.Type,
+                        }, false)
+                );
+            if (oPromisesEntries.length > 0){
+                oPromisesEntries.push(this.submitChanges())
+                try {
+                    let results = await this.all(oPromisesEntries);
+                    m.refresh();
+                } catch (e) {
+                    console.error(e);
+                }
+            }
+        } catch (e) {
+        }
     },
 
 });

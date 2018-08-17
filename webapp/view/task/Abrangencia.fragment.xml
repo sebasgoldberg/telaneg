@@ -44,6 +44,7 @@
                                 enableMultiLineMode="false"
                                 showValueHelp="true"
                                 valueHelpRequest="onValueHelpLojas"
+                                tokenUpdate="onUpdateLojas"
                                 tokens="{lojas}"
                                 >
                                 <tokens>

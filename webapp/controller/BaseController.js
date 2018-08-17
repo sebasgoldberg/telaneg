@@ -115,4 +115,24 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         this.getRouter().navTo(routeName, ...args, false);
     },
 
+    remove: function(sPath, urlParameters){
+        let m = this.getModel();
+        return new Promise( (resolve, reject) => {
+            m.remove(
+                sPath,
+                {
+                    success: (...args) => { resolve(...args) },
+                    error: (...args) => { reject(...args) },
+                    urlParameters: urlParameters,
+                    headers: urlParameters,
+                }
+            );
+        });
+    },
+
+    error: function(e) {
+        console.error(e);
+    },
+    
+
 });

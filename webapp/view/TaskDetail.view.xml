@@ -92,7 +92,7 @@
                                     <OverflowToolbar design="Transparent">
                                         <content>
                                             <ToolbarSpacer/>
-                                            <Button text="Adicionar" icon="sap-icon://add" iconFirst="true" type="Transparent">
+                                            <Button text="Adicionar" icon="sap-icon://add" iconFirst="true" type="Transparent" press="onAdicionarMercadoria">
                                                 <layoutData>
                                                     <OverflowToolbarLayoutData moveToOverflow="true"/>
                                                 </layoutData>
