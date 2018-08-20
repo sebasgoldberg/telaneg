@@ -48,7 +48,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         if (sTerm) {
             aFilters.push(new Filter("Descricao", FilterOperator.Contains, sTerm));
             if (sTerm.length < 4)
-                aFilters.push(new Filter("ID", FilterOperator.Contains, sTerm))
+                aFilters.push(new Filter("ID", FilterOperator.StartsWith, sTerm))
             else if (sTerm.length == 4)
                 aFilters.push(new Filter("ID", FilterOperator.EQ, sTerm));
         }
@@ -103,32 +103,37 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
     },
 
     onAdicionarMercadoria: async function(oEvent) {
+        let selectedContexts;
+
         let selecaoMercadoriaFornecedor = this.getOwnerComponent().getSelecaoMercadoriaFornecedorDialog();
+        let v = this.getView();
+
         try {
-            let v = this.getView();
-            let selectedContexts = await selecaoMercadoriaFornecedor.open(v.getBindingContext().getPath());
-            let NegociacaoID = v.getBindingContext().getObject().ID;
-            let sPath = `${v.getBindingContext().getPath()}/items`;
-            let m = v.getModel();
-            let oPromisesEntries = selectedContexts.map( oContext => oContext.getObject() )
-                .map( oMaterial => 
-                    this.createEntry(sPath,{
-                        NegociacaoID: oNegociacao.ID,
-                        MaterialID: oMaterial.ID,
-                        MaterialType: oMaterial.Type,
-                        }, false)
-                );
-            if (oPromisesEntries.length > 0){
-                oPromisesEntries.push(this.submitChanges())
-                try {
-                    let results = await this.all(oPromisesEntries);
-                    m.refresh();
-                } catch (e) {
-                    console.error(e);
-                }
-            }
+            selectedContexts = await selecaoMercadoriaFornecedor.open(v.getBindingContext().getPath());
         } catch (e) {
+            return;
         }
+
+        let oNegociacao = v.getBindingContext().getObject();
+        let sPath = `${v.getBindingContext().getPath()}/materiais`;
+        let m = v.getModel();
+        let oPromisesEntries = selectedContexts.map( oContext => oContext.getObject() )
+            .map( oMaterial => 
+                this.createEntry(sPath,{
+                    ID: oMaterial.ID,
+                    Type: oMaterial.Type,
+                    }, false)
+            );
+        if (oPromisesEntries.length > 0){
+            oPromisesEntries.push(this.submitChanges())
+            try {
+                let results = await this.all(oPromisesEntries);
+                m.refresh();
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
     },
 
 });

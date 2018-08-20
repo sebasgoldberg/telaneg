@@ -87,7 +87,7 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Mercadorias">
                         <uxap:blocks>
-                            <Table width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" mode="MultiSelect">
+                            <Table width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" mode="MultiSelect" items="{path:'items', templateShareable:true, parameters:{expand:'material,simulacao'}}">
                                 <headerToolbar>
                                     <OverflowToolbar design="Transparent">
                                         <content>
@@ -111,72 +111,67 @@
                                     </OverflowToolbar>
                                 </headerToolbar>
                                 <columns>
-                                    <Column width="60px" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                    <Column hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                         <header>
                                             <Text text="UF"/>
                                         </header>
                                     </Column>
-                                    <Column width="30px" hAlign="Center" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
-                                        <header>
-                                            <Text text=""/>
-                                        </header>
-                                    </Column>
-                                    <Column width="80px" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                    <Column hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                         <header>
                                             <Text text="Mercadoria"/>
                                         </header>
                                     </Column>
-                                    <Column width="auto" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                    <Column hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                         <header>
                                             <Text text="Descrição"/>
                                         </header>
                                     </Column>
-                                    <Column width="40px" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                    <Column hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                         <header>
                                             <Text text="UMV"/>
                                         </header>
                                     </Column>
-                                    <Column width="70px" hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                         <header>
                                             <Text text="Preço Venda"/>
                                         </header>
                                     </Column>
-                                    <Column width="70px" hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                         <header>
                                             <Text text="PMZ"/>
                                         </header>
                                     </Column>
-                                    <Column width="70px" hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                         <header>
                                             <Text text="Margem PDV"/>
                                         </header>
                                     </Column>
-                                    <Column width="70px" hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                         <header>
                                             <Text text="Recomp."/>
                                         </header>
                                     </Column>
-                                    <Column width="85px" hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                         <header>
                                             <Text text="Margem 2 Simulada"/>
                                         </header>
                                     </Column>
-                                    <Column width="80px" hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                         <header>
                                             <Text text="Menor Preço Mercado"/>
                                         </header>
                                     </Column>
-                                    <Column width="40px" hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                         <header>
                                             <Text text="IC"/>
                                         </header>
                                     </Column>
-                                    <Column width="25px" hAlign="Center" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                    <Column hAlign="Center" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                         <header>
                                             <Text text=""/>
                                         </header>
                                     </Column>
-                                    <Column width="25px" hAlign="Center" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                    <Column hAlign="Center" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                         <header>
                                             <Text text=""/>
                                         </header>
@@ -185,18 +180,22 @@
                                 <items>
                                     <ColumnListItem type="Active">
                                         <cells>
-                                            <Text text="RJ" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <core:Icon src="sap-icon://add" height="48px" width="48px" visible="true"/>
-                                            <Text text="2900160" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="PICANHA MATURADA PREMIUM" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="KG" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="43,70" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="30,81" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="14,50%" width="auto" maxLines="1" wrapping="false" textAlign="Right" textDirection="Inherit" visible="true"/>
-                                            <Text text="3,50" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="18,00%" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="41,00" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="-0,5%" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{UF/Descricao}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+
+                                            <HBox>
+                                                <core:Icon src="sap-icon://add" height="48px" width="48px" visible="true"/>
+                                                <Text text="{material/ID}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            </HBox>
+
+                                            <Text text="{material/Descricao}" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{material/UMB}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{simulacao/PrecoVenda} BRL" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{simulacao/PMZNovo} BRL" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{nossoPricing/MargemPDV} %" width="auto" maxLines="1" wrapping="false" textAlign="Right" textDirection="Inherit" visible="true"/>
+                                            <Text text="{simulacao/Recomposicao} BRL" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{simulacao/Margem2} %" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{nossoPricing/PrecoMercado}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{simulacao/IC} %" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
                                             <core:Icon src="sap-icon://line-chart" size="16px" height="48px" width="48px" hoverColor="#386084" visible="true" tooltip="Vendas" press="_onIconPress"/>
                                             <core:Icon src="sap-icon://shipping-status" height="48px" width="48px" hoverColor="#386084" visible="true" tooltip="Estoque" press="_onIconPress1"/>
                                         </cells>
