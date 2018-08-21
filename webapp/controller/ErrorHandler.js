@@ -27,6 +27,7 @@ sap.ui.define([
                             this._showMetadataError(oParams.response, oModel);
                         }, this);
                         oModel.attachRequestFailed(function (oEvent) {
+                            return;
                             var oParams = oEvent.getParameters();
                             var oMessageManager = sap.ui.getCore().getMessageManager();
                             let messages = JSON.parse(oParams.response.responseText);

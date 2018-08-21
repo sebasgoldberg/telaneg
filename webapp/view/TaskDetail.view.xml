@@ -87,22 +87,17 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Mercadorias">
                         <uxap:blocks>
-                            <Table width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" mode="MultiSelect" items="{path:'items', templateShareable:true, parameters:{expand:'material,simulacao'}}">
+                            <Table id='itemsTable' width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" mode="MultiSelect" items="{path:'items', templateShareable:true, parameters:{expand:'material,simulacao,itemOrg,subitem,subitem/impostosEntrada,subitem/impostosSaida'}}">
                                 <headerToolbar>
                                     <OverflowToolbar design="Transparent">
                                         <content>
                                             <ToolbarSpacer/>
-                                            <Button text="Adicionar" icon="sap-icon://add" iconFirst="true" type="Transparent" press="onAdicionarMercadoria">
+                                            <Button icon="sap-icon://add" iconFirst="true" type="Transparent" press="onAdicionarMercadoria">
                                                 <layoutData>
                                                     <OverflowToolbarLayoutData moveToOverflow="true"/>
                                                 </layoutData>
                                             </Button>
-                                            <Button text="" icon="sap-icon://delete" iconFirst="false" type="Transparent">
-                                                <layoutData>
-                                                    <OverflowToolbarLayoutData moveToOverflow="true"/>
-                                                </layoutData>
-                                            </Button>
-                                            <Button icon="sap-icon://action-settings" type="Transparent">
+                                            <Button text="" icon="sap-icon://delete" iconFirst="false" type="Transparent" press="onEliminarItensSelecionados">
                                                 <layoutData>
                                                     <OverflowToolbarLayoutData moveToOverflow="true"/>
                                                 </layoutData>
@@ -121,7 +116,7 @@
                                             <Text text="Mercadoria"/>
                                         </header>
                                     </Column>
-                                    <Column hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                    <Column hAlign="Left" vAlign="Middle" width="20%" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                         <header>
                                             <Text text="Descrição"/>
                                         </header>
@@ -131,7 +126,7 @@
                                             <Text text="UMV"/>
                                         </header>
                                     </Column>
-                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                    <Column hAlign="Right" vAlign="Middle" width="12%" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                         <header>
                                             <Text text="Preço Venda"/>
                                         </header>
@@ -146,7 +141,7 @@
                                             <Text text="Margem PDV"/>
                                         </header>
                                     </Column>
-                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                    <Column hAlign="Right" vAlign="Middle" width="12%" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                         <header>
                                             <Text text="Recomp."/>
                                         </header>
@@ -166,12 +161,17 @@
                                             <Text text="IC"/>
                                         </header>
                                     </Column>
-                                    <Column hAlign="Center" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                    <Column hAlign="Center" vAlign="Middle" width="4%" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                         <header>
                                             <Text text=""/>
                                         </header>
                                     </Column>
-                                    <Column hAlign="Center" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                    <Column hAlign="Center" vAlign="Middle" width="4%" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                        <header>
+                                            <Text text=""/>
+                                        </header>
+                                    </Column>
+                                    <Column hAlign="Center" vAlign="Middle" width="4%" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                         <header>
                                             <Text text=""/>
                                         </header>
@@ -180,24 +180,83 @@
                                 <items>
                                     <ColumnListItem type="Active">
                                         <cells>
-                                            <Text text="{UF/Descricao}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+                                            <Text text="{itemOrg/ID}" wrapping="true" />
 
-                                            <HBox>
-                                                <core:Icon src="sap-icon://add" height="48px" width="48px" visible="true"/>
-                                                <Text text="{material/ID}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            </HBox>
+                                            <!--
+                                            <core:Icon src="sap-icon://add" height="48px" width="48px" visible="true"/>
+                                            -->
+                                            <Text text="{
+                                                path: 'material/ID',
+                                                type: 'sap.ui.model.odata.type.String',
+                                                constraints: {
+                                                    isDigitSequence : true,
+                                                    maxLength : 18
+                                                    }
+                                                }" wrapping="true" />
 
-                                            <Text text="{material/Descricao}" width="auto" maxLines="2" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="{material/UMB}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="{simulacao/PrecoVenda} BRL" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="{simulacao/PMZNovo} BRL" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="{nossoPricing/MargemPDV} %" width="auto" maxLines="1" wrapping="false" textAlign="Right" textDirection="Inherit" visible="true"/>
-                                            <Text text="{simulacao/Recomposicao} BRL" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="{simulacao/Margem2} %" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="{nossoPricing/PrecoMercado}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <Text text="{simulacao/IC} %" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
-                                            <core:Icon src="sap-icon://line-chart" size="16px" height="48px" width="48px" hoverColor="#386084" visible="true" tooltip="Vendas" press="_onIconPress"/>
-                                            <core:Icon src="sap-icon://shipping-status" height="48px" width="48px" hoverColor="#386084" visible="true" tooltip="Estoque" press="_onIconPress1"/>
+                                            <Text text="{material/Nome}" wrapping="true" />
+                                            <Text text="{material/UMB}" wrapping="true" />
+
+                                            <Input value="{
+                                                path: 'subitem/PrecoVenda',
+                                                type: 'sap.ui.model.odata.type.Decimal',
+                                                constraints: { scale: 2 }
+                                                }"
+                                                description="BRL"
+                                                visible='{UnicoSubitem}'
+                                                />
+
+                                            <Text text="{
+                                                path: 'simulacao/PMZNovo',
+                                                type: 'sap.ui.model.odata.type.Decimal',
+                                                constraints: { scale: 2 }
+                                                } BRL" wrapping="true" />
+                                            <Text text="{
+                                                path: 'nossoPricing/MargemPDV',
+                                                type: 'sap.ui.model.odata.type.Decimal',
+                                                constraints: { scale: 2 }
+                                                } %" wrapping="true" />
+                                            <Input value="{
+                                                path: 'simulacao/Recomposicao',
+                                                type: 'sap.ui.model.odata.type.Decimal',
+                                                constraints: { scale: 2 }
+                                                }" description="BRL"/>
+                                            <Text text="{
+                                                path: 'simulacao/Margem2',
+                                                type: 'sap.ui.model.odata.type.Decimal',
+                                                constraints: { scale: 2 }
+                                                } %" wrapping="true" />
+                                            <Text text="{
+                                                path: 'nossoPricing/PrecoMercado',
+                                                type: 'sap.ui.model.odata.type.Decimal',
+                                                constraints: { scale: 2 }
+                                                }" wrapping="true" />
+                                            <Text text="{
+                                                path: 'simulacao/IC',
+                                                type: 'sap.ui.model.odata.type.Decimal',
+                                                constraints: { scale: 2 }
+                                                } %" wrapping="true" />
+                                            <core:Icon
+                                                src="sap-icon://line-chart"
+                                                size="16px"
+                                                hoverColor="#386084"
+                                                tooltip="Vendas"
+                                                press="onMostrarVendas"
+                                                />
+                                            <core:Icon
+                                                src="sap-icon://product"
+                                                size="16px"
+                                                hoverColor="#386084"
+                                                tooltip="Estoque"
+                                                press="onMostrarEstoque"
+                                                />
+                                            <core:Icon
+                                                src="sap-icon://commission-check"
+                                                size="16px"
+                                                hoverColor="#386084"
+                                                tooltip="Impostos"
+                                                press="onMostrarImpostos"
+                                                />
                                         </cells>
                                     </ColumnListItem>
                                 </items>

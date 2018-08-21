@@ -72,6 +72,10 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         });
     },
 
+    resetChanges: function() {
+        this.getModel().resetChanges();
+    },
+
     submitChanges: function() {
         let m = this.getModel();
         return new Promise((resolve, reject) => {
@@ -133,6 +137,43 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
     error: function(e) {
         console.error(e);
     },
-    
+
+    temCertezaDeEliminar: function(attribute) {
+        return new Promise(function(fnResolve) {
+            sap.m.MessageBox.confirm("Tem certeza que deseja eliminar os itens selecionados?", {
+                title: "Eliminar Items Selecionados",
+                actions: ["Tenho Sim", "Melhor Não"],
+                onClose: function(sActionClicked) {
+                    fnResolve(sActionClicked === "Tenho Sim");
+                }
+            });
+        });
+    },
+
+
+    deleteSelectedItemsPromises: function(sControlId) {
+        let v = this.getView();
+        return v.byId(sControlId).getSelectedContextPaths()
+            .map( c => this.remove(c) );
+    },
+
+    deleteSelectedItems: async function(sControlId) {
+        let v = this.getView();
+        let m = v.getModel();
+
+        let eliminar = await this.temCertezaDeEliminar();
+        if (!eliminar)
+            return false;
+        try {
+            let result = await this.all(this.deleteSelectedItemsPromises(sControlId));
+            if (result)
+                m.refresh();
+        } catch (e) {
+            /* handle error */
+            this.error(e);
+        }
+    },
+
+
 
 });

@@ -76,6 +76,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
                     m.refresh();
                 } catch (e) {
                     console.error(e);
+                    this.resetChanges();
                 }
             }
         } catch (e) {
@@ -93,6 +94,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
             .map( sPath => this.remove(sPath, { NegociacaoID: oContext.getObject().ID }) );
         try {
             let result = await this.all(aRemovePromises);
+            this.getModel().refresh();
         } catch (e) {
             this.error(e);
         }
@@ -124,16 +126,27 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
                     Type: oMaterial.Type,
                     }, false)
             );
-        if (oPromisesEntries.length > 0){
-            oPromisesEntries.push(this.submitChanges())
-            try {
-                let results = await this.all(oPromisesEntries);
-                m.refresh();
-            } catch (e) {
-                console.error(e);
-            }
+        if (oPromisesEntries.length == 0)
+            return;
+        oPromisesEntries.push(this.submitChanges())
+        try {
+            let results = await this.all(oPromisesEntries);
+            m.refresh();
+        } catch (e) {
+            this.resetChanges();
+            console.error(e);
         }
 
+    },
+
+    onEliminarItensSelecionados: function(oEvent) {
+        this.deleteSelectedItems('itemsTable');
+    },
+
+    onMostrarImpostos: function(oEvent) {
+        let sItemPath = oEvent.getSource().getBindingContext().getPath();
+        let oImpostosPopOver = this.getOwnerComponent().getImpostosPopover();
+        oImpostosPopOver.open(`${sItemPath}/subitem`, oEvent.getSource());
     },
 
 });
