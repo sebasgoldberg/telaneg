@@ -16,15 +16,9 @@
                 </f:heading>
                 <f:actions>
 
-                    <Button text="Copiar" icon="sap-icon://add-coursebook" press=""/>
-                    <sim:ButtonPopover text="Novo Acordo" icon="sap-icon://add" type="Emphasized" placement="Bottom" >
-                        <core:Fragment fragmentName="simplifique.telaneg.view.NovoAcordoPopover" type="XML" />
-                    </sim:ButtonPopover>
+                    <Button text="Copiar" icon="sap-icon://add-coursebook" press="" />
+                    <Button text="Novo Acordo" icon="sap-icon://add" type="Emphasized" press="onCriarAcordo" />
 
-                    <!--
-                    <ToolbarSpacer/>
-                    <Button icon="sap-icon://action" type="Transparent"/>
-                    -->
                 </f:actions>
             </f:DynamicPageTitle>
         </f:title>

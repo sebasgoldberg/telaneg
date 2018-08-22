@@ -113,10 +113,6 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         let novoAcordo = this.getModel('view').getData().novoAcordo;
         return this.createEntry('/NegociacaoSet',{
             TipoNegociacao: this.sTipoNegociacaoID,
-            FornecedorID: novoAcordo.fornecedor,
-            FornecedorType: 'C', // Cadastrado
-            Bandeira: novoAcordo.bandeira,
-            TipoAbrangencia: novoAcordo.tipoAbrangencia,
         });
     },
 
@@ -125,22 +121,10 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         try {
             this.setBusy();
             let result = await this.createAcordo();
-            this._closeNovoAcordoPopOver();
             this.getModel().refresh();
             this.navTo('TaskDetail', {negociacaoID: result[0].ID});
         } catch (e) {
             this.getModel().resetChanges();
-            console.error(e);
-        } finally{
-            this.setFree();
-        }
-
-
-
-        try {
-            //this.doNavigate('DetailPage1', oContext);
-
-        } catch (e) {
             console.error(e);
         } finally{
             this.setFree();
