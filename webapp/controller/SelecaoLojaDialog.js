@@ -34,9 +34,25 @@ export default ManagedObject.extend("simplifique.telaneg.controller.SelecaoLojaD
         });
     },
 
+    getListID: function() {
+        let sTipoAbrangencia = this.dialog.getBindingContext().getProperty('TipoAbrangencia');
+        switch (sTipoAbrangencia){
+            case 'L':
+                return 'lojasList';
+            case 'G':
+                return 'gruposList';
+            case 'U':
+                return 'ufsList';
+        }
+    },
+
+    getListControl: function(){
+        return this._oView.byId(this.getListID());
+    },
+
     onSelecionar: function() {
         this.dialog.close();
-        this.resolve(this._oView.byId('lojasList'));
+        this.resolve(this.getListControl());
     },
 
     onFechar: function() {

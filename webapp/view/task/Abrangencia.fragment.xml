@@ -13,7 +13,12 @@
                             <Label text="Bandeira" required="false"/>
                         </form:label>
                         <form:fields>
-                            <Input value="{bandeira/Nome}" enabled="false"/>
+                            <ComboBox
+                                selectedKey="{Bandeira}"
+                                items="{/BandeiraSet}"
+                                >
+                                <core:Item key="{ID}" text="{Nome}" />
+                            </ComboBox>
                         </form:fields>
                     </form:FormElement>
                 </form:formElements>
@@ -26,7 +31,13 @@
                             <Label text="Tipo de Abrangência" required="false"/>
                         </form:label>
                         <form:fields>
-                            <Input value="{abrangencia/Descricao}" enabled="false"/>
+                            <ComboBox
+                                selectedKey="{TipoAbrangencia}"
+                                items="{tipoNegociacao/tiposAbrangencia}"
+                                >
+                                <core:Item key="{ID}" text="{Descricao}" />
+                            </ComboBox>
+
                         </form:fields>
                     </form:FormElement>
                 </form:formElements>
@@ -43,9 +54,9 @@
                                 id="multiInputLojas"
                                 enableMultiLineMode="false"
                                 showValueHelp="true"
-                                valueHelpRequest="onValueHelpLojas"
-                                tokenUpdate="onUpdateLojas"
-                                tokens="{lojas}"
+                                valueHelpRequest="onValueHelpItemOrg"
+                                tokenUpdate="onUpdateItemOrg"
+                                tokens="{itemsOrg}"
                                 >
                                 <tokens>
                                     <Token key="{ID}" text="{ID}" />

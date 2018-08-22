@@ -35,8 +35,17 @@
                             <Label text="Fornecedor"/>
                         </form:label>
                         <form:fields>
-                            <Input value="{FornecedorID}" enabled="false">
-                                <layoutData>
+                            <Input
+                                required="false"
+                                value="{FornecedorID}" 
+                                showSuggestion="true"
+                                suggest="suggestFornecedores"
+                                suggestionItems="{/FornecedorSet}"
+                                maxSuggestionWidth="400px"
+                                showValueHelp="false"
+                                >
+                                <core:ListItem text="{ID}" additionalText="{Nome}" />
+                               <layoutData>
                                     <layout:GridData span="XL4 L4 M4 S4" />
                                 </layoutData>
                             </Input>

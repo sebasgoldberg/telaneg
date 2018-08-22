@@ -56,17 +56,18 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
 
     },
 
-    onValueHelpLojas: async function(oEvent) {
-        let selecaoLojaDialog = this.getOwnerComponent().getSelecaoLojaDialog();
+    onValueHelpItemOrg: async function(oEvent) {
+        let selecaoItemOrgDialog = this.getOwnerComponent().getSelecaoItemOrgDialog();
         try {
             let v = this.getView();
-            let oListLoja = await selecaoLojaDialog.open(v.getBindingContext().getPath());
-            let sPath = `${v.getBindingContext().getPath()}/lojas`;
+            let oListLoja = await selecaoItemOrgDialog.open(v.getBindingContext().getPath());
+            let sPath = `${v.getBindingContext().getPath()}/itemsOrg`;
             let m = this.getView().getModel();
             let oPromisesEntries = oListLoja.getSelectedItems().map( oItem => oItem.getBindingContext().getObject() )
-                .map( oLoja => 
+                .map( oItemOrg => 
                     this.createEntry(sPath,{
-                        ID: oLoja.ID,
+                        ID: oItemOrg.ID,
+                        Type: this.getView().getBindingContext().getProperty('TipoAbrangencia'),
                         }, false)
                 );
             if (oPromisesEntries.length > 0){
@@ -80,17 +81,15 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
                 }
             }
         } catch (e) {
+            console.error(e);
         }
     },
 
-    onUpdateLojas: async function(oEvent) {
+    onUpdateItemOrg: async function(oEvent) {
         let oParams = oEvent.getParameters();
         let oSource = oEvent.getSource();
         let oContext = oEvent.getSource().getBindingContext();
-        let oTokensBinding = oEvent.getSource().getBinding('tokens');
         let aRemovePromises = oParams.removedTokens.map( oToken => oToken.getBindingContext().getPath() )
-            //.map( bc => bc.getObject() )
-            //.map( oObject => `${oContext.getPath()}/${oTokensBinding.getPath()}` )
             .map( sPath => this.remove(sPath, { NegociacaoID: oContext.getObject().ID }) );
         try {
             let result = await this.all(aRemovePromises);

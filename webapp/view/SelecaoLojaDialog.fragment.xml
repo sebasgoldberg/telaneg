@@ -20,62 +20,84 @@
 
         <content>
 
-            <FacetFilter
-                id="facetFilterLojas"
-                type="Simple"
-                showPersonalization="true"
-                showReset="true"
-                reset="lojasFilterReset"
-                confirm="lojasFilterConfirm"
-                lists="">
-                <lists>
-                    <FacetFilterList
-                        title="UF"
-                        key="UFID"
-                        mode="MultiSelect"
-                        items="{path:'bandeira/ufs', templateShareable: 'true'}"
-                        >
-                        <items>
-                            <FacetFilterItem
-                                text="{ID}"
-                                key="{ID}"
-                                />
-                        </items>
-                    </FacetFilterList>
-                    <!--
-                    <FacetFilterList
-                        title="Grupos Lojas"
-                        key="grupoLoja"
-                        mode="MultiSelect"
-                        items="{path:'/GrupoLojaSet', templateShareable: 'true'}"
-                        growing='true'
-                        growingThreshold='15'
-                        growingScrollToLoad='true'
-                        >
-                        <items>
-                            <FacetFilterItem
-                                text="{Descricao}"
-                                key="{ID}"
-                                />
-                        </items>
-                    </FacetFilterList>
-                    -->
-                </lists>
-            </FacetFilter>
+            <VBox visible="{= ${TipoAbrangencia} === 'L' }">
+                <FacetFilter
+                    id="facetFilterLojas"
+                    type="Simple"
+                    showPersonalization="true"
+                    showReset="true"
+                    reset="lojasFilterReset"
+                    confirm="lojasFilterConfirm"
+                    lists="">
+                    <lists>
+                        <FacetFilterList
+                            title="UF"
+                            key="UFID"
+                            mode="MultiSelect"
+                            items="{path:'bandeira/ufs', templateShareable: 'true'}"
+                            >
+                            <items>
+                                <FacetFilterItem
+                                    text="{ID}"
+                                    key="{ID}"
+                                    />
+                            </items>
+                        </FacetFilterList>
+                        <!--
+                        <FacetFilterList
+                            title="Grupos Lojas"
+                            key="grupoLoja"
+                            mode="MultiSelect"
+                            items="{path:'/GrupoLojaSet', templateShareable: 'true'}"
+                            growing='true'
+                            growingThreshold='15'
+                            growingScrollToLoad='true'
+                            >
+                            <items>
+                                <FacetFilterItem
+                                    text="{Descricao}"
+                                    key="{ID}"
+                                    />
+                            </items>
+                        </FacetFilterList>
+                        -->
+                    </lists>
+                </FacetFilter>
 
-            <List
-                growing="true"
-                growingThreshold="30"
-                growingScrollToLoad="true"
-                mode="MultiSelect"
-                id="lojasList"
-                items="{bandeira/lojas}" >
-                <StandardListItem
-                    title="{ID}"
-                    description="{Nome} [{UFID}]"
-                    type="Active"
-                    />
-            </List>
+                <List
+                    growing="true"
+                    growingThreshold="30"
+                    growingScrollToLoad="true"
+                    mode="MultiSelect"
+                    id="lojasList"
+                    items="{bandeira/lojas}" >
+                    <StandardListItem
+                        title="{ID}"
+                        description="{Nome} [{UFID}]"
+                        type="Active"
+                        />
+                </List>
+
+            </VBox>
+
+            <VBox visible="{= ${TipoAbrangencia} === 'U' }">
+
+                <List
+                    growing="true"
+                    growingThreshold="30"
+                    growingScrollToLoad="true"
+                    mode="MultiSelect"
+                    id="ufsList"
+                    items="{bandeira/ufs}" >
+                    <StandardListItem
+                        title="{ID}"
+                        description=""
+                        type="Active"
+                        />
+                </List>
+
+            </VBox>
+
         </content>
     </Dialog>
 </core:FragmentDefinition>

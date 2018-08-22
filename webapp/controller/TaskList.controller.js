@@ -45,26 +45,6 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
             });
     },
 
-    suggestFornecedores: async function(oEvent) {
-        var sTerm = oEvent.getParameter("suggestValue");
-        var aFilters = [];
-        if (sTerm) {
-            aFilters.push(new Filter("Nome", FilterOperator.Contains, sTerm));
-            if (sTerm.length == 10)
-                aFilters.push(new Filter("ID", FilterOperator.EQ, sTerm))
-            else if (sTerm.length == 9){
-                aFilters.push(new Filter("ID", FilterOperator.StartsWith, sTerm))
-                aFilters.push(new Filter("ID", FilterOperator.EndsWith, sTerm))
-                }
-            else
-                aFilters.push(new Filter("ID", FilterOperator.Contains, sTerm));
-        }
-        let oSource = oEvent.getSource();
-        let oBinding = oSource.getBinding("suggestionItems")
-        oBinding.filter(aFilters);
-    },
-
-
     _createFilters: function() {
         let aFilters = []
 

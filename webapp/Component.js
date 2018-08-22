@@ -103,6 +103,10 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
         return this._impostosPopover;
     },
 
+    getSelecaoItemOrgDialog: function() {
+        return this._selecaoLojaDialog;
+    },
+
     getSelecaoLojaDialog: function() {
         return this._selecaoLojaDialog;
     },
