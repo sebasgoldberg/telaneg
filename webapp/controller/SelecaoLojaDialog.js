@@ -35,7 +35,7 @@ export default ManagedObject.extend("simplifique.telaneg.controller.SelecaoLojaD
     },
 
     getListID: function() {
-        let sTipoAbrangencia = this.dialog.getBindingContext().getProperty('TipoAbrangencia');
+        let sTipoAbrangencia = this.getTipoAbrangencia();
         switch (sTipoAbrangencia){
             case 'L':
                 return 'lojasList';
@@ -61,8 +61,22 @@ export default ManagedObject.extend("simplifique.telaneg.controller.SelecaoLojaD
     },
 
     _applyFilter: function(oFilter) {
-        let oListLojas = this.getView().byId('lojasList');
+        let oListLojas = this.getListControl();
         oListLojas.getBinding("items").filter(oFilter);
+    },
+
+    getTipoAbrangencia: function() {
+        return this.dialog.getBindingContext().getProperty('TipoAbrangencia');
+    },
+
+    getFacetFilterID: function() {
+        let sTipoAbrangencia = this.getTipoAbrangencia();
+        switch (sTipoAbrangencia){
+            case 'L':
+                return 'facetFilterLojas';
+            case 'G':
+                return 'facetFilterGrupos';
+        }
     },
 
     lojasFilterConfirm: function(oEvent) {

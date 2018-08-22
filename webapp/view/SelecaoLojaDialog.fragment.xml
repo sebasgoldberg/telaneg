@@ -43,24 +43,22 @@
                                     />
                             </items>
                         </FacetFilterList>
-                        <!--
                         <FacetFilterList
                             title="Grupos Lojas"
                             key="grupoLoja"
                             mode="MultiSelect"
-                            items="{path:'/GrupoLojaSet', templateShareable: 'true'}"
+                            items="{path:'bandeira/gruposLojas', templateShareable: 'true'}"
                             growing='true'
                             growingThreshold='15'
                             growingScrollToLoad='true'
                             >
                             <items>
                                 <FacetFilterItem
-                                    text="{Descricao}"
+                                    text="{Nome}"
                                     key="{ID}"
                                     />
                             </items>
                         </FacetFilterList>
-                        -->
                     </lists>
                 </FacetFilter>
 
@@ -71,6 +69,48 @@
                     mode="MultiSelect"
                     id="lojasList"
                     items="{bandeira/lojas}" >
+                    <StandardListItem
+                        title="{ID}"
+                        description="{Nome} [{UFID}]"
+                        type="Active"
+                        />
+                </List>
+
+            </VBox>
+
+            <VBox visible="{= ${TipoAbrangencia} === 'G' }">
+                <FacetFilter
+                    id="facetFilterGrupos"
+                    type="Simple"
+                    showPersonalization="true"
+                    showReset="true"
+                    reset="lojasFilterReset"
+                    confirm="lojasFilterConfirm"
+                    lists="">
+                    <lists>
+                        <FacetFilterList
+                            title="UF"
+                            key="UFID"
+                            mode="MultiSelect"
+                            items="{path:'bandeira/ufs', templateShareable: 'true'}"
+                            >
+                            <items>
+                                <FacetFilterItem
+                                    text="{ID}"
+                                    key="{ID}"
+                                    />
+                            </items>
+                        </FacetFilterList>
+                    </lists>
+                </FacetFilter>
+
+                <List
+                    growing="true"
+                    growingThreshold="30"
+                    growingScrollToLoad="true"
+                    mode="MultiSelect"
+                    id="gruposList"
+                    items="{bandeira/gruposLojas}" >
                     <StandardListItem
                         title="{ID}"
                         description="{Nome} [{UFID}]"

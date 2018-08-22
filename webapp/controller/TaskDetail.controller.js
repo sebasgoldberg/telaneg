@@ -60,10 +60,10 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         let selecaoItemOrgDialog = this.getOwnerComponent().getSelecaoItemOrgDialog();
         try {
             let v = this.getView();
-            let oListLoja = await selecaoItemOrgDialog.open(v.getBindingContext().getPath());
+            let oListItemsOrg = await selecaoItemOrgDialog.open(v.getBindingContext().getPath());
             let sPath = `${v.getBindingContext().getPath()}/itemsOrg`;
             let m = this.getView().getModel();
-            let oPromisesEntries = oListLoja.getSelectedItems().map( oItem => oItem.getBindingContext().getObject() )
+            let oPromisesEntries = oListItemsOrg.getSelectedItems().map( oItem => oItem.getBindingContext().getObject() )
                 .map( oItemOrg => 
                     this.createEntry(sPath,{
                         ID: oItemOrg.ID,
