@@ -79,9 +79,9 @@ export default ManagedObject.extend("simplifique.telaneg.controller.SelecaoLojaD
         }
     },
 
-    lojasFilterConfirm: function(oEvent) {
+    onFilterConfirm: function(oEvent) {
 
-        let oFacetFilter = this.getView().byId('facetFilterLojas');
+        let oFacetFilter = this.getView().byId(this.getFacetFilterID());
 
         var mFacetFilterLists = oFacetFilter.getLists().filter(function(oList) {
             return oList.getSelectedItems().length;
@@ -92,7 +92,7 @@ export default ManagedObject.extend("simplifique.telaneg.controller.SelecaoLojaD
             // ANDs between each group
             var oFilter = new Filter(mFacetFilterLists.map(function(oList) {
                 return new Filter(oList.getSelectedItems().map(function(oItem) {
-                    return new Filter(oList.getKey(), FilterOperator.EQ, oItem.getText());
+                    return new Filter(oList.getKey(), FilterOperator.EQ, oItem.getKey());
                 }), false);
             }), true);
             this._applyFilter(oFilter);
@@ -102,6 +102,17 @@ export default ManagedObject.extend("simplifique.telaneg.controller.SelecaoLojaD
 
     },
 
+    onFilterReset: function(oEvent) {
+
+        let oFacetFilter = this.getView().byId(this.getFacetFilterID());
+
+        oFacetFilter.getLists().forEach( oList => {
+            oList.removeSelections(true);
+            oList.getBinding("items").filter([]);
+        });
+
+        this._applyFilter([]);
+    },
 
 });
 

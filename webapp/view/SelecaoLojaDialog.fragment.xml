@@ -26,8 +26,8 @@
                     type="Simple"
                     showPersonalization="true"
                     showReset="true"
-                    reset="lojasFilterReset"
-                    confirm="lojasFilterConfirm"
+                    reset="onFilterReset"
+                    confirm="onFilterConfirm"
                     lists="">
                     <lists>
                         <FacetFilterList
@@ -45,7 +45,7 @@
                         </FacetFilterList>
                         <FacetFilterList
                             title="Grupos Lojas"
-                            key="grupoLoja"
+                            key="GrupoID"
                             mode="MultiSelect"
                             items="{path:'bandeira/gruposLojas', templateShareable: 'true'}"
                             growing='true'
@@ -84,8 +84,8 @@
                     type="Simple"
                     showPersonalization="true"
                     showReset="true"
-                    reset="lojasFilterReset"
-                    confirm="lojasFilterConfirm"
+                    reset="onFilterReset"
+                    confirm="onFilterConfirm"
                     lists="">
                     <lists>
                         <FacetFilterList
@@ -112,8 +112,8 @@
                     id="gruposList"
                     items="{bandeira/gruposLojas}" >
                     <StandardListItem
-                        title="{ID}"
-                        description="{Nome} [{UFID}]"
+                        title="{Nome}"
+                        description="{Descricao}"
                         type="Active"
                         />
                 </List>

@@ -59,7 +59,7 @@
                                 tokens="{itemsOrg}"
                                 >
                                 <tokens>
-                                    <Token key="{ID}" text="{ID}" />
+                                    <Token key="{ID}" text="{Nome}" />
                                 </tokens>
                             </MultiInput>
                         </form:fields>
