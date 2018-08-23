@@ -34,18 +34,6 @@ export default ManagedObject.extend("simplifique.telaneg.controller.SelecaoLojaD
         });
     },
 
-    getListID: function() {
-        let sTipoAbrangencia = this.getTipoAbrangencia();
-        switch (sTipoAbrangencia){
-            case 'L':
-                return 'lojasList';
-            case 'G':
-                return 'gruposList';
-            case 'U':
-                return 'ufsList';
-        }
-    },
-
     getListControl: function(){
         return this._oView.byId(this.getListID());
     },
@@ -69,6 +57,30 @@ export default ManagedObject.extend("simplifique.telaneg.controller.SelecaoLojaD
         return this.dialog.getBindingContext().getProperty('TipoAbrangencia');
     },
 
+    getSearchFieldName: function() {
+        let sTipoAbrangencia = this.getTipoAbrangencia();
+        switch (sTipoAbrangencia){
+            case 'L':
+                return 'ID';
+            case 'G':
+                return 'Nome';
+            case 'U':
+                return 'ID';
+        }
+    },
+
+    getListID: function() {
+        let sTipoAbrangencia = this.getTipoAbrangencia();
+        switch (sTipoAbrangencia){
+            case 'L':
+                return 'lojasList';
+            case 'G':
+                return 'gruposList';
+            case 'U':
+                return 'ufsList';
+        }
+    },
+
     getFacetFilterID: function() {
         let sTipoAbrangencia = this.getTipoAbrangencia();
         switch (sTipoAbrangencia){
@@ -81,24 +93,28 @@ export default ManagedObject.extend("simplifique.telaneg.controller.SelecaoLojaD
 
     onFilterConfirm: function(oEvent) {
 
-        let oFacetFilter = this.getView().byId(this.getFacetFilterID());
+        let aFilters = [];
 
-        var mFacetFilterLists = oFacetFilter.getLists().filter(function(oList) {
-            return oList.getSelectedItems().length;
-        });
+        let oSearchField = this.getView().byId('searchFieldItemOrg');
+        let sQuery = oSearchField.getValue();
+        if (sQuery)
+            aFilters.push(new Filter(this.getSearchFieldName(), FilterOperator.Contains, sQuery));
 
-        if (mFacetFilterLists.length) {
-            // Build the nested filter with ORs between the values of each group and
-            // ANDs between each group
-            var oFilter = new Filter(mFacetFilterLists.map(function(oList) {
-                return new Filter(oList.getSelectedItems().map(function(oItem) {
-                    return new Filter(oList.getKey(), FilterOperator.EQ, oItem.getKey());
-                }), false);
-            }), true);
-            this._applyFilter(oFilter);
-        } else {
-            this._applyFilter([]);
+        if (this.getFacetFilterID()){
+            let oFacetFilter = this.getView().byId(this.getFacetFilterID());
+
+            let mFacetFilterLists = oFacetFilter.getLists().filter(function(oList) {
+                return oList.getSelectedItems().length;
+            });
+
+            mFacetFilterLists.forEach( oList => 
+                oList.getSelectedItems().forEach(
+                    oItem => aFilters.push(new Filter(oList.getKey(), FilterOperator.EQ, oItem.getKey()))
+                    )
+            );
         }
+
+        this._applyFilter(aFilters);
 
     },
 

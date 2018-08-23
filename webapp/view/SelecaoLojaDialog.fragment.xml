@@ -8,6 +8,14 @@
         contentWidth="400px"
         contentHeight="500px"
         >
+		<subHeader>
+			<Toolbar>
+				<SearchField
+                    id="searchFieldItemOrg"
+					search="onFilterConfirm"
+					width="100%" />
+			</Toolbar>
+		</subHeader>
 
         <beginButton>
             <Button text="Selecionar" type="Emphasized"
