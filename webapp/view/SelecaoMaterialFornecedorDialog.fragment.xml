@@ -21,8 +21,8 @@
 			path: 'fornecedor/materiais'
 		}" >
 		<StandardListItem
-			title="{Nome}"
-			description="{ID}"
+			title="{ID}"
+			description="{Nome}"
 			type="Active" />
 	</SelectDialog>
 

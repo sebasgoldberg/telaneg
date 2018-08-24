@@ -87,6 +87,7 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Mercadorias">
                         <uxap:blocks>
+                            <!--
                             <Table id='itemsTable' width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" mode="MultiSelect" items="{path:'items', templateShareable:true, parameters:{expand:'material,simulacao,itemOrg,subitem,subitem/impostosEntrada,subitem/impostosSaida'}}">
                                 <headerToolbar>
                                     <OverflowToolbar design="Transparent">
@@ -182,9 +183,6 @@
                                         <cells>
                                             <Text text="{itemOrg/ID}" wrapping="true" />
 
-                                            <!--
-                                            <core:Icon src="sap-icon://add" height="48px" width="48px" visible="true"/>
-                                            -->
                                             <Text text="{
                                                 path: 'material/ID',
                                                 type: 'sap.ui.model.odata.type.String',
@@ -261,6 +259,8 @@
                                     </ColumnListItem>
                                 </items>
                             </Table>
+                            -->
+                            <core:Fragment fragmentName="simplifique.telaneg.view.ItemsNegociacao" type="XML" />
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>

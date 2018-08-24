@@ -1,0 +1,181 @@
+<core:FragmentDefinition 
+    xmlns:core="sap.ui.core"
+    xmlns="sap.ui.table"
+    xmlns:m="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+
+    <!--
+                expand:'material,simulacao,itemOrg,subitem,subitem/impostosEntrada,subitem/impostosSaida',
+    -->
+    <TreeTable
+        id="treeTable"
+        selectionMode="None"
+        enableColumnReordering="false"
+        expandFirstLevel="false"
+        rows="{
+            path : 'items',
+            parameters : {
+                expand:'material,simulacao,itemOrg',
+                numberOfExpandedLevels: 2,
+                treeAnnotationProperties : {
+                    hierarchyLevelFor : 'Nivel',
+                    hierarchyNodeFor : 'Item',
+                    hierarchyParentNodeFor : 'Pai',
+                    hierarchyDrillStateFor : 'TipoNo'
+                }
+            }
+        }">
+
+        <toolbar>
+            <m:Toolbar>
+                <m:ToolbarSpacer/>
+                <m:Button icon="sap-icon://add" iconFirst="true" type="Transparent" press="onAdicionarMercadoria" />
+                <m:Button text="" icon="sap-icon://delete" iconFirst="false" type="Transparent" press="onEliminarItensSelecionados" />
+            </m:Toolbar>
+        </toolbar>
+
+        <columns>
+            <Column label="">
+                <template>
+                    <m:Text text="" />
+                </template>
+            </Column>
+
+            <Column label="UF">
+                <template>
+                    <m:Text text="{itemOrg/ID}" wrapping="true" />
+                </template>
+            </Column>
+
+            <Column label="Mercadoria">
+                <template>
+                    <m:Text text="{
+                        path: 'material/ID',
+                        type: 'sap.ui.model.odata.type.String',
+                        constraints: {
+                            isDigitSequence : true,
+                            maxLength : 18
+                            }
+                        }" wrapping="true" />
+                </template>
+            </Column>
+
+            <Column label="Descrição" width="20%">
+                <template>
+                    <m:Text text="{material/Nome}" wrapping="true" />
+                </template>
+            </Column>
+
+            <Column label="UMV">
+                <template>
+                    <m:Text text="{material/UMB}" wrapping="true" />
+                </template>
+            </Column>
+
+            <Column label="Preço Venda" width="12%">
+                <template>
+                    <m:Input value="{
+                        path: 'subitem/PrecoVenda',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: { scale: 2 }
+                        }"
+                        description="BRL"
+                        visible='{UnicoSubitem}'
+                        />
+                </template>
+            </Column>
+
+            <Column label="PMZ">
+                <template>
+                    <m:Text text="{
+                        path: 'simulacao/PMZNovo',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: { scale: 2 }
+                        } BRL" wrapping="true" />
+                </template>
+            </Column>
+
+            <Column label="Margem PDV">
+                <template>
+                    <m:Text text="{
+                        path: 'nossoPricing/MargemPDV',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: { scale: 2 }
+                        } %" wrapping="true" />
+                </template>
+            </Column>
+
+            <Column label="Recomp." width="12%">
+                <template>
+                    <m:Input value="{
+                        path: 'simulacao/Recomposicao',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: { scale: 2 }
+                        }" description="BRL"/>
+                </template>
+            </Column>
+
+            <Column label="Margem 2 Simulada">
+                <template>
+                    <m:Text text="{
+                        path: 'simulacao/Margem2',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: { scale: 2 }
+                        } %" wrapping="true" />
+                </template>
+            </Column>
+
+            <Column label="Menor Preço Mercado">
+                <template>
+                    <m:Text text="{
+                        path: 'nossoPricing/PrecoMercado',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: { scale: 2 }
+                        }" wrapping="true" />
+                </template>
+            </Column>
+
+            <Column label="IC">
+                <template>
+                    <m:Text text="{
+                        path: 'simulacao/IC',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: { scale: 2 }
+                        } %" wrapping="true" />
+                </template>
+            </Column>
+
+            <Column label="" width="6%">
+                <template>
+                    <m:HBox>
+                    <core:Icon
+                        src="sap-icon://line-chart"
+                        size="16px"
+                        hoverColor="#386084"
+                        tooltip="Vendas"
+                        press="onMostrarVendas"
+                        />
+                    <core:Icon
+                        src="sap-icon://product"
+                        size="16px"
+                        hoverColor="#386084"
+                        tooltip="Estoque"
+                        press="onMostrarEstoque"
+                        />
+                    <core:Icon
+                        src="sap-icon://commission-check"
+                        size="16px"
+                        hoverColor="#386084"
+                        tooltip="Impostos"
+                        press="onMostrarImpostos"
+                        />
+                    </m:HBox>
+                </template>
+            </Column>
+
+        </columns>
+
+    </TreeTable>
+
+</core:FragmentDefinition>
+
