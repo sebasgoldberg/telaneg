@@ -15,8 +15,8 @@
         rows="{
             path : 'items',
             parameters : {
-                expand:'material,simulacao,itemOrg',
-                numberOfExpandedLevels: 2,
+                expand:'material,simulacao,itemOrg,impostosEntrada,impostosSaida',
+                numberOfExpandedLevels: 0,
                 treeAnnotationProperties : {
                     hierarchyLevelFor : 'Nivel',
                     hierarchyNodeFor : 'Item',
@@ -35,19 +35,14 @@
         </toolbar>
 
         <columns>
-            <Column label="">
-                <template>
-                    <m:Text text="" />
-                </template>
-            </Column>
 
-            <Column label="UF">
+            <Column label="UF" width="10%" >
                 <template>
                     <m:Text text="{itemOrg/ID}" wrapping="true" />
                 </template>
             </Column>
 
-            <Column label="Mercadoria">
+            <Column label="Mercadoria" width="10%" >
                 <template>
                     <m:Text text="{
                         path: 'material/ID',
@@ -75,12 +70,11 @@
             <Column label="Preço Venda" width="12%">
                 <template>
                     <m:Input value="{
-                        path: 'subitem/PrecoVenda',
+                        path: 'simulacao/PrecoVenda',
                         type: 'sap.ui.model.odata.type.Decimal',
                         constraints: { scale: 2 }
                         }"
                         description="BRL"
-                        visible='{UnicoSubitem}'
                         />
                 </template>
             </Column>

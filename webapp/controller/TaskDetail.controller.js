@@ -145,7 +145,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
     onMostrarImpostos: function(oEvent) {
         let sItemPath = oEvent.getSource().getBindingContext().getPath();
         let oImpostosPopOver = this.getOwnerComponent().getImpostosPopover();
-        oImpostosPopOver.open(`${sItemPath}/subitem`, oEvent.getSource());
+        oImpostosPopOver.open(`${sItemPath}`, oEvent.getSource());
     },
 
 });
