@@ -2,58 +2,9 @@
     xmlns:sim="simplifique.telaneg.control"
     >
 
-    <form:SimpleForm
-        visible="false"
-        layout="ResponsiveGridLayout"
-        columnsXL="4" columnsL="4" columnsM="2" columnsS="1"
-        labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12"
-        breakpointL="500" breakpointM="250"
-        >
-
-
-        <core:Title text="Periodo 1" />
-            <Label text="De" />
-            <DatePicker />
-
-            <Label text="Até" />
-            <DatePicker />
-
-        <core:Title text="" />
-           <Label text="Valor"/>
-            <Text
-                text="{path: 'vendaActual/Valor', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} BRL"/>
-            <Label text="Quantidade"/>
-            <Text
-                text="{path: 'vendaActual/Quantidade', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} UN"/>
-            <Label text="Margem"/>
-            <Text
-                text="{path: 'vendaActual/Margem', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} %"/>
-
-        <core:Title text="Periodo 2" />
-            <Label text="De" />
-            <DatePicker />
-
-            <Label text="Até" />
-            <DatePicker />
-
-        <core:Title text="" />
- 
-            <Label text="Valor"/>
-            <Text
-                text="{path: '', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} BRL"/>
-            <Label text="Quantidade"/>
-            <Text
-                text="{path: '', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} UN"/>
-            <Label text="Margem"/>
-            <Text
-                text="{path: '', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} %"/>
-
-
-    </form:SimpleForm>
-
     <l:VerticalLayout class="sapUiContentPadding">
 
-       <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'venda', parameters:{ expand: 'material' }}"
+       <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{venda}"
             id="vendaTable" mode="MultiSelect" >
 
                 <headerToolbar>
@@ -81,10 +32,10 @@
 
 
                                                 <Label text="De" />
-                                                <DatePicker dateValue='{view>/venda/selecao/de}'/>
+                                                <DatePicker id='vendaDeDatePicker' dateValue='{view>/venda/selecao/de}'/>
 
                                                 <Label text="Até" />
-                                                <DatePicker dateValue='{view>/venda/selecao/ate}'/>
+                                                <DatePicker id='vendaAteDatePicker' dateValue='{view>/venda/selecao/ate}'/>
 
 
                                         </form:SimpleForm>

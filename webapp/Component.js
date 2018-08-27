@@ -1,11 +1,12 @@
+import babelPolyfill from "simplifique/telaneg/lib/polyfill";
 import UIComponent from "sap/ui/core/UIComponent";
 import Device from "sap/ui/Device";
 import models from "simplifique/telaneg/model/models";
 import ErrorHandler from "simplifique/telaneg/controller/ErrorHandler";
 import ImpostosPopover from "simplifique/telaneg/controller/ImpostosPopover";
+import VendasPopover from "simplifique/telaneg/controller/VendasPopover";
 import SelecaoLojaDialog from "simplifique/telaneg/controller/SelecaoLojaDialog";
 import SelecaoMaterialFornecedorDialog from "simplifique/telaneg/controller/SelecaoMaterialFornecedorDialog";
-import babelPolyfill from "simplifique/telaneg/lib/polyfill";
 
 let navigationWithContext = {
     "NegociacaoSet": {
@@ -95,12 +96,17 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
         oMessageManager.registerMessageProcessor(oMessageProcessor);
 
         this._impostosPopover = new ImpostosPopover(this.getRootControl());
+        this._vendasPopover = new VendasPopover(this.getRootControl());
         this._selecaoLojaDialog = new SelecaoLojaDialog(this.getRootControl());
         this._selecaoMaterialFornecedorDialog = new SelecaoMaterialFornecedorDialog(this.getRootControl());
     },
 
     getImpostosPopover: function() {
         return this._impostosPopover;
+    },
+
+    getVendasPopover: function() {
+        return this._vendasPopover;
     },
 
     getSelecaoItemOrgDialog: function() {
