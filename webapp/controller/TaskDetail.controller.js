@@ -24,7 +24,9 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         this.getView().setModel(sap.ui.getCore().getMessageManager().getMessageModel(),"message");
 
         let v = this.getView();
-        v.setModel(new JSONModel({ }), 'view');
+        v.setModel(new JSONModel({
+            AtualizacaoEliminacoes: false,
+            }), 'view');
 
         this.getRouter().getTarget("TaskDetail")
             .attachDisplay( oEvent => {
@@ -139,7 +141,10 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
     },
 
     onEliminarItensSelecionados: function(oEvent) {
-        this.deleteSelectedItems('itemsTable');
+        let oTree = this.getView().byId('treeTable');
+        let aContexts = oTree.getSelectedIndices()
+            .map( index => oTree.getContextByIndex(index));
+        this.deleteContexts(aContexts);
     },
 
     onMostrarImpostos: function(oEvent) {

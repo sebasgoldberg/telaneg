@@ -9,7 +9,7 @@
     -->
     <TreeTable
         id="treeTable"
-        selectionMode="None"
+        selectionMode="Multiple"
         enableColumnReordering="false"
         expandFirstLevel="false"
         rows="{

@@ -153,10 +153,29 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
     },
 
 
-    deleteSelectedItemsPromises: function(sControlId) {
+    deleteContextsPromises: function(aContexts) {
         let v = this.getView();
-        return v.byId(sControlId).getSelectedContextPaths()
+        return aContexts.map( c => c.getPath() )
             .map( c => this.remove(c) );
+    },
+
+    deleteContexts: async function(aContexts) {
+        let v = this.getView();
+        let m = v.getModel();
+
+        let eliminar = await this.temCertezaDeEliminar();
+        if (!eliminar)
+            return false;
+        try {
+            let result = await this.all(
+                this.deleteContextsPromises(aContexts)
+            );
+            if (result)
+                m.refresh();
+        } catch (e) {
+            /* handle error */
+            this.error(e);
+        }
     },
 
     deleteSelectedItems: async function(sControlId) {
@@ -167,7 +186,12 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         if (!eliminar)
             return false;
         try {
-            let result = await this.all(this.deleteSelectedItemsPromises(sControlId));
+            let result = await this.all(
+                this.deleteContextsPromises(
+                    v.byId(sControlId).getSelectedContexts()
+                )
+            );
+        
             if (result)
                 m.refresh();
         } catch (e) {
