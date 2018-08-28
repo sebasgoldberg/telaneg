@@ -25,10 +25,10 @@
                                     class="sapUiPopupWithPadding"
                                     >
                                     <beginButton>
-                                        <Button text="Obter" press="onObterVenda" type="Emphasized" />
+                                        <Button text="Obter" press="onAdd" type="Emphasized" />
                                     </beginButton>
                                     <endButton>
-                                        <Button text="Fechar" press="onFecharObterVenda" />
+                                        <Button text="Fechar" press="onFecharAddPopover" />
                                     </endButton>
                                     <content>
 
@@ -52,7 +52,7 @@
                                 </ResponsivePopover>
 
                             </sim:ButtonPopover>
-                            <Button text="" type="" icon="sap-icon://delete" press="onDeleteVenda"/>
+                            <Button text="" type="" icon="sap-icon://delete" press="onDelete"/>
 
                         </content>
                         <tooltip/>

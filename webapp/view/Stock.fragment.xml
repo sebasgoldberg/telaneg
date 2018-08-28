@@ -1,39 +1,60 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
-    <form:SimpleForm
-        visible="false"
-        layout="ResponsiveGridLayout"
-        columnsXL="4" columnsL="4" columnsM="2" columnsS="1"
-        labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12"
-        breakpointL="500" breakpointM="250"
-        >
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form"
+    xmlns:sim="simplifique.telaneg.control"
+    >
+       <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false"
+            mode="MultiSelect" 
+            id='stockTable'
+            items="{
+                path:'stock',
+                templateShareable:true,
+                parameters:{
+                    expand:'item,item/material,item/itemOrg'
+                    }
+                }" >
 
-        <core:Title text="Stock Atual" />
+                <headerToolbar>
+                    <Toolbar width="auto" height="46px" design="Transparent" visible="true" enabled="true">
+                        <content>
+                            <ToolbarSpacer width=""/>
+                            <sim:ButtonPopover type="Emphasized" icon="sap-icon://add" placement="Left">
 
-            <Label text="Avaliação"/>
-            <Text
-                text="{path: 'stock/Avaliacao', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} BRL"/>
+                                <ResponsivePopover
+                                    id="popoverObterStock"
+                                    title="Obter Estoque"
+                                    class="sapUiPopupWithPadding"
+                                    >
+                                    <beginButton>
+                                        <Button text="Obter" press="onAdd" type="Emphasized" />
+                                    </beginButton>
+                                    <endButton>
+                                        <Button text="Fechar" press="onFecharAddPopover" />
+                                    </endButton>
+                                    <content>
 
-        <core:Title text="" />
 
-             <Label text="DDE"/>
-            <Text
-                text="{path: 'stock/DDE', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} dias"/>
+                                        <form:SimpleForm
+                                            >
 
-        <core:Title text="" />
 
-             <Label text="Quantidade Loja"/>
-            <Text
-                text="{path: 'stock/QuantidadeLoja', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} UN"/>
+                                                <Label text="Data" />
+                                                <DatePicker id='stockDatePicker' />
 
-        <core:Title text="" />
 
-             <Label text="Quantidade CD"/>
-            <Text
-                text="{path: 'stock/QuantidadeCD', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }} UN"/>
+                                        </form:SimpleForm>
 
-    </form:SimpleForm>
 
-       <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{path:'stock', templateShareable:true, parameters:{expand:'material' } }" >
+                                        
+                                    </content>
+                                </ResponsivePopover>
+
+                            </sim:ButtonPopover>
+                            <Button text="" type="" icon="sap-icon://delete" press="onDelete"/>
+
+                        </content>
+                        <tooltip/>
+                    </Toolbar>
+                </headerToolbar>
+
             <columns>
                 <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
                     <header>
@@ -50,6 +71,13 @@
                 <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                     <header>
                         <Text text="Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Data" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                     </header>
                     <footer/>
                 </Column>
@@ -83,9 +111,9 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <ObjectIdentifier title="{CentroID}" text="" titleActive="false" visible="true"/>
+                        <ObjectIdentifier title="{item/itemOrg/ID}" text="" titleActive="false" visible="true"/>
                         <ObjectIdentifier title="{
-                            path: 'material/ID',
+                            path: 'item/material/ID',
                             type: 'sap.ui.model.odata.type.String',
                             constraints: {
                                 isDigitSequence : true,
@@ -93,7 +121,10 @@
                                 }
                             }"
                             text="" titleActive="false" visible="true"/>
-                        <Text text="{material/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+
+                        <Text text="{item/material/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+
+                        <ObjectIdentifier title="{path: 'Data', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}" />
 
                         <ObjectNumber
                             number="{path: 'Avaliacao', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"

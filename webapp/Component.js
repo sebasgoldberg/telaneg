@@ -5,6 +5,7 @@ import models from "simplifique/telaneg/model/models";
 import ErrorHandler from "simplifique/telaneg/controller/ErrorHandler";
 import ImpostosPopover from "simplifique/telaneg/controller/ImpostosPopover";
 import VendasPopover from "simplifique/telaneg/controller/VendasPopover";
+import StockPopover from "simplifique/telaneg/controller/StockPopover";
 import SelecaoLojaDialog from "simplifique/telaneg/controller/SelecaoLojaDialog";
 import SelecaoMaterialFornecedorDialog from "simplifique/telaneg/controller/SelecaoMaterialFornecedorDialog";
 
@@ -97,12 +98,17 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
 
         this._impostosPopover = new ImpostosPopover(this.getRootControl());
         this._vendasPopover = new VendasPopover(this.getRootControl());
+        this._stockPopover = new StockPopover(this.getRootControl());
         this._selecaoLojaDialog = new SelecaoLojaDialog(this.getRootControl());
         this._selecaoMaterialFornecedorDialog = new SelecaoMaterialFornecedorDialog(this.getRootControl());
     },
 
     getImpostosPopover: function() {
         return this._impostosPopover;
+    },
+
+    getStockPopover: function() {
+        return this._stockPopover;
     },
 
     getVendasPopover: function() {

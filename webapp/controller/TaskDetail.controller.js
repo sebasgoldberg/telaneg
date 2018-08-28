@@ -159,5 +159,11 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         oVendasPopOver.open(`${sItemPath}`, oEvent.getSource());
     },
 
+    onMostrarEstoque: function(oEvent) {
+        let sItemPath = oEvent.getSource().getBindingContext().getPath();
+        let oStockPopOver = this.getOwnerComponent().getStockPopover();
+        oStockPopOver.open(`${sItemPath}`, oEvent.getSource());
+    },
+
 });
 
