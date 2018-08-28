@@ -4,7 +4,13 @@
 
     <l:VerticalLayout class="sapUiContentPadding">
 
-       <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false" items="{venda}"
+       <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false"
+            items="{
+                path: 'venda',
+                parameters:{
+                    expand: 'item,item/material,item/itemOrg'
+                    }
+                }"
             id="vendaTable" mode="MultiSelect" >
 
                 <headerToolbar>
@@ -114,9 +120,9 @@
             <items>
                 <ColumnListItem>
                     <cells>
-                        <ObjectIdentifier title="{CentroID}" text="" titleActive="false" visible="true"/>
+                        <ObjectIdentifier title="{item/itemOrg/ID}" text="" titleActive="false" visible="true"/>
                         <ObjectIdentifier title="{
-                            path: 'material/ID',
+                            path: 'item/material/ID',
                             type: 'sap.ui.model.odata.type.String',
                             constraints: {
                                 isDigitSequence : true,
@@ -125,7 +131,7 @@
                             }"
                             text="" titleActive="false" visible="true"/>
 
-                        <Text text="{material/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                        <Text text="{item/material/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
 
                         <ObjectIdentifier title="{path: 'De', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}" />
                         <ObjectIdentifier title="{path: 'Ate', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}" />

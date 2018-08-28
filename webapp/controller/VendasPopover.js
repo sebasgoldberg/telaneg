@@ -74,11 +74,11 @@ export default ManagedObject.extend("simplifique.telaneg.controller.VendasPopove
     },
 
     setBusy: function() {
-        sap.ui.core.BusyIndicator.show(0);
+        this.getVendaTable().setBusy(true);
     },
 
     setFree: function() {
-        sap.ui.core.BusyIndicator.hide();
+        this.getVendaTable().setBusy(false);
     },
 
 
@@ -119,6 +119,33 @@ export default ManagedObject.extend("simplifique.telaneg.controller.VendasPopove
     eliminarVendasSelecionadas: function() {
         return Promise.all(this.getVendaTable().getSelectedContexts()
             .map( c => this.eliminarVenda(c) ));
+    },
+
+    temCertezaDeEliminar: function(attribute) {
+        return new Promise(function(fnResolve) {
+            sap.m.MessageBox.confirm("Tem certeza que deseja eliminar as vendas selecionados?", {
+                title: "Eliminar Vendas",
+                actions: ["Tenho Sim", "Melhor Não"],
+                onClose: function(sActionClicked) {
+                    fnResolve(sActionClicked === "Tenho Sim");
+                }
+            });
+        });
+    },
+
+    onDeleteVenda: async function() {
+        try {
+            let eliminar = await this.temCertezaDeEliminar();
+            if (!eliminar)
+                return;
+            this.setBusy()
+            await this.eliminarVendasSelecionadas();
+            this.refreshVenda();
+        } catch (e) {
+            console.error(e);
+        } finally {
+            this.setFree();
+        }
     },
 
 
