@@ -39,6 +39,13 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         this.getRouter().getTarget("TaskDetail")
             .attachDisplay( oEvent => {
 
+                if (this.sNegociacaoID && this.sNegociacaoID == oEvent.mParameters.data.negociacaoID)
+                    return;
+
+                let m = this.getModel();
+                if (m.hasPendingChanges())
+                    m.resetChanges();
+
                 this.sNegociacaoID = oEvent.mParameters.data.negociacaoID;
                 let oPath = {
                     path: `/NegociacaoSet('${this.sNegociacaoID}')/`,
