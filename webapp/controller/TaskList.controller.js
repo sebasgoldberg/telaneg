@@ -143,4 +143,8 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         setTimeout( () => this.onSearch(), 100);
     },
 
+    onDeleteSelecionados: function(oEvent) {
+        this.deleteSelectedItems('negociacoesTable');
+    },
+
 });

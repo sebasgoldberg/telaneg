@@ -10,7 +10,7 @@
                 <form:formElements>
                     <form:FormElement>
                         <form:label>
-                            <Label text="Bandeira" required="false"/>
+                            <Label text="Bandeira" required="true"/>
                         </form:label>
                         <form:fields>
                             <ComboBox
@@ -28,7 +28,7 @@
                 <form:formElements>
                     <form:FormElement>
                         <form:label>
-                            <Label text="Tipo de Abrangência" required="false"/>
+                            <Label text="Tipo de Abrangência" required="true"/>
                         </form:label>
                         <form:fields>
                             <ComboBox
@@ -47,7 +47,7 @@
                 <form:formElements>
                     <form:FormElement>
                         <form:label>
-                            <Label text="{abrangencia/Descricao}" required="false"/>
+                            <Label text="{abrangencia/Descricao}" required="true"/>
                         </form:label>
                         <form:fields>
                             <MultiInput 

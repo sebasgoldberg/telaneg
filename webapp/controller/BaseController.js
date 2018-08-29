@@ -191,18 +191,26 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         let eliminar = await this.temCertezaDeEliminar();
         if (!eliminar)
             return false;
+        
+        let oControl = v.byId(sControlId);
+
         try {
+
+            oControl.setBusy(true);
+
             let result = await this.all(
                 this.deleteContextsPromises(
-                    v.byId(sControlId).getSelectedContexts()
+                    oControl.getSelectedContexts()
                 )
             );
         
             if (result)
-                m.refresh();
+                oControl.getBinding('items').refresh();
+
         } catch (e) {
-            /* handle error */
             this.error(e);
+        } finally {
+            oControl.setBusy(false);
         }
     },
 

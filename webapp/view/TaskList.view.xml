@@ -20,6 +20,7 @@
                     <Button text="Copiar" icon="sap-icon://add-coursebook" press="" />
                     -->
                     <Button text="Novo Acordo" icon="sap-icon://add" type="Emphasized" press="onCriarAcordo" />
+                    <Button icon="sap-icon://delete" press="onDeleteSelecionados"/>
 
                 </f:actions>
             </f:DynamicPageTitle>
@@ -160,8 +161,12 @@
             <VBox fitContainer="true">
                 <items>
                     <Table
+                        keyboardMode="Edit"
+                        mode="MultiSelect"
                         id="negociacoesTable"
-                        growing="true" growingScrollToLoad="true" growingThreshold="25" mode="SingleSelectMaster"
+                        growing="true"
+                        growingScrollToLoad="true"
+                        growingThreshold="25"
                         items="{
                             path:'/NegociacaoSet',
                             templateShareable:true,

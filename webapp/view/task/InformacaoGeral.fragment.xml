@@ -8,7 +8,7 @@
                 <form:formElements>
                     <form:FormElement>
                         <form:label>
-                            <Label text="Descrição" required="false"/>
+                            <Label text="Descrição"/>
                         </form:label>
                         <form:fields>
                             <Input value="{Descricao}" placeholder="Indique aqui alguma descrição" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
@@ -16,7 +16,7 @@
                     </form:FormElement>
                     <form:FormElement>
                         <form:label>
-                            <Label text="Período de Apuração" required="false"/>
+                            <Label text="Período de Apuração" required="true"/>
                         </form:label>
                         <form:fields>
                             <DateRangeSelection
@@ -32,7 +32,7 @@
                 <form:formElements>
                     <form:FormElement>
                         <form:label>
-                            <Label text="Fornecedor"/>
+                            <Label text="Fornecedor" required="true"/>
                         </form:label>
                         <form:fields>
                             <Input
@@ -66,7 +66,7 @@
                 <form:formElements>
                     <form:FormElement>
                         <form:label>
-                            <Label text="Cláusula" required="false"/>
+                            <Label text="Cláusula"/>
                         </form:label>
                         <form:fields>
                             <Input

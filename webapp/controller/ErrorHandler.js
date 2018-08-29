@@ -27,10 +27,13 @@ sap.ui.define([
                             this._showMetadataError(oParams.response, oModel);
                         }, this);
                         oModel.attachRequestFailed(function (oEvent) {
-                            return;
                             var oParams = oEvent.getParameters();
                             var oMessageManager = sap.ui.getCore().getMessageManager();
-                            let messages = JSON.parse(oParams.response.responseText);
+                            try {
+                                let messages = JSON.parse(oParams.response.responseText);
+                            } catch (e) {
+                                return;
+                            }
                             let mainMessage = messages.error.message;
                             let detailMessages = messages.error.innererror.errordetails;
 
