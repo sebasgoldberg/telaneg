@@ -16,7 +16,9 @@
                 </f:heading>
                 <f:actions>
 
+                    <!--
                     <Button text="Copiar" icon="sap-icon://add-coursebook" press="" />
+                    -->
                     <Button text="Novo Acordo" icon="sap-icon://add" type="Emphasized" press="onCriarAcordo" />
 
                 </f:actions>
@@ -49,10 +51,12 @@
 
                                 </fb:control>
                             </fb:FilterItem>
+
                             <fb:FilterItem label="Fornecedor" name="fornecedorFilter">
                                 <fb:control>
 
                                     <MultiInput 
+                                        tokenUpdate="onTokenUpdate"
                                         submit="onSearch"
                                         id="multiInputFornecedor"
                                         enableMultiLineMode="true"
@@ -65,6 +69,7 @@
 
                                 </fb:control>
                             </fb:FilterItem>
+
                             <fb:FilterItem label="Vencimento" name="vencimentoFilter">
                                 <fb:control>
                                     <DateRangeSelection
@@ -75,6 +80,32 @@
                                     />
                                 </fb:control>
                             </fb:FilterItem>
+
+                            <fb:FilterItem label="Material" name="materialFilter">
+                                <fb:control>
+
+                                    <MultiInput 
+                                        tokenUpdate="onTokenUpdate"
+                                        submit="onSearch"
+                                        id="multiInputMaterial"
+                                        enableMultiLineMode="true"
+                                        suggest="suggestMateriais"
+                                        suggestionItems="{/MaterialSet}"
+                                        maxSuggestionWidth="500px"
+                                        showValueHelp="false">
+                                        <core:ListItem key="{ID}" text="{
+                                            path: 'ID',
+                                            type: 'sap.ui.model.odata.type.String',
+                                            constraints: {
+                                                isDigitSequence : true,
+                                                maxLength : 10
+                                                }
+                                            }" additionalText="{Nome}" />
+                                    </MultiInput>
+
+                                </fb:control>
+                            </fb:FilterItem>
+
                         </fb:filterItems>
                     </fb:FilterBar>
 

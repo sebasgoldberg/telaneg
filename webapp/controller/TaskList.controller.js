@@ -65,6 +65,10 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         if (filter.dataDe)
             aFilters.push(new Filter('Data', FilterOperator.BT, filter.dataDe, filter.dataAte));
 
+        let oMultiInputMaterial = v.byId('multiInputMaterial');
+        oMultiInputMaterial.getTokens().map( oToken =>
+            aFilters.push(new Filter('MaterialID', FilterOperator.EQ, oToken.getKey() )));
+
         return aFilters;
         
     },
@@ -136,5 +140,8 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         this.navTo('TaskDetail', {negociacaoID: sNegociacaoID});
     },
 
+    onTokenUpdate: function(oEvent) {
+        setTimeout( () => this.onSearch(), 100);
+    },
 
 });

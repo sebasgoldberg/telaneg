@@ -225,6 +225,28 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         oBinding.filter(aFilters);
     },
 
+    suggestMateriais: function(oEvent) {
+        var sTerm = oEvent.getParameter("suggestValue");
+        var aFilters = [];
+        if (sTerm) {
+            if (/^\d+$/.test(sTerm)) // Só numeros
+                if (sTerm.length == 18)
+                    aFilters.push(new Filter("ID", FilterOperator.EQ, sTerm))
+                else if (sTerm.length == 17){
+                    aFilters.push(new Filter("ID", FilterOperator.StartsWith, sTerm))
+                    aFilters.push(new Filter("ID", FilterOperator.EndsWith, sTerm))
+                    }
+                else
+                    aFilters.push(new Filter("ID", FilterOperator.Contains, sTerm))
+            else
+                aFilters.push(new Filter("Nome", FilterOperator.Contains, sTerm));
+        }
+        let oSource = oEvent.getSource();
+        let oBinding = oSource.getBinding("suggestionItems")
+        oBinding.filter(aFilters);
+    },
+
+
     hasToPerformSave: function() {
         return new Promise(function(fnResolve) {
             sap.m.MessageBox.confirm("É necessario gravar as modificações antes de realizar a operação solicitada. Deseja gravar?", {
