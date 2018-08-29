@@ -21,13 +21,6 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
 
         Controller.prototype.onInit.call(this);
 
-        this.oMP = new sap.m.MessagePopover({
-            items: {
-                path:"message>/",
-                template: new sap.m.MessagePopoverItem({ description: "{message>description}", type: "{message>type}", title: "{message>message}"})
-            }
-        });
-
         this.getView().setModel(sap.ui.getCore().getMessageManager().getMessageModel(),"message");
 
         let v = this.getView();
@@ -122,6 +115,15 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
     },
 
     handleMessagePopoverPress: function (oEvent) {
+        if (!this.oMP){
+            this.oMP = new sap.m.MessagePopover({
+                items: {
+                    path:"message>/",
+                    template: new sap.m.MessageItem({ description: "{message>description}", type: "{message>type}", title: "{message>message}"})
+                }
+            });
+            this.oMP.setModel(sap.ui.getCore().getMessageManager().getMessageModel(),"message");
+        }
         this.oMP.toggle(oEvent.getSource());
     },
 
