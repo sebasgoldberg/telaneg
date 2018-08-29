@@ -33,34 +33,6 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
         //sap.ui.core.BusyIndicator.hide();
     },
 
-    submitChanges: function() {
-
-        return new Promise( (resolve, reject) => {
-            this.getModel().submitChanges({
-                    success: (...args) => resolve(args),
-                    error: (...args) => reject(args),
-                });
-            });
-    },
-
-    save: async function() {
-        let m = this.getModel();
-
-        if (!m.hasPendingChanges())
-            return;
-
-        try {
-            this.setBusy();
-            let result = await this.submitChanges();
-            m.refresh(true);
-        } catch (e) {
-            console.error(e);
-            m.resetChanges();
-        } finally{
-            this.setFree();
-        }
-    },
-
     /**
      * The component is initialized by UI5 automatically during the startup of the app and calls the init method once.
      * In this method, the FLP and device models are set and the router is initialized.
@@ -89,7 +61,7 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
         // create the views based on the url/hash
         this.getRouter().initialize();
 
-        this.getModel().attachPropertyChange(oEvent => this.save());
+        //this.getModel().attachPropertyChange(oEvent => this.save());
 
         let oMessageProcessor = new sap.ui.core.message.ControlMessageProcessor();
         let oMessageManager  = sap.ui.getCore().getMessageManager();

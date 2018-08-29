@@ -51,7 +51,7 @@
                         </form:label>
                         <form:fields>
                             <MultiInput 
-                                id="multiInputLojas"
+                                id="multiInputItemsOrg"
                                 enableMultiLineMode="false"
                                 showValueHelp="true"
                                 valueHelpRequest="onValueHelpItemOrg"

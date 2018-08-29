@@ -10,6 +10,13 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
 
     formatter: formatter,
 
+    aAtributosComGravadoAutomatico: [
+        "FornecedorID",
+        "ClausulaID",
+        "Bandeira",
+        "TipoAbrangencia",
+        ],
+
     onInit: function(){
 
         Controller.prototype.onInit.call(this);
@@ -27,6 +34,14 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         v.setModel(new JSONModel({
             AtualizacaoEliminacoes: false,
             }), 'view');
+
+
+        this.getOwnerComponent().getModel().attachPropertyChange(oEvent => {
+            let oParams = oEvent.getParameters();
+            if (this.aAtributosComGravadoAutomatico.indexOf(oParams.path) < 0)
+                return;
+            this.save();
+            });
 
         this.getRouter().getTarget("TaskDetail")
             .attachDisplay( oEvent => {
@@ -76,7 +91,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
                 oPromisesEntries.push(this.submitChanges())
                 try {
                     let results = await this.all(oPromisesEntries);
-                    m.refresh();
+                    this.refreshItems();
                 } catch (e) {
                     console.error(e);
                     this.resetChanges();
@@ -90,14 +105,19 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
     onUpdateItemOrg: async function(oEvent) {
         let oParams = oEvent.getParameters();
         let oSource = oEvent.getSource();
-        let oContext = oEvent.getSource().getBindingContext();
+        if (oParams.type != "removed")
+            return;
+
+        let oContext = oSource.getBindingContext();
         let aRemovePromises = oParams.removedTokens.map( oToken => oToken.getBindingContext().getPath() )
             .map( sPath => this.remove(sPath, { NegociacaoID: oContext.getObject().ID }) );
         try {
             let result = await this.all(aRemovePromises);
-            this.getModel().refresh();
+            this.refreshItems();
         } catch (e) {
             this.error(e);
+            //this.getModel().resetChanges()
+            oSource.getBinding('tokens').refresh(true);
         }
     },
 
@@ -131,20 +151,28 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
             return;
         oPromisesEntries.push(this.submitChanges())
         try {
+            this.setBusy();
             let results = await this.all(oPromisesEntries);
-            m.refresh();
+            this.refreshItems();
         } catch (e) {
             this.resetChanges();
             console.error(e);
+        } finally {
+            this.setFree();
         }
 
     },
 
-    onEliminarItensSelecionados: function(oEvent) {
+    refreshItems: function() {
+        this.getView().byId('treeTable').getBinding('rows').refresh();
+    },
+
+    onEliminarItensSelecionados: async function(oEvent) {
         let oTree = this.getView().byId('treeTable');
         let aContexts = oTree.getSelectedIndices()
             .map( index => oTree.getContextByIndex(index));
-        this.deleteContexts(aContexts);
+        if (await this.deleteContexts(aContexts))
+            this.refreshItems();
     },
 
     onMostrarImpostos: function(oEvent) {

@@ -159,23 +159,29 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
             .map( c => this.remove(c) );
     },
 
-    deleteContexts: async function(aContexts) {
-        let v = this.getView();
-        let m = v.getModel();
+    deleteContexts: function(aContexts) {
+        return new Promise( async (resolve, reject) => {
+            let v = this.getView();
+            let m = v.getModel();
 
-        let eliminar = await this.temCertezaDeEliminar();
-        if (!eliminar)
-            return false;
-        try {
-            let result = await this.all(
-                this.deleteContextsPromises(aContexts)
-            );
-            if (result)
-                m.refresh();
-        } catch (e) {
-            /* handle error */
-            this.error(e);
-        }
+            let eliminar = await this.temCertezaDeEliminar();
+            if (!eliminar){
+                resolve(false);
+                return;
+            }
+            try {
+                let result = await this.all(
+                    this.deleteContextsPromises(aContexts)
+                );
+                if (result)
+                    resolve(true)
+                else
+                    resolve(false);
+            } catch (e) {
+                this.error(e);
+                resolve(false);
+            }
+        });
     },
 
     deleteSelectedItems: async function(sControlId) {
@@ -217,6 +223,76 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         let oSource = oEvent.getSource();
         let oBinding = oSource.getBinding("suggestionItems")
         oBinding.filter(aFilters);
+    },
+
+    hasToPerformSave: function() {
+        return new Promise(function(fnResolve) {
+            sap.m.MessageBox.confirm("É necessario gravar as modificações antes de realizar a operação solicitada. Deseja gravar?", {
+                title: "Gravar Modificações",
+                actions: ["Desejo Sim", "Melhor Não"],
+                onClose: function(sActionClicked) {
+                    fnResolve(sActionClicked === "Desejo Sim");
+                }
+            });
+        });
+    },
+
+    saveIfNeeded: function() {
+        return new Promise( async (resolve, reject) => {
+
+            let m = this.getModel();
+
+            if (!m.hasPendingChanges()){
+                resolve(true);
+                return;
+            }
+
+            let performSave = await this.hasToPerformSave();
+            if (!performSave){
+                resolve(false);
+                return;
+            }
+
+            resolve(await this.save());
+            
+        });
+    },
+
+    save: function() {
+        return new Promise( async (resolve, reject) => {
+            let m = this.getModel();
+
+            if (!m.hasPendingChanges()){
+                resolve(true);
+                return;
+            }
+
+            try {
+                this.setBusy();
+                let result = await this.submitChanges();
+                m.refresh(true);
+                resolve(true)
+            } catch (e) {
+                console.error(e);
+                m.resetChanges();
+                resolve(false);
+            } finally{
+                this.setFree();
+            }
+        });
+    },
+
+    reset: function() {
+        let m = this.getModel();
+        m.resetChanges();
+    },
+
+    onSave: function() {
+        this.save();
+    },
+
+    onReset: function() {
+        this.reset();
     },
 
 

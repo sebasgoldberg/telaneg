@@ -457,8 +457,12 @@
                         type="Emphasized"
                         press="handleMessagePopoverPress"/>
                     <ToolbarSpacer/>
-                    <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
-                    <Button text="Salvar" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress1"/>
+                    <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+                        press="onReset"
+                        />
+                    <Button text="Salvar" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+                        press="onSave"
+                        />
                     <Button text="Finalizar" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
                 </content>
             </OverflowToolbar>
