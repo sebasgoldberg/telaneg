@@ -73,6 +73,7 @@
                             <fb:FilterItem label="Vencimento" name="vencimentoFilter">
                                 <fb:control>
                                     <DateRangeSelection
+                                        submit="onSearch"
                                         id="DRS2"
                                         dateValue="{view>/filter/dataDe}"
                                         secondDateValue="{view>/filter/dataAte}"
@@ -160,7 +161,15 @@
                 <items>
                     <Table
                         id="negociacoesTable"
-                        growing="true" growingScrollToLoad="true" growingThreshold="25" mode="SingleSelectMaster" items="{path:'/NegociacaoSet', templateShareable:true, parameters:{expand:'fornecedor,status'}}">
+                        growing="true" growingScrollToLoad="true" growingThreshold="25" mode="SingleSelectMaster"
+                        items="{
+                            path:'/NegociacaoSet',
+                            templateShareable:true,
+                            parameters: {
+                                expand:'fornecedor,status'
+                                }
+                            }"
+                        >
                         <headerToolbar>
                             <OverflowToolbar design="Transparent">
                                 <content>

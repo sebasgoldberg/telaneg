@@ -120,7 +120,6 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         });
     },
 
-
     onCriarAcordo: async function(oEvent) {
         try {
             this.setBusy();
