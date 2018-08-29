@@ -48,7 +48,7 @@
                                 </ResponsivePopover>
 
                             </sim:ButtonPopover>
-                            <Button text="" type="" icon="sap-icon://delete" press="onDelete"/>
+                            <Button text="" type="" icon="sap-icon://delete" press="onDeleteSemConfirmar"/>
 
                         </content>
                         <tooltip/>

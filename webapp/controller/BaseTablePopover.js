@@ -59,11 +59,11 @@ export default ManagedObject.extend("simplifique.telaneg.controller.BaseTablePop
         }
     },
 
-    onDelete: async function() {
+    onDelete: async function({solicitarConfirmacao=true}) {
         try {
-            let eliminar = await this.temCertezaDeEliminar();
-            if (!eliminar)
-                return;
+            if (solicitarConfirmacao)
+                if (!(await this.temCertezaDeEliminar()))
+                    return;
             this.setBusy()
             await this.eliminarSelecionadas();
             this.refresh();
@@ -72,6 +72,10 @@ export default ManagedObject.extend("simplifique.telaneg.controller.BaseTablePop
         } finally {
             this.setFree();
         }
+    },
+
+    onDeleteSemConfirmar: function() {
+        this.onDelete({solicitarConfirmacao: false})
     },
 
     onFecharPopover: function() {
