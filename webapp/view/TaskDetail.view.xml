@@ -6,6 +6,7 @@
     xmlns="sap.m"
     xmlns:layout="sap.ui.layout"
     xmlns:form="sap.ui.layout.form"
+    xmlns:rte="sap.ui.richtexteditor"
     xmlns:core="sap.ui.core">
 
     <uxap:ObjectPageLayout showTitleInHeaderContent="false" showHeaderContent="true" showEditHeaderButton="false" showFooter="true" class="sapUiSizeCompact">
@@ -446,6 +447,35 @@
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>
             </uxap:ObjectPageSection>
+
+            <uxap:ObjectPageSection title="Comentários">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="Comentários">
+                        <uxap:blocks>
+                            <VBox>
+                                <FeedInput post="onPost"/>
+                                <!--
+                                <List
+                                    showSeparators="Inner"
+                                    items="{
+                                        path: 'comentarios',
+                                        sorter: {
+                                            path: 'date',
+                                            descending: true
+                                        }
+                                    }">
+                                    <FeedListItem
+                                        info="{Usuario}"
+                                        text="{Texto}"
+                                        timestamp="{Data}"/>
+                                </List>
+                                -->
+                            </VBox>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
         </uxap:sections>
         <uxap:footer>
             <OverflowToolbar design="auto">

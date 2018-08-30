@@ -104,6 +104,16 @@ sap.ui.define([
             return 'Não Conciliado';
         },
 
+        toUTC: function(oDate) {
+            if (oDate){
+                oDate.setFullYear(oDate.getUTCFullYear());
+                oDate.setMonth(oDate.getUTCMonth());
+                oDate.setDate(oDate.getUTCDate());
+                oDate.setHours(oDate.getUTCHours());
+            }
+            return oDate;
+        },
+
     }
 
 });

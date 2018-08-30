@@ -33,15 +33,15 @@
                                     <content>
 
 
-                                        <form:SimpleForm
-                                            >
+                                        <form:SimpleForm>
 
-
-                                                <Label text="De" />
-                                                <DatePicker id='vendaDeDatePicker' dateValue='{view>/venda/selecao/de}'/>
-
-                                                <Label text="Até" />
-                                                <DatePicker id='vendaAteDatePicker' dateValue='{view>/venda/selecao/ate}'/>
+                                            <Label text="Periodo" />
+                                            <DateRangeSelection
+                                                id="vendaDateRangeSelection"
+                                                dateValue="{view>/venda/selecao/de}"
+                                                secondDateValue="{view>/venda/selecao/de}"
+                                                displayFormat="medium"
+                                            />
 
 
                                         </form:SimpleForm>

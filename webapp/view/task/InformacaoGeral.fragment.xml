@@ -20,9 +20,9 @@
                         </form:label>
                         <form:fields>
                             <DateRangeSelection
+                                id="periodoApuracaoRangeSelection"
                                 dateValue="{ApuracaoDe}"
                                 secondDateValue="{ApuracaoAte}"
-                                displayFormat="medium"
                             />
                         </form:fields>
                     </form:FormElement>

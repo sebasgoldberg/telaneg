@@ -12,9 +12,10 @@ export default BaseTablePopover.extend("simplifique.telaneg.controller.StockPopo
     },
 
     getObjectToBeAdded: function() {
+        let oDateRangeSelection = this.getView().byId('vendaDateRangeSelection');
         return {
-            De: this.getView().byId('vendaDeDatePicker').getDateValue(),
-            Ate: this.getView().byId('vendaAteDatePicker').getDateValue(),
+            De: oDateRangeSelection.getDateValue(),
+            Ate: oDateRangeSelection.getSecondDateValue(),
             }
     },
 

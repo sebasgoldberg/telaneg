@@ -206,7 +206,12 @@
                             </Column>
                             <Column minScreenWidth="Phone">
                                 <header>
-                                    <Text text="Data Criação" />
+                                    <Text text="Vencimento" />
+                                </header>
+                            </Column>
+                            <Column minScreenWidth="Phone">
+                                <header>
+                                    <Text text="Anexos" />
                                 </header>
                             </Column>
                             <Column minScreenWidth="Desktop" demandPopin="true">
@@ -219,11 +224,6 @@
                                     <Text text="Bonificação" />
                                 </header>
                             </Column>
-                            <Column popinDisplay="Inline" demandPopin="true" >
-                                <header>
-                                    <Text text="St. Fin."/>
-                                </header>
-                            </Column>
                         </columns>
                         <items>
                             <ColumnListItem type="Active">
@@ -233,20 +233,17 @@
                                     <ObjectStatus text="{fornecedor/Nome}" wrapping="true" />
                                     <Text text="{Descricao}"  wrapping="true" />
                                     <ObjectStatus text="{
-                                        path: 'Data',
+                                        path: 'ApuracaoAte',
                                         type: 'sap.ui.model.type.Date',
                                         formatOptions: { UTC: true, style: 'short' }
                                         }" />
+                                    <Button icon="sap-icon://attachment" press=""/>
                                     <ObjectStatus text="{status/Descricao}" />
                                     <ObjectNumber number="{
                                         path: 'Bonificacao',
                                         type: 'sap.ui.model.odata.type.Decimal',
                                         constraints: { scale: 2 }
                                         }" unit="BRL" emphasized="false"/>
-                                    <Text text="{
-                                        parts: [ {path: 'status/ID'} ],
-                                        formatter: '.formatter.formatStatusFinancieiro'
-                                        }"  />
                                 </cells>
                             </ColumnListItem>
                         </items>
