@@ -31,7 +31,7 @@
                             <OverflowToolbarLayoutData moveToOverflow="true"/>
                         </layoutData>
                     </Button>
-                    <Button text="PDF" icon="sap-icon://download" iconFirst="true" type="Emphasized" enabled="true">
+                    <Button text="PDF" icon="sap-icon://download" type="Emphasized" press="onGetPDF">
                         <layoutData>
                             <OverflowToolbarLayoutData moveToOverflow="true"/>
                         </layoutData>
