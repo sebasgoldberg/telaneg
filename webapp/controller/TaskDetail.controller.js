@@ -260,5 +260,12 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         }
     },
 
+    onMostrarAnexos: function(oEvent) {
+        let sNegociacaoPath = this.getView().getBindingContext().getPath();
+        let oAnexosNegociacaoDialog = this.getOwnerComponent().getAnexosNegociacaoDialog();
+        oAnexosNegociacaoDialog.open(sNegociacaoPath);
+    },
+
+
 });
 

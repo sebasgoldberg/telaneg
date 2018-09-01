@@ -26,7 +26,7 @@
                     </Bar>
                 </uxap:navigationBar>
                 <uxap:actions>
-                    <Button text="Anexar" icon="sap-icon://attachment" iconFirst="true" type="Transparent" enabled="true">
+                    <Button text="Anexos" icon="sap-icon://attachment" press="onMostrarAnexos">
                         <layoutData>
                             <OverflowToolbarLayoutData moveToOverflow="true"/>
                         </layoutData>

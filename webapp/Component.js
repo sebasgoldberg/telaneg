@@ -8,6 +8,7 @@ import VendasPopover from "simplifique/telaneg/controller/VendasPopover";
 import StockPopover from "simplifique/telaneg/controller/StockPopover";
 import SelecaoLojaDialog from "simplifique/telaneg/controller/SelecaoLojaDialog";
 import SelecaoMaterialFornecedorDialog from "simplifique/telaneg/controller/SelecaoMaterialFornecedorDialog";
+import AnexosNegociacaoDialog from "simplifique/telaneg/controller/AnexosNegociacaoDialog";
 
 let navigationWithContext = {
     "NegociacaoSet": {
@@ -73,6 +74,7 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
         this._stockPopover = new StockPopover(this.getRootControl());
         this._selecaoLojaDialog = new SelecaoLojaDialog(this.getRootControl());
         this._selecaoMaterialFornecedorDialog = new SelecaoMaterialFornecedorDialog(this.getRootControl());
+        this._anexosNegociacaoDialog = new AnexosNegociacaoDialog(this.getRootControl());
     },
 
     getImpostosPopover: function() {
@@ -98,6 +100,11 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
     getSelecaoMercadoriaFornecedorDialog: function() {
         return this._selecaoMaterialFornecedorDialog;
     },
+
+    getAnexosNegociacaoDialog: function() {
+        return this._anexosNegociacaoDialog;
+    },
+
 
     /**
      * The component is destroyed by UI5 automatically.
