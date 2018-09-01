@@ -453,23 +453,32 @@
                     <uxap:ObjectPageSubSection title="Comentários">
                         <uxap:blocks>
                             <VBox>
-                                <FeedInput post="onPost"/>
-                                <!--
+                                <FeedInput
+                                    id="comentarioFeedInput"
+                                    maxLength="255"
+                                    post="onPostComentario"
+                                    />
                                 <List
+                                    mode='Delete'
+                                    delete="onDeleteComentario"
                                     showSeparators="Inner"
+                                    id="comentariosList"
                                     items="{
                                         path: 'comentarios',
                                         sorter: {
-                                            path: 'date',
+                                            path: 'Data',
                                             descending: true
                                         }
                                     }">
                                     <FeedListItem
                                         info="{Usuario}"
                                         text="{Texto}"
-                                        timestamp="{Data}"/>
-                                </List>
-                                -->
+                                        timestamp="{
+                                            path: 'Data',
+                                            type: 'sap.ui.model.type.DateTime',
+                                            formatOptions: { UTC: true, style: 'short' }
+                                            }"/>
+                                </List>                                
                             </VBox>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>

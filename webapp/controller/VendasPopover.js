@@ -2,7 +2,6 @@ import BaseTablePopover from "simplifique/telaneg/controller/BaseTablePopover";
 
 export default BaseTablePopover.extend("simplifique.telaneg.controller.StockPopover",{
 
-
     getPopoverFragmentName: function() {
         return "simplifique.telaneg.view.VendasPopover";
     },

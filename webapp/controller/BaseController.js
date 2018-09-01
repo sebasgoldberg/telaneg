@@ -121,7 +121,7 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         this.getRouter().navTo(routeName, ...args, false);
     },
 
-    remove: function(sPath, urlParameters){
+    remove: function(sPath, headers){
         let m = this.getModel();
         return new Promise( (resolve, reject) => {
             m.remove(
@@ -129,8 +129,7 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
                 {
                     success: (...args) => { resolve(...args) },
                     error: (...args) => { reject(...args) },
-                    urlParameters: urlParameters,
-                    headers: urlParameters,
+                    headers: headers,
                 }
             );
         });

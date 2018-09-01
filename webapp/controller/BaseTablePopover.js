@@ -92,13 +92,25 @@ export default ManagedObject.extend("simplifique.telaneg.controller.BaseTablePop
         delete this._oView;
     },
 
+    hasSameBindingContextPath: function(sPath) {
+        let bc = this.popover.getBindingContext();
+        if (!bc)
+            return false;
+        return (bc.getPath() === sPath);
+    },
+
     open : function (sPath, oOpenBy) {
         if (!this.popover){
             this.popover = sap.ui.xmlfragment(this.getView().getId(), this.getPopoverFragmentName(), this);
             this._oView.addDependent(this.popover);
         }
 
-        this.popover.bindObject(sPath);
+        if (this.hasSameBindingContextPath(sPath))
+            // Em casso de ter mesmo contexto, fazemos o refresh,
+            // Já que as informações poderia ter atualizado.
+            this.refresh();
+        else
+            this.popover.bindObject(sPath);
 
         if (this.popover.isOpen())
             this.popover.close()

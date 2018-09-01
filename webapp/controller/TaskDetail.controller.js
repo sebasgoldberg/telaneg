@@ -202,5 +202,40 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         oStockPopOver.open(`${sItemPath}`, oEvent.getSource());
     },
 
+    onPostComentario: async function(oEvent) {
+        let v = this.getView();
+        let m = this.getModel();
+        let oComentariosItemsBinding = v.byId('comentariosList').getBinding('items');
+        let sPathComentarios = `${v.getBindingContext().getPath()}/${oComentariosItemsBinding.getPath()}`;
+        let oComentariosFeedInput = v.byId('comentarioFeedInput');
+        try {
+            oComentariosFeedInput.setBusy(true);
+            let result = await this.createEntry(sPathComentarios,{
+                Texto: oEvent.getParameters().value,
+                })
+            oComentariosItemsBinding.refresh();
+        } catch (e) {
+            console.error(e);
+        } finally{
+            oComentariosFeedInput.setBusy(false);
+        }
+    },
+
+    onDeleteComentario: async function(oEvent){
+        let v = this.getView();
+        let oParams = oEvent.getParameters();
+        let oListItem = oParams.listItem;
+        let oNegociacao = v.getBindingContext().getObject();
+        try {
+            oListItem.setBusy(true);
+            await this.remove(oListItem.getBindingContextPath(), {NegociacaoID: oNegociacao.ID});
+            oComentariosItemsBinding.refresh();
+        } catch (e) {
+            this.error(e);
+        } finally {
+            oListItem.setBusy(false);
+        }
+    }
+
 });
 
