@@ -1,0 +1,52 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:uxap="sap.uxap">
+    <uxap:ObjectPageSubSection title="Comentário PDF">
+        <uxap:blocks>
+
+            <form:SimpleForm
+                layout="ResponsiveGridLayout"
+                columnsXL="4" columnsL="4" columnsM="2" columnsS="1"
+                labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12"
+                breakpointL="500" breakpointM="250"
+                >
+                <TextArea placeholder="Ingresse algum comentario para ser adicionado no PDF" value="{comentarioImpressao/Texto}" growing="true" width="100%"/>
+            </form:SimpleForm>
+
+        </uxap:blocks>
+    </uxap:ObjectPageSubSection>
+
+    <uxap:ObjectPageSubSection title="Comentários Gerais">
+        <uxap:blocks>
+
+            <VBox>
+                <FeedInput
+                    id="comentarioFeedInput"
+                    maxLength="255"
+                    post="onPostComentario"
+                    />
+                <List
+                    mode='Delete'
+                    delete="onDeleteComentario"
+                    showSeparators="Inner"
+                    id="comentariosList"
+                    items="{
+                        path: 'comentarios',
+                        sorter: {
+                            path: 'Data',
+                            descending: true
+                        }
+                    }">
+                    <FeedListItem
+                        info="{Usuario}"
+                        text="{Texto}"
+                        timestamp="{
+                            path: 'Data',
+                            type: 'sap.ui.model.type.DateTime',
+                            formatOptions: { UTC: true, style: 'short' }
+                            }"/>
+                </List>                                
+            </VBox>
+
+        </uxap:blocks>
+    </uxap:ObjectPageSubSection>
+
+</core:FragmentDefinition>

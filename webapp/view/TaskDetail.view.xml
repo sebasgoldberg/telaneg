@@ -450,38 +450,7 @@
 
             <uxap:ObjectPageSection title="Comentários">
                 <uxap:subSections>
-                    <uxap:ObjectPageSubSection title="Comentários">
-                        <uxap:blocks>
-                            <VBox>
-                                <FeedInput
-                                    id="comentarioFeedInput"
-                                    maxLength="255"
-                                    post="onPostComentario"
-                                    />
-                                <List
-                                    mode='Delete'
-                                    delete="onDeleteComentario"
-                                    showSeparators="Inner"
-                                    id="comentariosList"
-                                    items="{
-                                        path: 'comentarios',
-                                        sorter: {
-                                            path: 'Data',
-                                            descending: true
-                                        }
-                                    }">
-                                    <FeedListItem
-                                        info="{Usuario}"
-                                        text="{Texto}"
-                                        timestamp="{
-                                            path: 'Data',
-                                            type: 'sap.ui.model.type.DateTime',
-                                            formatOptions: { UTC: true, style: 'short' }
-                                            }"/>
-                                </List>                                
-                            </VBox>
-                        </uxap:blocks>
-                    </uxap:ObjectPageSubSection>
+                            <core:Fragment fragmentName="simplifique.telaneg.view.ComentariosNegociacao" type="XML" />
                 </uxap:subSections>
             </uxap:ObjectPageSection>
 

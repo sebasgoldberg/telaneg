@@ -30,35 +30,37 @@ sap.ui.define([
                             var oParams = oEvent.getParameters();
                             var oMessageManager = sap.ui.getCore().getMessageManager();
                             try {
-                                let messages = JSON.parse(oParams.response.responseText);
-                            } catch (e) {
-                                return;
-                            }
-                            let mainMessage = messages.error.message;
-                            let detailMessages = messages.error.innererror.errordetails;
 
-                            if (detailMessages.length == 0)
-                                oMessageManager.addMessages(
-                                    new sap.ui.core.message.Message({
-                                        message: mainMessage.value,
-                                        type: sap.ui.core.MessageType.Error,
-                                        code: messages.error.code,
-                                        processor: oModel,
-                                    })
-                                )
-                            else
-                                detailMessages.forEach( message =>
+                                let messages = JSON.parse(oParams.response.responseText);
+
+                                let mainMessage = messages.error.message;
+                                let detailMessages = messages.error.innererror.errordetails;
+
+                                if (detailMessages.length == 0)
                                     oMessageManager.addMessages(
                                         new sap.ui.core.message.Message({
-                                            code: message.code,
-                                            message: message.message,
-                                            type: this.getTypeFromSeverity(message.severity),
-                                            target: `${message.propertyref}${message.target}`,
+                                            message: mainMessage.value,
+                                            type: sap.ui.core.MessageType.Error,
+                                            code: messages.error.code,
                                             processor: oModel,
                                         })
                                     )
-                                );
+                                else
+                                    detailMessages.forEach( message =>
+                                        oMessageManager.addMessages(
+                                            new sap.ui.core.message.Message({
+                                                code: message.code,
+                                                message: message.message,
+                                                type: this.getTypeFromSeverity(message.severity),
+                                                target: `${message.propertyref}${message.target}`,
+                                                processor: oModel,
+                                            })
+                                        )
+                                    );
 
+                            } catch (e) {
+                                console.error(e);
+                            }
                             return;
 
                             // An entity that was not found in the service is also throwing a 404 error in oData.
