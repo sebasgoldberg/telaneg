@@ -121,22 +121,12 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         this.getRouter().navTo(routeName, ...args, false);
     },
 
-    remove: function(sPath, headers){
-        let m = this.getModel();
-        return new Promise( (resolve, reject) => {
-            m.remove(
-                sPath,
-                {
-                    success: (...args) => { resolve(...args) },
-                    error: (...args) => { reject(...args) },
-                    headers: headers,
-                }
-            );
-        });
+    remove: function(...args){
+        return this.getOwnerComponent().remove(...args);
     },
 
-    error: function(e) {
-        console.error(e);
+    error: function(...args) {
+        this.getOwnerComponent().error(...args)
     },
 
     temCertezaDeEliminar: function(attribute) {

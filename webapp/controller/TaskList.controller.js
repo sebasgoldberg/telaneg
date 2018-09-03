@@ -147,4 +147,11 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         this.deleteSelectedItems('negociacoesTable');
     },
 
+    onMostrarAnexos: function(oEvent) {
+        let oSource = oEvent.getSource();
+        let sNegociacaoPath = oSource.getBindingContext().getPath();
+        let oAnexosNegociacaoDialog = this.getOwnerComponent().getAnexosNegociacaoDialog();
+        oAnexosNegociacaoDialog.open(sNegociacaoPath);
+    },
+
 });

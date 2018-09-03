@@ -22,68 +22,44 @@
         <content>
 
             <UploadCollection
-                uploadUrl="/sap/ZNEGOCIACAO_SRV/NegociacaoSet('0000000185')/anexos/"
                 id="UploadCollection"
+                uploadUrl=""
                 maximumFilenameLength="55"
                 maximumFileSize="10"
-                multiple="false"
+                multiple="true"
                 change="onChange"
+                beforeUploadStarts="onBeforeUploadStarts"
+                uploadComplete="onUploadComplete"
+                fileDeleted="onFileDeleted"
+
                 fileSizeExceed="onFileSizeExceed"
                 selectionChange="onSelectionChange"
                 typeMissmatch="onTypeMissmatch"
-                uploadComplete="onUploadComplete"
-                beforeUploadStarts="onBeforeUploadStarts"
                 items="{
                     path: 'anexos',
                     templateShareable: false
                 }"
-                mode="MultiSelect">
-                <toolbar>
-                    <OverflowToolbar id="myId">
-                        <Title id="attachmentTitle" />
-                        <ToolbarSpacer />
-                        <Button
-                            id="downloadButton"
-                            text="Download"
-                            press="onDownloadItem"
-                            enabled="false"
-                            type="Transparent" />
-                        <Button
-                            id="versionButton"
-                            text="Upload a new version"
-                            press="onVersion"
-                            enabled="false"
-                            type="Transparent" />
-                        <UploadCollectionToolbarPlaceholder/>
-                    </OverflowToolbar>
-                </toolbar>
+                mode="None">
                 <items>
                     <UploadCollectionItem
-                        documentId="{documentId}"
-                        fileName="{fileName}"
-                        mimeType="{mimeType}"
-                        thumbnailUrl="{thumbnailUrl}"
-                        url="{url}"
+                        documentId="{Item}"
+                        fileName="{Nome}"
+                        mimeType="{MimeType}"
+                        thumbnailUrl=""
+                        url="{
+                            parts: [ {path: 'Item'} ],
+                            formatter: '.formatter.urlAnexoForDownload'
+                            }"
+                        enableDelete="true"
+                        visibleDelete="true"
                         enableEdit="false"
-                        enableDelete="false"
-                        visibleDelete="false"
                         visibleEdit="false"
-                        attributes="{
-                            path: 'attributes',
-                            templateShareable: false
-                        }"
-                        statuses="{
-                            path: 'statuses',
-                            templateShareable: false
-                        }"
-                        selected="{selected}">
+                        selected="">
+                        <!--
                         <attributes>
                             <ObjectAttribute
                                 title="{title}"
-                                text="{
-                                    parts: [ 'text', 'type' ],
-                                    formatter : '.formatAttribute'
-                                }"
+                                text="{text}"
                                 active="false" />
                         </attributes>
                         <statuses>
@@ -91,6 +67,7 @@
                                 text="{text}"
                                 state="{state}" />
                         </statuses>
+                        -->
                     </UploadCollectionItem>
                 </items>
             </UploadCollection>

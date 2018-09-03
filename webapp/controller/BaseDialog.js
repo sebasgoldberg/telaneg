@@ -1,4 +1,5 @@
 import ManagedObject from "sap/ui/base/ManagedObject";
+import formatter from "simplifique/telaneg/model/formatter";
 
 export default ManagedObject.extend("simplifique.telaneg.controller.BaseDialog",{
 
@@ -31,6 +32,14 @@ export default ManagedObject.extend("simplifique.telaneg.controller.BaseDialog",
 
     onFechar: function() {
         this.dialog.close();
+    },
+
+    getBindingContext: function(){
+        return this.dialog.getBindingContext();
+    },
+
+    remove: function(...args){
+        return this.getOwnerComponent().remove(...args);
     },
 
 });

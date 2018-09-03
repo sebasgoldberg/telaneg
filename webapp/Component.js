@@ -142,7 +142,38 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
     getNavigationPropertyForNavigationWithContext: function(sEntityNameSet, targetPageName) {
         var entityNavigations = navigationWithContext[sEntityNameSet];
         return entityNavigations == null ? null : entityNavigations[targetPageName];
-    }
+    },
+
+    getUrlService: function() {
+        return this.getManifest()['sap.app'].dataSources.local.uri;
+    },
+
+    getUploadUrl: function(sPath) {
+        return `${this.getUrlService()}${sPath}`;
+    },
+
+    getUrlContent: function(sPath) {
+        return `${this.getUrlService()}${sPath}/$value`;
+    },
+
+    error: function(e) {
+        console.error(e);
+    },
+
+    remove: function(sPath, headers){
+        let m = this.getModel();
+        return new Promise( (resolve, reject) => {
+            m.remove(
+                sPath,
+                {
+                    success: (...args) => { resolve(...args) },
+                    error: (...args) => { reject(...args) },
+                    headers: headers,
+                }
+            );
+        });
+    },
+
 
 });
 

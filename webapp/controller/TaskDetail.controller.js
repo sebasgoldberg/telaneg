@@ -237,14 +237,6 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         }
     },
 
-    getUrlService: function() {
-        return this.getOwnerComponent().getManifest()['sap.app'].dataSources.local.uri;
-    },
-
-    getUrlContent: function(sPath) {
-        return `${this.getUrlService()}${sPath}/$value`;
-    },
-
     openUrl: function(sUrl) {
         window.open(sUrl, '_blank');
     },
@@ -253,7 +245,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         let sNegoPath = this.getView().getBindingContext().getPath();
         let oSource = oEvent.getSource();
         try {
-            let sUrl = this.getUrlContent(`${sNegoPath}/pdf`);
+            let sUrl = this.getOwnerComponent().getUrlContent(`${sNegoPath}/pdf`);
             this.openUrl(sUrl);
         } catch (e) {
             this.error(e);
@@ -265,7 +257,6 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         let oAnexosNegociacaoDialog = this.getOwnerComponent().getAnexosNegociacaoDialog();
         oAnexosNegociacaoDialog.open(sNegociacaoPath);
     },
-
 
 });
 
