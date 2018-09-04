@@ -55,7 +55,7 @@
                 </template>
             </Column>
 
-            <Column label="Descrição" width="20%">
+            <Column label="Descrição" width="25%">
                 <template>
                     <m:Text text="{material/Nome}" wrapping="true" />
                 </template>
@@ -67,59 +67,90 @@
                 </template>
             </Column>
 
-            <Column label="Preço Venda" width="12%">
+            <Column label="Preço Venda"
+                tooltip="Preço Venda [BRL]"
+                width="10%">
                 <template>
                     <m:Input value="{
                         path: 'simulacao/PrecoVenda',
                         type: 'sap.ui.model.odata.type.Decimal',
-                        constraints: { scale: 2 }
+                        constraints: {
+                            precision: 12,
+                            scale: 2
+                        }
                         }"
-                        description="BRL"
+                        maxLength="16"
+                        textAlign="Right"
+                        description=""
                         />
                 </template>
             </Column>
 
-            <Column label="PMZ">
+            <Column label="PMZ"
+                tooltip="Preço Margem Zero [BRL]"
+                hAlign="Right"
+                >
                 <template>
                     <m:Text text="{
                         path: 'simulacao/PMZNovo',
                         type: 'sap.ui.model.odata.type.Decimal',
-                        constraints: { scale: 2 }
-                        } BRL" wrapping="true" />
+                        constraints: {
+                            precision: 12,
+                            scale: 2 }
+                        }" wrapping="true" />
                 </template>
             </Column>
 
-            <Column label="Margem PDV">
+            <Column label="MP"
+                tooltip="Margem PDV [%]"
+                hAlign="Right"
+                >
                 <template>
                     <m:Text text="{
                         path: 'nossoPricing/MargemPDV',
                         type: 'sap.ui.model.odata.type.Decimal',
                         constraints: { scale: 2 }
-                        } %" wrapping="true" />
+                        }" wrapping="true" />
                 </template>
             </Column>
 
-            <Column label="Recomp." width="12%">
+            <Column label="Recomp." width="10%"
+                tooltip="Recomposição [BRL]"
+                >
                 <template>
                     <m:Input value="{
                         path: 'simulacao/Recomposicao',
                         type: 'sap.ui.model.odata.type.Decimal',
-                        constraints: { scale: 2 }
-                        }" description="BRL"/>
+                        constraints: {
+                            precision: 12,
+                            scale: 2
+                            }
+                        }"
+                        maxLength="16"
+                        textAlign="Right"
+                        description=""/>
                 </template>
             </Column>
 
-            <Column label="Margem 2 Simulada">
+            <Column label="M2S"
+                tooltip="Margem 2 Simulada [%]"
+                hAlign="Right"
+                >
                 <template>
                     <m:Text text="{
                         path: 'simulacao/Margem2',
                         type: 'sap.ui.model.odata.type.Decimal',
                         constraints: { scale: 2 }
-                        } %" wrapping="true" />
+                        }"
+                        wrapping="true"
+                        />
                 </template>
             </Column>
 
-            <Column label="Menor Preço Mercado">
+            <Column label="mPM"
+                tooltip="Menor Preço de Mercado [BRL]"
+                hAlign="Right"
+                >
                 <template>
                     <m:Text text="{
                         path: 'nossoPricing/PrecoMercado',
@@ -129,20 +160,24 @@
                 </template>
             </Column>
 
-            <Column label="IC">
+            <Column label="IC"
+                tooltip="Indice de Competitividade [%]"
+                hAlign="Right"
+                >
                 <template>
                     <m:Text text="{
                         path: 'simulacao/IC',
                         type: 'sap.ui.model.odata.type.Decimal',
                         constraints: { scale: 2 }
-                        } %" wrapping="true" />
+                        }" wrapping="true" />
                 </template>
             </Column>
 
-            <Column label="" width="6%">
+            <Column label="" width="7%">
                 <template>
                     <m:HBox>
                     <core:Icon
+                        class="sapUiTinyMarginEnd"
                         src="sap-icon://line-chart"
                         size="16px"
                         hoverColor="#386084"
@@ -150,6 +185,7 @@
                         press="onMostrarVendas"
                         />
                     <core:Icon
+                        class="sapUiTinyMarginEnd"
                         src="sap-icon://product"
                         size="16px"
                         hoverColor="#386084"

@@ -29,8 +29,10 @@ export default ManagedObject.extend("simplifique.telaneg.controller.SelecaoLojaD
 
             if (this.dialog.isOpen())
                 this.dialog.close()
-            else
+            else{
+                this.getListControl().removeSelections(true);
                 this.dialog.open();
+            }
         });
     },
 
