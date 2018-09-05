@@ -36,7 +36,11 @@
 
         <columns>
 
-            <Column label="UF" width="10%" >
+            <Column label="{
+                parts: [ {path: 'tipoNegociacao/ID'}, {path: 'TipoAbrangencia'} ],
+                formatter: '.formatter.formatDescricaoItemOrg'
+                }"
+                width="10%" >
                 <template>
                     <m:Text text="{itemOrg/ID}" wrapping="true" />
                 </template>

@@ -114,6 +114,25 @@ sap.ui.define([
             return oDate;
         },
 
+        formatDescricaoItemOrg: function(sTipoNegociacao, sTipoAbrangencia) {
+            if (!sTipoNegociacao)
+                return;
+            if (!sTipoAbrangencia)
+                return;
+            let oDescricoes = {
+                O: {
+                    U: 'UF',
+                    G: 'UF',
+                    L: 'UF',
+                    },
+                I: {
+                    R: 'Centro Ref.',
+                    G: 'Loja',
+                    L: 'Loja',
+                    }
+                };
+            return oDescricoes[sTipoNegociacao][sTipoAbrangencia];
+        },
     }
 
 });

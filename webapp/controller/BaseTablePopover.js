@@ -1,6 +1,9 @@
 import ManagedObject from "sap/ui/base/ManagedObject";
+import formatter from "simplifique/telaneg/model/formatter";
 
 export default ManagedObject.extend("simplifique.telaneg.controller.BaseTablePopover",{
+
+    formatter: formatter,
 
     constructor : function (oView) {
         this._oView = oView;    

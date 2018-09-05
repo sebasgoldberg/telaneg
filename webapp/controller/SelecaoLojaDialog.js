@@ -66,6 +66,8 @@ export default ManagedObject.extend("simplifique.telaneg.controller.SelecaoLojaD
                 return 'ID';
             case 'G':
                 return 'Nome';
+            case 'R':
+                return 'ID';
             case 'U':
                 return 'ID';
         }
@@ -78,6 +80,8 @@ export default ManagedObject.extend("simplifique.telaneg.controller.SelecaoLojaD
                 return 'lojasList';
             case 'G':
                 return 'gruposList';
+            case 'R':
+                return 'centrosReferenciaList';
             case 'U':
                 return 'ufsList';
         }

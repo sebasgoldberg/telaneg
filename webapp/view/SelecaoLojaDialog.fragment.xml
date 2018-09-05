@@ -52,6 +52,19 @@
                             </items>
                         </FacetFilterList>
                         <FacetFilterList
+                            title="Centro Ref."
+                            key="CentroReferenciaID"
+                            mode="MultiSelect"
+                            items="{path:'bandeira/centrosReferencia', templateShareable: 'true'}"
+                            >
+                            <items>
+                                <FacetFilterItem
+                                    text="{ID}"
+                                    key="{ID}"
+                                    />
+                            </items>
+                        </FacetFilterList>
+                        <FacetFilterList
                             title="Grupos Lojas"
                             key="GrupoID"
                             mode="MultiSelect"
@@ -97,6 +110,19 @@
                     lists="">
                     <lists>
                         <FacetFilterList
+                            title="Centro Ref."
+                            key="CentroReferenciaID"
+                            mode="MultiSelect"
+                            items="{path:'bandeira/centrosReferencia', templateShareable: 'true'}"
+                            >
+                            <items>
+                                <FacetFilterItem
+                                    text="{ID}"
+                                    key="{ID}"
+                                    />
+                            </items>
+                        </FacetFilterList>
+                        <FacetFilterList
                             title="UF"
                             key="UFID"
                             mode="MultiSelect"
@@ -140,6 +166,24 @@
                     <StandardListItem
                         title="{ID}"
                         description=""
+                        type="Active"
+                        />
+                </List>
+
+            </VBox>
+
+            <VBox visible="{= ${TipoAbrangencia} === 'R' }">
+
+                <List
+                    growing="true"
+                    growingThreshold="30"
+                    growingScrollToLoad="true"
+                    mode="MultiSelect"
+                    id="centrosReferenciaList"
+                    items="{bandeira/centrosReferencia}" >
+                    <StandardListItem
+                        title="{ID}"
+                        description="{Nome}"
                         type="Active"
                         />
                 </List>
