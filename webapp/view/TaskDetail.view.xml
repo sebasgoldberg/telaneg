@@ -82,6 +82,12 @@
                             <core:Fragment fragmentName="simplifique.telaneg.view.task.Abrangencia" type="XML" />
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
+                    <uxap:ObjectPageSubSection title="Acumulação Compra" id="fornecedoresAdicionaisSubSection">
+                        <uxap:blocks>
+                            <core:Fragment fragmentName="simplifique.telaneg.view.FornecedoresAdicionais" type="XML" />
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+
                 </uxap:subSections>
             </uxap:ObjectPageSection>
             <uxap:ObjectPageSection title="Mercadorias">

@@ -64,14 +64,55 @@
                     <m:Text text="{material/Nome}" wrapping="true" />
                 </template>
             </Column>
+            
+            <!-- Inicio Colunas Sell-in -->
+            <Column label="UMB" id="UMBColumn">
+                <template>
+                    <m:Text text="{material/UMB}" wrapping="true" />
+                </template>
+            </Column>
 
-            <Column label="UMV">
+            <Column label="Custo Bruto"
+                id="custoBrutoColumn"
+                tooltip="Custo Bruto [BRL]"
+                hAlign="Right"
+                >
+                <template>
+                    <m:Text text="{
+                        path: 'simulacao/CustoBruto',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: {
+                            precision: 12,
+                            scale: 2 }
+                        }" wrapping="true" />
+                </template>
+            </Column>
+
+            <Column label="Custo Liquido"
+                id="custoLiquidoColumn"
+                tooltip="Custo Liquido [BRL]"
+                hAlign="Right"
+                >
+                <template>
+                    <m:Text text="{
+                        path: 'simulacao/CustoLiquido',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: {
+                            precision: 12,
+                            scale: 2 }
+                        }" wrapping="true" />
+                </template>
+            </Column>
+            <!-- Fim Colunas Sell-in -->
+
+            <Column label="UMV" id="UMVColumn">
                 <template>
                     <m:Text text="{material/UMB}" wrapping="true" />
                 </template>
             </Column>
 
             <Column label="Preço Venda"
+                id="precoVendaColumn"
                 tooltip="Preço Venda [BRL]"
                 width="10%">
                 <template>
@@ -91,6 +132,7 @@
             </Column>
 
             <Column label="PMZ"
+                id="PMZColumn"
                 tooltip="Preço Margem Zero [BRL]"
                 hAlign="Right"
                 >
@@ -106,6 +148,7 @@
             </Column>
 
             <Column label="MP"
+                id="margemPDVColumn"
                 tooltip="Margem PDV [%]"
                 hAlign="Right"
                 >
@@ -119,6 +162,7 @@
             </Column>
 
             <Column label="Recomp." width="10%"
+                id="recomposicaoColumn"
                 tooltip="Recomposição [BRL]"
                 >
                 <template>
@@ -137,6 +181,7 @@
             </Column>
 
             <Column label="M2S"
+                id="margem2SimuladaColumn"
                 tooltip="Margem 2 Simulada [%]"
                 hAlign="Right"
                 >
@@ -152,6 +197,7 @@
             </Column>
 
             <Column label="mPM"
+                id="menorPrecoMercadoColumn"
                 tooltip="Menor Preço de Mercado [BRL]"
                 hAlign="Right"
                 >
@@ -165,6 +211,7 @@
             </Column>
 
             <Column label="IC"
+                id="indiceCompetitividadeColumn"
                 tooltip="Indice de Competitividade [%]"
                 hAlign="Right"
                 >

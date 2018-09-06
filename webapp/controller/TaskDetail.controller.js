@@ -4,6 +4,7 @@ import Filter from 'sap/ui/model/Filter';
 import FilterOperator from 'sap/ui/model/FilterOperator';
 import JSONModel from "sap/ui/model/json/JSONModel";
 import MessagePopover from 'sap/m/MessagePopover';
+import TiposNegociacoes from 'simplifique/telaneg/model/TiposNegociacoes';
 
 
 export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
@@ -21,6 +22,8 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
 
         Controller.prototype.onInit.call(this);
 
+        this.tiposNegociacoes = new TiposNegociacoes(this.getView());
+
         this.getView().setModel(sap.ui.getCore().getMessageManager().getMessageModel(),"message");
 
         let v = this.getView();
@@ -37,10 +40,11 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
             });
 
         this.getRouter().getTarget("TaskDetail")
-            .attachDisplay( oEvent => {
+            .attachDisplay( async oEvent => {
 
                 if (this.sNegociacaoID && this.sNegociacaoID == oEvent.mParameters.data.negociacaoID)
                     return;
+
 
                 let m = this.getModel();
                 if (m.hasPendingChanges())
@@ -54,9 +58,19 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
                         },
                 };
 
-                this.getView().bindObject(oPath);
+                await this.bindObject(oPath);
+
+                this.adaptarView();
 
             });
+    },
+
+    adaptarView: function() {
+        let oNegociacao = this.getView().getBindingContext().getObject();
+
+        this.tipoNegociacao = this.tiposNegociacoes.getTipoNegociacao(oNegociacao);
+
+        this.tipoNegociacao.adaptarView();
     },
 
     suggestClausula: async function(oEvent) {

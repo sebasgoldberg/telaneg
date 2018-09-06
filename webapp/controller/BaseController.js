@@ -314,5 +314,13 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         this.reset();
     },
 
+    bindObject: function(oPath) {
+
+        return new Promise( (resolve, reject) => {
+            oPath.events = { dataReceived: (...args) => resolve(...args) };
+            this.getView().bindObject(oPath);
+        });
+
+    },
 
 });
