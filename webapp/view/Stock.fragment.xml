@@ -58,7 +58,11 @@
             <columns>
                 <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
                     <header>
-                        <Text text="UF" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        <Text text="{
+                            parts: [ {path: 'negociacao/tipoNegociacao/ID'}, {path: 'negociacao/TipoAbrangencia'} ],
+                            formatter: '.formatter.formatDescricaoItemOrg'
+                            }"
+                            width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                     </header>
                     <footer/>
                 </Column>

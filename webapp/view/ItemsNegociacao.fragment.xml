@@ -15,7 +15,7 @@
         rows="{
             path : 'items',
             parameters : {
-                expand:'material,simulacao,itemOrg,impostosEntrada,impostosSaida',
+                expand:'material,simulacao,itemOrg,impostosEntrada,impostosSaida,negociacao',
                 numberOfExpandedLevels: 0,
                 treeAnnotationProperties : {
                     hierarchyLevelFor : 'Nivel',
