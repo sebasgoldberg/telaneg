@@ -93,7 +93,6 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         return new Promise((resolve, reject) => {
             let v = this.getView();
             let m = v.getModel();
-            let oNegociacao = v.getBindingContext().getObject();
             let sPathNegociacao = v.getBindingContext().getPath();
             m.createEntry(
                 entitySetPath, 
@@ -108,6 +107,23 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
                     });
         });
     },
+
+    /**
+     * @return Promise da criação das entradas solicitadas.
+     */
+    createEntries: function(sPath, aObjects) {
+
+        if (!aObjects)
+            return;
+
+        let oPromisesEntries = aObjects
+            .map( oProperties => this.createEntry(sPath, oProperties, false) );
+
+        oPromisesEntries.push(this.submitChanges())
+
+        return this.all(oPromisesEntries);
+    },
+
 
     setBusy: function() {
         sap.ui.core.BusyIndicator.show(0);
@@ -142,10 +158,10 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
     },
 
 
-    deleteContextsPromises: function(aContexts) {
+    deleteContextsPromises: function(aContexts, oHeaders) {
         let v = this.getView();
         return aContexts.map( c => c.getPath() )
-            .map( c => this.remove(c) );
+            .map( c => this.remove(c, oHeaders) );
     },
 
     deleteContexts: function(aContexts) {
@@ -173,7 +189,7 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         });
     },
 
-    deleteSelectedItems: async function(sControlId) {
+    deleteSelectedItems: async function(sControlId, oHeaders) {
         let v = this.getView();
         let m = v.getModel();
 
@@ -189,7 +205,8 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
 
             let result = await this.all(
                 this.deleteContextsPromises(
-                    oControl.getSelectedContexts()
+                    oControl.getSelectedContexts(),
+                    oHeaders
                 )
             );
         
@@ -207,15 +224,12 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         var sTerm = oEvent.getParameter("suggestValue");
         var aFilters = [];
         if (sTerm) {
-            aFilters.push(new Filter("Nome", FilterOperator.Contains, sTerm));
             if (sTerm.length == 10)
                 aFilters.push(new Filter("ID", FilterOperator.EQ, sTerm))
-            else if (sTerm.length == 9){
-                aFilters.push(new Filter("ID", FilterOperator.StartsWith, sTerm))
-                aFilters.push(new Filter("ID", FilterOperator.EndsWith, sTerm))
-                }
+            else if (/^\d+$/.test(sTerm))
+                aFilters.push(new Filter("ID", FilterOperator.Contains, sTerm))
             else
-                aFilters.push(new Filter("ID", FilterOperator.Contains, sTerm));
+                aFilters.push(new Filter("Nome", FilterOperator.Contains, sTerm));
         }
         let oSource = oEvent.getSource();
         let oBinding = oSource.getBinding("suggestionItems")

@@ -36,7 +36,7 @@
                     showReset="true"
                     reset="onFilterReset"
                     confirm="onFilterConfirm"
-                    lists="">
+                    >
                     <lists>
                         <FacetFilterList
                             title="UF"
@@ -107,7 +107,7 @@
                     showReset="true"
                     reset="onFilterReset"
                     confirm="onFilterConfirm"
-                    lists="">
+                    >
                     <lists>
                         <FacetFilterList
                             title="Centro Ref."

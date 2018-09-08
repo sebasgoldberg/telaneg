@@ -8,6 +8,7 @@ import VendasPopover from "simplifique/telaneg/controller/VendasPopover";
 import StockPopover from "simplifique/telaneg/controller/StockPopover";
 import SelecaoLojaDialog from "simplifique/telaneg/controller/SelecaoLojaDialog";
 import SelecaoMaterialFornecedorDialog from "simplifique/telaneg/controller/SelecaoMaterialFornecedorDialog";
+import SelecaoFornecedorDialog from "simplifique/telaneg/controller/SelecaoFornecedorDialog";
 import AnexosNegociacaoDialog from "simplifique/telaneg/controller/AnexosNegociacaoDialog";
 
 let navigationWithContext = {
@@ -74,6 +75,7 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
         this._stockPopover = new StockPopover(this.getRootControl());
         this._selecaoLojaDialog = new SelecaoLojaDialog(this.getRootControl());
         this._selecaoMaterialFornecedorDialog = new SelecaoMaterialFornecedorDialog(this.getRootControl());
+        this._selecaoFornecedorDialog = new SelecaoFornecedorDialog(this.getRootControl());
         this._anexosNegociacaoDialog = new AnexosNegociacaoDialog(this.getRootControl());
     },
 
@@ -99,6 +101,10 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
 
     getSelecaoMercadoriaFornecedorDialog: function() {
         return this._selecaoMaterialFornecedorDialog;
+    },
+
+    getSelecaoFornecedorDialog: function() {
+        return this._selecaoFornecedorDialog;
     },
 
     getAnexosNegociacaoDialog: function() {

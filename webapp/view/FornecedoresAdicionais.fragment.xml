@@ -10,7 +10,7 @@
                 <content>
                     <Title text="Fornecedores" titleStyle="Auto" width="auto" textAlign="Begin" visible="true"/>
                     <ToolbarSpacer width=""/>
-                    <Button type="Emphasized" icon="sap-icon://add" press="onAddFornecedorAdicional"/>
+                    <Button icon="sap-icon://add" press="onAddFornecedorAdicional"/>
                     <Button icon="sap-icon://delete" press="onDeleteFornecedorAdicional"/>
                 </content>
                 <tooltip/>

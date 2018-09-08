@@ -41,7 +41,7 @@
                         timestamp="{
                             path: 'Data',
                             type: 'sap.ui.model.type.DateTime',
-                            formatOptions: { UTC: true, style: 'short' }
+                            formatOptions: { UTC: false, style: 'short' }
                             }"/>
                 </List>                                
             </VBox>

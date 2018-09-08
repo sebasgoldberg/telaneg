@@ -149,33 +149,25 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
     },
 
     onAdicionarMercadoria: async function(oEvent) {
-        let selectedContexts;
 
-        let selecaoMercadoriaFornecedor = this.getOwnerComponent().getSelecaoMercadoriaFornecedorDialog();
+        // Abrimos o pup up para seleção.
         let v = this.getView();
+        let selecaoMercadoriaFornecedor = this.getOwnerComponent().getSelecaoMercadoriaFornecedorDialog();
+        let selectedContexts = await selecaoMercadoriaFornecedor.open(v.getBindingContext().getPath());
 
-        try {
-            selectedContexts = await selecaoMercadoriaFornecedor.open(v.getBindingContext().getPath());
-        } catch (e) {
+        if (! selectedContexts)
             return;
-        }
 
+        // Obtemos os atributos dos objetos selecionados.
         let oNegociacao = v.getBindingContext().getObject();
         let sPath = `${v.getBindingContext().getPath()}/materiais`;
-        let m = v.getModel();
-        let oPromisesEntries = selectedContexts.map( oContext => oContext.getObject() )
-            .map( oMaterial => 
-                this.createEntry(sPath,{
-                    ID: oMaterial.ID,
-                    Type: oMaterial.Type,
-                    }, false)
-            );
-        if (oPromisesEntries.length == 0)
-            return;
-        oPromisesEntries.push(this.submitChanges())
+        let oObjects = selectedContexts.map( oContext => oContext.getObject() )
+            .map( oMaterial => ({ ID: oMaterial.ID, Type: oMaterial.Type, }) );
+
+        // Criamos as entradas para os objetos selecionados.
         try {
             this.setBusy();
-            let results = await this.all(oPromisesEntries);
+            let results = await this.createEntries(sPath, oObjects);
             this.refreshItems();
         } catch (e) {
             this.resetChanges();
@@ -243,7 +235,6 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         try {
             oListItem.setBusy(true);
             await this.remove(oListItem.getBindingContextPath(), {NegociacaoID: oNegociacao.ID});
-            oComentariosItemsBinding.refresh();
         } catch (e) {
             this.error(e);
         } finally {
@@ -275,6 +266,58 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
     onReset: function(oEvent) {
         this.reset();
     },
+
+    /**
+     * @param oTable ListBase
+     * @param fMapping  (o => {x: o.x})
+     */
+    createEntriesForTable: async function(oTable, aObjects) {
+
+        let v = this.getView();
+
+        // Obtemos os atributos dos objetos selecionados.
+        let oItemsBinding = oTable.getBinding('items');
+        let sPath = `${v.getBindingContext().getPath()}/${oItemsBinding.getPath()}`;
+
+        // Criamos as entradas para os objetos selecionados.
+        try {
+            oTable.setBusy(true);
+            let results = await this.createEntries(sPath, aObjects);
+            oItemsBinding.refresh();
+        } catch (e) {
+            this.resetChanges();
+            console.error(e);
+        } finally {
+            oTable.setBusy(false);
+        }
+
+    },
+
+    onAddFornecedorAdicional: async function(oEvent) {
+
+        // Abrimos o pup up para seleção.
+        let v = this.getView();
+        let selecaoFornecedor = this.getOwnerComponent().getSelecaoFornecedorDialog();
+        let selectedContexts = await selecaoFornecedor.open(v.getBindingContext().getPath());
+
+        if (! selectedContexts)
+            return;
+
+        let oTable = v.byId('fornecedoresAdicionaisTable');
+
+        let oObjects = selectedContexts.map( oContext => oContext.getObject() )
+            .map( oObject => ({ ID: oObject.ID, Type: oObject.Type, }) );
+
+        this.createEntriesForTable(oTable, oObjects);
+
+    },
+
+    onDeleteFornecedorAdicional: async function(oEvent) {
+        this.deleteSelectedItems('fornecedoresAdicionaisTable', {
+            NegociacaoID: this.getView().getBindingContext().getProperty('ID'),
+            });
+    },
+
 
 });
 

@@ -10,10 +10,6 @@ export default BaseDialog.extend("simplifique.telaneg.controller.AnexosNegociaca
         },
     },
 
-    getOwnerComponent: function() {
-        return this.getView().getController().getOwnerComponent();
-    },
-
     constructor : function (oView) {
         BaseDialog.prototype.constructor.call(this, oView,
             "simplifique.telaneg.view.AnexosNegociacao");

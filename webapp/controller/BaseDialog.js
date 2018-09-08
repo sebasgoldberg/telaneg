@@ -16,22 +16,29 @@ export default ManagedObject.extend("simplifique.telaneg.controller.BaseDialog",
         return this._oView;
     },
 
+    getOwnerComponent: function() {
+        return this.getView().getController().getOwnerComponent();
+    },
+
     open : function (sPath) {
-        if (!this.dialog){
-            this.dialog = sap.ui.xmlfragment(this.getView().getId(), this.sFragment, this);
-            this._oView.addDependent(this.dialog);
-        }
+        return new Promise( (resolve, reject) => {
+            this.resolve = resolve;
+            this.reject = reject;
 
-        this.dialog.bindObject(sPath);
+            if (!this.dialog){
+                this.dialog = sap.ui.xmlfragment(this.getView().getId(), this.sFragment, this);
+                this._oView.addDependent(this.dialog);
+            }
 
-        if (this.dialog.isOpen())
-            this.dialog.close()
-        else
+            this.dialog.bindObject(sPath);
+
             this.dialog.open();
+        });
     },
 
     onFechar: function() {
         this.dialog.close();
+        this.resolve();
     },
 
     getBindingContext: function(){

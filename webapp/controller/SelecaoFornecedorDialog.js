@@ -2,11 +2,11 @@ import BaseSelectDialog from "simplifique/telaneg/controller/BaseSelectDialog";
 import Filter from 'sap/ui/model/Filter';
 import FilterOperator from 'sap/ui/model/FilterOperator';
 
-export default BaseSelectDialog.extend("simplifique.telaneg.controller.SelecaoMaterialFornecedorDialog",{
+export default BaseSelectDialog.extend("simplifique.telaneg.controller.SelecaoFornecedorDialog",{
 
     constructor : function (oView) {
         BaseSelectDialog.prototype.constructor.call(this, oView,
-            "simplifique.telaneg.view.SelecaoMaterialFornecedorDialog");
+            "simplifique.telaneg.view.SelecaoFornecedorDialog");
     },
 
     /**
@@ -16,8 +16,10 @@ export default BaseSelectDialog.extend("simplifique.telaneg.controller.SelecaoMa
     createFilters: function(sValue) {
         let aFilters = [];
         if (sValue) {
-            if (/^\d+$/.test(sValue))
+            if (sValue.length == 10)
                 aFilters.push(new Filter("ID", FilterOperator.EQ, sValue))
+            else if (/^\d+$/.test(sValue))
+                aFilters.push(new Filter("ID", FilterOperator.Contains, sValue))
             else
                 aFilters.push(new Filter("Nome", FilterOperator.Contains, sValue));
         }
@@ -25,5 +27,6 @@ export default BaseSelectDialog.extend("simplifique.telaneg.controller.SelecaoMa
     },
 
 });
+
 
 
