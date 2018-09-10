@@ -1,27 +1,28 @@
 import BaseSelectFacetDialog from "simplifique/telaneg/controller/BaseSelectFacetDialog";
 
-export default BaseSelectFacetDialog.extend("simplifique.telaneg.controller.SelecaoLojaDialog",{
+export default BaseSelectFacetDialog.extend("simplifique.telaneg.controller.SelecaoGrupoLojasDialog",{
 
     constructor : function (oView) {
         BaseSelectFacetDialog.prototype.constructor.call(this,
-            oView, "simplifique.telaneg.view.SelecaoLojaDialog");
+            oView, "simplifique.telaneg.view.SelecaoGrupoLojasDialog");
     },
 
     getSearchFieldName: function() {
-        return 'ID';
+        return 'Nome';
     },
 
     getListID: function() {
-        return 'lojasList';
+        return 'gruposList';
     },
 
     getFacetFilterID: function() {
-        return 'facetFilterLojas';
+        return 'facetFilterGrupos';
     },
 
     getSearchFieldID: function(){
-        return 'searchFieldItemOrg';
+        return 'searchFieldGrupoLojas';
     },
 
 });
+
 

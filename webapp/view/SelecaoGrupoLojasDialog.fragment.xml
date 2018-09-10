@@ -3,7 +3,7 @@
     xmlns:core="sap.ui.core"
     xmlns:form="sap.ui.layout.form">
     <Dialog
-        id="addLojaDialog"
+        id="selecaoGrupoLojaDialog"
         title="Adicionar {abrangencia/Descricao}"
         contentWidth="400px"
         contentHeight="500px"
@@ -11,7 +11,7 @@
 		<subHeader>
 			<Toolbar>
 				<SearchField
-                    id="searchFieldItemOrg"
+                    id="searchFieldGrupoLojas"
 					search="onFilterConfirm"
 					width="100%" />
 			</Toolbar>
@@ -28,8 +28,9 @@
 
         <content>
 
+
             <FacetFilter
-                id="facetFilterLojas"
+                id="facetFilterGrupos"
                 type="Simple"
                 showPersonalization="true"
                 showReset="true"
@@ -37,19 +38,6 @@
                 confirm="onFilterConfirm"
                 >
                 <lists>
-                    <FacetFilterList
-                        title="UF"
-                        key="UFID"
-                        mode="MultiSelect"
-                        items="{path:'bandeira/ufs', templateShareable: 'true'}"
-                        >
-                        <items>
-                            <FacetFilterItem
-                                text="{ID}"
-                                key="{ID}"
-                                />
-                        </items>
-                    </FacetFilterList>
                     <FacetFilterList
                         title="Centro Ref."
                         key="CentroReferenciaID"
@@ -64,17 +52,14 @@
                         </items>
                     </FacetFilterList>
                     <FacetFilterList
-                        title="Grupos Lojas"
-                        key="GrupoID"
+                        title="UF"
+                        key="UFID"
                         mode="MultiSelect"
-                        items="{path:'bandeira/gruposLojas', templateShareable: 'true'}"
-                        growing='true'
-                        growingThreshold='15'
-                        growingScrollToLoad='true'
+                        items="{path:'bandeira/ufs', templateShareable: 'true'}"
                         >
                         <items>
                             <FacetFilterItem
-                                text="{Nome}"
+                                text="{ID}"
                                 key="{ID}"
                                 />
                         </items>
@@ -87,11 +72,11 @@
                 growingThreshold="30"
                 growingScrollToLoad="true"
                 mode="MultiSelect"
-                id="lojasList"
-                items="{bandeira/lojas}" >
+                id="gruposList"
+                items="{bandeira/gruposLojas}" >
                 <StandardListItem
-                    title="{ID}"
-                    description="{Nome} [{UFID}]"
+                    title="{Nome}"
+                    description="{Descricao}"
                     type="Active"
                     />
             </List>
@@ -99,6 +84,7 @@
         </content>
     </Dialog>
 </core:FragmentDefinition>
+
 
 
 

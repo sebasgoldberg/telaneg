@@ -88,17 +88,18 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
     },
 
     onValueHelpItemOrg: async function(oEvent) {
-        let selecaoItemOrgDialog = this.getOwnerComponent().getSelecaoItemOrgDialog();
+        let sTipoAbrangencia = this.getView().getBindingContext().getProperty('TipoAbrangencia')
+        let selecaoItemOrgDialog = this.getOwnerComponent().getSelecaoItemOrgDialog(sTipoAbrangencia);
         try {
             let v = this.getView();
-            let oListItemsOrg = await selecaoItemOrgDialog.open(v.getBindingContext().getPath());
+            let selectedContexts = await selecaoItemOrgDialog.open(v.getBindingContext().getPath());
             let sPath = `${v.getBindingContext().getPath()}/itemsOrg`;
             let m = this.getView().getModel();
-            let oPromisesEntries = oListItemsOrg.getSelectedItems().map( oItem => oItem.getBindingContext().getObject() )
+            let oPromisesEntries = selectedContexts.map( oContext => oContext.getObject() )
                 .map( oItemOrg => 
                     this.createEntry(sPath,{
                         ID: oItemOrg.ID,
-                        Type: this.getView().getBindingContext().getProperty('TipoAbrangencia'),
+                        Type: sTipoAbrangencia,
                         }, false)
                 );
             if (oPromisesEntries.length > 0){

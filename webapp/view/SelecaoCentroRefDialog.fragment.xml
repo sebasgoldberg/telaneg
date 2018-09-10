@@ -1,0 +1,35 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form">
+
+	<SelectDialog
+        id="selecaoCentroRefDialog"
+        contentWidth="400px"
+        contentHeight="500px"
+        growing="true"
+        growingThreshold="30"
+        growingScrollToLoad="true"
+        multiSelect="true"
+        rememberSelections="false"
+		noDataText="Centros não encontrados."
+		title="Selecionar Centros de Referencia"
+		search="onSearch"
+		confirm="onSelecionar"
+		cancel="onFechar"
+		items="{
+			path: 'bandeira/centrosReferencia'
+		}" >
+		<StandardListItem
+			title="{ID}"
+			description="Nome"
+			type="Active" />
+	</SelectDialog>
+
+</core:FragmentDefinition>
+
+
+
+
+
+

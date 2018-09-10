@@ -7,6 +7,9 @@ import ImpostosPopover from "simplifique/telaneg/controller/ImpostosPopover";
 import VendasPopover from "simplifique/telaneg/controller/VendasPopover";
 import StockPopover from "simplifique/telaneg/controller/StockPopover";
 import SelecaoLojaDialog from "simplifique/telaneg/controller/SelecaoLojaDialog";
+import SelecaoGrupoLojasDialog from "simplifique/telaneg/controller/SelecaoGrupoLojasDialog";
+import SelecaoUFDialog from "simplifique/telaneg/controller/SelecaoUFDialog";
+import SelecaoCentroRefDialog from "simplifique/telaneg/controller/SelecaoCentroRefDialog";
 import SelecaoMaterialFornecedorDialog from "simplifique/telaneg/controller/SelecaoMaterialFornecedorDialog";
 import SelecaoFornecedorDialog from "simplifique/telaneg/controller/SelecaoFornecedorDialog";
 import AnexosNegociacaoDialog from "simplifique/telaneg/controller/AnexosNegociacaoDialog";
@@ -74,6 +77,9 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
         this._vendasPopover = new VendasPopover(this.getRootControl());
         this._stockPopover = new StockPopover(this.getRootControl());
         this._selecaoLojaDialog = new SelecaoLojaDialog(this.getRootControl());
+        this._selecaoGrupoLojasDialog = new SelecaoGrupoLojasDialog(this.getRootControl());
+        this._selecaoUFDialog = new SelecaoUFDialog(this.getRootControl());
+        this._selecaoCentroRefDialog = new SelecaoCentroRefDialog(this.getRootControl());
         this._selecaoMaterialFornecedorDialog = new SelecaoMaterialFornecedorDialog(this.getRootControl());
         this._selecaoFornecedorDialog = new SelecaoFornecedorDialog(this.getRootControl());
         this._anexosNegociacaoDialog = new AnexosNegociacaoDialog(this.getRootControl());
@@ -91,12 +97,18 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
         return this._vendasPopover;
     },
 
-    getSelecaoItemOrgDialog: function() {
-        return this._selecaoLojaDialog;
-    },
-
-    getSelecaoLojaDialog: function() {
-        return this._selecaoLojaDialog;
+    getSelecaoItemOrgDialog: function(sItemOrgType) {
+        switch (sItemOrgType) {
+            case 'L':
+                return this._selecaoLojaDialog;
+            case 'G':
+                return this._selecaoGrupoLojasDialog;
+            case 'U':
+                return this._selecaoUFDialog;
+            case 'R':
+                return this._selecaoCentroRefDialog;
+        }
+        throw "Tipo de item organizacional não definido."
     },
 
     getSelecaoMercadoriaFornecedorDialog: function() {

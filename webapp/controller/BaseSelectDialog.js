@@ -21,7 +21,7 @@ export default BaseDialog.extend("simplifique.telaneg.controller.BaseSelectDialo
     },
 
     onFechar: function() {
-        this.resolve();
+        this.resolve([]);
     },
 
 
