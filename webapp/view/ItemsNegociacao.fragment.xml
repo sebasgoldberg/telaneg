@@ -46,7 +46,10 @@
                 </template>
             </Column>
 
-            <Column label="Mercadoria" width="10%" >
+            <Column label="{
+                parts: [ {path: 'tipoNegociacao/ID'}, {path: 'TipoItemMercID'} ],
+                formatter: '.formatter.formatDescricaoItemMerc'
+                }" width="10%" >
                 <template>
                     <m:Text text="{
                         path: 'material/ID',

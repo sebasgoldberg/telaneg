@@ -113,8 +113,8 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
      */
     createEntries: function(sPath, aObjects) {
 
-        if (!aObjects)
-            return;
+        if (aObjects.length == 0)
+            return Promise.resolve();
 
         let oPromisesEntries = aObjects
             .map( oProperties => this.createEntry(sPath, oProperties, false) );

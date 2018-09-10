@@ -147,10 +147,37 @@ export default {
                 R: 'Centro Ref.',
                 G: 'Loja',
                 L: 'Loja',
-                }
+                },
+            F: {
+                U: 'UF',
+                G: 'Loja',
+                L: 'Loja',
+                },
             };
         return oDescricoes[sTipoNegociacao][sTipoAbrangencia];
     },
+
+    formatDescricaoItemMerc: function(sTipoNegociacao, sTipoAbrangencia) {
+        if (!sTipoNegociacao)
+            return;
+        if (!sTipoAbrangencia)
+            return;
+        let oDescricoes = {
+            O: {
+                M: 'Mercadoria',
+                },
+            I: {
+                M: 'Mercadoria',
+                },
+            F: {
+                M: 'Mercadoria',
+                G: 'Grupo',
+                S: 'Seção',
+                },
+            };
+        return oDescricoes[sTipoNegociacao][sTipoAbrangencia];
+    },
+
 
     textoPeriodoNegociacao: function(sTipoNegociacao) {
         if (!sTipoNegociacao)
@@ -158,6 +185,7 @@ export default {
         let oTextos = {
             O: 'Período de Apuração',
             I: 'Período de Recebimento',
+            F: '',
             };
         return oTextos[sTipoNegociacao];
     },

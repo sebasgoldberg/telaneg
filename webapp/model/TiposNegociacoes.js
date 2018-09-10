@@ -16,6 +16,7 @@ let aIDsControlesAdaptaveis = [
     "recomposicaoColumn",
     "fornecedoresAdicionaisTable",
     "fornecedoresAdicionaisSubSection",
+    "tipoItemMercFormElement",
     ];
 
 
@@ -66,6 +67,11 @@ export default ManagedObject.extend("simplifique.telaneg.model.TiposNegociacoes"
                     "recomposicaoColumn",
                     "fornecedoresAdicionaisTable",
                     "fornecedoresAdicionaisSubSection",
+                    ]
+                ),
+            F: new TipoNegociacao(
+                [
+                    "tipoItemMercFormElement",
                     ]
                 ),
             };

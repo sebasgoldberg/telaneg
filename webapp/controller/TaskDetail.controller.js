@@ -16,6 +16,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         "ClausulaID",
         "Bandeira",
         "TipoAbrangencia",
+        "TipoItemMercID",
         ],
 
     onInit: function(){
@@ -153,7 +154,8 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
 
         // Abrimos o pup up para seleção.
         let v = this.getView();
-        let selecaoMercadoriaFornecedor = this.getOwnerComponent().getSelecaoMercadoriaFornecedorDialog();
+        let sTipoItemMerc = v.getBindingContext().getProperty('TipoItemMercID');
+        let selecaoMercadoriaFornecedor = this.getOwnerComponent().getSelecaoMercadoriaFornecedorDialog(sTipoItemMerc);
         let selectedContexts = await selecaoMercadoriaFornecedor.open(v.getBindingContext().getPath());
 
         if (! selectedContexts)

@@ -21,6 +21,22 @@
                             </ComboBox>
                         </form:fields>
                     </form:FormElement>
+
+                    <form:FormElement id="tipoItemMercFormElement">
+                        <form:label>
+                            <Label text="Tipo Item Merc. " required="true"/>
+                        </form:label>
+                        <form:fields>
+                            <ComboBox
+                                selectedKey="{TipoItemMercID}"
+                                items="{tipoNegociacao/tiposItemMerc}"
+                                >
+                                <core:Item key="{ID}" text="{Descricao}" />
+                            </ComboBox>
+
+                        </form:fields>
+                    </form:FormElement>
+
                 </form:formElements>
             </form:FormContainer>
 
