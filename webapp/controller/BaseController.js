@@ -124,6 +124,27 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         return this.all(oPromisesEntries);
     },
 
+    createEntriesForTable: async function(oTable, aObjects) {
+
+        let v = this.getView();
+
+        // Obtemos os atributos dos objetos selecionados.
+        let oItemsBinding = oTable.getBinding('items');
+        let sPath = `${v.getBindingContext().getPath()}/${oItemsBinding.getPath()}`;
+
+        // Criamos as entradas para os objetos selecionados.
+        try {
+            oTable.setBusy(true);
+            let results = await this.createEntries(sPath, aObjects);
+            oItemsBinding.refresh();
+        } catch (e) {
+            this.resetChanges();
+            console.error(e);
+        } finally {
+            oTable.setBusy(false);
+        }
+
+    },
 
     setBusy: function() {
         sap.ui.core.BusyIndicator.show(0);
