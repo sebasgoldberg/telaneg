@@ -2,18 +2,18 @@ import BaseSelectDialog from "simplifique/telaneg/controller/BaseSelectDialog";
 import Filter from 'sap/ui/model/Filter';
 import FilterOperator from 'sap/ui/model/FilterOperator';
 
-export default BaseSelectDialog.extend("simplifique.telaneg.controller.SelecaoMaterialFornecedorDialog",{
+export default BaseSelectDialog.extend("simplifique.telaneg.controller.SelecaoSecaoDialog",{
 
     constructor : function (oView) {
         BaseSelectDialog.prototype.constructor.call(this, oView,
-            "simplifique.telaneg.view.SelecaoMaterialFornecedorDialog");
+            "simplifique.telaneg.view.SelecaoSecaoDialog");
     },
 
     /**
      * @return string ID do SelectDialog na view.
      */
     getSelectDialogID: function() {
-        return "materiaisFornecedorSelectDialog";
+        return "selecaoSecaoDialog";
     },
 
     /**
@@ -23,14 +23,17 @@ export default BaseSelectDialog.extend("simplifique.telaneg.controller.SelecaoMa
     createFilters: function(sValue) {
         let aFilters = [];
         if (sValue) {
-            if (/^\d+$/.test(sValue))
+            if ((sValue.length == 2) && (/^\d+$/.test(sValue)))
                 aFilters.push(new Filter("ID", FilterOperator.EQ, sValue))
             else
-                aFilters.push(new Filter("Nome", FilterOperator.Contains, sValue));
+                aFilters.push(new Filter("Descricao", FilterOperator.Contains, sValue));
         }
         return aFilters;
     },
 
 });
+
+
+
 
 

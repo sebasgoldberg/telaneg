@@ -2,8 +2,11 @@ import BaseDialog from "simplifique/telaneg/controller/BaseDialog";
 
 export default BaseDialog.extend("simplifique.telaneg.controller.BaseSelectDialog",{
 
-    onSelecionar: function(oEvent) {
-        this.resolve(oEvent.getParameters().selectedContexts);
+    /**
+     * @return string ID do SelectDialog na view.
+     */
+    getSelectDialogID: function() {
+        throw "Método getSelectDialogID não implementado."
     },
 
     /**
@@ -14,9 +17,24 @@ export default BaseDialog.extend("simplifique.telaneg.controller.BaseSelectDialo
         return [];
     },
 
+    beforeOpen: function() {
+        if (this.aAditionalFilters.length > 0)
+            this.getView().byId(this.getSelectDialogID()).getBinding('items').filter(this.aAditionalFilters);
+    },
+
+    open: function (sPath, aAditionalFilters=[]) {
+        this.aAditionalFilters = aAditionalFilters;
+        return BaseDialog.prototype.open.call(this, sPath);
+    },
+
+    onSelecionar: function(oEvent) {
+        this.resolve(oEvent.getParameters().selectedContexts);
+    },
+
     onSearch: function(oEvent) {
         let oParams = oEvent.getParameters();
         let aFilters = this.createFilters(oParams.value);
+        aFilters.push(...(this.aAditionalFilters));
         oParams.itemsBinding.filter(aFilters);
     },
 

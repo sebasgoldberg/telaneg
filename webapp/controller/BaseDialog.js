@@ -20,6 +20,9 @@ export default ManagedObject.extend("simplifique.telaneg.controller.BaseDialog",
         return this.getView().getController().getOwnerComponent();
     },
 
+    beforeOpen: function() {
+    },
+
     open : function (sPath) {
         return new Promise( (resolve, reject) => {
             this.resolve = resolve;
@@ -31,6 +34,8 @@ export default ManagedObject.extend("simplifique.telaneg.controller.BaseDialog",
             }
 
             this.dialog.bindObject(sPath);
+
+            this.beforeOpen();
 
             this.dialog.open();
         });

@@ -154,11 +154,15 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
 
         // Abrimos o pup up para seleção.
         let v = this.getView();
+        let bc = v.getBindingContext();
         let sTipoItemMerc = v.getBindingContext().getProperty('TipoItemMercID');
-        let selecaoMercadoriaFornecedor = this.getOwnerComponent().getSelecaoMercadoriaFornecedorDialog(sTipoItemMerc);
-        let selectedContexts = await selecaoMercadoriaFornecedor.open(v.getBindingContext().getPath());
+        let selecaoMercadoriaFornecedor = this.getOwnerComponent().getSelecaoItemMercDialog(sTipoItemMerc);
+        let selectedContexts = await selecaoMercadoriaFornecedor.open(
+            bc.getPath(),
+            [ new Filter('FornecedorID', FilterOperator.EQ, bc.getProperty('FornecedorID')) ]
+            );
 
-        if (! selectedContexts)
+        if (selectedContexts.length == 0)
             return;
 
         // Obtemos os atributos dos objetos selecionados.
