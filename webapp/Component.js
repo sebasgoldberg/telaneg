@@ -11,6 +11,7 @@ import SelecaoGrupoLojasDialog from "simplifique/telaneg/controller/SelecaoGrupo
 import SelecaoUFDialog from "simplifique/telaneg/controller/SelecaoUFDialog";
 import SelecaoCentroRefDialog from "simplifique/telaneg/controller/SelecaoCentroRefDialog";
 import SelecaoMaterialFornecedorDialog from "simplifique/telaneg/controller/SelecaoMaterialFornecedorDialog";
+import SelecaoGrupoDialog from "simplifique/telaneg/controller/SelecaoGrupoDialog";
 import SelecaoSecaoDialog from "simplifique/telaneg/controller/SelecaoSecaoDialog";
 import SelecaoFornecedorDialog from "simplifique/telaneg/controller/SelecaoFornecedorDialog";
 import AnexosNegociacaoDialog from "simplifique/telaneg/controller/AnexosNegociacaoDialog";
@@ -82,6 +83,7 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
         this._selecaoUFDialog = new SelecaoUFDialog(this.getRootControl());
         this._selecaoCentroRefDialog = new SelecaoCentroRefDialog(this.getRootControl());
         this._selecaoMaterialFornecedorDialog = new SelecaoMaterialFornecedorDialog(this.getRootControl());
+        this._selecaoGrupoDialog = new SelecaoGrupoDialog(this.getRootControl());
         this._selecaoSecaoDialog = new SelecaoSecaoDialog(this.getRootControl());
         this._selecaoFornecedorDialog = new SelecaoFornecedorDialog(this.getRootControl());
         this._anexosNegociacaoDialog = new AnexosNegociacaoDialog(this.getRootControl());
@@ -117,6 +119,8 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
         switch (sTipoItemMerc) {
             case 'M':
                 return this._selecaoMaterialFornecedorDialog;
+            case 'G':
+                return this._selecaoGrupoDialog;
             case 'S':
                 return this._selecaoSecaoDialog;
         }
