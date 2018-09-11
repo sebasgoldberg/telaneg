@@ -90,9 +90,9 @@
 
                 </uxap:subSections>
             </uxap:ObjectPageSection>
-            <uxap:ObjectPageSection title="Mercadorias">
+            <uxap:ObjectPageSection id="itemsObjectPageSection" title="Mercadorias">
                 <uxap:subSections>
-                    <uxap:ObjectPageSubSection title="Mercadorias">
+                    <uxap:ObjectPageSubSection id="itemsObjectPageSubSection" title="Mercadorias">
                         <uxap:blocks>
                             <!--
                             <Table id='itemsTable' width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" mode="MultiSelect" items="{path:'items', templateShareable:true, parameters:{expand:'material,simulacao,itemOrg,subitem,subitem/impostosEntrada,subitem/impostosSaida'}}">

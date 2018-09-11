@@ -37,7 +37,69 @@ class TipoNegociacao{
             this.oView.byId(sIDControle).setVisible(
                 this.aIDsControlesVisiveis.indexOf(sIDControle) >= 0)
             );
+        this.getView().byId("itemsObjectPageSection").setTitle(this.getItemsSectionTitle());
+        this.getView().byId("itemsObjectPageSubSection").setTitle(this.getItemsSectionTitle());
     }
+
+    getView(){
+        return this.oView;
+    }
+}
+
+class TipoNegociacaoSellOut extends TipoNegociacao{
+
+    constructor(){
+        super([
+            "UMVColumn",
+            "precoVendaColumn",
+            "PMZColumn",
+            "margemPDVColumn",
+            "recomposicaoColumn",
+            "margem2SimuladaColumn",
+            "menorPrecoMercadoColumn",
+            "indiceCompetitividadeColumn"
+            ]);
+    }
+
+    getItemsSectionTitle(){
+        return "Mercadorias";
+    }
+
+}
+
+
+class TipoNegociacaoSellIn extends TipoNegociacao{
+
+    constructor(){
+        super([
+            "UMBColumn",
+            "custoBrutoColumn",
+            "custoLiquidoColumn",
+            "recomposicaoColumn",
+            "fornecedoresAdicionaisTable",
+            "fornecedoresAdicionaisSubSection",
+            ]);
+    }
+
+    getItemsSectionTitle(){
+        return "Mercadorias";
+    }
+
+}
+
+
+class TipoNegociacaoValorFixo extends TipoNegociacao{
+
+    constructor(){
+        super([
+            "tipoItemMercFormElement",
+            ]);
+    }
+
+    getItemsSectionTitle(){
+        return "Bonificação";
+    }
+
 }
 
 export default ManagedObject.extend("simplifique.telaneg.model.TiposNegociacoes",{
@@ -47,33 +109,9 @@ export default ManagedObject.extend("simplifique.telaneg.model.TiposNegociacoes"
     constructor : function (oView) {
         this.oView = oView;
         this.oTiposNegociacao = {
-            O: new TipoNegociacao(
-                [
-                    "UMVColumn",
-                    "precoVendaColumn",
-                    "PMZColumn",
-                    "margemPDVColumn",
-                    "recomposicaoColumn",
-                    "margem2SimuladaColumn",
-                    "menorPrecoMercadoColumn",
-                    "indiceCompetitividadeColumn"
-                    ]
-                ),
-            I: new TipoNegociacao(
-                [
-                    "UMBColumn",
-                    "custoBrutoColumn",
-                    "custoLiquidoColumn",
-                    "recomposicaoColumn",
-                    "fornecedoresAdicionaisTable",
-                    "fornecedoresAdicionaisSubSection",
-                    ]
-                ),
-            F: new TipoNegociacao(
-                [
-                    "tipoItemMercFormElement",
-                    ]
-                ),
+            O: new TipoNegociacaoSellOut(),
+            I: new TipoNegociacaoSellIn(),
+            F: new TipoNegociacaoValorFixo(),
             };
     },
 
