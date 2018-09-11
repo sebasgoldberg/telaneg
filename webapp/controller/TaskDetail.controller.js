@@ -167,9 +167,12 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
 
         // Obtemos os atributos dos objetos selecionados.
         let oNegociacao = v.getBindingContext().getObject();
-        let sPath = `${v.getBindingContext().getPath()}/materiais`;
+        let sPath = `${v.getBindingContext().getPath()}/itemsMerc`;
         let oObjects = selectedContexts.map( oContext => oContext.getObject() )
-            .map( oMaterial => ({ ID: oMaterial.ID, Type: oMaterial.Type, }) );
+            .map( oMaterial => ({
+                ID: oMaterial.ID,
+                Type: sTipoItemMerc,
+                }));
 
         // Criamos as entradas para os objetos selecionados.
         try {

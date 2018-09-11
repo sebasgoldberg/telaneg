@@ -8,7 +8,7 @@
                 path:'stock',
                 templateShareable:true,
                 parameters:{
-                    expand:'item,item/material,item/itemOrg'
+                    expand:'item,item/itemMerc,item/itemOrg'
                     }
                 }" >
 
@@ -117,7 +117,7 @@
                     <cells>
                         <ObjectIdentifier title="{item/itemOrg/ID}" text="" titleActive="false" visible="true"/>
                         <ObjectIdentifier title="{
-                            path: 'item/material/ID',
+                            path: 'item/itemMerc/ID',
                             type: 'sap.ui.model.odata.type.String',
                             constraints: {
                                 isDigitSequence : true,
@@ -126,7 +126,7 @@
                             }"
                             text="" titleActive="false" visible="true"/>
 
-                        <Text text="{item/material/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+                        <Text text="{item/itemMerc/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
 
                         <ObjectIdentifier title="{path: 'Data', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}" />
 

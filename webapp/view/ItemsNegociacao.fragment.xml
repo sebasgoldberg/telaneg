@@ -15,7 +15,7 @@
         rows="{
             path : 'items',
             parameters : {
-                expand:'material,simulacao,itemOrg,impostosEntrada,impostosSaida,negociacao',
+                expand:'itemMerc,material,simulacao,itemOrg,impostosEntrada,impostosSaida,negociacao',
                 numberOfExpandedLevels: 0,
                 treeAnnotationProperties : {
                     hierarchyLevelFor : 'Nivel',
@@ -52,7 +52,7 @@
                 }" width="10%" >
                 <template>
                     <m:Text text="{
-                        path: 'material/ID',
+                        path: 'itemMerc/ID',
                         type: 'sap.ui.model.odata.type.String',
                         constraints: {
                             isDigitSequence : true,
@@ -64,7 +64,7 @@
 
             <Column label="Descrição" width="25%">
                 <template>
-                    <m:Text text="{material/Nome}" wrapping="true" />
+                    <m:Text text="{itemMerc/Nome}" wrapping="true" />
                 </template>
             </Column>
             
