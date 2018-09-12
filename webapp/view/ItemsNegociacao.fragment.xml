@@ -15,7 +15,7 @@
         rows="{
             path : 'items',
             parameters : {
-                expand:'itemMerc,material,simulacao,itemOrg,impostosEntrada,impostosSaida,negociacao',
+                expand:'itemMerc,material,informacao,simulacao,itemOrg,impostosEntrada,impostosSaida,negociacao',
                 numberOfExpandedLevels: 0,
                 treeAnnotationProperties : {
                     hierarchyLevelFor : 'Nivel',
@@ -78,7 +78,7 @@
                 >
                 <template>
                     <m:Text text="{
-                        path: 'simulacao/CustoBruto',
+                        path: 'informacao/CustoBruto',
                         type: 'sap.ui.model.odata.type.Decimal',
                         constraints: {
                             precision: 12,
@@ -94,7 +94,7 @@
                 >
                 <template>
                     <m:Text text="{
-                        path: 'simulacao/CustoLiquido',
+                        path: 'informacao/CustoLiquido',
                         type: 'sap.ui.model.odata.type.Decimal',
                         constraints: {
                             precision: 12,
@@ -127,7 +127,7 @@
 
             <Column label="UMV" id="UMVColumn">
                 <template>
-                    <m:Text text="{material/UMB}" wrapping="true" />
+                    <m:Text text="{informacao/UMV}" wrapping="true" />
                 </template>
             </Column>
 
@@ -174,7 +174,7 @@
                 >
                 <template>
                     <m:Text text="{
-                        path: 'nossoPricing/MargemPDV',
+                        path: 'simulacao/Margem1',
                         type: 'sap.ui.model.odata.type.Decimal',
                         constraints: { scale: 2 }
                         }" wrapping="true" />
@@ -223,7 +223,7 @@
                 >
                 <template>
                     <m:Text text="{
-                        path: 'nossoPricing/PrecoMercado',
+                        path: 'informacao/MenorPrecoMercado',
                         type: 'sap.ui.model.odata.type.Decimal',
                         constraints: { scale: 2 }
                         }" wrapping="true" />

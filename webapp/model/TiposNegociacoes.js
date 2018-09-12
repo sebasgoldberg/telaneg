@@ -15,6 +15,7 @@ let aIDsControlesAdaptaveis = [
     "custoLiquidoColumn",
     "recomposicaoColumn",
     "consultasColumn",
+    "valorBonificacaoColumn",
     "fornecedoresAdicionaisTable",
     "fornecedoresAdicionaisSubSection",
     "tipoItemMercFormElement",
@@ -96,6 +97,7 @@ class TipoNegociacaoValorFixo extends TipoNegociacao{
     constructor(){
         super([
             "tipoItemMercFormElement",
+            "valorBonificacaoColumn",
             ]);
     }
 
