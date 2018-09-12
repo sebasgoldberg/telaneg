@@ -11,7 +11,10 @@
                             <Label text="Descrição"/>
                         </form:label>
                         <form:fields>
-                            <Input value="{Descricao}" placeholder="Indique aqui alguma descrição" type="Text" showValueHelp="false" enabled="true" visible="true" width="auto" valueHelpOnly="false" maxLength="0"/>
+                            <Input
+                                id="descricaoNegociacaoInput"
+                                enabled="{view>/isNegociacaoEditavel}"
+                                value="{Descricao}" placeholder="Indique aqui alguma descrição" type="Text" showValueHelp="false" />
                         </form:fields>
                     </form:FormElement>
                     <form:FormElement>
@@ -23,6 +26,7 @@
                         </form:label>
                         <form:fields>
                             <DateRangeSelection
+                                enabled="{view>/isNegociacaoEditavel}"
                                 id="periodoApuracaoRangeSelection"
                                 dateValue="{ApuracaoDe}"
                                 secondDateValue="{ApuracaoAte}"
@@ -39,6 +43,8 @@
                         </form:label>
                         <form:fields>
                             <Input
+                                enabled="{view>/isNegociacaoEditavel}"
+                                id="fornecedorNegociacaoInput"
                                 required="false"
                                 value="{FornecedorID}" 
                                 showSuggestion="true"
@@ -60,7 +66,10 @@
                             <Label text="Negociador"/>
                         </form:label>
                         <form:fields>
-                            <Input value="{Negociador}"/>
+                            <Input
+                                enabled="{view>/isNegociacaoEditavel}"
+                                id="negociadorNegociacaoInput"
+                                value="{Negociador}"/>
                         </form:fields>
                     </form:FormElement>
                 </form:formElements>
@@ -73,6 +82,7 @@
                         </form:label>
                         <form:fields>
                             <Input
+                                enabled="{view>/isNegociacaoEditavel}"
                                 id="clausulaInput"
                                 value="{ClausulaID}"
                                 showSuggestion="true"

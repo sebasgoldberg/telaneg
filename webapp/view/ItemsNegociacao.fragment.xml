@@ -15,6 +15,7 @@
         rows="{
             path : 'items',
             parameters : {
+                templateShareable: true,
                 expand:'itemMerc,material,informacao,simulacao,itemOrg,impostosEntrada,impostosSaida,negociacao',
                 numberOfExpandedLevels: 0,
                 treeAnnotationProperties : {
@@ -29,8 +30,14 @@
         <toolbar>
             <m:Toolbar>
                 <m:ToolbarSpacer/>
-                <m:Button icon="sap-icon://add" iconFirst="true" type="Transparent" press="onAdicionarMercadoria" />
-                <m:Button text="" icon="sap-icon://delete" iconFirst="false" type="Transparent" press="onEliminarItensSelecionados" />
+                <m:Button
+                    visible="{view>/isNegociacaoEditavel}"
+                    id="addItemButton"
+                    icon="sap-icon://add" iconFirst="true" type="Transparent" press="onAdicionarMercadoria" />
+                <m:Button
+                    visible="{view>/isNegociacaoEditavel}"
+                    id="removeItemButton"
+                    text="" icon="sap-icon://delete" iconFirst="false" type="Transparent" press="onEliminarItensSelecionados" />
             </m:Toolbar>
         </toolbar>
 
@@ -118,6 +125,8 @@
                             scale: 2
                             }
                         }"
+                        enabled="{view>/isNegociacaoEditavel}"
+                        id="valorBonificacaoEdit"
                         maxLength="16"
                         textAlign="Right"
                         description=""/>
@@ -144,6 +153,8 @@
                             scale: 2
                         }
                         }"
+                        enabled="{view>/isNegociacaoEditavel}"
+                        id="precoVendaEdit"
                         maxLength="16"
                         textAlign="Right"
                         description=""
@@ -194,6 +205,8 @@
                             scale: 2
                             }
                         }"
+                        enabled="{view>/isNegociacaoEditavel}"
+                        id="recomposicaoEdit"
                         maxLength="16"
                         textAlign="Right"
                         description=""/>

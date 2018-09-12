@@ -237,7 +237,12 @@
                                         type: 'sap.ui.model.type.Date',
                                         formatOptions: { UTC: true, style: 'short' }
                                         }" />
-                                    <Button icon="sap-icon://attachment" press="onMostrarAnexos"/>
+                                    <Button
+                                        enabled="{
+                                            parts: [ {path: 'Estipulacao'} ],
+                                            formatter: '.formatter.isNotInitial'
+                                            }"
+                                        icon="sap-icon://attachment" press="onMostrarAnexos"/>
                                     <ObjectStatus text="{status/Descricao}" />
                                     <ObjectNumber number="{
                                         path: 'Bonificacao',

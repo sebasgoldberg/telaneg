@@ -26,12 +26,22 @@
                     </Bar>
                 </uxap:navigationBar>
                 <uxap:actions>
-                    <Button text="Anexos" icon="sap-icon://attachment" press="onMostrarAnexos">
+                    <Button
+                        enabled="{
+                            parts: [ {path: 'Estipulacao'} ],
+                            formatter: '.formatter.isNotInitial'
+                            }"
+                        text="Anexos" icon="sap-icon://attachment" press="onMostrarAnexos">
                         <layoutData>
                             <OverflowToolbarLayoutData moveToOverflow="true"/>
                         </layoutData>
                     </Button>
-                    <Button text="PDF" icon="sap-icon://download" type="Emphasized" press="onGetPDF">
+                    <Button
+                        enabled="{
+                            parts: [ {path: 'Estipulacao'} ],
+                            formatter: '.formatter.isNotInitial'
+                            }"
+                        text="PDF" icon="sap-icon://download" type="Emphasized" press="onGetPDF">
                         <layoutData>
                             <OverflowToolbarLayoutData moveToOverflow="true"/>
                         </layoutData>
@@ -472,13 +482,16 @@
                         press="handleMessagePopoverPress"/>
                     <ToolbarSpacer/>
                     <Button text="Cancelar" 
+                        visible="{view>/isNegociacaoEditavel}"
                         press="onReset"
                         />
                     <Button text="Salvar"
+                        visible="{view>/isNegociacaoEditavel}"
                         type="Emphasized" 
                         press="onSave"
                         />
                     <Button text="Finalizar"
+                        visible="{view>/isNegociacaoEditavel}"
                         type="Accept" 
                         />
                 </content>

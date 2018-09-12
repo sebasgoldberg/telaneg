@@ -5,6 +5,7 @@ import FilterOperator from 'sap/ui/model/FilterOperator';
 import JSONModel from "sap/ui/model/json/JSONModel";
 import MessagePopover from 'sap/m/MessagePopover';
 import TiposNegociacoes from 'simplifique/telaneg/model/TiposNegociacoes';
+import TiposStatus from 'simplifique/telaneg/model/TiposStatus';
 
 
 export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
@@ -24,12 +25,14 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         Controller.prototype.onInit.call(this);
 
         this.tiposNegociacoes = new TiposNegociacoes(this.getView());
+        this.tiposStatus = new TiposStatus(this.getView());
 
         this.getView().setModel(sap.ui.getCore().getMessageManager().getMessageModel(),"message");
 
         let v = this.getView();
         v.setModel(new JSONModel({
             AtualizacaoEliminacoes: false,
+            isNegociacaoEditavel: true,
             }), 'view');
 
 
@@ -70,8 +73,10 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         let oNegociacao = this.getView().getBindingContext().getObject();
 
         this.tipoNegociacao = this.tiposNegociacoes.getTipoNegociacao(oNegociacao);
-
         this.tipoNegociacao.adaptarView();
+
+        this.tipoStatus = this.tiposStatus.getTipoStatus(oNegociacao);
+        this.tipoStatus.adaptarView();
     },
 
     suggestClausula: async function(oEvent) {

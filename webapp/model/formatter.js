@@ -204,6 +204,13 @@ export default {
             };
         return oTextos[sTipoNegociacao];
     },
+
+    isNotInitial: function(value){
+        if (value)
+            return true;
+        return false;
+    }
+
 }
 
 
