@@ -248,7 +248,12 @@
                                         path: 'Bonificacao',
                                         type: 'sap.ui.model.odata.type.Decimal',
                                         constraints: { scale: 2 }
-                                        }" unit="BRL" emphasized="false"/>
+                                        }" unit="BRL" emphasized="false"
+                                        state="{
+                                            parts: [ {path: 'Bonificacao'} ],
+                                            formatter: '.formatter.defaultNumberStatus'
+                                            }"
+                                        />
                                 </cells>
                             </ColumnListItem>
                         </items>

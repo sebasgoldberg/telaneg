@@ -358,4 +358,15 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
 
     },
 
+    callFunctionImport: function(sPath, urlParameters) {
+        return new Promise( (resolve, reject) => {
+            this.getModel().callFunction(sPath,{
+                method:"GET",
+                urlParameters:urlParameters,
+                success: (...args) => resolve(...args),
+                error: (...args) => reject(...args),
+                });
+        });
+    },
+
 });

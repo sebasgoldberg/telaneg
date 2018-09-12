@@ -307,6 +307,42 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
             });
     },
 
+    temCertezaQueDesejaFinalizar: function(attribute) {
+        return new Promise(function(fnResolve) {
+            sap.m.MessageBox.confirm("Tem certeza que deseja finalizar a negociação?", {
+                title: "Finalizar Negociação",
+                actions: ["Tenho Sim", "Melhor Não"],
+                onClose: function(sActionClicked) {
+                    fnResolve(sActionClicked === "Tenho Sim");
+                }
+            });
+        });
+    },
+
+    refresh: function() {
+        this.getModel().refresh();
+        // @todo Verificar por que funciona sem considerar execução asincrona.
+        this.adaptarView();
+    },
+
+    onFinalizar: async function() {
+
+        if (!(await this.temCertezaQueDesejaFinalizar()))
+            return;
+
+        let sNegociacaoID = this.getView().getBindingContext().getProperty('ID');
+
+        try {
+            this.setBusy();
+            await this.callFunctionImport('/FinalizarNegociacao',{ID: sNegociacaoID});
+            this.refresh()
+        } catch (e) {
+            this.error(e);
+        } finally{
+            this.setFree();
+        }
+
+    },
 
 });
 

@@ -65,7 +65,10 @@
                         path: 'Bonificacao',
                         type: 'sap.ui.model.odata.type.Decimal',
                         constraints: { scale: 2 }
-                        }" unit="BRL" state="Success"/>
+                        }" unit="BRL" state="{
+                            parts: [ {path: 'Bonificacao'} ],
+                            formatter: '.formatter.defaultNumberStatus'
+                            }"/>
                 </items>
             </VBox>
             <VBox>
@@ -493,6 +496,7 @@
                     <Button text="Finalizar"
                         visible="{view>/isNegociacaoEditavel}"
                         type="Accept" 
+                        press="onFinalizar"
                         />
                 </content>
             </OverflowToolbar>
