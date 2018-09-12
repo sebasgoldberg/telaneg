@@ -168,7 +168,7 @@
                         growingScrollToLoad="true"
                         growingThreshold="25"
                         items="{
-                            path:'/NegociacaoSet',
+                            path:'',
                             templateShareable:true,
                             parameters: {
                                 expand:'fornecedor,status'

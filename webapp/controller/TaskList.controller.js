@@ -82,7 +82,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         let oBindingInfo = oNegociacoesTable.getBindingInfo('items');
         oNegociacoesTable.bindAggregation('items', {
             model: oBindingInfo.model,
-            path: oBindingInfo.path,
+            path: '/NegociacaoSet',
             parameters: {
                 expand: 'fornecedor,status',
                 },

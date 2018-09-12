@@ -352,7 +352,11 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
     bindObject: function(oPath) {
 
         return new Promise( (resolve, reject) => {
-            oPath.events = { dataReceived: (...args) => resolve(...args) };
+            oPath.events = {
+                // @todo Verificar se é possivel eliminar dataReceived
+                dataReceived: (...args) => resolve(...args),
+                change: (...args) => resolve(...args),
+                };
             this.getView().bindObject(oPath);
         });
 
