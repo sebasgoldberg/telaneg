@@ -14,6 +14,7 @@ let aIDsControlesAdaptaveis = [
     "custoBrutoColumn",
     "custoLiquidoColumn",
     "recomposicaoColumn",
+    "consultasColumn",
     "fornecedoresAdicionaisTable",
     "fornecedoresAdicionaisSubSection",
     "tipoItemMercFormElement",
@@ -57,7 +58,8 @@ class TipoNegociacaoSellOut extends TipoNegociacao{
             "recomposicaoColumn",
             "margem2SimuladaColumn",
             "menorPrecoMercadoColumn",
-            "indiceCompetitividadeColumn"
+            "indiceCompetitividadeColumn",
+            "consultasColumn",
             ]);
     }
 
@@ -78,6 +80,7 @@ class TipoNegociacaoSellIn extends TipoNegociacao{
             "recomposicaoColumn",
             "fornecedoresAdicionaisTable",
             "fornecedoresAdicionaisSubSection",
+            "consultasColumn",
             ]);
     }
 

@@ -52,12 +52,8 @@
                 }" width="10%" >
                 <template>
                     <m:Text text="{
-                        path: 'itemMerc/ID',
-                        type: 'sap.ui.model.odata.type.String',
-                        constraints: {
-                            isDigitSequence : true,
-                            maxLength : 18
-                            }
+                        parts: [ {path: 'itemMerc/ID'}, {path: 'itemMerc/Type'} ],
+                        formatter: '.formatter.formatItemMerc'
                         }" wrapping="true" />
                 </template>
             </Column>
@@ -107,6 +103,27 @@
                 </template>
             </Column>
             <!-- Fim Colunas Sell-in -->
+
+            <!-- Inicio Colunas Valor Fixo -->
+            <Column label="Valor Bonificação" width="10%"
+                id="valorBonificacaoColumn"
+                tooltip="Valor Bonificação [BRL]"
+                >
+                <template>
+                    <m:Input value="{
+                        path: 'simulacao/Bonificacao',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: {
+                            precision: 12,
+                            scale: 2
+                            }
+                        }"
+                        maxLength="16"
+                        textAlign="Right"
+                        description=""/>
+                </template>
+            </Column>
+            <!-- Fim Colunas Valor Fixo -->
 
             <Column label="UMV" id="UMVColumn">
                 <template>
@@ -227,7 +244,7 @@
                 </template>
             </Column>
 
-            <Column label="" width="7%">
+            <Column id="consultasColumn" label="" width="7%">
                 <template>
                     <m:HBox>
                     <core:Icon

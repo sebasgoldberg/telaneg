@@ -157,10 +157,10 @@ export default {
         return oDescricoes[sTipoNegociacao][sTipoAbrangencia];
     },
 
-    formatDescricaoItemMerc: function(sTipoNegociacao, sTipoAbrangencia) {
+    formatDescricaoItemMerc: function(sTipoNegociacao, sTipoItemMerc) {
         if (!sTipoNegociacao)
             return;
-        if (!sTipoAbrangencia)
+        if (!sTipoItemMerc)
             return;
         let oDescricoes = {
             O: {
@@ -175,8 +175,23 @@ export default {
                 S: 'Seção',
                 },
             };
-        return oDescricoes[sTipoNegociacao][sTipoAbrangencia];
+        return oDescricoes[sTipoNegociacao][sTipoItemMerc];
     },
+
+    formatItemMerc: function(sID, sTipoItemMerc) {
+        if (!sID)
+            return;
+        if (!sTipoItemMerc)
+            return;
+        switch (sTipoItemMerc) {
+            case 'S':
+                return sID;
+            case 'G':
+                return sID
+            default:
+                return sID.replace(/^0*/,"");
+        }
+   },
 
 
     textoPeriodoNegociacao: function(sTipoNegociacao) {
