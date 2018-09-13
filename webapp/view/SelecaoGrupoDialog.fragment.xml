@@ -18,7 +18,7 @@
 		confirm="onSelecionar"
 		cancel="onFechar"
 		items="{
-			path: '/GrupoSet'
+			path: 'fornecedor/grupos'
 		}" >
 		<StandardListItem
 			title="{ID}"

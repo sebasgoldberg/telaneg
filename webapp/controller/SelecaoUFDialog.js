@@ -10,6 +10,14 @@ export default BaseSelectDialog.extend("simplifique.telaneg.controller.SelecaoUF
     },
 
     /**
+     * @return string ID do SelectDialog na view.
+     */
+    getSelectDialogID: function() {
+        return "selecaoUFDialog";
+    },
+
+
+    /**
      * A ser redefinido pelas clases filhas.
      * @return Filter[]
      */

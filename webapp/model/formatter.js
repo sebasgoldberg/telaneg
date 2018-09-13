@@ -40,30 +40,7 @@ function invertDefaultNumberStatus(sValue) {
     }
 }
 
-let tipoNegociacaoConfig = {
-    UMBVisible:{
-        'O': false,
-        'I': true,
-        },
-    UMVVisible:{
-        'O': true,
-        'I': false,
-        },
-
-    };
-
-
-class TipoNegociacaoFormatter{
-
-    UMBVisible(sTipo){
-        tipoNegociacaoConfig.UMBVisible[sTipo];
-    }
-
-}
-
 export default {
-
-    tipoNegociacao: new TipoNegociacaoFormatter(),
 
     defaultNumberStatus: function(sValue) {
         return defaultNumberStatus(sValue);

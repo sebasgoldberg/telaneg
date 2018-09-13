@@ -12,13 +12,13 @@
         growingScrollToLoad="true"
         multiSelect="true"
         rememberSelections="false"
-		noDataText="UFs não encontradas."
+		noDataText="Seções não encontradas."
 		title="Selecionar Seções"
 		search="onSearch"
 		confirm="onSelecionar"
 		cancel="onFechar"
 		items="{
-			path: '/SecaoSet'
+			path: 'fornecedor/secoes'
 		}" >
 		<StandardListItem
 			title="{ID}"

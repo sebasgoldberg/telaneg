@@ -18,8 +18,14 @@ export default BaseDialog.extend("simplifique.telaneg.controller.BaseSelectDialo
     },
 
     beforeOpen: function() {
+        let oSelectDialog = this.getView().byId(this.getSelectDialogID());
+        if (! oSelectDialog)
+            return;
+        let oBinding = oSelectDialog.getBinding('items');
         if (this.aAditionalFilters.length > 0)
-            this.getView().byId(this.getSelectDialogID()).getBinding('items').filter(this.aAditionalFilters);
+            oBinding.filter(this.aAditionalFilters);
+        // @fixme Por default sempre faz o refresh.
+        oBinding.refresh();
     },
 
     open: function (sPath, aAditionalFilters=[]) {

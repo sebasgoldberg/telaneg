@@ -10,6 +10,13 @@ export default BaseSelectDialog.extend("simplifique.telaneg.controller.SelecaoCe
     },
 
     /**
+     * @return string ID do SelectDialog na view.
+     */
+    getSelectDialogID: function() {
+        return "selecaoCentroRefDialog";
+    },
+
+    /**
      * A ser redefinido pelas clases filhas.
      * @return Filter[]
      */

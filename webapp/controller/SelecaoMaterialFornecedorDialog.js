@@ -23,8 +23,8 @@ export default BaseSelectDialog.extend("simplifique.telaneg.controller.SelecaoMa
     createFilters: function(sValue) {
         let aFilters = [];
         if (sValue) {
-            if (/^\d+$/.test(sValue))
-                aFilters.push(new Filter("ID", FilterOperator.EQ, sValue))
+            if (/^[\d\s]+$/.test(sValue))
+                aFilters.push(new Filter("ID", FilterOperator.Contains, sValue.replace(/\s/g,"").replace(/^0*/g,"")));
             else
                 aFilters.push(new Filter("Nome", FilterOperator.Contains, sValue));
         }

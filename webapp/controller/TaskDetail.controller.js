@@ -163,8 +163,8 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         let sTipoItemMerc = v.getBindingContext().getProperty('TipoItemMercID');
         let selecaoMercadoriaFornecedor = this.getOwnerComponent().getSelecaoItemMercDialog(sTipoItemMerc);
         let selectedContexts = await selecaoMercadoriaFornecedor.open(
-            bc.getPath(),
-            [ new Filter('FornecedorID', FilterOperator.EQ, bc.getProperty('FornecedorID')) ]
+            bc.getPath()
+            //[ new Filter('FornecedorID', FilterOperator.EQ, bc.getProperty('FornecedorID')) ]
             );
 
         if (selectedContexts.length == 0)
