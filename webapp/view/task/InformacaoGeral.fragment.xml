@@ -19,10 +19,12 @@
                     </form:FormElement>
                     <form:FormElement>
                         <form:label>
-                            <Label text="{
-                                parts: [ {path: 'tipoNegociacao/ID'} ],
-                                formatter: '.formatter.textoPeriodoNegociacao'
-                                }" required="true"/>
+                            <Label
+                                id="periodoApuracaoLabel"
+                                text="{
+                                    parts: [ {path: 'tipoNegociacao/ID'} ],
+                                    formatter: '.formatter.textoPeriodoNegociacao'
+                                    }" required="true"/>
                         </form:label>
                         <form:fields>
                             <DateRangeSelection

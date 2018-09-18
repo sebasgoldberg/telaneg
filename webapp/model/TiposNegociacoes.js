@@ -19,6 +19,8 @@ let aIDsControlesAdaptaveis = [
     "fornecedoresAdicionaisTable",
     "fornecedoresAdicionaisSubSection",
     "tipoItemMercFormElement",
+    "periodoApuracaoRangeSelection",
+    "periodoApuracaoLabel",
     ];
 
 
@@ -61,6 +63,8 @@ class TipoNegociacaoSellOut extends TipoNegociacao{
             "menorPrecoMercadoColumn",
             "indiceCompetitividadeColumn",
             "consultasColumn",
+            "periodoApuracaoRangeSelection",
+            "periodoApuracaoLabel",
             ]);
     }
 
@@ -82,6 +86,8 @@ class TipoNegociacaoSellIn extends TipoNegociacao{
             "fornecedoresAdicionaisTable",
             "fornecedoresAdicionaisSubSection",
             "consultasColumn",
+            "periodoApuracaoRangeSelection",
+            "periodoApuracaoLabel",
             ]);
     }
 
