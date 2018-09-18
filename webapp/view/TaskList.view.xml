@@ -242,7 +242,7 @@
                                             parts: [ {path: 'Estipulacao'} ],
                                             formatter: '.formatter.isNotInitial'
                                             }"
-                                        icon="sap-icon://attachment" press="onMostrarAnexos"/>
+                                        icon="sap-icon://attachment" press="onMostrarAnexosEstipulacao"/>
                                     <ObjectStatus text="{status/Descricao}" />
                                     <ObjectNumber number="{
                                         path: 'Bonificacao',

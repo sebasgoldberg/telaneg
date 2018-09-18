@@ -22,7 +22,7 @@
         <content>
 
             <UploadCollection
-                id="UploadCollectionNegociacao"
+                id="UploadCollectionEstipulacao"
                 uploadUrl=""
                 maximumFilenameLength="55"
                 maximumFileSize="10"
@@ -36,7 +36,7 @@
                 selectionChange="onSelectionChange"
                 typeMissmatch="onTypeMissmatch"
                 items="{
-                    path: 'anexos',
+                    path: 'anexosEstipulacao',
                     templateShareable: true
                 }"
                 mode="None">
@@ -76,3 +76,4 @@
     </Dialog>
 
 </core:FragmentDefinition>
+

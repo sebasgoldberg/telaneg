@@ -31,7 +31,7 @@
                             parts: [ {path: 'Estipulacao'} ],
                             formatter: '.formatter.isNotInitial'
                             }"
-                        text="Anexos" icon="sap-icon://attachment" press="onMostrarAnexos">
+                        text="Anexos" icon="sap-icon://attachment" press="onMostrarAnexosEstipulacao">
                         <layoutData>
                             <OverflowToolbarLayoutData moveToOverflow="true"/>
                         </layoutData>
