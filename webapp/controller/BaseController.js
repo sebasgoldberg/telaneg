@@ -323,6 +323,7 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
 
             try {
                 this.setBusy();
+                this.removeAllMessages();
                 let result = await this.submitChanges();
                 m.refresh(true);
                 resolve(true)
@@ -371,6 +372,15 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
                 error: (...args) => reject(...args),
                 });
         });
+    },
+
+    getMessageManager: function() {
+        return sap.ui.getCore().getMessageManager();
+        
+    },
+
+    removeAllMessages: function() {
+        this.getMessageManager().removeAllMessages();
     },
 
 });

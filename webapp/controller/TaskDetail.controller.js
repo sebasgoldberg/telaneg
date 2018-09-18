@@ -58,7 +58,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
                 let oPath = {
                     path: `/NegociacaoSet('${this.sNegociacaoID}')/`,
                     parameters: {
-                        expand: 'tipoNegociacao,fornecedor,status,bandeira,clausula,abrangencia,comentarioImpressao'
+                        expand: 'tipoNegociacao,fornecedor,status,bandeira,clausula,abrangencia,comentarioImpressao,contrato'
                         },
                 };
 
