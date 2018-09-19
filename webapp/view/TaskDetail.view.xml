@@ -316,7 +316,12 @@
                         visible="{view>/isNegociacaoEditavel}"
                         press="onReset"
                         />
-                    <Button text="Salvar"
+                    <Button text="Eliminar"
+                        visible="{view>/isNegociacaoEditavel}"
+                        type="Reject" 
+                        press="onEliminarNegociacao"
+                        />
+                     <Button text="Salvar"
                         visible="{view>/isNegociacaoEditavel}"
                         type="Emphasized" 
                         press="onSave"

@@ -351,5 +351,45 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
 
     },
 
+    eliminarNegociacao: function() {
+        let v = this.getView();
+        let m = v.getModel();
+        return new Promise( 
+            (resolve, reject) => {
+                m.remove(v.getBindingContext().getPath(),{
+                    success: (...args) => resolve(args),
+                    error: (...args) => reject(args),
+                    })
+            }
+        );
+        
+    },
+
+    temCertezaDeEliminarNegociacao: function() {
+        return new Promise(function(fnResolve) {
+            sap.m.MessageBox.confirm("Tem certeza que deseja eliminar a negociação?", {
+                title: "Eliminar Negociação",
+                actions: ["Tenho Sim", "Melhor Não"],
+                onClose: function(sActionClicked) {
+                    fnResolve(sActionClicked === "Tenho Sim");
+                }
+            });
+        })
+    },
+
+    onEliminarNegociacao: async function() {
+        let eliminar = await this.temCertezaDeEliminarNegociacao();
+        if (!eliminar)
+            return;
+        try {
+            let sTipoNegociacao = this.getView().getBindingContext().getProperty('tipoNegociacao/ID');
+            await this.eliminarNegociacao();
+            this.navTo('TaskList', {tipoNegociacaoID: sTipoNegociacao});
+        } catch (e) {
+            console.error(e);
+        }
+    },
+
+
 });
 
