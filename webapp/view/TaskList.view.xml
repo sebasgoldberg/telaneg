@@ -35,7 +35,7 @@
                         search="onSearch"
                         >
                         <fb:filterItems>
-                            <fb:FilterItem label="Descrição" name="descricaoFilter">
+                            <fb:FilterItem label="ID ou Descrição" name="descricaoFilter">
                                 <fb:control>
                                     <SearchField value="{view>/filter/descricao}" search="onSearch"/>
                                 </fb:control>

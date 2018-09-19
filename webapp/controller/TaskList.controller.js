@@ -40,7 +40,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
                 this.getView().bindObject(oPath);
 
-                this._setListBinding();
+                this.onSearch();
 
             });
     },
@@ -52,8 +52,12 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         let m = v.getModel('view');
         let filter = m.getData().filter;
 
-        if (filter.descricao)
-            aFilters.push(new Filter('Descricao', FilterOperator.Contains, filter.descricao));
+        if (filter.descricao){
+            if (/^\d+$/.test(filter.descricao))
+                aFilters.push(new Filter("ID", FilterOperator.EQ, filter.descricao))
+            else
+                aFilters.push(new Filter('Descricao', FilterOperator.Contains, filter.descricao));
+        }
 
         filter.status.forEach( statusID => 
             aFilters.push(new Filter('Status', FilterOperator.EQ, statusID)));
