@@ -67,7 +67,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
             aFilters.push(new Filter('FornecedorID', FilterOperator.EQ, oToken.getKey() )));
 
         if (filter.dataDe)
-            aFilters.push(new Filter('Data', FilterOperator.BT, filter.dataDe, filter.dataAte));
+            aFilters.push(new Filter('ApuracaoAte', FilterOperator.BT, filter.dataDe, filter.dataAte));
 
         let oMultiInputMaterial = v.byId('multiInputMaterial');
         oMultiInputMaterial.getTokens().map( oToken =>
