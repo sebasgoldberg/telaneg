@@ -341,6 +341,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
 
         try {
             this.setBusy();
+            this.removeAllMessages();
             await this.callFunctionImport('/FinalizarNegociacao',{ID: sNegociacaoID});
             this.refresh()
         } catch (e) {
@@ -382,11 +383,15 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         if (!eliminar)
             return;
         try {
+            this.setBusy();
+            this.removeAllMessages();
             let sTipoNegociacao = this.getView().getBindingContext().getProperty('tipoNegociacao/ID');
             await this.eliminarNegociacao();
             this.navTo('TaskList', {tipoNegociacaoID: sTipoNegociacao});
         } catch (e) {
-            console.error(e);
+            this.error(e);
+        } finally{
+            this.setFree();
         }
     },
 
