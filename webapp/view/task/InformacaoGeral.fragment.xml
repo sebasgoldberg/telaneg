@@ -89,7 +89,7 @@
                                 value="{ClausulaID}"
                                 showSuggestion="true"
                                 suggest="suggestClausula"
-                                suggestionItems="{/ClausulaSet}"
+                                suggestionItems="{clausulasPossiveis}"
                                 maxSuggestionWidth="300px"
                                 showValueHelp="false">
                                 <core:ListItem text="{ID}" additionalText="{Descricao}" />

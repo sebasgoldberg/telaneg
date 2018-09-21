@@ -151,6 +151,28 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         this.deleteSelectedItems('negociacoesTable');
     },
 
+    onCopiarSelecionados: async function(oEvent) {
+        let aSelectedContexts = this.getView().byId('negociacoesTable').getSelectedContexts();
+        if (aSelectedContexts.length == 0)
+            return;
+        let aCopiaPromises = aSelectedContexts
+            .map( c => c.getProperty('ID') )
+            .map( ID => this.callFunctionImport('/CopiarNegociacao',{ID: ID}));
+
+        try {
+            this.setBusy();
+            this.removeAllMessages();
+            await this.all(aCopiaPromises);
+        } catch (e) {
+            this.error(e);
+        } finally{
+            this.onSearch();
+            this.setFree();
+        }
+
+
+    },
+
     onMostrarAnexos: function(oEvent) {
         let oSource = oEvent.getSource();
         let sNegociacaoPath = oSource.getBindingContext().getPath();

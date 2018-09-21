@@ -16,13 +16,9 @@
                 </f:heading>
                 <f:actions>
 
-                    <!--
-                    <Button text="Copiar" icon="sap-icon://add-coursebook" press="" />
-                    -->
+                    <Button text="Copiar" icon="sap-icon://add-coursebook" press="onCopiarSelecionados" />
                     <Button text="Novo Acordo" icon="sap-icon://add" type="Emphasized" press="onCriarAcordo" />
-                    <!--
                     <Button icon="sap-icon://delete" press="onDeleteSelecionados"/>
-                    -->
 
                 </f:actions>
             </f:DynamicPageTitle>
@@ -164,7 +160,7 @@
                 <items>
                     <Table
                         keyboardMode="Edit"
-                        mode="None"
+                        mode="MultiSelect"
                         id="negociacoesTable"
                         growing="true"
                         growingScrollToLoad="true"
