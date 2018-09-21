@@ -239,12 +239,20 @@
                                         type: 'sap.ui.model.type.Date',
                                         formatOptions: { UTC: true, style: 'short' }
                                         }" />
-                                    <Button
-                                        enabled="{
-                                            parts: [ {path: 'Estipulacao'} ],
-                                            formatter: '.formatter.isNotInitial'
-                                            }"
-                                        icon="sap-icon://attachment" press="onMostrarAnexosEstipulacao"/>
+                                    <HBox>
+                                        <Button
+                                            enabled="{
+                                                parts: [ {path: 'Estipulacao'} ],
+                                                formatter: '.formatter.isNotInitial'
+                                                }"
+                                            icon="sap-icon://attachment" press="onMostrarAnexosEstipulacao"/>
+                                        <Button
+                                            enabled="{
+                                                parts: [ {path: 'Estipulacao'} ],
+                                                formatter: '.formatter.isNotInitial'
+                                                }"
+                                            icon="sap-icon://pdf-attachment" press="onGetPDF"/>
+                                    </HBox>
                                     <ObjectStatus text="{status/Descricao}" />
                                     <ObjectNumber number="{
                                         path: 'Bonificacao',

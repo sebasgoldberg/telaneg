@@ -165,4 +165,16 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         oAnexosEstipulacaoDialog.open(sNegociacaoPath);
     },
 
+    onGetPDF: function(oEvent) {
+        let oSource = oEvent.getSource();
+        let sNegoPath = oSource.getBindingContext().getPath();
+        try {
+            let sUrl = this.getOwnerComponent().getUrlContent(`${sNegoPath}/pdf`);
+            this.openUrl(sUrl);
+        } catch (e) {
+            this.error(e);
+        }
+    },
+
+
 });

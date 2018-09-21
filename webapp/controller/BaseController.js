@@ -383,4 +383,8 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         this.getMessageManager().removeAllMessages();
     },
 
+    openUrl: function(sUrl) {
+        window.open(sUrl, '_blank');
+    },
+
 });

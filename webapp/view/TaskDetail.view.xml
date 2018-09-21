@@ -41,7 +41,7 @@
                             parts: [ {path: 'Estipulacao'} ],
                             formatter: '.formatter.isNotInitial'
                             }"
-                        text="PDF" icon="sap-icon://download" type="Emphasized" press="onGetPDF">
+                        text="Minuta" icon="sap-icon://pdf-attachment" type="Emphasized" press="onGetPDF">
                         <layoutData>
                             <OverflowToolbarLayoutData moveToOverflow="true"/>
                         </layoutData>

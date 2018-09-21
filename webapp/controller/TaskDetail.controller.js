@@ -257,10 +257,6 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         }
     },
 
-    openUrl: function(sUrl) {
-        window.open(sUrl, '_blank');
-    },
-
     onGetPDF: function(oEvent) {
         let sNegoPath = this.getView().getBindingContext().getPath();
         let oSource = oEvent.getSource();
