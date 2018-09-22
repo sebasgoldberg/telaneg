@@ -14,7 +14,7 @@
         "resources": "resources.json",
         "dataSources": {
             "local": {
-                "uri": "/sap/ZNEGOCIACAO_SRV/",
+                "uri": "/sap/opu/odata/sap/ZNEGOCIACAO_SRV/",
                 "type": "OData",
                 "settings": {
                     "odataVersion": "2.0",
@@ -181,7 +181,7 @@
                     "pattern": "",
                     "name": "default",
                     "target": [
-                        "MasterPage1"
+                        "TaskList"
                     ]
                 }
             ]
