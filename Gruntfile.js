@@ -42,12 +42,14 @@ module.exports = function(grunt) {
 
             },
             dist: {
-              files:[ {
+              files:[
+                {
                   expand: true,
                   cwd: '<%= dir.transp %>',
-                  src: ['manifest.json', 'test/**/*', '!**/*.js', 'localService/**/*', ],
+                  src: ['**/*', '!localService/**/*', ],
                   dest: 'dist/',
-              }]
+                },
+              ],
 
             },
         },
