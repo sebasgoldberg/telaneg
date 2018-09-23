@@ -69,6 +69,21 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
         // create the views based on the url/hash
         this.getRouter().initialize();
 
+        this.getRouter().attachTitleChanged( async(oEvent) => {
+
+            // Mudança de titulo definida no manifest.
+            let sTitle = oEvent.getParameters().title;
+
+            try {
+                let oShell = await this.getService("ShellUIService");
+                oShell.setTitle(sTitle);
+            } catch (e) {
+                this.error(`Não foi possivel modificar o titulo para ${sTitle}`);
+                this.error(e);
+            }
+
+        });
+
         //this.getModel().attachPropertyChange(oEvent => this.save());
 
         let oMessageProcessor = new sap.ui.core.message.ControlMessageProcessor();

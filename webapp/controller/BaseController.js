@@ -387,4 +387,17 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         window.open(sUrl, '_blank');
     },
 
+    handleMessagePopoverPress: function (oEvent) {
+        if (!this.oMP){
+            this.oMP = new sap.m.MessagePopover({
+                items: {
+                    path:"message>/",
+                    template: new sap.m.MessageItem({ description: "{message>description}", type: "{message>type}", title: "{message>message}"})
+                }
+            });
+            this.oMP.setModel(sap.ui.getCore().getMessageManager().getMessageModel(),"message");
+        }
+        this.oMP.toggle(oEvent.getSource());
+    },
+
 });

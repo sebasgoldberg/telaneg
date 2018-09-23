@@ -46,13 +46,22 @@ module.exports = function(grunt) {
                 {
                   expand: true,
                   cwd: '<%= dir.transp %>',
-                  src: ['**/*', '!localService/**/*', ],
+                  src: ['**/*', ],
                   dest: 'dist/',
                 },
               ],
-
             },
-        },
+            bsp: {
+              files:[
+                {
+                  expand: true,
+                  cwd: '<%= dir.dist %>',
+                  src: ['**/*', '!localService/**/*', '!test/**/*', ],
+                  dest: 'bsp/',
+                },
+              ],
+            },
+         },
 
         babel: {
             options: {
@@ -113,7 +122,8 @@ module.exports = function(grunt) {
         clean: {
             // @todo Verificar se funciona.
             dist: '<%= dir.dist %>/',
-            transp: 'transp/'
+            transp: 'transp/',
+            bsp: 'bsp/'
         },
 
         eslint: {
@@ -142,7 +152,7 @@ module.exports = function(grunt) {
     //grunt.registerTask('mybabel', ['babel']);
 
     // Build task
-    grunt.registerTask('build', ['transp', 'clean:dist', 'openui5_preload', 'copy:dist']);
+    grunt.registerTask('build', ['transp', 'clean:dist', 'openui5_preload', 'copy:dist', 'clean:bsp', 'copy:bsp']);
 
     grunt.registerTask('transp', ['clean:transp', 'babel', 'copy:transp']);
 

@@ -5,8 +5,8 @@
         "id": "simplifique.telaneg",
         "type": "application",
         "i18n": "i18n/i18n.properties",
-        "title": "{{appTitle}}",
-        "description": "{{appDescription}}",
+        "title": "Negociação",
+        "description": "Negociação",
         "applicationVersion": {
             "version": "1.2.2"
         },
@@ -21,10 +21,6 @@
                     "localUri": "localService/metadata.xml"
                 }
             }
-        },
-        "sourceTemplate": {
-            "id": "sap.ui.ui5-template-plugin.2masterdetail",
-            "version": "1.32.5"
         }
     },
     "sap.fiori": {
@@ -70,6 +66,11 @@
             "compact": true,
             "cozy": true
         },
+        "services":{
+            "ShellUIService":{
+                "factoryName": "sap.ushell.ui5service.ShellUIService"
+            }
+        },
         "models": {
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
@@ -105,64 +106,27 @@
                 "async": false,
                 "bypassed": {
                     "target": [
-                        "MasterPage1"
+                        "TaskDetail"
                     ]
                 }
             },
             "targets": {
-                "MasterPage1": {
-                    "viewName": "MasterPage1",
-                    "viewId": "MasterPage1",
-                    "viewLevel": 1,
-                    "transition": "slide"
-                },
-                "DetailPage1": {
-                    "viewName": "DetailPage1",
-                    "viewId": "DetailPage1",
-                    "viewLevel": 2,
-                    "transition": "slide"
-                },
-                "DetailPage2": {
-                    "viewName": "DetailPage2",
-                    "viewId": "DetailPage2",
-                    "viewLevel": 3,
-                    "transition": "slide"
-                },
                 "TaskList":{
                     "viewName": "TaskList",
                     "viewId": "TaskList",
                     "viewLevel": 1,
-                    "transition": "slide"
+                    "transition": "slide",
+                    "title": "Negociação {Descricao}"
                 },
                 "TaskDetail":{
                     "viewName": "TaskDetail",
                     "viewId": "TaskDetail",
                     "viewLevel": 2,
-                    "transition": "slide"
+                    "transition": "slide",
+                    "title": "Negociação {tipoNegociacao/Descricao}"
                 }
             },
             "routes": [
-                {
-                    "pattern": "MasterPage1",
-                    "name": "MasterPage1",
-                    "target": [
-                        "MasterPage1"
-                    ]
-                },
-                {
-                    "pattern": "MasterPage1/DetailPage1/:context:",
-                    "name": "DetailPage1",
-                    "target": [
-                        "DetailPage1"
-                    ]
-                },
-                {
-                    "pattern": "MasterPage1/DetailPage2/:context:",
-                    "name": "DetailPage2",
-                    "target": [
-                        "DetailPage2"
-                    ]
-                },
                 {
                     "pattern": "TaskList/{tipoNegociacaoID}",
                     "name": "TaskList",

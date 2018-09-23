@@ -12,6 +12,8 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
         Controller.prototype.onInit.call(this);
 
+        this.getView().setModel(sap.ui.getCore().getMessageManager().getMessageModel(),"message");
+
         let v = this.getView();
         v.setModel(new JSONModel({
             filter: {

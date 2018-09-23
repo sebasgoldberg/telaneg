@@ -8,21 +8,30 @@
     xmlns:fb="sap.ui.comp.filterbar"
     xmlns:core="sap.ui.core">
 
-    <f:DynamicPage headerExpanded="true" showFooter="false" class="sapUiSizeCompact">
+    <f:DynamicPage headerExpanded="true" showFooter="true" class="sapUiSizeCompact">
+        <!--
         <f:title>
             <f:DynamicPageTitle>
                 <f:heading>
                     <Title text="{Descricao}"/>
+
                 </f:heading>
                 <f:actions>
 
                     <Button text="Copiar" icon="sap-icon://add-coursebook" press="onCopiarSelecionados" />
                     <Button text="Novo Acordo" icon="sap-icon://add" type="Emphasized" press="onCriarAcordo" />
                     <Button icon="sap-icon://delete" press="onDeleteSelecionados"/>
+                    <Button
+                        icon="sap-icon://message-popup"
+                        text="{= ${message>/}.length }"
+                        visible="{= ${message>/}.length > 0 }"
+                        type="Emphasized"
+                        press="handleMessagePopoverPress"/>
 
                 </f:actions>
             </f:DynamicPageTitle>
         </f:title>
+        -->
         <f:header>
             <f:DynamicPageHeader pinnable="true">
                 <f:content>
@@ -268,14 +277,18 @@
             </VBox>
         </f:content>
         <f:footer>
+            <OverflowToolbar>
+                    <Button
+                        icon="sap-icon://message-popup"
+                        text="{= ${message>/}.length }"
+                        visible="{= ${message>/}.length > 0 }"
+                        type="Emphasized"
+                        press="handleMessagePopoverPress"/>
+                    <ToolbarSpacer/>
+                    <Button text="Copiar" icon="sap-icon://add-coursebook" press="onCopiarSelecionados" />
+                    <Button text="Novo Acordo" icon="sap-icon://add" type="Emphasized" press="onCriarAcordo" />
+                    <Button icon="sap-icon://delete" press="onDeleteSelecionados"/>
+            </OverflowToolbar>
         </f:footer>
     </f:DynamicPage>
-            <OverflowToolbar design="auto">
-                <content>
-                    <ToolbarSpacer/>
-                    <Button text="Save" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
-                    <Button text="Cancel" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"/>
-                </content>
-            </OverflowToolbar>
-
 </mvc:View>

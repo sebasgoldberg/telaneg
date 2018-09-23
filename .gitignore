@@ -2,6 +2,7 @@ node_modules
 bower_components
 transp
 dist
+bsp
 *.swp
 *.un~
 package-lock.json
@@ -9,3 +10,4 @@ package-lock.json
 *.swo
 prototype
 tmp.*
+*.zip
