@@ -392,7 +392,12 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
             this.oMP = new sap.m.MessagePopover({
                 items: {
                     path:"message>/",
-                    template: new sap.m.MessageItem({ description: "{message>description}", type: "{message>type}", title: "{message>message}"})
+                    template: new sap.m.MessageItem({
+                        description: "{message>message}",
+                        type: "{message>type}",
+                        subtitle: "{message>message}",
+                        title: "{message>code}",
+                        })
                 }
             });
             this.oMP.setModel(sap.ui.getCore().getMessageManager().getMessageModel(),"message");

@@ -149,7 +149,7 @@
             <Column label="Preço Venda"
                 id="precoVendaColumn"
                 tooltip="Preço Venda [BRL]"
-                width="10%">
+                width="7%">
                 <template>
                     <m:Input value="{
                         path: 'simulacao/PrecoVenda',
@@ -193,6 +193,7 @@
                 hAlign="Right"
                 >
                 <template>
+                    <!--
                     <m:Text text="{
                         path: 'simulacao/Margem1',
                         type: 'sap.ui.model.odata.type.Decimal',
@@ -200,10 +201,24 @@
                         }" wrapping="true"
                         visible="{= !${IsGenerico} }"
                         />
+                    -->
+                    <m:ObjectStatus
+                        visible="{= !${IsGenerico} }"
+                        text="{
+                            path: 'simulacao/Margem1',
+                            type: 'sap.ui.model.odata.type.Decimal',
+                            constraints: { scale: 2 }
+                            }"
+                        state="{
+                            parts: [ {path: 'simulacao/Margem1'}, {path: 'informacao/MargemTeorica'} ],
+                            formatter: '.formatter.margemStatus'
+                            }"
+                            />
+
                 </template>
             </Column>
 
-            <Column label="Recomp." width="10%"
+            <Column label="Recomp." width="7%"
                 id="recomposicaoColumn"
                 tooltip="Recomposição [BRL]"
                 >
@@ -232,6 +247,7 @@
                 hAlign="Right"
                 >
                 <template>
+                    <!--
                     <m:Text text="{
                         path: 'simulacao/Margem2',
                         type: 'sap.ui.model.odata.type.Decimal',
@@ -240,6 +256,20 @@
                         wrapping="true"
                         visible="{= !${IsGenerico} }"
                         />
+                    -->
+                    <m:ObjectStatus
+                        visible="{= !${IsGenerico} }"
+                        text="{
+                            path: 'simulacao/Margem2',
+                            type: 'sap.ui.model.odata.type.Decimal',
+                            constraints: { scale: 2 }
+                            }"
+                        state="{
+                            parts: [ {path: 'simulacao/Margem2'}, {path: 'informacao/MargemTeorica'} ],
+                            formatter: '.formatter.margemStatus'
+                            }"
+                            />
+
                 </template>
             </Column>
 

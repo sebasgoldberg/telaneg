@@ -3,7 +3,7 @@
     <ResponsivePopover
         title="Impostos"
         class="sapUiPopupWithPadding"
-        contentWidth="360px"
+        contentWidth="420px"
         contentHeight="420px"
         placement="Left" >
 
@@ -48,7 +48,7 @@
 
         <l:VerticalLayout
                 class="sapUiMediumMarginEnd">
-            <Label text="Base Rzd. ICMS"/>
+            <Label text="Base ICMS"/>
             <Input
                 enabled="{=!${ImpostosCadastrados}?false:false}" 
                 value="{path: 'impostosEntrada/BaseReduzidaICMS', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
