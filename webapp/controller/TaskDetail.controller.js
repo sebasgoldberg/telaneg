@@ -30,9 +30,16 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         this.getView().setModel(sap.ui.getCore().getMessageManager().getMessageModel(),"message");
 
         let v = this.getView();
+
+        let oAmanha = new Date();
+        oAmanha.setDate(oAmanha.getDate()+1);
+
         v.setModel(new JSONModel({
             AtualizacaoEliminacoes: false,
             isNegociacaoEditavel: true,
+            periodoApuracao:{
+                minDate: oAmanha,
+                },
             }), 'view');
 
 
@@ -301,9 +308,9 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         return new Promise(function(fnResolve) {
             sap.m.MessageBox.confirm("Tem certeza que deseja finalizar a negociação?", {
                 title: "Finalizar Negociação",
-                actions: ["Tenho Sim", "Melhor Não"],
+                actions: ["SIM", "Não"],
                 onClose: function(sActionClicked) {
-                    fnResolve(sActionClicked === "Tenho Sim");
+                    fnResolve(sActionClicked === "SIM");
                 }
             });
         });
@@ -353,9 +360,9 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         return new Promise(function(fnResolve) {
             sap.m.MessageBox.confirm("Tem certeza que deseja eliminar a negociação?", {
                 title: "Eliminar Negociação",
-                actions: ["Tenho Sim", "Melhor Não"],
+                actions: ["SIM", "Não"],
                 onClose: function(sActionClicked) {
-                    fnResolve(sActionClicked === "Tenho Sim");
+                    fnResolve(sActionClicked === "SIM");
                 }
             });
         })

@@ -187,7 +187,7 @@
                 </template>
             </Column>
 
-            <Column label="MP"
+            <Column label="Mg PDV"
                 id="margemPDVColumn"
                 tooltip="Margem PDV [%]"
                 hAlign="Right"
@@ -241,7 +241,7 @@
                 </template>
             </Column>
 
-            <Column label="M2S"
+            <Column label="Mg 2"
                 id="margem2SimuladaColumn"
                 tooltip="Margem 2 Simulada [%]"
                 hAlign="Right"
@@ -273,7 +273,7 @@
                 </template>
             </Column>
 
-            <Column label="mPM"
+            <Column label="Menor P. Merc."
                 id="menorPrecoMercadoColumn"
                 tooltip="Menor Preço de Mercado [BRL]"
                 hAlign="Right"

@@ -186,6 +186,12 @@ export default {
         if (value)
             return true;
         return false;
+    },
+
+    nomeMinutaPDF: function(sBandeiraID, sFornecedorID){
+        let oData = new Date();
+        let sData = oData.toISOString().split('T')[0].replace(/-/g,''); // yyyymmdd
+        return `Acordo Comercial Extra_${sBandeiraID}_${sFornecedorID}_${sData}.pdf`;
     }
 
 }

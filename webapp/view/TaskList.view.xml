@@ -49,7 +49,8 @@
                                 <fb:control>
 
                                     <MultiComboBox
-                                        selectionFinish="onSearch"
+                                        placeholder="Selecionar status"
+                                        selectionChange="onSearch"
                                         selectedKeys="{view>/filter/status}"
                                         width="1000px"
                                         enableMultiLineMode="true"
@@ -64,6 +65,7 @@
                                 <fb:control>
 
                                     <MultiInput 
+                                        placeholder="Digitar ID ou descrição"
                                         tokenUpdate="onTokenUpdate"
                                         submit="onSearch"
                                         id="multiInputFornecedor"
@@ -80,13 +82,16 @@
 
                             <fb:FilterItem label="Vencimento" name="vencimentoFilter">
                                 <fb:control>
-                                    <DateRangeSelection
-                                        submit="onSearch"
-                                        id="DRS2"
-                                        dateValue="{view>/filter/dataDe}"
-                                        secondDateValue="{view>/filter/dataAte}"
-                                        change="onSearch"
-                                    />
+                                    <HBox>
+                                        <DateRangeSelection
+                                            submit="onSearch"
+                                            id="vencimentoDateRangeSelection"
+                                            dateValue="{view>/filter/dataDe}"
+                                            secondDateValue="{view>/filter/dataAte}"
+                                            change="onSearch"
+                                        />
+                                        <Button icon="sap-icon://delete" press="clearVencimentoDateRangeSelection"/>
+                                    </HBox>
                                 </fb:control>
                             </fb:FilterItem>
 
@@ -94,6 +99,7 @@
                                 <fb:control>
 
                                     <MultiInput 
+                                        placeholder="Digitar ID ou descrição"
                                         tokenUpdate="onTokenUpdate"
                                         submit="onSearch"
                                         id="multiInputMaterial"
@@ -168,6 +174,7 @@
             <VBox fitContainer="true">
                 <items>
                     <Table
+                        itemPress="onShowDetail"
                         keyboardMode="Edit"
                         mode="MultiSelect"
                         id="negociacoesTable"
@@ -201,7 +208,7 @@
                                     <Text text="Fornecedor"/>
                                 </header>
                             </Column>
-                            <Column width="20%" minScreenWidth="Phone">
+                            <Column width="20%" minScreenWidth="Desktop">
                                 <header>
                                     <Text text="Nome"/>
                                 </header>
@@ -221,7 +228,7 @@
                                     <Text text="Anexos" />
                                 </header>
                             </Column>
-                            <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Column minScreenWidth="Phone" demandPopin="true">
                                 <header>
                                     <Text text="Status" />
                                 </header>
@@ -235,7 +242,15 @@
                         <items>
                             <ColumnListItem type="Active">
                                 <cells>
-                                    <Link text="{ID}" press="onShowDetail"/>
+                                    <ObjectIdentifier title="{
+                                        path: 'ID',
+                                        type: 'sap.ui.model.odata.type.String',
+                                        constraints: {
+                                            isDigitSequence : true,
+                                            maxLength : 10
+                                            }
+                                        }"
+                                        />
                                     <ObjectStatus text="{fornecedor/ID}" />
                                     <ObjectStatus text="{fornecedor/Nome}" wrapping="true" />
                                     <Text text="{Descricao}"  wrapping="true" />
@@ -252,6 +267,10 @@
                                                 }"
                                             icon="sap-icon://attachment" press="onMostrarAnexosEstipulacao"/>
                                         <Button
+                                            tooltip="{
+                                                parts: [ { path: 'Bandeira'}, { path: 'FornecedorID' } ],
+                                                formatter: '.formatter.nomeMinutaPDF'
+                                                }"
                                             enabled="{
                                                 parts: [ {path: 'Estipulacao'} ],
                                                 formatter: '.formatter.isNotInitial'

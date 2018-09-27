@@ -8,7 +8,7 @@
             items="{
                 path: 'venda',
                 parameters:{
-                    expand: 'item,item/material,item/itemOrg'
+                    expand: 'item,item/itemMerc,item/itemOrg'
                     }
                 }"
             id="vendaTable" mode="MultiSelect" >

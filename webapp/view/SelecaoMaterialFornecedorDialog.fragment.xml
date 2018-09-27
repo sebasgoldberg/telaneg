@@ -21,7 +21,14 @@
 			path: 'fornecedor/materiais'
 		}" >
 		<StandardListItem
-			title="{ID}"
+			title="{
+			    path: 'ID',
+			    type: 'sap.ui.model.odata.type.String',
+			    constraints: {
+			        isDigitSequence : true,
+			        maxLength : 18
+			        }
+			    }"
 			description="{Nome}"
 			type="Active" />
 	</SelectDialog>

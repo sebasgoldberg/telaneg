@@ -28,6 +28,7 @@
                         </form:label>
                         <form:fields>
                             <DateRangeSelection
+                                minDate="{view>/periodoApuracao/minDate}"
                                 enabled="{view>/isNegociacaoEditavel}"
                                 id="periodoApuracaoRangeSelection"
                                 dateValue="{ApuracaoDe}"
@@ -45,6 +46,7 @@
                         </form:label>
                         <form:fields>
                             <Input
+                                placeholder="ID ou decrição"
                                 enabled="{view>/isNegociacaoEditavel}"
                                 id="fornecedorNegociacaoInput"
                                 required="false"
@@ -69,6 +71,7 @@
                         </form:label>
                         <form:fields>
                             <Input
+                                placeholder="Nome do negociador do fornecedor"
                                 enabled="{view>/isNegociacaoEditavel}"
                                 id="negociadorNegociacaoInput"
                                 value="{Negociador}"/>
@@ -84,6 +87,7 @@
                         </form:label>
                         <form:fields>
                             <Input
+                                placeholder="ID ou decrição"
                                 enabled="{view>/isNegociacaoEditavel}"
                                 id="clausulaInput"
                                 value="{ClausulaID}"
@@ -94,7 +98,7 @@
                                 showValueHelp="false">
                                 <core:ListItem text="{ID}" additionalText="{Descricao}" />
                                 <layoutData>
-                                    <layout:GridData span="XL2 L3 M3 S4" />
+                                    <layout:GridData span="XL4 L4 M4 S4" />
                                 </layoutData>
                             </Input>
                             <Input value="{clausula/Descricao}" enabled="false" required="true"/>

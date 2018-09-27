@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
 
     <ResponsivePopover
-        title="Estoque"
+        title="ESTOQUE ATUAL"
         class="sapUiPopupWithPadding"
         contentWidth="960px"
         contentHeight="720px"

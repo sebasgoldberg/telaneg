@@ -141,7 +141,8 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
     },
 
     onShowDetail: function(oEvent) {
-        let sNegociacaoID = oEvent.getSource().getBindingContext().getObject().ID;
+        let oListItem = oEvent.getParameter('listItem');
+        let sNegociacaoID = oListItem.getBindingContext().getObject().ID;
         this.navTo('TaskDetail', {negociacaoID: sNegociacaoID});
     },
 
@@ -200,5 +201,10 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         }
     },
 
+    clearVencimentoDateRangeSelection: function(oEvent) {
+        let oVencimentoDateRangeSelection = this.getView().byId('vencimentoDateRangeSelection');
+        oVencimentoDateRangeSelection.setValue();
+        this.onSearch();
+    },
 
 });
