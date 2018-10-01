@@ -2,6 +2,7 @@ import Controller from "sap/ui/core/mvc/Controller";
 import History from "sap/ui/core/routing/History";
 import Filter from 'sap/ui/model/Filter';
 import FilterOperator from 'sap/ui/model/FilterOperator';
+import MessageToast from 'sap/m/MessageToast';
 
 export default Controller.extend("simplifique.telaneg.controller.BaseController", {
 
@@ -234,7 +235,10 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
             if (result)
                 oControl.getBinding('items').refresh();
 
+            MessageToast.show("Eliminação realizada com sucesso.");
+
         } catch (e) {
+            MessageToast.show("Aconteceu um erro ao tentar realizar a eliminação.");
             this.error(e);
         } finally {
             oControl.setBusy(false);
@@ -317,6 +321,7 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
             let m = this.getModel();
 
             if (!m.hasPendingChanges()){
+                MessageToast.show("Ainda não tem mudanças para gravar.");
                 resolve(true);
                 return;
             }
@@ -326,10 +331,12 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
                 this.removeAllMessages();
                 let result = await this.submitChanges();
                 m.refresh(true);
+                MessageToast.show("Gravação realizada com sucesso.");
                 resolve(true)
             } catch (e) {
                 console.error(e);
                 m.resetChanges();
+                MessageToast.show("Aconteceram erros e não foi possivel gravar.");
                 resolve(false);
             } finally{
                 this.setFree();
@@ -340,6 +347,7 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
     reset: function() {
         let m = this.getModel();
         m.resetChanges();
+        MessageToast.show("Informações restauradas para a ultima versão gravada.");
     },
 
     onSave: function() {

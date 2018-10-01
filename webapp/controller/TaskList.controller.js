@@ -3,6 +3,7 @@ import formatter from 'simplifique/telaneg/model/formatter';
 import Filter from 'sap/ui/model/Filter';
 import FilterOperator from 'sap/ui/model/FilterOperator';
 import JSONModel from "sap/ui/model/json/JSONModel";
+import MessageToast from 'sap/m/MessageToast';
 
 export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
@@ -132,9 +133,11 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
             let result = await this.createAcordo();
             this.getModel().refresh();
             this.navTo('TaskDetail', {negociacaoID: result[0].ID});
+            MessageToast.show("Negociação criada com sucesso.");
         } catch (e) {
             this.getModel().resetChanges();
             console.error(e);
+            MessageToast.show("Aconteceu um erro ao tentar criar a negociação.");
         } finally{
             this.setFree();
         }
@@ -156,8 +159,10 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
     onCopiarSelecionados: async function(oEvent) {
         let aSelectedContexts = this.getView().byId('negociacoesTable').getSelectedContexts();
-        if (aSelectedContexts.length == 0)
+        if (aSelectedContexts.length == 0){
+            MessageToast.show("Deve selecionar as negociações a serem copiadas.");
             return;
+        }
         let aCopiaPromises = aSelectedContexts
             .map( c => c.getProperty('ID') )
             .map( ID => this.callFunctionImport('/CopiarNegociacao',{ID: ID}));
@@ -166,7 +171,9 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
             this.setBusy();
             this.removeAllMessages();
             await this.all(aCopiaPromises);
+            MessageToast.show("Negociações copiadas com sucesso.");
         } catch (e) {
+            MessageToast.show("Aconteceu um erro ao tentar copiar as negociações.");
             this.error(e);
         } finally{
             this.onSearch();

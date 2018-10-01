@@ -315,7 +315,7 @@
                         icon="sap-icon://message-popup"
                         text="{= ${message>/}.length }"
                         visible="{= ${message>/}.length > 0 }"
-                        type="Emphasized"
+                        type="Reject" 
                         press="handleMessagePopoverPress"/>
                     <ToolbarSpacer/>
                     <Button text="Cancelar" 

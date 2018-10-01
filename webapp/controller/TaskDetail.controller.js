@@ -6,6 +6,7 @@ import JSONModel from "sap/ui/model/json/JSONModel";
 import MessagePopover from 'sap/m/MessagePopover';
 import TiposNegociacoes from 'simplifique/telaneg/model/TiposNegociacoes';
 import TiposStatus from 'simplifique/telaneg/model/TiposStatus';
+import MessageToast from 'sap/m/MessageToast';
 
 
 export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
@@ -333,8 +334,10 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
             this.setBusy();
             this.removeAllMessages();
             await this.callFunctionImport('/FinalizarNegociacao',{ID: sNegociacaoID});
+            MessageToast.show("Finalização realizada com sucesso.");
             this.refresh()
         } catch (e) {
+            MessageToast.show("Aconteceram erros ao tentar finalizar.");
             this.error(e);
         } finally{
             this.setFree();
@@ -377,8 +380,10 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
             this.removeAllMessages();
             let sTipoNegociacao = this.getView().getBindingContext().getProperty('tipoNegociacao/ID');
             await this.eliminarNegociacao();
+            MessageToast.show("Eliminação realizada com sucesso.");
             this.navTo('TaskList', {tipoNegociacaoID: sTipoNegociacao});
         } catch (e) {
+            MessageToast.show("Aconteceram erros ao tentar eliminar.");
             this.error(e);
         } finally{
             this.setFree();

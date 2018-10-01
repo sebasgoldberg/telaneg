@@ -36,7 +36,7 @@
             <f:DynamicPageHeader pinnable="true">
                 <f:content>
                     
-                    <fb:FilterBar id="ListReportFilterBar" useToolbar="false" showGoOnFB="true" searchEnabled="true" showFilterConfiguration="false"
+                    <fb:FilterBar id="ListReportFilterBar" useToolbar="false" showGoOnFB="false" searchEnabled="true" showFilterConfiguration="false"
                         search="onSearch"
                         >
                         <fb:filterItems>
@@ -301,7 +301,7 @@
                         icon="sap-icon://message-popup"
                         text="{= ${message>/}.length }"
                         visible="{= ${message>/}.length > 0 }"
-                        type="Emphasized"
+                        type="Reject" 
                         press="handleMessagePopoverPress"/>
                     <ToolbarSpacer/>
                     <Button text="Copiar" icon="sap-icon://add-coursebook" press="onCopiarSelecionados" />

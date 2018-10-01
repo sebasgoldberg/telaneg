@@ -22,7 +22,7 @@
 		}" >
 		<StandardListItem
 			title="{ID}"
-			description="Nome"
+			description="{Nome}"
 			type="Active" />
 	</SelectDialog>
 
