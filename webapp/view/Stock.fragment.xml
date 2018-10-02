@@ -88,7 +88,7 @@
 
                 <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
                     <header>
-                        <Text text="Stock Atual" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        <Text text="Estoque" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
                     </header>
                     <footer/>
                 </Column>

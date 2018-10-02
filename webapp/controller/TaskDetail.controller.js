@@ -390,6 +390,11 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         }
     },
 
+    onLiveChangeDescricao: function(oEvent) {
+        let sValue = oEvent.getParameter('value');
+        oEvent.getSource().setValue(
+            sValue.toUpperCase());
+    },
 
 });
 

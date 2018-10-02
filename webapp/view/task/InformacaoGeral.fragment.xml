@@ -12,6 +12,7 @@
                         </form:label>
                         <form:fields>
                             <Input
+                                liveChange="onLiveChangeDescricao"
                                 id="descricaoNegociacaoInput"
                                 enabled="{view>/isNegociacaoEditavel}"
                                 value="{Descricao}" placeholder="Indique aqui alguma descrição" type="Text" showValueHelp="false" />
