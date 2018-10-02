@@ -331,12 +331,10 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
                 this.removeAllMessages();
                 let result = await this.submitChanges();
                 m.refresh(true);
-                MessageToast.show("Gravação realizada com sucesso.");
                 resolve(true)
             } catch (e) {
                 console.error(e);
                 m.resetChanges();
-                MessageToast.show("Aconteceram erros e não foi possivel gravar.");
                 resolve(false);
             } finally{
                 this.setFree();
@@ -350,8 +348,12 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         MessageToast.show("Informações restauradas para a ultima versão gravada.");
     },
 
-    onSave: function() {
-        this.save();
+    onSave: async function() {
+        let bSucesso = await this.save();
+        if (bSucesso)
+            MessageToast.show("Gravação realizada com sucesso.")
+        else
+            MessageToast.show("Aconteceram erros e não foi possivel gravar.");
     },
 
     onReset: function() {

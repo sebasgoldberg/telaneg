@@ -12,7 +12,7 @@
 
     <uxap:ObjectPageLayout showTitleInHeaderContent="false" showHeaderContent="true" showEditHeaderButton="false" showFooter="true" class="sapUiSizeCompact">
         <uxap:headerTitle>
-            <uxap:ObjectPageHeader objectTitle="{Descricao}" objectSubtitle="{ID}{=${Estipulacao}?', Estipulação '+${Estipulacao}:''}" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="true" isObjectSubtitleAlwaysVisible="true" showPlaceholder="false"
+            <uxap:ObjectPageHeader objectTitle="{Descricao}" objectSubtitle="{ID}{=${Estipulacao}?', Acordo '+${Estipulacao}:''}" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="true" isObjectSubtitleAlwaysVisible="true" showPlaceholder="false"
                 >
                 <!--
                 <uxap:navigationBar>
