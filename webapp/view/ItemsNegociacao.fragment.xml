@@ -193,15 +193,7 @@
                 hAlign="Right"
                 >
                 <template>
-                    <!--
-                    <m:Text text="{
-                        path: 'simulacao/Margem1',
-                        type: 'sap.ui.model.odata.type.Decimal',
-                        constraints: { scale: 2 }
-                        }" wrapping="true"
-                        visible="{= !${IsGenerico} }"
-                        />
-                    -->
+
                     <m:ObjectStatus
                         visible="{= !${IsGenerico} }"
                         text="{
@@ -295,12 +287,18 @@
                 hAlign="Right"
                 >
                 <template>
-                    <m:Text text="{
-                        path: 'simulacao/IC',
-                        type: 'sap.ui.model.odata.type.Decimal',
-                        constraints: { scale: 2 }
-                        }" wrapping="true"
+
+                    <m:ObjectStatus
+                        text="{
+                            path: 'simulacao/IC',
+                            type: 'sap.ui.model.odata.type.Decimal',
+                            constraints: { scale: 2 }
+                            }" wrapping="true"
                         visible="{= !${IsGenerico} }"
+                        state="{
+                            path: 'simulacao/IC',
+                            formatter: '.formatter.icStatus'
+                            }"
                         />
                 </template>
             </Column>
