@@ -55,13 +55,13 @@
                         enableEdit="false"
                         visibleEdit="false"
                         selected="">
-                        <!--
                         <attributes>
                             <ObjectAttribute
-                                title="{title}"
-                                text="{text}"
+                                title=""
+                                text="{Nome}"
                                 active="false" />
                         </attributes>
+                        <!--
                         <statuses>
                             <ObjectStatus title="{title}"
                                 text="{text}"

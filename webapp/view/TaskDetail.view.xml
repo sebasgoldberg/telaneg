@@ -332,10 +332,15 @@
                         type="Emphasized" 
                         press="onSave"
                         />
-                    <Button text="Finalizar"
+                    <Button text="Concluir"
                         visible="{view>/isNegociacaoEditavel}"
                         type="Accept" 
                         press="onFinalizar"
+                        />
+                    <Button text="Formalizar"
+                        visible="{view>/isNegociacaoConcluida}"
+                        type="Accept" 
+                        press="onFormalizar"
                         />
                 </content>
             </OverflowToolbar>

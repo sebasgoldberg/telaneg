@@ -37,7 +37,8 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
 
         v.setModel(new JSONModel({
             AtualizacaoEliminacoes: false,
-            isNegociacaoEditavel: true,
+            isNegociacaoEditavel: false,
+            isNegociacaoConcluida: false,
             periodoApuracao:{
                 minDate: oAmanha,
                 },
@@ -320,8 +321,8 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
 
     temCertezaQueDesejaFinalizar: function(attribute) {
         return new Promise(function(fnResolve) {
-            sap.m.MessageBox.confirm("Tem certeza que deseja finalizar a negociação?", {
-                title: "Finalizar Negociação",
+            sap.m.MessageBox.confirm("Tem certeza que deseja concluir a negociação?", {
+                title: "Concluir Negociação",
                 actions: ["SIM", "Não"],
                 onClose: function(sActionClicked) {
                     fnResolve(sActionClicked === "SIM");
@@ -338,6 +339,11 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
 
     onFinalizar: async function() {
 
+        if (this.getModel().hasPendingChanges()){
+            MessageToast.show("Ainda tem modificações pendente. Por favor Salvar ou Cancelar.")
+            return;
+        }
+
         if (!(await this.temCertezaQueDesejaFinalizar()))
             return;
 
@@ -347,10 +353,45 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
             this.setBusy();
             this.removeAllMessages();
             await this.callFunctionImport('/FinalizarNegociacao',{ID: sNegociacaoID});
-            MessageToast.show("Finalização realizada com sucesso.");
+            MessageToast.show("Conclução realizada com sucesso.");
             this.refresh()
         } catch (e) {
-            MessageToast.show("Aconteceram erros ao tentar finalizar.");
+            MessageToast.show("Aconteceram erros ao tentar concluir.");
+            this.error(e);
+        } finally{
+            this.setFree();
+        }
+
+    },
+
+
+    temCertezaQueDesejaFormalizar: function(attribute) {
+        return new Promise(function(fnResolve) {
+            sap.m.MessageBox.confirm("Tem certeza que deseja formalizar a negociação?", {
+                title: "Formalizar Negociação",
+                actions: ["SIM", "Não"],
+                onClose: function(sActionClicked) {
+                    fnResolve(sActionClicked === "SIM");
+                }
+            });
+        });
+    },
+
+    onFormalizar: async function() {
+
+        if (!(await this.temCertezaQueDesejaFormalizar()))
+            return;
+
+        let sNegociacaoID = this.getView().getBindingContext().getProperty('ID');
+
+        try {
+            this.setBusy();
+            this.removeAllMessages();
+            await this.callFunctionImport('/FormalizarNegociacao',{ID: sNegociacaoID});
+            MessageToast.show("Formalização realizada com sucesso.");
+            this.refresh()
+        } catch (e) {
+            MessageToast.show("Aconteceram erros ao tentar formalizar.");
             this.error(e);
         } finally{
             this.setFree();

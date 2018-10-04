@@ -13,11 +13,21 @@ class TipoStatus{
     adaptarView(){
         let m = this.getView().getModel('view');
         m.setProperty('/isNegociacaoEditavel',this.isNegociacaoEditavel());
+        m.setProperty('/isNegociacaoConcluida',this.isNegociacaoConcluida());
     }
 
     getView(){
         return this.oView;
     }
+
+    isNegociacaoEditavel(){
+        return false;
+    }
+
+    isNegociacaoConcluida(){
+        return false;
+    }
+
 }
 
 class TipoEmNegociacao extends TipoStatus{
@@ -29,11 +39,15 @@ class TipoEmNegociacao extends TipoStatus{
 }
 
 
-class TipoAposNegociacao extends TipoStatus{
+class TipoPendenteFormalizar extends TipoStatus{
 
-    isNegociacaoEditavel(){
-        return false;
+    isNegociacaoConcluida(){
+        return true;
     }
+
+}
+
+class TipoAposNegociacao extends TipoStatus{
 
 }
 
@@ -42,6 +56,7 @@ export default ManagedObject.extend("simplifique.telaneg.model.TiposStatus",{
     constructor : function (oView) {
         this.oView = oView;
         this.tipoEmNegociacao = new TipoEmNegociacao();
+        this.tipoPendenteFormalizar = new TipoPendenteFormalizar();
         this.tipoAposNegociacao = new TipoAposNegociacao();
     },
 
@@ -50,6 +65,9 @@ export default ManagedObject.extend("simplifique.telaneg.model.TiposStatus",{
         switch (oNegociacao.Status.replace(/ /g,'')) {
             case '':
                 oTipoStatus = this.tipoEmNegociacao;
+                break;
+            case 'Z':
+                oTipoStatus = this.tipoPendenteFormalizar;
                 break;
             default:
                 oTipoStatus = this.tipoAposNegociacao;

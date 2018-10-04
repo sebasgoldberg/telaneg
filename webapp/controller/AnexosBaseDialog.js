@@ -1,5 +1,6 @@
 import BaseDialog from "simplifique/telaneg/controller/BaseDialog";
 import UploadCollectionParameter from "sap/m/UploadCollectionParameter";
+import MessageToast from 'sap/m/MessageToast';
 
 export default BaseDialog.extend("simplifique.telaneg.controller.AnexosBaseDialog",{
 
@@ -68,9 +69,11 @@ export default BaseDialog.extend("simplifique.telaneg.controller.AnexosBaseDialo
             this.getUploadCollection().setBusy(true);
             let sNegociacaoID = this.getBindingContext().getObject().ID;
             await(this.remove(sAnexoPath, {'NegociacaoID': sNegociacaoID, 'AnexosNavProp': this.sAnexosNavProp}));
+            MessageToast.show("Anexo eliminado com sucesso.");
             this.refreshItems();
         } catch (e) {
             this.getOwnerComponent().error(e);
+            MessageToast.show("Aconteceram erros ao tentar eliminar o anexo.");
         } finally {
             this.getUploadCollection().setBusy(false);
         }
