@@ -92,11 +92,13 @@
                                 enabled="{view>/isNegociacaoEditavel}"
                                 id="clausulaInput"
                                 value="{ClausulaID}"
+                                showValueHelp="true"
+                                valueHelpRequest="onValueHelpClausulaInput"
                                 showSuggestion="true"
                                 suggest="suggestClausula"
                                 suggestionItems="{clausulasPossiveis}"
                                 maxSuggestionWidth="300px"
-                                showValueHelp="false">
+                                >
                                 <core:ListItem text="{ID}" additionalText="{Descricao}" />
                                 <layoutData>
                                     <layout:GridData span="XL4 L4 M4 S4" />

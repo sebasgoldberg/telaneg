@@ -14,6 +14,7 @@ import SelecaoMaterialFornecedorDialog from "simplifique/telaneg/controller/Sele
 import SelecaoGrupoDialog from "simplifique/telaneg/controller/SelecaoGrupoDialog";
 import SelecaoSecaoDialog from "simplifique/telaneg/controller/SelecaoSecaoDialog";
 import SelecaoFornecedorDialog from "simplifique/telaneg/controller/SelecaoFornecedorDialog";
+import SelecaoClausulaDialog from "simplifique/telaneg/controller/SelecaoClausulaDialog";
 import AnexosNegociacaoDialog from "simplifique/telaneg/controller/AnexosNegociacaoDialog";
 import AnexosEstipulacaoDialog from "simplifique/telaneg/controller/AnexosEstipulacaoDialog";
 
@@ -102,6 +103,7 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
         this._selecaoGrupoDialog = new SelecaoGrupoDialog(this.getRootControl());
         this._selecaoSecaoDialog = new SelecaoSecaoDialog(this.getRootControl());
         this._selecaoFornecedorDialog = new SelecaoFornecedorDialog(this.getRootControl());
+        this._selecaoClausulaDialog = new SelecaoClausulaDialog(this.getRootControl());
         this._anexosNegociacaoDialog = new AnexosNegociacaoDialog(this.getRootControl());
         this._anexosEstipulacaoDialog = new AnexosEstipulacaoDialog(this.getRootControl());
     },
@@ -142,6 +144,10 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
                 return this._selecaoSecaoDialog;
         }
         throw `Tipo de item mercadologico "${sTipoItemMerc}" não definido.`
+    },
+
+    getSelecaoClausulaDialog: function() {
+        return this._selecaoClausulaDialog;
     },
 
     getSelecaoFornecedorDialog: function() {

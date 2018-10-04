@@ -101,6 +101,19 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
 
     },
 
+    onValueHelpClausulaInput: async function(oEvent) {
+        let oSource = oEvent.getSource();
+        let selecaoItemOrgDialog = this.getOwnerComponent().getSelecaoClausulaDialog();
+        try {
+            let v = this.getView();
+            let selectedContexts = await selecaoItemOrgDialog.open(v.getBindingContext().getPath());
+            selectedContexts.slice(0,1).map( c => c.getObject() ).forEach( o => oSource.setValue(o.ID) );
+        } catch (e) {
+            console.error(e);
+        }
+   
+    },
+
     onValueHelpItemOrg: async function(oEvent) {
         let sTipoAbrangencia = this.getView().getBindingContext().getProperty('TipoAbrangencia')
         let selecaoItemOrgDialog = this.getOwnerComponent().getSelecaoItemOrgDialog(sTipoAbrangencia);
