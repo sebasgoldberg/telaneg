@@ -12,6 +12,7 @@
                         </form:label>
                         <form:fields>
                             <Input
+                                submit="onSave"
                                 liveChange="onLiveChangeDescricao"
                                 id="descricaoNegociacaoInput"
                                 enabled="{view>/isNegociacaoEditavel}"
@@ -68,10 +69,12 @@
                     </form:FormElement>
                     <form:FormElement>
                         <form:label>
-                            <Label text="Negociador"/>
+                            <Label text="Negociador Fornecedor"/>
                         </form:label>
                         <form:fields>
                             <Input
+                                submit="onSave"
+                                liveChange="onLiveChangeDescricao"
                                 placeholder="Nome do negociador do fornecedor"
                                 enabled="{view>/isNegociacaoEditavel}"
                                 id="negociadorNegociacaoInput"
