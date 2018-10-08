@@ -133,7 +133,6 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
             let result = await this.createAcordo();
             this.getModel().refresh();
             this.navTo('TaskDetail', {negociacaoID: result[0].ID});
-            MessageToast.show("Negociação criada com sucesso.");
         } catch (e) {
             this.getModel().resetChanges();
             console.error(e);

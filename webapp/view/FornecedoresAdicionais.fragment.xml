@@ -2,7 +2,11 @@
 
     <Table 
     keyboardMode="Edit"
-    alternateRowColors="true" showSeparators="All" growing="false" items="{path:'fornecedoresAdicionais', templateShareable:true}"
+    alternateRowColors="true" showSeparators="All"
+    growing='true'
+    growingThreshold='5'
+    growingScrollToLoad='false'
+    items="{path:'fornecedoresAdicionais', templateShareable:true}"
     id="fornecedoresAdicionaisTable" mode="MultiSelect" 
     >
         <headerToolbar>
