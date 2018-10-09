@@ -251,7 +251,7 @@
                                             }
                                         }"
                                         />
-                                    <ObjectStatus text="{fornecedor/ID}" />
+                                    <ObjectStatus text="{FornecedorID}" />
                                     <ObjectStatus text="{fornecedor/Nome}" wrapping="true" />
                                     <Text text="{Descricao}"  wrapping="true" />
                                     <ObjectStatus text="{
