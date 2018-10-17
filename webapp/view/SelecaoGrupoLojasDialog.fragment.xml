@@ -39,10 +39,10 @@
                 >
                 <lists>
                     <FacetFilterList
-                        title="Centro Ref."
-                        key="CentroReferenciaID"
+                        title="UF"
+                        key="UFID"
                         mode="MultiSelect"
-                        items="{path:'bandeira/centrosReferencia', templateShareable: 'true'}"
+                        items="{path:'bandeira/ufs', templateShareable: 'true'}"
                         >
                         <items>
                             <FacetFilterItem
@@ -52,10 +52,10 @@
                         </items>
                     </FacetFilterList>
                     <FacetFilterList
-                        title="UF"
-                        key="UFID"
+                        title="Centro Ref."
+                        key="CentroReferenciaID"
                         mode="MultiSelect"
-                        items="{path:'bandeira/ufs', templateShareable: 'true'}"
+                        items="{path:'bandeira/centrosReferencia', templateShareable: 'true'}"
                         >
                         <items>
                             <FacetFilterItem
