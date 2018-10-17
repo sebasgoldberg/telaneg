@@ -318,10 +318,12 @@
                         type="Reject" 
                         press="handleMessagePopoverPress"/>
                     <ToolbarSpacer/>
+                    <!--
                     <Button text="Cancelar" 
                         visible="{view>/isNegociacaoEditavel}"
                         press="onReset"
                         />
+                    -->
                     <Button text="Eliminar"
                         visible="{view>/isNegociacaoEditavel}"
                         type="Reject" 

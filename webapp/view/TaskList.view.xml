@@ -304,7 +304,8 @@
                         type="Reject" 
                         press="handleMessagePopoverPress"/>
                     <ToolbarSpacer/>
-                    <Button text="Copiar" icon="sap-icon://add-coursebook" press="onCopiarSelecionados" />
+                    <Button text="Copiar" icon="sap-icon://add-coursebook" press="onCopiarSelecionados"
+                        tooltip="Criar uma nova negociação com cópia de uma selecionada."/>
                     <Button text="Novo Acordo" icon="sap-icon://add" type="Emphasized" press="onCriarAcordo" />
                     <Button icon="sap-icon://delete" press="onDeleteSelecionados"/>
             </OverflowToolbar>

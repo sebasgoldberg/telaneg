@@ -35,6 +35,7 @@
                 showReset="true"
                 reset="onFilterReset"
                 confirm="onFilterConfirm"
+                showPopoverOKButton="true"
                 >
                 <lists>
                     <FacetFilterList
