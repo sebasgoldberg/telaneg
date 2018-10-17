@@ -27,11 +27,11 @@
 
                     <form:FormElement id="tipoItemMercFormElement">
                         <form:label>
-                            <Label text="Tipo Item Merc. " required="true"/>
+                            <Label text="Nível Estrutura Mercadológica" required="true"/>
                         </form:label>
                         <form:fields>
                             <ComboBox
-                                placeholder="Selecione tipo item merc."
+                                placeholder="Selecione o nível na estrutura mercadológica"
                                 enabled="{view>/isNegociacaoEditavel}"
                                 id="tipoItemMercComboBox"
                                 selectedKey="{TipoItemMercID}"
