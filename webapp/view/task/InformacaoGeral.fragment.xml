@@ -16,7 +16,11 @@
                                 liveChange="onLiveChangeDescricao"
                                 id="descricaoNegociacaoInput"
                                 enabled="{view>/isNegociacaoEditavel}"
-                                value="{Descricao}" placeholder="Indique aqui alguma descrição" type="Text" showValueHelp="false" />
+                                value="{
+                                    path: 'Descricao',
+                                    type: 'sap.ui.model.odata.type.String',
+                                    constraints: { maxLength: 40 }
+                                    }" placeholder="Indique aqui alguma descrição" type="Text" showValueHelp="false" />
                         </form:fields>
                     </form:FormElement>
                     <form:FormElement>

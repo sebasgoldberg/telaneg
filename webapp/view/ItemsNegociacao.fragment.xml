@@ -32,6 +32,10 @@
                 <m:ToolbarSpacer/>
                 <m:Button
                     visible="{view>/isNegociacaoEditavel}"
+                    text="Incluir {
+                        parts: [ {path: 'tipoNegociacao/ID'}, {path: 'TipoItemMercID'} ],
+                        formatter: '.formatter.formatDescricaoItemMerc'
+                        }"
                     id="addItemButton"
                     icon="sap-icon://add" iconFirst="true" type="Transparent" press="onAdicionarMercadoria" />
                 <m:Button
@@ -268,9 +272,9 @@
                 </template>
             </Column>
 
-            <Column label="Menor P. Merc."
+            <Column label="Preço Mercado"
                 id="menorPrecoMercadoColumn"
-                tooltip="Menor Preço de Mercado [BRL]"
+                tooltip="Preço de Mercado [BRL]"
                 hAlign="Right"
                 >
                 <template>

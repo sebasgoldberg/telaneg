@@ -12,7 +12,6 @@
         <headerToolbar>
             <Toolbar width="auto" height="46px" design="Transparent" visible="true" enabled="true">
                 <content>
-                    <Title text="Fornecedores" titleStyle="Auto" width="auto" textAlign="Begin" visible="true"/>
                     <ToolbarSpacer width=""/>
                     <Button
                         visible="{view>/isNegociacaoEditavel}"
