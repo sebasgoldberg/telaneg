@@ -65,7 +65,7 @@
                                 <fb:control>
 
                                     <MultiInput 
-                                        placeholder="Digitar ID ou descrição"
+                                        placeholder="Digitar Codigo ou Descrição"
                                         tokenUpdate="onTokenUpdate"
                                         submit="onSearch"
                                         id="multiInputFornecedor"
@@ -99,7 +99,7 @@
                                 <fb:control>
 
                                     <MultiInput 
-                                        placeholder="Digitar ID ou descrição"
+                                        placeholder="Digitar Codigo ou Descrição"
                                         tokenUpdate="onTokenUpdate"
                                         submit="onSearch"
                                         id="multiInputMaterial"
@@ -233,6 +233,11 @@
                                     <Text text="Status" />
                                 </header>
                             </Column>
+                            <Column minScreenWidth="Phone" demandPopin="true">
+                                <header>
+                                    <Text text="Usuario" />
+                                </header>
+                            </Column>
                             <Column hAlign="Right" minScreenWidth="Desktop" demandPopin="true">
                                 <header>
                                     <Text text="Bonificação" />
@@ -278,6 +283,7 @@
                                             icon="sap-icon://pdf-attachment" press="onGetPDF"/>
                                     </HBox>
                                     <ObjectStatus text="{status/Descricao}" />
+                                    <Text text="{Usuario}"  wrapping="true" />
                                     <ObjectNumber number="{
                                         path: 'Bonificacao',
                                         type: 'sap.ui.model.odata.type.Decimal',

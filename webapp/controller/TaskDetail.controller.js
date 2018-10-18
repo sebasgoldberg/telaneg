@@ -353,7 +353,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
             this.setBusy();
             this.removeAllMessages();
             await this.callFunctionImport('/FinalizarNegociacao',{ID: sNegociacaoID});
-            MessageToast.show("Conclução realizada com sucesso.");
+            MessageToast.show("Conclução realizada com sucesso e minuta gerada.");
             this.refresh()
         } catch (e) {
             MessageToast.show("Aconteceram erros ao tentar concluir.");

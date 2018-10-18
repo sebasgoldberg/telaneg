@@ -83,6 +83,14 @@
                     <ObjectNumber number="{status/Descricao}" unit="" state="Success"/>
                 </items>
             </VBox>
+            <VBox>
+                <ObjectAttribute title="Criação" text="{
+                            path: 'Data',
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions: { UTC: true, style: 'short' }
+                            }"/>
+                <ObjectAttribute title="Usuário" text="{Usuario}" />
+            </VBox>
         </uxap:headerContent>
         <uxap:sections>
             <uxap:ObjectPageSection title="Informações Gerais">

@@ -52,7 +52,7 @@
                         </form:label>
                         <form:fields>
                             <Input
-                                placeholder="ID ou decrição"
+                                placeholder="Codigo/Desc."
                                 enabled="{view>/isNegociacaoEditavel}"
                                 id="fornecedorNegociacaoInput"
                                 required="false"
@@ -95,7 +95,7 @@
                         </form:label>
                         <form:fields>
                             <Input
-                                placeholder="ID ou decrição"
+                                placeholder="Codigo/Desc."
                                 enabled="{view>/isNegociacaoEditavel}"
                                 id="clausulaInput"
                                 value="{ClausulaID}"
