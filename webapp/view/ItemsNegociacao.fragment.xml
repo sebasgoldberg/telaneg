@@ -295,18 +295,30 @@
                 >
                 <template>
 
-                    <m:ObjectStatus
-                        text="{
-                            path: 'simulacao/IC',
-                            type: 'sap.ui.model.odata.type.Decimal',
-                            constraints: { scale: 2 }
-                            }" wrapping="true"
-                        visible="{= !${IsGenerico} }"
-                        state="{
-                            path: 'simulacao/IC',
-                            formatter: '.formatter.icStatus'
-                            }"
-                        />
+                    <m:VBox visible="{= !${IsGenerico} }">
+                        <m:ObjectStatus
+                            text="{
+                                path: 'simulacao/IC',
+                                type: 'sap.ui.model.odata.type.Decimal',
+                                constraints: { scale: 2 }
+                                }" wrapping="true"
+                            visible="{
+                                parts: [ {path: 'informacao/MenorPrecoMercado'} ],
+                                formatter: '.formatter.isNotZero'
+                                }"
+                            state="{
+                                path: 'simulacao/IC',
+                                formatter: '.formatter.icStatus'
+                                }"
+                            />
+                        <m:Text text="---"
+                            visible="{
+                                parts: [ {path: 'informacao/MenorPrecoMercado'} ],
+                                formatter: '.formatter.isZero'
+                                }"
+                            />
+                    </m:VBox>
+
                 </template>
             </Column>
 

@@ -323,9 +323,9 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         return new Promise(function(fnResolve) {
             sap.m.MessageBox.confirm("Tem certeza que deseja concluir a negociação?", {
                 title: "Concluir Negociação",
-                actions: ["SIM", "Não"],
+                actions: ["Sim", "Não"],
                 onClose: function(sActionClicked) {
-                    fnResolve(sActionClicked === "SIM");
+                    fnResolve(sActionClicked === "Sim");
                 }
             });
         });
@@ -369,9 +369,9 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         return new Promise(function(fnResolve) {
             sap.m.MessageBox.confirm("Tem certeza que deseja formalizar a negociação?", {
                 title: "Formalizar Negociação",
-                actions: ["SIM", "Não"],
+                actions: ["Sim", "Não"],
                 onClose: function(sActionClicked) {
-                    fnResolve(sActionClicked === "SIM");
+                    fnResolve(sActionClicked === "Sim");
                 }
             });
         });
@@ -417,9 +417,9 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
         return new Promise(function(fnResolve) {
             sap.m.MessageBox.confirm("Tem certeza que deseja eliminar a negociação?", {
                 title: "Eliminar Negociação",
-                actions: ["SIM", "Não"],
+                actions: ["Sim", "Não"],
                 onClose: function(sActionClicked) {
-                    fnResolve(sActionClicked === "SIM");
+                    fnResolve(sActionClicked === "Sim");
                 }
             });
         })

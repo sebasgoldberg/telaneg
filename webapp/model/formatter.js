@@ -188,6 +188,20 @@ export default {
         return false;
     },
 
+    isInitial: function(value){
+        if (value)
+            return false;
+        return true;
+    },
+
+    isZero: function(value){
+        return parseFloat(value) == 0;
+    },
+
+    isNotZero: function(value){
+        return parseFloat(value) != 0;
+    },
+
     nomeMinutaPDF: function(sBandeiraID, sFornecedorID){
         let oData = new Date();
         let sData = oData.toISOString().split('T')[0].replace(/-/g,''); // yyyymmdd

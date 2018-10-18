@@ -182,9 +182,9 @@ export default ManagedObject.extend("simplifique.telaneg.controller.BaseTablePop
         return new Promise(function(fnResolve) {
             sap.m.MessageBox.confirm("Tem certeza que deseja eliminar as entradas selecionadas?", {
                 title: "Eliminar Entradas",
-                actions: ["SIM", "Não"],
+                actions: ["Sim", "Não"],
                 onClose: function(sActionClicked) {
-                    fnResolve(sActionClicked === "SIM");
+                    fnResolve(sActionClicked === "Sim");
                 }
             });
         });

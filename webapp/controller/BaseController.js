@@ -171,9 +171,9 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         return new Promise(function(fnResolve) {
             sap.m.MessageBox.confirm("Tem certeza que deseja eliminar os itens selecionados?", {
                 title: "Eliminar Items Selecionados",
-                actions: ["SIM", "Não"],
+                actions: ["Sim", "Não"],
                 onClose: function(sActionClicked) {
-                    fnResolve(sActionClicked === "SIM");
+                    fnResolve(sActionClicked === "Sim");
                 }
             });
         });
@@ -287,9 +287,9 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         return new Promise(function(fnResolve) {
             sap.m.MessageBox.confirm("É necessario gravar as modificações antes de realizar a operação solicitada. Deseja gravar?", {
                 title: "Gravar Modificações",
-                actions: ["SIM", "Não"],
+                actions: ["Sim", "Não"],
                 onClose: function(sActionClicked) {
-                    fnResolve(sActionClicked === "SIM");
+                    fnResolve(sActionClicked === "Sim");
                 }
             });
         });
