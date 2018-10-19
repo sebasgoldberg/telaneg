@@ -23,6 +23,7 @@
 
             <UploadCollection
                 id="UploadCollectionEstipulacao"
+                uploadEnabled="false"
                 uploadUrl=""
                 maximumFilenameLength="55"
                 maximumFileSize="10"
@@ -31,7 +32,6 @@
                 beforeUploadStarts="onBeforeUploadStarts"
                 uploadComplete="onUploadComplete"
                 fileDeleted="onFileDeleted"
-
                 fileSizeExceed="onFileSizeExceed"
                 selectionChange="onSelectionChange"
                 typeMissmatch="onTypeMissmatch"

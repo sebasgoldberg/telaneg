@@ -3,7 +3,7 @@
     <ResponsivePopover
         title="Impostos"
         class="sapUiPopupWithPadding"
-        contentWidth="420px"
+        contentWidth="480px"
         contentHeight="420px"
         placement="Left" >
 

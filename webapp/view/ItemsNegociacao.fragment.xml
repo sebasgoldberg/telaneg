@@ -133,7 +133,7 @@
                             scale: 2
                             }
                         }"
-                        submit="onSave"
+                        submit="onSubmit"
                         enabled="{view>/isNegociacaoEditavel}"
                         id="valorBonificacaoEdit"
                         maxLength="16"
@@ -164,7 +164,7 @@
                             scale: 2
                             }
                         }"
-                        submit="onSave"
+                        submit="onSubmit"
                         enabled="{view>/isNegociacaoEditavel}"
                         id="precoVendaEdit"
                         maxLength="16"
@@ -229,7 +229,7 @@
                             scale: 2
                             }
                         }"
-                        submit="onSave"
+                        submit="onSubmit"
                         enabled="{view>/isNegociacaoEditavel}"
                         id="recomposicaoEdit"
                         maxLength="16"

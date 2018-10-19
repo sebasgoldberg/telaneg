@@ -356,6 +356,12 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
             MessageToast.show("Aconteceram erros e não foi possivel gravar.");
     },
 
+    onSubmit: async function() {
+        let bSucesso = await this.save();
+        if (!bSucesso)
+            MessageToast.show("Aconteceram erros e não foi possivel gravar.");
+    },
+
     onReset: function() {
         this.reset();
     },

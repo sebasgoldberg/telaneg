@@ -235,10 +235,10 @@
                             </Column>
                             <Column minScreenWidth="Phone" demandPopin="true">
                                 <header>
-                                    <Text text="Usuario" />
+                                    <Text text="Usuário" />
                                 </header>
                             </Column>
-                            <Column hAlign="Right" minScreenWidth="Desktop" demandPopin="true">
+                            <Column width="10%" hAlign="Right" minScreenWidth="Desktop" demandPopin="true">
                                 <header>
                                     <Text text="Bonificação" />
                                 </header>
@@ -283,7 +283,10 @@
                                             icon="sap-icon://pdf-attachment" press="onGetPDF"/>
                                     </HBox>
                                     <ObjectStatus text="{status/Descricao}" />
-                                    <Text text="{Usuario}"  wrapping="true" />
+                                    <Text text="{
+                                        parts: [ {path: 'Usuario'} ],
+                                        formatter: '.formatter.lowercase'
+                                        }"  wrapping="true" />
                                     <ObjectNumber number="{
                                         path: 'Bonificacao',
                                         type: 'sap.ui.model.odata.type.Decimal',

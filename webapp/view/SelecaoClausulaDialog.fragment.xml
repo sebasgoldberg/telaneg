@@ -21,8 +21,8 @@
 			path: 'clausulasPossiveis'
 		}" >
 		<StandardListItem
-			title="{ID}"
-			description="{Descricao}"
+			title="{ID} - {Descricao}"
+			description=""
 			type="Active" />
 	</SelectDialog>
 

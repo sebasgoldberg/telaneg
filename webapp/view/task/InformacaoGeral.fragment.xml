@@ -12,7 +12,7 @@
                         </form:label>
                         <form:fields>
                             <Input
-                                submit="onSave"
+                                submit="onSubmit"
                                 liveChange="onLiveChangeDescricao"
                                 id="descricaoNegociacaoInput"
                                 enabled="{view>/isNegociacaoEditavel}"
@@ -60,7 +60,7 @@
                                 showSuggestion="true"
                                 suggest="suggestFornecedores"
                                 suggestionItems="{/FornecedorSet}"
-                                maxSuggestionWidth="400px"
+                                maxSuggestionWidth="500px"
                                 showValueHelp="false"
                                 >
                                 <core:ListItem text="{ID}" additionalText="{Nome}" />
@@ -77,7 +77,7 @@
                         </form:label>
                         <form:fields>
                             <Input
-                                submit="onSave"
+                                submit="onSubmit"
                                 liveChange="onLiveChangeDescricao"
                                 placeholder="Nome do negociador do fornecedor"
                                 enabled="{view>/isNegociacaoEditavel}"

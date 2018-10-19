@@ -18,10 +18,12 @@ export default BaseDialog.extend("simplifique.telaneg.controller.AnexosBaseDialo
         this.sUploadCollectionId = sUploadCollectionId;
     },
 
-    open: function(sPath) {
+    open: function(sPath, {uploadEnabled = true} = {} ) {
         BaseDialog.prototype.open.call(this, sPath);
         let sUploadUrl = this.getOwnerComponent().getUploadUrl(`${sPath}/${this.sAnexosNavProp}`);
-        this.getUploadCollection().setUploadUrl(sUploadUrl)
+        let uc = this.getUploadCollection();
+        uc.setUploadUrl(sUploadUrl)
+        uc.setUploadEnabled(uploadEnabled)
     },
 
     getUploadCollection: function() {

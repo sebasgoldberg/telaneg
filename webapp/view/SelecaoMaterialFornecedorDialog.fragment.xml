@@ -5,7 +5,7 @@
 
 	<SelectDialog
         id="materiaisFornecedorSelectDialog"
-        contentWidth="400px"
+        contentWidth="500px"
         contentHeight="500px"
         growing="true"
         growingThreshold="30"
@@ -28,8 +28,8 @@
 			        isDigitSequence : true,
 			        maxLength : 18
 			        }
-			    }"
-			description="{Nome}"
+			    } - {Nome}"
+			description=""
 			type="Active" />
 	</SelectDialog>
 

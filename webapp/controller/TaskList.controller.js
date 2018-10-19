@@ -193,7 +193,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         let oSource = oEvent.getSource();
         let sNegociacaoPath = oSource.getBindingContext().getPath();
         let oAnexosEstipulacaoDialog = this.getOwnerComponent().getAnexosEstipulacaoDialog();
-        oAnexosEstipulacaoDialog.open(sNegociacaoPath);
+        oAnexosEstipulacaoDialog.open(sNegociacaoPath, {uploadEnabled: false});
     },
 
     onGetPDF: function(oEvent) {

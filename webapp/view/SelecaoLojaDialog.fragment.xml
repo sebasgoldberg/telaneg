@@ -5,7 +5,7 @@
     <Dialog
         id="addLojaDialog"
         title="Adicionar {abrangencia/Descricao}"
-        contentWidth="400px"
+        contentWidth="500px"
         contentHeight="500px"
         >
 		<subHeader>
@@ -91,8 +91,8 @@
                 id="lojasList"
                 items="{bandeira/lojas}" >
                 <StandardListItem
-                    title="{ID}"
-                    description="{Nome} [{UFID}]"
+                    title="{ID} - {Nome} [{UFID}]"
+                    description=""
                     type="Active"
                     />
             </List>
