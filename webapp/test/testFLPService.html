@@ -58,13 +58,16 @@
         <!-- Bootstrap the UI5 core library -->
         <script id="sap-ui-bootstrap"
                 src="/sapui5/resources/sap-ui-core.js"
-                data-sap-ui-libs="sap.m,sap.ui.layout,sap.ui.core,sap.uxap,sap.ushell"
+                data-sap-ui-libs="sap.m,sap.ui.layout,sap.ui.core,sap.uxap,sap.ushell,custom.libs.external.polyfill"
                 data-sap-ui-theme="sap_belize"
                 
                 data-sap-ui-supportedLanguages="en"
                 data-sap-ui-bindingSyntax="complex"
                 data-sap-ui-compatVersion="edge" 
-                data-sap-ui-resourceroots='{"simplifique.telaneg":"../"}'
+                data-sap-ui-resourceroots='{
+                    "simplifique.telaneg":"../",
+                    "custom.libs.external.polyfill": "../resources/ui5-babel-polyfills/dist/"
+                    }'
                 data-sap-ui-frameOptions='allow'> // NON-SECURE setting for testing environment
         </script>
 

@@ -28,6 +28,6 @@
     "load-grunt-tasks": "^4.0.0"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0"
+    "ui5-babel-polyfills": "^0.1.1"
   }
 }
