@@ -91,6 +91,28 @@
                             }"/>
                 <ObjectAttribute title="Usuário" text="{Usuario}" />
             </VBox>
+            <VBox visible="{
+                parts: [ {path: 'UsuarioConclucao'} ],
+                formatter: '.formatter.isNotInitial'
+                }">
+                <ObjectAttribute title="Conclução" text="{
+                            path: 'DataConclucao',
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions: { UTC: true, style: 'short' }
+                            }"/>
+                <ObjectAttribute title="Usuário" text="{UsuarioConclucao}" />
+            </VBox>
+            <VBox visible="{
+                parts: [ {path: 'UsuarioFormalizacao'} ],
+                formatter: '.formatter.isNotInitial'
+                }">
+                <ObjectAttribute title="Formalização" text="{
+                            path: 'DataFormalizacao',
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions: { UTC: true, style: 'short' }
+                            }"/>
+                <ObjectAttribute title="Usuário" text="{UsuarioFormalizacao}" />
+            </VBox>
         </uxap:headerContent>
         <uxap:sections>
             <uxap:ObjectPageSection title="Informações Gerais">
