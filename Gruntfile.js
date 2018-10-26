@@ -33,7 +33,12 @@ module.exports = function(grunt) {
                   src: ['**/*', '!**/*.js', ],
                   dest: 'transp/',
               },
-              ]
+              {
+                  expand: true,
+                  cwd: 'node_modules/babel-polyfill/dist',
+                  src: ['polyfill.js', ],
+                  dest: 'transp/lib/',
+              }]
 
             },
             dist: {
@@ -82,7 +87,6 @@ module.exports = function(grunt) {
         openui5_connect: {
             options: {
                 resources: [
-                    "node_modules/",
                 ]
             },
             transp: {

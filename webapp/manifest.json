@@ -59,8 +59,7 @@
             "minUI5Version": "1.50.0",
             "libs": {
                 "sap.ui.core": {},
-                "sap.m": {},
-                "custom.libs.external.polyfill": {}
+                "sap.m": {}
             }
         },
         "contentDensities": {

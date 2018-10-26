@@ -1,3 +1,4 @@
+import babelPolyfill from "simplifique/telaneg/lib/polyfill";
 import UIComponent from "sap/ui/core/UIComponent";
 import Device from "sap/ui/Device";
 import models from "simplifique/telaneg/model/models";
