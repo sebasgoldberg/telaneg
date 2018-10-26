@@ -18,7 +18,7 @@
                         <ObjectStatus text="{contrato/TipoFaturamento}"/>
         </form:SimpleForm>
 
-        <Table width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" mode="None" items="{subsortimentos}">
+        <Table width="100%" growing="true" growingScrollToLoad="false" growingThreshold="25" mode="None" items="{subsortimentos}">
             <headerToolbar>
                 <OverflowToolbar design="Transparent">
                     <content>
@@ -55,7 +55,7 @@
         </Table>
     </layout:Grid>
 
-        <Table width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" mode="None" items="{contrato/clausulas}">
+        <Table width="100%" growing="true" growingScrollToLoad="false" growingThreshold="25" mode="None" items="{contrato/clausulas}">
             <headerToolbar>
                 <OverflowToolbar design="Transparent">
                     <content>

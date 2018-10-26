@@ -16,6 +16,7 @@ import SelecaoFornecedorDialog from "simplifique/telaneg/controller/SelecaoForne
 import SelecaoClausulaDialog from "simplifique/telaneg/controller/SelecaoClausulaDialog";
 import AnexosNegociacaoDialog from "simplifique/telaneg/controller/AnexosNegociacaoDialog";
 import AnexosEstipulacaoDialog from "simplifique/telaneg/controller/AnexosEstipulacaoDialog";
+import InfoDialog from "simplifique/telaneg/controller/InfoDialog";
 
 let navigationWithContext = {
     "NegociacaoSet": {
@@ -105,6 +106,7 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
         this._selecaoClausulaDialog = new SelecaoClausulaDialog(this.getRootControl());
         this._anexosNegociacaoDialog = new AnexosNegociacaoDialog(this.getRootControl());
         this._anexosEstipulacaoDialog = new AnexosEstipulacaoDialog(this.getRootControl());
+        this._infoDialog = new InfoDialog(this.getRootControl());
     },
 
     getImpostosPopover: function() {
@@ -151,6 +153,10 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
 
     getSelecaoFornecedorDialog: function() {
         return this._selecaoFornecedorDialog;
+    },
+
+    getInfoDialog: function() {
+        return this._infoDialog;
     },
 
     getAnexosEstipulacaoDialog: function() {

@@ -13,6 +13,8 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
         Controller.prototype.onInit.call(this);
 
+        this.popupInformativoExibido = {};
+
         this.getView().setModel(sap.ui.getCore().getMessageManager().getMessageModel(),"message");
 
         let v = this.getView();
@@ -33,19 +35,43 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
         this.oRouter = sap.ui.core.UIComponent.getRouterFor(this);
         this.oRouter.getTarget("TaskList")
-            .attachDisplay( oEvent => {
+            .attachDisplay( async (oEvent) => {
 
                 this.sTipoNegociacaoID = oEvent.mParameters.data.tipoNegociacaoID;
+
+
                 let oPath = {
                     path: `/TipoNegociacaoSet('${this.sTipoNegociacaoID}')/`,
-                    parameters: {},
+                    parameters: {
+                        expand: 'info',
+                    },
                 };
 
-                this.getView().bindObject(oPath);
+                await this.bindObject(oPath);
 
                 this.onSearch();
 
+                this.exibirPopupInformativoSeAplicar();
+
             });
+    },
+
+    exibirPopupInformativoSeAplicar: function() {
+
+        if (this.popupInformativoExibido[this.sTipoNegociacaoID])
+            return;
+        this.popupInformativoExibido[this.sTipoNegociacaoID] = true;
+
+        let bc = this.getView().getBindingContext();
+        let bExibirPopupInfo = ! bc.getProperty('info/OcultarPopupInfo');
+
+        if (!bExibirPopupInfo)
+            return;
+
+        let oPopupInfo = this.getOwnerComponent().getInfoDialog();
+        let sPath = bc.getPath();
+        oPopupInfo.open(sPath);
+
     },
 
     _createFilters: function() {
