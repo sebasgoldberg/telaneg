@@ -1,0 +1,154 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+
+    <ResponsivePopover
+        title="Impostos"
+        class="sapUiPopupWithPadding"
+        contentWidth="480px"
+        contentHeight="420px"
+        placement="Left" >
+
+		<beginButton>
+		</beginButton>
+		<endButton>
+			<Button text="Fechar" press="onFecharPopoverImpostos" />
+		</endButton>
+
+        <content>
+
+	<IconTabBar
+		id="idIconTabBarNoIcons"
+		expandable="false"
+		class="sapUiResponsiveContentPadding">
+		<items>
+			<IconTabFilter
+				text="Entrada">
+
+                <l:Grid defaultSpan="L6 M6 S6" class="sapUiSmallMarginTop sapUiContentPadding">
+<!--
+        <core:Text text="Impostos Entrada" />
+
+-->
+        <l:VerticalLayout
+                class="sapUiMediumMarginEnd">
+            <Label text="IPI"/>
+            <Input
+                enabled="{=!${ImpostosCadastrados}?false:false}" 
+                value="{path: 'impostosEntrada/IPI', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
+                description="%"/>
+        </l:VerticalLayout>
+
+        <l:VerticalLayout
+                class="sapUiMediumMarginEnd">
+            <Label text="ICMS"/>
+            <Input
+                enabled="{=!${ImpostosCadastrados}?false:false}" 
+                value="{path: 'impostosEntrada/ICMS', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
+                description="%"/>
+        </l:VerticalLayout>
+
+        <l:VerticalLayout
+                class="sapUiMediumMarginEnd">
+            <Label text="Base ICMS"/>
+            <Input
+                enabled="{=!${ImpostosCadastrados}?false:false}" 
+                value="{path: 'impostosEntrada/BaseReduzidaICMS', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
+                description="%"/>
+        </l:VerticalLayout>
+
+        <l:VerticalLayout
+                class="sapUiMediumMarginEnd">
+            <Label text="PIS"/>
+            <Input
+                enabled="{=!${ImpostosCadastrados}?false:false}" 
+                value="{path: 'impostosEntrada/PIS', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
+                description="%"/>
+        </l:VerticalLayout>
+
+        <l:VerticalLayout
+                class="sapUiMediumMarginEnd">
+            <Label text="COFINS"/>
+            <Input
+                enabled="{=!${ImpostosCadastrados}?false:false}" 
+                value="{path: 'impostosEntrada/COFINS', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
+                description="%"/>
+        </l:VerticalLayout>
+
+        <l:VerticalLayout
+                class="sapUiMediumMarginEnd">
+            <Label text="ST"/>
+            <Input
+                enabled="{=!${ImpostosCadastrados}?false:false}" 
+                value="{path: 'impostosEntrada/ST', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
+                description="%"/>
+        </l:VerticalLayout>
+
+        <l:VerticalLayout
+                class="sapUiMediumMarginEnd">
+            <Label text="PAUTA"/>
+            <Input
+                enabled="{=!${ImpostosCadastrados}?false:false}" 
+                value="{path: 'impostosEntrada/PAUTA', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
+                description="%"/>
+        </l:VerticalLayout>
+
+        <l:VerticalLayout
+                class="sapUiMediumMarginEnd">
+            <Label text="MVA"/>
+            <Input
+                enabled="{=!${ImpostosCadastrados}?false:false}" 
+                value="{path: 'impostosEntrada/MVA', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
+                description="%"/>
+        </l:VerticalLayout>
+
+    </l:Grid>
+
+
+			</IconTabFilter>
+			<IconTabFilter
+				text="Saida">
+
+
+                <l:Grid defaultSpan="L6 M6 S6" class="sapUiSmallMarginTop sapUiContentPadding">
+
+<!--
+        <core:Title text="Impostos Saida" />
+
+-->
+        <l:VerticalLayout
+                class="sapUiMediumMarginEnd">
+            <Label text="ICMS"/>
+            <Input
+                enabled="{=!${ImpostosCadastrados}?false:false}" 
+                value="{path: 'impostosSaida/ICMS', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
+                description="%"/>
+        </l:VerticalLayout>
+
+        <l:VerticalLayout
+                class="sapUiMediumMarginEnd">
+            <Label text="PIS"/>
+            <Input
+                enabled="{=!${ImpostosCadastrados}?false:false}" 
+                value="{path: 'impostosSaida/PIS', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
+                description="%"/>
+        </l:VerticalLayout>
+
+        <l:VerticalLayout
+                class="sapUiMediumMarginEnd">
+            <Label text="COFINS"/>
+            <Input
+                enabled="{=!${ImpostosCadastrados}?false:false}" 
+                value="{path: 'impostosSaida/COFINS', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
+                description="%"/>
+        </l:VerticalLayout>
+
+    </l:Grid>
+
+			</IconTabFilter>
+		</items>
+	</IconTabBar>
+
+        </content>
+    </ResponsivePopover>
+
+</core:FragmentDefinition>
+

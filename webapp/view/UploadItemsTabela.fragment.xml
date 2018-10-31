@@ -1,0 +1,30 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:u="sap.ui.unified">
+
+    <ResponsivePopover
+        id="popoverUploadTabela"
+        title="Upload Items Tabela"
+        class="sapUiPopupWithPadding"
+        contentWidth="300px"
+        contentHeight="200px"
+        placement="Top" >
+
+        <beginButton>
+        </beginButton>
+        <endButton>
+            <Button text="Fechar" press="onFecharPopoverUploadTabela" />
+        </endButton>
+
+        <content>
+            <u:FileUploader
+                id="fileUploaderTabela"
+                name="myFileUpload"
+                tooltip="Upload Items Tabela"
+                change="onUploadItemsTabela"
+                />
+            <Text text='O arquivo deve ser de texto separado por tabuladores, e não deve conter cabeçalho. As colunas devem ser as seguintes: 1) Codigo de Fornecedor, 2) Codigo de Material, 3) Centro de Referencia, 4) Preço de Compra.'/>
+        </content>
+    </ResponsivePopover>
+
+</core:FragmentDefinition>
+
+

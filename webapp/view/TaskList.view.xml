@@ -1,0 +1,323 @@
+<mvc:View
+    controllerName="simplifique.telaneg.controller.TaskList"
+    xmlns:sim="simplifique.telaneg.control" 
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.f"
+    xmlns:variants="sap.ui.comp.variants"
+    xmlns="sap.m"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:core="sap.ui.core">
+
+    <f:DynamicPage headerExpanded="true" showFooter="true" class="sapUiSizeCompact">
+        <!--
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="{Descricao}"/>
+
+                </f:heading>
+                <f:actions>
+
+                    <Button text="Copiar" icon="sap-icon://add-coursebook" press="onCopiarSelecionados" />
+                    <Button text="Novo Acordo" icon="sap-icon://add" type="Emphasized" press="onCriarAcordo" />
+                    <Button icon="sap-icon://delete" press="onDeleteSelecionados"/>
+                    <Button
+                        icon="sap-icon://message-popup"
+                        text="{= ${message>/}.length }"
+                        visible="{= ${message>/}.length > 0 }"
+                        type="Emphasized"
+                        press="handleMessagePopoverPress"/>
+
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+        -->
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <f:content>
+                    
+                    <fb:FilterBar id="ListReportFilterBar" useToolbar="false" showGoOnFB="false" searchEnabled="true" showFilterConfiguration="false"
+                        search="onSearch"
+                        >
+                        <fb:filterItems>
+                            <fb:FilterItem label="ID ou Descrição" name="descricaoFilter">
+                                <fb:control>
+                                    <SearchField value="{view>/filter/descricao}" search="onSearch"/>
+                                </fb:control>
+                            </fb:FilterItem>
+                            <fb:FilterItem label="Status" name="statusFilter">
+                                <fb:control>
+
+                                    <MultiComboBox
+                                        placeholder="Selecionar status"
+                                        selectionChange="onSearch"
+                                        selectedKeys="{view>/filter/status}"
+                                        width="1000px"
+                                        enableMultiLineMode="true"
+                                        items="{/StatusSet}">
+                                        <core:Item key="{ID}" text="{Descricao}" />
+                                    </MultiComboBox>
+
+                                </fb:control>
+                            </fb:FilterItem>
+
+                            <fb:FilterItem label="Fornecedor" name="fornecedorFilter">
+                                <fb:control>
+
+                                    <MultiInput 
+                                        placeholder="Digitar Codigo ou Descrição"
+                                        tokenUpdate="onTokenUpdate"
+                                        submit="onSearch"
+                                        id="multiInputFornecedor"
+                                        enableMultiLineMode="true"
+                                        suggest="suggestFornecedores"
+                                        suggestionItems="{/FornecedorSet}"
+                                        maxSuggestionWidth="500px"
+                                        showValueHelp="false">
+                                        <core:ListItem key="{ID}" text="{Nome}" additionalText="{ID}" />
+                                    </MultiInput>
+
+                                </fb:control>
+                            </fb:FilterItem>
+
+                            <fb:FilterItem label="Vencimento" name="vencimentoFilter">
+                                <fb:control>
+                                    <HBox>
+                                        <DateRangeSelection
+                                            submit="onSearch"
+                                            id="vencimentoDateRangeSelection"
+                                            dateValue="{view>/filter/dataDe}"
+                                            secondDateValue="{view>/filter/dataAte}"
+                                            change="onSearch"
+                                        />
+                                        <Button icon="sap-icon://delete" press="clearVencimentoDateRangeSelection"/>
+                                    </HBox>
+                                </fb:control>
+                            </fb:FilterItem>
+
+                            <fb:FilterItem label="Material" name="materialFilter">
+                                <fb:control>
+
+                                    <MultiInput 
+                                        placeholder="Digitar Codigo ou Descrição"
+                                        tokenUpdate="onTokenUpdate"
+                                        submit="onSearch"
+                                        id="multiInputMaterial"
+                                        enableMultiLineMode="true"
+                                        suggest="suggestMateriais"
+                                        suggestionItems="{/MaterialSet}"
+                                        maxSuggestionWidth="500px"
+                                        showValueHelp="false">
+                                        <core:ListItem key="{ID}" text="{
+                                            path: 'ID',
+                                            type: 'sap.ui.model.odata.type.String',
+                                            constraints: {
+                                                isDigitSequence : true,
+                                                maxLength : 10
+                                                }
+                                            }" additionalText="{Nome}" />
+                                    </MultiInput>
+
+                                </fb:control>
+                            </fb:FilterItem>
+
+                        </fb:filterItems>
+                    </fb:FilterBar>
+
+                    <!--
+                    <FacetFilter
+                        id="idFacetFilter"
+                        type="Simple"
+                        showPersonalization="true"
+                        showReset="true"
+                        reset="handleFacetFilterReset"
+                        confirm="handleConfirm"
+                        lists="">
+                        <lists>
+                            <FacetFilterList
+                                title="Status"
+                                key="status"
+                                mode="MultiSelect"
+                                items="{path:'/StatusSet/', templateShareable: 'true'}"
+                                >
+                                <items>
+                                    <FacetFilterItem
+                                        text="{Descricao}"
+                                        key="{ID}"
+                                        />
+                                </items>
+                            </FacetFilterList>
+                            <FacetFilterList
+                                title="Fornecedor"
+                                key="fornecedor"
+                                mode="MultiSelect"
+                                items="{path:'/FornecedorSet', templateShareable: 'true'}"
+                                growing='true'
+                                growingThreshold='15'
+                                growingScrollToLoad='true'
+                                >
+                                <items>
+                                    <FacetFilterItem
+                                        text="{Nome} [{UF}]"
+                                        key="{ID}"
+                                        />
+                                </items>
+                            </FacetFilterList>
+                        </lists>
+                    </FacetFilter>
+                    -->
+
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <VBox fitContainer="true">
+                <items>
+                    <Table
+                        itemPress="onShowDetail"
+                        keyboardMode="Edit"
+                        mode="MultiSelect"
+                        id="negociacoesTable"
+                        growing="true"
+                        growingScrollToLoad="true"
+                        growingThreshold="25"
+                        items="{
+                            path:'',
+                            templateShareable:true,
+                            parameters: {
+                                expand:'fornecedor,status'
+                                }
+                            }"
+                        >
+                        <headerToolbar>
+                            <OverflowToolbar design="Transparent">
+                                <content>
+                                    <Title textAlign="Begin" text="Documentos de {Descricao}"/>
+                                    <ToolbarSpacer/>
+                                </content>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column minScreenWidth="Phone">
+                                <header>
+                                    <Text text="Número"/>
+                                </header>
+                            </Column>
+                            <Column minScreenWidth="Desktop" demandPopin="true">
+                                <header>
+                                    <Text text="Fornecedor"/>
+                                </header>
+                            </Column>
+                            <Column width="20%" minScreenWidth="Desktop">
+                                <header>
+                                    <Text text="Nome"/>
+                                </header>
+                            </Column>
+                            <Column width="20%" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                <header>
+                                    <Text text="Descrição"/>
+                                </header>
+                            </Column>
+                            <Column minScreenWidth="Phone">
+                                <header>
+                                    <Text text="Vencimento" />
+                                </header>
+                            </Column>
+                            <Column minScreenWidth="Phone">
+                                <header>
+                                    <Text text="Anexos" />
+                                </header>
+                            </Column>
+                            <Column minScreenWidth="Phone" demandPopin="true">
+                                <header>
+                                    <Text text="Status" />
+                                </header>
+                            </Column>
+                            <Column minScreenWidth="Phone" demandPopin="true">
+                                <header>
+                                    <Text text="Usuário" />
+                                </header>
+                            </Column>
+                            <Column width="10%" hAlign="Right" minScreenWidth="Desktop" demandPopin="true">
+                                <header>
+                                    <Text text="Bonificação" />
+                                </header>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem type="Active">
+                                <cells>
+                                    <ObjectIdentifier title="{
+                                        path: 'ID',
+                                        type: 'sap.ui.model.odata.type.String',
+                                        constraints: {
+                                            isDigitSequence : true,
+                                            maxLength : 10
+                                            }
+                                        }"
+                                        />
+                                    <ObjectStatus text="{FornecedorID}" />
+                                    <ObjectStatus text="{fornecedor/Nome}" wrapping="true" />
+                                    <Text text="{Descricao}"  wrapping="true" />
+                                    <ObjectStatus text="{
+                                        path: 'ApuracaoAte',
+                                        type: 'sap.ui.model.type.Date',
+                                        formatOptions: { UTC: true, style: 'short' }
+                                        }" />
+                                    <HBox>
+                                        <Button
+                                            enabled="{
+                                                parts: [ {path: 'Estipulacao'} ],
+                                                formatter: '.formatter.isNotInitial'
+                                                }"
+                                            icon="sap-icon://attachment" press="onMostrarAnexosEstipulacao"/>
+                                        <Button
+                                            tooltip="{
+                                                parts: [ { path: 'Bandeira'}, { path: 'FornecedorID' } ],
+                                                formatter: '.formatter.nomeMinutaPDF'
+                                                }"
+                                            enabled="{
+                                                parts: [ {path: 'Estipulacao'} ],
+                                                formatter: '.formatter.isNotInitial'
+                                                }"
+                                            icon="sap-icon://pdf-attachment" press="onGetPDF"/>
+                                    </HBox>
+                                    <ObjectStatus text="{status/Descricao}" />
+                                    <Text text="{
+                                        parts: [ {path: 'Usuario'} ],
+                                        formatter: '.formatter.lowercase'
+                                        }"  wrapping="true" />
+                                    <ObjectNumber number="{
+                                        path: 'Bonificacao',
+                                        type: 'sap.ui.model.odata.type.Decimal',
+                                        constraints: { scale: 2 }
+                                        }" unit="BRL" emphasized="false"
+                                        state="{
+                                            parts: [ {path: 'Bonificacao'} ],
+                                            formatter: '.formatter.defaultNumberStatus'
+                                            }"
+                                        />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </items>
+            </VBox>
+        </f:content>
+        <f:footer>
+            <OverflowToolbar>
+                    <Button
+                        icon="sap-icon://message-popup"
+                        text="{= ${message>/}.length }"
+                        visible="{= ${message>/}.length > 0 }"
+                        type="Reject" 
+                        press="handleMessagePopoverPress"/>
+                    <ToolbarSpacer/>
+                    <Button text="Copiar" icon="sap-icon://add-coursebook" press="onCopiarSelecionados"
+                        tooltip="Criar uma nova negociação com cópia de uma selecionada."/>
+                    <Button text="Novo Acordo" icon="sap-icon://add" type="Emphasized" press="onCriarAcordo" />
+                    <Button icon="sap-icon://delete" press="onDeleteSelecionados"/>
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>

@@ -1,0 +1,35 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form">
+
+	<SelectDialog
+        id="selecaoClausulaDialog"
+        contentWidth="400px"
+        contentHeight="500px"
+        growing="true"
+        growingThreshold="30"
+        growingScrollToLoad="true"
+        multiSelect="false"
+        rememberSelections="false"
+		noDataText="Clausulas não encontradas."
+		title="Selecionar Clausula"
+		search="onSearch"
+		confirm="onSelecionar"
+		cancel="onFechar"
+		items="{
+			path: 'clausulasPossiveis'
+		}" >
+		<StandardListItem
+			title="{ID} - {Descricao}"
+			description=""
+			type="Active" />
+	</SelectDialog>
+
+</core:FragmentDefinition>
+
+
+
+
+
+

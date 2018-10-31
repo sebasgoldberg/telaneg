@@ -1,0 +1,398 @@
+<mvc:View
+    controllerName="simplifique.telaneg.controller.TaskDetail"
+    xmlns:sim="simplifique.telaneg.control" 
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:uxap="sap.uxap"
+    xmlns="sap.m"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:rte="sap.ui.richtexteditor"
+    xmlns:core="sap.ui.core"
+    >
+
+    <uxap:ObjectPageLayout showTitleInHeaderContent="false" showHeaderContent="true" showEditHeaderButton="false" showFooter="true" class="sapUiSizeCompact">
+        <uxap:headerTitle>
+            <uxap:ObjectPageHeader objectTitle="{Descricao}" objectSubtitle="{ID}{=${Estipulacao}?', Acordo '+${Estipulacao}:''}" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="true" isObjectSubtitleAlwaysVisible="true" showPlaceholder="false"
+                >
+                <!--
+                <uxap:navigationBar>
+                    <Bar>
+                        <contentLeft>
+                            <Button type="Back" press="_onFioriObjectPageHeaderPress"/>
+                        </contentLeft>
+                        <contentMiddle>
+                            <Title text="{tipoNegociacao/Descricao}"/>
+                        </contentMiddle>
+                        <contentRight/>
+                    </Bar>
+                </uxap:navigationBar>
+                -->
+                <uxap:actions>
+                    <Button
+                        enabled="{
+                            parts: [ {path: 'Estipulacao'} ],
+                            formatter: '.formatter.isNotInitial'
+                            }"
+                        text="Anexos" icon="sap-icon://attachment" press="onMostrarAnexosEstipulacao">
+                        <layoutData>
+                            <OverflowToolbarLayoutData moveToOverflow="true"/>
+                        </layoutData>
+                    </Button>
+                    <Button
+                        tooltip="{
+                            parts: [ { path: 'Bandeira'}, { path: 'FornecedorID' } ],
+                            formatter: '.formatter.nomeMinutaPDF'
+                            }"
+                        enabled="{
+                            parts: [ {path: 'Estipulacao'} ],
+                            formatter: '.formatter.isNotInitial'
+                            }"
+                        text="Minuta" icon="sap-icon://pdf-attachment" type="Emphasized" press="onGetPDF">
+                        <layoutData>
+                            <OverflowToolbarLayoutData moveToOverflow="true"/>
+                        </layoutData>
+                    </Button>
+                </uxap:actions>
+                <uxap:breadCrumbsLinks/>
+            </uxap:ObjectPageHeader>
+        </uxap:headerTitle>
+        <uxap:headerContent>
+
+            <VBox>
+                <items>
+                    <Title text="{fornecedor/ID}" margin-right="0.5rem"/>
+                    <Text text="{fornecedor/Nome}" class="sapMTitleStyleH3" press="_onFioriObjectPageHeaderContactPress"/>
+                </items>
+            </VBox>
+            <VBox>
+                <items>
+                    <Title text="Bonificação"/>
+                    <ObjectNumber number="{
+                        path: 'Bonificacao',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: { scale: 2 }
+                        }" unit="BRL" state="{
+                            parts: [ {path: 'Bonificacao'} ],
+                            formatter: '.formatter.defaultNumberStatus'
+                            }"/>
+                </items>
+            </VBox>
+            <VBox>
+                <items>
+                    <Title text="Status"/>
+                    <ObjectNumber number="{status/Descricao}" unit="" state="Success"/>
+                </items>
+            </VBox>
+            <VBox>
+                <ObjectAttribute title="Criação" text="{
+                            path: 'Data',
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions: { UTC: true, style: 'short' }
+                            }"/>
+                <ObjectAttribute title="Usuário" text="{Usuario}" />
+            </VBox>
+            <VBox visible="{
+                parts: [ {path: 'UsuarioConclucao'} ],
+                formatter: '.formatter.isNotInitial'
+                }">
+                <ObjectAttribute title="Conclução" text="{
+                            path: 'DataConclucao',
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions: { UTC: true, style: 'short' }
+                            }"/>
+                <ObjectAttribute title="Usuário" text="{UsuarioConclucao}" />
+            </VBox>
+            <VBox visible="{
+                parts: [ {path: 'UsuarioFormalizacao'} ],
+                formatter: '.formatter.isNotInitial'
+                }">
+                <ObjectAttribute title="Formalização" text="{
+                            path: 'DataFormalizacao',
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions: { UTC: true, style: 'short' }
+                            }"/>
+                <ObjectAttribute title="Usuário" text="{UsuarioFormalizacao}" />
+            </VBox>
+        </uxap:headerContent>
+        <uxap:sections>
+            <uxap:ObjectPageSection title="Informações Gerais">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="Informações Gerais">
+                        <uxap:blocks>
+                            <core:Fragment fragmentName="simplifique.telaneg.view.task.InformacaoGeral" type="XML" />
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection title="Abrangência" id="abrangenciaObjectPageSection">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="Abrangência">
+                        <uxap:blocks>
+                            <core:Fragment fragmentName="simplifique.telaneg.view.task.Abrangencia" type="XML" />
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                    <uxap:ObjectPageSubSection title="Fornecedores" id="fornecedoresAdicionaisSubSection">
+                        <uxap:blocks>
+                            <core:Fragment fragmentName="simplifique.telaneg.view.FornecedoresAdicionais" type="XML" />
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection id="itemsObjectPageSection" title="Mercadorias">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection id="itemsObjectPageSubSection" title="Mercadorias">
+                        <uxap:blocks>
+                            <!--
+                            <Table id='itemsTable' width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" mode="MultiSelect" items="{path:'items', templateShareable:true, parameters:{expand:'material,simulacao,itemOrg,subitem,subitem/impostosEntrada,subitem/impostosSaida'}}">
+                                <headerToolbar>
+                                    <OverflowToolbar design="Transparent">
+                                        <content>
+                                            <ToolbarSpacer/>
+                                            <Button icon="sap-icon://add" iconFirst="true" type="Transparent" press="onAdicionarMercadoria">
+                                                <layoutData>
+                                                    <OverflowToolbarLayoutData moveToOverflow="true"/>
+                                                </layoutData>
+                                            </Button>
+                                            <Button text="" icon="sap-icon://delete" iconFirst="false" type="Transparent" press="onEliminarItensSelecionados">
+                                                <layoutData>
+                                                    <OverflowToolbarLayoutData moveToOverflow="true"/>
+                                                </layoutData>
+                                            </Button>
+                                        </content>
+                                    </OverflowToolbar>
+                                </headerToolbar>
+                                <columns>
+                                    <Column hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                        <header>
+                                            <Text text="UF"/>
+                                        </header>
+                                    </Column>
+                                    <Column hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                        <header>
+                                            <Text text="Mercadoria"/>
+                                        </header>
+                                    </Column>
+                                    <Column hAlign="Left" vAlign="Middle" width="20%" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                        <header>
+                                            <Text text="Descrição"/>
+                                        </header>
+                                    </Column>
+                                    <Column hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                        <header>
+                                            <Text text="UMV"/>
+                                        </header>
+                                    </Column>
+                                    <Column hAlign="Right" vAlign="Middle" width="12%" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                        <header>
+                                            <Text text="Preço Venda"/>
+                                        </header>
+                                    </Column>
+                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                        <header>
+                                            <Text text="PMZ"/>
+                                        </header>
+                                    </Column>
+                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                        <header>
+                                            <Text text="Margem PDV"/>
+                                        </header>
+                                    </Column>
+                                    <Column hAlign="Right" vAlign="Middle" width="12%" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                        <header>
+                                            <Text text="Recomp."/>
+                                        </header>
+                                    </Column>
+                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                        <header>
+                                            <Text text="Margem 2 Simulada"/>
+                                        </header>
+                                    </Column>
+                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                        <header>
+                                            <Text text="Menor Preço Mercado"/>
+                                        </header>
+                                    </Column>
+                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                        <header>
+                                            <Text text="IC"/>
+                                        </header>
+                                    </Column>
+                                    <Column hAlign="Center" vAlign="Middle" width="4%" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                        <header>
+                                            <Text text=""/>
+                                        </header>
+                                    </Column>
+                                    <Column hAlign="Center" vAlign="Middle" width="4%" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                        <header>
+                                            <Text text=""/>
+                                        </header>
+                                    </Column>
+                                    <Column hAlign="Center" vAlign="Middle" width="4%" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                        <header>
+                                            <Text text=""/>
+                                        </header>
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem type="Active">
+                                        <cells>
+                                            <Text text="{itemOrg/ID}" wrapping="true" />
+
+                                            <Text text="{
+                                                path: 'material/ID',
+                                                type: 'sap.ui.model.odata.type.String',
+                                                constraints: {
+                                                    isDigitSequence : true,
+                                                    maxLength : 18
+                                                    }
+                                                }" wrapping="true" />
+
+                                            <Text text="{material/Nome}" wrapping="true" />
+                                            <Text text="{material/UMB}" wrapping="true" />
+
+                                            <Input value="{
+                                                path: 'subitem/PrecoVenda',
+                                                type: 'sap.ui.model.odata.type.Decimal',
+                                                constraints: { scale: 2 }
+                                                }"
+                                                description="BRL"
+                                                visible='{UnicoSubitem}'
+                                                />
+
+                                            <Text text="{
+                                                path: 'simulacao/PMZNovo',
+                                                type: 'sap.ui.model.odata.type.Decimal',
+                                                constraints: { scale: 2 }
+                                                } BRL" wrapping="true" />
+                                            <Text text="{
+                                                path: 'nossoPricing/MargemPDV',
+                                                type: 'sap.ui.model.odata.type.Decimal',
+                                                constraints: { scale: 2 }
+                                                } %" wrapping="true" />
+                                            <Input value="{
+                                                path: 'simulacao/Recomposicao',
+                                                type: 'sap.ui.model.odata.type.Decimal',
+                                                constraints: { scale: 2 }
+                                                }" description="BRL"/>
+                                            <Text text="{
+                                                path: 'simulacao/Margem2',
+                                                type: 'sap.ui.model.odata.type.Decimal',
+                                                constraints: { scale: 2 }
+                                                } %" wrapping="true" />
+                                            <Text text="{
+                                                path: 'nossoPricing/PrecoMercado',
+                                                type: 'sap.ui.model.odata.type.Decimal',
+                                                constraints: { scale: 2 }
+                                                }" wrapping="true" />
+                                            <Text text="{
+                                                path: 'simulacao/IC',
+                                                type: 'sap.ui.model.odata.type.Decimal',
+                                                constraints: { scale: 2 }
+                                                } %" wrapping="true" />
+                                            <core:Icon
+                                                src="sap-icon://line-chart"
+                                                size="16px"
+                                                hoverColor="#386084"
+                                                tooltip="Vendas"
+                                                press="onMostrarVendas"
+                                                />
+                                            <core:Icon
+                                                src="sap-icon://product"
+                                                size="16px"
+                                                hoverColor="#386084"
+                                                tooltip="Estoque"
+                                                press="onMostrarEstoque"
+                                                />
+                                            <core:Icon
+                                                src="sap-icon://commission-check"
+                                                size="16px"
+                                                hoverColor="#386084"
+                                                tooltip="Impostos"
+                                                press="onMostrarImpostos"
+                                                />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                            -->
+                            <core:Fragment fragmentName="simplifique.telaneg.view.ItemsNegociacao" type="XML" />
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection title="Contrato" id="contratoObjectPageSection">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="Contrato">
+                        <uxap:blocks>
+                            <core:Fragment fragmentName="simplifique.telaneg.view.ContratoFornecedor" type="XML" />
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+            <uxap:ObjectPageSection title="Prazos de Pagamento" visible="false" id="prazoPagtoObjectPageSection">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="">
+                        <uxap:blocks>
+                            <core:ComponentContainer id="containerForChildComponent"
+                                autoPrefixId="true"
+                                usage="reuseAnotherComponent"      
+                                propagateModel="true"
+                                height="100%"
+                                async="true"
+                            />
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>                                                                 
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+            <uxap:ObjectPageSection title="Comentários">
+                <uxap:subSections>
+                            <core:Fragment fragmentName="simplifique.telaneg.view.ComentariosNegociacao" type="XML" />
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+        </uxap:sections>
+        <uxap:footer>
+            <OverflowToolbar design="auto">
+                <content>
+                    <Button
+                        icon="sap-icon://message-popup"
+                        text="{= ${message>/}.length }"
+                        visible="{= ${message>/}.length > 0 }"
+                        type="Reject" 
+                        press="handleMessagePopoverPress"/>
+                    <ToolbarSpacer/>
+                    <!--
+                    <Button text="Cancelar" 
+                        visible="{view>/isNegociacaoEditavel}"
+                        press="onReset"
+                        />
+                    -->
+                    <Button text="Eliminar"
+                        visible="{view>/isNegociacaoEditavel}"
+                        type="Reject" 
+                        press="onEliminarNegociacao"
+                        />
+                     <Button text="Salvar"
+                        visible="{view>/isNegociacaoEditavel}"
+                        type="Emphasized" 
+                        press="onSave"
+                        />
+                    <Button text="Concluir"
+                        visible="{view>/isNegociacaoEditavel}"
+                        type="Accept" 
+                        press="onFinalizar"
+                        />
+                    <Button text="Formalizar"
+                        visible="{view>/isNegociacaoConcluida}"
+                        type="Accept" 
+                        press="onFormalizar"
+                        />
+                </content>
+            </OverflowToolbar>
+        </uxap:footer>
+    </uxap:ObjectPageLayout>
+</mvc:View>
+

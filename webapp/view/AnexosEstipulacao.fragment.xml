@@ -1,0 +1,79 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+
+    <Dialog
+        title="Anexos Negociação"
+        contentWidth="400px"
+        contentHeight="600px"
+        >
+    
+        <subHeader>
+        </subHeader>
+    
+        <beginButton>
+        </beginButton>
+    
+        <endButton>
+            <Button
+                text="Fechar"
+                press="onFechar"
+                />
+        </endButton>
+    
+        <content>
+
+            <UploadCollection
+                id="UploadCollectionEstipulacao"
+                uploadEnabled="false"
+                uploadUrl=""
+                maximumFilenameLength="55"
+                maximumFileSize="10"
+                multiple="true"
+                change="onChange"
+                beforeUploadStarts="onBeforeUploadStarts"
+                uploadComplete="onUploadComplete"
+                fileDeleted="onFileDeleted"
+                fileSizeExceed="onFileSizeExceed"
+                selectionChange="onSelectionChange"
+                typeMissmatch="onTypeMissmatch"
+                items="{
+                    path: 'anexosEstipulacao',
+                    templateShareable: true
+                }"
+                mode="None">
+                <items>
+                    <UploadCollectionItem
+                        documentId="{Item}"
+                        fileName="{Nome}"
+                        mimeType="{MimeType}"
+                        thumbnailUrl=""
+                        url="{
+                            parts: [ {path: 'Item'} ],
+                            formatter: '.formatter.urlAnexoForDownload'
+                            }"
+                        enableDelete="true"
+                        visibleDelete="true"
+                        enableEdit="false"
+                        visibleEdit="false"
+                        selected="">
+                        <attributes>
+                            <ObjectAttribute
+                                title=""
+                                text="{Nome}"
+                                active="false" />
+                        </attributes>
+                        <!--
+                        <statuses>
+                            <ObjectStatus title="{title}"
+                                text="{text}"
+                                state="{state}" />
+                        </statuses>
+                        -->
+                    </UploadCollectionItem>
+                </items>
+            </UploadCollection>
+
+        </content>
+    </Dialog>
+
+</core:FragmentDefinition>
+

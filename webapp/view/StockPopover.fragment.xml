@@ -1,0 +1,25 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+
+    <ResponsivePopover
+        title="ESTOQUE"
+        class="sapUiPopupWithPadding"
+        contentWidth="960px"
+        contentHeight="720px"
+        placement="Left" >
+
+		<beginButton>
+		</beginButton>
+		<endButton>
+			<Button text="Fechar" press="onFecharPopover" />
+		</endButton>
+
+        <content>
+
+            <core:Fragment fragmentName="simplifique.telaneg.view.Stock" type="XML" />
+
+        </content>
+    </ResponsivePopover>
+
+</core:FragmentDefinition>
+
+

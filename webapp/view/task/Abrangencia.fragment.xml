@@ -1,0 +1,102 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+
+    <form:Form editable="true">
+        <form:layout>
+            <form:ResponsiveGridLayout labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="4" columnsL="3" columnsM="2" singleContainerFullSize="false"/>
+        </form:layout>
+        <form:formContainers>
+
+            <form:FormContainer title="">
+                <form:formElements>
+                    <form:FormElement>
+                        <form:label>
+                            <Label text="Bandeira" required="true"/>
+                        </form:label>
+                        <form:fields>
+                            <ComboBox
+                                placeholder="Selecione a bandeira"
+                                enabled="{view>/isNegociacaoEditavel}"
+                                id="bandeiraNegociacaoComboBox"
+                                selectedKey="{Bandeira}"
+                                items="{/BandeiraSet}"
+                                >
+                                <core:Item key="{ID}" text="{Nome}" />
+                            </ComboBox>
+                        </form:fields>
+                    </form:FormElement>
+
+                    <form:FormElement id="tipoItemMercFormElement">
+                        <form:label>
+                            <Label text="Nível Estrutura Mercadológica" required="true"/>
+                        </form:label>
+                        <form:fields>
+                            <ComboBox
+                                placeholder="Selecione o nível na estrutura mercadológica"
+                                enabled="{view>/isNegociacaoEditavel}"
+                                id="tipoItemMercComboBox"
+                                selectedKey="{TipoItemMercID}"
+                                items="{tipoNegociacao/tiposItemMerc}"
+                                >
+                                <core:Item key="{ID}" text="{Descricao}" />
+                            </ComboBox>
+
+                        </form:fields>
+                    </form:FormElement>
+
+                </form:formElements>
+            </form:FormContainer>
+
+            <form:FormContainer title="">
+                <form:formElements>
+                    <form:FormElement>
+                        <form:label>
+                            <Label text="Tipo de Abrangência" required="true"/>
+                        </form:label>
+                        <form:fields>
+                            <ComboBox
+                                placeholder="Selecione tipo abrangencia"
+                                enabled="{view>/isNegociacaoEditavel}"
+                                id="tipoAbrangenciaComboBox"
+                                selectedKey="{TipoAbrangencia}"
+                                items="{tipoNegociacao/tiposAbrangencia}"
+                                >
+                                <core:Item key="{ID}" text="{Descricao}" />
+                            </ComboBox>
+
+                        </form:fields>
+                    </form:FormElement>
+                </form:formElements>
+            </form:FormContainer>
+
+            <form:FormContainer title="">
+                <form:formElements>
+                    <form:FormElement>
+                        <form:label>
+                            <Label text="{abrangencia/Descricao}" required="true"/>
+                        </form:label>
+                        <form:fields>
+                            <MultiInput 
+                                placeholder="Selecione {abrangencia/Descricao}"
+                                enabled="{view>/isNegociacaoEditavel}"
+                                id="multiInputItemsOrg"
+                                enableMultiLineMode="false"
+                                showValueHelp="true"
+                                valueHelpRequest="onValueHelpItemOrg"
+                                tokenUpdate="onUpdateItemOrg"
+                                tokens="{itemsOrg}"
+                                >
+                                <tokens>
+                                    <Token key="{ID}" text="{Nome}" />
+                                </tokens>
+                            </MultiInput>
+                        </form:fields>
+                    </form:FormElement>
+                </form:formElements>
+            </form:FormContainer>
+
+
+        </form:formContainers>
+    </form:Form>
+
+</core:FragmentDefinition>
+

@@ -1,0 +1,91 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form">
+    <Dialog
+        id="selecaoGrupoLojaDialog"
+        title="Adicionar {abrangencia/Descricao}"
+        contentWidth="400px"
+        contentHeight="500px"
+        >
+		<subHeader>
+			<Toolbar>
+				<SearchField
+                    id="searchFieldGrupoLojas"
+					search="onFilterConfirm"
+					width="100%" />
+			</Toolbar>
+		</subHeader>
+
+        <beginButton>
+            <Button text="Selecionar" type="Emphasized"
+            press="onSelecionar" />
+        </beginButton>
+
+        <endButton>
+            <Button text="Cancelar" press="onFechar" />
+        </endButton>
+
+        <content>
+
+
+            <FacetFilter
+                id="facetFilterGrupos"
+                type="Simple"
+                showPersonalization="true"
+                showReset="true"
+                reset="onFilterReset"
+                confirm="onFilterConfirm"
+                showPopoverOKButton="true"
+                >
+                <lists>
+                    <FacetFilterList
+                        title="UF"
+                        key="UFID"
+                        mode="MultiSelect"
+                        items="{path:'bandeira/ufs', templateShareable: 'true'}"
+                        >
+                        <items>
+                            <FacetFilterItem
+                                text="{ID}"
+                                key="{ID}"
+                                />
+                        </items>
+                    </FacetFilterList>
+                    <FacetFilterList
+                        title="Centro Ref."
+                        key="CentroReferenciaID"
+                        mode="MultiSelect"
+                        items="{path:'bandeira/centrosReferencia', templateShareable: 'true'}"
+                        >
+                        <items>
+                            <FacetFilterItem
+                                text="{ID}"
+                                key="{ID}"
+                                />
+                        </items>
+                    </FacetFilterList>
+                </lists>
+            </FacetFilter>
+
+            <List
+                growing="true"
+                growingThreshold="30"
+                growingScrollToLoad="true"
+                mode="MultiSelect"
+                id="gruposList"
+                items="{bandeira/gruposLojas}" >
+                <StandardListItem
+                    title="{Nome}"
+                    description="{Descricao}"
+                    type="Active"
+                    />
+            </List>
+
+        </content>
+    </Dialog>
+</core:FragmentDefinition>
+
+
+
+

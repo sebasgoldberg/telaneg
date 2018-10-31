@@ -1,0 +1,364 @@
+<core:FragmentDefinition 
+    xmlns:core="sap.ui.core"
+    xmlns="sap.ui.table"
+    xmlns:m="sap.m"
+    xmlns:mvc="sap.ui.core.mvc">
+
+    <!--
+                expand:'material,simulacao,itemOrg,subitem,subitem/impostosEntrada,subitem/impostosSaida',
+    -->
+    <TreeTable
+        id="treeTable"
+        selectionMode="Multiple"
+        enableColumnReordering="false"
+        expandFirstLevel="false"
+        rows="{
+            path : 'items',
+            parameters : {
+                templateShareable: true,
+                expand:'itemMerc,material,informacao,simulacao,itemOrg,impostosEntrada,impostosSaida,negociacao',
+                numberOfExpandedLevels: 0,
+                treeAnnotationProperties : {
+                    hierarchyLevelFor : 'Nivel',
+                    hierarchyNodeFor : 'Item',
+                    hierarchyParentNodeFor : 'Pai',
+                    hierarchyDrillStateFor : 'TipoNo'
+                }
+            }
+        }">
+
+        <toolbar>
+            <m:Toolbar>
+                <m:ToolbarSpacer/>
+                <m:Button
+                    visible="{view>/isNegociacaoEditavel}"
+                    text="Incluir {
+                        parts: [ {path: 'tipoNegociacao/ID'}, {path: 'TipoItemMercID'} ],
+                        formatter: '.formatter.formatDescricaoItemMerc'
+                        }"
+                    id="addItemButton"
+                    icon="sap-icon://add" iconFirst="true" type="Transparent" press="onAdicionarMercadoria" />
+                <m:Button
+                    visible="{view>/isNegociacaoEditavel}"
+                    id="removeItemButton"
+                    text="" icon="sap-icon://delete" iconFirst="false" type="Transparent" press="onEliminarItensSelecionados" />
+            </m:Toolbar>
+        </toolbar>
+
+        <columns>
+
+            <Column label="{
+                parts: [ {path: 'tipoNegociacao/ID'}, {path: 'TipoAbrangencia'} ],
+                formatter: '.formatter.formatDescricaoItemOrg'
+                }"
+                width="10%" >
+                <template>
+                    <m:Text text="{itemOrg/ID}" wrapping="true" />
+                </template>
+            </Column>
+
+            <Column label="{
+                parts: [ {path: 'tipoNegociacao/ID'}, {path: 'TipoItemMercID'} ],
+                formatter: '.formatter.formatDescricaoItemMerc'
+                }" width="10%" >
+                <template>
+                    <m:Text text="{
+                        parts: [ {path: 'itemMerc/ID'}, {path: 'itemMerc/Type'} ],
+                        formatter: '.formatter.formatItemMerc'
+                        }" wrapping="true" />
+                </template>
+            </Column>
+
+            <Column label="Descrição" width="25%">
+                <template>
+                    <m:Text text="{itemMerc/Nome}" wrapping="true" />
+                </template>
+            </Column>
+            
+            <!-- Inicio Colunas Sell-in -->
+            <Column label="UMB" id="UMBColumn">
+                <template>
+                    <m:Text text="{material/UMB}" wrapping="true" />
+                </template>
+            </Column>
+
+            <Column label="Custo Bruto"
+                id="custoBrutoColumn"
+                tooltip="Custo Bruto [BRL]"
+                hAlign="Right"
+                >
+                <template>
+                    <m:Text text="{
+                        path: 'informacao/CustoBruto',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: {
+                            precision: 12,
+                            scale: 2 }
+                        }" wrapping="true"
+                        visible="{= !${IsGenerico} }"
+                        />
+                </template>
+            </Column>
+
+            <Column label="Custo Liquido"
+                id="custoLiquidoColumn"
+                tooltip="Custo Liquido [BRL]"
+                hAlign="Right"
+                >
+                <template>
+                    <m:Text text="{
+                        path: 'informacao/CustoLiquido',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: {
+                            precision: 12,
+                            scale: 2 }
+                        }" wrapping="true"
+                        visible="{= !${IsGenerico} }"
+                        />
+                </template>
+            </Column>
+            <!-- Fim Colunas Sell-in -->
+
+            <!-- Inicio Colunas Valor Fixo -->
+            <Column label="Valor Bonificação" width="10%"
+                id="valorBonificacaoColumn"
+                tooltip="Valor Bonificação [BRL]"
+                >
+                <template>
+                    <m:Input value="{
+                        path: 'simulacao/Bonificacao',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: {
+                            precision: 12,
+                            scale: 2
+                            }
+                        }"
+                        submit="onSubmit"
+                        enabled="{view>/isNegociacaoEditavel}"
+                        id="valorBonificacaoEdit"
+                        maxLength="16"
+                        textAlign="Right"
+                        description=""
+                        visible="{= !${IsGenerico} }"
+                        />
+                </template>
+            </Column>
+            <!-- Fim Colunas Valor Fixo -->
+
+            <Column label="UMV" id="UMVColumn">
+                <template>
+                    <m:Text text="{informacao/UMV}" wrapping="true" />
+                </template>
+            </Column>
+
+            <Column label="Preço Venda"
+                id="precoVendaColumn"
+                tooltip="Preço Venda [BRL]"
+                width="7%">
+                <template>
+                    <m:Input value="{
+                        path: 'simulacao/PrecoVenda',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: {
+                            precision: 12,
+                            scale: 2
+                            }
+                        }"
+                        submit="onSubmit"
+                        enabled="{view>/isNegociacaoEditavel}"
+                        id="precoVendaEdit"
+                        maxLength="16"
+                        textAlign="Right"
+                        description=""
+                        visible="{= !${IsGenerico} }"
+                        />
+                </template>
+            </Column>
+
+            <Column label="PMZ"
+                id="PMZColumn"
+                tooltip="Preço Margem Zero [BRL]"
+                hAlign="Right"
+                >
+                <template>
+                    <m:Text text="{
+                        path: 'simulacao/PMZNovo',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: {
+                            precision: 12,
+                            scale: 2 }
+                        }" wrapping="true"
+                        visible="{= !${IsGenerico} }"
+                        />
+                </template>
+            </Column>
+
+            <Column label="Mg PDV"
+                id="margemPDVColumn"
+                tooltip="Margem PDV [%]"
+                hAlign="Right"
+                >
+                <template>
+
+                    <m:ObjectStatus
+                        visible="{= !${IsGenerico} }"
+                        text="{
+                            path: 'simulacao/Margem1',
+                            type: 'sap.ui.model.odata.type.Decimal',
+                            constraints: { scale: 2 }
+                            }"
+                        state="{
+                            parts: [ {path: 'simulacao/Margem1'}, {path: 'informacao/MargemTeorica'} ],
+                            formatter: '.formatter.margemStatus'
+                            }"
+                            />
+
+                </template>
+            </Column>
+
+            <Column label="Recomp." width="7%"
+                id="recomposicaoColumn"
+                tooltip="Recomposição [BRL]"
+                >
+                <template>
+                    <m:Input value="{
+                        path: 'simulacao/Recomposicao',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: {
+                            precision: 12,
+                            scale: 2
+                            }
+                        }"
+                        submit="onSubmit"
+                        enabled="{view>/isNegociacaoEditavel}"
+                        id="recomposicaoEdit"
+                        maxLength="16"
+                        textAlign="Right"
+                        description=""
+                        visible="{= !${IsGenerico} }"
+                        />
+                </template>
+            </Column>
+
+            <Column label="Mg 2"
+                id="margem2SimuladaColumn"
+                tooltip="Margem 2 Simulada [%]"
+                hAlign="Right"
+                >
+                <template>
+                    <!--
+                    <m:Text text="{
+                        path: 'simulacao/Margem2',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: { scale: 2 }
+                        }"
+                        wrapping="true"
+                        visible="{= !${IsGenerico} }"
+                        />
+                    -->
+                    <m:ObjectStatus
+                        visible="{= !${IsGenerico} }"
+                        text="{
+                            path: 'simulacao/Margem2',
+                            type: 'sap.ui.model.odata.type.Decimal',
+                            constraints: { scale: 2 }
+                            }"
+                        state="{
+                            parts: [ {path: 'simulacao/Margem2'}, {path: 'informacao/MargemTeorica'} ],
+                            formatter: '.formatter.margemStatus'
+                            }"
+                            />
+
+                </template>
+            </Column>
+
+            <Column label="Preço Mercado"
+                id="menorPrecoMercadoColumn"
+                tooltip="Preço de Mercado [BRL]"
+                hAlign="Right"
+                >
+                <template>
+                    <m:Text text="{
+                        path: 'informacao/MenorPrecoMercado',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: { scale: 2 }
+                        }" wrapping="true"
+                        visible="{= !${IsGenerico} }"
+                        />
+                </template>
+            </Column>
+
+            <Column label="IC"
+                id="indiceCompetitividadeColumn"
+                tooltip="Indice de Competitividade [%]"
+                hAlign="Right"
+                >
+                <template>
+
+                    <m:VBox visible="{= !${IsGenerico} }">
+                        <m:ObjectStatus
+                            text="{
+                                path: 'simulacao/IC',
+                                type: 'sap.ui.model.odata.type.Decimal',
+                                constraints: { scale: 2 }
+                                }" wrapping="true"
+                            visible="{
+                                parts: [ {path: 'informacao/MenorPrecoMercado'} ],
+                                formatter: '.formatter.isNotZero'
+                                }"
+                            state="{
+                                path: 'simulacao/IC',
+                                formatter: '.formatter.icStatus'
+                                }"
+                            />
+                        <m:Text text="---"
+                            visible="{
+                                parts: [ {path: 'informacao/MenorPrecoMercado'} ],
+                                formatter: '.formatter.isZero'
+                                }"
+                            />
+                    </m:VBox>
+
+                </template>
+            </Column>
+
+            <Column id="consultasColumn" label="" width="7%">
+                <template>
+                    <m:HBox>
+                    <core:Icon
+                        noTabStop="true"
+                        class="sapUiTinyMarginEnd"
+                        src="sap-icon://line-chart"
+                        size="16px"
+                        hoverColor="#386084"
+                        tooltip="Vendas"
+                        press="onMostrarVendas"
+                        />
+                    <core:Icon
+                        noTabStop="true"
+                        class="sapUiTinyMarginEnd"
+                        src="sap-icon://product"
+                        size="16px"
+                        hoverColor="#386084"
+                        tooltip="Estoque"
+                        press="onMostrarEstoque"
+                        />
+                    <core:Icon
+                        noTabStop="true"
+                        src="sap-icon://commission-check"
+                        size="16px"
+                        hoverColor="#386084"
+                        tooltip="Impostos"
+                        press="onMostrarImpostos"
+                        visible="{= !${IsGenerico} }"
+                        />
+                    </m:HBox>
+                </template>
+            </Column>
+
+        </columns>
+
+    </TreeTable>
+
+</core:FragmentDefinition>
+

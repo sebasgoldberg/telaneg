@@ -1,0 +1,34 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    >
+    <Dialog
+        id="infoDialog"
+        title="Informações {Descricao}"
+        contentWidth="500px"
+        contentHeight="200px"
+        >
+	<subHeader>
+	</subHeader>
+
+        <beginButton>
+            <Button text="Não voltar a exibir" press="onNaoVoltarExibir" />
+        </beginButton>
+
+        <endButton>
+            <Button type="Emphasized" text="Fechar" press="onFechar" />
+        </endButton>
+
+        <content>
+            <Carousel class="sapUiContentPadding" pages="{info/textos}">
+                <pages> 
+                    <Text class="sapUiSmallMargin" text="{Texto}" />
+                </pages>
+            </Carousel>
+        </content>
+    </Dialog>
+</core:FragmentDefinition>
+
+
+
+

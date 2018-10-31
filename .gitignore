@@ -1,0 +1,13 @@
+node_modules
+bower_components
+transp
+dist
+bsp
+*.swp
+*.un~
+package-lock.json
+*.tar.gz
+*.swo
+prototype
+tmp.*
+*.zip

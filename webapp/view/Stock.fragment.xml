@@ -1,0 +1,157 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form"
+    xmlns:sim="simplifique.telaneg.control"
+    >
+       <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false"
+            mode="MultiSelect" 
+            id='stockTable'
+            items="{
+                path:'stock',
+                templateShareable:true,
+                parameters:{
+                    expand:'item,item/itemMerc,item/itemOrg'
+                    }
+                }" >
+
+                <headerToolbar>
+                    <Toolbar width="auto" height="46px" design="Transparent" visible="true" enabled="true">
+                        <content>
+                            <ToolbarSpacer width=""/>
+                            <sim:ButtonPopover type="Emphasized" icon="sap-icon://add" placement="Left">
+
+                                <ResponsivePopover
+                                    id="popoverObterStock"
+                                    title="Obter Estoque"
+                                    class="sapUiPopupWithPadding"
+                                    >
+                                    <beginButton>
+                                        <Button text="Obter" press="onAdd" type="Emphasized" />
+                                    </beginButton>
+                                    <endButton>
+                                        <Button text="Fechar" press="onFecharAddPopover" />
+                                    </endButton>
+                                    <content>
+
+
+                                        <form:SimpleForm
+                                            >
+
+
+                                                <Label text="Data" />
+                                                <DatePicker id='stockDatePicker' />
+
+
+                                        </form:SimpleForm>
+
+
+                                        
+                                    </content>
+                                </ResponsivePopover>
+
+                            </sim:ButtonPopover>
+                            <Button text="" type="" icon="sap-icon://delete" press="onDeleteSemConfirmar"/>
+
+                        </content>
+                        <tooltip/>
+                    </Toolbar>
+                </headerToolbar>
+
+            <columns>
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="{
+                            parts: [ {path: 'negociacao/tipoNegociacao/ID'}, {path: 'negociacao/TipoAbrangencia'} ],
+                            formatter: '.formatter.formatDescricaoItemOrg'
+                            }"
+                            width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Cod. Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Data" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Estoque" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="DDE" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Quantidade Loja" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Quantidade CD" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <ObjectIdentifier title="{item/itemOrg/ID}" text="" titleActive="false" visible="true"/>
+                        <ObjectIdentifier title="{
+                            path: 'item/itemMerc/ID',
+                            type: 'sap.ui.model.odata.type.String',
+                            constraints: {
+                                isDigitSequence : true,
+                                maxLength : 18
+                                }
+                            }"
+                            text="" titleActive="false" visible="true"/>
+
+                        <Text text="{item/itemMerc/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+
+                        <ObjectIdentifier title="{path: 'Data', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}" />
+
+                        <ObjectNumber
+                            number="{path: 'Avaliacao', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                            unit="BRL" emphasized="true"
+                            />
+                        <ObjectNumber
+                            number="{path: 'DDE', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                            unit="dias" emphasized="true"
+                            />
+                        <ObjectNumber
+                            number="{path: 'QuantidadeLoja', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                            unit="UN" emphasized="true"
+                            />
+                        <ObjectNumber
+                            number="{path: 'QuantidadeCD', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                            unit="UN" emphasized="true"
+                            />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+
+
+</core:FragmentDefinition>
+

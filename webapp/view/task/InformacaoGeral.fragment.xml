@@ -1,0 +1,121 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+    <form:Form>
+        <form:layout>
+            <form:ResponsiveGridLayout labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="2" singleContainerFullSize="false" breakpointL="800" breakpointM="400"/>
+        </form:layout>
+        <form:formContainers>
+            <form:FormContainer title="">
+                <form:formElements>
+                    <form:FormElement>
+                        <form:label>
+                            <Label text="Descrição"/>
+                        </form:label>
+                        <form:fields>
+                            <Input
+                                submit="onSubmit"
+                                liveChange="onLiveChangeDescricao"
+                                id="descricaoNegociacaoInput"
+                                enabled="{view>/isNegociacaoEditavel}"
+                                value="{
+                                    path: 'Descricao',
+                                    type: 'sap.ui.model.odata.type.String',
+                                    constraints: { maxLength: 40 }
+                                    }" placeholder="Indique aqui alguma descrição" type="Text" showValueHelp="false" />
+                        </form:fields>
+                    </form:FormElement>
+                    <form:FormElement>
+                        <form:label>
+                            <Label
+                                id="periodoApuracaoLabel"
+                                text="{
+                                    parts: [ {path: 'tipoNegociacao/ID'} ],
+                                    formatter: '.formatter.textoPeriodoNegociacao'
+                                    }" required="true"/>
+                        </form:label>
+                        <form:fields>
+                            <DateRangeSelection
+                                minDate="{view>/periodoApuracao/minDate}"
+                                enabled="{view>/isNegociacaoEditavel}"
+                                id="periodoApuracaoRangeSelection"
+                                dateValue="{ApuracaoDe}"
+                                secondDateValue="{ApuracaoAte}"
+                            />
+                        </form:fields>
+                    </form:FormElement>
+                </form:formElements>
+            </form:FormContainer>
+            <form:FormContainer title="">
+                <form:formElements>
+                    <form:FormElement>
+                        <form:label>
+                            <Label text="Fornecedor" required="true"/>
+                        </form:label>
+                        <form:fields>
+                            <Input
+                                placeholder="Codigo/Desc."
+                                enabled="{view>/isNegociacaoEditavel}"
+                                id="fornecedorNegociacaoInput"
+                                required="false"
+                                value="{FornecedorID}" 
+                                showSuggestion="true"
+                                suggest="suggestFornecedores"
+                                suggestionItems="{/FornecedorSet}"
+                                maxSuggestionWidth="500px"
+                                showValueHelp="false"
+                                >
+                                <core:ListItem text="{ID}" additionalText="{Nome}" />
+                               <layoutData>
+                                    <layout:GridData span="XL4 L4 M4 S4" />
+                                </layoutData>
+                            </Input>
+                            <Input value="{fornecedor/Nome}" enabled="false"/>
+                        </form:fields>
+                    </form:FormElement>
+                    <form:FormElement>
+                        <form:label>
+                            <Label text="Negociador Fornecedor"/>
+                        </form:label>
+                        <form:fields>
+                            <Input
+                                submit="onSubmit"
+                                liveChange="onLiveChangeDescricao"
+                                placeholder="Nome do negociador do fornecedor"
+                                enabled="{view>/isNegociacaoEditavel}"
+                                id="negociadorNegociacaoInput"
+                                value="{Negociador}"/>
+                        </form:fields>
+                    </form:FormElement>
+                </form:formElements>
+            </form:FormContainer>
+            <form:FormContainer title="">
+                <form:formElements>
+                    <form:FormElement>
+                        <form:label>
+                            <Label text="Cláusula"/>
+                        </form:label>
+                        <form:fields>
+                            <Input
+                                placeholder="Codigo/Desc."
+                                enabled="{view>/isNegociacaoEditavel}"
+                                id="clausulaInput"
+                                value="{ClausulaID}"
+                                showValueHelp="true"
+                                valueHelpRequest="onValueHelpClausulaInput"
+                                showSuggestion="true"
+                                suggest="suggestClausula"
+                                suggestionItems="{clausulasPossiveis}"
+                                maxSuggestionWidth="300px"
+                                >
+                                <core:ListItem text="{ID}" additionalText="{Descricao}" />
+                                <layoutData>
+                                    <layout:GridData span="XL4 L4 M4 S4" />
+                                </layoutData>
+                            </Input>
+                            <Input value="{clausula/Descricao}" enabled="false" required="true"/>
+                        </form:fields>
+                    </form:FormElement>
+                </form:formElements>
+            </form:FormContainer>
+        </form:formContainers>
+    </form:Form>
+</core:FragmentDefinition>

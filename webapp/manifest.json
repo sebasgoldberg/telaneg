@@ -1,0 +1,159 @@
+{
+    "_version": "1.8.0",
+    "sap.app": {
+        "_version": "1.3.0",
+        "id": "simplifique.telaneg",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "Negociação",
+        "description": "Negociação",
+        "applicationVersion": {
+            "version": "1.2.2"
+        },
+        "embeds": [
+			"component_PrazoPagto"
+		  ],
+        "ach": "ach",
+        "resources": "resources.json",
+        "dataSources": {
+            "local": {
+                "uri": "https://fd5-ci.cencosud.corp:8443/sap/opu/odata/sap/ZNEGOCIACAO_SRV/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0",
+                    "localUri": "localService/metadata.xml"
+                }
+            }
+        }
+    },
+    "sap.fiori": {
+        "_version": "1.1.0",
+        "registrationIds": [],
+        "archeType": "transactional"
+    },
+    "sap.ui": {
+        "_version": "1.3.0",
+        "technology": "UI5",
+        "icons": {
+            "icon": "sap-icon://detail-view",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "handleValidation": true,
+        "_version": "1.3.0",
+        "rootView": {
+            "viewName": "simplifique.telaneg.view.App",
+            "type": "XML",
+            "async": false,
+            "id": "app"
+        },
+        "autoPrefixId": true,
+        "dependencies": {
+            "minUI5Version": "1.50.0",
+            "components" : {
+				"Componente.PrazoPagto": {}
+			},
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {}
+            }
+        },
+        "componentUsages": {
+			"reuseAnotherComponent": {
+			  "name": "Componente.PrazoPagto",
+			  "lazy": false
+			}
+		  },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "services":{
+            "ShellUIService":{
+                "factoryName": "sap.ushell.ui5service.ShellUIService"
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "": {
+                "dataSource": "local",
+                "type": "sap.ui.model.odata.v2.ODataModel",
+                "preload": true,
+                "settings": {
+                    "serviceUrlParams": {
+                        "sap-language": "PT"
+                        },
+                    "loadMetadataAsync": false,
+                    "json": true,
+                    "bJSON": true,
+                    "defaultBindingMode": "TwoWay",
+                    "useBatch": true,
+                    "refreshAfterChange": true,
+                    "disableHeadRequestForToken": true,
+                    "defaultUpdateMethod": "Put"
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "simplifique.telaneg.view",
+                "controlId": "idAppControl",
+                "clearTarget": false,
+                "controlAggregation": "pages",
+                "async": false,
+                "bypassed": {
+                    "target": [
+                        "TaskDetail"
+                    ]
+                }
+            },
+            "targets": {
+                "TaskList":{
+                    "viewName": "TaskList",
+                    "viewId": "TaskList",
+                    "viewLevel": 1,
+                    "transition": "slide",
+                    "title": "Negociação {Descricao}"
+                },
+                "TaskDetail":{
+                    "viewName": "TaskDetail",
+                    "viewId": "TaskDetail",
+                    "viewLevel": 2,
+                    "transition": "slide",
+                    "title": "Negociação {tipoNegociacao/Descricao}"
+                }
+            },
+            "routes": [
+                {
+                    "pattern": "TaskList/{tipoNegociacaoID}",
+                    "name": "TaskList",
+                    "target": [
+                        "TaskList"
+                    ]
+                },
+                {
+                    "pattern": "TaskDetail/{negociacaoID}",
+                    "name": "TaskDetail",
+                    "target": [
+                        "TaskDetail"
+                    ]
+                }
+            ]
+        }
+    }
+}
