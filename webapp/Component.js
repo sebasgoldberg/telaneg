@@ -19,6 +19,7 @@ import AnexosNegociacaoDialog from "simplifique/telaneg/controller/AnexosNegocia
 import AnexosEstipulacaoDialog from "simplifique/telaneg/controller/AnexosEstipulacaoDialog";
 import InfoDialog from "simplifique/telaneg/controller/InfoDialog";
 
+
 let navigationWithContext = {
     "NegociacaoSet": {
         "DetailPage1": "",
@@ -50,6 +51,8 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
      * @override
      */
     init: function() {
+        //chama componente
+        //jQuery.sap.registerModulePath("Componente.PrazoPagto", "/sap/bc/ui5_ui5/sap/zbsp_prazopagto");
         this._oErrorHandler = new ErrorHandler(this);
         // set the device model
         this.setModel(models.createDeviceModel(), "device");

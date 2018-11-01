@@ -70,17 +70,15 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
                         expand: 'tipoNegociacao,fornecedor,status,bandeira,clausula,abrangencia,comentarioImpressao,contrato'
                         },
                 };
-                
+
                 await this.bindObject(oPath);
-                
+
                 this.adaptarView();
-                
 
             });
     },
 
     adaptarView: function() {
-        
         let oNegociacao = this.getView().getBindingContext().getObject();
 
         this.tipoNegociacao = this.tiposNegociacoes.getTipoNegociacao(oNegociacao);
