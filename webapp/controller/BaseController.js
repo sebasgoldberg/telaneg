@@ -245,6 +245,19 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         }
     },
 
+    suggestUsuarios: function(oEvent) {
+        var sTerm = oEvent.getParameter("suggestValue");
+        var aFilters = [];
+        if (sTerm) {
+            aFilters.push(new Filter("ID", FilterOperator.Contains, sTerm))
+            aFilters.push(new Filter("NomeCompleto", FilterOperator.Contains, sTerm))
+        }
+        let oSource = oEvent.getSource();
+        let oBinding = oSource.getBinding("suggestionItems")
+        oBinding.filter(aFilters);
+    },
+
+
     suggestFornecedores: function(oEvent) {
         var sTerm = oEvent.getParameter("suggestValue");
         var aFilters = [];

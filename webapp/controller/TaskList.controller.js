@@ -102,6 +102,10 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         oMultiInputMaterial.getTokens().map( oToken =>
             aFilters.push(new Filter('MaterialID', FilterOperator.EQ, oToken.getKey() )));
 
+        let oMultiInputUsuario = v.byId('multiInputUsuario');
+        oMultiInputUsuario.getTokens().map( oToken =>
+            aFilters.push(new Filter('Usuario', FilterOperator.EQ, oToken.getKey() )));
+
         return aFilters;
         
     },

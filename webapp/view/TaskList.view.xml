@@ -36,7 +36,7 @@
             <f:DynamicPageHeader pinnable="true">
                 <f:content>
                     
-                    <fb:FilterBar id="ListReportFilterBar" useToolbar="false" showGoOnFB="false" searchEnabled="true" showFilterConfiguration="false"
+                    <fb:FilterBar id="ListReportFilterBar" useToolbar="false" showGoOnFB="false" searchEnabled="true" showFilterConfiguration="true"
                         search="onSearch"
                         >
                         <fb:filterItems>
@@ -116,6 +116,25 @@
                                                 maxLength : 10
                                                 }
                                             }" additionalText="{Nome}" />
+                                    </MultiInput>
+
+                                </fb:control>
+                            </fb:FilterItem>
+
+                            <fb:FilterItem label="Usuario" name="usuarioFilter">
+                                <fb:control>
+
+                                    <MultiInput 
+                                        placeholder="Digitar Usuario"
+                                        tokenUpdate="onTokenUpdate"
+                                        submit="onSearch"
+                                        id="multiInputUsuario"
+                                        enableMultiLineMode="true"
+                                        suggest="suggestUsuarios"
+                                        suggestionItems="{/UsuarioSet}"
+                                        maxSuggestionWidth="400px"
+                                        showValueHelp="false">
+                                        <core:ListItem key="{ID}" text="{ID}" additionalText="{NomeCompleto}" />
                                     </MultiInput>
 
                                 </fb:control>

@@ -22,8 +22,7 @@ export default BaseDialog.extend("simplifique.telaneg.controller.BaseSelectDialo
         if (! oSelectDialog)
             return;
         let oBinding = oSelectDialog.getBinding('items');
-        if (this.aAditionalFilters.length > 0)
-            oBinding.filter(this.aAditionalFilters);
+        oBinding.filter(this.aAditionalFilters);
         // @fixme Por default sempre faz o refresh.
         oBinding.refresh();
     },
