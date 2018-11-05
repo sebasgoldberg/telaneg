@@ -45,6 +45,7 @@
                                     <SearchField value="{view>/filter/descricao}" search="onSearch"/>
                                 </fb:control>
                             </fb:FilterItem>
+
                             <fb:FilterItem label="Status" name="statusFilter">
                                 <fb:control>
 
@@ -120,6 +121,23 @@
 
                                 </fb:control>
                             </fb:FilterItem>
+
+                            <fb:FilterItem label="Bandeira" name="bandeiraFilter">
+                                <fb:control>
+
+                                    <MultiComboBox
+                                        placeholder="Selecionar bandeira"
+                                        selectionChange="onSearch"
+                                        selectedKeys="{view>/filter/bandeiras}"
+                                        width="1000px"
+                                        enableMultiLineMode="true"
+                                        items="{/BandeiraSet}">
+                                        <core:Item key="{ID}" text="{Nome}" />
+                                    </MultiComboBox>
+
+                                </fb:control>
+                            </fb:FilterItem>
+
 
                             <fb:FilterItem label="Usuario" name="usuarioFilter">
                                 <fb:control>
@@ -217,22 +235,27 @@
                             </OverflowToolbar>
                         </headerToolbar>
                         <columns>
-                            <Column minScreenWidth="Phone">
+                            <Column width="8%" minScreenWidth="Phone">
                                 <header>
-                                    <Text text="Número"/>
+                                    <Text text="Negociação"/>
                                 </header>
                             </Column>
-                            <Column minScreenWidth="Desktop" demandPopin="true">
+                            <Column width="8%" minScreenWidth="Phone">
+                                <header>
+                                    <Text text="Acordo" />
+                                </header>
+                            </Column>
+                            <Column width="10%" minScreenWidth="Desktop" demandPopin="true">
                                 <header>
                                     <Text text="Fornecedor"/>
                                 </header>
                             </Column>
-                            <Column width="20%" minScreenWidth="Desktop">
+                            <Column width="18%" minScreenWidth="Desktop">
                                 <header>
                                     <Text text="Nome"/>
                                 </header>
                             </Column>
-                            <Column width="20%" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                            <Column width="18%" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
                                 <header>
                                     <Text text="Descrição"/>
                                 </header>
@@ -268,6 +291,15 @@
                                 <cells>
                                     <ObjectIdentifier title="{
                                         path: 'ID',
+                                        type: 'sap.ui.model.odata.type.String',
+                                        constraints: {
+                                            isDigitSequence : true,
+                                            maxLength : 10
+                                            }
+                                        }"
+                                        />
+                                    <ObjectIdentifier title="{
+                                        path: 'Estipulacao',
                                         type: 'sap.ui.model.odata.type.String',
                                         constraints: {
                                             isDigitSequence : true,

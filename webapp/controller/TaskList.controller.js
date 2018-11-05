@@ -22,6 +22,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
             filter: {
                 descricao: null,
                 status: [],
+                bandeiras: [],
                 dataDe: null,
                 dataAte: null,
             },
@@ -49,11 +50,25 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
                 await this.bindObject(oPath);
 
-                this.onSearch();
-
                 this.exibirPopupInformativoSeAplicar();
 
+                this.filtrarPorUsuario();
+
+                this.onSearch();
+
             });
+    },
+
+    filtrarPorUsuario: function() {
+        if (this.filtroUsuarioJaAplicado)
+            return;
+        this.filtroUsuarioJaAplicado = true;
+        let sUser = this.getOwnerComponent().getUserInfo().getId();
+        let oMultiInput = this.getView().byId('multiInputUsuario');
+        let oToken = new sap.m.Token()
+        oToken.setKey(sUser);
+        oToken.setText(sUser);
+        oMultiInput.addToken(oToken);
     },
 
     exibirPopupInformativoSeAplicar: function() {
@@ -90,6 +105,9 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
         filter.status.forEach( statusID => 
             aFilters.push(new Filter('Status', FilterOperator.EQ, statusID)));
+
+        filter.bandeiras.forEach( ID => 
+            aFilters.push(new Filter('Bandeira', FilterOperator.EQ, ID)));
 
         let oMultiInputFornecedor = v.byId('multiInputFornecedor');
         oMultiInputFornecedor.getTokens().map( oToken =>

@@ -110,6 +110,10 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
         this._infoDialog = new InfoDialog(this.getRootControl());
     },
 
+    getUserInfo: function() {
+        return sap.ushell.Container.getService("UserInfo");
+    },
+
     getImpostosPopover: function() {
         return this._impostosPopover;
     },
