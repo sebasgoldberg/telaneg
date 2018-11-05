@@ -103,7 +103,7 @@
                     "useBatch": true,
                     "refreshAfterChange": true,
                     "disableHeadRequestForToken": true,
-                    "defaultUpdateMethod": "Put"
+                    "defaultUpdateMethod": "PUT"
                 }
             }
         },
