@@ -130,6 +130,11 @@ export default {
                 G: 'Loja',
                 L: 'Loja',
                 },
+            C: {
+                R: 'Centro Ref.',
+                G: 'Centro Ref.',
+                L: 'Centro Ref.',
+                },
             };
         return oDescricoes[sTipoNegociacao][sTipoAbrangencia];
     },
@@ -150,6 +155,9 @@ export default {
                 M: 'Mercadoria',
                 G: 'Grupo',
                 S: 'Seção',
+                },
+            C: {
+                M: 'Mercadoria',
                 },
             };
         return oDescricoes[sTipoNegociacao][sTipoItemMerc];
@@ -178,6 +186,7 @@ export default {
             O: 'Período de Apuração',
             I: 'Período de Recebimento',
             F: '',
+            C: 'Validade Custo',
             };
         return oTextos[sTipoNegociacao];
     },

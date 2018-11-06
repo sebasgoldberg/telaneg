@@ -21,6 +21,9 @@ let aIDsControlesAdaptaveis = [
     "tipoItemMercFormElement",
     "periodoApuracaoRangeSelection",
     "periodoApuracaoLabel",
+    "clausulaLabel",
+    "clausulaInput",
+    "clausulaDescricaoInput",
     ];
 
 
@@ -65,6 +68,9 @@ class TipoNegociacaoSellOut extends TipoNegociacao{
             "consultasColumn",
             "periodoApuracaoRangeSelection",
             "periodoApuracaoLabel",
+            "clausulaLabel",
+            "clausulaInput",
+            "clausulaDescricaoInput",
             ]);
     }
 
@@ -88,6 +94,9 @@ class TipoNegociacaoSellIn extends TipoNegociacao{
             "consultasColumn",
             "periodoApuracaoRangeSelection",
             "periodoApuracaoLabel",
+            "clausulaLabel",
+            "clausulaInput",
+            "clausulaDescricaoInput",
             ]);
     }
 
@@ -104,11 +113,30 @@ class TipoNegociacaoValorFixo extends TipoNegociacao{
         super([
             "tipoItemMercFormElement",
             "valorBonificacaoColumn",
+            "clausulaLabel",
+            "clausulaInput",
+            "clausulaDescricaoInput",
             ]);
     }
 
     getItemsSectionTitle(){
         return "Bonificação";
+    }
+
+}
+
+
+class TipoNegociacaoCustoPontual extends TipoNegociacao{
+
+    constructor(){
+        super([
+            "periodoApuracaoRangeSelection",
+            "periodoApuracaoLabel",
+            ]);
+    }
+
+    getItemsSectionTitle(){
+        return "Mercadorias";
     }
 
 }
@@ -123,6 +151,7 @@ export default ManagedObject.extend("simplifique.telaneg.model.TiposNegociacoes"
             O: new TipoNegociacaoSellOut(),
             I: new TipoNegociacaoSellIn(),
             F: new TipoNegociacaoValorFixo(),
+            C: new TipoNegociacaoCustoPontual(),
             };
     },
 
