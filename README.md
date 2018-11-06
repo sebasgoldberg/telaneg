@@ -46,3 +46,5 @@ grunt build
 5.Remember to change to your own namespace.
 
 6.Posibly you will need two setup a proxy due to CORS restrictions.
+
+ADD
