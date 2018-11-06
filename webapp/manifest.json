@@ -81,6 +81,9 @@
         "services":{
             "ShellUIService":{
                 "factoryName": "sap.ushell.ui5service.ShellUIService"
+            },
+            "UserInfo":{
+                "factoryName": "sap.ushell.services.UserInfo"
             }
         },
         "models": {
