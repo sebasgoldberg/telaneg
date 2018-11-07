@@ -31,6 +31,7 @@ let aIDsControlesAdaptaveis = [
 
 let aIDsControlesTaskList = [
     'anexosColumn',
+    'estipulacaoColumn',
 ];
 
 class TipoNegociacao{
@@ -90,6 +91,7 @@ class TipoNegociacaoSellOut extends TipoNegociacao{
             "minutaButton",
             ],[
             'anexosColumn',
+            'estipulacaoColumn',
             ]);
     }
 
@@ -120,6 +122,7 @@ class TipoNegociacaoSellIn extends TipoNegociacao{
             "minutaButton",
             ],[
             'anexosColumn',
+            'estipulacaoColumn',
             ]);
     }
 
@@ -143,6 +146,7 @@ class TipoNegociacaoValorFixo extends TipoNegociacao{
             "minutaButton",
             ],[
             'anexosColumn',
+            'estipulacaoColumn',
             ]);
     }
 

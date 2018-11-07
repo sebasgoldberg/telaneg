@@ -81,7 +81,12 @@
                                 </fb:control>
                             </fb:FilterItem>
 
-                            <fb:FilterItem label="Vencimento" name="vencimentoFilter">
+                            <fb:FilterItem
+                                label="{
+                                    parts: [ {path: 'ID'} ],
+                                    formatter: '.formatter.apuracaoAteLabel'
+                                    }"
+                                name="vencimentoFilter">
                                 <fb:control>
                                     <HBox>
                                         <DateRangeSelection
@@ -240,7 +245,7 @@
                                     <Text text="Negociação"/>
                                 </header>
                             </Column>
-                            <Column width="8%" minScreenWidth="Phone">
+                            <Column width="8%" minScreenWidth="Phone" id="estipulacaoColumn">
                                 <header>
                                     <Text text="Acordo" />
                                 </header>
@@ -260,11 +265,31 @@
                                     <Text text="Descrição"/>
                                 </header>
                             </Column>
-                            <Column minScreenWidth="Phone">
+
+                            <Column minScreenWidth="Phone"
+                                visible="{
+                                    parts: [ {path: 'ID'} ],
+                                    formatter: '.formatter.apuracaoDeVisible'
+                                    }"
+                                >
                                 <header>
-                                    <Text text="Vencimento" />
+                                    <Text text="{
+                                        parts: [ {path: 'ID'} ],
+                                        formatter: '.formatter.apuracaoDeLabel'
+                                        }"
+                                        />
                                 </header>
                             </Column>
+
+                            <Column minScreenWidth="Phone">
+                                <header>
+                                    <Text text="{
+                                        parts: [ {path: 'ID'} ],
+                                        formatter: '.formatter.apuracaoAteLabel'
+                                        }" />
+                                </header>
+                            </Column>
+
                             <Column minScreenWidth="Phone" id="anexosColumn">
                                 <header>
                                     <Text text="Anexos" />
@@ -280,7 +305,12 @@
                                     <Text text="Usuário" />
                                 </header>
                             </Column>
-                            <Column width="10%" hAlign="Right" minScreenWidth="Desktop" demandPopin="true">
+                            <Column width="10%" hAlign="Right" minScreenWidth="Desktop" demandPopin="true"
+                                visible="{
+                                    parts: [ {path: 'ID'} ],
+                                    formatter: '.formatter.bonificacaoVisivel'
+                                    }"
+                                >
                                 <header>
                                     <Text text="Bonificação" />
                                 </header>
@@ -306,15 +336,32 @@
                                             maxLength : 10
                                             }
                                         }"
+                                        visible="{
+                                            parts: [ {path: 'TipoNegociacao'} ],
+                                            formatter: '.formatter.colunaEstipulacaoVisivel'
+                                            }"
                                         />
                                     <ObjectStatus text="{FornecedorID}" />
                                     <ObjectStatus text="{fornecedor/Nome}" wrapping="true" />
                                     <Text text="{Descricao}"  wrapping="true" />
+
+                                    <ObjectStatus text="{
+                                        path: 'ApuracaoDe',
+                                        type: 'sap.ui.model.type.Date',
+                                        formatOptions: { UTC: true, style: 'short' }
+                                        }"
+                                        visible="{
+                                            parts: [ {path: 'TipoNegociacao'} ],
+                                            formatter: '.formatter.apuracaoDeVisible'
+                                            }"
+                                        />
+
                                     <ObjectStatus text="{
                                         path: 'ApuracaoAte',
                                         type: 'sap.ui.model.type.Date',
                                         formatOptions: { UTC: true, style: 'short' }
                                         }" />
+
                                     <HBox
                                         visible="{
                                             parts: [ {path: 'TipoNegociacao'} ],
@@ -347,6 +394,10 @@
                                         type: 'sap.ui.model.odata.type.Decimal',
                                         constraints: { scale: 2 }
                                         }" unit="BRL" emphasized="false"
+                                        visible="{
+                                            parts: [ {path: 'TipoNegociacao'} ],
+                                            formatter: '.formatter.bonificacaoVisivel'
+                                            }"
                                         state="{
                                             parts: [ {path: 'Bonificacao'} ],
                                             formatter: '.formatter.defaultNumberStatus'

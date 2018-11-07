@@ -227,6 +227,53 @@ export default {
         return (['O', 'I', 'F'].indexOf(sTipoNegociacao) >= 0);
     },
 
+    colunaEstipulacaoVisivel: function(sTipoNegociacao){
+        return (['O', 'I', 'F'].indexOf(sTipoNegociacao) >= 0);
+    },
+
+    apuracaoDeLabel: function(sTipoNegociacao){
+
+        switch (sTipoNegociacao) {
+            case 'O':
+            case 'I':
+            case 'F':
+                return 'Vencimento';
+            
+            case 'C':
+                return 'Vigência De';
+
+            default:
+                return '';
+        }
+
+    },
+
+
+    apuracaoAteLabel: function(sTipoNegociacao){
+
+        switch (sTipoNegociacao) {
+            case 'O':
+            case 'I':
+            case 'F':
+                return 'Vencimento';
+            
+            case 'C':
+                return 'Vigência Até';
+
+            default:
+                return '';
+        }
+
+    },
+
+    bonificacaoVisivel: function(sTipoNegociacao){
+        return (['O', 'I', 'F'].indexOf(sTipoNegociacao) >= 0);
+    },
+
+    apuracaoDeVisible: function(sTipoNegociacao) {
+        return (['C', ].indexOf(sTipoNegociacao) >= 0);
+    },
+
 }
 
 
