@@ -77,7 +77,11 @@
                     <Text text="{fornecedor/Nome}" class="sapMTitleStyleH3" press="_onFioriObjectPageHeaderContactPress"/>
                 </items>
             </VBox>
-            <VBox>
+            <VBox visible="{
+                parts: [ {path: 'TipoNegociacao'} ],
+                formatter: '.formatter.bonificacaoVisivel'
+                }"
+                >
                 <items>
                     <Title text="Bonificação"/>
                     <ObjectNumber number="{

@@ -88,6 +88,7 @@
                 hAlign="Right"
                 >
                 <template>
+
                     <m:Text text="{
                         path: 'informacao/CustoBruto',
                         type: 'sap.ui.model.odata.type.Decimal',
@@ -97,8 +98,87 @@
                         }" wrapping="true"
                         visible="{= !${IsGenerico} }"
                         />
+
                 </template>
             </Column>
+
+            <Column label="Custo Bruto"
+                id="custoBrutoEditavelColumn"
+                tooltip="Custo Bruto [BRL]"
+                hAlign="Right"
+                width="7%"
+                >
+                <template>
+
+                    <m:Input value="{
+                        path: 'simulacao/Custo',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: {
+                            precision: 12,
+                            scale: 2
+                            }
+                        }"
+                        submit="onSubmit"
+                        enabled="{view>/isNegociacaoEditavel}"
+                        maxLength="16"
+                        textAlign="Right"
+                        description=""
+                        visible="{= !${IsGenerico} }"
+                        />
+
+                </template>
+            </Column>
+
+            <Column label="Desconto"
+                id="descontoColumn"
+                tooltip="Desconto [BRL]"
+                hAlign="Right"
+                width="7%"
+                >
+                <template>
+                    <m:Input value="{
+                        path: 'simulacao/Desconto',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: {
+                            precision: 12,
+                            scale: 2
+                            }
+                        }"
+                        submit="onSubmit"
+                        enabled="{view>/isNegociacaoEditavel}"
+                        maxLength="16"
+                        textAlign="Right"
+                        description=""
+                        visible="{= !${IsGenerico} }"
+                        />
+                </template>
+            </Column>
+
+            <Column label="Desp. Ac."
+                id="despesasAcessoriasColumn"
+                tooltip="Despesas Acessoria [BRL]"
+                hAlign="Right"
+                width="7%"
+                >
+                <template>
+                    <m:Input value="{
+                        path: 'simulacao/DespesasAcessorias',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: {
+                            precision: 12,
+                            scale: 2
+                            }
+                        }"
+                        submit="onSubmit"
+                        enabled="{view>/isNegociacaoEditavel}"
+                        maxLength="16"
+                        textAlign="Right"
+                        description=""
+                        visible="{= !${IsGenerico} }"
+                        />
+                </template>
+            </Column>
+
 
             <Column label="Custo Liquido"
                 id="custoLiquidoColumn"

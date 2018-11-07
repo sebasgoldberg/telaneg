@@ -12,6 +12,9 @@ let aIDsControlesAdaptaveis = [
     "indiceCompetitividadeColumn",
     "UMBColumn",
     "custoBrutoColumn",
+    "custoBrutoEditavelColumn",
+    "descontoColumn",
+    "despesasAcessoriasColumn",
     "custoLiquidoColumn",
     "recomposicaoColumn",
     "consultasColumn",
@@ -27,6 +30,7 @@ let aIDsControlesAdaptaveis = [
     "anexosNegociacaoButton",
     "anexosEstipulacaoButton",
     "minutaButton",
+    "ComentarioAcordoObjectPageSubSection",
     ];
 
 let aIDsControlesTaskList = [
@@ -89,6 +93,7 @@ class TipoNegociacaoSellOut extends TipoNegociacao{
             "clausulaDescricaoInput",
             "anexosEstipulacaoButton",
             "minutaButton",
+            "ComentarioAcordoObjectPageSubSection",
             ],[
             'anexosColumn',
             'estipulacaoColumn',
@@ -120,6 +125,7 @@ class TipoNegociacaoSellIn extends TipoNegociacao{
             "clausulaDescricaoInput",
             "anexosEstipulacaoButton",
             "minutaButton",
+            "ComentarioAcordoObjectPageSubSection",
             ],[
             'anexosColumn',
             'estipulacaoColumn',
@@ -144,6 +150,7 @@ class TipoNegociacaoValorFixo extends TipoNegociacao{
             "clausulaDescricaoInput",
             "anexosEstipulacaoButton",
             "minutaButton",
+            "ComentarioAcordoObjectPageSubSection",
             ],[
             'anexosColumn',
             'estipulacaoColumn',
@@ -161,6 +168,17 @@ class TipoNegociacaoCustoPontual extends TipoNegociacao{
 
     constructor(){
         super([
+            "UMBColumn",
+            "custoBrutoEditavelColumn",
+            "descontoColumn",
+            "despesasAcessoriasColumn",
+            "PMZColumn",
+            "precoVendaColumn",
+            "margemPDVColumn",
+            "margem2SimuladaColumn",
+            "menorPrecoMercadoColumn",
+            "indiceCompetitividadeColumn",
+            "consultasColumn",
             "periodoApuracaoRangeSelection",
             "periodoApuracaoLabel",
             "anexosNegociacaoButton",
