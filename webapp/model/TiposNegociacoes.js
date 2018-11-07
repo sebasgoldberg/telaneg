@@ -29,11 +29,15 @@ let aIDsControlesAdaptaveis = [
     "minutaButton",
     ];
 
+let aIDsControlesTaskList = [
+    'anexosColumn',
+];
 
 class TipoNegociacao{
 
-    constructor(aIDsControlesVisiveis){
+    constructor(aIDsControlesVisiveis, aIDsControlesVisiveisTaskList = []){
         this.aIDsControlesVisiveis = aIDsControlesVisiveis;
+        this.aIDsControlesVisiveisTaskList = aIDsControlesVisiveisTaskList;
         this.oView = undefined;
     }
 
@@ -41,14 +45,22 @@ class TipoNegociacao{
         this.oView = oView;
     }
 
-    adaptarView(){
-        aIDsControlesAdaptaveis
+    modificarVisibilidade(aTudosOsControles, aControlesVisiveis){
+        aTudosOsControles
         .forEach( sIDControle => 
             this.oView.byId(sIDControle).setVisible(
-                this.aIDsControlesVisiveis.indexOf(sIDControle) >= 0)
+                aControlesVisiveis.indexOf(sIDControle) >= 0)
             );
+    }
+
+    adaptarView(){
+        this.modificarVisibilidade(aIDsControlesAdaptaveis, this.aIDsControlesVisiveis);
         this.getView().byId("itemsObjectPageSection").setTitle(this.getItemsSectionTitle());
         this.getView().byId("itemsObjectPageSubSection").setTitle(this.getItemsSectionTitle());
+    }
+
+    adaptarTaskListView(){
+        this.modificarVisibilidade(aIDsControlesTaskList, this.aIDsControlesVisiveisTaskList);
     }
 
     getView(){
@@ -76,6 +88,8 @@ class TipoNegociacaoSellOut extends TipoNegociacao{
             "clausulaDescricaoInput",
             "anexosEstipulacaoButton",
             "minutaButton",
+            ],[
+            'anexosColumn',
             ]);
     }
 
@@ -104,6 +118,8 @@ class TipoNegociacaoSellIn extends TipoNegociacao{
             "clausulaDescricaoInput",
             "anexosEstipulacaoButton",
             "minutaButton",
+            ],[
+            'anexosColumn',
             ]);
     }
 
@@ -125,6 +141,8 @@ class TipoNegociacaoValorFixo extends TipoNegociacao{
             "clausulaDescricaoInput",
             "anexosEstipulacaoButton",
             "minutaButton",
+            ],[
+            'anexosColumn',
             ]);
     }
 
@@ -165,8 +183,8 @@ export default ManagedObject.extend("simplifique.telaneg.model.TiposNegociacoes"
             };
     },
 
-    getTipoNegociacao: function(oNegociacao){
-        let oTipoNegociacao = this.oTiposNegociacao[oNegociacao.TipoNegociacao];
+    getTipoNegociacao: function(sTipoNegociacao){
+        let oTipoNegociacao = this.oTiposNegociacao[sTipoNegociacao];
         oTipoNegociacao.setView(this.oView);
         return oTipoNegociacao;
     },

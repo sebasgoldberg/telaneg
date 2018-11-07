@@ -81,7 +81,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
     adaptarView: function() {
         let oNegociacao = this.getView().getBindingContext().getObject();
 
-        this.tipoNegociacao = this.tiposNegociacoes.getTipoNegociacao(oNegociacao);
+        this.tipoNegociacao = this.tiposNegociacoes.getTipoNegociacao(oNegociacao.TipoNegociacao);
         this.tipoNegociacao.adaptarView();
 
         this.tipoStatus = this.tiposStatus.getTipoStatus(oNegociacao);

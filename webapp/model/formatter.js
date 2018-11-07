@@ -223,6 +223,10 @@ export default {
         return value;
     },
 
+    colunaAnexosVisivel: function(sTipoNegociacao){
+        return (['O', 'I', 'F'].indexOf(sTipoNegociacao) >= 0);
+    },
+
 }
 
 

@@ -4,6 +4,7 @@ import Filter from 'sap/ui/model/Filter';
 import FilterOperator from 'sap/ui/model/FilterOperator';
 import JSONModel from "sap/ui/model/json/JSONModel";
 import MessageToast from 'sap/m/MessageToast';
+import TiposNegociacoes from 'simplifique/telaneg/model/TiposNegociacoes';
 
 export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
@@ -40,6 +41,8 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
                 this.sTipoNegociacaoID = oEvent.mParameters.data.tipoNegociacaoID;
 
+                this.tipoNegociacao = (new TiposNegociacoes(this.getView())).getTipoNegociacao(this.sTipoNegociacaoID);
+                this.tipoNegociacao.adaptarTaskListView();
 
                 let oPath = {
                     path: `/TipoNegociacaoSet('${this.sTipoNegociacaoID}')/`,

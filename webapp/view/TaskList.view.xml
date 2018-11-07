@@ -265,7 +265,7 @@
                                     <Text text="Vencimento" />
                                 </header>
                             </Column>
-                            <Column minScreenWidth="Phone">
+                            <Column minScreenWidth="Phone" id="anexosColumn">
                                 <header>
                                     <Text text="Anexos" />
                                 </header>
@@ -315,7 +315,11 @@
                                         type: 'sap.ui.model.type.Date',
                                         formatOptions: { UTC: true, style: 'short' }
                                         }" />
-                                    <HBox>
+                                    <HBox
+                                        visible="{
+                                            parts: [ {path: 'TipoNegociacao'} ],
+                                            formatter: '.formatter.colunaAnexosVisivel'
+                                            }">
                                         <Button
                                             enabled="{
                                                 parts: [ {path: 'Estipulacao'} ],
