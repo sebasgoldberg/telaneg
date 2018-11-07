@@ -24,6 +24,9 @@ let aIDsControlesAdaptaveis = [
     "clausulaLabel",
     "clausulaInput",
     "clausulaDescricaoInput",
+    "anexosNegociacaoButton",
+    "anexosEstipulacaoButton",
+    "minutaButton",
     ];
 
 
@@ -71,6 +74,8 @@ class TipoNegociacaoSellOut extends TipoNegociacao{
             "clausulaLabel",
             "clausulaInput",
             "clausulaDescricaoInput",
+            "anexosEstipulacaoButton",
+            "minutaButton",
             ]);
     }
 
@@ -97,6 +102,8 @@ class TipoNegociacaoSellIn extends TipoNegociacao{
             "clausulaLabel",
             "clausulaInput",
             "clausulaDescricaoInput",
+            "anexosEstipulacaoButton",
+            "minutaButton",
             ]);
     }
 
@@ -116,6 +123,8 @@ class TipoNegociacaoValorFixo extends TipoNegociacao{
             "clausulaLabel",
             "clausulaInput",
             "clausulaDescricaoInput",
+            "anexosEstipulacaoButton",
+            "minutaButton",
             ]);
     }
 
@@ -132,6 +141,7 @@ class TipoNegociacaoCustoPontual extends TipoNegociacao{
         super([
             "periodoApuracaoRangeSelection",
             "periodoApuracaoLabel",
+            "anexosNegociacaoButton",
             ]);
     }
 

@@ -29,6 +29,18 @@
                 -->
                 <uxap:actions>
                     <Button
+                        id="anexosNegociacaoButton"
+                        enabled="{
+                            parts: [ {path: 'Estipulacao'} ],
+                            formatter: '.formatter.isInitial'
+                            }"
+                        text="Anexos" icon="sap-icon://attachment" press="onMostrarAnexos">
+                        <layoutData>
+                            <OverflowToolbarLayoutData moveToOverflow="true"/>
+                        </layoutData>
+                    </Button>
+                    <Button
+                        id="anexosEstipulacaoButton"
                         enabled="{
                             parts: [ {path: 'Estipulacao'} ],
                             formatter: '.formatter.isNotInitial'
@@ -39,6 +51,7 @@
                         </layoutData>
                     </Button>
                     <Button
+                        id="minutaButton"
                         tooltip="{
                             parts: [ { path: 'Bandeira'}, { path: 'FornecedorID' } ],
                             formatter: '.formatter.nomeMinutaPDF'
