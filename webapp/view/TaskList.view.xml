@@ -46,7 +46,7 @@
                                 </fb:control>
                             </fb:FilterItem>
 
-                            <fb:FilterItem label="Status" name="statusFilter">
+                            <fb:FilterItem label="Status" name="statusFilter" id="idStatusFilter">
                                 <fb:control>
 
                                     <MultiComboBox
@@ -81,7 +81,7 @@
                                 </fb:control>
                             </fb:FilterItem>
 
-                            <fb:FilterItem label="Vencimento" name="vencimentoFilter">
+                            <fb:FilterItem label="Vencimento" name="vencimentoFilter" id="idVencimentoFilter">
                                 <fb:control>
                                     <HBox>
                                         <DateRangeSelection
@@ -96,7 +96,22 @@
                                 </fb:control>
                             </fb:FilterItem>
 
-                            <fb:FilterItem label="Material" name="materialFilter">
+                           <fb:FilterItem label="Vigência" name="vigenciaFilter" id="idVigenciaFilter">
+                                <fb:control>
+                                    <HBox>
+                                        <DateRangeSelection
+                                            submit="onSearch"
+                                            id="vigenciaDateRangeSelection"
+                                            dateValue="{view>/filter/dataDe}"
+                                            secondDateValue="{view>/filter/dataAte}"
+                                            change="onSearch"
+                                        />
+                                        <Button icon="sap-icon://delete" press="clearVencimentoDateRangeSelection"/>
+                                    </HBox>
+                                </fb:control>
+                            </fb:FilterItem>
+
+                            <fb:FilterItem label="Material" name="materialFilter" id="idMaterialFilter">
                                 <fb:control>
 
                                     <MultiInput 
@@ -157,6 +172,8 @@
 
                                 </fb:control>
                             </fb:FilterItem>
+
+
 
                         </fb:filterItems>
                     </fb:FilterBar>
@@ -351,9 +368,10 @@
                                 </cells>
                             </ColumnListItem>
                         </items>
-                    </Table>
+                    </Table>    
+                    <core:Fragment fragmentName="simplifique.telaneg.view.task.PrazoPagtoResult" type="XML"/>                
                 </items>
-            </VBox>
+            </VBox>            
         </f:content>
         <f:footer>
             <OverflowToolbar>

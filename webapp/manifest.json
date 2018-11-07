@@ -69,7 +69,7 @@
             }
         },
         "componentUsages": {
-			"reuseAnotherComponent": {
+			"ComponentePrazoPagamento": {
 			  "name": "Componente.PrazoPagto",
 			  "lazy": false
 			}

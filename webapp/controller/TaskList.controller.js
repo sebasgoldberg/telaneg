@@ -8,6 +8,8 @@ import MessageToast from 'sap/m/MessageToast';
 export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
     formatter: formatter,
+    tipoNegociacao: '',
+
 
     onInit: function(){
 
@@ -39,6 +41,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
             .attachDisplay( async (oEvent) => {
 
                 this.sTipoNegociacaoID = oEvent.mParameters.data.tipoNegociacaoID;
+                this.tipoNegociacao = this.sTipoNegociacaoID;
 
 
                 let oPath = {
@@ -48,6 +51,10 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
                     },
                 };
 
+                if (this.tipoNegociacao == 'P'){
+                    this.adaptarView();
+                }
+
                 await this.bindObject(oPath);
 
                 this.exibirPopupInformativoSeAplicar();
@@ -55,6 +62,12 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
                 this.filtrarPorUsuario();
 
                 this.onSearch();
+
+                //bloqueia seções desnecessarias para a negociação Prazo de Pagamento
+        //if (this.tipoNegociacao == 'P'){
+        //    this.adaptarView();
+        //}
+                
 
             });
     },
@@ -132,14 +145,26 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
         let v = this.getView();
         let oNegociacoesTable = v.byId('negociacoesTable');
+
+        if ( this.getView().byId("negociacoesPrazoTable") ){
+            oNegociacoesTable = v.byId("negociacoesPrazoTable");
+        }
+
         aFilters.push(new Filter('TipoNegociacao', FilterOperator.EQ, this.sTipoNegociacaoID));
+        var vExpand = 'fornecedor,status';
+
+        if (this.sTipoNegociacaoID == 'P') {
+            vExpand = 'fornecedor,status,comentarioImpressao,bandeira';
+
+        }
 
         let oBindingInfo = oNegociacoesTable.getBindingInfo('items');
         oNegociacoesTable.bindAggregation('items', {
             model: oBindingInfo.model,
             path: '/NegociacaoSet',
             parameters: {
-                expand: 'fornecedor,status',
+                //expand: 'fornecedor,status',
+                expand: vExpand,
                 },
             template: oBindingInfo.template,
             templateShareable: true,
@@ -206,7 +231,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
     onCopiarSelecionados: async function(oEvent) {
         let aSelectedContexts = this.getView().byId('negociacoesTable').getSelectedContexts();
-        if (aSelectedContexts.length == 0){
+        if (aSelectedContexts.length == 0){            
             MessageToast.show("Deve selecionar as negociações a serem copiadas.");
             return;
         }
@@ -259,6 +284,22 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         let oVencimentoDateRangeSelection = this.getView().byId('vencimentoDateRangeSelection');
         oVencimentoDateRangeSelection.setValue();
         this.onSearch();
+    },
+
+    adaptarView: function(oEvent){
+        //ocultar
+        this.getView().byId("idStatusFilter").setVisible(false);
+        this.getView().byId("idMaterialFilter").setVisible(false);
+        this.getView().byId("idVencimentoFilter").setVisible(false);       
+        this.getView().byId("negociacoesTable").setVisible(false);
+        //exibir
+        this.getView().byId("negociacoesPrazoTable").setVisible(true);
+        this.getView().byId("idVigenciaFilter").setVisible(true);
+        
+        
+        
+        
+
     },
 
 });

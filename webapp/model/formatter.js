@@ -192,8 +192,8 @@ export default {
         return oTextos[sTipoNegociacao];
     },
 
-    isNotInitial: function(value){
-        if (value)
+    isNotInitial: function(value, tipo){
+        if (value || tipo == "P")
             return true;
         return false;
     },

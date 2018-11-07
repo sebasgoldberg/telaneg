@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form">
-    <form:Form  id="infoGeralSubSection">
+    <form:Form id="infoGeralPrazPagSubSection" visible="false" >
         <form:layout>
             <form:ResponsiveGridLayout labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="2" singleContainerFullSize="false" breakpointL="800" breakpointM="400"/>
         </form:layout>
@@ -8,13 +8,13 @@
                 <form:formElements>
                     <form:FormElement>
                         <form:label>
-                            <Label text="Descrição"/>
+                            <Label text="Descrição" required="true"/>
                         </form:label>
                         <form:fields>
                             <Input
-                                submit="onSubmit"
+                                submit="onSubmit" required="true"
                                 liveChange="onLiveChangeDescricao"
-                                id="descricaoNegociacaoInput"
+                                id="descricaoNegociacaoPrazPagInput"
                                 enabled="{view>/isNegociacaoEditavel}"
                                 value="{
                                     path: 'Descricao',
@@ -25,21 +25,20 @@
                     </form:FormElement>
                     <form:FormElement>
                         <form:label>
-                            <Label
-                                id="periodoApuracaoLabel"
-                                text="{
-                                    parts: [ {path: 'tipoNegociacao/ID'} ],
-                                    formatter: '.formatter.textoPeriodoNegociacao'
-                                    }" required="true"/>
+                            <Label                                
+                                text="Bandeira" required="true"/>
                         </form:label>
                         <form:fields>
-                            <DateRangeSelection
-                                minDate="{view>/periodoApuracao/minDate}"
+                            <Input
+                                submit="onSubmit" required="true"
+                                liveChange="onLiveChangeDescricao"
+                                id="BandeiraNegociacaoInput"
                                 enabled="{view>/isNegociacaoEditavel}"
-                                id="periodoApuracaoRangeSelection"
-                                dateValue="{ApuracaoDe}"
-                                secondDateValue="{ApuracaoAte}"
-                            />
+                                value="{
+                                    path: 'Bandeira',
+                                    type: 'sap.ui.model.odata.type.String',
+                                    constraints: { maxLength: 40 }
+                                    }" placeholder="Selecione a bandeira" type="Text" showValueHelp="false" />
                         </form:fields>
                     </form:FormElement>
                 </form:formElements>
@@ -52,10 +51,10 @@
                         </form:label>
                         <form:fields>
                             <Input
-                                placeholder="Codigo/Desc."
+                                placeholder="Codigo/Desc." 
                                 enabled="{view>/isNegociacaoEditavel}"
-                                id="fornecedorNegociacaoInput"
-                                required="false"
+                                id="fornecedorNegociacaoPrazPagInput"
+                                required="true"
                                 value="{FornecedorID}" 
                                 showSuggestion="true"
                                 suggest="suggestFornecedores"
@@ -73,16 +72,21 @@
                     </form:FormElement>
                     <form:FormElement>
                         <form:label>
-                            <Label text="Negociador Fornecedor"/>
+                            <Label
+                                id="periodoVigenciaDeLabel"
+                                text="Período de Vigência De" required="true"/>
                         </form:label>
-                        <form:fields>
-                            <Input
-                                submit="onSubmit"
-                                liveChange="onLiveChangeDescricao"
-                                placeholder="Nome do negociador do fornecedor"
-                                enabled="{view>/isNegociacaoEditavel}"
-                                id="negociadorNegociacaoInput"
-                                value="{Negociador}"/>
+                        <form:fields>                            
+                            <DatePicker
+                                id="periodoVigenciaDeDatePicker"
+                                value="{
+												  		path: 'ApuracaoDe',
+												  		type: 'sap.ui.model.type.Date',
+														formatOptions: {															
+																style: 'medium', UTC: true															
+																		}												  		
+												  				}"                                 
+                                class="sapUiSmallMarginBottom"/>
                         </form:fields>
                     </form:FormElement>
                 </form:formElements>
@@ -91,27 +95,35 @@
                 <form:formElements>
                     <form:FormElement>
                         <form:label>
-                            <Label text="Cláusula"/>
+                            <Label text="Negociador Fornecedor" required="true"/>
                         </form:label>
                         <form:fields>
                             <Input
-                                placeholder="Codigo/Desc."
+                                submit="onSubmit" required="true"
+                                liveChange="onLiveChangeDescricao"
+                                placeholder="Nome do negociador do fornecedor"
                                 enabled="{view>/isNegociacaoEditavel}"
-                                id="clausulaInput"
-                                value="{ClausulaID}"
-                                showValueHelp="true"
-                                valueHelpRequest="onValueHelpClausulaInput"
-                                showSuggestion="true"
-                                suggest="suggestClausula"
-                                suggestionItems="{clausulasPossiveis}"
-                                maxSuggestionWidth="300px"
-                                >
-                                <core:ListItem text="{ID}" additionalText="{Descricao}" />
-                                <layoutData>
-                                    <layout:GridData span="XL4 L4 M4 S4" />
-                                </layoutData>
-                            </Input>
-                            <Input value="{clausula/Descricao}" enabled="false" required="true"/>
+                                id="negociadorNegociacaoPrazPagInput"
+                                value="{Negociador}"/>
+                        </form:fields>
+                    </form:FormElement>
+                    <form:FormElement>
+                        <form:label>
+                            <Label
+                                id="periodoVigenciaAteLabel"
+                                text="Período de Vigência Até" required="true"/>
+                        </form:label>
+                        <form:fields>
+                            <DatePicker
+                                id="periodoVigenciaAteDatePicker"
+                                value="{
+												  		path: 'ApuracaoAte',
+												  		type: 'sap.ui.model.type.Date',
+														formatOptions: {															
+																style: 'medium', UTC: true															
+																		}												  		
+												  				}"                                                                
+                                class="sapUiSmallMarginBottom"/>
                         </form:fields>
                     </form:FormElement>
                 </form:formElements>

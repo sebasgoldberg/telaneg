@@ -37,10 +37,13 @@ class TipoNegociacao{
 
     adaptarView(){
         aIDsControlesAdaptaveis
-        .forEach( sIDControle => 
-            this.oView.byId(sIDControle).setVisible(
+        .forEach( sIDControle => {
+            if (this.oView.byId(sIDControle))
+            {
+                this.oView.byId(sIDControle).setVisible(
                 this.aIDsControlesVisiveis.indexOf(sIDControle) >= 0)
-            );
+            }                   
+        });
         this.getView().byId("itemsObjectPageSection").setTitle(this.getItemsSectionTitle());
         this.getView().byId("itemsObjectPageSubSection").setTitle(this.getItemsSectionTitle());
     }
@@ -126,8 +129,8 @@ class TipoNegociacaoPrazoPagto extends TipoNegociacao{
             "menorPrecoMercadoColumn",
             "indiceCompetitividadeColumn",
             "consultasColumn",
-            "periodoApuracaoRangeSelection",
-            "periodoApuracaoLabel",
+            "infoGeralSubSection",
+            "infoGeralPrazPagSubSection", 
             ]);
     }
 
@@ -136,10 +139,23 @@ class TipoNegociacaoPrazoPagto extends TipoNegociacao{
     }
 
     ocultarSecoes(){
+        //ocultar
         this.getView().byId("abrangenciaObjectPageSection").setVisible(false);
         this.getView().byId("contratoObjectPageSection").setVisible(false);
         this.getView().byId("itemsObjectPageSection").setVisible(false);            
+        this.getView().byId("infoGeralSubSection").setVisible(false);
+        this.getView().byId("statusBox").setVisible(false);
+        this.getView().byId("bonificacaoBox").setVisible(false);
+        this.getView().byId("anexoButtonId").setVisible(false);
+        
+        
+        
+
+        //exibir
         this.getView().byId("prazoPagtoObjectPageSection").setVisible(true);
+        this.getView().byId("infoGeralPrazPagSubSection").setVisible(true);
+        this.getView().byId("anexoPrazoButtonId").setVisible(true);
+        
     }
 
 }

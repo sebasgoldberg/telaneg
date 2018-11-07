@@ -28,12 +28,22 @@
                 </uxap:navigationBar>
                 -->
                 <uxap:actions>
-                    <Button
+                    <Button id="anexoButtonId"
                         enabled="{
-                            parts: [ {path: 'Estipulacao'} ],
+                            parts: [ {path: 'Estipulacao'},{path: 'TipoNegociacao'} ],
                             formatter: '.formatter.isNotInitial'
                             }"
                         text="Anexos" icon="sap-icon://attachment" press="onMostrarAnexosEstipulacao">
+                        <layoutData>
+                            <OverflowToolbarLayoutData moveToOverflow="true"/>
+                        </layoutData>
+                    </Button>
+                        <Button id="anexoPrazoButtonId" visible="false"
+                        enabled="{
+                            parts: [ {path: 'Estipulacao'},{path: 'TipoNegociacao'} ],
+                            formatter: '.formatter.isNotInitial'
+                            }"
+                        text="Anexos" icon="sap-icon://attachment" press="onMostrarAnexos">
                         <layoutData>
                             <OverflowToolbarLayoutData moveToOverflow="true"/>
                         </layoutData>
@@ -64,7 +74,7 @@
                     <Text text="{fornecedor/Nome}" class="sapMTitleStyleH3" press="_onFioriObjectPageHeaderContactPress"/>
                 </items>
             </VBox>
-            <VBox>
+            <VBox id="bonificacaoBox">
                 <items>
                     <Title text="Bonificação"/>
                     <ObjectNumber number="{
@@ -77,7 +87,7 @@
                             }"/>
                 </items>
             </VBox>
-            <VBox>
+            <VBox id="statusBox">
                 <items>
                     <Title text="Status"/>
                     <ObjectNumber number="{status/Descricao}" unit="" state="Success"/>
@@ -119,9 +129,10 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Informações Gerais">
                         <uxap:blocks>
-                            <core:Fragment fragmentName="simplifique.telaneg.view.task.InformacaoGeral" type="XML" />
+                            <core:Fragment fragmentName="simplifique.telaneg.view.task.InformacaoGeral" type="XML"/>
+                            <core:Fragment fragmentName="simplifique.telaneg.view.task.InfoGeralPrazPag" type="XML"/>
                         </uxap:blocks>
-                    </uxap:ObjectPageSubSection>
+                    </uxap:ObjectPageSubSection> 
                 </uxap:subSections>
             </uxap:ObjectPageSection>
             <uxap:ObjectPageSection title="Abrangência" id="abrangenciaObjectPageSection">
@@ -337,7 +348,7 @@
                         <uxap:blocks>
                             <core:ComponentContainer id="containerForChildComponent"
                                 autoPrefixId="true"
-                                usage="reuseAnotherComponent"      
+                                usage="ComponentePrazoPagamento"      
                                 propagateModel="true"
                                 height="100%"
                                 async="true"
