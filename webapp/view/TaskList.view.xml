@@ -257,7 +257,7 @@
                                     <Text text="Negociação"/>
                                 </header>
                             </Column>
-                            <Column width="8%" minScreenWidth="Phone">
+                            <Column width="8%" minScreenWidth="Phone" id="idAcordoColumn">
                                 <header>
                                     <Text text="Acordo" />
                                 </header>
@@ -277,29 +277,44 @@
                                     <Text text="Descrição"/>
                                 </header>
                             </Column>
-                            <Column minScreenWidth="Phone">
+                            <Column minScreenWidth="Phone" id="idVencimentoColumn">
                                 <header>
                                     <Text text="Vencimento" />
                                 </header>
                             </Column>
-                            <Column minScreenWidth="Phone">
+                            <Column minScreenWidth="Phone" id="idAnexosColumn">
                                 <header>
                                     <Text text="Anexos" />
                                 </header>
                             </Column>
-                            <Column minScreenWidth="Phone" demandPopin="true">
+                            <Column minScreenWidth="Phone" demandPopin="true" id="idStatusColumn">
                                 <header>
                                     <Text text="Status" />
                                 </header>
                             </Column>
-                            <Column minScreenWidth="Phone" demandPopin="true">
+                            <Column minScreenWidth="Phone" demandPopin="true" id="idUsuarioColumn">
                                 <header>
                                     <Text text="Usuário" />
                                 </header>
                             </Column>
-                            <Column width="10%" hAlign="Right" minScreenWidth="Desktop" demandPopin="true">
+                            <Column width="10%" hAlign="Right" minScreenWidth="Desktop" demandPopin="true" id="idBonificacaoColumn">
                                 <header>
-                                    <Text text="Bonificação" />
+                                    <Text text="Bonificação" /> 
+                                </header>
+                            </Column>
+                            <Column minScreenWidth="Phone" id="idVigenciaColumn">
+                                <header>
+                                    <Text text="Vigência Até" />
+                                </header>
+                            </Column>
+                            <Column minScreenWidth="Phone" demandPopin="true" id="idComentarioColumn">
+                                <header>
+                                    <Text text="Comentário" />
+                                </header>
+                            </Column>
+                            <Column minScreenWidth="Phone" demandPopin="true" id="idBandeiraColumn">
+                                <header>
+                                    <Text text="Bandeira" />
                                 </header>
                             </Column>
                         </columns>
@@ -365,11 +380,20 @@
                                             formatter: '.formatter.defaultNumberStatus'
                                             }"
                                         />
+                                    <ObjectStatus 
+                                     text="{
+                                        path: 'ApuracaoAte',
+                                        type: 'sap.ui.model.type.Date',
+                                        formatOptions: { UTC: true, style: 'short' }
+                                        }" />
+                                    <ObjectStatus 
+                                    text="{comentarioImpressao/Texto}" />
+                                    <Text 
+                                    text="{bandeira/Nome}"  wrapping="true" />
                                 </cells>
                             </ColumnListItem>
                         </items>
-                    </Table>    
-                    <core:Fragment fragmentName="simplifique.telaneg.view.task.PrazoPagtoResult" type="XML"/>                
+                    </Table>   
                 </items>
             </VBox>            
         </f:content>

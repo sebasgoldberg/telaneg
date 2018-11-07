@@ -144,18 +144,13 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
     _setListBinding: function(aFilters=[]) {
 
         let v = this.getView();
-        let oNegociacoesTable = v.byId('negociacoesTable');
-
-        if ( this.getView().byId("negociacoesPrazoTable") ){
-            oNegociacoesTable = v.byId("negociacoesPrazoTable");
-        }
+        let oNegociacoesTable = v.byId('negociacoesTable');        
 
         aFilters.push(new Filter('TipoNegociacao', FilterOperator.EQ, this.sTipoNegociacaoID));
+        
         var vExpand = 'fornecedor,status';
-
         if (this.sTipoNegociacaoID == 'P') {
             vExpand = 'fornecedor,status,comentarioImpressao,bandeira';
-
         }
 
         let oBindingInfo = oNegociacoesTable.getBindingInfo('items');
@@ -290,11 +285,22 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         //ocultar
         this.getView().byId("idStatusFilter").setVisible(false);
         this.getView().byId("idMaterialFilter").setVisible(false);
-        this.getView().byId("idVencimentoFilter").setVisible(false);       
-        this.getView().byId("negociacoesTable").setVisible(false);
-        //exibir
-        this.getView().byId("negociacoesPrazoTable").setVisible(true);
+        this.getView().byId("idVencimentoFilter").setVisible(false);               
+        this.getView().byId("idStatusColumn").setVisible(false);               
+        this.getView().byId("idUsuarioColumn").setVisible(false);               
+        this.getView().byId("idBonificacaoColumn").setVisible(false);                        
+        this.getView().byId("idAcordoColumn").setVisible(false);                        
+        this.getView().byId("idVencimentoColumn").setVisible(false);                        
+        this.getView().byId("idAnexosColumn").setVisible(false);                                
+        
+        //exibir        
         this.getView().byId("idVigenciaFilter").setVisible(true);
+        this.getView().byId("idVigenciaColumn").setVisible(true);
+        this.getView().byId("idComentarioColumn").setVisible(true);
+        this.getView().byId("idBandeiraColumn").setVisible(true);
+
+        //mudar tipo de seleção da tabela 
+        this.getView().byId("negociacoesTable").setMode("SingleSelectLeft");
         
         
         
