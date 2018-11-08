@@ -282,28 +282,21 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
     },
 
     adaptarView: function(oEvent){
-        /*
+        
         //ocultar
         this.getView().byId("idStatusFilter").setVisible(false);
         this.getView().byId("idMaterialFilter").setVisible(false);
-        this.getView().byId("idVencimentoFilter").setVisible(false);               
-        this.getView().byId("idStatusColumn").setVisible(false);               
-        this.getView().byId("idUsuarioColumn").setVisible(false);               
-        this.getView().byId("idBonificacaoColumn").setVisible(false);                        
-        this.getView().byId("idAcordoColumn").setVisible(false);                        
-        this.getView().byId("idVencimentoColumn").setVisible(false);                        
-        this.getView().byId("idAnexosColumn").setVisible(false);                                
-        
+        /*
         //exibir        
         this.getView().byId("idVigenciaFilter").setVisible(true);
         this.getView().byId("idVigenciaColumn").setVisible(true);
         this.getView().byId("idComentarioColumn").setVisible(true);
         this.getView().byId("idBandeiraColumn").setVisible(true);
-
+ */
         //mudar tipo de seleção da tabela 
         this.getView().byId("negociacoesTable").setMode("SingleSelectLeft");
         
-        */
+       
         
         
 
