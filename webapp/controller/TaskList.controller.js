@@ -4,12 +4,11 @@ import Filter from 'sap/ui/model/Filter';
 import FilterOperator from 'sap/ui/model/FilterOperator';
 import JSONModel from "sap/ui/model/json/JSONModel";
 import MessageToast from 'sap/m/MessageToast';
+import TiposNegociacoes from 'simplifique/telaneg/model/TiposNegociacoes';
 
 export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
     formatter: formatter,
-    tipoNegociacao: '',
-
 
     onInit: function(){
 
@@ -40,9 +39,10 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         this.oRouter.getTarget("TaskList")
             .attachDisplay( async (oEvent) => {
 
-                this.sTipoNegociacaoID = oEvent.mParameters.data.tipoNegociacaoID;
-                this.tipoNegociacao = this.sTipoNegociacaoID;
+                this.sTipoNegociacaoID = oEvent.mParameters.data.tipoNegociacaoID;                
 
+                this.tipoNegociacao = (new TiposNegociacoes(this.getView())).getTipoNegociacao(this.sTipoNegociacaoID);
+                this.tipoNegociacao.adaptarTaskListView();
 
                 let oPath = {
                     path: `/TipoNegociacaoSet('${this.sTipoNegociacaoID}')/`,
@@ -51,7 +51,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
                     },
                 };
 
-                if (this.tipoNegociacao == 'P'){
+                if (this.sTipoNegociacaoID == 'P'){
                     this.adaptarView();
                 }
 
@@ -282,6 +282,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
     },
 
     adaptarView: function(oEvent){
+        /*
         //ocultar
         this.getView().byId("idStatusFilter").setVisible(false);
         this.getView().byId("idMaterialFilter").setVisible(false);
@@ -302,7 +303,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         //mudar tipo de seleção da tabela 
         this.getView().byId("negociacoesTable").setMode("SingleSelectLeft");
         
-        
+        */
         
         
 

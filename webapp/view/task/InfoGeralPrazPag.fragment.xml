@@ -29,16 +29,11 @@
                                 text="Bandeira" required="true"/>
                         </form:label>
                         <form:fields>
-                            <Input
-                                submit="onSubmit" required="true"
-                                liveChange="onLiveChangeDescricao"
-                                id="BandeiraNegociacaoInput"
-                                enabled="{view>/isNegociacaoEditavel}"
-                                value="{
-                                    path: 'Bandeira',
-                                    type: 'sap.ui.model.odata.type.String',
-                                    constraints: { maxLength: 40 }
-                                    }" placeholder="Selecione a bandeira" type="Text" showValueHelp="false" />
+                            <ComboBox
+                                value="{bandeira/Nome}"
+				                items="{/BandeiraSet}">
+				                    <core:Item key="{ID}" text="{Nome}" />
+			                </ComboBox>
                         </form:fields>
                     </form:FormElement>
                 </form:formElements>

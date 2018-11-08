@@ -134,6 +134,11 @@ export default {
                 U: 'UF',
                 G: 'UF',
                 L: 'UF',
+            },
+            C: {
+                R: 'Centro Ref.',
+                G: 'Centro Ref.',
+                L: 'Centro Ref.',
                 },
             };
         return oDescricoes[sTipoNegociacao][sTipoAbrangencia];
@@ -160,6 +165,9 @@ export default {
                 M: 'Mercadoria',
                 G: 'Grupo',
                 S: 'Seção',
+            },
+            C: {
+                M: 'Mercadoria',
                 },
             };
         return oDescricoes[sTipoNegociacao][sTipoItemMerc];
@@ -188,6 +196,7 @@ export default {
             O: 'Período de Apuração',
             I: 'Período de Recebimento',
             F: '',
+            C: 'Validade Custo',
             };
         return oTextos[sTipoNegociacao];
     },
@@ -223,6 +232,75 @@ export default {
             return value.toLowerCase();
         return value;
     },
+
+    colunaAnexosVisivel: function(sTipoNegociacao){
+        return (['O', 'I', 'F'].indexOf(sTipoNegociacao) >= 0);
+    },
+
+    colunaEstipulacaoVisivel: function(sTipoNegociacao){
+        return (['O', 'I', 'F'].indexOf(sTipoNegociacao) >= 0);
+    },
+
+    apuracaoDeLabel: function(sTipoNegociacao){
+
+        switch (sTipoNegociacao) {
+            case 'O':
+            case 'I':
+            case 'F':
+                return 'Vencimento';
+            
+            case 'C':
+                return 'Vigência De';
+
+            default:
+                return '';
+        }
+
+    },
+
+
+    apuracaoAteLabel: function(sTipoNegociacao){
+
+        switch (sTipoNegociacao) {
+            case 'O':
+            case 'I':
+            case 'F':
+                return 'Vencimento';
+            
+            case 'C':
+                return 'Vigência Até';
+            case 'P':
+                return 'Vigência';
+
+            default:
+                return '';
+        }
+
+    },
+
+    bonificacaoVisivel: function(sTipoNegociacao){
+        return (['O', 'I', 'F'].indexOf(sTipoNegociacao) >= 0);
+    },
+
+    apuracaoDeVisible: function(sTipoNegociacao) {
+        return (['C', ].indexOf(sTipoNegociacao) >= 0);
+    },
+
+    colunaStatusVisivel: function(sTipoNegociacao){
+        return (['O', 'I', 'F', 'C'].indexOf(sTipoNegociacao) >= 0);
+    },    
+
+    colunaComentarioVisivel: function(sTipoNegociacao){
+        return (['P'].indexOf(sTipoNegociacao) >= 0);
+    },    
+
+    colunaBandeiraVisivel: function(sTipoNegociacao){
+        return (['P'].indexOf(sTipoNegociacao) >= 0);
+    }, 
+    
+    colunaUsuarioVisivel: function(sTipoNegociacao){
+        return (['O', 'I', 'F', 'C'].indexOf(sTipoNegociacao) >= 0);
+    },        
 
 }
 

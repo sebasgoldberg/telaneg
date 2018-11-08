@@ -21,13 +21,24 @@ let aIDsControlesAdaptaveis = [
     "tipoItemMercFormElement",
     "periodoApuracaoRangeSelection",
     "periodoApuracaoLabel",
+    "clausulaLabel",
+    "clausulaInput",
+    "clausulaDescricaoInput",
+    "anexosNegociacaoButton",
+    "anexosEstipulacaoButton",
+    "minutaButton",
     ];
 
+let aIDsControlesTaskList = [
+    'anexosColumn',
+    'estipulacaoColumn',
+];
 
 class TipoNegociacao{
 
-    constructor(aIDsControlesVisiveis){
+    constructor(aIDsControlesVisiveis, aIDsControlesVisiveisTaskList = []){
         this.aIDsControlesVisiveis = aIDsControlesVisiveis;
+        this.aIDsControlesVisiveisTaskList = aIDsControlesVisiveisTaskList;
         this.oView = undefined;
     }
 
@@ -35,17 +46,22 @@ class TipoNegociacao{
         this.oView = oView;
     }
 
+    modificarVisibilidade(aTudosOsControles, aControlesVisiveis){
+        aTudosOsControles
+        .forEach( sIDControle => 
+            this.oView.byId(sIDControle).setVisible(
+                aControlesVisiveis.indexOf(sIDControle) >= 0)
+            );
+    }
+
     adaptarView(){
-        aIDsControlesAdaptaveis
-        .forEach( sIDControle => {
-            if (this.oView.byId(sIDControle))
-            {
-                this.oView.byId(sIDControle).setVisible(
-                this.aIDsControlesVisiveis.indexOf(sIDControle) >= 0)
-            }                   
-        });
+        this.modificarVisibilidade(aIDsControlesAdaptaveis, this.aIDsControlesVisiveis);
         this.getView().byId("itemsObjectPageSection").setTitle(this.getItemsSectionTitle());
         this.getView().byId("itemsObjectPageSubSection").setTitle(this.getItemsSectionTitle());
+    }
+
+    adaptarTaskListView(){
+        this.modificarVisibilidade(aIDsControlesTaskList, this.aIDsControlesVisiveisTaskList);
     }
 
     getView(){
@@ -68,6 +84,14 @@ class TipoNegociacaoSellOut extends TipoNegociacao{
             "consultasColumn",
             "periodoApuracaoRangeSelection",
             "periodoApuracaoLabel",
+            "clausulaLabel",
+            "clausulaInput",
+            "clausulaDescricaoInput",
+            "anexosEstipulacaoButton",
+            "minutaButton",
+            ],[
+            'anexosColumn',
+            'estipulacaoColumn',
             ]);
     }
 
@@ -91,6 +115,14 @@ class TipoNegociacaoSellIn extends TipoNegociacao{
             "consultasColumn",
             "periodoApuracaoRangeSelection",
             "periodoApuracaoLabel",
+            "clausulaLabel",
+            "clausulaInput",
+            "clausulaDescricaoInput",
+            "anexosEstipulacaoButton",
+            "minutaButton",
+            ],[
+            'anexosColumn',
+            'estipulacaoColumn',
             ]);
     }
 
@@ -107,6 +139,14 @@ class TipoNegociacaoValorFixo extends TipoNegociacao{
         super([
             "tipoItemMercFormElement",
             "valorBonificacaoColumn",
+            "clausulaLabel",
+            "clausulaInput",
+            "clausulaDescricaoInput",
+            "anexosEstipulacaoButton",
+            "minutaButton",
+            ],[
+            'anexosColumn',
+            'estipulacaoColumn',
             ]);
     }
 
@@ -120,18 +160,9 @@ class TipoNegociacaoPrazoPagto extends TipoNegociacao{
 
     constructor(){
         super([
-            "UMVColumn",
-            "precoVendaColumn",
-            "PMZColumn",
-            "margemPDVColumn",
-            "recomposicaoColumn",
-            "margem2SimuladaColumn",
-            "menorPrecoMercadoColumn",
-            "indiceCompetitividadeColumn",
-            "consultasColumn",
-            "infoGeralSubSection",
-            "infoGeralPrazPagSubSection", 
-            ]);
+            "anexosNegociacaoButton",
+            "negociacoesPrazoTable",
+        ]);
     }
 
     getItemsSectionTitle(){
@@ -145,17 +176,30 @@ class TipoNegociacaoPrazoPagto extends TipoNegociacao{
         this.getView().byId("itemsObjectPageSection").setVisible(false);            
         this.getView().byId("infoGeralSubSection").setVisible(false);
         this.getView().byId("statusBox").setVisible(false);
-        this.getView().byId("bonificacaoBox").setVisible(false);
-        this.getView().byId("anexoButtonId").setVisible(false);
-        
-        
-        
+        this.getView().byId("bonificacaoBox").setVisible(false);        
 
         //exibir
         this.getView().byId("prazoPagtoObjectPageSection").setVisible(true);
         this.getView().byId("infoGeralPrazPagSubSection").setVisible(true);
-        this.getView().byId("anexoPrazoButtonId").setVisible(true);
+        //this.getView().byId("anexoPrazoButtonId").setVisible(true);
         
+    }
+
+
+}
+
+class TipoNegociacaoCustoPontual extends TipoNegociacao{
+
+    constructor(){
+        super([
+            "periodoApuracaoRangeSelection",
+            "periodoApuracaoLabel",
+            "anexosNegociacaoButton",
+            ]);
+    }
+
+    getItemsSectionTitle(){
+        return "Mercadorias";
     }
 
 }
@@ -171,11 +215,12 @@ export default ManagedObject.extend("simplifique.telaneg.model.TiposNegociacoes"
             I: new TipoNegociacaoSellIn(),
             F: new TipoNegociacaoValorFixo(),
             P: new TipoNegociacaoPrazoPagto(),
+            C: new TipoNegociacaoCustoPontual(),
             };
     },
 
-    getTipoNegociacao: function(oNegociacao){
-        let oTipoNegociacao = this.oTiposNegociacao[oNegociacao.TipoNegociacao];
+    getTipoNegociacao: function(sTipoNegociacao){
+        let oTipoNegociacao = this.oTiposNegociacao[sTipoNegociacao];
         oTipoNegociacao.setView(this.oView);
         return oTipoNegociacao;
     },

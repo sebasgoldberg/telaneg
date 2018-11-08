@@ -91,7 +91,9 @@
                 <form:formElements>
                     <form:FormElement>
                         <form:label>
-                            <Label text="Cláusula"/>
+                            <Label
+                                id="clausulaLabel"
+                                text="Cláusula"/>
                         </form:label>
                         <form:fields>
                             <Input
@@ -111,7 +113,9 @@
                                     <layout:GridData span="XL4 L4 M4 S4" />
                                 </layoutData>
                             </Input>
-                            <Input value="{clausula/Descricao}" enabled="false" required="true"/>
+                            <Input
+                                id="clausulaDescricaoInput"
+                                value="{clausula/Descricao}" enabled="false" required="true"/>
                         </form:fields>
                     </form:FormElement>
                 </form:formElements>

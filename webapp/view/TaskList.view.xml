@@ -81,27 +81,17 @@
                                 </fb:control>
                             </fb:FilterItem>
 
-                            <fb:FilterItem label="Vencimento" name="vencimentoFilter" id="idVencimentoFilter">
+                            <fb:FilterItem
+                                label="{
+                                    parts: [ {path: 'ID'} ],
+                                    formatter: '.formatter.apuracaoAteLabel'
+                                    }"
+                                name="vencimentoFilter">
                                 <fb:control>
                                     <HBox>
                                         <DateRangeSelection
                                             submit="onSearch"
                                             id="vencimentoDateRangeSelection"
-                                            dateValue="{view>/filter/dataDe}"
-                                            secondDateValue="{view>/filter/dataAte}"
-                                            change="onSearch"
-                                        />
-                                        <Button icon="sap-icon://delete" press="clearVencimentoDateRangeSelection"/>
-                                    </HBox>
-                                </fb:control>
-                            </fb:FilterItem>
-
-                           <fb:FilterItem label="Vigência" name="vigenciaFilter" id="idVigenciaFilter">
-                                <fb:control>
-                                    <HBox>
-                                        <DateRangeSelection
-                                            submit="onSearch"
-                                            id="vigenciaDateRangeSelection"
                                             dateValue="{view>/filter/dataDe}"
                                             secondDateValue="{view>/filter/dataAte}"
                                             change="onSearch"
@@ -257,7 +247,7 @@
                                     <Text text="Negociação"/>
                                 </header>
                             </Column>
-                            <Column width="8%" minScreenWidth="Phone" id="idAcordoColumn">
+                            <Column width="8%" minScreenWidth="Phone" id="estipulacaoColumn">
                                 <header>
                                     <Text text="Acordo" />
                                 </header>
@@ -277,42 +267,82 @@
                                     <Text text="Descrição"/>
                                 </header>
                             </Column>
-                            <Column minScreenWidth="Phone" id="idVencimentoColumn">
+
+                            <Column minScreenWidth="Phone"
+                                visible="{
+                                    parts: [ {path: 'ID'} ],
+                                    formatter: '.formatter.apuracaoDeVisible'
+                                    }"
+                                >
                                 <header>
-                                    <Text text="Vencimento" />
+                                    <Text text="{
+                                        parts: [ {path: 'ID'} ],
+                                        formatter: '.formatter.apuracaoDeLabel'
+                                        }"
+                                        />
                                 </header>
                             </Column>
-                            <Column minScreenWidth="Phone" id="idAnexosColumn">
+
+                            <Column minScreenWidth="Phone">
+                                <header>
+                                    <Text text="{
+                                        parts: [ {path: 'ID'} ],
+                                        formatter: '.formatter.apuracaoAteLabel'
+                                        }" />
+                                </header>
+                            </Column>
+
+                            <Column minScreenWidth="Phone" id="anexosColumn">
                                 <header>
                                     <Text text="Anexos" />
                                 </header>
                             </Column>
-                            <Column minScreenWidth="Phone" demandPopin="true" id="idStatusColumn">
+                            <Column minScreenWidth="Phone" demandPopin="true" id="idStatusColumn"
+                                visible="{
+                                    parts: [ {path: 'ID'} ],
+                                    formatter: '.formatter.colunaStatusVisivel'
+                                    }"
+                                >
                                 <header>
                                     <Text text="Status" />
                                 </header>
                             </Column>
-                            <Column minScreenWidth="Phone" demandPopin="true" id="idUsuarioColumn">
+                            <Column minScreenWidth="Phone" demandPopin="true" id="idUsuarioColumn"
+                                visible="{
+                                    parts: [ {path: 'ID'} ],
+                                    formatter: '.formatter.colunaUsuarioVisivel'
+                                    }"
+                                    >
                                 <header>
                                     <Text text="Usuário" />
                                 </header>
                             </Column>
-                            <Column width="10%" hAlign="Right" minScreenWidth="Desktop" demandPopin="true" id="idBonificacaoColumn">
+                            <Column width="10%" hAlign="Right" minScreenWidth="Desktop" demandPopin="true"
+                                visible="{
+                                    parts: [ {path: 'ID'} ],
+                                    formatter: '.formatter.bonificacaoVisivel'
+                                    }"
+                                >
                                 <header>
-                                    <Text text="Bonificação" /> 
+                                    <Text text="Bonificação" />
                                 </header>
                             </Column>
-                            <Column minScreenWidth="Phone" id="idVigenciaColumn">
-                                <header>
-                                    <Text text="Vigência Até" />
-                                </header>
-                            </Column>
-                            <Column minScreenWidth="Phone" demandPopin="true" id="idComentarioColumn">
+                            <Column minScreenWidth="Phone" demandPopin="true" id="idComentarioColumn"
+                                visible="{
+                                    parts: [ {path: 'ID'} ],
+                                    formatter: '.formatter.colunaComentarioVisivel'
+                                    }"
+                                >
                                 <header>
                                     <Text text="Comentário" />
                                 </header>
                             </Column>
-                            <Column minScreenWidth="Phone" demandPopin="true" id="idBandeiraColumn">
+                            <Column minScreenWidth="Phone" demandPopin="true" id="idBandeiraColumn"
+                                visible="{
+                                    parts: [ {path: 'ID'} ],
+                                    formatter: '.formatter.colunaBandeiraVisivel'
+                                    }"
+                                    >
                                 <header>
                                     <Text text="Bandeira" />
                                 </header>
@@ -338,16 +368,37 @@
                                             maxLength : 10
                                             }
                                         }"
+                                        visible="{
+                                            parts: [ {path: 'TipoNegociacao'} ],
+                                            formatter: '.formatter.colunaEstipulacaoVisivel'
+                                            }"
                                         />
                                     <ObjectStatus text="{FornecedorID}" />
                                     <ObjectStatus text="{fornecedor/Nome}" wrapping="true" />
                                     <Text text="{Descricao}"  wrapping="true" />
+
+                                    <ObjectStatus text="{
+                                        path: 'ApuracaoDe',
+                                        type: 'sap.ui.model.type.Date',
+                                        formatOptions: { UTC: true, style: 'short' }
+                                        }"
+                                        visible="{
+                                            parts: [ {path: 'TipoNegociacao'} ],
+                                            formatter: '.formatter.apuracaoDeVisible'
+                                            }"
+                                        />
+
                                     <ObjectStatus text="{
                                         path: 'ApuracaoAte',
                                         type: 'sap.ui.model.type.Date',
                                         formatOptions: { UTC: true, style: 'short' }
                                         }" />
-                                    <HBox>
+
+                                    <HBox
+                                        visible="{
+                                            parts: [ {path: 'TipoNegociacao'} ],
+                                            formatter: '.formatter.colunaAnexosVisivel'
+                                            }">
                                         <Button
                                             enabled="{
                                                 parts: [ {path: 'Estipulacao'} ],
@@ -365,31 +416,47 @@
                                                 }"
                                             icon="sap-icon://pdf-attachment" press="onGetPDF"/>
                                     </HBox>
-                                    <ObjectStatus text="{status/Descricao}" />
+                                    <ObjectStatus text="{status/Descricao}"
+                                        visible="{
+                                            parts: [ {path: 'TipoNegociacao'} ],
+                                            formatter: '.formatter.colunaStatusVisivel'
+                                            }"
+                                         />
                                     <Text text="{
                                         parts: [ {path: 'Usuario'} ],
                                         formatter: '.formatter.lowercase'
-                                        }"  wrapping="true" />
+                                        }"  wrapping="true" 
+                                        visible="{
+                                            parts: [ {path: 'TipoNegociacao'} ],
+                                            formatter: '.formatter.colunaUsuarioVisivel'
+                                            }" 
+                                        />
                                     <ObjectNumber number="{
                                         path: 'Bonificacao',
                                         type: 'sap.ui.model.odata.type.Decimal',
                                         constraints: { scale: 2 }
                                         }" unit="BRL" emphasized="false"
+                                        visible="{
+                                            parts: [ {path: 'TipoNegociacao'} ],
+                                            formatter: '.formatter.bonificacaoVisivel'
+                                            }"
                                         state="{
                                             parts: [ {path: 'Bonificacao'} ],
                                             formatter: '.formatter.defaultNumberStatus'
                                             }"
-                                        />
+                                        />                                    
                                     <ObjectStatus 
-                                     text="{
-                                        path: 'ApuracaoAte',
-                                        type: 'sap.ui.model.type.Date',
-                                        formatOptions: { UTC: true, style: 'short' }
-                                        }" />
-                                    <ObjectStatus 
-                                    text="{comentarioImpressao/Texto}" />
+                                    text="{comentarioImpressao/Texto}"
+                                    visible="{
+                                            parts: [ {path: 'TipoNegociacao'} ],
+                                            formatter: '.formatter.colunaComentarioVisivel'
+                                            }" />
                                     <Text 
-                                    text="{bandeira/Nome}"  wrapping="true" />
+                                    text="{bandeira/Nome}"  wrapping="true" 
+                                    visible="{
+                                            parts: [ {path: 'TipoNegociacao'} ],
+                                            formatter: '.formatter.colunaBandeiraVisivel'
+                                            }"/>
                                 </cells>
                             </ColumnListItem>
                         </items>
