@@ -18,7 +18,7 @@ import SelecaoClausulaDialog from "simplifique/telaneg/controller/SelecaoClausul
 import AnexosNegociacaoDialog from "simplifique/telaneg/controller/AnexosNegociacaoDialog";
 import AnexosEstipulacaoDialog from "simplifique/telaneg/controller/AnexosEstipulacaoDialog";
 import InfoDialog from "simplifique/telaneg/controller/InfoDialog";
-
+jQuery.sap.registerModulePath("simplifique.telaneg.prazo.pagamento", "/sap/bc/ui5_ui5/sap/zbsp_prazopagto");
 
 
 
