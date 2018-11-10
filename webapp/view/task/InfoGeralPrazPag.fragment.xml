@@ -1,5 +1,10 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form">
-    <form:Form id="infoGeralPrazPagSubSection" visible="false" >
+    <form:Form id="infoGeralPrazPagSubSection" editable="true"
+    visible="{
+        parts: [ {path: 'TipoNegociacao'} ],
+        formatter: '.formatter.infoGeralPrazPagVisivel'
+    }" 
+    >
         <form:layout>
             <form:ResponsiveGridLayout labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="3" columnsM="2" singleContainerFullSize="false" breakpointL="800" breakpointM="400"/>
         </form:layout>
@@ -30,10 +35,14 @@
                         </form:label>
                         <form:fields>
                             <ComboBox
-                                value="{bandeira/Nome}"
-				                items="{/BandeiraSet}">
-				                    <core:Item key="{ID}" text="{Nome}" />
-			                </ComboBox>
+                                placeholder="Selecione a bandeira"
+                                enabled="{view>/isNegociacaoEditavel}"
+                                id="bandeiraNegociacaoPrazoComboBox"
+                                selectedKey="{Bandeira}"
+                                items="{/BandeiraSet}"
+                                >
+                                <core:Item key="{ID}" text="{Nome}" />
+                            </ComboBox>
                         </form:fields>
                     </form:FormElement>
                 </form:formElements>

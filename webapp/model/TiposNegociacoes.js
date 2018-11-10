@@ -176,12 +176,12 @@ class TipoNegociacaoPrazoPagto extends TipoNegociacao{
         this.getView().byId("itemsObjectPageSection").setVisible(false);            
         this.getView().byId("infoGeralSubSection").setVisible(false);
         this.getView().byId("statusBox").setVisible(false);
-        this.getView().byId("bonificacaoBox").setVisible(false);        
+        this.getView().byId("bonificacaoBox").setVisible(false);                
 
         //exibir
         this.getView().byId("prazoPagtoObjectPageSection").setVisible(true);
-        this.getView().byId("infoGeralPrazPagSubSection").setVisible(true);
-        //this.getView().byId("anexoPrazoButtonId").setVisible(true);
+        this.getView().byId("infoGeralPrazPagSubSection").setVisible(true);        
+        
         
     }
 

@@ -394,8 +394,11 @@
                         type="Emphasized" 
                         press="onSave"
                         />
-                    <Button text="Concluir"
-                        visible="{view>/isNegociacaoEditavel}"
+                    <Button text="Concluir" id="concluirButton"
+                        visible="{
+                        parts: [ {path: 'view>/isNegociacaoEditavel'},{path: 'TipoNegociacao'} ],
+                                    formatter: '.formatter.botaoConcluirVisivel'
+                                }"
                         type="Accept" 
                         press="onFinalizar"
                         />

@@ -17,7 +17,7 @@
         "resources": "resources.json",
         "dataSources": {
             "local": {
-                "uri": "https://fd5-ci.cencosud.corp:8443/sap/opu/odata/sap/Z_COPIA_ZNEGOCIACAO_SRV/",
+                "uri": "https://fd5-ci.cencosud.corp:8443/sap/opu/odata/sap/ZNEGOCIACAO_SRV/",
                 "type": "OData",
                 "settings": {
                     "odataVersion": "2.0",

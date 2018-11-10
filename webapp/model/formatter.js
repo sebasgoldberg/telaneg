@@ -300,6 +300,49 @@ export default {
     
     colunaUsuarioVisivel: function(sTipoNegociacao){
         return (['O', 'I', 'F', 'C'].indexOf(sTipoNegociacao) >= 0);
+    },     
+
+    botaoConcluirVisivel: function(isEditavel, sTipoNegociacao){
+        if (['O', 'I', 'F', 'C'].indexOf(sTipoNegociacao) >= 0){
+            return isEditavel;
+        }
+        else{
+            return false;
+        }
+    }, 
+    infoGeralPrazPagVisivel: function(sTipoNegociacao){
+        return (['P'].indexOf(sTipoNegociacao) >= 0);
+    },             
+
+    
+    acordoLabel: function(sTipoNegociacao){
+        switch (sTipoNegociacao) {
+            case 'O':
+            case 'I':
+            case 'F':            
+            case 'C':
+                return 'Acordo';
+            case 'P':
+                return 'Negociação';
+
+            default:
+                return '';
+        }
+    },  
+    
+    comentarioText: function(sTipoNegociacao){
+        switch (sTipoNegociacao) {
+            case 'O':
+            case 'I':
+            case 'F':            
+            case 'C':
+                return 'Ingresse algum comentario para ser adicionado no PDF';            
+            case 'P':
+                return 'Ingresse algum comentário para a negociação';
+
+            default:
+                return '';
+        }
     },        
 
 }
