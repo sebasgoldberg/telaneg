@@ -17,7 +17,7 @@
         "resources": "resources.json",
         "dataSources": {
             "local": {
-                "uri": "https://fd5-ci.cencosud.corp:8443/sap/opu/odata/sap/ZNEGOCIACAO_SRV/",
+                "uri": "/sap/opu/odata/sap/ZNEGOCIACAO_SRV/",
                 "type": "OData",
                 "settings": {
                     "odataVersion": "2.0",
@@ -61,7 +61,7 @@
         "dependencies": {
             "minUI5Version": "1.50.0",
             "components" : {
-				"Componente.PrazoPagto": {}
+				"simplifique.telaneg.prazo.pagamento": {}
 			},
             "libs": {
                 "sap.ui.core": {},
@@ -70,7 +70,7 @@
         },
         "componentUsages": {
 			"ComponentePrazoPagamento": {
-			  "name": "Componente.PrazoPagto",
+			  "name": "simplifique.telaneg.prazo.pagamento",
 			  "lazy": false
 			}
 		  },

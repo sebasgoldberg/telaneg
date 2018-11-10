@@ -339,6 +339,16 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
                 return;
             }
 
+            let bc = this.getView().getBindingContext();
+            let path = bc.getPath();
+            let object = bc.getModel().getProperty(path);
+
+            if (object.ApuracaoDe > object.ApuracaoAte){
+                //MessageToast.show("Data Final menor que Data Inicial.");
+                resolve(false);
+                return;
+            }
+
             try {
                 this.setBusy();
                 this.removeAllMessages();
@@ -363,10 +373,21 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
 
     onSave: async function() {
         let bSucesso = await this.save();
-        if (bSucesso)
+        if (bSucesso){
             MessageToast.show("Gravação realizada com sucesso.")
-        else
-            MessageToast.show("Aconteceram erros e não foi possivel gravar.");
+
+        }else{
+            let bc = this.getView().getBindingContext();
+            let path = bc.getPath();
+            let object = bc.getModel().getProperty(path);
+
+            if (object.ApuracaoDe > object.ApuracaoAte)
+                MessageToast.show("Data Final menor que Data Inicial.");                
+            else
+                MessageToast.show("Aconteceram erros e não foi possivel gravar.");  
+            
+            //MessageToast.show("Aconteceram erros e não foi possivel gravar.");
+        }    
     },
 
     onSubmit: async function() {

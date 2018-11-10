@@ -312,8 +312,7 @@ export default {
     }, 
     infoGeralPrazPagVisivel: function(sTipoNegociacao){
         return (['P'].indexOf(sTipoNegociacao) >= 0);
-    },             
-
+    },
     
     acordoLabel: function(sTipoNegociacao){
         switch (sTipoNegociacao) {
