@@ -141,7 +141,7 @@
                     </uxap:ObjectPageSubSection> 
                     <uxap:ObjectPageSubSection title="Informações Gerais" id="infoGeralPrazPagSubSection">
                         <uxap:blocks>                            
-                            <core:Fragment fragmentName="simplifique.telaneg.view.task.InfoGeralPrazPag" type="XML"/>
+                            <core:Fragment fragmentName="simplifique.telaneg.prazo.pagamento.view.InfoGeralPrazPag" type="XML"/>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection> 
                 </uxap:subSections>
