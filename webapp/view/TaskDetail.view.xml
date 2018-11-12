@@ -42,7 +42,7 @@
                     <Button
                         id="anexosEstipulacaoButton"
                         enabled="{
-                            parts: [ {path: 'Estipulacao'},{path: 'TipoNegociacao'} ],
+                            parts: [ {path: 'Estipulacao'} ],
                             formatter: '.formatter.isNotInitial'
                             }"
                         text="Anexos" icon="sap-icon://attachment" press="onMostrarAnexosEstipulacao">
@@ -130,9 +130,13 @@
         <uxap:sections>
             <uxap:ObjectPageSection title="Informações Gerais">
                 <uxap:subSections>
-                    <uxap:ObjectPageSubSection title="Informações Gerais">
-                        <uxap:blocks>
+                    <uxap:ObjectPageSubSection title="Informações Gerais" id="infoGeralSubSection">
+                        <uxap:blocks>                            
                             <core:Fragment fragmentName="simplifique.telaneg.view.task.InformacaoGeral" type="XML"/>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection> 
+                    <uxap:ObjectPageSubSection title="Informações Gerais" id="infoGeralPrazPagSubSection">
+                        <uxap:blocks>                            
                             <core:Fragment fragmentName="simplifique.telaneg.view.task.InfoGeralPrazPag" type="XML"/>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection> 

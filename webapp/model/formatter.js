@@ -201,8 +201,8 @@ export default {
         return oTextos[sTipoNegociacao];
     },
 
-    isNotInitial: function(value, tipo){
-        if (value || tipo == "P")
+    isNotInitial: function(value){
+        if (value)
             return true;
         return false;
     },
@@ -310,9 +310,14 @@ export default {
             return false;
         }
     }, 
+
     infoGeralPrazPagVisivel: function(sTipoNegociacao){
         return (['P'].indexOf(sTipoNegociacao) >= 0);
     },
+
+    infoGeralVisivel: function(sTipoNegociacao){
+        return (['O', 'I', 'F', 'C'].indexOf(sTipoNegociacao) >= 0);
+    },    
     
     acordoLabel: function(sTipoNegociacao){
         switch (sTipoNegociacao) {

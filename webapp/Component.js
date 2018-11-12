@@ -18,9 +18,6 @@ import SelecaoClausulaDialog from "simplifique/telaneg/controller/SelecaoClausul
 import AnexosNegociacaoDialog from "simplifique/telaneg/controller/AnexosNegociacaoDialog";
 import AnexosEstipulacaoDialog from "simplifique/telaneg/controller/AnexosEstipulacaoDialog";
 import InfoDialog from "simplifique/telaneg/controller/InfoDialog";
-jQuery.sap.registerModulePath("simplifique.telaneg.prazo.pagamento", "/sap/bc/ui5_ui5/sap/zbsp_prazopagto");
-
-
 
 let navigationWithContext = {
     "NegociacaoSet": {
@@ -53,8 +50,6 @@ export default UIComponent.extend("simplifique.telaneg.Component", {
      * @override
      */
     init: function() {
-        //chama componente
-        //jQuery.sap.registerModulePath("simplifique.telaneg.prazo.pagamento", "/sap/bc/ui5_ui5/sap/zbsp_prazopagto");
         this._oErrorHandler = new ErrorHandler(this);
         // set the device model
         this.setModel(models.createDeviceModel(), "device");

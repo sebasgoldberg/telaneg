@@ -51,23 +51,13 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
                     },
                 };
 
-                if (this.sTipoNegociacaoID == 'P'){
-                    this.adaptarView();
-                }
-
                 await this.bindObject(oPath);
 
                 this.exibirPopupInformativoSeAplicar();
 
                 this.filtrarPorUsuario();
 
-                this.onSearch();
-
-                //bloqueia seções desnecessarias para a negociação Prazo de Pagamento
-        //if (this.tipoNegociacao == 'P'){
-        //    this.adaptarView();
-        //}
-                
+                this.onSearch();             
 
             });
     },
@@ -279,27 +269,6 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         let oVencimentoDateRangeSelection = this.getView().byId('vencimentoDateRangeSelection');
         oVencimentoDateRangeSelection.setValue();
         this.onSearch();
-    },
-
-    adaptarView: function(oEvent){
-        
-        //ocultar
-        this.getView().byId("idStatusFilter").setVisible(false);
-        this.getView().byId("idMaterialFilter").setVisible(false);
-        /*
-        //exibir        
-        this.getView().byId("idVigenciaFilter").setVisible(true);
-        this.getView().byId("idVigenciaColumn").setVisible(true);
-        this.getView().byId("idComentarioColumn").setVisible(true);
-        this.getView().byId("idBandeiraColumn").setVisible(true);
- */
-        //mudar tipo de seleção da tabela 
-        this.getView().byId("negociacoesTable").setMode("SingleSelectLeft");
-        
-       
-        
-        
-
     },
 
 });

@@ -86,11 +86,6 @@ export default Controller.extend("simplifique.telaneg.controller.TaskDetail", {
 
         this.tipoStatus = this.tiposStatus.getTipoStatus(oNegociacao);
         this.tipoStatus.adaptarView();
-
-        //bloqueia seções desnecessarias para a negociação Prazo de Pagamento
-        if (oNegociacao.TipoNegociacao == 'P'){
-            this.tipoNegociacao.ocultarSecoes();
-        }
     },
 
     suggestClausula: async function(oEvent) {

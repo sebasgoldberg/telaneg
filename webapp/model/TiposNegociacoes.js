@@ -27,11 +27,21 @@ let aIDsControlesAdaptaveis = [
     "anexosNegociacaoButton",
     "anexosEstipulacaoButton",
     "minutaButton",
+    "infoGeralSubSection",
+    "infoGeralPrazPagSubSection",
+    "abrangenciaObjectPageSection",
+    "prazoPagtoObjectPageSection",
+    "contratoObjectPageSection",
+    "itemsObjectPageSection",
+    "statusBox",
+    "bonificacaoBox",
     ];
 
 let aIDsControlesTaskList = [
     'anexosColumn',
     'estipulacaoColumn',
+    "idStatusFilter",  
+    "idMaterialFilter",  
 ];
 
 class TipoNegociacao{
@@ -88,10 +98,18 @@ class TipoNegociacaoSellOut extends TipoNegociacao{
             "clausulaInput",
             "clausulaDescricaoInput",
             "anexosEstipulacaoButton",
-            "minutaButton",
+            "minutaButton",     
+            "infoGeralSubSection",    
+            "abrangenciaObjectPageSection",  
+            "contratoObjectPageSection",
+            "itemsObjectPageSection",
+            "statusBox",
+            "bonificacaoBox", 
             ],[
             'anexosColumn',
             'estipulacaoColumn',
+            "idStatusFilter",  
+            "idMaterialFilter",          
             ]);
     }
 
@@ -119,10 +137,18 @@ class TipoNegociacaoSellIn extends TipoNegociacao{
             "clausulaInput",
             "clausulaDescricaoInput",
             "anexosEstipulacaoButton",
-            "minutaButton",
+            "minutaButton",    
+            "infoGeralSubSection",    
+            "abrangenciaObjectPageSection", 
+            "contratoObjectPageSection",
+            "itemsObjectPageSection",
+            "statusBox",
+            "bonificacaoBox",    
             ],[
             'anexosColumn',
             'estipulacaoColumn',
+            "idStatusFilter",
+            "idMaterialFilter",
             ]);
     }
 
@@ -144,9 +170,17 @@ class TipoNegociacaoValorFixo extends TipoNegociacao{
             "clausulaDescricaoInput",
             "anexosEstipulacaoButton",
             "minutaButton",
+            "infoGeralSubSection",  
+            "abrangenciaObjectPageSection", 
+            "contratoObjectPageSection",
+            "itemsObjectPageSection",
+            "statusBox",
+            "bonificacaoBox",          
             ],[
             'anexosColumn',
             'estipulacaoColumn',
+            "idStatusFilter",
+            "idMaterialFilter",
             ]);
     }
 
@@ -161,30 +195,15 @@ class TipoNegociacaoPrazoPagto extends TipoNegociacao{
     constructor(){
         super([
             "anexosNegociacaoButton",
-            "negociacoesPrazoTable",
+            "infoGeralPrazPagSubSection",
+            "prazoPagtoObjectPageSection",
+
         ]);
     }
 
     getItemsSectionTitle(){
         return "Prazo de Pagamento";
     }
-
-    ocultarSecoes(){
-        //ocultar
-        this.getView().byId("abrangenciaObjectPageSection").setVisible(false);
-        this.getView().byId("contratoObjectPageSection").setVisible(false);
-        this.getView().byId("itemsObjectPageSection").setVisible(false);            
-        this.getView().byId("infoGeralSubSection").setVisible(false);
-        this.getView().byId("statusBox").setVisible(false);
-        this.getView().byId("bonificacaoBox").setVisible(false);                
-
-        //exibir
-        this.getView().byId("prazoPagtoObjectPageSection").setVisible(true);
-        this.getView().byId("infoGeralPrazPagSubSection").setVisible(true);        
-        
-        
-    }
-
 
 }
 
@@ -195,6 +214,15 @@ class TipoNegociacaoCustoPontual extends TipoNegociacao{
             "periodoApuracaoRangeSelection",
             "periodoApuracaoLabel",
             "anexosNegociacaoButton",
+            "infoGeralSubSection",
+            "abrangenciaObjectPageSection",
+            "contratoObjectPageSection",
+            "itemsObjectPageSection",
+            "statusBox",
+            "bonificacaoBox", 
+        ],[
+            "idStatusFilter",
+            "idMaterialFilter",
             ]);
     }
 
