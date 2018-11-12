@@ -3,7 +3,7 @@
                                     parts: [ {path: 'TipoNegociacao'} ],
                                     formatter: '.formatter.acordoLabel'
                                     }"
-    id="comentariosPrazPagSubSection"
+    id="ComentarioAcordoObjectPageSubSection"
     >
         <uxap:blocks>
 

@@ -12,6 +12,9 @@ let aIDsControlesAdaptaveis = [
     "indiceCompetitividadeColumn",
     "UMBColumn",
     "custoBrutoColumn",
+    "custoBrutoEditavelColumn",
+    "descontoColumn",
+    "despesasAcessoriasColumn",
     "custoLiquidoColumn",
     "recomposicaoColumn",
     "consultasColumn",
@@ -35,6 +38,7 @@ let aIDsControlesAdaptaveis = [
     "itemsObjectPageSection",
     "statusBox",
     "bonificacaoBox",
+    "ComentarioAcordoObjectPageSubSection",
     ];
 
 let aIDsControlesTaskList = [
@@ -97,14 +101,15 @@ class TipoNegociacaoSellOut extends TipoNegociacao{
             "clausulaLabel",
             "clausulaInput",
             "clausulaDescricaoInput",
-            "anexosEstipulacaoButton",
-            "minutaButton",     
+            "anexosEstipulacaoButton", 
             "infoGeralSubSection",    
             "abrangenciaObjectPageSection",  
             "contratoObjectPageSection",
             "itemsObjectPageSection",
             "statusBox",
             "bonificacaoBox", 
+            "minutaButton",
+            "ComentarioAcordoObjectPageSubSection",
             ],[
             'anexosColumn',
             'estipulacaoColumn',
@@ -136,14 +141,15 @@ class TipoNegociacaoSellIn extends TipoNegociacao{
             "clausulaLabel",
             "clausulaInput",
             "clausulaDescricaoInput",
-            "anexosEstipulacaoButton",
-            "minutaButton",    
+            "anexosEstipulacaoButton", 
             "infoGeralSubSection",    
             "abrangenciaObjectPageSection", 
             "contratoObjectPageSection",
             "itemsObjectPageSection",
             "statusBox",
             "bonificacaoBox",    
+            "minutaButton",
+            "ComentarioAcordoObjectPageSubSection",
             ],[
             'anexosColumn',
             'estipulacaoColumn',
@@ -176,6 +182,7 @@ class TipoNegociacaoValorFixo extends TipoNegociacao{
             "itemsObjectPageSection",
             "statusBox",
             "bonificacaoBox",          
+            "ComentarioAcordoObjectPageSubSection",
             ],[
             'anexosColumn',
             'estipulacaoColumn',
@@ -197,6 +204,7 @@ class TipoNegociacaoPrazoPagto extends TipoNegociacao{
             "anexosNegociacaoButton",
             "infoGeralPrazPagSubSection",
             "prazoPagtoObjectPageSection",
+            "ComentarioAcordoObjectPageSubSection"
 
         ]);
     }
@@ -211,6 +219,17 @@ class TipoNegociacaoCustoPontual extends TipoNegociacao{
 
     constructor(){
         super([
+            "UMBColumn",
+            "custoBrutoEditavelColumn",
+            "descontoColumn",
+            "despesasAcessoriasColumn",
+            "PMZColumn",
+            "precoVendaColumn",
+            "margemPDVColumn",
+            "margem2SimuladaColumn",
+            "menorPrecoMercadoColumn",
+            "indiceCompetitividadeColumn",
+            "consultasColumn",
             "periodoApuracaoRangeSelection",
             "periodoApuracaoLabel",
             "anexosNegociacaoButton",

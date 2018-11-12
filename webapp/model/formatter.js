@@ -270,7 +270,7 @@ export default {
             case 'C':
                 return 'Vigência Até';
             case 'P':
-                return 'Vigência';
+                return 'Vigência Até';
 
             default:
                 return '';
