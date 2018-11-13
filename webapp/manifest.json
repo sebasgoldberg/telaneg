@@ -10,6 +10,9 @@
         "applicationVersion": {
             "version": "1.2.2"
         },
+        "embeds": [
+			"component_PrazoPagto"
+		  ],
         "ach": "ach",
         "resources": "resources.json",
         "dataSources": {
@@ -57,11 +60,20 @@
         "autoPrefixId": true,
         "dependencies": {
             "minUI5Version": "1.50.0",
+            "components" : {
+				"simplifique.telaneg.prazo.pagamento": {}
+			},
             "libs": {
                 "sap.ui.core": {},
                 "sap.m": {}
             }
         },
+        "componentUsages": {
+			"ComponentePrazoPagamento": {
+			  "name": "simplifique.telaneg.prazo.pagamento",
+			  "lazy": false
+			}
+		  },
         "contentDensities": {
             "compact": true,
             "cozy": true
@@ -94,7 +106,7 @@
                     "useBatch": true,
                     "refreshAfterChange": true,
                     "disableHeadRequestForToken": true,
-                    "defaultUpdateMethod": "Put"
+                    "defaultUpdateMethod": "PUT"
                 }
             }
         },

@@ -39,7 +39,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         this.oRouter.getTarget("TaskList")
             .attachDisplay( async (oEvent) => {
 
-                this.sTipoNegociacaoID = oEvent.mParameters.data.tipoNegociacaoID;
+                this.sTipoNegociacaoID = oEvent.mParameters.data.tipoNegociacaoID;                
 
                 this.tipoNegociacao = (new TiposNegociacoes(this.getView())).getTipoNegociacao(this.sTipoNegociacaoID);
                 this.tipoNegociacao.adaptarTaskListView();
@@ -57,7 +57,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
                 this.filtrarPorUsuario();
 
-                this.onSearch();
+                this.onSearch();             
 
             });
     },
@@ -134,15 +134,22 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
     _setListBinding: function(aFilters=[]) {
 
         let v = this.getView();
-        let oNegociacoesTable = v.byId('negociacoesTable');
+        let oNegociacoesTable = v.byId('negociacoesTable');        
+
         aFilters.push(new Filter('TipoNegociacao', FilterOperator.EQ, this.sTipoNegociacaoID));
+        
+        var vExpand = 'fornecedor,status';
+        if (this.sTipoNegociacaoID == 'P') {
+            vExpand = 'fornecedor,status,comentarioImpressao,bandeira';
+        }
 
         let oBindingInfo = oNegociacoesTable.getBindingInfo('items');
         oNegociacoesTable.bindAggregation('items', {
             model: oBindingInfo.model,
             path: '/NegociacaoSet',
             parameters: {
-                expand: 'fornecedor,status',
+                //expand: 'fornecedor,status',
+                expand: vExpand,
                 },
             template: oBindingInfo.template,
             templateShareable: true,
@@ -209,7 +216,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
     onCopiarSelecionados: async function(oEvent) {
         let aSelectedContexts = this.getView().byId('negociacoesTable').getSelectedContexts();
-        if (aSelectedContexts.length == 0){
+        if (aSelectedContexts.length == 0){            
             MessageToast.show("Deve selecionar as negociações a serem copiadas.");
             return;
         }

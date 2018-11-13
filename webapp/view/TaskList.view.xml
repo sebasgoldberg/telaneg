@@ -46,7 +46,7 @@
                                 </fb:control>
                             </fb:FilterItem>
 
-                            <fb:FilterItem label="Status" name="statusFilter">
+                            <fb:FilterItem label="Status" name="statusFilter" id="idStatusFilter">
                                 <fb:control>
 
                                     <MultiComboBox
@@ -101,7 +101,7 @@
                                 </fb:control>
                             </fb:FilterItem>
 
-                            <fb:FilterItem label="Material" name="materialFilter">
+                            <fb:FilterItem label="Material" name="materialFilter" id="idMaterialFilter">
                                 <fb:control>
 
                                     <MultiInput 
@@ -162,6 +162,8 @@
 
                                 </fb:control>
                             </fb:FilterItem>
+
+
 
                         </fb:filterItems>
                     </fb:FilterBar>
@@ -295,12 +297,22 @@
                                     <Text text="Anexos" />
                                 </header>
                             </Column>
-                            <Column minScreenWidth="Phone" demandPopin="true">
+                            <Column minScreenWidth="Phone" demandPopin="true" id="idStatusColumn"
+                                visible="{
+                                    parts: [ {path: 'ID'} ],
+                                    formatter: '.formatter.colunaStatusVisivel'
+                                    }"
+                                >
                                 <header>
                                     <Text text="Status" />
                                 </header>
                             </Column>
-                            <Column minScreenWidth="Phone" demandPopin="true">
+                            <Column minScreenWidth="Phone" demandPopin="true" id="idUsuarioColumn"
+                                visible="{
+                                    parts: [ {path: 'ID'} ],
+                                    formatter: '.formatter.colunaUsuarioVisivel'
+                                    }"
+                                    >
                                 <header>
                                     <Text text="Usuário" />
                                 </header>
@@ -313,6 +325,26 @@
                                 >
                                 <header>
                                     <Text text="Bonificação" />
+                                </header>
+                            </Column>
+                            <Column minScreenWidth="Phone" demandPopin="true" id="idComentarioColumn"
+                                visible="{
+                                    parts: [ {path: 'ID'} ],
+                                    formatter: '.formatter.colunaComentarioVisivel'
+                                    }"
+                                >
+                                <header>
+                                    <Text text="Comentário" />
+                                </header>
+                            </Column>
+                            <Column minScreenWidth="Phone" demandPopin="true" id="idBandeiraColumn"
+                                visible="{
+                                    parts: [ {path: 'ID'} ],
+                                    formatter: '.formatter.colunaBandeiraVisivel'
+                                    }"
+                                    >
+                                <header>
+                                    <Text text="Bandeira" />
                                 </header>
                             </Column>
                         </columns>
@@ -384,11 +416,21 @@
                                                 }"
                                             icon="sap-icon://pdf-attachment" press="onGetPDF"/>
                                     </HBox>
-                                    <ObjectStatus text="{status/Descricao}" />
+                                    <ObjectStatus text="{status/Descricao}"
+                                        visible="{
+                                            parts: [ {path: 'TipoNegociacao'} ],
+                                            formatter: '.formatter.colunaStatusVisivel'
+                                            }"
+                                         />
                                     <Text text="{
                                         parts: [ {path: 'Usuario'} ],
                                         formatter: '.formatter.lowercase'
-                                        }"  wrapping="true" />
+                                        }"  wrapping="true" 
+                                        visible="{
+                                            parts: [ {path: 'TipoNegociacao'} ],
+                                            formatter: '.formatter.colunaUsuarioVisivel'
+                                            }" 
+                                        />
                                     <ObjectNumber number="{
                                         path: 'Bonificacao',
                                         type: 'sap.ui.model.odata.type.Decimal',
@@ -402,13 +444,25 @@
                                             parts: [ {path: 'Bonificacao'} ],
                                             formatter: '.formatter.defaultNumberStatus'
                                             }"
-                                        />
+                                        />                                    
+                                    <ObjectStatus 
+                                    text="{comentarioImpressao/Texto}"
+                                    visible="{
+                                            parts: [ {path: 'TipoNegociacao'} ],
+                                            formatter: '.formatter.colunaComentarioVisivel'
+                                            }" />
+                                    <Text 
+                                    text="{bandeira/Nome}"  wrapping="true" 
+                                    visible="{
+                                            parts: [ {path: 'TipoNegociacao'} ],
+                                            formatter: '.formatter.colunaBandeiraVisivel'
+                                            }"/>
                                 </cells>
                             </ColumnListItem>
                         </items>
-                    </Table>
+                    </Table>   
                 </items>
-            </VBox>
+            </VBox>            
         </f:content>
         <f:footer>
             <OverflowToolbar>

@@ -130,6 +130,11 @@ export default {
                 G: 'Loja',
                 L: 'Loja',
                 },
+            P: {
+                U: 'UF',
+                G: 'UF',
+                L: 'UF',
+            },
             C: {
                 R: 'Centro Ref.',
                 G: 'Centro Ref.',
@@ -156,6 +161,11 @@ export default {
                 G: 'Grupo',
                 S: 'Seção',
                 },
+            P: {
+                M: 'Mercadoria',
+                G: 'Grupo',
+                S: 'Seção',
+            },
             C: {
                 M: 'Mercadoria',
                 },
@@ -259,6 +269,8 @@ export default {
             
             case 'C':
                 return 'Vigência Até';
+            case 'P':
+                return 'Vigência Até';
 
             default:
                 return '';
@@ -273,6 +285,69 @@ export default {
     apuracaoDeVisible: function(sTipoNegociacao) {
         return (['C', ].indexOf(sTipoNegociacao) >= 0);
     },
+
+    colunaStatusVisivel: function(sTipoNegociacao){
+        return (['O', 'I', 'F', 'C'].indexOf(sTipoNegociacao) >= 0);
+    },    
+
+    colunaComentarioVisivel: function(sTipoNegociacao){
+        return (['P'].indexOf(sTipoNegociacao) >= 0);
+    },    
+
+    colunaBandeiraVisivel: function(sTipoNegociacao){
+        return (['P'].indexOf(sTipoNegociacao) >= 0);
+    }, 
+    
+    colunaUsuarioVisivel: function(sTipoNegociacao){
+        return (['O', 'I', 'F', 'C'].indexOf(sTipoNegociacao) >= 0);
+    },     
+
+    botaoConcluirVisivel: function(isEditavel, sTipoNegociacao){
+        if (['O', 'I', 'F', 'C'].indexOf(sTipoNegociacao) >= 0){
+            return isEditavel;
+        }
+        else{
+            return false;
+        }
+    }, 
+
+    infoGeralPrazPagVisivel: function(sTipoNegociacao){
+        return (['P'].indexOf(sTipoNegociacao) >= 0);
+    },
+
+    infoGeralVisivel: function(sTipoNegociacao){
+        return (['O', 'I', 'F', 'C'].indexOf(sTipoNegociacao) >= 0);
+    },    
+    
+    acordoLabel: function(sTipoNegociacao){
+        switch (sTipoNegociacao) {
+            case 'O':
+            case 'I':
+            case 'F':            
+            case 'C':
+                return 'Acordo';
+            case 'P':
+                return 'Negociação';
+
+            default:
+                return '';
+        }
+    },  
+    
+    comentarioText: function(sTipoNegociacao){
+        switch (sTipoNegociacao) {
+            case 'O':
+            case 'I':
+            case 'F':            
+            case 'C':
+                return 'Ingresse algum comentario para ser adicionado no PDF';            
+            case 'P':
+                return 'Ingresse algum comentário para a negociação';
+
+            default:
+                return '';
+        }
+    },        
 
 }
 

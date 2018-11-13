@@ -77,7 +77,7 @@
                     <Text text="{fornecedor/Nome}" class="sapMTitleStyleH3" press="_onFioriObjectPageHeaderContactPress"/>
                 </items>
             </VBox>
-            <VBox visible="{
+            <VBox id="bonificacaoBox" visible="{ 
                 parts: [ {path: 'TipoNegociacao'} ],
                 formatter: '.formatter.bonificacaoVisivel'
                 }"
@@ -94,7 +94,7 @@
                             }"/>
                 </items>
             </VBox>
-            <VBox>
+            <VBox id="statusBox">
                 <items>
                     <Title text="Status"/>
                     <ObjectNumber number="{status/Descricao}" unit="" state="Success"/>
@@ -134,14 +134,19 @@
         <uxap:sections>
             <uxap:ObjectPageSection title="Informações Gerais">
                 <uxap:subSections>
-                    <uxap:ObjectPageSubSection title="Informações Gerais">
-                        <uxap:blocks>
-                            <core:Fragment fragmentName="simplifique.telaneg.view.task.InformacaoGeral" type="XML" />
+                    <uxap:ObjectPageSubSection title="Informações Gerais" id="infoGeralSubSection">
+                        <uxap:blocks>                            
+                            <core:Fragment fragmentName="simplifique.telaneg.view.task.InformacaoGeral" type="XML"/>
                         </uxap:blocks>
-                    </uxap:ObjectPageSubSection>
+                    </uxap:ObjectPageSubSection> 
+                    <uxap:ObjectPageSubSection title="Informações Gerais" id="infoGeralPrazPagSubSection">
+                        <uxap:blocks>                            
+                            <core:Fragment fragmentName="simplifique.telaneg.prazo.pagamento.view.InfoGeralPrazPag" type="XML"/>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection> 
                 </uxap:subSections>
             </uxap:ObjectPageSection>
-            <uxap:ObjectPageSection title="Abrangência">
+            <uxap:ObjectPageSection title="Abrangência" id="abrangenciaObjectPageSection">
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Abrangência">
                         <uxap:blocks>
@@ -338,13 +343,29 @@
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>
             </uxap:ObjectPageSection>
-            <uxap:ObjectPageSection title="Contrato">
+            <uxap:ObjectPageSection title="Contrato" id="contratoObjectPageSection">
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Contrato">
                         <uxap:blocks>
                             <core:Fragment fragmentName="simplifique.telaneg.view.ContratoFornecedor" type="XML" />
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+
+            <uxap:ObjectPageSection title="Prazos de Pagamento" visible="false" id="prazoPagtoObjectPageSection">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="">
+                        <uxap:blocks>
+                            <core:ComponentContainer id="containerForChildComponent"
+                                autoPrefixId="true"
+                                usage="ComponentePrazoPagamento"      
+                                propagateModel="true"
+                                height="100%"
+                                async="true"
+                            />
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>                                                                 
                 </uxap:subSections>
             </uxap:ObjectPageSection>
 
@@ -381,8 +402,11 @@
                         type="Emphasized" 
                         press="onSave"
                         />
-                    <Button text="Concluir"
-                        visible="{view>/isNegociacaoEditavel}"
+                    <Button text="Concluir" id="concluirButton"
+                        visible="{
+                        parts: [ {path: 'view>/isNegociacaoEditavel'},{path: 'TipoNegociacao'} ],
+                                    formatter: '.formatter.botaoConcluirVisivel'
+                                }"
                         type="Accept" 
                         press="onFinalizar"
                         />

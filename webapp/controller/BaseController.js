@@ -366,7 +366,7 @@ export default Controller.extend("simplifique.telaneg.controller.BaseController"
         if (bSucesso)
             MessageToast.show("Gravação realizada com sucesso.")
         else
-            MessageToast.show("Aconteceram erros e não foi possivel gravar.");
+            MessageToast.show("Aconteceram erros e não foi possivel gravar.");  
     },
 
     onSubmit: async function() {

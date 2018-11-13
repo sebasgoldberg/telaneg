@@ -48,30 +48,39 @@
                             description: "",
                             title: "Negociação Valor Fixo",
                         },
-                        "BUILD-prototype&/TaskList/C": {
+                        "BUILD-prototype&/TaskList/P": {
                             additionalInformation: "SAPUI5.Component=simplifique.telaneg",
                             applicationType: "URL",
                             url: "../",
                             description: "",
+                            title: "Negociação Prazo de Pagamento",
+                        },
+                        "BUILD-prototype&/TaskList/C": {
+                            additionalInformation: "SAPUI5.Component=simplifique.telaneg",
+                            applicationType: "URL",
+                            url: "../",
+                            description: "",                            
                             title: "Negociação Pontual Custos",
                         },
                     }
                 };
             </script>
-            <script src="/sapui5/test-resources/sap/ushell/bootstrap/sandbox.js" id="sap-ushell-bootstrap"></script>
+            <script src="/resources/sapui5/test-resources/sap/ushell/bootstrap/sandbox.js" id="sap-ushell-bootstrap"></script>
         
         <title>Negociação</title>
 
         <!-- Bootstrap the UI5 core library -->
-        <script id="sap-ui-bootstrap"
-                src="/sapui5/resources/sap-ui-core.js"
+        <script id="sap-ui-bootstrap"                
+                src="/resources/sapui5/resources/sap-ui-core.js"
                 data-sap-ui-libs="sap.m,sap.ui.layout,sap.ui.core,sap.uxap,sap.ushell"
                 data-sap-ui-theme="sap_belize"
                 
                 data-sap-ui-supportedLanguages="en"
                 data-sap-ui-bindingSyntax="complex"
                 data-sap-ui-compatVersion="edge" 
-                data-sap-ui-resourceroots='{"simplifique.telaneg":"../"}'
+                data-sap-ui-resourceroots='{"simplifique.telaneg":"../",
+				"simplifique.telaneg.prazo.pagamento": "/resources/Componente_PrazoPagto/transp"  
+                                            }'
                 data-sap-ui-frameOptions='allow'> // NON-SECURE setting for testing environment
         </script>
 

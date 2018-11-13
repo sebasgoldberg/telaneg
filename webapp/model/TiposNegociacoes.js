@@ -30,12 +30,22 @@ let aIDsControlesAdaptaveis = [
     "anexosNegociacaoButton",
     "anexosEstipulacaoButton",
     "minutaButton",
+    "infoGeralSubSection",
+    "infoGeralPrazPagSubSection",
+    "abrangenciaObjectPageSection",
+    "prazoPagtoObjectPageSection",
+    "contratoObjectPageSection",
+    "itemsObjectPageSection",
+    "statusBox",
+    "bonificacaoBox",
     "ComentarioAcordoObjectPageSubSection",
     ];
 
 let aIDsControlesTaskList = [
     'anexosColumn',
     'estipulacaoColumn',
+    "idStatusFilter",  
+    "idMaterialFilter",  
 ];
 
 class TipoNegociacao{
@@ -91,12 +101,20 @@ class TipoNegociacaoSellOut extends TipoNegociacao{
             "clausulaLabel",
             "clausulaInput",
             "clausulaDescricaoInput",
-            "anexosEstipulacaoButton",
+            "anexosEstipulacaoButton", 
+            "infoGeralSubSection",    
+            "abrangenciaObjectPageSection",  
+            "contratoObjectPageSection",
+            "itemsObjectPageSection",
+            "statusBox",
+            "bonificacaoBox", 
             "minutaButton",
             "ComentarioAcordoObjectPageSubSection",
             ],[
             'anexosColumn',
             'estipulacaoColumn',
+            "idStatusFilter",  
+            "idMaterialFilter",          
             ]);
     }
 
@@ -123,12 +141,20 @@ class TipoNegociacaoSellIn extends TipoNegociacao{
             "clausulaLabel",
             "clausulaInput",
             "clausulaDescricaoInput",
-            "anexosEstipulacaoButton",
+            "anexosEstipulacaoButton", 
+            "infoGeralSubSection",    
+            "abrangenciaObjectPageSection", 
+            "contratoObjectPageSection",
+            "itemsObjectPageSection",
+            "statusBox",
+            "bonificacaoBox",    
             "minutaButton",
             "ComentarioAcordoObjectPageSubSection",
             ],[
             'anexosColumn',
             'estipulacaoColumn',
+            "idStatusFilter",
+            "idMaterialFilter",
             ]);
     }
 
@@ -150,10 +176,18 @@ class TipoNegociacaoValorFixo extends TipoNegociacao{
             "clausulaDescricaoInput",
             "anexosEstipulacaoButton",
             "minutaButton",
+            "infoGeralSubSection",  
+            "abrangenciaObjectPageSection", 
+            "contratoObjectPageSection",
+            "itemsObjectPageSection",
+            "statusBox",
+            "bonificacaoBox",          
             "ComentarioAcordoObjectPageSubSection",
             ],[
             'anexosColumn',
             'estipulacaoColumn',
+            "idStatusFilter",
+            "idMaterialFilter",
             ]);
     }
 
@@ -163,6 +197,23 @@ class TipoNegociacaoValorFixo extends TipoNegociacao{
 
 }
 
+class TipoNegociacaoPrazoPagto extends TipoNegociacao{
+
+    constructor(){
+        super([
+            "anexosNegociacaoButton",
+            "infoGeralPrazPagSubSection",
+            "prazoPagtoObjectPageSection",
+            "ComentarioAcordoObjectPageSubSection"
+
+        ]);
+    }
+
+    getItemsSectionTitle(){
+        return "Prazo de Pagamento";
+    }
+
+}
 
 class TipoNegociacaoCustoPontual extends TipoNegociacao{
 
@@ -182,6 +233,15 @@ class TipoNegociacaoCustoPontual extends TipoNegociacao{
             "periodoApuracaoRangeSelection",
             "periodoApuracaoLabel",
             "anexosNegociacaoButton",
+            "infoGeralSubSection",
+            "abrangenciaObjectPageSection",
+            "contratoObjectPageSection",
+            "itemsObjectPageSection",
+            "statusBox",
+            "bonificacaoBox", 
+        ],[
+            "idStatusFilter",
+            "idMaterialFilter",
             ]);
     }
 
@@ -201,6 +261,7 @@ export default ManagedObject.extend("simplifique.telaneg.model.TiposNegociacoes"
             O: new TipoNegociacaoSellOut(),
             I: new TipoNegociacaoSellIn(),
             F: new TipoNegociacaoValorFixo(),
+            P: new TipoNegociacaoPrazoPagto(),
             C: new TipoNegociacaoCustoPontual(),
             };
     },

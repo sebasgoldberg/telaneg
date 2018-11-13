@@ -1,5 +1,10 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:uxap="sap.uxap">
-    <uxap:ObjectPageSubSection title="Acordo" id="ComentarioAcordoObjectPageSubSection">
+    <uxap:ObjectPageSubSection title="{
+                                    parts: [ {path: 'TipoNegociacao'} ],
+                                    formatter: '.formatter.acordoLabel'
+                                    }"
+    id="ComentarioAcordoObjectPageSubSection"
+    >
         <uxap:blocks>
 
             <form:SimpleForm
@@ -11,7 +16,11 @@
                 <TextArea
                     enabled="{view>/isNegociacaoEditavel}"
                     id="comentarioImpressaoTextArea"
-                    placeholder="Ingresse algum comentario para ser adicionado no PDF" value="{comentarioImpressao/Texto}" growing="true" width="100%"/>
+                    placeholder="{
+                                    parts: [ {path: 'TipoNegociacao'} ],
+                                    formatter: '.formatter.comentarioText'
+                                    }" 
+                    value="{comentarioImpressao/Texto}" growing="true" width="100%"/>
             </form:SimpleForm>
 
         </uxap:blocks>

@@ -87,6 +87,7 @@ module.exports = function(grunt) {
         openui5_connect: {
             options: {
                 resources: [
+                    "../"
                 ]
             },
             transp: {
