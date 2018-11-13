@@ -229,7 +229,6 @@
                             path:'',
                             templateShareable:true,
                             parameters: {
-                                expand:'fornecedor,status'
                                 }
                             }"
                         >
