@@ -140,7 +140,7 @@ export default Controller.extend("simplifique.telaneg.controller.TaskList", {
         
         var vExpand = 'fornecedor,status';
         if (this.sTipoNegociacaoID == 'P') {
-            vExpand = 'fornecedor,status,comentarioImpressao,bandeira';
+            vExpand = 'fornecedor,status,comentarioImpressao,bandeira'; 
         }
 
         let oBindingInfo = oNegociacoesTable.getBindingInfo('items');

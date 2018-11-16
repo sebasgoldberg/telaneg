@@ -42,6 +42,7 @@ let aIDsControlesAdaptaveis = [
     ];
 
 let aIDsControlesTaskList = [
+    'anexosEstipulacaoColumn',
     'anexosColumn',
     'estipulacaoColumn',
     "idStatusFilter",  
@@ -111,7 +112,7 @@ class TipoNegociacaoSellOut extends TipoNegociacao{
             "minutaButton",
             "ComentarioAcordoObjectPageSubSection",
             ],[
-            'anexosColumn',
+            'anexosEstipulacaoColumn',
             'estipulacaoColumn',
             "idStatusFilter",  
             "idMaterialFilter",          
@@ -151,7 +152,7 @@ class TipoNegociacaoSellIn extends TipoNegociacao{
             "minutaButton",
             "ComentarioAcordoObjectPageSubSection",
             ],[
-            'anexosColumn',
+            'anexosEstipulacaoColumn',
             'estipulacaoColumn',
             "idStatusFilter",
             "idMaterialFilter",
@@ -184,7 +185,7 @@ class TipoNegociacaoValorFixo extends TipoNegociacao{
             "bonificacaoBox",          
             "ComentarioAcordoObjectPageSubSection",
             ],[
-            'anexosColumn',
+            'anexosEstipulacaoColumn',
             'estipulacaoColumn',
             "idStatusFilter",
             "idMaterialFilter",
@@ -204,8 +205,9 @@ class TipoNegociacaoPrazoPagto extends TipoNegociacao{
             "anexosNegociacaoButton",
             "infoGeralPrazPagSubSection",
             "prazoPagtoObjectPageSection",
-            "ComentarioAcordoObjectPageSubSection"
-
+            "ComentarioAcordoObjectPageSubSection",
+            ],[
+            'anexosColumn',
         ]);
     }
 

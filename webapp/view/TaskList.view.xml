@@ -291,6 +291,11 @@
                                 </header>
                             </Column>
 
+                            <Column minScreenWidth="Phone" id="anexosEstipulacaoColumn">
+                                <header>
+                                    <Text text="Anexos" />
+                                </header>
+                            </Column>
                             <Column minScreenWidth="Phone" id="anexosColumn">
                                 <header>
                                     <Text text="Anexos" />
@@ -306,12 +311,7 @@
                                     <Text text="Status" />
                                 </header>
                             </Column>
-                            <Column minScreenWidth="Phone" demandPopin="true" id="idUsuarioColumn"
-                                visible="{
-                                    parts: [ {path: 'ID'} ],
-                                    formatter: '.formatter.colunaUsuarioVisivel'
-                                    }"
-                                    >
+                            <Column minScreenWidth="Phone" demandPopin="true" id="idUsuarioColumn">
                                 <header>
                                     <Text text="Usuário" />
                                 </header>
@@ -396,7 +396,7 @@
                                     <HBox
                                         visible="{
                                             parts: [ {path: 'TipoNegociacao'} ],
-                                            formatter: '.formatter.colunaAnexosVisivel'
+                                            formatter: '.formatter.colunaAnexosEstipulacaoVisivel'
                                             }">
                                         <Button
                                             enabled="{
@@ -415,6 +415,16 @@
                                                 }"
                                             icon="sap-icon://pdf-attachment" press="onGetPDF"/>
                                     </HBox>
+
+                                    <HBox
+                                        visible="{
+                                            parts: [ {path: 'TipoNegociacao'} ], 
+                                            formatter: '.formatter.colunaAnexosVisivel'
+                                            }">
+                                        <Button
+                                            icon="sap-icon://attachment" press="onMostrarAnexos"/>
+                                        </HBox>
+
                                     <ObjectStatus text="{status/Descricao}"
                                         visible="{
                                             parts: [ {path: 'TipoNegociacao'} ],
@@ -425,10 +435,6 @@
                                         parts: [ {path: 'Usuario'} ],
                                         formatter: '.formatter.lowercase'
                                         }"  wrapping="true" 
-                                        visible="{
-                                            parts: [ {path: 'TipoNegociacao'} ],
-                                            formatter: '.formatter.colunaUsuarioVisivel'
-                                            }" 
                                         />
                                     <ObjectNumber number="{
                                         path: 'Bonificacao',

@@ -233,9 +233,13 @@ export default {
         return value;
     },
 
-    colunaAnexosVisivel: function(sTipoNegociacao){
+    colunaAnexosEstipulacaoVisivel: function(sTipoNegociacao){
         return (['O', 'I', 'F'].indexOf(sTipoNegociacao) >= 0);
     },
+
+    colunaAnexosVisivel: function(sTipoNegociacao){
+        return (['P'].indexOf(sTipoNegociacao) >= 0);
+    },    
 
     colunaEstipulacaoVisivel: function(sTipoNegociacao){
         return (['O', 'I', 'F'].indexOf(sTipoNegociacao) >= 0);
@@ -298,10 +302,6 @@ export default {
         return (['P'].indexOf(sTipoNegociacao) >= 0);
     }, 
     
-    colunaUsuarioVisivel: function(sTipoNegociacao){
-        return (['O', 'I', 'F', 'C'].indexOf(sTipoNegociacao) >= 0);
-    },     
-
     botaoConcluirVisivel: function(isEditavel, sTipoNegociacao){
         if (['O', 'I', 'F', 'C'].indexOf(sTipoNegociacao) >= 0){
             return isEditavel;
