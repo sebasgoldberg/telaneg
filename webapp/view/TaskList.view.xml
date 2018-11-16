@@ -422,10 +422,6 @@
                                             formatter: '.formatter.colunaAnexosVisivel'
                                             }">
                                         <Button
-                                            enabled="{
-                                                parts: [ {path: 'anexos'} ],
-                                                formatter: '.formatter.isNotInitial'
-                                                }"
                                             icon="sap-icon://attachment" press="onMostrarAnexos"/>
                                         </HBox>
 
