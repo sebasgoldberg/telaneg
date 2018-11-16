@@ -302,15 +302,6 @@ export default {
         return (['P'].indexOf(sTipoNegociacao) >= 0);
     }, 
     
-    botaoConcluirVisivel: function(isEditavel, sTipoNegociacao){
-        if (['O', 'I', 'F', 'C'].indexOf(sTipoNegociacao) >= 0){
-            return isEditavel;
-        }
-        else{
-            return false;
-        }
-    }, 
-
     infoGeralPrazPagVisivel: function(sTipoNegociacao){
         return (['P'].indexOf(sTipoNegociacao) >= 0);
     },
@@ -347,7 +338,22 @@ export default {
             default:
                 return '';
         }
-    },        
+    },    
+    
+    botaoNovoLabel: function(sTipoNegociacao){
+        switch (sTipoNegociacao) {
+            case 'O':
+            case 'I':
+            case 'F':            
+            case 'C':
+                return 'Novo Acordo';            
+            case 'P':
+                return 'Nova Negociação';  
+            default:
+                return 'Novo Acordo';          
+        }
+
+    },
 
 }
 

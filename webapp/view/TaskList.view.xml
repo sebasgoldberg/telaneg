@@ -326,16 +326,6 @@
                                     <Text text="Bonificação" />
                                 </header>
                             </Column>
-                            <Column minScreenWidth="Phone" demandPopin="true" id="idComentarioColumn"
-                                visible="{
-                                    parts: [ {path: 'ID'} ],
-                                    formatter: '.formatter.colunaComentarioVisivel'
-                                    }"
-                                >
-                                <header>
-                                    <Text text="Comentário" />
-                                </header>
-                            </Column>
                             <Column minScreenWidth="Phone" demandPopin="true" id="idBandeiraColumn"
                                 visible="{
                                     parts: [ {path: 'ID'} ],
@@ -450,12 +440,6 @@
                                             formatter: '.formatter.defaultNumberStatus'
                                             }"
                                         />                                    
-                                    <ObjectStatus 
-                                    text="{comentarioImpressao/Texto}"
-                                    visible="{
-                                            parts: [ {path: 'TipoNegociacao'} ],
-                                            formatter: '.formatter.colunaComentarioVisivel'
-                                            }" />
                                     <Text 
                                     text="{bandeira/Nome}"  wrapping="true" 
                                     visible="{
@@ -480,7 +464,12 @@
                     <ToolbarSpacer/>
                     <Button text="Copiar" icon="sap-icon://add-coursebook" press="onCopiarSelecionados"
                         tooltip="Criar uma nova negociação com cópia de uma selecionada."/>
-                    <Button text="Novo Acordo" icon="sap-icon://add" type="Emphasized" press="onCriarAcordo" />
+                    <Button 
+                            text="{
+                                    parts: [ {path: 'TipoNegociacao'} ],
+                                    formatter: '.formatter.botaoNovoLabel' 
+                                    }"
+                    icon="sap-icon://add" type="Emphasized" press="onCriarAcordo" />
                     <Button icon="sap-icon://delete" press="onDeleteSelecionados"/>
             </OverflowToolbar>
         </f:footer>
