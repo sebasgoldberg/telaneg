@@ -47,6 +47,8 @@ let aIDsControlesTaskList = [
     'estipulacaoColumn',
     "idStatusFilter",  
     "idMaterialFilter",  
+    "novoAcordoButton",
+    "novaNegociacaoButton",
 ];
 
 class TipoNegociacao{
@@ -115,7 +117,8 @@ class TipoNegociacaoSellOut extends TipoNegociacao{
             'anexosEstipulacaoColumn',
             'estipulacaoColumn',
             "idStatusFilter",  
-            "idMaterialFilter",          
+            "idMaterialFilter",  
+            "novoAcordoButton",        
             ]);
     }
 
@@ -156,6 +159,7 @@ class TipoNegociacaoSellIn extends TipoNegociacao{
             'estipulacaoColumn',
             "idStatusFilter",
             "idMaterialFilter",
+            "novoAcordoButton",
             ]);
     }
 
@@ -189,6 +193,7 @@ class TipoNegociacaoValorFixo extends TipoNegociacao{
             'estipulacaoColumn',
             "idStatusFilter",
             "idMaterialFilter",
+            "novoAcordoButton",
             ]);
     }
 
@@ -206,8 +211,10 @@ class TipoNegociacaoPrazoPagto extends TipoNegociacao{
             "infoGeralPrazPagSubSection",
             "prazoPagtoObjectPageSection",
             "ComentarioAcordoObjectPageSubSection",
+            "statusBox",
             ],[
             'anexosColumn',
+            "novaNegociacaoButton",
         ]);
     }
 
@@ -244,6 +251,7 @@ class TipoNegociacaoCustoPontual extends TipoNegociacao{
         ],[
             "idStatusFilter",
             "idMaterialFilter",
+            "novoAcordoButton",
             ]);
     }
 
