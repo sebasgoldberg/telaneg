@@ -338,7 +338,22 @@ export default {
             default:
                 return '';
         }
-    },    
+    },  
+    
+    botaoNovoLabel: function(sTipoNegociacao){
+        switch (sTipoNegociacao) {
+            case 'O':
+            case 'I':
+            case 'F':            
+            case 'C':
+                return 'Novo Acordo';            
+            case 'P':
+                return 'Nova Negociação';  
+            default:
+                return '';          
+        }
+
+    },
     
 }
 
