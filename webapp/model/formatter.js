@@ -291,7 +291,7 @@ export default {
     },
 
     colunaStatusVisivel: function(sTipoNegociacao){
-        return (['O', 'I', 'F', 'C'].indexOf(sTipoNegociacao) >= 0);
+        return (['O', 'I', 'F', 'C','P'].indexOf(sTipoNegociacao) >= 0);
     },    
 
     colunaComentarioVisivel: function(sTipoNegociacao){
@@ -338,7 +338,7 @@ export default {
             default:
                 return '';
         }
-    },    
+    },  
     
     botaoNovoLabel: function(sTipoNegociacao){
         switch (sTipoNegociacao) {
@@ -350,11 +350,11 @@ export default {
             case 'P':
                 return 'Nova Negociação';  
             default:
-                return 'Novo Acordo';          
+                return '';          
         }
 
     },
-
+    
 }
 
 

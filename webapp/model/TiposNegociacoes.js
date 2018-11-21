@@ -115,7 +115,7 @@ class TipoNegociacaoSellOut extends TipoNegociacao{
             'anexosEstipulacaoColumn',
             'estipulacaoColumn',
             "idStatusFilter",  
-            "idMaterialFilter",          
+            "idMaterialFilter",        
             ]);
     }
 
@@ -206,6 +206,7 @@ class TipoNegociacaoPrazoPagto extends TipoNegociacao{
             "infoGeralPrazPagSubSection",
             "prazoPagtoObjectPageSection",
             "ComentarioAcordoObjectPageSubSection",
+            "statusBox",
             ],[
             'anexosColumn',
         ]);
