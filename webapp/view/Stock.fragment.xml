@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form"
-    xmlns:sim="simplifique.telaneg.control"
+    xmlns:sim="simplifique.telaneg.base.control"
     >
        <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false"
             mode="MultiSelect" 

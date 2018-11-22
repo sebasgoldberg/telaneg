@@ -1,10 +1,10 @@
-import AnexosBaseDialog from "simplifique/telaneg/controller/AnexosBaseDialog";
+import AnexosBaseDialog from "simplifique/telaneg/base/controller/AnexosBaseDialog";
 
-export default AnexosBaseDialog.extend("simplifique.telaneg.controller.AnexosNegociacaoDialog",{
+export default AnexosBaseDialog.extend("simplifique.telaneg.base.controller.AnexosNegociacaoDialog",{
 
     constructor : function (oView) {
         AnexosBaseDialog.prototype.constructor.call(this, oView,
-            "simplifique.telaneg.view.AnexosNegociacao", "anexos", "UploadCollectionNegociacao");
+            "simplifique.telaneg.base.view.AnexosNegociacao", "anexos", "UploadCollectionNegociacao");
     },
 
 });

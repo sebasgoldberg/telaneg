@@ -4,7 +4,7 @@ import Filter from 'sap/ui/model/Filter';
 import FilterOperator from 'sap/ui/model/FilterOperator';
 import MessageToast from 'sap/m/MessageToast';
 
-export default Controller.extend("simplifique.telaneg.controller.BaseController", {
+export default Controller.extend("simplifique.telaneg.base.controller.BaseController", {
 
     onInit: function(){
     },

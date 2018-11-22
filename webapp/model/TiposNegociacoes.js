@@ -1,5 +1,5 @@
 import ManagedObject from "sap/ui/base/ManagedObject";
-import formatter from "simplifique/telaneg/model/formatter";
+import formatter from "simplifique/telaneg/base/model/formatter";
 
 let aIDsControlesAdaptaveis = [
     "UMVColumn",
@@ -254,7 +254,7 @@ class TipoNegociacaoCustoPontual extends TipoNegociacao{
 
 }
 
-export default ManagedObject.extend("simplifique.telaneg.model.TiposNegociacoes",{
+export default ManagedObject.extend("simplifique.telaneg.base.model.TiposNegociacoes",{
 
     formatter: formatter,
 

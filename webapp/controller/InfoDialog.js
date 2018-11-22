@@ -1,10 +1,10 @@
-import BaseDialog from "simplifique/telaneg/controller/BaseDialog";
+import BaseDialog from "simplifique/telaneg/base/controller/BaseDialog";
 
-export default BaseDialog.extend("simplifique.telaneg.controller.InfoDialog",{
+export default BaseDialog.extend("simplifique.telaneg.base.controller.InfoDialog",{
 
     constructor : function (oView) {
         BaseDialog.prototype.constructor.call(this,
-            oView, "simplifique.telaneg.view.InfoDialog");
+            oView, "simplifique.telaneg.base.view.InfoDialog");
     },
 
     onNaoVoltarExibir: async function() {

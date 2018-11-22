@@ -1,22 +1,22 @@
 import UIComponent from "sap/ui/core/UIComponent";
 import Device from "sap/ui/Device";
-import models from "simplifique/telaneg/model/models";
-import ErrorHandler from "simplifique/telaneg/controller/ErrorHandler";
-import ImpostosPopover from "simplifique/telaneg/controller/ImpostosPopover";
-import VendasPopover from "simplifique/telaneg/controller/VendasPopover";
-import StockPopover from "simplifique/telaneg/controller/StockPopover";
-import SelecaoLojaDialog from "simplifique/telaneg/controller/SelecaoLojaDialog";
-import SelecaoGrupoLojasDialog from "simplifique/telaneg/controller/SelecaoGrupoLojasDialog";
-import SelecaoUFDialog from "simplifique/telaneg/controller/SelecaoUFDialog";
-import SelecaoCentroRefDialog from "simplifique/telaneg/controller/SelecaoCentroRefDialog";
-import SelecaoMaterialFornecedorDialog from "simplifique/telaneg/controller/SelecaoMaterialFornecedorDialog";
-import SelecaoGrupoDialog from "simplifique/telaneg/controller/SelecaoGrupoDialog";
-import SelecaoSecaoDialog from "simplifique/telaneg/controller/SelecaoSecaoDialog";
-import SelecaoFornecedorDialog from "simplifique/telaneg/controller/SelecaoFornecedorDialog";
-import SelecaoClausulaDialog from "simplifique/telaneg/controller/SelecaoClausulaDialog";
-import AnexosNegociacaoDialog from "simplifique/telaneg/controller/AnexosNegociacaoDialog";
-import AnexosEstipulacaoDialog from "simplifique/telaneg/controller/AnexosEstipulacaoDialog";
-import InfoDialog from "simplifique/telaneg/controller/InfoDialog";
+import models from "simplifique/telaneg/base/model/models";
+import ErrorHandler from "simplifique/telaneg/base/controller/ErrorHandler";
+import ImpostosPopover from "simplifique/telaneg/base/controller/ImpostosPopover";
+import VendasPopover from "simplifique/telaneg/base/controller/VendasPopover";
+import StockPopover from "simplifique/telaneg/base/controller/StockPopover";
+import SelecaoLojaDialog from "simplifique/telaneg/base/controller/SelecaoLojaDialog";
+import SelecaoGrupoLojasDialog from "simplifique/telaneg/base/controller/SelecaoGrupoLojasDialog";
+import SelecaoUFDialog from "simplifique/telaneg/base/controller/SelecaoUFDialog";
+import SelecaoCentroRefDialog from "simplifique/telaneg/base/controller/SelecaoCentroRefDialog";
+import SelecaoMaterialFornecedorDialog from "simplifique/telaneg/base/controller/SelecaoMaterialFornecedorDialog";
+import SelecaoGrupoDialog from "simplifique/telaneg/base/controller/SelecaoGrupoDialog";
+import SelecaoSecaoDialog from "simplifique/telaneg/base/controller/SelecaoSecaoDialog";
+import SelecaoFornecedorDialog from "simplifique/telaneg/base/controller/SelecaoFornecedorDialog";
+import SelecaoClausulaDialog from "simplifique/telaneg/base/controller/SelecaoClausulaDialog";
+import AnexosNegociacaoDialog from "simplifique/telaneg/base/controller/AnexosNegociacaoDialog";
+import AnexosEstipulacaoDialog from "simplifique/telaneg/base/controller/AnexosEstipulacaoDialog";
+import InfoDialog from "simplifique/telaneg/base/controller/InfoDialog";
 
 let navigationWithContext = {
     "NegociacaoSet": {
@@ -28,7 +28,7 @@ let navigationWithContext = {
     }
 };
 
-export default UIComponent.extend("simplifique.telaneg.Component", {
+export default UIComponent.extend("simplifique.telaneg.base.Component", {
 
     metadata: {
         manifest: "json"

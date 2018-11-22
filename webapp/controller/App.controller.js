@@ -1,11 +1,11 @@
 sap.ui.define([
-		"simplifique/telaneg/controller/BaseController",
+		"simplifique/telaneg/base/controller/BaseController",
 		"sap/ui/model/json/JSONModel",
 		"sap/ui/core/routing/History"
 	], function (BaseController, JSONModel, History) {
 		"use strict";
 
-		return BaseController.extend("simplifique.telaneg.controller.App", {
+		return BaseController.extend("simplifique.telaneg.base.controller.App", {
 
 			onInit : function () {
 				var oViewModel,

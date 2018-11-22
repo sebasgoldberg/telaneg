@@ -96,7 +96,7 @@ module.exports = function(grunt) {
                 options: {
                     resources: {
                         cwd: 'transp',
-                        prefix: 'simplifique/telaneg'
+                        prefix: 'simplifique/telaneg/base'
                     },
                     dest: '<%= dir.dist %>'
                 },

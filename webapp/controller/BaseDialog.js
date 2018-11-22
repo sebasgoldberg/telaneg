@@ -1,7 +1,7 @@
 import ManagedObject from "sap/ui/base/ManagedObject";
-import formatter from "simplifique/telaneg/model/formatter";
+import formatter from "simplifique/telaneg/base/model/formatter";
 
-export default ManagedObject.extend("simplifique.telaneg.controller.BaseDialog",{
+export default ManagedObject.extend("simplifique.telaneg.base.controller.BaseDialog",{
 
     constructor : function (oView, sFragment) {
         this._oView = oView;

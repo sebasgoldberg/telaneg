@@ -1,6 +1,6 @@
 <mvc:View
-    controllerName="simplifique.telaneg.controller.TaskDetail"
-    xmlns:sim="simplifique.telaneg.control" 
+    controllerName="simplifique.telaneg.base.controller.TaskDetail"
+    xmlns:sim="simplifique.telaneg.base.control" 
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:uxap="sap.uxap"
     xmlns="sap.m"
@@ -136,12 +136,12 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Informações Gerais" id="infoGeralSubSection">
                         <uxap:blocks>                            
-                            <core:Fragment fragmentName="simplifique.telaneg.view.task.InformacaoGeral" type="XML"/>
+                            <core:Fragment fragmentName="simplifique.telaneg.base.view.task.InformacaoGeral" type="XML"/>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection> 
                     <uxap:ObjectPageSubSection title="Informações Gerais" id="infoGeralPrazPagSubSection">
                         <uxap:blocks>                            
-                            <core:Fragment fragmentName="simplifique.telaneg.view.InfoGeralPrazPag" type="XML"/>
+                            <core:Fragment fragmentName="simplifique.telaneg.base.view.InfoGeralPrazPag" type="XML"/>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection> 
                 </uxap:subSections>
@@ -150,12 +150,12 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Abrangência">
                         <uxap:blocks>
-                            <core:Fragment fragmentName="simplifique.telaneg.view.task.Abrangencia" type="XML" />
+                            <core:Fragment fragmentName="simplifique.telaneg.base.view.task.Abrangencia" type="XML" />
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
                     <uxap:ObjectPageSubSection title="Fornecedores" id="fornecedoresAdicionaisSubSection">
                         <uxap:blocks>
-                            <core:Fragment fragmentName="simplifique.telaneg.view.FornecedoresAdicionais" type="XML" />
+                            <core:Fragment fragmentName="simplifique.telaneg.base.view.FornecedoresAdicionais" type="XML" />
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
 
@@ -338,7 +338,7 @@
                                 </items>
                             </Table>
                             -->
-                            <core:Fragment fragmentName="simplifique.telaneg.view.ItemsNegociacao" type="XML" />
+                            <core:Fragment fragmentName="simplifique.telaneg.base.view.ItemsNegociacao" type="XML" />
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>
@@ -347,7 +347,7 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Contrato">
                         <uxap:blocks>
-                            <core:Fragment fragmentName="simplifique.telaneg.view.ContratoFornecedor" type="XML" />
+                            <core:Fragment fragmentName="simplifique.telaneg.base.view.ContratoFornecedor" type="XML" />
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>
@@ -371,7 +371,7 @@
 
             <uxap:ObjectPageSection title="Comentários">
                 <uxap:subSections>
-                            <core:Fragment fragmentName="simplifique.telaneg.view.ComentariosNegociacao" type="XML" />
+                            <core:Fragment fragmentName="simplifique.telaneg.base.view.ComentariosNegociacao" type="XML" />
                 </uxap:subSections>
             </uxap:ObjectPageSection>
 

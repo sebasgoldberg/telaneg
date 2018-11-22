@@ -1,8 +1,8 @@
-import BaseDialog from "simplifique/telaneg/controller/BaseDialog";
+import BaseDialog from "simplifique/telaneg/base/controller/BaseDialog";
 import UploadCollectionParameter from "sap/m/UploadCollectionParameter";
 import MessageToast from 'sap/m/MessageToast';
 
-export default BaseDialog.extend("simplifique.telaneg.controller.AnexosBaseDialog",{
+export default BaseDialog.extend("simplifique.telaneg.base.controller.AnexosBaseDialog",{
 
     formatter: {
         urlAnexoForDownload: function(sItem) {

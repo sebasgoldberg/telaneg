@@ -1,8 +1,8 @@
-import BaseDialog from "simplifique/telaneg/controller/BaseDialog";
+import BaseDialog from "simplifique/telaneg/base/controller/BaseDialog";
 import Filter from 'sap/ui/model/Filter';
 import FilterOperator from 'sap/ui/model/FilterOperator';
 
-export default BaseDialog.extend("simplifique.telaneg.controller.BaseSelectFacetDialog",{
+export default BaseDialog.extend("simplifique.telaneg.base.controller.BaseSelectFacetDialog",{
 
     /**
      * @return string O nome do campo OData para filtrar o texto

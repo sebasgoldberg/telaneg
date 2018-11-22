@@ -1,6 +1,6 @@
 <mvc:View
-    controllerName="simplifique.telaneg.controller.TaskList"
-    xmlns:sim="simplifique.telaneg.control" 
+    controllerName="simplifique.telaneg.base.controller.TaskList"
+    xmlns:sim="simplifique.telaneg.base.control" 
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:f="sap.f"
     xmlns:variants="sap.ui.comp.variants"
