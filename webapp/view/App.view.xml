@@ -1,6 +1,6 @@
 <mvc:View
         id="idAppControl" 
-        controllerName="simplifique.telaneg.controller.App"
+        controllerName="cp.simplifique.telaneg.controller.App"
         xmlns:mvc="sap.ui.core.mvc"
         displayBlock="true"
         busy="{appView>/busy}"

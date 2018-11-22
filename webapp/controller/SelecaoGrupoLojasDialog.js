@@ -1,10 +1,10 @@
-import BaseSelectFacetDialog from "simplifique/telaneg/controller/BaseSelectFacetDialog";
+import BaseSelectFacetDialog from "cp/simplifique/telaneg/controller/BaseSelectFacetDialog";
 
-export default BaseSelectFacetDialog.extend("simplifique.telaneg.controller.SelecaoGrupoLojasDialog",{
+export default BaseSelectFacetDialog.extend("cp.simplifique.telaneg.controller.SelecaoGrupoLojasDialog",{
 
     constructor : function (oView) {
         BaseSelectFacetDialog.prototype.constructor.call(this,
-            oView, "simplifique.telaneg.view.SelecaoGrupoLojasDialog");
+            oView, "cp.simplifique.telaneg.view.SelecaoGrupoLojasDialog");
     },
 
     getSearchFieldName: function() {

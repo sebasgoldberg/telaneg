@@ -2,7 +2,7 @@
     "_version": "1.8.0",
     "sap.app": {
         "_version": "1.3.0",
-        "id": "simplifique.telaneg",
+        "id": "cp.simplifique.telaneg",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "title": "Negociação",
@@ -52,7 +52,7 @@
         "handleValidation": true,
         "_version": "1.3.0",
         "rootView": {
-            "viewName": "simplifique.telaneg.view.App",
+            "viewName": "cp.simplifique.telaneg.view.App",
             "type": "XML",
             "async": false,
             "id": "app"
@@ -61,7 +61,7 @@
         "dependencies": {
             "minUI5Version": "1.50.0",
             "components" : {
-				"simplifique.telaneg.prazo.pagamento": {}
+				"cp.simplifique.telaneg.prazo.pagamento": {}
 			},
             "libs": {
                 "sap.ui.core": {},
@@ -71,7 +71,7 @@
         },
         "componentUsages": {
 			"ComponentePrazoPagamento": {
-			  "name": "simplifique.telaneg.prazo.pagamento",
+			  "name": "cp.simplifique.telaneg.prazo.pagamento",
 			  "lazy": false
 			}
 		  },
@@ -115,7 +115,7 @@
             "config": {
                 "routerClass": "sap.m.routing.Router",
                 "viewType": "XML",
-                "viewPath": "simplifique.telaneg.view",
+                "viewPath": "cp.simplifique.telaneg.view",
                 "controlId": "idAppControl",
                 "clearTarget": false,
                 "controlAggregation": "pages",

@@ -1,12 +1,12 @@
-import BaseSelectDialog from "simplifique/telaneg/controller/BaseSelectDialog";
+import BaseSelectDialog from "cp/simplifique/telaneg/controller/BaseSelectDialog";
 import Filter from 'sap/ui/model/Filter';
 import FilterOperator from 'sap/ui/model/FilterOperator';
 
-export default BaseSelectDialog.extend("simplifique.telaneg.controller.SelecaoCentroRefDialog",{
+export default BaseSelectDialog.extend("cp.simplifique.telaneg.controller.SelecaoCentroRefDialog",{
 
     constructor : function (oView) {
         BaseSelectDialog.prototype.constructor.call(this, oView,
-            "simplifique.telaneg.view.SelecaoCentroRefDialog");
+            "cp.simplifique.telaneg.view.SelecaoCentroRefDialog");
     },
 
     /**

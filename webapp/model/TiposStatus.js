@@ -51,7 +51,7 @@ class TipoAposNegociacao extends TipoStatus{
 
 }
 
-export default ManagedObject.extend("simplifique.telaneg.model.TiposStatus",{
+export default ManagedObject.extend("cp.simplifique.telaneg.model.TiposStatus",{
 
     constructor : function (oView) {
         this.oView = oView;

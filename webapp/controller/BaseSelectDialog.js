@@ -1,6 +1,6 @@
-import BaseDialog from "simplifique/telaneg/controller/BaseDialog";
+import BaseDialog from "cp/simplifique/telaneg/controller/BaseDialog";
 
-export default BaseDialog.extend("simplifique.telaneg.controller.BaseSelectDialog",{
+export default BaseDialog.extend("cp.simplifique.telaneg.controller.BaseSelectDialog",{
 
     /**
      * @return string ID do SelectDialog na view.
