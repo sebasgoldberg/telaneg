@@ -241,6 +241,7 @@
                             </OverflowToolbar>
                         </headerToolbar>
                         <columns>
+                            <core:ExtensionPoint name="Columns" >
                             <Column width="8%" minScreenWidth="Phone">
                                 <header>
                                     <Text text="Negociação"/>
@@ -336,10 +337,12 @@
                                     <Text text="Bandeira" />
                                 </header>
                             </Column>
+                            </core:ExtensionPoint>
                         </columns>
                         <items>
                             <ColumnListItem type="Active">
                                 <cells>
+                                    <core:ExtensionPoint name="Cells" >
                                     <ObjectIdentifier title="{
                                         path: 'ID',
                                         type: 'sap.ui.model.odata.type.String',
@@ -446,6 +449,7 @@
                                             parts: [ {path: 'TipoNegociacao'} ],
                                             formatter: '.formatter.colunaBandeiraVisivel'
                                             }"/>
+                                    </core:ExtensionPoint>
                                 </cells>
                             </ColumnListItem>
                         </items>
