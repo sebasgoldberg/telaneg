@@ -1,7 +1,7 @@
 import ManagedObject from "sap/ui/base/ManagedObject";
-import formatter from "cp/simplifique/telaneg/model/formatter";
+import formatter from "simplifique/telaneg/model/formatter";
 
-export default ManagedObject.extend("cp.simplifique.telaneg.controller.BaseTablePopover",{
+export default ManagedObject.extend("simplifique.telaneg.controller.BaseTablePopover",{
 
     formatter: formatter,
 

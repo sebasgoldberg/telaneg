@@ -15,7 +15,7 @@
 
         <content>
 
-            <core:Fragment fragmentName="cp.simplifique.telaneg.view.Vendas" type="XML" />
+            <core:Fragment fragmentName="simplifique.telaneg.view.Vendas" type="XML" />
 
         </content>
     </ResponsivePopover>

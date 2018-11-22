@@ -2,7 +2,7 @@
     "_version": "1.8.0",
     "sap.app": {
         "_version": "1.3.0",
-        "id": "cp.simplifique.telaneg",
+        "id": "simplifique.telaneg",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "title": "Negociação",
@@ -49,7 +49,7 @@
         "handleValidation": true,
         "_version": "1.3.0",
         "rootView": {
-            "viewName": "cp.simplifique.telaneg.view.App",
+            "viewName": "simplifique.telaneg.view.App",
             "type": "XML",
             "async": false,
             "id": "app"
@@ -109,7 +109,7 @@
             "config": {
                 "routerClass": "sap.m.routing.Router",
                 "viewType": "XML",
-                "viewPath": "cp.simplifique.telaneg.view",
+                "viewPath": "simplifique.telaneg.view",
                 "controlId": "idAppControl",
                 "clearTarget": false,
                 "controlAggregation": "pages",

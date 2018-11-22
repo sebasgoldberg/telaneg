@@ -1,9 +1,9 @@
-import BasePopover from "cp/simplifique/telaneg/controller/BaseTablePopover";
+import BasePopover from "simplifique/telaneg/controller/BaseTablePopover";
 
-export default BasePopover.extend("cp.simplifique.telaneg.controller.StockPopover",{
+export default BasePopover.extend("simplifique.telaneg.controller.StockPopover",{
 
     getPopoverFragmentName: function() {
-        return "cp.simplifique.telaneg.view.StockPopover";
+        return "simplifique.telaneg.view.StockPopover";
     },
 
     getAggregationPath: function() {

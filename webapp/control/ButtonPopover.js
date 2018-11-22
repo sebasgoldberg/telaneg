@@ -3,7 +3,7 @@ import Button from "sap/m/Button";
 /**
  * Botão responsavel de exibir ou ocultar um popover.
  */
-export default Button.extend("cp.simplifique.telaneg.control.ButtonPopover",{
+export default Button.extend("simplifique.telaneg.control.ButtonPopover",{
 
     metadata: {
         properties:{

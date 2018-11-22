@@ -1,6 +1,6 @@
 import ManagedObject from "sap/ui/base/ManagedObject";
 
-export default ManagedObject.extend("cp.simplifique.telaneg.controller.ImpostosPopover",{
+export default ManagedObject.extend("simplifique.telaneg.controller.ImpostosPopover",{
 
 
     constructor : function (oView) {
@@ -13,7 +13,7 @@ export default ManagedObject.extend("cp.simplifique.telaneg.controller.ImpostosP
 
     open : function (sPath, oOpenBy) {
         if (!this.popoverImpostos){
-            this.popoverImpostos = sap.ui.xmlfragment("cp.simplifique.telaneg.view.Impostos", this);
+            this.popoverImpostos = sap.ui.xmlfragment("simplifique.telaneg.view.Impostos", this);
             this._oView.addDependent(this.popoverImpostos);
         }
 

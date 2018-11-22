@@ -1,5 +1,5 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form"
-    xmlns:sim="cp.simplifique.telaneg.control"
+    xmlns:sim="simplifique.telaneg.control"
     >
 
     <l:VerticalLayout class="sapUiContentPadding">

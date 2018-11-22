@@ -21,7 +21,7 @@
 					},
 					applications: {
 						"BUILD-prototype": {
-							additionalInformation: "SAPUI5.Component=cp.simplifique.telaneg",
+							additionalInformation: "SAPUI5.Component=simplifique.telaneg",
 							applicationType: "URL",
 							url: "../",
 							description: "",
@@ -43,7 +43,7 @@
                 data-sap-ui-supportedLanguages="en"
                 data-sap-ui-bindingSyntax="complex"
 				data-sap-ui-compatVersion="edge" 
-				data-sap-ui-resourceroots='{"cp.simplifique.telaneg":"../"}'
+				data-sap-ui-resourceroots='{"simplifique.telaneg":"../"}'
 				data-sap-ui-frameOptions='allow'> // NON-SECURE setting for testing environment
 		</script>
 
@@ -57,7 +57,7 @@
         	        
         				
         				sap.ui.require([
-        					"cp/simplifique/telaneg/localService/mockserver"
+        					"simplifique/telaneg/localService/mockserver"
         				], function (server) {
         					// set up test service for local testing
         					server.init();

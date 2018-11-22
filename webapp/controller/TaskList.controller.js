@@ -1,12 +1,12 @@
-import Controller from 'cp/simplifique/telaneg/controller/BaseController';
-import formatter from 'cp/simplifique/telaneg/model/formatter';
+import Controller from 'simplifique/telaneg/controller/BaseController';
+import formatter from 'simplifique/telaneg/model/formatter';
 import Filter from 'sap/ui/model/Filter';
 import FilterOperator from 'sap/ui/model/FilterOperator';
 import JSONModel from "sap/ui/model/json/JSONModel";
 import MessageToast from 'sap/m/MessageToast';
-import TiposNegociacoes from 'cp/simplifique/telaneg/model/TiposNegociacoes';
+import TiposNegociacoes from 'simplifique/telaneg/model/TiposNegociacoes';
 
-export default Controller.extend("cp.simplifique.telaneg.controller.TaskList", {
+export default Controller.extend("simplifique.telaneg.controller.TaskList", {
 
     formatter: formatter,
 
