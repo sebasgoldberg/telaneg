@@ -84,6 +84,20 @@ class TipoNegociacao{
     }
 }
 
+/**
+ * O tipo de negociação que não faz nada. Serve para toda app UI5 que extende a 
+ * app de negociação base.
+ */
+class TipoNegociacaoVazia extends TipoNegociacao{
+
+    adaptarView(){
+    }
+
+    adaptarTaskListView(){
+    }
+
+}
+
 class TipoNegociacaoSellOut extends TipoNegociacao{
 
     constructor(){
@@ -252,6 +266,9 @@ class TipoNegociacaoCustoPontual extends TipoNegociacao{
         return "Mercadorias";
     }
 
+    adaptarTaskListView(){
+    }
+
 }
 
 export default ManagedObject.extend("simplifique.telaneg.base.model.TiposNegociacoes",{
@@ -265,12 +282,14 @@ export default ManagedObject.extend("simplifique.telaneg.base.model.TiposNegocia
             I: new TipoNegociacaoSellIn(),
             F: new TipoNegociacaoValorFixo(),
             P: new TipoNegociacaoPrazoPagto(),
-            C: new TipoNegociacaoCustoPontual(),
             };
+        this.oTipoNegociacaoVazia = new TipoNegociacaoVazia();
     },
 
     getTipoNegociacao: function(sTipoNegociacao){
         let oTipoNegociacao = this.oTiposNegociacao[sTipoNegociacao];
+        if (!oTipoNegociacao)
+            return this.oTipoNegociacaoVazia;
         oTipoNegociacao.setView(this.oView);
         return oTipoNegociacao;
     },

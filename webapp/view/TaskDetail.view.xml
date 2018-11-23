@@ -28,43 +28,45 @@
                 </uxap:navigationBar>
                 -->
                 <uxap:actions>
-                    <Button
-                        id="anexosNegociacaoButton"
-                        enabled="{
-                            parts: [ {path: 'Estipulacao'} ],
-                            formatter: '.formatter.isInitial'
-                            }"
-                        text="Anexos" icon="sap-icon://attachment" press="onMostrarAnexos">
-                        <layoutData>
-                            <OverflowToolbarLayoutData moveToOverflow="true"/>
-                        </layoutData>
-                    </Button>
-                    <Button
-                        id="anexosEstipulacaoButton"
-                        enabled="{
-                            parts: [ {path: 'Estipulacao'} ],
-                            formatter: '.formatter.isNotInitial'
-                            }"
-                        text="Anexos" icon="sap-icon://attachment" press="onMostrarAnexosEstipulacao">
-                        <layoutData>
-                            <OverflowToolbarLayoutData moveToOverflow="true"/>
-                        </layoutData>
-                    </Button>
-                    <Button
-                        id="minutaButton"
-                        tooltip="{
-                            parts: [ { path: 'Bandeira'}, { path: 'FornecedorID' } ],
-                            formatter: '.formatter.nomeMinutaPDF'
-                            }"
-                        enabled="{
-                            parts: [ {path: 'Estipulacao'} ],
-                            formatter: '.formatter.isNotInitial'
-                            }"
-                        text="Minuta" icon="sap-icon://pdf-attachment" type="Emphasized" press="onGetPDF">
-                        <layoutData>
-                            <OverflowToolbarLayoutData moveToOverflow="true"/>
-                        </layoutData>
-                    </Button>
+                    <core:ExtensionPoint name="Actions">
+                        <Button
+                            id="anexosNegociacaoButton"
+                            enabled="{
+                                parts: [ {path: 'Estipulacao'} ],
+                                formatter: '.formatter.isInitial'
+                                }"
+                            text="Anexos" icon="sap-icon://attachment" press="onMostrarAnexos">
+                            <layoutData>
+                                <OverflowToolbarLayoutData moveToOverflow="true"/>
+                            </layoutData>
+                        </Button>
+                        <Button
+                            id="anexosEstipulacaoButton"
+                            enabled="{
+                                parts: [ {path: 'Estipulacao'} ],
+                                formatter: '.formatter.isNotInitial'
+                                }"
+                            text="Anexos" icon="sap-icon://attachment" press="onMostrarAnexosEstipulacao">
+                            <layoutData>
+                                <OverflowToolbarLayoutData moveToOverflow="true"/>
+                            </layoutData>
+                        </Button>
+                        <Button
+                            id="minutaButton"
+                            tooltip="{
+                                parts: [ { path: 'Bandeira'}, { path: 'FornecedorID' } ],
+                                formatter: '.formatter.nomeMinutaPDF'
+                                }"
+                            enabled="{
+                                parts: [ {path: 'Estipulacao'} ],
+                                formatter: '.formatter.isNotInitial'
+                                }"
+                            text="Minuta" icon="sap-icon://pdf-attachment" type="Emphasized" press="onGetPDF">
+                            <layoutData>
+                                <OverflowToolbarLayoutData moveToOverflow="true"/>
+                            </layoutData>
+                        </Button>
+                    </core:ExtensionPoint>
                 </uxap:actions>
                 <uxap:breadCrumbsLinks/>
             </uxap:ObjectPageHeader>
@@ -134,30 +136,37 @@
         <uxap:sections>
             <uxap:ObjectPageSection title="Informações Gerais">
                 <uxap:subSections>
-                    <uxap:ObjectPageSubSection title="Informações Gerais" id="infoGeralSubSection">
-                        <uxap:blocks>                            
-                            <core:Fragment fragmentName="simplifique.telaneg.base.view.task.InformacaoGeral" type="XML"/>
-                        </uxap:blocks>
-                    </uxap:ObjectPageSubSection> 
-                    <uxap:ObjectPageSubSection title="Informações Gerais" id="infoGeralPrazPagSubSection">
-                        <uxap:blocks>                            
-                            <core:Fragment fragmentName="simplifique.telaneg.base.view.InfoGeralPrazPag" type="XML"/>
-                        </uxap:blocks>
-                    </uxap:ObjectPageSubSection> 
+                    <core:ExtensionPoint name="InformacaoGeralSubsections" >
+                        <uxap:ObjectPageSubSection title="Informações Gerais" id="infoGeralSubSection">
+                            <uxap:blocks>                            
+                                <core:Fragment fragmentName="simplifique.telaneg.base.view.task.InformacaoGeral" type="XML"/>
+                            </uxap:blocks>
+                        </uxap:ObjectPageSubSection> 
+                        <uxap:ObjectPageSubSection title="Informações Gerais" id="infoGeralPrazPagSubSection">
+                            <uxap:blocks>                            
+                                <core:Fragment fragmentName="simplifique.telaneg.base.view.InfoGeralPrazPag" type="XML"/>
+                            </uxap:blocks>
+                        </uxap:ObjectPageSubSection> 
+                    </core:ExtensionPoint>
                 </uxap:subSections>
             </uxap:ObjectPageSection>
             <uxap:ObjectPageSection title="Abrangência" id="abrangenciaObjectPageSection">
                 <uxap:subSections>
-                    <uxap:ObjectPageSubSection title="Abrangência">
-                        <uxap:blocks>
-                            <core:Fragment fragmentName="simplifique.telaneg.base.view.task.Abrangencia" type="XML" />
-                        </uxap:blocks>
-                    </uxap:ObjectPageSubSection>
-                    <uxap:ObjectPageSubSection title="Fornecedores" id="fornecedoresAdicionaisSubSection">
-                        <uxap:blocks>
-                            <core:Fragment fragmentName="simplifique.telaneg.base.view.FornecedoresAdicionais" type="XML" />
-                        </uxap:blocks>
-                    </uxap:ObjectPageSubSection>
+
+                    <core:ExtensionPoint name="AbrangenciaSubsections" >
+                        <uxap:ObjectPageSubSection title="Abrangência">
+                            <uxap:blocks>
+                                <core:ExtensionPoint name="Abrangencia" >
+                                    <core:Fragment fragmentName="simplifique.telaneg.base.view.task.Abrangencia" type="XML" />
+                                </core:ExtensionPoint>
+                            </uxap:blocks>
+                        </uxap:ObjectPageSubSection>
+                        <uxap:ObjectPageSubSection title="Fornecedores" id="fornecedoresAdicionaisSubSection">
+                            <uxap:blocks>
+                                <core:Fragment fragmentName="simplifique.telaneg.base.view.FornecedoresAdicionais" type="XML" />
+                            </uxap:blocks>
+                        </uxap:ObjectPageSubSection>
+                    </core:ExtensionPoint>
 
                 </uxap:subSections>
             </uxap:ObjectPageSection>
@@ -165,179 +174,6 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection id="itemsObjectPageSubSection" title="Mercadorias">
                         <uxap:blocks>
-                            <!--
-                            <Table id='itemsTable' width="100%" growing="true" growingScrollToLoad="true" growingThreshold="25" mode="MultiSelect" items="{path:'items', templateShareable:true, parameters:{expand:'material,simulacao,itemOrg,subitem,subitem/impostosEntrada,subitem/impostosSaida'}}">
-                                <headerToolbar>
-                                    <OverflowToolbar design="Transparent">
-                                        <content>
-                                            <ToolbarSpacer/>
-                                            <Button icon="sap-icon://add" iconFirst="true" type="Transparent" press="onAdicionarMercadoria">
-                                                <layoutData>
-                                                    <OverflowToolbarLayoutData moveToOverflow="true"/>
-                                                </layoutData>
-                                            </Button>
-                                            <Button text="" icon="sap-icon://delete" iconFirst="false" type="Transparent" press="onEliminarItensSelecionados">
-                                                <layoutData>
-                                                    <OverflowToolbarLayoutData moveToOverflow="true"/>
-                                                </layoutData>
-                                            </Button>
-                                        </content>
-                                    </OverflowToolbar>
-                                </headerToolbar>
-                                <columns>
-                                    <Column hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
-                                        <header>
-                                            <Text text="UF"/>
-                                        </header>
-                                    </Column>
-                                    <Column hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
-                                        <header>
-                                            <Text text="Mercadoria"/>
-                                        </header>
-                                    </Column>
-                                    <Column hAlign="Left" vAlign="Middle" width="20%" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
-                                        <header>
-                                            <Text text="Descrição"/>
-                                        </header>
-                                    </Column>
-                                    <Column hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
-                                        <header>
-                                            <Text text="UMV"/>
-                                        </header>
-                                    </Column>
-                                    <Column hAlign="Right" vAlign="Middle" width="12%" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
-                                        <header>
-                                            <Text text="Preço Venda"/>
-                                        </header>
-                                    </Column>
-                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
-                                        <header>
-                                            <Text text="PMZ"/>
-                                        </header>
-                                    </Column>
-                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
-                                        <header>
-                                            <Text text="Margem PDV"/>
-                                        </header>
-                                    </Column>
-                                    <Column hAlign="Right" vAlign="Middle" width="12%" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
-                                        <header>
-                                            <Text text="Recomp."/>
-                                        </header>
-                                    </Column>
-                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
-                                        <header>
-                                            <Text text="Margem 2 Simulada"/>
-                                        </header>
-                                    </Column>
-                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
-                                        <header>
-                                            <Text text="Menor Preço Mercado"/>
-                                        </header>
-                                    </Column>
-                                    <Column hAlign="Right" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
-                                        <header>
-                                            <Text text="IC"/>
-                                        </header>
-                                    </Column>
-                                    <Column hAlign="Center" vAlign="Middle" width="4%" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
-                                        <header>
-                                            <Text text=""/>
-                                        </header>
-                                    </Column>
-                                    <Column hAlign="Center" vAlign="Middle" width="4%" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
-                                        <header>
-                                            <Text text=""/>
-                                        </header>
-                                    </Column>
-                                    <Column hAlign="Center" vAlign="Middle" width="4%" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
-                                        <header>
-                                            <Text text=""/>
-                                        </header>
-                                    </Column>
-                                </columns>
-                                <items>
-                                    <ColumnListItem type="Active">
-                                        <cells>
-                                            <Text text="{itemOrg/ID}" wrapping="true" />
-
-                                            <Text text="{
-                                                path: 'material/ID',
-                                                type: 'sap.ui.model.odata.type.String',
-                                                constraints: {
-                                                    isDigitSequence : true,
-                                                    maxLength : 18
-                                                    }
-                                                }" wrapping="true" />
-
-                                            <Text text="{material/Nome}" wrapping="true" />
-                                            <Text text="{material/UMB}" wrapping="true" />
-
-                                            <Input value="{
-                                                path: 'subitem/PrecoVenda',
-                                                type: 'sap.ui.model.odata.type.Decimal',
-                                                constraints: { scale: 2 }
-                                                }"
-                                                description="BRL"
-                                                visible='{UnicoSubitem}'
-                                                />
-
-                                            <Text text="{
-                                                path: 'simulacao/PMZNovo',
-                                                type: 'sap.ui.model.odata.type.Decimal',
-                                                constraints: { scale: 2 }
-                                                } BRL" wrapping="true" />
-                                            <Text text="{
-                                                path: 'nossoPricing/MargemPDV',
-                                                type: 'sap.ui.model.odata.type.Decimal',
-                                                constraints: { scale: 2 }
-                                                } %" wrapping="true" />
-                                            <Input value="{
-                                                path: 'simulacao/Recomposicao',
-                                                type: 'sap.ui.model.odata.type.Decimal',
-                                                constraints: { scale: 2 }
-                                                }" description="BRL"/>
-                                            <Text text="{
-                                                path: 'simulacao/Margem2',
-                                                type: 'sap.ui.model.odata.type.Decimal',
-                                                constraints: { scale: 2 }
-                                                } %" wrapping="true" />
-                                            <Text text="{
-                                                path: 'nossoPricing/PrecoMercado',
-                                                type: 'sap.ui.model.odata.type.Decimal',
-                                                constraints: { scale: 2 }
-                                                }" wrapping="true" />
-                                            <Text text="{
-                                                path: 'simulacao/IC',
-                                                type: 'sap.ui.model.odata.type.Decimal',
-                                                constraints: { scale: 2 }
-                                                } %" wrapping="true" />
-                                            <core:Icon
-                                                src="sap-icon://line-chart"
-                                                size="16px"
-                                                hoverColor="#386084"
-                                                tooltip="Vendas"
-                                                press="onMostrarVendas"
-                                                />
-                                            <core:Icon
-                                                src="sap-icon://product"
-                                                size="16px"
-                                                hoverColor="#386084"
-                                                tooltip="Estoque"
-                                                press="onMostrarEstoque"
-                                                />
-                                            <core:Icon
-                                                src="sap-icon://commission-check"
-                                                size="16px"
-                                                hoverColor="#386084"
-                                                tooltip="Impostos"
-                                                press="onMostrarImpostos"
-                                                />
-                                        </cells>
-                                    </ColumnListItem>
-                                </items>
-                            </Table>
-                            -->
                             <core:Fragment fragmentName="simplifique.telaneg.base.view.ItemsNegociacao" type="XML" />
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
@@ -371,7 +207,7 @@
 
             <uxap:ObjectPageSection title="Comentários">
                 <uxap:subSections>
-                            <core:Fragment fragmentName="simplifique.telaneg.base.view.ComentariosNegociacao" type="XML" />
+                        <core:Fragment fragmentName="simplifique.telaneg.base.view.ComentariosNegociacao" type="XML" />
                 </uxap:subSections>
             </uxap:ObjectPageSection>
 

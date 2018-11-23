@@ -211,7 +211,7 @@ export default UIComponent.extend("simplifique.telaneg.base.Component", {
     },
 
     getUrlService: function() {
-        return this.getManifest()['sap.app'].dataSources.local.uri;
+        return this.getModel().sServiceUrl;
     },
 
     getUploadUrl: function(sPath) {
