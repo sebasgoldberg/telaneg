@@ -348,12 +348,14 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
             return;
 
         let sNegociacaoID = this.getView().getBindingContext().getProperty('ID');
+        let sNegociacaoTipo = this.getView().getBindingContext().getProperty('TipoNegociacao');
 
         try {
             this.setBusy();
             this.removeAllMessages();
-            await this.callFunctionImport('/FinalizarNegociacao',{ID: sNegociacaoID});
-            MessageToast.show("Conclução realizada com sucesso e minuta gerada.");
+            await this.callFunctionImport('/FinalizarNegociacao',{ID: sNegociacaoID});            
+            let sMessage = formatter.finalizarMessage(sNegociacaoTipo);
+            MessageToast.show(sMessage);
             this.refresh()
         } catch (e) {
             MessageToast.show("Aconteceram erros ao tentar concluir.");
