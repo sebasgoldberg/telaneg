@@ -352,8 +352,21 @@ export default {
             default:
                 return '';          
         }
-
     },
+
+    finalizarMessage: function(sTipoNegociacao){
+        switch (sTipoNegociacao) {
+            case 'O':
+            case 'I':
+            case 'F':            
+            case 'C':
+                return 'Conclusão realizada com sucesso e minuta gerada.';            
+            case 'P':
+                return 'Conclusão realizada com sucesso.';  
+            default:
+                return '';          
+        }
+    },    
     
 }
 
