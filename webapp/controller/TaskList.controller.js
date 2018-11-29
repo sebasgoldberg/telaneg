@@ -138,7 +138,7 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskList",
 
         aFilters.push(new Filter('TipoNegociacao', FilterOperator.EQ, this.sTipoNegociacaoID));
         
-        var vExpand = 'fornecedor,status';
+        var vExpand = 'fornecedor,status,bandeira';
         if (this.sTipoNegociacaoID == 'P') {
             vExpand = 'fornecedor,status,comentarioImpressao,bandeira'; 
         }
