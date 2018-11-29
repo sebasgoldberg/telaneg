@@ -72,6 +72,7 @@
             </uxap:ObjectPageHeader>
         </uxap:headerTitle>
         <uxap:headerContent>
+        <core:ExtensionPoint name="headerContent">
 
             <VBox>
                 <items>
@@ -132,6 +133,7 @@
                             }"/>
                 <ObjectAttribute title="Usuário" text="{UsuarioFormalizacao}" />
             </VBox>
+        </core:ExtensionPoint>
         </uxap:headerContent>
         <uxap:sections>
             <uxap:ObjectPageSection title="Informações Gerais">
@@ -150,6 +152,7 @@
                     </core:ExtensionPoint>
                 </uxap:subSections>
             </uxap:ObjectPageSection>
+            <core:ExtensionPoint name="AbrangenciaObjectPageSection">
             <uxap:ObjectPageSection title="Abrangência" id="abrangenciaObjectPageSection">
                 <uxap:subSections>
 
@@ -170,6 +173,7 @@
 
                 </uxap:subSections>
             </uxap:ObjectPageSection>
+            </core:ExtensionPoint>
             <uxap:ObjectPageSection id="itemsObjectPageSection" title="Mercadorias">
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection id="itemsObjectPageSubSection" title="Mercadorias">
@@ -179,6 +183,7 @@
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>
             </uxap:ObjectPageSection>
+            <core:ExtensionPoint name="ContratoObjectPageSection">
             <uxap:ObjectPageSection title="Contrato" id="contratoObjectPageSection">
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="Contrato">
@@ -188,7 +193,7 @@
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>
             </uxap:ObjectPageSection>
-
+            </core:ExtensionPoint>
             <uxap:ObjectPageSection title="Prazos de Pagamento" visible="false" id="prazoPagtoObjectPageSection">
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection title="">

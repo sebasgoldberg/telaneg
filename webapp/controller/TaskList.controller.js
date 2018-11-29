@@ -138,17 +138,13 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskList",
 
         aFilters.push(new Filter('TipoNegociacao', FilterOperator.EQ, this.sTipoNegociacaoID));
         
-        var vExpand = 'fornecedor,status';
-        if (this.sTipoNegociacaoID == 'P') {
-            vExpand = 'fornecedor,status,comentarioImpressao,bandeira'; 
-        }
+        var vExpand = 'fornecedor,status,bandeira';        
 
         let oBindingInfo = oNegociacoesTable.getBindingInfo('items');
         oNegociacoesTable.bindAggregation('items', {
             model: oBindingInfo.model,
             path: '/NegociacaoSet',
-            parameters: {
-                //expand: 'fornecedor,status',
+            parameters: {                
                 expand: vExpand,
                 },
             template: oBindingInfo.template,

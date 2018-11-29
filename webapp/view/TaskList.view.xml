@@ -40,6 +40,7 @@
                         search="onSearch"
                         >
                         <fb:filterItems>
+                        <core:ExtensionPoint name="Filters" >
                             <fb:FilterItem label="ID ou Descrição" name="descricaoFilter">
                                 <fb:control>
                                     <SearchField value="{view>/filter/descricao}" search="onSearch"/>
@@ -162,9 +163,7 @@
 
                                 </fb:control>
                             </fb:FilterItem>
-
-
-
+                        </core:ExtensionPoint>
                         </fb:filterItems>
                     </fb:FilterBar>
 
@@ -459,6 +458,7 @@
         </f:content>
         <f:footer>
             <OverflowToolbar>
+                <core:ExtensionPoint name="ListFooter" >
                     <Button
                         icon="sap-icon://message-popup"
                         text="{= ${message>/}.length }"
@@ -472,10 +472,11 @@
                     text="{
                             parts: [ {path: 'ID'} ],
                             formatter: '.formatter.botaoNovoLabel' 
-                            }"
+                            }" 
  
                     icon="sap-icon://add" type="Emphasized" press="onCriarAcordo" />
                     <Button icon="sap-icon://delete" press="onDeleteSelecionados"/>
+                </core:ExtensionPoint >
             </OverflowToolbar>
         </f:footer>
     </f:DynamicPage>
