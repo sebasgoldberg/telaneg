@@ -280,8 +280,7 @@ export default ManagedObject.extend("simplifique.telaneg.base.model.TiposNegocia
         this.oTiposNegociacao = {
             O: new TipoNegociacaoSellOut(),
             I: new TipoNegociacaoSellIn(),
-            F: new TipoNegociacaoValorFixo(),
-            P: new TipoNegociacaoPrazoPagto(),
+            F: new TipoNegociacaoValorFixo(),            
             };
         this.oTipoNegociacaoVazia = new TipoNegociacaoVazia();
     },
