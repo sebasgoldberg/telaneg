@@ -4,11 +4,6 @@
     xmlns:m="sap.m"
     xmlns:mvc="sap.ui.core.mvc">
 
-    <m:VBox>
-    <m:items>
-    
-    <core:ExtensionPoint name="FacetFilterTreeTable"/>    
-
     <!--
                 expand:'material,simulacao,itemOrg,subitem,subitem/impostosEntrada,subitem/impostosSaida',
     -->
@@ -450,8 +445,7 @@
 
         </columns>
 
-    </TreeTable>
-</m:items>
-</m:VBox>    
+    </TreeTable> 
+ 
 </core:FragmentDefinition>
 
