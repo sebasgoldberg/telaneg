@@ -207,7 +207,7 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskList",
     },
 
     onDeleteSelecionados: function(oEvent) {
-        this.deleteSelectedItems('negociacoesTable');
+        return this.deleteSelectedItems('negociacoesTable');
     },
 
     onCopiarSelecionados: async function(oEvent) {

@@ -302,19 +302,19 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
         let selectedContexts = await selecaoFornecedor.open(v.getBindingContext().getPath());
 
         if (! selectedContexts)
-            return;
+            return Promise.resolve(false);
 
         let oTable = v.byId('fornecedoresAdicionaisTable');
 
         let oObjects = selectedContexts.map( oContext => oContext.getObject() )
             .map( oObject => ({ ID: oObject.ID, Type: oObject.Type, }) );
 
-        this.createEntriesForTable(oTable, oObjects);
+        return this.createEntriesForTable(oTable, oObjects);
 
     },
 
-    onDeleteFornecedorAdicional: async function(oEvent) {
-        this.deleteSelectedItems('fornecedoresAdicionaisTable', {
+    onDeleteFornecedorAdicional: function(oEvent) {
+        return this.deleteSelectedItems('fornecedoresAdicionaisTable', {
             NegociacaoID: this.getView().getBindingContext().getProperty('ID'),
             });
     },
