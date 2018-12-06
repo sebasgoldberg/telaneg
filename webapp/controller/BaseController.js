@@ -125,25 +125,30 @@ export default Controller.extend("simplifique.telaneg.base.controller.BaseContro
         return this.all(oPromisesEntries);
     },
 
-    createEntriesForTable: async function(oTable, aObjects) {
+    createEntriesForTable: function(oTable, aObjects) {
+        return new Promise( async (resolve, reject) => {
+            
+            let v = this.getView();
 
-        let v = this.getView();
+            // Obtemos os atributos dos objetos selecionados.
+            let oItemsBinding = oTable.getBinding('items');
+            let sPath = `${v.getBindingContext().getPath()}/${oItemsBinding.getPath()}`;
 
-        // Obtemos os atributos dos objetos selecionados.
-        let oItemsBinding = oTable.getBinding('items');
-        let sPath = `${v.getBindingContext().getPath()}/${oItemsBinding.getPath()}`;
+            // Criamos as entradas para os objetos selecionados.
+            try {
+                oTable.setBusy(true);
+                let results = await this.createEntries(sPath, aObjects);
+                oItemsBinding.refresh();
+                resolve(true);
+            } catch (e) {
+                this.resetChanges();
+                console.error(e);
+                resolve(false);
+            } finally {
+                oTable.setBusy(false);
+            }
 
-        // Criamos as entradas para os objetos selecionados.
-        try {
-            oTable.setBusy(true);
-            let results = await this.createEntries(sPath, aObjects);
-            oItemsBinding.refresh();
-        } catch (e) {
-            this.resetChanges();
-            console.error(e);
-        } finally {
-            oTable.setBusy(false);
-        }
+        });
 
     },
 
@@ -211,38 +216,46 @@ export default Controller.extend("simplifique.telaneg.base.controller.BaseContro
         });
     },
 
-    deleteSelectedItems: async function(sControlId, oHeaders) {
-        let v = this.getView();
-        let m = v.getModel();
+    deleteSelectedItems: function(sControlId, oHeaders) {
+        return new Promise( async (resolve, reject) => {
 
-        let eliminar = await this.temCertezaDeEliminar();
-        if (!eliminar)
-            return false;
-        
-        let oControl = v.byId(sControlId);
+            let v = this.getView();
+            let m = v.getModel();
 
-        try {
+            let eliminar = await this.temCertezaDeEliminar();
+            if (!eliminar)
+                return resolve(false);
+            
+            let oControl = v.byId(sControlId);
 
-            oControl.setBusy(true);
+            try {
 
-            let result = await this.all(
-                this.deleteContextsPromises(
-                    oControl.getSelectedContexts(),
-                    oHeaders
-                )
-            );
-        
-            if (result)
-                oControl.getBinding('items').refresh();
+                oControl.setBusy(true);
 
-            MessageToast.show("Eliminação realizada com sucesso.");
+                let result = await this.all(
+                    this.deleteContextsPromises(
+                        oControl.getSelectedContexts(),
+                        oHeaders
+                    )
+                );
+            
+                if (result)
+                    oControl.getBinding('items').refresh();
 
-        } catch (e) {
-            MessageToast.show("Aconteceu um erro ao tentar realizar a eliminação.");
-            this.error(e);
-        } finally {
-            oControl.setBusy(false);
-        }
+                MessageToast.show("Eliminação realizada com sucesso.");
+
+                resolve(true);
+
+            } catch (e) {
+                MessageToast.show("Aconteceu um erro ao tentar realizar a eliminação.");
+                this.error(e);
+                resolve(false);
+            } finally {
+                oControl.setBusy(false);
+            }
+
+           
+        });
     },
 
     suggestUsuarios: function(oEvent) {
