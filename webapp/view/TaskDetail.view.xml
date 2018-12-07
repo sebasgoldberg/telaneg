@@ -235,6 +235,7 @@
                         press="onReset"
                         />
                     -->
+                    <core:ExtensionPoint name="FooterButtons">
                     <Button text="Eliminar"
                         visible="{view>/isNegociacaoEditavel}"
                         type="Reject" 
@@ -255,6 +256,7 @@
                         type="Accept" 
                         press="onFormalizar"
                         />
+                    </core:ExtensionPoint>
                 </content>
             </OverflowToolbar>
         </uxap:footer>
