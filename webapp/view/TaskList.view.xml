@@ -56,7 +56,7 @@
                                         selectedKeys="{view>/filter/status}"
                                         width="1000px"
                                         enableMultiLineMode="true"
-                                        items="{/StatusSet}">
+                                        items="{statusPossiveis}">
                                         <core:Item key="{ID}" text="{Descricao}" />
                                     </MultiComboBox>
 
@@ -166,49 +166,6 @@
                         </core:ExtensionPoint>
                         </fb:filterItems>
                     </fb:FilterBar>
-
-                    <!--
-                    <FacetFilter
-                        id="idFacetFilter"
-                        type="Simple"
-                        showPersonalization="true"
-                        showReset="true"
-                        reset="handleFacetFilterReset"
-                        confirm="handleConfirm"
-                        lists="">
-                        <lists>
-                            <FacetFilterList
-                                title="Status"
-                                key="status"
-                                mode="MultiSelect"
-                                items="{path:'/StatusSet/', templateShareable: 'true'}"
-                                >
-                                <items>
-                                    <FacetFilterItem
-                                        text="{Descricao}"
-                                        key="{ID}"
-                                        />
-                                </items>
-                            </FacetFilterList>
-                            <FacetFilterList
-                                title="Fornecedor"
-                                key="fornecedor"
-                                mode="MultiSelect"
-                                items="{path:'/FornecedorSet', templateShareable: 'true'}"
-                                growing='true'
-                                growingThreshold='15'
-                                growingScrollToLoad='true'
-                                >
-                                <items>
-                                    <FacetFilterItem
-                                        text="{Nome} [{UF}]"
-                                        key="{ID}"
-                                        />
-                                </items>
-                            </FacetFilterList>
-                        </lists>
-                    </FacetFilter>
-                    -->
 
                 </f:content>
             </f:DynamicPageHeader>
