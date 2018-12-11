@@ -12,6 +12,7 @@
         selectionMode="Multiple"
         enableColumnReordering="false"
         expandFirstLevel="false"
+        class="tabelaItens"
         rows="{
             path : 'items',
             parameters : {

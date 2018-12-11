@@ -6,5 +6,5 @@
         busy="{appView>/busy}"
         busyIndicatorDelay="{appView>/delay}"
         xmlns="sap.m">
-    <App id="idAppControl"/>
+    <App id="idAppControl" class="telaneg"/>
 </mvc:View>

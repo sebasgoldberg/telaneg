@@ -81,6 +81,11 @@
                 "factoryName": "sap.ushell.services.UserInfo"
             }
         },
+        "resources": {
+            "css": [{
+                "uri": "css/style.css"
+            }]
+        },
         "models": {
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",

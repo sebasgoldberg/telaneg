@@ -1,0 +1,8 @@
+/* Enter your custom styles here */
+.telaneg .tabelaItens .sapMText,
+.telaneg .tabelaItens input,
+.telaneg .tabelaItens bdi,
+.telaneg .tabelaItens .sapMObjStatusText
+{
+    font-size: 0.75rem;
+}
