@@ -32,15 +32,12 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
 
         let v = this.getView();
 
-        let oAmanha = new Date();
-        oAmanha.setDate(oAmanha.getDate()+1);
-
         v.setModel(new JSONModel({
             AtualizacaoEliminacoes: false,
             isNegociacaoEditavel: false,
             isNegociacaoConcluida: false,
             periodoApuracao:{
-                minDate: oAmanha,
+                minDate: this.getMinPeriodoApuracao(),
                 },
             }), 'view');
 
@@ -76,6 +73,12 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
                 this.adaptarView();
 
             });
+    },
+
+    getMinPeriodoApuracao: function() {
+        let oAmanha = new Date();
+        oAmanha.setDate(oAmanha.getDate()+1);
+        return oAmanha;
     },
 
     adaptarView: function() {
