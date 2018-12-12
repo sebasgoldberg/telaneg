@@ -135,11 +135,6 @@ export default {
                 G: 'UF',
                 L: 'UF',
             },
-            C: {
-                R: 'Centro Ref.',
-                G: 'Centro Ref.',
-                L: 'Centro Ref.',
-                },
             };
         return oDescricoes[sTipoNegociacao][sTipoAbrangencia];
     },
@@ -166,9 +161,6 @@ export default {
                 G: 'Grupo',
                 S: 'Seção',
             },
-            C: {
-                M: 'Mercadoria',
-                },
             };
         return oDescricoes[sTipoNegociacao][sTipoItemMerc];
     },
