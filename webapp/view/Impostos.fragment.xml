@@ -88,7 +88,7 @@
             <Input
                 enabled="{=!${ImpostosCadastrados}?false:false}" 
                 value="{path: 'impostosEntrada/PAUTA', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
-                description="%"/>
+                description="R$"/>
         </l:VerticalLayout>
 
         <l:VerticalLayout
@@ -99,6 +99,27 @@
                 value="{path: 'impostosEntrada/MVA', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
                 description="%"/>
         </l:VerticalLayout>
+
+        <l:VerticalLayout
+                class="sapUiMediumMarginEnd"
+                >
+            <Label text="Quan. PAUTA"/>
+            <Input
+                enabled="{=!${ImpostosCadastrados}?false:false}" 
+                value="{path: 'impostosEntrada/QuantidadePauta', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
+                description="{impostosEntrada/UMPauta}"/>
+        </l:VerticalLayout>
+
+        <l:VerticalLayout
+                class="sapUiMediumMarginEnd"
+                >
+            <Label text="UM PAUTA"/>
+            <Input
+                enabled="{=!${ImpostosCadastrados}?false:false}" 
+                value="{impostosEntrada/UMPauta}"
+                description=""/>
+        </l:VerticalLayout>
+
 
     </l:Grid>
 

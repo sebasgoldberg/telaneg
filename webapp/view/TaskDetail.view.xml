@@ -76,7 +76,7 @@
 
             <VBox>
                 <items>
-                    <Title text="{fornecedor/ID}" margin-right="0.5rem"/>
+                    <Title text="{fornecedor/ID} - {fornecedor/UF}" margin-right="0.5rem"/>
                     <Text text="{fornecedor/Nome}" class="sapMTitleStyleH3" press="_onFioriObjectPageHeaderContactPress"/>
                 </items>
             </VBox>
