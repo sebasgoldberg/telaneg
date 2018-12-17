@@ -4,9 +4,6 @@
     xmlns:m="sap.m"
     xmlns:mvc="sap.ui.core.mvc">
 
-    <!--
-                expand:'material,simulacao,itemOrg,subitem,subitem/impostosEntrada,subitem/impostosSaida',
-    -->
     <TreeTable
         id="treeTable"
         selectionMode="Multiple"

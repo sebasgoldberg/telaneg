@@ -193,6 +193,7 @@
                                 <content>
                                     <Title textAlign="Begin" text="Documentos de {Descricao}"/>
                                     <ToolbarSpacer/>
+                                    <core:ExtensionPoint name="Toolbar" />
                                 </content>
                             </OverflowToolbar>
                         </headerToolbar>
