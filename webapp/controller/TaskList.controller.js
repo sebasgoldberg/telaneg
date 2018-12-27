@@ -159,7 +159,7 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskList",
 
     },
 
-    onSearch(oEvent) {
+    onSearch: function(oEvent) {
 
         let aFilters = this._createFilters();
         this._setListBinding(aFilters);
@@ -261,10 +261,14 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskList",
         }
     },
 
-    clearVencimentoDateRangeSelection: function(oEvent) {
-        let oVencimentoDateRangeSelection = this.getView().byId('vencimentoDateRangeSelection');
-        oVencimentoDateRangeSelection.setValue();
+    clearFilterDateRangeSelection: function(oDateRangeSelection){
+        oDateRangeSelection.setValue();
         this.onSearch();
+    },
+
+    clearVencimentoDateRangeSelection: function(oEvent) {
+        this.clearFilterDateRangeSelection(
+            this.getView().byId('vencimentoDateRangeSelection'));
     },
 
 });

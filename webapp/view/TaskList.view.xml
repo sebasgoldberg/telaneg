@@ -163,6 +163,9 @@
 
                                 </fb:control>
                             </fb:FilterItem>
+
+                            <core:ExtensionPoint name="MoreFilterItems">
+                            </core:ExtensionPoint>
                         </core:ExtensionPoint>
                         </fb:filterItems>
                     </fb:FilterBar>

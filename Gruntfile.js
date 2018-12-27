@@ -13,13 +13,13 @@ module.exports = function(grunt) {
 
         connect: {
             options: {
-                port: 8082,
+                port: 8282,
                 hostname: 'localhost'
             },
             src: {},
             dist: {
                 options: {
-                    port: 8081,
+                    port: 8281,
                     },
                 },
             transp: {},
