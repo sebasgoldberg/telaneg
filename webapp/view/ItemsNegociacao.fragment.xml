@@ -10,6 +10,7 @@
         enableColumnReordering="false"
         expandFirstLevel="false"
         class="tabelaItens"
+        sort="sortItemsNegociacao"
         rows="{
             path : 'items',
             parameters : {
