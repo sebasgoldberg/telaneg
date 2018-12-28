@@ -61,10 +61,13 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
                     m.resetChanges();
 
                 this.sNegociacaoID = oEvent.mParameters.data.negociacaoID;
+
+                let sExpand = this.getNegociacaoSetExpandAttr();
+
                 let oPath = {
                     path: `/NegociacaoSet('${this.sNegociacaoID}')/`,
-                    parameters: {
-                        expand: 'tipoNegociacao,fornecedor,status,bandeira,clausula,abrangencia,comentarioImpressao,comentarioRejeicao,contrato,permissoes'
+                    parameters: {                        
+                        expand: sExpand
                         },
                 };
 
@@ -89,6 +92,10 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
 
         this.tipoStatus = this.tiposStatus.getTipoStatus(oNegociacao);
         this.tipoStatus.adaptarView();
+    },
+
+    getNegociacaoSetExpandAttr: function() {
+        return 'tipoNegociacao,fornecedor,status,bandeira,clausula,abrangencia,comentarioImpressao,comentarioRejeicao,contrato';
     },
 
     suggestClausula: async function(oEvent) {
