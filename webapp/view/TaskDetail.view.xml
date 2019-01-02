@@ -179,7 +179,7 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection id="itemsObjectPageSubSection" title="Mercadorias">
                         <uxap:blocks>
-                            <core:Fragment fragmentName="simplifique.telaneg.base.view.ItemsNegociacao" id="ItemsNegociacaoFragment" type="XML" />
+                            <core:Fragment fragmentName="simplifique.telaneg.base.view.ItemsNegociacao" type="XML" />
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>
