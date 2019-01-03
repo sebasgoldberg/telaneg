@@ -38,6 +38,14 @@ class TipoEmNegociacao extends TipoStatus{
 
 }
 
+class TipoNovaCotacao extends TipoStatus{
+
+    isNegociacaoEditavel(){
+        return true;
+    }
+
+}
+
 
 class TipoPendenteFormalizar extends TipoStatus{
 
@@ -58,6 +66,7 @@ export default ManagedObject.extend("simplifique.telaneg.base.model.TiposStatus"
         this.tipoEmNegociacao = new TipoEmNegociacao();
         this.tipoPendenteFormalizar = new TipoPendenteFormalizar();
         this.tipoAposNegociacao = new TipoAposNegociacao();
+        this.tipoNovaCotacao = new TipoNovaCotacao();
     },
 
     getTipoStatus: function(oNegociacao){
@@ -68,6 +77,9 @@ export default ManagedObject.extend("simplifique.telaneg.base.model.TiposStatus"
                 break;
             case 'Z':
                 oTipoStatus = this.tipoPendenteFormalizar;
+                break;
+            case 'V':
+                oTipoStatus = this.tipoNovaCotacao;
                 break;
             default:
                 oTipoStatus = this.tipoAposNegociacao;
