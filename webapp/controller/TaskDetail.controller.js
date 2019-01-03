@@ -462,5 +462,9 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
             sValue.toUpperCase());
     },
 
+    sortItemsNegociacao: function (oEvent){
+
+    },
+
 });
 
