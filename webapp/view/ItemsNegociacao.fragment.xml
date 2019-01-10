@@ -30,20 +30,24 @@
             <m:Toolbar>
                 <m:ToolbarSpacer/>
 
-                <core:ExtensionPoint name="Toolbar"/>
+                <core:ExtensionPoint name="ToolbarCompleta">
 
-                <m:Button
-                    visible="{view>/isNegociacaoEditavel}"
-                    text="Incluir {
-                        parts: [ {path: 'tipoNegociacao/ID'}, {path: 'TipoItemMercID'} ],
-                        formatter: '.formatter.formatDescricaoItemMerc'
-                        }"
-                    id="addItemButton"
-                    icon="sap-icon://add" iconFirst="true" type="Transparent" press="onAdicionarMercadoria" />
-                <m:Button
-                    visible="{view>/isNegociacaoEditavel}"
-                    id="removeItemButton"
-                    text="" icon="sap-icon://delete" iconFirst="false" type="Transparent" press="onEliminarItensSelecionados" />
+                    <core:ExtensionPoint name="Toolbar" />
+
+                    <m:Button
+                        visible="{view>/isNegociacaoEditavel}"
+                        text="Incluir {
+                            parts: [ {path: 'tipoNegociacao/ID'}, {path: 'TipoItemMercID'} ],
+                            formatter: '.formatter.formatDescricaoItemMerc'
+                            }"
+                        id="addItemButton"
+                        icon="sap-icon://add" iconFirst="true" type="Transparent" press="onAdicionarMercadoria" />
+                    <m:Button
+                        visible="{view>/isNegociacaoEditavel}"
+                        id="removeItemButton"
+                        text="" icon="sap-icon://delete" iconFirst="false" type="Transparent" press="onEliminarItensSelecionados" />
+
+                </core:ExtensionPoint>
             </m:Toolbar>
         </toolbar>
 

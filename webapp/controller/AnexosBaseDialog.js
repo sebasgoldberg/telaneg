@@ -72,11 +72,11 @@ export default BaseDialog.extend("simplifique.telaneg.base.controller.AnexosBase
             let sNegociacaoID = this.getBindingContext().getObject().ID;
             await(this.remove(sAnexoPath, {'NegociacaoID': sNegociacaoID, 'AnexosNavProp': this.sAnexosNavProp}));
             MessageToast.show("Anexo eliminado com sucesso.");
-            this.refreshItems();
         } catch (e) {
             this.getOwnerComponent().error(e);
             MessageToast.show("Aconteceram erros ao tentar eliminar o anexo.");
         } finally {
+            this.refreshItems();
             this.getUploadCollection().setBusy(false);
         }
     },
