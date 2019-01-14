@@ -23,7 +23,9 @@ export default BaseSelectDialog.extend("simplifique.telaneg.base.controller.Sele
     createFilters: function(sValue) {
         let aFilters = [];
         if (sValue) {
-            if (sValue.length == 10)
+            if ((sValue.length == 14) && (/^\d+$/.test(sValue)))
+                aFilters.push(new Filter("CNPJ", FilterOperator.EQ, sValue))
+            else if (sValue.length == 10)
                 aFilters.push(new Filter("ID", FilterOperator.EQ, sValue))
             else if (/^\d+$/.test(sValue))
                 aFilters.push(new Filter("ID", FilterOperator.Contains, sValue))
