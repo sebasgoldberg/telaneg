@@ -447,6 +447,7 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
             let sTipoNegociacao = this.getView().getBindingContext().getProperty('tipoNegociacao/ID');
             await this.eliminarNegociacao();
             MessageToast.show("Eliminação realizada com sucesso.");
+            this.getView().unbindObject();
             this.navTo('TaskList', {tipoNegociacaoID: sTipoNegociacao});
         } catch (e) {
             MessageToast.show("Aconteceram erros ao tentar eliminar.");
