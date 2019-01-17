@@ -364,7 +364,7 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
             this.setBusy();
             this.removeAllMessages();
             await this.callFunctionImport('/FinalizarNegociacao',{ID: sNegociacaoID});            
-            let sMessage = formatter.finalizarMessage(sNegociacaoTipo);
+            let sMessage = this.formatter.finalizarMessage(sNegociacaoTipo);
             MessageToast.show(sMessage);
             this.refresh()
         } catch (e) {
