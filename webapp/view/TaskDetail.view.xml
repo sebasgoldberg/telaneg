@@ -103,6 +103,7 @@
                     <ObjectNumber number="{status/Descricao}" unit="" state="Success"/>
                 </items>
             </VBox>
+            <core:ExtensionPoint name="HeaderContentAdditionalStatus" />
             <VBox>
                 <ObjectAttribute title="Criação" text="{
                             path: 'Data',
