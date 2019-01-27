@@ -359,7 +359,10 @@ export default {
                 return '';          
         }
     },    
-    
+
+    selectionModeItemsNegociacao: function(sTipoNegociacao, sStatus) {
+        return sap.ui.table.SelectionMode.MultiToggle;
+    },
 }
 
 

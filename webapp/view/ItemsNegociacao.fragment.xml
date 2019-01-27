@@ -6,7 +6,10 @@
 
     <TreeTable
         id="treeTable"
-        selectionMode="Multiple"
+        selectionMode="{
+            parts: [ {path: 'TipoNegociacao'}, {path: 'Status'} ],
+            formatter: '.formatter.selectionModeItemsNegociacao'
+            }"
         enableColumnReordering="false"
         expandFirstLevel="false"
         class="tabelaItens"

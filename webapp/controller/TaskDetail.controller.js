@@ -36,6 +36,8 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
             AtualizacaoEliminacoes: false,
             isNegociacaoEditavel: false,
             isNegociacaoConcluida: false,
+            isNegociacaoEmAnalises: false,
+            isNegociacaoEmAprovacao: false,
             periodoApuracao:{
                 minDate: this.getMinPeriodoApuracao(),
                 },
