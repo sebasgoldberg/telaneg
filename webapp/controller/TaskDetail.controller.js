@@ -331,16 +331,25 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
             });
     },
 
-    temCertezaQueDesejaFinalizar: function(attribute) {
+    temCerteza: function({
+            pergunta = "Tem certeza que deseja concluir a negociação?",
+            titulo = "Concluir Negociação",
+            opcoes = ["Sim", "Não"],
+            opcaoResolve = "Sim",
+            } = {}) {
         return new Promise(function(fnResolve) {
-            sap.m.MessageBox.confirm("Tem certeza que deseja concluir a negociação?", {
-                title: "Concluir Negociação",
-                actions: ["Sim", "Não"],
+            sap.m.MessageBox.confirm(pergunta, {
+                title: titulo,
+                actions: opcoes,
                 onClose: function(sActionClicked) {
-                    fnResolve(sActionClicked === "Sim");
+                    fnResolve(sActionClicked === opcaoResolve);
                 }
             });
         });
+    },
+
+    temCertezaQueDesejaFinalizar: function() {
+        return this.temCerteza();
     },
 
     refresh: function() {
@@ -349,14 +358,19 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
         this.adaptarView();
     },
 
-    onFinalizar: async function() {
+    changeStatusNegociacao: async function({
+            temCertezaOptions = {},
+            functionImportPath = '/FinalizarNegociacao',
+            successMessage = undefined,
+            errorMessage = "Aconteceram erros ao tentar concluir.",
+            } = {}) {
 
         if (this.getModel().hasPendingChanges()){
             MessageToast.show("Ainda tem modificações pendente. Por favor Salvar ou Cancelar.")
             return;
         }
 
-        if (!(await this.temCertezaQueDesejaFinalizar()))
+        if (!(await this.temCerteza(temCertezaOptions)))
             return;
 
         let sNegociacaoID = this.getView().getBindingContext().getProperty('ID');
@@ -365,12 +379,14 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
         try {
             this.setBusy();
             this.removeAllMessages();
-            await this.callFunctionImport('/FinalizarNegociacao',{ID: sNegociacaoID});            
-            let sMessage = this.formatter.finalizarMessage(sNegociacaoTipo);
+            await this.callFunctionImport(functionImportPath, {ID: sNegociacaoID});            
+            let sMessage = successMessage;
+            if (!sMessage)
+                sMessage = this.formatter.finalizarMessage(sNegociacaoTipo);
             MessageToast.show(sMessage);
             this.refresh()
         } catch (e) {
-            MessageToast.show("Aconteceram erros ao tentar concluir.");
+            MessageToast.show(errorMessage);
             this.error(e);
         } finally{
             this.setFree();
@@ -378,6 +394,9 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
 
     },
 
+    onFinalizar: function() {
+        return this.changeStatusNegociacao();
+    },
 
     temCertezaQueDesejaFormalizar: function(attribute) {
         return new Promise(function(fnResolve) {
