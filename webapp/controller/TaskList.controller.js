@@ -138,7 +138,7 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskList",
 
         aFilters.push(new Filter('TipoNegociacao', FilterOperator.EQ, this.sTipoNegociacaoID));
         
-        var vExpand = 'fornecedor,status,bandeira';        
+        var vExpand = this.getNegociacaoSetExpandAttr();
 
         let oBindingInfo = oNegociacoesTable.getBindingInfo('items');
         oNegociacoesTable.bindAggregation('items', {
@@ -157,6 +157,10 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskList",
             filters: aFilters,
         });
 
+    },
+
+    getNegociacaoSetExpandAttr: function() {
+        return 'fornecedor,status,bandeira';
     },
 
     onSearch: function(oEvent) {
