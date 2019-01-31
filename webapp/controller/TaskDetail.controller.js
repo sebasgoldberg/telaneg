@@ -7,6 +7,7 @@ import MessagePopover from 'sap/m/MessagePopover';
 import TiposNegociacoes from 'simplifique/telaneg/base/model/TiposNegociacoes';
 import TiposStatus from 'simplifique/telaneg/base/model/TiposStatus';
 import MessageToast from 'sap/m/MessageToast';
+import FilterType from 'sap/ui/model/FilterType';
 
 
 export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail", {
@@ -33,6 +34,11 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
         let v = this.getView();
 
         v.setModel(new JSONModel({
+            itemsFilter: {
+                fornecedores: [],
+                itemsMerc: [],
+                itemsOrg: [],
+                },
             AtualizacaoEliminacoes: false,
             isNegociacaoEditavel: false,
             isNegociacaoConcluida: false,
@@ -486,6 +492,68 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
 
     sortItemsNegociacao: function (oEvent){
 
+    },
+
+    onFecharFilterItemsPopover: function() {
+        this.getView().byId('filterItemsPopover').close();
+    },
+
+    createItemsFilters: function() {
+
+        let aFilters = []
+
+        let v = this.getView();
+        let m = v.getModel('view');
+        let filter = m.getData().itemsFilter;
+
+        filter.fornecedores.forEach( sValue => 
+            aFilters.push(new Filter('FornecedorID', FilterOperator.EQ, sValue)));
+
+        filter.itemsMerc.forEach( sValue => 
+            aFilters.push(new Filter('MaterialID', FilterOperator.EQ, sValue)));
+
+        filter.itemsOrg.forEach( sValue => 
+            aFilters.push(new Filter('OrgID', FilterOperator.EQ, sValue)));
+
+        return aFilters;
+ 
+    },
+
+    setItemsFilters: function(aFilters) {
+        this.getView().byId('treeTable').getBinding('rows').filter(aFilters, FilterType.Application);
+    },
+
+    onFiltrarItems: function() {
+        let aFilters = this.createItemsFilters();
+        this.setItemsFilters(aFilters);
+    },
+
+    onLimparFiltroItems: function(){
+
+        let v = this.getView();
+        let m = v.getModel('view');
+        let filter = m.getData().itemsFilter;
+
+        filter.fornecedores = [];
+        filter.itemsMerc = [];
+        filter.itemsOrg = [];
+
+        m.setProperty('/itemsFilter', filter);
+
+        this.setItemsFilters([]);
+
+    },
+
+    refreshItemsFilters: function() {
+        [
+            "fornecedorMultiComboBox",
+            "itemMercMultiComboBox",
+            "itemOrgMultiComboBox",
+            ]
+            .map( sIDMultiComboBox => this.getView().byId(sIDMultiComboBox) )
+            .map( oMultiComboBox => oMultiComboBox.getBinding('items') )
+            .forEach( oBinding => oBinding.refresh() );
+        this.onLimparFiltroItems();
     },
 
 });

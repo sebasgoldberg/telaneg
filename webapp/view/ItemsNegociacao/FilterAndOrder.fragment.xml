@@ -1,0 +1,91 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form"
+    xmlns:sim="simplifique.telaneg.base.control"
+    >
+
+
+    <sim:ButtonPopover
+        placement="Left"
+        text="" icon="sap-icon://filter"
+        iconFirst="false" type="Transparent"
+        press="onDisplayItemsFilters"
+        >
+
+        <ResponsivePopover
+            id="filterItemsPopover"
+            title="Filtros"
+            class="sapUiPopupWithPadding"
+            >
+            <beginButton>
+                <Button text="Limpar" press="onLimparFiltroItems" type="Emphasized" />
+            </beginButton>
+            <endButton>
+                <Button text="Fechar" press="onFecharFilterItemsPopover" />
+            </endButton>
+            <content>
+
+                <form:SimpleForm editable="true" >
+
+                    <Label text="Fornecedor" />
+
+                    <MultiComboBox
+                        id="fornecedorMultiComboBox"
+                        width="300px"
+                        placeholder="Selecionar fornecedor"
+                        selectionChange="onFiltrarItems"
+                        selectedKeys="{view>/itemsFilter/fornecedores}"
+                        enableMultiLineMode="true"
+                        items="{fornecedoresItems}">
+                        <core:Item key="{ID}" text="{Nome}" />
+                    </MultiComboBox>
+
+                    <Label text="{
+                            parts: [ {path: 'tipoNegociacao/ID'}, {path: 'TipoItemMercID'} ],
+                            formatter: '.formatter.formatDescricaoItemMerc'
+                            }" />
+
+                    <MultiComboBox
+                        id="itemMercMultiComboBox"
+                        width="300px"
+                        placeholder="Selecionar {
+                            parts: [ {path: 'tipoNegociacao/ID'}, {path: 'TipoItemMercID'} ],
+                            formatter: '.formatter.formatDescricaoItemMerc'
+                            }"
+                        selectionChange="onFiltrarItems"
+                        selectedKeys="{view>/itemsFilter/itemsMerc}"
+                        enableMultiLineMode="true"
+                        items="{itemsMercItems}">
+                        <core:Item key="{ID}" text="{Nome}" />
+                    </MultiComboBox>
+
+                    <Label text="{
+                        parts: [ {path: 'tipoNegociacao/ID'}, {path: 'TipoAbrangencia'} ],
+                        formatter: '.formatter.formatDescricaoItemOrg'
+                        }" />
+
+                    <MultiComboBox
+                        id="itemOrgMultiComboBox"
+                        width="300px"
+                        placeholder="Selecionar {
+                            parts: [ {path: 'tipoNegociacao/ID'}, {path: 'TipoAbrangencia'} ],
+                            formatter: '.formatter.formatDescricaoItemOrg'
+                            }"
+                        selectionChange="onFiltrarItems"
+                        selectedKeys="{view>/itemsFilter/itemsOrg}"
+                        enableMultiLineMode="true"
+                        items="{itemsOrgItems}">
+                        <core:Item key="{ID}" text="{Nome}" />
+                    </MultiComboBox>
+
+                </form:SimpleForm>
+
+            </content>
+        </ResponsivePopover>
+
+    </sim:ButtonPopover>
+
+
+    <Button text="" icon="sap-icon://alphabetical-order"
+        iconFirst="false" type="Transparent"
+        press="onDisplayItemsSorting" />
+
+</core:FragmentDefinition>

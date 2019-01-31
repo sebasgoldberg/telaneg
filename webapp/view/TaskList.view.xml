@@ -418,27 +418,29 @@
             </VBox>            
         </f:content>
         <f:footer>
-            <OverflowToolbar>
-                <core:ExtensionPoint name="ListFooter" >
-                    <Button
-                        icon="sap-icon://message-popup"
-                        text="{= ${message>/}.length }"
-                        visible="{= ${message>/}.length > 0 }"
-                        type="Reject" 
-                        press="handleMessagePopoverPress"/>
-                    <ToolbarSpacer/>
-                    <Button text="Copiar" icon="sap-icon://add-coursebook" press="onCopiarSelecionados"
-                        tooltip="Criar uma nova negociação com cópia de uma selecionada."/>
-                    <Button id="novoAcordoButton" 
-                    text="{
-                            parts: [ {path: 'ID'} ],
-                            formatter: '.formatter.botaoNovoLabel' 
-                            }" 
- 
-                    icon="sap-icon://add" type="Emphasized" press="onCriarAcordo" />
-                    <Button icon="sap-icon://delete" press="onDeleteSelecionados"/>
-                </core:ExtensionPoint >
-            </OverflowToolbar>
+            <core:ExtensionPoint name="Footer" >
+                <OverflowToolbar>
+                    <core:ExtensionPoint name="ListFooter" >
+                        <Button
+                            icon="sap-icon://message-popup"
+                            text="{= ${message>/}.length }"
+                            visible="{= ${message>/}.length > 0 }"
+                            type="Reject" 
+                            press="handleMessagePopoverPress"/>
+                        <ToolbarSpacer/>
+                        <Button text="Copiar" icon="sap-icon://add-coursebook" press="onCopiarSelecionados"
+                            tooltip="Criar uma nova negociação com cópia de uma selecionada."/>
+                        <Button id="novoAcordoButton" 
+                        text="{
+                                parts: [ {path: 'ID'} ],
+                                formatter: '.formatter.botaoNovoLabel' 
+                                }" 
+     
+                        icon="sap-icon://add" type="Emphasized" press="onCriarAcordo" />
+                        <Button icon="sap-icon://delete" press="onDeleteSelecionados"/>
+                    </core:ExtensionPoint >
+                </OverflowToolbar>
+            </core:ExtensionPoint >
         </f:footer>
     </f:DynamicPage>
 </mvc:View>
