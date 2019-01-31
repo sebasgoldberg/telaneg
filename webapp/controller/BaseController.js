@@ -447,4 +447,34 @@ export default Controller.extend("simplifique.telaneg.base.controller.BaseContro
         this.oMP.toggle(oEvent.getSource());
     },
 
+    enviarEmail: async function() {
+        
+        let m = this.getView().getModel('mail');
+        let oMail = m.getData('/');
+
+        try {
+            this.setBusy();
+            this.removeAllMessages();
+            await this.callFunctionImport('/EnviarEmail',
+                {
+                    Destinatarios: oMail.destinatarios,
+                    Assunto: oMail.assunto,
+                    Corpo: oMail.corpo,
+                });
+            MessageToast.show('e-mail enviado com sucesso.');
+        } catch (e) {
+            MessageToast.show('Aconteceu um erro ao tentar enviar o e-mail.');
+        } finally{
+            this.setFree();
+        }
+
+    },
+
+    onEnviarEmail: async function() {
+        let oEnvioEmailDialog = this.getOwnerComponent().getEnvioEmailDialog();
+        let bEnviar = await oEnvioEmailDialog.open({ model: 'mail', path: '/'});
+        if (bEnviar)
+            this.enviarEmail();
+    },
+
 });

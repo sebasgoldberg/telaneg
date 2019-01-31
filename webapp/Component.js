@@ -17,6 +17,8 @@ import SelecaoClausulaDialog from "simplifique/telaneg/base/controller/SelecaoCl
 import AnexosNegociacaoDialog from "simplifique/telaneg/base/controller/AnexosNegociacaoDialog";
 import AnexosEstipulacaoDialog from "simplifique/telaneg/base/controller/AnexosEstipulacaoDialog";
 import InfoDialog from "simplifique/telaneg/base/controller/InfoDialog";
+import EnvioEmailDialog from "simplifique/telaneg/base/controller/EnvioEmailDialog";
+import JSONModel from "sap/ui/model/json/JSONModel";
 
 let navigationWithContext = {
     "NegociacaoSet": {
@@ -64,6 +66,12 @@ export default UIComponent.extend("simplifique.telaneg.base.Component", {
         var oApplicationModel = new sap.ui.model.json.JSONModel({});
         this.setModel(oApplicationModel, "applicationModel");
 
+        this.setModel(new JSONModel({
+            destinatarios: '',
+            assunto: '',
+            corpo: '',
+            }), 'mail');
+
         // call the base component's init function and create the App view
         UIComponent.prototype.init.apply(this, arguments);
 
@@ -107,6 +115,7 @@ export default UIComponent.extend("simplifique.telaneg.base.Component", {
         this._anexosNegociacaoDialog = new AnexosNegociacaoDialog(this.getRootControl());
         this._anexosEstipulacaoDialog = new AnexosEstipulacaoDialog(this.getRootControl());
         this._infoDialog = new InfoDialog(this.getRootControl());
+        this._envioEmailDialog = new EnvioEmailDialog(this.getRootControl());
     },
 
     getUserInfo: function() {
@@ -161,6 +170,10 @@ export default UIComponent.extend("simplifique.telaneg.base.Component", {
 
     getInfoDialog: function() {
         return this._infoDialog;
+    },
+
+    getEnvioEmailDialog: function() {
+        return this._envioEmailDialog;
     },
 
     getAnexosEstipulacaoDialog: function() {
