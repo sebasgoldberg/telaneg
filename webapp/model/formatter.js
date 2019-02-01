@@ -136,6 +136,13 @@ export default {
                 L: 'UF',
             },
             };
+        if (!oDescricoes[sTipoNegociacao])
+            return {
+                U: 'UF',
+                R: 'Centro Ref.',
+                G: 'Grupo Loja',
+                L: 'Loja',
+                }[sTipoAbrangencia];
         return oDescricoes[sTipoNegociacao][sTipoAbrangencia];
     },
 
