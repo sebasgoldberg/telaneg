@@ -592,5 +592,22 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
         this.onLimparFiltroItems();
     },
 
+    setAprovacaoItemsSelecionados: function(bAprovado) {
+        let oTree = this.getView().byId('treeTable');
+        let m = this.getView().getModel()
+        oTree.getSelectedIndices()
+            .map( index => oTree.getContextByIndex(index) )
+            .map( bc => bc.getPath() )
+            .forEach( sItemPath => m.setProperty(`${sItemPath}/Aprovado`, bAprovado) );
+    },
+
+    onAprovarItems: function() {
+        this.setAprovacaoItemsSelecionados(true);
+    },
+
+    onRecusarItems: function() {
+        this.setAprovacaoItemsSelecionados(false);
+    },
+
 });
 
