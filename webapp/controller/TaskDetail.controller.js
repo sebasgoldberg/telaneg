@@ -8,6 +8,7 @@ import TiposNegociacoes from 'simplifique/telaneg/base/model/TiposNegociacoes';
 import TiposStatus from 'simplifique/telaneg/base/model/TiposStatus';
 import MessageToast from 'sap/m/MessageToast';
 import FilterType from 'sap/ui/model/FilterType';
+import Sorter from "sap/ui/model/Sorter";
 
 
 export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail", {
@@ -490,7 +491,42 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
             sValue.toUpperCase());
     },
 
+    _resetSortingState: function (oTable){
+			
+        var aColumns = oTable.getColumns();
+        for (var i = 0; i < aColumns.length; i++) {
+            aColumns[i].setSorted(false);
+        }
+    },
+
+    getSorters: function(oEvent) {
+
+        let oCurrentColumn = oEvent.getParameter("column");
+
+        oEvent.preventDefault();
+
+        let sOrder = oEvent.getParameter("sortOrder");
+
+        let oTable = oEvent.getSource();
+        this._resetSortingState(oTable);
+        oCurrentColumn.setSorted(true);
+        oCurrentColumn.setSortOrder(sOrder);
+
+        return [new Sorter(oCurrentColumn.getSortProperty(), sOrder === "Descending" )];
+
+    },
+
+    doSortItemsNegociacao: function(aSorters) {
+
+        let oBinding = this.getView().byId('treeTable').getBinding("rows");
+        oBinding.sort(aSorters);
+        
+    },
+
     sortItemsNegociacao: function (oEvent){
+
+        let aSorters = this.getSorters(oEvent);
+        this.doSortItemsNegociacao(aSorters);
 
     },
 
