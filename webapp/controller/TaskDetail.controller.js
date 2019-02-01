@@ -386,7 +386,7 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
         try {
             this.setBusy();
             this.removeAllMessages();
-            await this.callFunctionImport(functionImportPath, {ID: sNegociacaoID});            
+            await this.callFunctionImport(functionImportPath, {ID: sNegociacaoID});
             let sMessage = successMessage;
             if (!sMessage)
                 sMessage = this.formatter.finalizarMessage(sNegociacaoTipo);
@@ -607,6 +607,46 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
 
     onRecusarItems: function() {
         this.setAprovacaoItemsSelecionados(false);
+    },
+
+    simularItemsSelecionados: async function({
+            successMessage = 'Simulação realizada com sucesso nos itens selecionados.',
+            errorMessage = "Aconteceram erros ao tentar realizar as simulações.",
+            } = {}) {
+
+        if (this.getModel().hasPendingChanges()){
+            MessageToast.show("Ainda tem modificações pendente. Por favor Salvar ou Cancelar.")
+            return;
+        }
+
+        let oTree = this.getView().byId('treeTable');
+        let m = this.getView().getModel()
+        let aSimularItemPromises = oTree.getSelectedIndices()
+            .map( index => oTree.getContextByIndex(index) )
+            .map( bc => bc.getObject() )
+            .map( oItem => this.callFunctionImport('/SimularItem', {
+                NegociacaoID: oItem.NegociacaoID,
+                Item: oItem.Item})
+            );
+
+        if (!aSimularItemPromises){
+            MessageToast.show("Primeiro deve selecionar os itens.")
+            return;
+        }
+
+        try {
+            this.setBusy();
+            this.removeAllMessages();
+            await this.all(aSimularItemPromises);
+            MessageToast.show(successMessage);
+            this.refreshItems();
+        } catch (e) {
+            MessageToast.show(errorMessage);
+            this.error(e);
+        } finally{
+            this.setFree();
+        }
+
     },
 
 });
