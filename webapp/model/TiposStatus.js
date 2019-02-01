@@ -88,6 +88,7 @@ export default ManagedObject.extend("simplifique.telaneg.base.model.TiposStatus"
         this.tipoEmNegociacao = new TipoEmNegociacao();
         this.tipoPendenteFormalizar = new TipoPendenteFormalizar();
         this.tipoAposNegociacao = new TipoAposNegociacao();
+        this.tipoNovaCotacao = new TipoNovaCotacao();
         this.tipoEmAnalises = new TipoEmAnalises();
         this.tipoEmAprovacao = new TipoEmAprovacao();
     },
