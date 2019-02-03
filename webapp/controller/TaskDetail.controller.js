@@ -285,15 +285,40 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
         }
     },
 
-    onGetPDF: function(oEvent) {
-        let sNegoPath = this.getView().getBindingContext().getPath();
-        let oSource = oEvent.getSource();
+    onGetMedia: function(sPath) {
         try {
-            let sUrl = this.getOwnerComponent().getUrlContent(`${sNegoPath}/pdf`);
+            let sUrl = this.getOwnerComponent().getUrlContent(sPath);
             this.openUrl(sUrl);
         } catch (e) {
             this.error(e);
         }
+    },
+
+    onGetPDF: function(oEvent) {
+        let sNegoPath = this.getView().getBindingContext().getPath();
+        this.onGetMedia(`${sNegoPath}/pdf`);
+    },
+
+    onGetItemsExportados: function(oEvent) {
+
+        if (this.getModel().hasPendingChanges()){
+            MessageToast.show("Ainda tem modificações pendente. Por favor Salvar ou Cancelar.")
+            return;
+        }
+
+        let sNegoPath = this.getView().getBindingContext().getPath();
+        this.onGetMedia(`${sNegoPath}/itemsExportados`);
+    },
+
+    onGetAgregacaoExportada: function(oEvent) {
+
+        if (this.getModel().hasPendingChanges()){
+            MessageToast.show("Ainda tem modificações pendente. Por favor Salvar ou Cancelar.")
+            return;
+        }
+
+        let sNegoPath = this.getView().getBindingContext().getPath();
+        this.onGetMedia(`${sNegoPath}/agregacaoExportada`);
     },
 
     onMostrarAnexos: function(oEvent) {
