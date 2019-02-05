@@ -145,7 +145,7 @@
                             </fb:FilterItem>
 
 
-                            <fb:FilterItem label="Usuario" name="usuarioFilter">
+                            <fb:FilterItem label="Usuário" name="usuarioFilter">
                                 <fb:control>
 
                                     <MultiInput 
