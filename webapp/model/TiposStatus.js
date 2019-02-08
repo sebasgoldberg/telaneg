@@ -16,6 +16,9 @@ class TipoStatus{
         m.setProperty('/isNegociacaoConcluida',this.isNegociacaoConcluida());
         m.setProperty('/isNegociacaoEmAnalises',this.isNegociacaoEmAnalises());
         m.setProperty('/isNegociacaoEmAprovacao',this.isNegociacaoEmAprovacao());
+        m.setProperty('/isNegociacaoAprovada',this.isNegociacaoAprovada());
+        m.setProperty('/isTabelaEnviada',this.isTabelaEnviada());
+        m.setProperty('/isNegociacaoFinalizada',this.isNegociacaoFinalizada());
     }
 
     getView(){
@@ -38,6 +41,18 @@ class TipoStatus{
         return false;
     }
 
+    isNegociacaoAprovada(){
+        return false;
+    }
+
+    isTabelaEnviada(){
+        return false;
+    }
+
+    isNegociacaoFinalizada(){
+        return false;
+    }
+
 }
 
 class TipoEmAnalises extends TipoStatus{
@@ -48,6 +63,12 @@ class TipoEmAnalises extends TipoStatus{
 
 class TipoEmAprovacao extends TipoStatus{
     isNegociacaoEmAprovacao(){
+        return true;
+    }
+}
+
+class TipoAprovada extends TipoStatus{
+    isNegociacaoAprovada(){
         return true;
     }
 }
@@ -77,6 +98,22 @@ class TipoPendenteFormalizar extends TipoStatus{
 
 }
 
+class TipoTabelaEnviada extends TipoStatus{
+
+    isTabelaEnviada(){
+        return true;
+    }
+
+}
+
+class TipoFinalizada extends TipoStatus{
+
+    isNegociacaoFinalizada(){
+        return true;
+    }
+
+}
+
 class TipoAposNegociacao extends TipoStatus{
 
 }
@@ -91,6 +128,9 @@ export default ManagedObject.extend("simplifique.telaneg.base.model.TiposStatus"
         this.tipoNovaCotacao = new TipoNovaCotacao();
         this.tipoEmAnalises = new TipoEmAnalises();
         this.tipoEmAprovacao = new TipoEmAprovacao();
+        this.tipoAprovada = new TipoAprovada();
+        this.tipoTabelaEnviada = new TipoTabelaEnviada();
+        this.tipoFinalizada = new TipoFinalizada();
     },
 
     getTipoStatus: function(oNegociacao){
@@ -110,6 +150,15 @@ export default ManagedObject.extend("simplifique.telaneg.base.model.TiposStatus"
                 break;
             case 'P':
                 oTipoStatus = this.tipoEmAprovacao;
+                break;
+            case 'A':
+                oTipoStatus = this.tipoAprovada;
+                break;
+            case 'T':
+                oTipoStatus = this.tipoTabelaEnviada;
+                break;
+            case 'F':
+                oTipoStatus = this.tipoFinalizada;
                 break;
             default:
                 oTipoStatus = this.tipoAposNegociacao;

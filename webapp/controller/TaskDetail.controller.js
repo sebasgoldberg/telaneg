@@ -45,6 +45,10 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
             isNegociacaoConcluida: false,
             isNegociacaoEmAnalises: false,
             isNegociacaoEmAprovacao: false,
+            isNegociacaoAprovada: false,
+            isTabelaEnviada: false,
+            isNegociacaoFinalizada: false,
+            tipoNegociacao: undefined,
             periodoApuracao:{
                 minDate: this.getMinPeriodoApuracao(),
                 },
@@ -97,6 +101,7 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
         let oNegociacao = this.getView().getBindingContext().getObject();
 
         this.tipoNegociacao = this.tiposNegociacoes.getTipoNegociacao(oNegociacao.TipoNegociacao);
+        this.getView().getModel('view').setProperty('/tipoNegociacao',oNegociacao.TipoNegociacao);
         this.tipoNegociacao.adaptarView();
 
         this.tipoStatus = this.tiposStatus.getTipoStatus(oNegociacao);
