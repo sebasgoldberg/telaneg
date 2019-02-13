@@ -139,13 +139,19 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
    
     },
 
-    onValueHelpItemOrg: async function(oEvent) {
-        let sTipoAbrangencia = this.getView().getBindingContext().getProperty('TipoAbrangencia')
+    onValueHelpLojasPrecoVenda: function(oEvent) {
+        this.onValueHelpItemOrg(oEvent, 'itemsOrgPrecoVenda', 'L', false);
+    },
+
+    onValueHelpItemOrg: async function(oEvent, sItemsOrgPath='itemsOrg', _sTipoAbrangencia=undefined, bRefreshItems=true) {
+        let sTipoAbrangencia = _sTipoAbrangencia;
+        if (!sTipoAbrangencia)
+            sTipoAbrangencia = this.getView().getBindingContext().getProperty('TipoAbrangencia');
         let selecaoItemOrgDialog = this.getOwnerComponent().getSelecaoItemOrgDialog(sTipoAbrangencia);
         try {
             let v = this.getView();
             let selectedContexts = await selecaoItemOrgDialog.open(v.getBindingContext().getPath());
-            let sPath = `${v.getBindingContext().getPath()}/itemsOrg`;
+            let sPath = `${v.getBindingContext().getPath()}/${sItemsOrgPath}`;
             let m = this.getView().getModel();
             let oPromisesEntries = selectedContexts.map( oContext => oContext.getObject() )
                 .map( oItemOrg => 
@@ -158,7 +164,8 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
                 oPromisesEntries.push(this.submitChanges())
                 try {
                     let results = await this.all(oPromisesEntries);
-                    this.refreshItems();
+                    if (bRefreshItems)
+                        this.refreshItems();
                 } catch (e) {
                     console.error(e);
                     this.resetChanges();
@@ -169,7 +176,11 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
         }
     },
 
-    onUpdateItemOrg: async function(oEvent) {
+    onUpdateLojaPrecoVenda: function(oEvent){
+        this.onUpdateItemOrg(oEvent, false, 'itemsOrgPrecoVenda');
+    },
+
+    onUpdateItemOrg: async function(oEvent, bRefreshItems=true, sRelacao='') {
         let oParams = oEvent.getParameters();
         let oSource = oEvent.getSource();
         if (oParams.type != "removed")
@@ -177,10 +188,11 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
 
         let oContext = oSource.getBindingContext();
         let aRemovePromises = oParams.removedTokens.map( oToken => oToken.getBindingContext().getPath() )
-            .map( sPath => this.remove(sPath, { NegociacaoID: oContext.getObject().ID }) );
+            .map( sPath => this.remove(sPath, { NegociacaoID: oContext.getObject().ID, Relacao: sRelacao }) );
         try {
             let result = await this.all(aRemovePromises);
-            this.refreshItems();
+            if (bRefreshItems)
+                this.refreshItems();
         } catch (e) {
             this.error(e);
             //this.getModel().resetChanges()
@@ -622,13 +634,13 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
         this.onLimparFiltroItems();
     },
 
-    setAprovacaoItemsSelecionados: function(bAprovado) {
+    setAprovacaoItemsSelecionados: function(bAprovado, sPropertyName='Aprovado') {
         let oTree = this.getView().byId('treeTable');
         let m = this.getView().getModel()
         oTree.getSelectedIndices()
             .map( index => oTree.getContextByIndex(index) )
             .map( bc => bc.getPath() )
-            .forEach( sItemPath => m.setProperty(`${sItemPath}/Aprovado`, bAprovado) );
+            .forEach( sItemPath => m.setProperty(`${sItemPath}/${sPropertyName}`, bAprovado) );
     },
 
     onAprovarItems: function() {
@@ -637,6 +649,11 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
 
     onRecusarItems: function() {
         this.setAprovacaoItemsSelecionados(false);
+    },
+
+    onMudarCriacaoPrecosVenda: function(oEvent) {
+        let sCriar = oEvent.getParameters().state;
+        this.setAprovacaoItemsSelecionados(sCriar, 'GerarPrecoVenda');
     },
 
     simularItemsSelecionados: async function({
