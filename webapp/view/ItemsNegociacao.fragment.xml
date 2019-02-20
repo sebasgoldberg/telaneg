@@ -18,7 +18,7 @@
             path : 'items',
             parameters : {
                 templateShareable: true,
-                expand:'itemMerc,material,informacao,simulacao,itemOrg,impostosEntrada,impostosSaida,negociacao',
+                expand:'itemMerc,material,informacao,simulacao,itemOrg,impostosEntrada,impostosSaida,negociacao,itemPrincipal',
                 numberOfExpandedLevels: 0,
                 treeAnnotationProperties : {
                     hierarchyLevelFor : 'Nivel',
