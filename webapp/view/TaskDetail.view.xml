@@ -134,8 +134,8 @@
                             }"/>
                 <ObjectAttribute title="Usuário" text="{UsuarioFormalizacao}" />
             </VBox>
-            <VBox visible="{= ${Status} === 'A' || ${Status} === 'R' }">
-                <ObjectAttribute title="{= ${Status} === 'A' ? 'Aprovação' : 'Rejeição' }" text="{
+            <VBox visible="{= ${UsuarioAprovacaoRejeicao} !== '' }">
+                <ObjectAttribute title="{= ( ${Status} === 'A' || ${Status} === 'F' ) ? 'Aprovação' : 'Rejeição' }" text="{
                             path: 'DataAprovacaoRejeicao',
                             type: 'sap.ui.model.type.Date',
                             formatOptions: { UTC: true, style: 'short' }
