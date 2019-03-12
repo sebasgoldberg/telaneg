@@ -14,7 +14,7 @@
 	</subHeader>
 
         <beginButton>
-            <Button type="Emphasized" text="Enviar" press="onEnviar" />
+            <Button type="Emphasized" text="Enviar" press="onEnviar" enabled="{= ${mail>destinatarios}.trim() !== '' }"/>
         </beginButton>
 
         <endButton>
@@ -32,7 +32,7 @@
                 <Input value="{mail>destinatarios}" />
 
                 <Label text="Assunto" placeholder="Ingresse o assunto" />
-                <Input value="{mail>assunto}" />
+                <Input value="{mail>assunto}" maxLength='50' />
 
                 <Label text="Corpo" placeholder="Escreva o corpo do e-mail." />
                 <rich:RichTextEditor

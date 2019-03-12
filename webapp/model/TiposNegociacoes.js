@@ -82,6 +82,11 @@ class TipoNegociacao{
     getView(){
         return this.oView;
     }
+
+    enviarEmailAoFinalizar(){
+        return false;
+    }
+
 }
 
 /**
@@ -137,6 +142,10 @@ class TipoNegociacaoSellOut extends TipoNegociacao{
         return "Mercadorias";
     }
 
+    enviarEmailAoFinalizar(){
+        return true;
+    }
+
 }
 
 
@@ -177,6 +186,10 @@ class TipoNegociacaoSellIn extends TipoNegociacao{
         return "Mercadorias";
     }
 
+    enviarEmailAoFinalizar(){
+        return true;
+    }
+
 }
 
 
@@ -208,6 +221,10 @@ class TipoNegociacaoValorFixo extends TipoNegociacao{
 
     getItemsSectionTitle(){
         return "Bonificação";
+    }
+
+    enviarEmailAoFinalizar(){
+        return true;
     }
 
 }

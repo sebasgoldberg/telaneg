@@ -412,18 +412,30 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
             functionImportPath = '/FinalizarNegociacao',
             successMessage = undefined,
             errorMessage = "Aconteceram erros ao tentar concluir.",
+            beforeChangeAction = () => { return true },
             } = {}) {
 
         if (this.getModel().hasPendingChanges()){
             MessageToast.show("Ainda tem modificações pendente. Por favor Salvar ou Cancelar.")
-            return;
+            return false;
         }
 
         if (!(await this.temCerteza(temCertezaOptions)))
-            return;
+            return false;
+
+        try {
+            if (!await beforeChangeAction())
+                return false;
+        } catch (e) {
+            MessageToast.show(errorMessage);
+            this.error(e);
+            return false;
+        }
 
         let sNegociacaoID = this.getView().getBindingContext().getProperty('ID');
         let sNegociacaoTipo = this.getView().getBindingContext().getProperty('TipoNegociacao');
+
+        let result = false;
 
         try {
             this.setBusy();
@@ -434,6 +446,7 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
                 sMessage = this.formatter.finalizarMessage(sNegociacaoTipo);
             MessageToast.show(sMessage);
             this.refresh()
+            result = true;
         } catch (e) {
             MessageToast.show(errorMessage);
             this.error(e);
@@ -441,10 +454,55 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
             this.setFree();
         }
 
+        return result;
+
     },
 
-    onFinalizar: function() {
-        return this.changeStatusNegociacao();
+    onFinalizar: async function() {
+        let result = await this.changeStatusNegociacao({
+            beforeChangeAction: async () => {
+
+                if (!this.tipoNegociacao.enviarEmailAoFinalizar())
+                    return true;
+
+                let v = this.getView();
+
+                let bc = v.getBindingContext();
+
+                let sEmailFornecedor = bc.getProperty('fornecedor/Email');
+                let sTipoAcordo = bc.getProperty('tipoNegociacao/Descricao');
+                let sNumeroAcordo = bc.getProperty('ID');
+                let sBandeira = bc.getProperty('bandeira/Nome');
+                let sUrlPortal = 'https://portalfornecedor.cencosud.com.br';
+
+                // Sugerimos os destinatarios
+                this.getModel('mail').setProperty('/destinatarios', sEmailFornecedor);
+
+                // Sugerimos o assunto
+                //this.getModel('mail').setProperty('/assunto',`Portal de Fornecedor Informa: Novo Acordo de ${sTipoAcordo} | N° ${sNumeroAcordo} | Bandeira: ${sBandeira}`);
+                this.getModel('mail').setProperty('/assunto',`Portal Fornecedor: ${sTipoAcordo} | ${sBandeira}`);
+
+                // Sugerimos o corpo
+                this.getModel('mail').setProperty('/corpo',`
+                    <p>Prezado Fornecedor,</p>
+                    <p>Comunicamos que existe uma nova negociação de acordo de ${sTipoAcordo} para ser validado e aprovado no Portal de Fornecedores da Cencosud.</p>
+                    <p>Favor realizar a validação e aprovação do documento.</p>
+                    <p>Para validação e aprovação, acesse o portal de fornecedores utilizando endereço abaixo:</p>
+                    <p><a href="${sUrlPortal}">${sUrlPortal}</a></p>
+                    <p>Caso não tenha uma conta de acesso ao portal de fornecedores, faça através do site acima.</p>
+                    <p>Atenciosamente,<br>
+                    Equipe Comercial - ${sBandeira}</p>
+                `);
+         
+                let oEnvioEmailDialog = this.getOwnerComponent().getEnvioEmailDialog();
+                return await oEnvioEmailDialog.open({ model: 'mail', path: '/'});
+                },
+            });
+
+        if (result && this.tipoNegociacao.enviarEmailAoFinalizar())
+            await this.enviarEmail();
+
+        return result;
     },
 
     temCertezaQueDesejaFormalizar: function(attribute) {
@@ -661,9 +719,11 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
             errorMessage = "Aconteceram erros ao tentar realizar as simulações.",
             } = {}) {
 
+        let result = true;
+
         if (this.getModel().hasPendingChanges()){
             MessageToast.show("Ainda tem modificações pendente. Por favor Salvar ou Cancelar.")
-            return;
+            return false;
         }
 
         let oTree = this.getView().byId('treeTable');
@@ -678,7 +738,7 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
 
         if (!aSimularItemPromises){
             MessageToast.show("Primeiro deve selecionar os itens.")
-            return;
+            return false;
         }
 
         try {
@@ -688,12 +748,14 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
             MessageToast.show(successMessage);
             this.refreshItems();
         } catch (e) {
+            result = false;
             MessageToast.show(errorMessage);
             this.error(e);
         } finally{
             this.setFree();
         }
 
+        return result;
     },
 
 });
