@@ -268,6 +268,12 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
         oStockPopOver.open(`${sItemPath}`, oEvent.getSource());
     },
 
+    onMostrarHistoricoPrecosMercado: function(oEvent) {
+        let sItemPath = oEvent.getSource().getBindingContext().getPath();
+        let oHistoricoPrecosMercadoPopOver = this.getOwnerComponent().getHistoricoPrecosMercadoPopover();
+        oHistoricoPrecosMercadoPopOver.open(`${sItemPath}`, oEvent.getSource());
+    },
+
     onPostComentario: async function(oEvent) {
         let v = this.getView();
         let m = this.getModel();

@@ -5,6 +5,7 @@ import ErrorHandler from "simplifique/telaneg/base/controller/ErrorHandler";
 import ImpostosPopover from "simplifique/telaneg/base/controller/ImpostosPopover";
 import VendasPopover from "simplifique/telaneg/base/controller/VendasPopover";
 import StockPopover from "simplifique/telaneg/base/controller/StockPopover";
+import HistoricoPrecosMercadoPopover from "simplifique/telaneg/base/controller/HistoricoPrecosMercadoPopover";
 import SelecaoLojaDialog from "simplifique/telaneg/base/controller/SelecaoLojaDialog";
 import SelecaoGrupoLojasDialog from "simplifique/telaneg/base/controller/SelecaoGrupoLojasDialog";
 import SelecaoUFDialog from "simplifique/telaneg/base/controller/SelecaoUFDialog";
@@ -103,6 +104,7 @@ export default UIComponent.extend("simplifique.telaneg.base.Component", {
         this._impostosPopover = new ImpostosPopover(this.getRootControl());
         this._vendasPopover = new VendasPopover(this.getRootControl());
         this._stockPopover = new StockPopover(this.getRootControl());
+        this._historicoPrecosMercadoPopover = new HistoricoPrecosMercadoPopover(this.getRootControl());
         this._selecaoLojaDialog = new SelecaoLojaDialog(this.getRootControl());
         this._selecaoGrupoLojasDialog = new SelecaoGrupoLojasDialog(this.getRootControl());
         this._selecaoUFDialog = new SelecaoUFDialog(this.getRootControl());
@@ -128,6 +130,10 @@ export default UIComponent.extend("simplifique.telaneg.base.Component", {
 
     getStockPopover: function() {
         return this._stockPopover;
+    },
+
+    getHistoricoPrecosMercadoPopover: function() {
+        return this._historicoPrecosMercadoPopover;
     },
 
     getVendasPopover: function() {

@@ -1,0 +1,83 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+
+    <ResponsivePopover
+        title="HISTORICO PREÇOS MERCADO"
+        class="sapUiPopupWithPadding"
+        contentWidth="960px"
+        contentHeight="720px"
+        placement="Left" >
+
+		<beginButton>
+		</beginButton>
+		<endButton>
+			<Button text="Fechar" press="onFecharPopover" />
+		</endButton>
+
+        <content>
+
+            <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false"
+                id='historicoPrecosMercadoTable'
+                items="{
+                    path:'precosMercado',
+                    templateShareable:true
+                    }" >
+
+
+                <columns>
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Concorrente"
+                                width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Nome Concorrente" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Data Desde" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Data Até" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+
+                    <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                        <header>
+                            <Text text="Preço" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                        </header>
+                        <footer/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <ObjectIdentifier title="{Concorrente}" text="" titleActive="false" visible="true"/>
+                            <ObjectIdentifier title="{NomeConcorrente}" text="" titleActive="false" visible="true"/>
+                            <ObjectIdentifier title="{path: 'DataDesde', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}" />
+                            <ObjectIdentifier title="{path: 'DataAte', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}" />
+                            <ObjectNumber
+                                number="{path: 'Preco', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                                unit="BRL" emphasized="true"
+                                />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+
+        </content>
+    </ResponsivePopover>
+
+</core:FragmentDefinition>
+
+
+
