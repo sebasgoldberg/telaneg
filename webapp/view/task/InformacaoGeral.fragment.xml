@@ -118,6 +118,21 @@
                                 value="{clausula/Descricao}" enabled="false" required="true"/>
                         </form:fields>
                     </form:FormElement>
+                    <form:FormElement>
+                        <form:label>
+                            <Label text="Email"/>
+                        </form:label>
+                        <form:fields>
+                            <Input
+                                submit="onSubmit"
+                                placeholder="Email para notificações ao fornecedor"
+                                enabled="{view>/isNegociacaoEditavel}"
+                                id="emailNegociacaoInput"
+                                value="{Email}"
+                                required="true"
+                                />
+                        </form:fields>
+                    </form:FormElement>
                 </form:formElements>
             </form:FormContainer>
         </form:formContainers>

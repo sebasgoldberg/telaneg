@@ -464,51 +464,8 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
 
     },
 
-    onFinalizar: async function() {
-        let result = await this.changeStatusNegociacao({
-            beforeChangeAction: async () => {
-
-                if (!this.tipoNegociacao.enviarEmailAoFinalizar())
-                    return true;
-
-                let v = this.getView();
-
-                let bc = v.getBindingContext();
-
-                let sEmailFornecedor = bc.getProperty('fornecedor/Email');
-                let sTipoAcordo = bc.getProperty('tipoNegociacao/Descricao');
-                let sNumeroAcordo = bc.getProperty('ID');
-                let sBandeira = bc.getProperty('bandeira/Nome');
-                let sUrlPortal = 'https://portalfornecedor.cencosud.com.br';
-
-                // Sugerimos os destinatarios
-                this.getModel('mail').setProperty('/destinatarios', sEmailFornecedor);
-
-                // Sugerimos o assunto
-                //this.getModel('mail').setProperty('/assunto',`Portal de Fornecedor Informa: Novo Acordo de ${sTipoAcordo} | N° ${sNumeroAcordo} | Bandeira: ${sBandeira}`);
-                this.getModel('mail').setProperty('/assunto',`Portal Fornecedor: ${sTipoAcordo} | ${sBandeira}`);
-
-                // Sugerimos o corpo
-                this.getModel('mail').setProperty('/corpo',`
-                    <p>Prezado Fornecedor,</p>
-                    <p>Comunicamos que existe uma nova negociação de acordo de ${sTipoAcordo} para ser validado e aprovado no Portal de Fornecedores da Cencosud.</p>
-                    <p>Favor realizar a validação e aprovação do documento.</p>
-                    <p>Para validação e aprovação, acesse o portal de fornecedores utilizando endereço abaixo:</p>
-                    <p><a href="${sUrlPortal}">${sUrlPortal}</a></p>
-                    <p>Caso não tenha uma conta de acesso ao portal de fornecedores, faça através do site acima.</p>
-                    <p>Atenciosamente,<br>
-                    Equipe Comercial - ${sBandeira}</p>
-                `);
-         
-                let oEnvioEmailDialog = this.getOwnerComponent().getEnvioEmailDialog();
-                return await oEnvioEmailDialog.open({ model: 'mail', path: '/'});
-                },
-            });
-
-        if (result && this.tipoNegociacao.enviarEmailAoFinalizar())
-            await this.enviarEmail();
-
-        return result;
+    onFinalizar: function() {
+        return this.changeStatusNegociacao();
     },
 
     temCertezaQueDesejaFormalizar: function(attribute) {
