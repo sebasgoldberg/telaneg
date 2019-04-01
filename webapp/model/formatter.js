@@ -370,6 +370,21 @@ export default {
     selectionModeItemsNegociacao: function(sTipoNegociacao, sStatus) {
         return sap.ui.table.SelectionMode.MultiToggle;
     },
+
+    getIdUsuarioExterno: function(value){
+        
+        if (value){
+            var alist = value.split(";");
+            return alist[0];
+        }
+    },
+    getNomeUsuarioExterno: function(value){
+        
+        if (value){
+            var alist = value.split(";");
+            return alist[1].substr(0, 23);
+        }
+    },
 }
 
 
