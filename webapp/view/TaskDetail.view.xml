@@ -154,7 +154,10 @@
                     path: 'UsuarioExterno',
                     formatter: '.formatter.getNomeUsuarioExterno'
                     }" 
-                visible="{= ${UsuarioExterno} !== '' }" 
+                visible="{
+                    path: 'UsuarioExterno',
+                    formatter: '.formatter.isUsuarioExternoVisible'
+                    }"
                 />
             </VBox>
         </core:ExtensionPoint>

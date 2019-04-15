@@ -386,12 +386,23 @@ export default {
             } else {                
                 var alist = value.split(";");            
                 return alist[1].substr(0, 23);
-            }
-
-            
-            
+            }                     
         }
     },
+
+    isUsuarioExternoVisible: function(value){
+        if (value){
+            if (value.indexOf(";") == -1 ){
+                return false;
+            }else {
+                return true;
+            }
+            
+        } else {
+            return false;
+        }
+
+    }
 }
 
 
