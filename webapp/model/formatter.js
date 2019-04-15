@@ -380,9 +380,16 @@ export default {
     },
     getNomeUsuarioExterno: function(value){
         
-        if (value){
-            var alist = value.split(";");
-            return alist[1].substr(0, 23);
+        if (value){         
+            if (value.indexOf(";") == -1 ){
+                return value;
+            } else {                
+                var alist = value.split(";");            
+                return alist[1].substr(0, 23);
+            }
+
+            
+            
         }
     },
 }
