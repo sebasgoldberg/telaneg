@@ -135,13 +135,30 @@
                 <ObjectAttribute title="Usuário" text="{UsuarioFormalizacao}" />
             </VBox>
             <VBox visible="{= ${UsuarioAprovacaoRejeicao} !== '' }">
-                <ObjectAttribute title="{= ( ${Status} === 'A' || ${Status} === 'F' ) ? 'Aprovação' : 'Rejeição' }" text="{
+                <ObjectAttribute title="{= ( ${Status} === 'A' || ${Status} === 'F' ) ? 'Aprovação' : 'Rejeição' }" 
+                    text="{
                             path: 'DataAprovacaoRejeicao',
                             type: 'sap.ui.model.type.Date',
                             formatOptions: { UTC: true, style: 'short' }
                             }"/>
                 <ObjectAttribute title="Usuário" text="{UsuarioAprovacaoRejeicao}" />
-                <ObjectAttribute title="Usuário Ext." text="{UsuarioExterno}" visible="{= ${UsuarioExterno} !== '' }" />
+                <ObjectAttribute title="Usuário Ext." 
+                    text="{
+                    path: 'UsuarioExterno',
+                    formatter: '.formatter.getIdUsuarioExterno'
+                    }" 
+                visible="{= ${UsuarioExterno} !== '' }" 
+                />
+                <ObjectAttribute 
+                text="{
+                    path: 'UsuarioExterno',
+                    formatter: '.formatter.getNomeUsuarioExterno'
+                    }" 
+                visible="{
+                    path: 'UsuarioExterno',
+                    formatter: '.formatter.isUsuarioExternoVisible'
+                    }"
+                />
             </VBox>
         </core:ExtensionPoint>
         </uxap:headerContent>
