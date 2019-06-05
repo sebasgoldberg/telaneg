@@ -6,3 +6,11 @@
 {
     font-size: 0.75rem;
 }
+
+.mySmallMarginRight {
+    margin-right: 11px !important;
+}
+
+.mySmallMarginLeft {
+    margin-left: 8px !important;
+}

@@ -451,6 +451,28 @@
 
         </columns>
 
+        <footer>
+       <m:Label
+        text="{
+                        path: 'Bonificacao',
+                        type: 'sap.ui.model.odata.type.Decimal',
+                        constraints: { scale: 2 }
+                        }" 
+       class="mySmallMarginLeft"
+        width="99%"
+        textAlign="End"
+        id="totalBonificacaoLabel"
+
+visible="{ 
+                parts: [ {path: 'TipoNegociacao'} ],
+                formatter: '.formatter.totalBonificacaoVisivel'
+                }"
+
+        />        
+ 
+
+        </footer>
+
     </TreeTable> 
  
 </core:FragmentDefinition>

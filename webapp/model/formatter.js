@@ -402,7 +402,11 @@ export default {
             return false;
         }
 
-    }
+    },
+
+    totalBonificacaoVisivel: function(sTipoNegociacao){
+        return (['F'].indexOf(sTipoNegociacao) >= 0);
+    },
 }
 
 
