@@ -10,7 +10,8 @@
     xmlns:core="sap.ui.core"
     >
 
-    <uxap:ObjectPageLayout showTitleInHeaderContent="false" showHeaderContent="true" showEditHeaderButton="false" showFooter="true" class="sapUiSizeCompact">
+    <uxap:ObjectPageLayout showTitleInHeaderContent="false" showHeaderContent="true" showEditHeaderButton="false" showFooter="true" class="sapUiSizeCompact"
+        id="taskDetailObjectPageLayout">
         <uxap:headerTitle>
             <uxap:ObjectPageHeader objectTitle="{Descricao}" objectSubtitle="{ID}{=${Estipulacao}?', Acordo '+${Estipulacao}:''}" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="true" isObjectSubtitleAlwaysVisible="true" showPlaceholder="false"
                 >
@@ -29,6 +30,14 @@
                 -->
                 <uxap:actions>
                     <core:ExtensionPoint name="Actions">
+                        <Button
+                            id="anexosImportacaoNegociacaoButton"
+                            visible="{= ${view>/isNegociacaoEditavel} &amp;&amp; ${Origem} === 'F' }"
+                            text="Importar Arquivo TXT" icon="sap-icon://attachment" press="onMostrarAnexosImportacao">
+                            <layoutData>
+                                <OverflowToolbarLayoutData moveToOverflow="true"/>
+                            </layoutData>
+                        </Button>
                         <Button
                             id="anexosNegociacaoButton"
                             enabled="{
@@ -239,6 +248,20 @@
                 </uxap:subSections>
             </uxap:ObjectPageSection>
 
+            <core:ExtensionPoint name="LogImportacaoObjectPageSection">
+                <uxap:ObjectPageSection title="Log Importação" id="logImportacaoObjectPageSection"
+                    visible="{= ${TipoNegociacao} === 'O' &amp;&amp; !${Status} &amp;&amp; ${Origem} === 'F' }"
+                    > <!-- Em negociação -->
+                    <uxap:subSections>
+                        <uxap:ObjectPageSubSection title="Log Importação" id="logImportacaoSubSection" >
+                            <uxap:blocks>
+                                <core:Fragment fragmentName="simplifique.telaneg.base.view.TaskDetail.LogImportacao" type="XML" />
+                            </uxap:blocks>
+                        </uxap:ObjectPageSubSection>
+                    </uxap:subSections>
+                </uxap:ObjectPageSection>
+            </core:ExtensionPoint>
+
             <uxap:ObjectPageSection title="Comentários">
                 <uxap:subSections>
                         <core:Fragment fragmentName="simplifique.telaneg.base.view.ComentariosNegociacao" type="XML" />
@@ -289,4 +312,3 @@
         </uxap:footer>
     </uxap:ObjectPageLayout>
 </mvc:View>
-

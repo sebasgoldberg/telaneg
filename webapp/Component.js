@@ -20,6 +20,7 @@ import AnexosEstipulacaoDialog from "simplifique/telaneg/base/controller/AnexosE
 import InfoDialog from "simplifique/telaneg/base/controller/InfoDialog";
 import EnvioEmailDialog from "simplifique/telaneg/base/controller/EnvioEmailDialog";
 import JSONModel from "sap/ui/model/json/JSONModel";
+import TabelasImportadasDialog from "simplifique/telaneg/base/controller/TabelasImportadasDialog";
 
 let navigationWithContext = {
     "NegociacaoSet": {
@@ -118,6 +119,7 @@ export default UIComponent.extend("simplifique.telaneg.base.Component", {
         this._anexosEstipulacaoDialog = new AnexosEstipulacaoDialog(this.getRootControl());
         this._infoDialog = new InfoDialog(this.getRootControl());
         this._envioEmailDialog = new EnvioEmailDialog(this.getRootControl());
+        this._tabelasImportadasDialog = new TabelasImportadasDialog(this.getRootControl());
     },
 
     getUserInfo: function() {
@@ -190,6 +192,9 @@ export default UIComponent.extend("simplifique.telaneg.base.Component", {
         return this._anexosNegociacaoDialog;
     },
 
+    getTabelasImportadasDialog: function() {
+        return this._tabelasImportadasDialog;
+    },
 
     /**
      * The component is destroyed by UI5 automatically.

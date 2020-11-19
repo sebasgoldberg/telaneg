@@ -344,6 +344,41 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
         this.onGetMedia(`${sNegoPath}/agregacaoExportada`);
     },
 
+    setSelectedSectionById: function(sSectionId){
+        let oView = this.getView();
+        let taskDetailObjectPageLayout = oView.byId('taskDetailObjectPageLayout');
+        let oSection = oView.byId(sSectionId);
+        taskDetailObjectPageLayout.setSelectedSection(oSection);
+    },
+
+    onMostrarAnexosImportacao: async function(oEvent) {
+        let sNegociacaoPath = this.getView().getBindingContext().getPath();
+        let oTabelasImportadasDialog = this.getOwnerComponent().getTabelasImportadasDialog();
+        oTabelasImportadasDialog.setCallerController(this);
+        await oTabelasImportadasDialog.open(sNegociacaoPath);
+    },
+
+    refreshLogImportacao: function() {
+        this.getView()
+            .byId('ultimoLogImportacaoTable')
+            .getBinding('rows')
+            .refresh();
+    },
+
+    refreshAbrangencia: function() {
+        this.getView()
+            .byId('multiInputItemsOrg')
+            .getBinding('tokens')
+            .refresh();
+    },
+
+    refreshAfterImport: function() {
+        this.refreshItems();
+        this.refreshLogImportacao();
+        this.refreshAbrangencia();
+        this.setSelectedSectionById('logImportacaoObjectPageSection');
+    },
+
     onMostrarAnexos: function(oEvent) {
         let sNegociacaoPath = this.getView().getBindingContext().getPath();
         let oAnexosNegociacaoDialog = this.getOwnerComponent().getAnexosNegociacaoDialog();
