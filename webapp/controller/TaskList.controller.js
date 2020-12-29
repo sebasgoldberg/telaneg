@@ -24,6 +24,7 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskList",
                 descricao: null,
                 status: [],
                 bandeiras: [],
+                setores: [],
                 dataDe: null,
                 dataAte: null,
             },
@@ -123,6 +124,9 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskList",
         oMultiInputMaterial.getTokens().map( oToken =>
             aFilters.push(new Filter('MaterialID', FilterOperator.EQ, oToken.getKey() )));
 
+        filter.setores.forEach( ID => 
+            aFilters.push(new Filter('SetorID', FilterOperator.EQ, ID)));
+    
         let oMultiInputUsuario = v.byId('multiInputUsuario');
         oMultiInputUsuario.getTokens().map( oToken =>
             aFilters.push(new Filter('Usuario', FilterOperator.EQ, oToken.getKey() )));

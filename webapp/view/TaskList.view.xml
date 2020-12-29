@@ -128,6 +128,22 @@
                                 </fb:control>
                             </fb:FilterItem>
 
+                            <fb:FilterItem label="Setor" name="setorFilter" id="idSetorFilter">
+                                <fb:control>
+
+                                    <MultiComboBox
+                                        placeholder="Selecionar setor"
+                                        selectionChange="onSearch"
+                                        selectedKeys="{view>/filter/setores}"
+                                        width="1000px"
+                                        enableMultiLineMode="true"
+                                        items="{/SetorSet}">
+                                        <core:Item key="{ID}" text="{Descricao}" />
+                                    </MultiComboBox>
+
+                                </fb:control>
+                            </fb:FilterItem>
+
                             <fb:FilterItem label="Bandeira" name="bandeiraFilter">
                                 <fb:control>
 
