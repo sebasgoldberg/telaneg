@@ -322,6 +322,10 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
         this.onGetMedia(`${sNegoPath}/pdf`);
     },
 
+    onDownloadImportTemplate: function(oEvent){
+        this.openUrl('./static/import/template.xls');
+    },
+
     onGetItemsExportados: function(oEvent) {
 
         if (this.getModel().hasPendingChanges()){
@@ -454,6 +458,7 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
             successMessage = undefined,
             errorMessage = "Aconteceram erros ao tentar concluir.",
             beforeChangeAction = () => { return true },
+            returnFunctionImportResult = false,
             } = {}) {
 
         if (this.getModel().hasPendingChanges()){
@@ -478,10 +483,12 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
 
         let result = false;
 
+        let functionImportResult = false;
+
         try {
             this.setBusy();
             this.removeAllMessages();
-            await this.callFunctionImport(functionImportPath, {ID: sNegociacaoID});
+            functionImportResult = await this.callFunctionImport(functionImportPath, {ID: sNegociacaoID});
             let sMessage = successMessage;
             if (!sMessage)
                 sMessage = this.formatter.finalizarMessage(sNegociacaoTipo);
@@ -495,6 +502,8 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
             this.setFree();
         }
 
+        if (returnFunctionImportResult)
+            return functionImportResult;
         return result;
 
     },

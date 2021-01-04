@@ -30,14 +30,22 @@
                 -->
                 <uxap:actions>
                     <core:ExtensionPoint name="Actions">
-                        <Button
+                        <MenuButton 
                             id="anexosImportacaoNegociacaoButton"
-                            visible="{= ${view>/isNegociacaoEditavel} &amp;&amp; ${Origem} === 'F' }"
-                            text="Importar Arquivo TXT" icon="sap-icon://attachment" press="onMostrarAnexosImportacao">
+                            visible="{= ${TipoNegociacao} === 'O' &amp;&amp; ${view>/isNegociacaoEditavel} &amp;&amp; ${Origem} === 'F' }"
+                            text="Importar" icon="sap-icon://attachment" press="onMostrarAnexosImportacao">
+                            <menu>
+                                <Menu itemSelected="onMenuAction">
+                                    <items>
+                                        <MenuItem text="Importar Arquivo Texto" icon="sap-icon://open-folder" press="onMostrarAnexosImportacao"/>
+                                        <MenuItem text="Baixar Template Texto" icon="sap-icon://save" press="onDownloadImportTemplate"/>
+                                    </items>
+                                </Menu>
+                            </menu>
                             <layoutData>
                                 <OverflowToolbarLayoutData moveToOverflow="true"/>
                             </layoutData>
-                        </Button>
+                        </MenuButton>
                         <Button
                             id="anexosNegociacaoButton"
                             enabled="{
