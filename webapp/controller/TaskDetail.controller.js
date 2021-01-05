@@ -322,8 +322,28 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
         this.onGetMedia(`${sNegoPath}/pdf`);
     },
 
+    getImportTemplateContent: function(){
+        return `UF	Mercadoria	Preço Venda [BRL]	Recomposição [BRL]
+SE	299547	455	9
+`;
+    },
+
+    getImportTemplateFilename: function(){
+        return 'sellout-importacao.xls';
+    },
+
     onDownloadImportTemplate: function(oEvent){
-        this.openUrl('./static/import/template.xls');
+        var element = document.createElement('a');
+        const text = this.getImportTemplateContent();
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', this.getImportTemplateFilename());
+    
+        element.style.display = 'none';
+        document.body.appendChild(element);
+    
+        element.click();
+    
+        document.body.removeChild(element);
     },
 
     onGetItemsExportados: function(oEvent) {
