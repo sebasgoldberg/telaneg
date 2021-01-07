@@ -38,7 +38,7 @@
                                 <Menu itemSelected="onMenuAction">
                                     <items>
                                         <MenuItem text="Importar Arquivo Texto" icon="sap-icon://open-folder" press="onMostrarAnexosImportacao"/>
-                                        <MenuItem text="Baixar Template Texto" icon="sap-icon://save" press="onDownloadImportTemplate"/>
+                                        <MenuItem text="Baixar Planilha Modelo" icon="sap-icon://save" press="onDownloadImportTemplate"/>
                                     </items>
                                 </Menu>
                             </menu>
