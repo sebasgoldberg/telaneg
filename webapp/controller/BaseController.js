@@ -357,6 +357,7 @@ export default Controller.extend("simplifique.telaneg.base.controller.BaseContro
                 this.removeAllMessages();
                 let result = await this.submitChanges();
                 m.refresh(true);
+                this.getView().getObjectBinding().refresh()
                 resolve(true)
             } catch (e) {
                 console.error(e);
