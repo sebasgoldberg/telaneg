@@ -229,6 +229,10 @@ class TipoNegociacaoValorFixo extends TipoNegociacao{
 
 }
 
+class TipoNegociacaoFarmacia extends TipoNegociacaoValorFixo{
+
+}
+
 class TipoNegociacaoPrazoPagto extends TipoNegociacao{
 
     constructor(){
@@ -297,7 +301,8 @@ export default ManagedObject.extend("simplifique.telaneg.base.model.TiposNegocia
         this.oTiposNegociacao = {
             O: new TipoNegociacaoSellOut(),
             I: new TipoNegociacaoSellIn(),
-            F: new TipoNegociacaoValorFixo(),            
+            F: new TipoNegociacaoValorFixo(),
+            G: new TipoNegociacaoFarmacia(),
             };
         this.oTipoNegociacaoVazia = new TipoNegociacaoVazia();
     },
