@@ -39,6 +39,7 @@ let aIDsControlesAdaptaveis = [
     "statusBox",
     "bonificacaoBox",
     "ComentarioAcordoObjectPageSubSection",
+    "canalFormElement"
     ];
 
 let aIDsControlesTaskList = [
@@ -211,6 +212,7 @@ class TipoNegociacaoValorFixo extends TipoNegociacao{
             "statusBox",
             "bonificacaoBox",          
             "ComentarioAcordoObjectPageSubSection",
+            "canalFormElement",
             ],[
             'anexosEstipulacaoColumn',
             'estipulacaoColumn',

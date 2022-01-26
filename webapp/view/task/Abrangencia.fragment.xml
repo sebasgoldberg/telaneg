@@ -25,6 +25,23 @@
                         </form:fields>
                     </form:FormElement>
 
+                    <form:FormElement id="canalFormElement">
+                        <form:label>
+                            <Label text="Canal" required="true"/>
+                        </form:label>
+                        <form:fields>
+                            <ComboBox
+                                placeholder="Selecione o canal"
+                                enabled="{view>/isNegociacaoEditavel}"
+                                id="canalNegociacaoComboBox"
+                                selectedKey="{Canal}"
+                                items="{/CanalSet}"
+                                >
+                                <core:Item key="{ID}" text="{Nome}" />
+                            </ComboBox>
+                        </form:fields>
+                    </form:FormElement>
+
                     <form:FormElement id="tipoItemMercFormElement">
                         <form:label>
                             <Label text="Nível Estrutura Mercadológica" required="true"/>
@@ -99,4 +116,3 @@
     </form:Form>
 
 </core:FragmentDefinition>
-
