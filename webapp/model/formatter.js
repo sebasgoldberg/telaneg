@@ -120,6 +120,11 @@ export default {
                 G: 'UF',
                 L: 'UF',
                 },
+            V: {
+                U: 'UF',
+                G: 'UF',
+                L: 'UF',
+                },
             I: {
                 R: 'Centro Ref.',
                 G: 'Loja',
@@ -158,6 +163,9 @@ export default {
             return;
         let oDescricoes = {
             O: {
+                M: 'Mercadoria',
+                },
+            V: {
                 M: 'Mercadoria',
                 },
             I: {
@@ -201,6 +209,7 @@ export default {
             return;
         let oTextos = {
             O: 'Período de Apuração',
+            V: 'Período de Apuração',
             I: 'Período de Recebimento',
             F: '',
             G: '',
@@ -242,7 +251,7 @@ export default {
     },
 
     colunaAnexosEstipulacaoVisivel: function(sTipoNegociacao){
-        return (['O', 'I', 'F', 'G'].indexOf(sTipoNegociacao) >= 0);
+        return (['O', 'I', 'F', 'G', 'V'].indexOf(sTipoNegociacao) >= 0);
     },
 
     colunaAnexosVisivel: function(sTipoNegociacao){
@@ -250,7 +259,7 @@ export default {
     },    
 
     colunaEstipulacaoVisivel: function(sTipoNegociacao){
-        return (['O', 'I', 'F', 'G'].indexOf(sTipoNegociacao) >= 0);
+        return (['O', 'I', 'F', 'G', 'V'].indexOf(sTipoNegociacao) >= 0);
     },
 
     apuracaoDeLabel: function(sTipoNegociacao){
@@ -260,6 +269,7 @@ export default {
             case 'I':
             case 'F':
             case 'G':
+            case 'V':
                 return 'Vencimento';
             
             case 'C':
@@ -279,6 +289,7 @@ export default {
             case 'I':
             case 'F':
             case 'G':
+            case 'V':
                 return 'Vencimento';
             
             case 'C':
@@ -293,7 +304,7 @@ export default {
     },
 
     bonificacaoVisivel: function(sTipoNegociacao){
-        return (['O', 'I', 'F', 'G'].indexOf(sTipoNegociacao) >= 0);
+        return (['O', 'I', 'F', 'G', 'V'].indexOf(sTipoNegociacao) >= 0);
     },
 
     apuracaoDeVisible: function(sTipoNegociacao) {
@@ -301,7 +312,7 @@ export default {
     },
 
     colunaStatusVisivel: function(sTipoNegociacao){
-        return (['O', 'I', 'F', 'G', 'C','P'].indexOf(sTipoNegociacao) >= 0);
+        return (['O', 'I', 'F', 'G', 'C','P', 'V'].indexOf(sTipoNegociacao) >= 0);
     },    
 
     colunaComentarioVisivel: function(sTipoNegociacao){
@@ -317,7 +328,7 @@ export default {
     },
 
     infoGeralVisivel: function(sTipoNegociacao){
-        return (['O', 'I', 'F', 'G', 'C'].indexOf(sTipoNegociacao) >= 0);
+        return (['O', 'I', 'F', 'G', 'C', 'V'].indexOf(sTipoNegociacao) >= 0);
     },    
     
     acordoLabel: function(sTipoNegociacao){
@@ -327,6 +338,7 @@ export default {
             case 'F':
             case 'G':
             case 'C':
+            case 'V':
                 return 'Acordo';
             case 'P':
                 return 'Negociação';
@@ -343,6 +355,7 @@ export default {
             case 'F':            
             case 'G':
             case 'C':
+            case 'V':
                 return 'Ingresse algum comentario para ser adicionado no PDF';            
             case 'P':
                 return 'Ingresse algum comentário para a negociação';
@@ -359,6 +372,7 @@ export default {
             case 'F':            
             case 'G':
             case 'C':
+            case 'V':
                 return 'Novo Acordo';            
             case 'P':
                 return 'Nova Negociação';  
@@ -374,6 +388,7 @@ export default {
             case 'F':            
             case 'G':
             case 'C':
+            case 'V':
                 return 'Conclusão realizada com sucesso e minuta gerada.';            
             case 'P':
                 return 'Conclusão realizada com sucesso.';  
@@ -420,7 +435,7 @@ export default {
     },
 
     totalBonificacaoVisivel: function(sTipoNegociacao){
-        return (['F', 'G'].indexOf(sTipoNegociacao) >= 0);
+        return (['F', 'G', 'V'].indexOf(sTipoNegociacao) >= 0);
     },
 }
 

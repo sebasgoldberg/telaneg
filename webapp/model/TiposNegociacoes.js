@@ -149,6 +149,10 @@ class TipoNegociacaoSellOut extends TipoNegociacao{
 
 }
 
+class TipoNegociacaoAlocacaoValor extends TipoNegociacaoSellOut{
+    
+}
+
 
 class TipoNegociacaoSellIn extends TipoNegociacao{
 
@@ -302,6 +306,7 @@ export default ManagedObject.extend("simplifique.telaneg.base.model.TiposNegocia
         this.oView = oView;
         this.oTiposNegociacao = {
             O: new TipoNegociacaoSellOut(),
+            V: new TipoNegociacaoAlocacaoValor(),
             I: new TipoNegociacaoSellIn(),
             F: new TipoNegociacaoValorFixo(),
             G: new TipoNegociacaoFarmacia(),
