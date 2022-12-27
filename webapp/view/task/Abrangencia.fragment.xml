@@ -111,6 +111,33 @@
                 </form:formElements>
             </form:FormContainer>
 
+            <form:FormContainer title="">
+                <form:formElements>
+                    <form:FormElement 
+                        id="valorLimiteInput"
+                    >
+
+                        <form:label>
+                            <Label text="Valor Acordo (BRL)" required="true"/>
+                        </form:label>
+                        <form:fields>
+                            <Input value="{
+                                path: 'ValorLimite',
+                                type: 'sap.ui.model.odata.type.Decimal',
+                                constraints: {
+                                    precision: 12,
+                                    scale: 2
+                                    }
+                                }"
+                                submit="onSubmit"
+                                enabled="{view>/isNegociacaoEditavel}"
+                                textAlign="Right"
+                                />
+                        </form:fields>
+                    </form:FormElement>
+                </form:formElements>
+            </form:FormContainer>
+
 
         </form:formContainers>
     </form:Form>

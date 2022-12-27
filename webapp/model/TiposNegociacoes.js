@@ -23,6 +23,8 @@ let aIDsControlesAdaptaveis = [
     "fornecedoresAdicionaisSubSection",
     "tipoItemMercFormElement",
     "periodoApuracaoRangeSelection",
+    "dataDeApuracaoDatePicker",
+    "valorLimiteInput",
     "periodoApuracaoLabel",
     "clausulaLabel",
     "clausulaInput",
@@ -149,8 +151,51 @@ class TipoNegociacaoSellOut extends TipoNegociacao{
 
 }
 
-class TipoNegociacaoAlocacaoValor extends TipoNegociacaoSellOut{
-    
+class TipoNegociacaoAlocacaoValor extends TipoNegociacao{
+
+    constructor(){
+        super([
+            "UMVColumn",
+            "precoVendaColumn",
+            "PMZColumn",
+            "margemPDVColumn",
+            "recomposicaoColumn",
+            "margem2SimuladaColumn",
+            "menorPrecoMercadoColumn",
+            "indiceCompetitividadeColumn",
+            "consultasColumn",
+            //"periodoApuracaoRangeSelection",
+            "dataDeApuracaoDatePicker",
+            "valorLimiteInput",
+            "periodoApuracaoLabel",
+            "clausulaLabel",
+            "clausulaInput",
+            "clausulaDescricaoInput",
+            "anexosEstipulacaoButton", 
+            "infoGeralSubSection",    
+            "abrangenciaObjectPageSection",  
+            "contratoObjectPageSection",
+            "itemsObjectPageSection",
+            "statusBox",
+            "bonificacaoBox", 
+            "minutaButton",
+            "ComentarioAcordoObjectPageSubSection",
+            ],[
+            'anexosEstipulacaoColumn',
+            'estipulacaoColumn',
+            "idStatusFilter",  
+            "idMaterialFilter",        
+            ]);
+    }
+
+    getItemsSectionTitle(){
+        return "Mercadorias";
+    }
+
+    enviarEmailAoFinalizar(){
+        return true;
+    }
+
 }
 
 

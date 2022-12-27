@@ -209,7 +209,7 @@ export default {
             return;
         let oTextos = {
             O: 'Período de Apuração',
-            V: 'Período de Apuração',
+            V: 'Início do Acordo',
             I: 'Período de Recebimento',
             F: '',
             G: '',

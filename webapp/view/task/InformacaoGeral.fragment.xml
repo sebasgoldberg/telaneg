@@ -32,14 +32,22 @@
                                     formatter: '.formatter.textoPeriodoNegociacao'
                                     }" required="true"/>
                         </form:label>
-                        <form:fields>
-                            <DateRangeSelection
-                                minDate="{view>/periodoApuracao/minDate}"
-                                enabled="{view>/isNegociacaoEditavel}"
-                                id="periodoApuracaoRangeSelection"
-                                dateValue="{ApuracaoDe}"
-                                secondDateValue="{ApuracaoAte}"
-                            />
+                            <form:fields>
+                                <VBox>
+                                    <DatePicker
+                                        minDate="{view>/periodoApuracao/minDate}"
+                                        enabled="{view>/isNegociacaoEditavel}"
+                                        id="dataDeApuracaoDatePicker"
+                                        value="{path:'ApuracaoDe', type:'sap.ui.model.type.Date', formatOptions: { style: 'medium', strictParsing: true}}"
+                                    />
+                                    <DateRangeSelection
+                                        minDate="{view>/periodoApuracao/minDate}"
+                                        enabled="{view>/isNegociacaoEditavel}"
+                                        id="periodoApuracaoRangeSelection"
+                                        dateValue="{ApuracaoDe}"
+                                        secondDateValue="{ApuracaoAte}"
+                                    />
+                            </VBox>
                         </form:fields>
                     </form:FormElement>
                 </form:formElements>
