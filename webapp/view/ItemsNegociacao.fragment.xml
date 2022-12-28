@@ -331,6 +331,49 @@
                     </template>
                 </Column>
 
+                <Column label="Qtd. Aloc." width="7%"
+                    id="quantidadeLimiteColumn"
+                    tooltip="Quantidade Alocada [UN]"
+                    >
+                    <template>
+                        <m:Input value="{
+                            path: 'simulacao/QuantidadeLimite',
+                            type: 'sap.ui.model.odata.type.Decimal',
+                            constraints: {
+                                precision: 12,
+                                scale: 0
+                                }
+                            }"
+                            submit="onSubmit"
+                            enabled="{view>/isNegociacaoEditavel}"
+                            id="quantidadeLimiteEdit"
+                            maxLength="16"
+                            textAlign="Right"
+                            description=""
+                            visible="{= !${IsGenerico} }"
+                            />
+                    </template>
+                </Column>
+
+                <Column label="Total Recomp."
+                    id="totalRecomposicaoColumn"
+                    tooltip="Total Recomposição [BRL]"
+                    hAlign="Right"
+                    >
+                    <template>
+                        <m:Text text="{
+                            path: 'simulacao/TotalRecomposicao',
+                            type: 'sap.ui.model.odata.type.Decimal',
+                            constraints: { scale: 2 }
+                            }"
+                            id="totalRecomposicaoText"
+                            wrapping="true"
+                            visible="{= !${IsGenerico} }"
+                            />
+                    </template>
+                </Column>
+
+
                 <Column label="Mg 2"
                     id="margem2SimuladaColumn"
                     tooltip="Margem 2 Simulada [%]"
@@ -476,4 +519,3 @@ visible="{
     </TreeTable> 
  
 </core:FragmentDefinition>
-

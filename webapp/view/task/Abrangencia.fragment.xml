@@ -132,9 +132,11 @@
                                 submit="onSubmit"
                                 enabled="{view>/isNegociacaoEditavel}"
                                 textAlign="Right"
+                                description="(alocado {TotalRecomposicaoSimulada})"
                                 />
                         </form:fields>
                     </form:FormElement>
+
                 </form:formElements>
             </form:FormContainer>
 
