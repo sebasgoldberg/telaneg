@@ -32,7 +32,7 @@
                     <core:ExtensionPoint name="Actions">
                         <MenuButton 
                             id="anexosImportacaoNegociacaoButton"
-                            visible="{= ${TipoNegociacao} === 'O' &amp;&amp; ${view>/isNegociacaoEditavel} &amp;&amp; ${Origem} === 'F' }"
+                            visible="{= (${TipoNegociacao} === 'O' || ${TipoNegociacao} === 'V') &amp;&amp; ${view>/isNegociacaoEditavel} &amp;&amp; ${Origem} === 'F' }"
                             text="Importar" icon="sap-icon://attachment" press="onMostrarAnexosImportacao">
                             <menu>
                                 <Menu itemSelected="onMenuAction">
