@@ -123,7 +123,7 @@ export default {
             V: {
                 U: 'UF',
                 G: 'UF',
-                L: 'UF',
+                L: 'Loja',
                 },
             I: {
                 R: 'Centro Ref.',
