@@ -92,9 +92,7 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
     },
 
     getMinPeriodoApuracao: function() {
-        let oAmanha = new Date();
-        oAmanha.setDate(oAmanha.getDate()+1);
-        return oAmanha;
+        return new Date();
     },
 
     adaptarView: function() {
