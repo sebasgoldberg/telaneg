@@ -374,6 +374,25 @@
                 </Column>
 
 
+                <Column label="Qtd. Vendas Pendentes"
+                    id="quanVendasPendentesColumn"
+                    tooltip="Quantidade de Vendas Pendentes [UN]"
+                    hAlign="Right"
+                    >
+                    <template>
+                        <m:Text text="{
+                            path: 'informacao/QuantidadeVendaPendente',
+                            type: 'sap.ui.model.odata.type.Decimal',
+                            constraints: { scale: 2 }
+                            }"
+                            id="quantidadeVendaPendenteText"
+                            wrapping="true"
+                            visible="{= !${IsGenerico} }"
+                            />
+                    </template>
+                </Column>
+
+
                 <Column label="Mg 2"
                     id="margem2SimuladaColumn"
                     tooltip="Margem 2 Simulada [%]"
