@@ -1,0 +1,175 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form"
+    xmlns:sim="simplifique.telaneg.base.control"
+    >
+
+        <l:Grid defaultSpan="L6 M4 S2" class="sapUiSmallMarginTop sapUiContentPadding">
+                <l:VerticalLayout
+                        class="sapUiMediumMarginEnd">
+                    <Label text="Recomposição Total"/>
+                    <Input
+                        enabled="false"
+                        value="{path: 'resumoRecomposicaoExistente/RecomposicaoTotal', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
+                        description="BRL"/>
+                </l:VerticalLayout>
+        
+                <l:VerticalLayout
+                        class="sapUiMediumMarginEnd">
+                    <Label text="PMZ Recomposto"/>
+                    <Input
+                        enabled="false"
+                        value="{path: 'resumoRecomposicaoExistente/PMZRecomposto', type: 'sap.ui.model.odata.type.Decimal', constraints: { scale: 2 }}"
+                        description="BRL"/>
+                </l:VerticalLayout>
+        </l:Grid>
+
+        <Table alternateRowColors="true" width="100%" showSeparators="All" growing="false"
+            mode="MultiSelect" 
+            id='recomposicaoExistenteTable'
+            items="{
+                path:'recomposicaoExistente',
+                templateShareable:true,
+                parameters:{
+                    expand:'item,item/itemMerc,item/itemOrg'
+                    }
+                }" >
+
+                <!-- <headerToolbar>
+                    <Toolbar width="auto" height="46px" design="Transparent" visible="true" enabled="true">
+                        <content>
+                            <ToolbarSpacer width=""/>
+                            <sim:ButtonPopover type="Emphasized" icon="sap-icon://add" placement="Left">
+
+                                <ResponsivePopover
+                                    id="popoverObterRecomposicaoExistente"
+                                    title="Obter Recomposições Existentes"
+                                    class="sapUiPopupWithPadding"
+                                    >
+                                    <beginButton>
+                                        <Button text="Obter" press="onAdd" type="Emphasized" />
+                                    </beginButton>
+                                    <endButton>
+                                        <Button text="Fechar" press="onFecharAddPopover" />
+                                    </endButton>
+                                    <content>
+
+
+                                        <form:SimpleForm
+                                            >
+
+
+                                                <Label text="Data" />
+                                                <DatePicker id='recomposicaoExistenteDatePicker' />
+
+
+                                        </form:SimpleForm>
+
+
+                                        
+                                    </content>
+                                </ResponsivePopover>
+
+                            </sim:ButtonPopover>
+                            <Button text="" type="" icon="sap-icon://delete" press="onDeleteSemConfirmar"/>
+
+                        </content>
+                        <tooltip/>
+                    </Toolbar>
+                </headerToolbar> -->
+
+            <columns>
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Acordo" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Cod. Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Material" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Phone" demandPopin="false" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="{
+                            parts: [ {path: 'negociacao/TipoNegociacao'}, {path: 'negociacao/TipoAbrangencia'} ],
+                            formatter: '.formatter.formatDescricaoItemOrg'
+                            }"
+                            width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Data Inicio" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Data Fim" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="Recomposição" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+
+                <Column width="auto" hAlign="Left" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+                    <header>
+                        <Text text="UM" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                    </header>
+                    <footer/>
+                </Column>
+
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <ObjectIdentifier title="{Acordo}" text="" titleActive="false" visible="true"/>
+
+                        <ObjectIdentifier title="{
+                            path: 'item/itemMerc/ID',
+                            type: 'sap.ui.model.odata.type.String',
+                            constraints: {
+                                isDigitSequence : true,
+                                maxLength : 18
+                                }
+                            }"
+                            text="" titleActive="false" visible="true"/>
+
+                        <Text text="{item/itemMerc/Nome}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"/>
+
+                        <ObjectIdentifier title="{item/itemOrg/ID}" text="" titleActive="false" visible="true"/>
+
+                        <ObjectIdentifier title="{path: 'DataInicio', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}" />
+
+                        <ObjectIdentifier title="{path: 'DataFim', type: 'sap.ui.model.type.Date', formatOptions: { UTC: true, style: 'short' }}" />
+
+                        <ObjectNumber
+                            number="{path: 'Recomposicao', type: 'sap.ui.model.type.Float', formatOptions: { maxFractionDigits: 2 }}"
+                            unit="BRL" emphasized="true"
+                            />
+
+                        <Text text="{UnidadeMedida}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+
+                        </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+
+
+
+</core:FragmentDefinition>

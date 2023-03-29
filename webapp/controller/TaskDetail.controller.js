@@ -266,6 +266,18 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
         oStockPopOver.open(`${sItemPath}`, oEvent.getSource());
     },
 
+    onMostrarRecomposicaoExistente: function(oEvent) {
+        let sItemPath = oEvent.getSource().getBindingContext().getPath();
+        let oPath = {
+            path: sItemPath,
+            parameters: {
+                expand: 'resumoRecomposicaoExistente',
+            },
+        };
+        let oPopOver = this.getOwnerComponent().getRecomposicaoExistentePopover();
+        oPopOver.open(oPath, oEvent.getSource());
+    },
+
     onMostrarHistoricoPrecosMercado: function(oEvent) {
         let sItemPath = oEvent.getSource().getBindingContext().getPath();
         let oHistoricoPrecosMercadoPopOver = this.getOwnerComponent().getHistoricoPrecosMercadoPopover();
