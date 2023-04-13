@@ -314,6 +314,16 @@
                         type="Accept" 
                         press="onFormalizar"
                         />
+                    <Button text="Aprovar"
+                        visible="{= ${Status} === 'D' }"
+                        type="Accept"
+                        press="onAprovarRecomposicao"
+                        />
+                    <Button text="Rejeitar"
+                        visible="{= ${Status} === 'D' }"
+                        type="Reject"
+                        press="onRejeitarRecomposicao"
+                        />
                     </core:ExtensionPoint>
                 </content>
             </OverflowToolbar>

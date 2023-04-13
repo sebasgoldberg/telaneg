@@ -523,6 +523,30 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
         return this.changeStatusNegociacao();
     },
 
+    onAprovarRecomposicao: function() {
+        return this.changeStatusNegociacao({
+            temCertezaOptions: {
+                pergunta: "Tem certeza que deseja aprovar as recomposições?",
+                titulo: "Aprovar Recomposições",
+            },
+            functionImportPath: '/AprovarRecomposicao',
+            successMessage: "Recomposições aprovadas com sucesso.",
+            errorMessage: "Aconteceram erros ao tentar aprovar as recomposições.",
+            });
+    },
+
+    onRejeitarRecomposicao: function() {
+        return this.changeStatusNegociacao({
+            temCertezaOptions: {
+                pergunta: "Tem certeza que deseja rejeitar as recomposições?",
+                titulo: "Rejeitar Recomposições",
+            },
+            functionImportPath: '/RejeitarRecomposicao',
+            successMessage: "Recomposições rejeitadas com sucesso.",
+            errorMessage: "Aconteceram erros ao tentar rejeitar as recomposições."
+            });
+    },
+
     temCertezaQueDesejaFormalizar: function(attribute) {
         return new Promise(function(fnResolve) {
             sap.m.MessageBox.confirm("Tem certeza que deseja formalizar a negociação?", {
