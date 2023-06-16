@@ -437,6 +437,17 @@ export default {
     totalBonificacaoVisivel: function(sTipoNegociacao){
         return (['F', 'G', 'V'].indexOf(sTipoNegociacao) >= 0);
     },
+
+    formatObjectSubtitle: function(sNegociacaoID, sTipoNegociacao, sEstipulacao, sEstipulacao2) {
+        if (!sTipoNegociacao)
+            return;
+        if (sTipoNegociacao !== 'V')
+            return `${sNegociacaoID}${sEstipulacao ? `, Acordo ${sEstipulacao}` : '' }`
+        
+        return `${sNegociacaoID}${sEstipulacao ? `, Acordo Interno ${sEstipulacao}` : '' }${sEstipulacao2 ? `, Acordo Fornecedor ${sEstipulacao2}` : '' }`
+    },
+
+
 }
 
 

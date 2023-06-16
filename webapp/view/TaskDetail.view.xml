@@ -13,7 +13,16 @@
     <uxap:ObjectPageLayout showTitleInHeaderContent="false" showHeaderContent="true" showEditHeaderButton="false" showFooter="true" class="sapUiSizeCompact"
         id="taskDetailObjectPageLayout">
         <uxap:headerTitle>
-            <uxap:ObjectPageHeader objectTitle="{Descricao}" objectSubtitle="{ID}{=${Estipulacao}?', Acordo '+${Estipulacao}:''}" isObjectIconAlwaysVisible="false" isObjectTitleAlwaysVisible="true" isObjectSubtitleAlwaysVisible="true" showPlaceholder="false"
+            <uxap:ObjectPageHeader 
+                objectTitle="{Descricao}" 
+                objectSubtitle="{
+                                parts: [ {path: 'ID'}, {path: 'TipoNegociacao'}, {path: 'Estipulacao'}, {path: 'Estipulacao2'} ],
+                                formatter: '.formatter.formatObjectSubtitle'
+                                }"
+                isObjectIconAlwaysVisible="false" 
+                isObjectTitleAlwaysVisible="true" 
+                isObjectSubtitleAlwaysVisible="true"
+                showPlaceholder="false"
                 >
                 <!--
                 <uxap:navigationBar>
