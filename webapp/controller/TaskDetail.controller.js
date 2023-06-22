@@ -523,6 +523,18 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
         return this.changeStatusNegociacao();
     },
 
+    onCancelar: function() {
+        return this.changeStatusNegociacao({
+            temCertezaOptions: {
+                pergunta: "Tem certeza que deseja cancelar a negociação?",
+                titulo: "Cancelar Negociação",
+            },
+            functionImportPath: '/CancelarNegociacao',
+            successMessage: "Negociação cancelada com sucesso.",
+            errorMessage: "Aconteceram erros ao tentar cancelar a negociação.",
+            });
+    },
+
     onAprovarRecomposicao: function() {
         return this.changeStatusNegociacao({
             temCertezaOptions: {

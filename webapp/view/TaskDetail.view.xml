@@ -161,7 +161,7 @@
                 <ObjectAttribute title="Usuário" text="{UsuarioFormalizacao}" />
             </VBox>
             <VBox visible="{= ${UsuarioAprovacaoRejeicao} !== '' }">
-                <ObjectAttribute title="{= ( ${Status} === 'A' || ${Status} === 'F' ) ? 'Aprovação' : 'Rejeição' }" 
+                <ObjectAttribute title="{= ( ${Status} === 'A' || ${Status} === 'F' ) ? 'Aprovação' : ${Status} === 'H' ? 'Cancelamento' : 'Rejeição' }" 
                     text="{
                             path: 'DataAprovacaoRejeicao',
                             type: 'sap.ui.model.type.Date',
@@ -296,12 +296,11 @@
                         type="Reject" 
                         press="handleMessagePopoverPress"/>
                     <ToolbarSpacer/>
-                    <!--
-                    <Button text="Cancelar" 
-                        visible="{view>/isNegociacaoEditavel}"
-                        press="onReset"
+                    <Button text="Cancelar Acordo" 
+                        visible="{= ${Status} === 'D' || ${Status} === 'P' }"
+                        type="Reject"
+                        press="onCancelar"
                         />
-                    -->
                     <core:ExtensionPoint name="FooterButtons">
                     <Button text="Eliminar"
                         visible="{view>/isNegociacaoEditavel}"
