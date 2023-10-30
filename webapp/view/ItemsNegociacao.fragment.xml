@@ -321,12 +321,11 @@
                                 }
                             }"
                             submit="onSubmit"
-                            enabled="{view>/isNegociacaoEditavel}"
+                            enabled="{= ${view>/isNegociacaoEditavel} &amp;&amp; ${Nivel} === 0 }"
                             id="recomposicaoEdit"
                             maxLength="16"
                             textAlign="Right"
                             description=""
-                            visible="{= !${IsGenerico} }"
                             />
                     </template>
                 </Column>
@@ -350,7 +349,7 @@
                             maxLength="16"
                             textAlign="Right"
                             description=""
-                            visible="{= !${IsGenerico} }"
+                            visible="{= ${Nivel} === 0 }"
                             />
                     </template>
                 </Column>
@@ -368,7 +367,7 @@
                             }"
                             id="totalRecomposicaoText"
                             wrapping="true"
-                            visible="{= !${IsGenerico} }"
+                            visible="{= ${Nivel} === 0 }"
                             />
                     </template>
                 </Column>
@@ -387,7 +386,7 @@
                             }"
                             id="quantidadeVendaPendenteText"
                             wrapping="true"
-                            visible="{= !${IsGenerico} }"
+                            visible="{= ${Nivel} === 0 }"
                             />
                     </template>
                 </Column>
