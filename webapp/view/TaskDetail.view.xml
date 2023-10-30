@@ -297,7 +297,7 @@
                         press="handleMessagePopoverPress"/>
                     <ToolbarSpacer/>
                     <Button text="Cancelar Acordo" 
-                        visible="{= ${Status} === 'D' || ${Status} === 'P' }"
+                        visible="{= (${Status} === 'D' || ${Status} === 'P') &amp;&amp; (${TipoNegociacao}==='I' || ${TipoNegociacao}==='O' || ${TipoNegociacao}==='F' || ${TipoNegociacao}==='G' || ${TipoNegociacao}==='V') }"
                         type="Reject"
                         press="onCancelar"
                         />
