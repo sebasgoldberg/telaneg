@@ -1,5 +1,9 @@
 import ValueState from "sap/ui/core/ValueState";
 
+function aplicarMascaraCPF(sCPF){
+    return sCPF.replace(/^(\d{3})(\d{3})(\d{3}).*/, '***.$2.$3-**')
+}
+
 function defaultNumberStatus(sValue) {
     try {
         checkNotEmpty(sValue);
@@ -405,7 +409,7 @@ export default {
         
         if (value){
             var alist = value.split(";");
-            return alist[0];
+            return aplicarMascaraCPF(alist[0]);
         }
     },
     getNomeUsuarioExterno: function(value){
