@@ -474,9 +474,33 @@
                     </template>
                 </Column>
 
-                <Column id="consultasColumn" label="" width="7%">
+                <Column id="consultasColumn" label="" 
+                    width="{= 
+                        ( 
+                            ${TipoNegociacao} === 'O' ||
+                            ${TipoNegociacao} === 'V'
+                        ) ? '10%' : '7%'
+                    }"
+                >
                     <template>
                         <m:HBox>
+                        <core:Icon
+                            id="iconRecomposicaoExistente"
+                            class="sapUiTinyMarginEnd"
+                            noTabStop="true"
+                            src="sap-icon://decision"
+                            size="16px"
+                            hoverColor="#386084"
+                            tooltip="Acordos Vigentes"
+                            press="onMostrarRecomposicaoExistente"
+                            visible="{= 
+                                !${IsGenerico} &amp;&amp;
+                                ( 
+                                    ${view>/tipoNegociacao} === 'O' ||
+                                    ${view>/tipoNegociacao} === 'V'
+                                )
+                            }"
+                        />
                         <core:Icon
                             noTabStop="true"
                             class="sapUiTinyMarginEnd"
