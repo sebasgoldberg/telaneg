@@ -82,7 +82,17 @@
 
                 <Column label="Descrição" width="25%">
                     <template>
-                        <m:Text text="{itemMerc/Nome}" wrapping="true" />
+                        <m:HBox>
+                            <m:Text text="{itemMerc/Nome}" wrapping="true" />
+                            <core:Icon
+                                src="sap-icon://message-warning"
+                                class="size1"
+                                color="#CC0000"
+                                tooltip="O item ultrapassou o limite de recomposição permitida. Para dar continuidade ao processo precisa da aprovação ou rejeição da negociação."
+                                visible="{= ${negociacao/Status} === 'D' &amp;&amp; ${PrecisaAprovacaoRecomposicao} }"
+                                >
+                            </core:Icon>
+                        </m:HBox>
                     </template>
                 </Column>
                 

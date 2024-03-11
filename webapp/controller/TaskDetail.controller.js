@@ -45,6 +45,7 @@ export default Controller.extend("simplifique.telaneg.base.controller.TaskDetail
             isNegociacaoConcluida: false,
             isNegociacaoEmAnalises: false,
             isNegociacaoEmAprovacao: false,
+            isNegociacaoEmAprovacaoRecomposicao: false,
             isNegociacaoAprovada: false,
             isTabelaEnviada: false,
             isNegociacaoFinalizada: false,

@@ -16,6 +16,7 @@ class TipoStatus{
         m.setProperty('/isNegociacaoConcluida',this.isNegociacaoConcluida());
         m.setProperty('/isNegociacaoEmAnalises',this.isNegociacaoEmAnalises());
         m.setProperty('/isNegociacaoEmAprovacao',this.isNegociacaoEmAprovacao());
+        m.setProperty('/isNegociacaoEmAprovacaoRecomposicao',this.isNegociacaoEmAprovacaoRecomposicao());
         m.setProperty('/isNegociacaoAprovada',this.isNegociacaoAprovada());
         m.setProperty('/isTabelaEnviada',this.isTabelaEnviada());
         m.setProperty('/isNegociacaoFinalizada',this.isNegociacaoFinalizada());
@@ -53,6 +54,10 @@ class TipoStatus{
         return false;
     }
 
+    isNegociacaoEmAprovacaoRecomposicao(){
+        return false;
+    }
+
 }
 
 class TipoEmAnalises extends TipoStatus{
@@ -63,6 +68,12 @@ class TipoEmAnalises extends TipoStatus{
 
 class TipoEmAprovacao extends TipoStatus{
     isNegociacaoEmAprovacao(){
+        return true;
+    }
+}
+
+class TipoEmAprovacaoRecomposicao extends TipoStatus{
+    isNegociacaoEmAprovacaoRecomposicao(){
         return true;
     }
 }
@@ -128,6 +139,7 @@ export default ManagedObject.extend("simplifique.telaneg.base.model.TiposStatus"
         this.tipoNovaCotacao = new TipoNovaCotacao();
         this.tipoEmAnalises = new TipoEmAnalises();
         this.tipoEmAprovacao = new TipoEmAprovacao();
+        this.tipoEmAprovacaoRecomposicao = new TipoEmAprovacaoRecomposicao();
         this.tipoAprovada = new TipoAprovada();
         this.tipoTabelaEnviada = new TipoTabelaEnviada();
         this.tipoFinalizada = new TipoFinalizada();
@@ -150,6 +162,9 @@ export default ManagedObject.extend("simplifique.telaneg.base.model.TiposStatus"
                 break;
             case 'P':
                 oTipoStatus = this.tipoEmAprovacao;
+                break;
+            case 'D':
+                oTipoStatus = this.tipoEmAprovacaoRecomposicao;
                 break;
             case 'A':
                 oTipoStatus = this.tipoAprovada;
